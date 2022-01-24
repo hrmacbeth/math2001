@@ -1,0 +1,8 @@
+[package]
+name = "math2001_fordham"
+version = "0.1"
+lean_version = "leanprover-community/lean:3.38.0"
+path = "src"
+
+[dependencies]
+mathlib = {git = "https://github.com/leanprover-community/mathlib", rev = "eccd8dd1f8745fc53522721f573accb4675e415e"}
