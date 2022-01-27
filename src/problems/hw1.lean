@@ -26,7 +26,7 @@ begin
   sorry
 end
 
-lemma problem4 {l m n : ℤ} : (m ^ 2 - n ^ 2) ^ 2 + (2 * m * n) ^ 2 = (m ^ 2 + n ^ 2) ^ 2 :=
+lemma problem4 (l m n : ℤ) : (m ^ 2 - n ^ 2) ^ 2 + (2 * m * n) ^ 2 = (m ^ 2 + n ^ 2) ^ 2 :=
 begin
   sorry
 end
