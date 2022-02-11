@@ -5,6 +5,8 @@ import data.real.basic
 import tactics.algebra
 import tactics.small_nums
 
+/-! # Lean hw 2 -/
+
 lemma problem1 {x y : ℝ} (h₁ : x - y = 4) (h₂ : x * y = 1) : (x + y) ^ 2 = 20 :=
 begin
   sorry
