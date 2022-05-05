@@ -26,8 +26,8 @@ begin
   cases hn with a ha,
   use a - 2 * n,
   calc n = 5 * n - 4 * n : by ring
-  ... = 2 * a - 4 * n : by substitute [ha]
-  ...= 2 * (a - 2 * n) : by ring,
+  ... = a + a - 4 * n : by substitute [ha]
+  ...= (a - 2 * n) + (a - 2 * n) : by ring,
 end
 
 example {n : ℤ} (hn : 8 ∣ 5 * n) : 8 ∣ n :=
@@ -76,6 +76,6 @@ begin
   rw ← int.even_iff_not_odd at hx,
   cases hx with a ha,
   use 2 * a ^ 2 - 6 * a + 2,
-  calc x ^ 2 - 6 * x + 5 = (2 * a) ^ 2 - 6 * (2 * a) + 5 : by substitute [ha]
+  calc x ^ 2 - 6 * x + 5 = (a + a) ^ 2 - 6 * (a + a) + 5 : by substitute [ha]
   ... = 2 * (2 * a ^ 2 - 6 * a + 2) + 1 : by ring,
 end

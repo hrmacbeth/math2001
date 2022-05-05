@@ -69,14 +69,14 @@ begin
   { rw [even] at *,
     cases hm with k hk,
     use k * n,
-    calc m * n = (2 * k) * n : by substitute [hk]
-    ... =  2 * (k * n) : by ring },
+    calc m * n = (k + k) * n : by substitute [hk]
+    ... = (k * n) + (k * n) : by ring },
   { rw hmn at hm,
     rw [even] at *,
     cases hm with k hk,
     use k * m,
-    calc m * n = m * (2 * k) : by substitute [hk]
-    ... =  2 * (k * m) : by ring },
+    calc m * n = m * (k + k) : by substitute [hk]
+    ... = (k * m) + (k * m) : by ring },
 end
 
 example (n : ℤ) : even (n ^ 2 + 3 * n + 4) :=
