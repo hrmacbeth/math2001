@@ -5,4 +5,4 @@ vscode:
     - jroesch.lean
 
 tasks:
-  - init: . /home/gitpod/.profile && leanpkg configure && leanproject get-mathlib-cache
+  - init: . /home/gitpod/.profile && leanpkg configure && leanproject get-mathlib-cache && leanproject build
