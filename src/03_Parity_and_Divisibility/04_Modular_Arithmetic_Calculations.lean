@@ -5,6 +5,7 @@ import tactics.norm_num'
 
 attribute [irreducible] int.mod
 
+
 example {a b : ℤ} (ha : a ≡ 4 [ZMOD 5]) (hb : b ≡ 3 [ZMOD 5]) :
   a * b + b ^ 3 + 3 ≡ 2 [ZMOD 5] :=
 calc a * b + b ^ 3 + 3 ≡ 4 * b + b ^ 3 + 3 [ZMOD 5] : by mod_rw [ha]
@@ -45,6 +46,7 @@ end
 
 example (a b : ℤ) : (a + b) ^ 3 ≡ a ^ 3 + b ^ 3 [ZMOD 3] :=
 sorry
+
 example : ∃ a : ℤ, 4 * a ≡ 1 [ZMOD 7] :=
 begin
   sorry
