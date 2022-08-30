@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Parity and divisibility &mdash; The mechanics of proof 0.1 documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/custom.css" type="text/css" />
+    <link rel="shortcut icon" href="_static/favicon.ico"/>
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="index.html" class="icon icon-home"> The mechanics of proof
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="01_Proofs_by_Calculation.html">1. Proofs by calculation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="02_Proofs_with_Structure.html">2. Proofs with structure</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="Index_of_Tactics.html">Index of Lean tactics</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">The mechanics of proof</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+      <li>Parity and divisibility</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/03_Parity_and_Divisibility.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="parity-and-divisibility">
+<span id="id1"></span><h1>Parity and divisibility<a class="headerlink" href="#parity-and-divisibility" title="Permalink to this headline">&#61633;</a></h1>
+<section id="modular-arithmetic-calculations">
+<span id="using-modular"></span><h2>Modular arithmetic calculations<a class="headerlink" href="#modular-arithmetic-calculations" title="Permalink to this headline">&#61633;</a></h2>
+<section id="example">
+<h3>Example<a class="headerlink" href="#example" title="Permalink to this headline">&#61633;</a></h3>
+<div class="admonition-problem admonition">
+<p class="admonition-title">Problem</p>
+<p>Let <span class="math notranslate nohighlight">\(a\)</span> and <span class="math notranslate nohighlight">\(b\)</span> be integers, with <span class="math notranslate nohighlight">\(a \equiv 4\mod 5\)</span> and
+<span class="math notranslate nohighlight">\(b \equiv 3\mod 5\)</span>. Show that <span class="math notranslate nohighlight">\(ab+b^2+3 \equiv 2\mod 5\)</span>.</p>
+</div>
+<div class="admonition-solution admonition">
+<p class="admonition-title">Solution</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}a b + b ^ 3 + 3  &amp;\equiv 4 b + b ^ 3 + 3  \mod 5\\
+&amp;\equiv 4 \cdot 3 + 3 ^ 3 + 3  \mod 5\\
+&amp;=2+5 \cdot 8\\
+&amp;\equiv 2\mod 5.\end{split}\]</div>
+</div>
+<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">{</span><span class="n">a</span> <span class="n">b</span> <span class="o">:</span> <span class="n">&#8484;</span><span class="o">}</span> <span class="o">(</span><span class="n">ha</span> <span class="o">:</span> <span class="n">a</span> <span class="bp">&#8801;</span> <span class="mi">4</span> <span class="o">[</span><span class="n">ZMOD</span> <span class="mi">5</span><span class="o">])</span> <span class="o">(</span><span class="n">hb</span> <span class="o">:</span> <span class="n">b</span> <span class="bp">&#8801;</span> <span class="mi">3</span> <span class="o">[</span><span class="n">ZMOD</span> <span class="mi">5</span><span class="o">])</span> <span class="o">:</span>
+  <span class="n">a</span> <span class="bp">*</span> <span class="n">b</span> <span class="bp">+</span> <span class="n">b</span> <span class="bp">^</span> <span class="mi">3</span> <span class="bp">+</span> <span class="mi">3</span> <span class="bp">&#8801;</span> <span class="mi">2</span> <span class="o">[</span><span class="n">ZMOD</span> <span class="mi">5</span><span class="o">]</span> <span class="o">:=</span>
+<span class="k">calc</span> <span class="n">a</span> <span class="bp">*</span> <span class="n">b</span> <span class="bp">+</span> <span class="n">b</span> <span class="bp">^</span> <span class="mi">3</span> <span class="bp">+</span> <span class="mi">3</span> <span class="bp">&#8801;</span> <span class="mi">4</span> <span class="bp">*</span> <span class="n">b</span> <span class="bp">+</span> <span class="n">b</span> <span class="bp">^</span> <span class="mi">3</span> <span class="bp">+</span> <span class="mi">3</span> <span class="o">[</span><span class="n">ZMOD</span> <span class="mi">5</span><span class="o">]</span> <span class="o">:</span> <span class="kd">by</span> <span class="n">mod_rw</span> <span class="o">[</span><span class="n">ha</span><span class="o">]</span>
+<span class="bp">...</span> <span class="bp">&#8801;</span> <span class="mi">4</span> <span class="bp">*</span> <span class="mi">3</span> <span class="bp">+</span> <span class="mi">3</span> <span class="bp">^</span> <span class="mi">3</span> <span class="bp">+</span> <span class="mi">3</span> <span class="o">[</span><span class="n">ZMOD</span> <span class="mi">5</span><span class="o">]</span> <span class="o">:</span> <span class="kd">by</span> <span class="n">mod_rw</span> <span class="o">[</span><span class="n">hb</span><span class="o">]</span>
+<span class="bp">...</span> <span class="bp">=</span> <span class="mi">2</span> <span class="bp">+</span> <span class="mi">5</span> <span class="bp">*</span> <span class="mi">8</span> <span class="o">:</span> <span class="kd">by</span> <span class="n">norm_num&#39;</span>
+<span class="bp">...</span> <span class="bp">&#8801;</span> <span class="mi">2</span> <span class="o">[</span><span class="n">ZMOD</span> <span class="mi">5</span><span class="o">]</span> <span class="o">:</span> <span class="kd">by</span> <span class="n">apply</span> <span class="n">int.modeq_add_fac&#39;</span>
+</pre></div>
+</div>
+</section>
+<section id="id2">
+<h3>Example<a class="headerlink" href="#id2" title="Permalink to this headline">&#61633;</a></h3>
+<div class="admonition-problem admonition">
+<p class="admonition-title">Problem</p>
+<p>Show that there exists an integer <span class="math notranslate nohighlight">\(a\)</span>, such that <span class="math notranslate nohighlight">\(6a \equiv 4\mod 11\)</span>.</p>
+</div>
+<div class="admonition-solution admonition">
+<p class="admonition-title">Solution</p>
+<p>The integer 8 has this property.  Indeed,</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}6 \cdot 8 &amp;= 4 + 11 \cdot 4\\
+&amp;\equiv 4\mod 11.\end{split}\]</div>
+</div>
+<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">:</span> <span class="bp">&#8707;</span> <span class="n">a</span> <span class="o">:</span> <span class="n">&#8484;</span><span class="o">,</span> <span class="mi">6</span> <span class="bp">*</span> <span class="n">a</span> <span class="bp">&#8801;</span> <span class="mi">4</span> <span class="o">[</span><span class="n">ZMOD</span> <span class="mi">11</span><span class="o">]</span> <span class="o">:=</span>
+<span class="kd">begin</span>
+  <span class="n">use</span> <span class="mi">8</span><span class="o">,</span>
+  <span class="k">calc</span> <span class="mi">6</span> <span class="bp">*</span> <span class="mi">8</span> <span class="bp">=</span> <span class="mi">4</span> <span class="bp">+</span> <span class="mi">11</span> <span class="bp">*</span> <span class="mi">4</span> <span class="o">:</span> <span class="kd">by</span> <span class="n">norm_num&#39;</span>
+  <span class="bp">...</span> <span class="bp">&#8801;</span> <span class="mi">4</span> <span class="o">[</span><span class="n">ZMOD</span> <span class="mi">11</span><span class="o">]</span> <span class="o">:</span> <span class="kd">by</span> <span class="n">apply</span> <span class="n">int.modeq_add_fac&#39;</span><span class="o">,</span>
+<span class="kd">end</span>
+</pre></div>
+</div>
+</section>
+<section id="id3">
+<h3>Example<a class="headerlink" href="#id3" title="Permalink to this headline">&#61633;</a></h3>
+<div class="admonition-problem admonition">
+<p class="admonition-title">Problem</p>
+<p>Let <span class="math notranslate nohighlight">\(x\)</span> be an integer.  Show that <span class="math notranslate nohighlight">\(x ^ 3 \equiv x\mod 3\)</span>.</p>
+</div>
+<div class="admonition-solution admonition">
+<p class="admonition-title">Solution</p>
+<p>We consider cases according to the residue of <span class="math notranslate nohighlight">\(x\)</span> modulo 3.</p>
+<p><strong>Case 1</strong> (<span class="math notranslate nohighlight">\(x\equiv 0\mod 3\)</span>):</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}x^3 &amp;\equiv 0^3\mod 3\\
+&amp; = 0\\
+&amp;\equiv x\mod 3.\end{split}\]</div>
+<p><strong>Case 2</strong> (<span class="math notranslate nohighlight">\(x\equiv 1\mod 3\)</span>):</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}x^3 &amp;\equiv 1^3\mod 3\\
+&amp; = 1\\
+&amp;\equiv x\mod 3.\end{split}\]</div>
+<p><strong>Case 3</strong> (<span class="math notranslate nohighlight">\(x\equiv 2\mod 3\)</span>):</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}x^3 &amp;\equiv 2^3\mod 3\\
+&amp; = 2 + 3 \cdot 2\\
+&amp;\equiv 2\mod 3.
+&amp;\equiv x\mod 3.\end{split}\]</div>
+</div>
+<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">{</span><span class="n">x</span> <span class="o">:</span> <span class="n">&#8484;</span><span class="o">}</span> <span class="o">:</span> <span class="n">x</span> <span class="bp">^</span> <span class="mi">3</span> <span class="bp">&#8801;</span> <span class="n">x</span> <span class="o">[</span><span class="n">ZMOD</span> <span class="mi">3</span><span class="o">]</span> <span class="o">:=</span>
+<span class="kd">begin</span>
+  <span class="n">mod_cases</span> <span class="n">x</span> <span class="mi">3</span> <span class="k">with</span> <span class="n">hx</span><span class="o">,</span>
+  <span class="k">calc</span> <span class="n">x</span> <span class="bp">^</span> <span class="mi">3</span> <span class="bp">&#8801;</span> <span class="mi">0</span> <span class="bp">^</span> <span class="mi">3</span> <span class="o">[</span><span class="n">ZMOD</span> <span class="mi">3</span><span class="o">]</span> <span class="o">:</span> <span class="kd">by</span> <span class="n">mod_rw</span> <span class="n">hx</span>
+  <span class="bp">...</span> <span class="bp">=</span> <span class="mi">0</span> <span class="o">:</span> <span class="kd">by</span> <span class="n">norm_num&#39;</span>
+  <span class="bp">...</span> <span class="bp">&#8801;</span> <span class="n">x</span> <span class="o">[</span><span class="n">ZMOD</span> <span class="mi">3</span><span class="o">]</span> <span class="o">:</span> <span class="kd">by</span> <span class="n">mod_rw</span> <span class="n">hx</span><span class="o">,</span>
+  <span class="k">calc</span> <span class="n">x</span> <span class="bp">^</span> <span class="mi">3</span> <span class="bp">&#8801;</span> <span class="mi">1</span> <span class="bp">^</span> <span class="mi">3</span> <span class="o">[</span><span class="n">ZMOD</span> <span class="mi">3</span><span class="o">]</span> <span class="o">:</span> <span class="kd">by</span> <span class="n">mod_rw</span> <span class="n">hx</span>
+  <span class="bp">...</span> <span class="bp">=</span> <span class="mi">1</span> <span class="o">:</span> <span class="kd">by</span> <span class="n">norm_num&#39;</span>
+  <span class="bp">...</span> <span class="bp">&#8801;</span> <span class="n">x</span> <span class="o">[</span><span class="n">ZMOD</span> <span class="mi">3</span><span class="o">]</span> <span class="o">:</span> <span class="kd">by</span> <span class="n">mod_rw</span> <span class="n">hx</span><span class="o">,</span>
+  <span class="k">calc</span> <span class="n">x</span> <span class="bp">^</span> <span class="mi">3</span> <span class="bp">&#8801;</span> <span class="mi">2</span> <span class="bp">^</span> <span class="mi">3</span> <span class="o">[</span><span class="n">ZMOD</span> <span class="mi">3</span><span class="o">]</span> <span class="o">:</span> <span class="kd">by</span> <span class="n">mod_rw</span> <span class="n">hx</span>
+  <span class="bp">...</span> <span class="bp">=</span> <span class="mi">2</span> <span class="bp">+</span> <span class="mi">3</span> <span class="bp">*</span> <span class="mi">2</span> <span class="o">:</span> <span class="kd">by</span> <span class="n">norm_num&#39;</span>
+  <span class="bp">...</span> <span class="bp">&#8801;</span> <span class="mi">2</span> <span class="o">[</span><span class="n">ZMOD</span> <span class="mi">3</span><span class="o">]</span> <span class="o">:</span> <span class="kd">by</span> <span class="n">apply</span> <span class="n">int.modeq_add_fac&#39;</span>
+  <span class="bp">...</span> <span class="bp">&#8801;</span> <span class="n">x</span> <span class="o">[</span><span class="n">ZMOD</span> <span class="mi">3</span><span class="o">]</span> <span class="o">:</span> <span class="kd">by</span> <span class="n">mod_rw</span> <span class="n">hx</span><span class="o">,</span>
+<span class="kd">end</span>
+</pre></div>
+</div>
+</section>
+<section id="exercises">
+<h3>Exercises<a class="headerlink" href="#exercises" title="Permalink to this headline">&#61633;</a></h3>
+<ol class="arabic simple">
+<li><p>Let <span class="math notranslate nohighlight">\(n\)</span> be an integer for which <span class="math notranslate nohighlight">\(n\equiv 1\mod 3\)</span>.
+Show that <span class="math notranslate nohighlight">\(n^3+7n\equiv 2\mod 3\)</span>.</p></li>
+</ol>
+<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">{</span><span class="n">n</span> <span class="o">:</span> <span class="n">&#8484;</span><span class="o">}</span> <span class="o">(</span><span class="n">hn</span> <span class="o">:</span> <span class="n">n</span> <span class="bp">&#8801;</span> <span class="mi">1</span> <span class="o">[</span><span class="n">ZMOD</span> <span class="mi">3</span><span class="o">])</span> <span class="o">:</span> <span class="n">n</span> <span class="bp">^</span> <span class="mi">3</span> <span class="bp">+</span> <span class="mi">7</span> <span class="bp">*</span> <span class="n">n</span> <span class="bp">&#8801;</span> <span class="mi">2</span> <span class="o">[</span><span class="n">ZMOD</span> <span class="mi">3</span><span class="o">]</span> <span class="o">:=</span>
+<span class="kd">begin</span>
+  <span class="gr">sorry</span>
+<span class="kd">end</span>
+</pre></div>
+</div>
+<ol class="arabic simple" start="2">
+<li><p>Let <span class="math notranslate nohighlight">\(a\)</span> and <span class="math notranslate nohighlight">\(b\)</span> be integers.  Show that <span class="math notranslate nohighlight">\((a + b)^3\equiv a^3+b^3\mod 3\)</span>.</p></li>
+</ol>
+<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">(</span><span class="n">a</span> <span class="n">b</span> <span class="o">:</span> <span class="n">&#8484;</span><span class="o">)</span> <span class="o">:</span> <span class="o">(</span><span class="n">a</span> <span class="bp">+</span> <span class="n">b</span><span class="o">)</span> <span class="bp">^</span> <span class="mi">3</span> <span class="bp">&#8801;</span> <span class="n">a</span> <span class="bp">^</span> <span class="mi">3</span> <span class="bp">+</span> <span class="n">b</span> <span class="bp">^</span> <span class="mi">3</span> <span class="o">[</span><span class="n">ZMOD</span> <span class="mi">3</span><span class="o">]</span> <span class="o">:=</span>
+<span class="gr">sorry</span>
+</pre></div>
+</div>
+<ol class="arabic simple" start="3">
+<li><p>Show that there exists an integer <span class="math notranslate nohighlight">\(a\)</span>, such that <span class="math notranslate nohighlight">\(4a\equiv 1\mod 7\)</span>.</p></li>
+</ol>
+<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">:</span> <span class="bp">&#8707;</span> <span class="n">a</span> <span class="o">:</span> <span class="n">&#8484;</span><span class="o">,</span> <span class="mi">4</span> <span class="bp">*</span> <span class="n">a</span> <span class="bp">&#8801;</span> <span class="mi">1</span> <span class="o">[</span><span class="n">ZMOD</span> <span class="mi">7</span><span class="o">]</span> <span class="o">:=</span>
+<span class="kd">begin</span>
+  <span class="gr">sorry</span>
+<span class="kd">end</span>
+</pre></div>
+</div>
+<ol class="arabic simple" start="4">
+<li><p>Let <span class="math notranslate nohighlight">\(n\)</span> be an integer.  Show that <span class="math notranslate nohighlight">\(5n^2+3n+7\equiv 1\mod 2\)</span>.</p></li>
+</ol>
+<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">(</span><span class="n">n</span> <span class="o">:</span> <span class="n">&#8484;</span><span class="o">)</span> <span class="o">:</span> <span class="mi">5</span> <span class="bp">*</span> <span class="n">n</span> <span class="bp">^</span> <span class="mi">2</span> <span class="bp">+</span> <span class="mi">3</span> <span class="bp">*</span> <span class="n">n</span> <span class="bp">+</span> <span class="mi">7</span> <span class="bp">&#8801;</span> <span class="mi">1</span> <span class="o">[</span><span class="n">ZMOD</span> <span class="mi">2</span><span class="o">]</span> <span class="o">:=</span>
+<span class="kd">begin</span>
+  <span class="gr">sorry</span>
+<span class="kd">end</span>
+</pre></div>
+</div>
+<ol class="arabic simple" start="5">
+<li><p>Let <span class="math notranslate nohighlight">\(x\)</span> be an integer.  Show that <span class="math notranslate nohighlight">\(x^5\equiv 1\mod 5\)</span>.</p></li>
+</ol>
+<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">{</span><span class="n">x</span> <span class="o">:</span> <span class="n">&#8484;</span><span class="o">}</span> <span class="o">:</span> <span class="n">x</span> <span class="bp">^</span> <span class="mi">5</span> <span class="bp">&#8801;</span> <span class="n">x</span> <span class="o">[</span><span class="n">ZMOD</span> <span class="mi">5</span><span class="o">]</span> <span class="o">:=</span>
+<span class="kd">begin</span>
+  <span class="gr">sorry</span>
+<span class="kd">end</span>
+</pre></div>
+</div>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2022, Heather Macbeth.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
