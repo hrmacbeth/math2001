@@ -3,16 +3,17 @@
 import data.real.basic
 
 
-example {a b : ℤ} (h1 : a - b = 4) (h2 : a * b = 1) :
+example {a b : ℚ} (h1 : a - b = 4) (h2 : a * b = 1) :
   (a + b) ^ 2 = 20 :=
 calc (a + b) ^ 2 = (a - b) ^ 2 + 4 * (a * b) : by ring
-... = 4 ^ 2 + 4 * 1 : by rwa [h1, h2]
+... = 4 ^ 2 + 4 * 1 : by rw [h1, h2]
 ... = 20 : by ring
 
 
 example {r s : ℝ} (h1 : s = 3) (h2 : r + 2 * s = -1) :
   r = -7 :=
 calc r = (r + 2 * s) - 2 * s : by sorry
+... = -1 - 2 * s : by sorry
 ... = -1 - 2 * 3 : by sorry
 ... = - 7 : by sorry
 

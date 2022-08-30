@@ -1,3 +1,5 @@
+/- Copyright (c) Heather Macbeth, 2022.  All rights reserved. -/
+
 import data.int.parity
 import library.modular
 import tactics.modular
