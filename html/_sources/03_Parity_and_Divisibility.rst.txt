@@ -1,0 +1,6 @@
+.. _parity_and_divisibility:
+
+Parity and divisibility
+=======================
+
+.. include:: 03_Parity_and_Divisibility/04_Modular_Arithmetic_Calculations.inc
