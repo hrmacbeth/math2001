@@ -74,7 +74,10 @@
              
   <section id="index-of-lean-tactics">
 <span id="tactic-index"></span><h1>Index of Lean tactics<a class="headerlink" href="#index-of-lean-tactics" title="Permalink to this headline">&#61633;</a></h1>
-<p class="rubric">addarith</p>
+<p>Italicized tactics are specific to this course, so you will not be able to get help with them by
+googling/consulting internet forums/etc.  Reread the indicated part of the lecture notes or ask
+your instructor!</p>
+<p class="rubric"><em>addarith</em> (<a class="reference internal" href="01_Proofs_by_Calculation.html#shortcut"><span class="std std-ref">first use</span></a>)</p>
 <p>Attempts to solve an equality or inequality by moving terms from the left-hand side to the
 right-hand side, or vice versa.</p>
 <p class="rubric">apply (<a class="reference internal" href="02_Proofs_with_Structure.html#lemmas"><span class="std std-ref">first use</span></a>)</p>
@@ -87,10 +90,16 @@ right-hand side, or vice versa.</p>
 <p class="rubric">have (<a class="reference internal" href="02_Proofs_with_Structure.html#tactic-mode"><span class="std std-ref">first use</span></a>)</p>
 <p>Sets up an intermediate goal, so that, after that&#8217;s proved, you have that fact available as an
 extra hypothesis.</p>
-<p class="rubric">ineq_tac (<a class="reference internal" href="01_Proofs_by_Calculation.html#proving-inequalities"><span class="std std-ref">first use</span></a>)</p>
+<p class="rubric"><em>ineq_tac</em> (<a class="reference internal" href="01_Proofs_by_Calculation.html#proving-inequalities"><span class="std std-ref">first use</span></a>)</p>
 <p>A &#8220;substitution-like&#8221; tactic for inequalities: looks for the left-hand side of a specified
 inequality fact in the goal, and replaces it with the right-hand side of that fact, if that
 replacement is &#8220;obviously&#8221; a valid inequality deduction.</p>
+<p class="rubric"><em>mod_cases</em> (<a class="reference internal" href="03_Parity_and_Divisibility.html#using-modular"><span class="std std-ref">first use</span></a>)</p>
+<p>Introduces cases for a variable according to its residue modulo a specified number.</p>
+<p class="rubric"><em>mod_rw</em> (<a class="reference internal" href="03_Parity_and_Divisibility.html#using-modular"><span class="std std-ref">first use</span></a>)</p>
+<p>A &#8220;substitution-like&#8221; tactic for congruences: looks for the left-hand side of a specified
+modular arithmetic fact in the goal, and replaces it with the right-hand side of that fact, if that
+replacement is &#8220;obviously&#8221; a valid modular arithmetic deduction.</p>
 <p class="rubric">norm_num</p>
 <p>Proves numeric facts, like <span class="math notranslate nohighlight">\(3\cdot 12 &lt; 13 + 25\)</span>.</p>
 <p class="rubric">right (<a class="reference internal" href="02_Proofs_with_Structure.html#or"><span class="std std-ref">first use</span></a>)</p>
