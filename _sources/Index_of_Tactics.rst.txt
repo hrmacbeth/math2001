@@ -3,7 +3,11 @@
 Index of Lean tactics
 =====================
 
-.. rubric:: addarith
+Italicized tactics are specific to this course, so you will not be able to get help with them by
+googling/consulting internet forums/etc.  Reread the indicated part of the lecture notes or ask
+your instructor!
+
+.. rubric:: *addarith* (:ref:`first use <shortcut>`)
 
 Attempts to solve an equality or inequality by moving terms from the left-hand side to the
 right-hand side, or vice versa.
@@ -26,11 +30,21 @@ Selects the left alternative of an "or" goal (:math:`\lor`).
 Sets up an intermediate goal, so that, after that's proved, you have that fact available as an
 extra hypothesis.
 
-.. rubric:: ineq_tac (:ref:`first use <proving_inequalities>`)
+.. rubric:: *ineq_tac* (:ref:`first use <proving_inequalities>`)
 
 A "substitution-like" tactic for inequalities: looks for the left-hand side of a specified
 inequality fact in the goal, and replaces it with the right-hand side of that fact, if that
 replacement is "obviously" a valid inequality deduction.
+
+.. rubric:: *mod_cases* (:ref:`first use <using_modular>`)
+
+Introduces cases for a variable according to its residue modulo a specified number.
+
+.. rubric:: *mod_rw* (:ref:`first use <using_modular>`)
+
+A "substitution-like" tactic for congruences: looks for the left-hand side of a specified
+modular arithmetic fact in the goal, and replaces it with the right-hand side of that fact, if that
+replacement is "obviously" a valid modular arithmetic deduction.
 
 .. rubric:: norm_num
 
