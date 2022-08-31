@@ -107,13 +107,13 @@
 <p>Every proof we&#8217;ve seen so far has been a single calculation.  More typically, though, a proof will
 have a more complex structure, with facts established at an early stage which are not used immediately,
 but instead brought in later.</p>
-<p>For example, here&#8217;s an algebra problem which we have seen before.</p>
+<p>For example, here&#8217;s the algebra problem from <a class="reference internal" href="01_Proofs_by_Calculation.html#id20"><span class="std std-numref">Example 1.3.3</span></a>.</p>
 <div class="admonition-problem admonition">
 <p class="admonition-title">Problem</p>
 <p>Let <span class="math notranslate nohighlight">\(a\)</span> and <span class="math notranslate nohighlight">\(b\)</span> be real numbers and suppose that <span class="math notranslate nohighlight">\(a-5b=4\)</span>
 and <span class="math notranslate nohighlight">\(b+2=3\)</span>.  Show that <span class="math notranslate nohighlight">\(a=9\)</span>.</p>
 </div>
-<p>We <a class="reference internal" href="01_Proofs_by_Calculation.html#id21"><span class="std std-ref">previously solved it</span></a> by a single long calculation,</p>
+<p>We previously solved it by a single long calculation,</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}a
 &amp;= \ldots\\
@@ -376,7 +376,7 @@ variants on <a class="reference internal" href="#pos-of-mul-pos-right"><span cla
 </pre></div>
 </div>
 <p>Unusually, we&#8217;re giving this problem a name, <code class="docutils literal notranslate"><span class="pre">eq_zero_of_mul_pos_eq_zero</span></code>, for future reference.
-This is because we&#8217;ll use it later in <a class="reference internal" href="#integral-domain-step3"><span class="std std-ref">Section 2.3</span></a>.</p>
+This is because we&#8217;ll use it later in <a class="reference internal" href="#integral-domain-step3"><span class="std std-numref">Example 2.3.2</span></a>.</p>
 </section>
 <section id="exercises">
 <h3><span class="section-number">2.2.6. </span>Exercises<a class="headerlink" href="#exercises" title="Permalink to this headline">&#61633;</a></h3>
@@ -414,7 +414,7 @@ lemma <code class="docutils literal notranslate"><span class="pre">le_of_pow_le_
 <ol class="arabic" start="3">
 <li><p>Let <span class="math notranslate nohighlight">\(a\)</span> and <span class="math notranslate nohighlight">\(b\)</span> be real numbers, and suppose that <span class="math notranslate nohighlight">\(ab=0\)</span> and
 <span class="math notranslate nohighlight">\(0 &lt; a\)</span>.  Show that <span class="math notranslate nohighlight">\(b = 0\)</span>.</p>
-<p>This problem is a variant on one <a class="reference internal" href="#integral-domain-step1"><span class="std std-ref">discussed above</span></a>. The lemmas
+<p>This problem is a variant on <a class="reference internal" href="#integral-domain-step1"><span class="std std-numref">Example 2.2.5</span></a>. The lemmas
 involved will be different, but see if you can guess their names by analogy with the names of
 the lemmas used in that example.</p>
 </li>
@@ -478,7 +478,7 @@ own lemmas <code class="docutils literal notranslate"><span class="pre">foo</spa
 </section>
 <section id="integral-domain-step3">
 <span id="id13"></span><h3><span class="section-number">2.3.2. </span>Example<a class="headerlink" href="#integral-domain-step3" title="Permalink to this headline">&#61633;</a></h3>
-<p>We <a class="reference internal" href="#integral-domain-step1"><span class="std std-ref">showed in Section 2.2</span></a> that if <span class="math notranslate nohighlight">\(ab=0\)</span> and
+<p>We showed in <a class="reference internal" href="#integral-domain-step1"><span class="std std-numref">Example 2.2.5</span></a> that if <span class="math notranslate nohighlight">\(ab=0\)</span> and
 <span class="math notranslate nohighlight">\(0 &lt; a\)</span>, then <span class="math notranslate nohighlight">\(b = 0\)</span>.  Later, in the
 <a class="reference internal" href="#integral-domain-step2"><span class="std std-ref">exercises to that section</span></a>, we showed that that if <span class="math notranslate nohighlight">\(ab=0\)</span> and
 <span class="math notranslate nohighlight">\(a &lt; 0\)</span>, then <span class="math notranslate nohighlight">\(b = 0\)</span>.</p>
@@ -492,13 +492,12 @@ general lemma valid for all values of <span class="math notranslate nohighlight"
 <div class="admonition-solution admonition">
 <p class="admonition-title">Solution</p>
 <p>We consider separately the three cases <span class="math notranslate nohighlight">\(a &lt; 0\)</span>, <span class="math notranslate nohighlight">\(a=0\)</span> and <span class="math notranslate nohighlight">\(0 &lt; a\)</span>.</p>
-<p><strong>Case 1</strong> (<span class="math notranslate nohighlight">\(a &lt; 0\)</span>):  In this case we will show the second alternative, <span class="math notranslate nohighlight">\(b=0\)</span>.
-We know <span class="math notranslate nohighlight">\(ab=0\)</span> and <span class="math notranslate nohighlight">\(a&lt;0\)</span>, so our
-<a class="reference internal" href="#integral-domain-step2"><span class="std std-ref">previously proved lemma</span></a> applies.</p>
+<p><strong>Case 1</strong> (<span class="math notranslate nohighlight">\(a &lt; 0\)</span>):  We have that <span class="math notranslate nohighlight">\(ab=0\)</span> and <span class="math notranslate nohighlight">\(a&lt;0\)</span>. So by the lemma proved in
+<a class="reference internal" href="#integral-domain-step2"><span class="std std-ref">a previous exercise</span></a>, we have that <span class="math notranslate nohighlight">\(b=0\)</span>, the second
+alternative.</p>
 <p><strong>Case 2</strong> (<span class="math notranslate nohighlight">\(a = 0\)</span>):  This is itself the first alternative in our goal.</p>
-<p><strong>Case 3</strong> (<span class="math notranslate nohighlight">\(0 &lt; a\)</span>):  In this case we will show the second alternative, <span class="math notranslate nohighlight">\(b=0\)</span>.
-We know <span class="math notranslate nohighlight">\(ab=0\)</span> and <span class="math notranslate nohighlight">\(0&lt;a\)</span>, so our
-<a class="reference internal" href="#integral-domain-step1"><span class="std std-ref">other previously proved lemma</span></a> applies.</p>
+<p><strong>Case 3</strong> (<span class="math notranslate nohighlight">\(0 &lt; a\)</span>):  We have that <span class="math notranslate nohighlight">\(ab=0\)</span> and <span class="math notranslate nohighlight">\(0 &lt;a\)</span>. So by the lemma proved in
+<a class="reference internal" href="#integral-domain-step1"><span class="std std-numref">Example 2.2.5</span></a>, we have that <span class="math notranslate nohighlight">\(b=0\)</span>, the second alternative.</p>
 </div>
 <div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">{</span><span class="n">a</span> <span class="n">b</span> <span class="o">:</span> <span class="n">&#8477;</span><span class="o">}</span> <span class="o">(</span><span class="n">h</span> <span class="o">:</span> <span class="n">a</span> <span class="bp">*</span> <span class="n">b</span> <span class="bp">=</span> <span class="mi">0</span><span class="o">)</span> <span class="o">:</span> <span class="n">a</span> <span class="bp">=</span> <span class="mi">0</span> <span class="bp">&#8744;</span> <span class="n">b</span> <span class="bp">=</span> <span class="mi">0</span> <span class="o">:=</span>
 <span class="kd">begin</span>
@@ -524,7 +523,7 @@ variants in later problems.</p>
 </section>
 <section id="id14">
 <h3><span class="section-number">2.3.3. </span>Example<a class="headerlink" href="#id14" title="Permalink to this headline">&#61633;</a></h3>
-<p>In <a class="reference internal" href="#sq-ne-two"><span class="std std-ref">a previous example</span></a> we showed that no natural number squares to 2.  It is also
+<p>In <a class="reference internal" href="#sq-ne-two"><span class="std std-numref">Example 2.3.1</span></a> we showed that no natural number squares to 2.  It is also
 true that no integer squares to 2, but since order laws are more complicated when negative numbers
 are involved, the proof is more complicated, requiring cases within cases.</p>
 <div class="admonition-problem admonition">
@@ -589,7 +588,7 @@ braces, as follows.</p>
 <section id="solve-quadratic">
 <span id="id15"></span><h3><span class="section-number">2.3.4. </span>Example<a class="headerlink" href="#solve-quadratic" title="Permalink to this headline">&#61633;</a></h3>
 <p>Let&#8217;s solve a quadratic equation; this is a classic situation where the result has an &#8220;or&#8221; in it.
-We will get to use the fact <a class="reference internal" href="#integral-domain-step3"><span class="std std-ref">proved in an earlier section</span></a>: if the
+We will get to use the fact proved in <a class="reference internal" href="#integral-domain-step3"><span class="std std-numref">Example 2.3.2</span></a>: if the
 product of two numbers is zero, then one of them is zero.</p>
 <div class="admonition-problem admonition">
 <p class="admonition-title">Problem</p>
@@ -636,7 +635,7 @@ and it is left to the reader to observe that <span class="math notranslate nohig
 &amp;=0.\end{split}\]</div>
 <p>So either <span class="math notranslate nohighlight">\(a=0\)</span> or <span class="math notranslate nohighlight">\(a=0\)</span>, and in either case we are done.</p>
 </div>
-<p>Exercise: Write this argument in Lean, using <a class="reference internal" href="#solve-quadratic"><span class="std std-ref">the previous problem</span></a> as a
+<p>Exercise: Write this argument in Lean, using <a class="reference internal" href="#solve-quadratic"><span class="std std-numref">Example 2.3.4</span></a> as a
 model.</p>
 <div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">{</span><span class="n">a</span> <span class="o">:</span> <span class="n">&#8477;</span><span class="o">}</span> <span class="o">(</span><span class="n">ha</span> <span class="o">:</span> <span class="n">a</span> <span class="bp">^</span> <span class="mi">2</span> <span class="bp">=</span> <span class="mi">0</span><span class="o">)</span> <span class="o">:</span> <span class="n">a</span> <span class="bp">=</span> <span class="mi">0</span> <span class="o">:=</span>
 <span class="kd">begin</span>

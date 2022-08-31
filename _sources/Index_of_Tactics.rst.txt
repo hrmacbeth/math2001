@@ -7,40 +7,40 @@ Italicized tactics are specific to this course, so you will not be able to get h
 googling/consulting internet forums/etc.  Reread the indicated part of the lecture notes or ask
 your instructor!
 
-.. rubric:: *addarith* (:ref:`first use <shortcut>`)
+.. rubric:: *addarith* (first use: :numref:`Section %s <shortcut>`)
 
 Attempts to solve an equality or inequality by moving terms from the left-hand side to the
 right-hand side, or vice versa.
 
-.. rubric:: apply (:ref:`first use <lemmas>`)
+.. rubric:: apply (first use: :numref:`Section %s <lemmas>`)
 
 Invokes a specified lemma to modify the goal.
 
-.. rubric:: cases (:ref:`first use <or>`)
+.. rubric:: cases (first use: :numref:`Section %s <or>`)
 
 Takes apart a hypothesis of the form "or" (:math:`\lor`), "and" (:math:`\land`) or "there exists"
 (:math:`\exists`).
 
-.. rubric:: left (:ref:`first use <or>`)
+.. rubric:: left (first use: :numref:`Section %s <or>`)
 
 Selects the left alternative of an "or" goal (:math:`\lor`).
 
-.. rubric:: have (:ref:`first use <tactic_mode>`)
+.. rubric:: have (first use: :numref:`Section %s <tactic_mode>`)
 
 Sets up an intermediate goal, so that, after that's proved, you have that fact available as an
 extra hypothesis.
 
-.. rubric:: *ineq_tac* (:ref:`first use <proving_inequalities>`)
+.. rubric:: *ineq_tac* (first use: :numref:`Section %s <proving_inequalities>`)
 
 A "substitution-like" tactic for inequalities: looks for the left-hand side of a specified
 inequality fact in the goal, and replaces it with the right-hand side of that fact, if that
 replacement is "obviously" a valid inequality deduction.
 
-.. rubric:: *mod_cases* (:ref:`first use <using_modular>`)
+.. rubric:: *mod_cases* (first use: :numref:`Section %s <using_modular>`)
 
 Introduces cases for a variable according to its residue modulo a specified number.
 
-.. rubric:: *mod_rw* (:ref:`first use <using_modular>`)
+.. rubric:: *mod_rw* (first use: :numref:`Section %s <using_modular>`)
 
 A "substitution-like" tactic for congruences: looks for the left-hand side of a specified
 modular arithmetic fact in the goal, and replaces it with the right-hand side of that fact, if that
@@ -50,16 +50,16 @@ replacement is "obviously" a valid modular arithmetic deduction.
 
 Proves numeric facts, like :math:`3\cdot 12 < 13 + 25`.
 
-.. rubric:: right (:ref:`first use <or>`)
+.. rubric:: right (first use: :numref:`Section %s <or>`)
 
 Selects the right alternative of an "or" goal (:math:`\lor`).
 
-.. rubric:: ring (:ref:`first use <proving_equalities_in_lean>`)
+.. rubric:: ring (first use: :numref:`Section %s <proving_equalities_in_lean>`)
 
 Solves algebraic equality goals such as :math:`(x + y) ^ 2 = x ^ 2 + 2xy + y ^ 2`, when the proof
 is effectively "expand out both sides and rearrange".
 
-.. rubric:: rw (:ref:`first use <proving_equalities_in_lean>`)
+.. rubric:: rw (first use: :numref:`Section %s <proving_equalities_in_lean>`)
 
 Substitution: looks for the left-hand side of a specified equality fact in the goal, and replaces it with
 the right-hand side of that fact.
