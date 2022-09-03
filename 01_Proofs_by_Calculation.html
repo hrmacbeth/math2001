@@ -76,13 +76,12 @@
 <li class="toctree-l3"><a class="reference internal" href="#id33">1.4.3. Example</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#id35">1.4.4. Example</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#id37">1.4.5. Example</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id39">1.4.6. Example</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id41">1.4.7. Example</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#sq-nonneg">1.4.8. Example</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id44">1.4.9. Example</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id46">1.4.10. Example</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id48">1.4.11. Example</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id50">1.4.12. Exercises</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id38">1.4.6. Example</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#sq-nonneg">1.4.7. Example</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id40">1.4.8. Example</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id42">1.4.9. Example</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id44">1.4.10. Example</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id46">1.4.11. Exercises</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#a-shortcut">1.5. A shortcut</a></li>
@@ -842,6 +841,8 @@ suppose that <span class="math notranslate nohighlight">\(p + q + r = 0\)</span>
 <span id="id29"></span><h2><span class="section-number">1.4. </span>Proving inequalities<a class="headerlink" href="#proving-inequalities" title="Permalink to this headline">&#61633;</a></h2>
 <section id="id30">
 <h3><span class="section-number">1.4.1. </span>Example<a class="headerlink" href="#id30" title="Permalink to this headline">&#61633;</a></h3>
+<p>Proofs by calculation are also well-suited to proving inequalities: that is, facts featuring an
+<span class="math notranslate nohighlight">\(&lt;\)</span>, <span class="math notranslate nohighlight">\(\le\)</span>, <span class="math notranslate nohighlight">\(&gt;\)</span> or <span class="math notranslate nohighlight">\(\ge\)</span>.  Consider the following worked example:</p>
 <div class="admonition-problem admonition">
 <p class="admonition-title">Problem</p>
 <p>Let <span class="math notranslate nohighlight">\(x\)</span> and <span class="math notranslate nohighlight">\(y\)</span> be integers, and suppose that
@@ -854,22 +855,75 @@ suppose that <span class="math notranslate nohighlight">\(p + q + r = 0\)</span>
 &amp;\geq 3 - 2x\\
 &amp;=9 - 2(x+3)\\
 &amp;\geq 9 - 2 \cdot 2\\
-&amp;= 4\\
 &amp;&gt; 3.\end{split}\]</div>
 </div>
+<p>The goal was to show that <span class="math notranslate nohighlight">\(y&gt;3\)</span>,
+and we established this by writing down a chain of inequalities,
+which starts with the expression <span class="math notranslate nohighlight">\(y\)</span> (top left) and ends with
+<span class="math notranslate nohighlight">\(3\)</span> (bottom right).  The proof, implicitly, has five steps:</p>
+<p>1.
+<span class="math notranslate nohighlight">\(\underline{\text{Proof that }y=(y+2x)-2x}\)</span>: algebraic rearrangement.</p>
+<p>2.
+<span class="math notranslate nohighlight">\(\underline{\text{Proof that }(y+2x)-2x\geq 3-2x}\)</span>: this uses the given fact that
+<span class="math notranslate nohighlight">\(y + 2x\geq 3\)</span> together the general rule that an inequality is preserved under subtraction
+(<span class="math notranslate nohighlight">\(A\geq B\)</span> implies <span class="math notranslate nohighlight">\(A-C\geq B-C\)</span>).</p>
+<p>3.
+<span class="math notranslate nohighlight">\(\underline{\text{Proof that }3-2x=9-2(x+3)}\)</span>: algebraic rearrangement</p>
+<p>4.
+<span class="math notranslate nohighlight">\(\underline{\text{Proof that }9-2(x+3)\geq 9-2\cdot 2}\)</span>: this uses the given fact that
+<span class="math notranslate nohighlight">\(x + 3 \le 2\)</span> together with the general rules that an inequality is preserved under
+multiplication by a positive number (if <span class="math notranslate nohighlight">\(C\geq 0\)</span> then <span class="math notranslate nohighlight">\(A\geq B\)</span> implies
+<span class="math notranslate nohighlight">\(CA\geq CB\)</span>) and that an inequality is reversed when it is subtracted (<span class="math notranslate nohighlight">\(A\geq B\)</span> implies
+<span class="math notranslate nohighlight">\(C-B\geq C-A\)</span>).</p>
+<p>5.
+<span class="math notranslate nohighlight">\(\underline{\text{Proof that }9-2\cdot 2&gt;3}\)</span>: this is a numeric fact which can be proved by
+direct calculation and comparison.</p>
+<p>Think carefully about steps 2 and 4.  They look very similar to the steps which, in
+proofs-by-calculation of equalities, we have called &#8220;substitution steps&#8221; (in Lean, <code class="docutils literal notranslate"><span class="pre">rw</span></code>).  For
+example,</p>
+<ul class="simple">
+<li><p>step 2 looks like we are &#8220;substituting&#8221; the inequality <span class="math notranslate nohighlight">\(y + 2x\geq 3\)</span> into the expression
+<span class="math notranslate nohighlight">\((y+2x)-2x\)</span> to get <span class="math notranslate nohighlight">\((y+2x)-2x\geq 3-2x\)</span>;</p></li>
+<li><p>step 4 looks like we are &#8220;substituting&#8221; the inequality <span class="math notranslate nohighlight">\(x + 3 \le 2\)</span> into the expression
+<span class="math notranslate nohighlight">\(9-2(x+3)\)</span> to get <span class="math notranslate nohighlight">\(9-2(x+3)\geq 9-2\cdot 2\)</span>.</p></li>
+</ul>
+<p>But they are not just straight substitutions; instead they are
+using all the rules mentioned about  the preservation or reversal of inequalities under
+subtraction, multiplication, etc.  There will be some situations when there is no relevant rule.
+For example, from <span class="math notranslate nohighlight">\(x \le y\)</span> you can in general conclude neither that
+<span class="math notranslate nohighlight">\(\sin x \le \sin y\)</span> nor that <span class="math notranslate nohighlight">\(\sin x \ge \sin y\)</span>.</p>
+<p>Also look closely at the <em>relation</em> indicated in each step. The first step features an <span class="math notranslate nohighlight">\(=\)</span>,
+the second a <span class="math notranslate nohighlight">\(\geq\)</span>, the third a <span class="math notranslate nohighlight">\(=\)</span>, the fourth a <span class="math notranslate nohighlight">\(\geq\)</span>, and the last a
+<span class="math notranslate nohighlight">\(&gt;\)</span>.  In each case this reflects the particular reasoning used to establish that step.  The
+final result is a <span class="math notranslate nohighlight">\(&gt;\)</span>, since <span class="math notranslate nohighlight">\(&gt;\)</span> takes precedence, so to speak, over <span class="math notranslate nohighlight">\(\geq\)</span> and
+<span class="math notranslate nohighlight">\(=\)</span> (and furthermore <span class="math notranslate nohighlight">\(\geq\)</span> takes precedence over <span class="math notranslate nohighlight">\(=\)</span>).  That is, if you know
+that <span class="math notranslate nohighlight">\(A\geq B\)</span> and <span class="math notranslate nohighlight">\(B&gt;C\)</span>, then they combine transitively to a <span class="math notranslate nohighlight">\(&gt;\)</span> relation:
+<span class="math notranslate nohighlight">\(A&gt;C\)</span>.</p>
+<p>Let&#8217;s now solve the same problem in Lean.</p>
+<ul class="simple">
+<li><p>Algebraic rearrangement steps are justified with <code class="docutils literal notranslate"><span class="pre">ring</span></code>, as before.</p></li>
+<li><p>&#8220;Substitution&#8221;-like steps are justified with a tactic <code class="docutils literal notranslate"><span class="pre">ineq_tac</span></code> indicating the
+inequality being &#8220;substituted&#8221; &#8211; but note that if you try to use this in a situation when there
+is no rule about preservation/reversal of inequalities under the relevant operations,
+then it will fail.</p></li>
+<li><p>&#8220;Numeric facts&#8221; are justified with the tactic <code class="docutils literal notranslate"><span class="pre">norm_num</span></code>.  (This tactic can also justify
+&#8220;numeric facts&#8221; about equalities, like <span class="math notranslate nohighlight">\(4^2+4\cdot 1=20\)</span>, for which we have previously
+used the <code class="docutils literal notranslate"><span class="pre">ring</span></code> tactic.)</p></li>
+</ul>
 <div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">{</span><span class="n">x</span> <span class="n">y</span> <span class="o">:</span> <span class="n">&#8484;</span><span class="o">}</span> <span class="o">(</span><span class="n">hx</span> <span class="o">:</span> <span class="n">x</span> <span class="bp">+</span> <span class="mi">3</span> <span class="bp">&#8804;</span> <span class="mi">2</span><span class="o">)</span> <span class="o">(</span><span class="n">hy</span> <span class="o">:</span> <span class="n">y</span> <span class="bp">+</span> <span class="mi">2</span> <span class="bp">*</span> <span class="n">x</span> <span class="bp">&#8805;</span> <span class="mi">3</span><span class="o">)</span> <span class="o">:</span>
-  <span class="n">y</span> <span class="bp">&#8805;</span> <span class="mi">4</span> <span class="o">:=</span>
+  <span class="n">y</span> <span class="bp">&gt;</span> <span class="mi">3</span> <span class="o">:=</span>
 <span class="k">calc</span> <span class="n">y</span> <span class="bp">=</span> <span class="o">(</span><span class="n">y</span> <span class="bp">+</span> <span class="mi">2</span> <span class="bp">*</span> <span class="n">x</span><span class="o">)</span> <span class="bp">-</span> <span class="mi">2</span> <span class="bp">*</span> <span class="n">x</span> <span class="o">:</span> <span class="kd">by</span> <span class="n">ring</span>
 <span class="bp">...</span> <span class="bp">&#8805;</span> <span class="mi">3</span> <span class="bp">-</span> <span class="mi">2</span> <span class="bp">*</span> <span class="n">x</span> <span class="o">:</span> <span class="kd">by</span> <span class="n">ineq_tac</span> <span class="o">[</span><span class="n">hy</span><span class="o">]</span>
 <span class="bp">...</span> <span class="bp">=</span> <span class="mi">9</span> <span class="bp">-</span> <span class="mi">2</span> <span class="bp">*</span> <span class="o">(</span><span class="n">x</span> <span class="bp">+</span> <span class="mi">3</span><span class="o">)</span> <span class="o">:</span> <span class="kd">by</span> <span class="n">ring</span>
 <span class="bp">...</span> <span class="bp">&#8805;</span> <span class="mi">9</span> <span class="bp">-</span> <span class="mi">2</span> <span class="bp">*</span> <span class="mi">2</span> <span class="o">:</span> <span class="kd">by</span> <span class="n">ineq_tac</span> <span class="o">[</span><span class="n">hx</span><span class="o">]</span>
-<span class="bp">...</span> <span class="bp">&#8805;</span> <span class="mi">4</span> <span class="o">:</span> <span class="kd">by</span> <span class="n">norm_num</span>
+<span class="bp">...</span> <span class="bp">&gt;</span> <span class="mi">3</span> <span class="o">:</span> <span class="kd">by</span> <span class="n">norm_num</span>
 </pre></div>
 </div>
 </section>
 <section id="id31">
 <h3><span class="section-number">1.4.2. </span>Example<a class="headerlink" href="#id31" title="Permalink to this headline">&#61633;</a></h3>
-<div class="admonition-problem admonition" id="id32">
+<p id="id32">Here&#8217;s another worked example of a proof by calculation of an inequality.</p>
+<div class="admonition-problem admonition">
 <p class="admonition-title">Problem</p>
 <p>Let <span class="math notranslate nohighlight">\(r\)</span> and <span class="math notranslate nohighlight">\(s\)</span> be rational numbers, and suppose that
 <span class="math notranslate nohighlight">\(s+3\geq r\)</span> and <span class="math notranslate nohighlight">\(s+r \leq 3\)</span>.  Show that <span class="math notranslate nohighlight">\(r\leq 3\)</span>.</p>
@@ -879,8 +933,20 @@ suppose that <span class="math notranslate nohighlight">\(p + q + r = 0\)</span>
 <div class="math notranslate nohighlight">
 \[\begin{split}r&amp;=\frac{(s+r)+r-s}{2}\\
 &amp;\leq \frac{3+(s+3)-s}{2}\\
-&amp;=3\end{split}\]</div>
+&amp;=3.\end{split}\]</div>
 </div>
+<p>The goal was to show that <span class="math notranslate nohighlight">\(r\leq 3\)</span>, and the proof, implicitly, has three steps:</p>
+<p>1.
+<span class="math notranslate nohighlight">\(\underline{\text{Proof that }r=\frac{(s+r)+r-s}{2}}\)</span>: algebraic rearrangement.</p>
+<p>2.
+<span class="math notranslate nohighlight">\(\underline{\text{Proof that }\frac{(s+r)+r-s}{2}\leq \frac{3+(s+3)-s}{2}}\)</span>: we are
+&#8220;substituting&#8221; the given facts <span class="math notranslate nohighlight">\(s+3\geq r\)</span> and <span class="math notranslate nohighlight">\(s+r \leq 3\)</span>, using rules about the
+preservation of inequalities under addition, and under division by positive numbers (and also,
+implicitly, the fact that 2 is positive).</p>
+<p>3.
+<span class="math notranslate nohighlight">\(\underline{\text{Proof that }\frac{3+(s+3)-s}{2}=3}\)</span>: algebraic rearrangement.</p>
+<p>This time the first step features the relation <span class="math notranslate nohighlight">\(=\)</span>, the second a <span class="math notranslate nohighlight">\(\geq\)</span>, and the third
+a <span class="math notranslate nohighlight">\(=\)</span>, and the &#8220;net result&#8221; is the relation <span class="math notranslate nohighlight">\(\geq\)</span>.</p>
 <p>Exercise: Fill in the sorries in the following Lean solution to this problem.</p>
 <div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">{</span><span class="n">r</span> <span class="n">s</span> <span class="o">:</span> <span class="n">&#8474;</span><span class="o">}</span> <span class="o">(</span><span class="n">h1</span> <span class="o">:</span> <span class="n">s</span> <span class="bp">+</span> <span class="mi">3</span> <span class="bp">&#8805;</span> <span class="n">r</span><span class="o">)</span> <span class="o">(</span><span class="n">h2</span> <span class="o">:</span> <span class="n">s</span> <span class="bp">+</span> <span class="n">r</span> <span class="bp">&#8804;</span> <span class="mi">3</span><span class="o">)</span> <span class="o">:</span>
   <span class="n">r</span> <span class="bp">&#8804;</span> <span class="mi">3</span> <span class="o">:=</span>
@@ -892,7 +958,8 @@ suppose that <span class="math notranslate nohighlight">\(p + q + r = 0\)</span>
 </section>
 <section id="id33">
 <h3><span class="section-number">1.4.3. </span>Example<a class="headerlink" href="#id33" title="Permalink to this headline">&#61633;</a></h3>
-<div class="admonition-problem admonition" id="id34">
+<p id="id34">One more similar problem:</p>
+<div class="admonition-problem admonition">
 <p class="admonition-title">Problem</p>
 <p>Let <span class="math notranslate nohighlight">\(x\)</span> and <span class="math notranslate nohighlight">\(y\)</span> be real numbers and suppose that
 <span class="math notranslate nohighlight">\(y\leq x+5\)</span> and <span class="math notranslate nohighlight">\(x\leq -2\)</span>. Show that <span class="math notranslate nohighlight">\(x+y\leq 1\)</span>.</p>
@@ -914,7 +981,198 @@ suppose that <span class="math notranslate nohighlight">\(p + q + r = 0\)</span>
 </section>
 <section id="id35">
 <h3><span class="section-number">1.4.4. </span>Example<a class="headerlink" href="#id35" title="Permalink to this headline">&#61633;</a></h3>
+<p>In the following problem, note the use of shorthands such as <span class="math notranslate nohighlight">\(0&lt;A\leq 1\)</span>
+and <span class="math notranslate nohighlight">\(x,y\leq B\)</span> to express several related inequalities concisely.
+You can look at the Lean statement which follows to see what these shorthands
+mean more explicitly.</p>
 <div class="admonition-problem admonition" id="id36">
+<p class="admonition-title">Problem</p>
+<p>Let <span class="math notranslate nohighlight">\(u, v, x, y, A\)</span> and <span class="math notranslate nohighlight">\(B\)</span> be real numbers.
+Suppose we know that <span class="math notranslate nohighlight">\(0&lt;A\leq 1, B\geq 1, x,y\leq B, 0\leq u&lt;A\)</span>
+and <span class="math notranslate nohighlight">\(0\leq v&lt;A\)</span>. Show that <span class="math notranslate nohighlight">\(uy+vx+uv&lt;3AB\)</span>.</p>
+</div>
+<div class="admonition-solution admonition">
+<p class="admonition-title">Solution</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}uy+vx+uv&amp;\leq uB+vB+uv\\
+&amp;\leq AB+AB+Av\\
+&amp;\leq AB+AB+1\cdot v\\
+&amp;\leq AB+AB+Bv\\
+&amp;&lt;AB+AB+BA \vphantom{&gt;}\\
+&amp;=3AB.\end{split}\]</div>
+</div>
+<p>In this calculation, the rules for preservation of inequalities under multiplication are used
+repeatedly. For example, in the first step, <span class="math notranslate nohighlight">\(uy+vx+uv\leq uB+vB+uv\)</span>, the given facts that
+<span class="math notranslate nohighlight">\(x\leq B\)</span> and <span class="math notranslate nohighlight">\(y\leq B\)</span> are used, together with the rule that inequalities <span class="math notranslate nohighlight">\(&#8804;\)</span>
+are preserved under multiplication with a nonnegative constant (here that constant is <span class="math notranslate nohighlight">\(u\)</span>).
+In the second step, <span class="math notranslate nohighlight">\(uB+vB+uv\leq AB+AB+Av\)</span>, the given facts
+<span class="math notranslate nohighlight">\(u&lt; A\)</span> and <span class="math notranslate nohighlight">\(v&lt; A\)</span> are multiplied by nonnegative constants <span class="math notranslate nohighlight">\(B\)</span> and <span class="math notranslate nohighlight">\(v\)</span>.</p>
+<p>Importantly, it is generally acceptable to omit a formal proof of the nonnegativity of the
+constants which you are multiplying by, if that proof is &#8220;obvious&#8221;.  For example, in this case the
+nonnegativity of <span class="math notranslate nohighlight">\(B\)</span> comes from the given hypothesis that <span class="math notranslate nohighlight">\(B\geq 1\)</span>.  The Lean tactic
+<code class="docutils literal notranslate"><span class="pre">ineq_tac</span></code> is also set up to infer these &#8220;obvious&#8221; proofs of positivity and nonnegativity.</p>
+<p>Exercise: Fill in the sorries in the following Lean solution to this problem.  You will need to
+determine which of the nine hypotheses is being used at each step.</p>
+<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">{</span><span class="n">u</span> <span class="n">v</span> <span class="n">x</span> <span class="n">y</span> <span class="n">A</span> <span class="n">B</span> <span class="o">:</span> <span class="n">&#8477;</span><span class="o">}</span> <span class="o">(</span><span class="n">h1</span> <span class="o">:</span> <span class="mi">0</span> <span class="bp">&lt;</span> <span class="n">A</span><span class="o">)</span> <span class="o">(</span><span class="n">h2</span> <span class="o">:</span> <span class="n">A</span> <span class="bp">&#8804;</span> <span class="mi">1</span><span class="o">)</span> <span class="o">(</span><span class="n">h3</span> <span class="o">:</span> <span class="mi">1</span> <span class="bp">&#8804;</span> <span class="n">B</span><span class="o">)</span> <span class="o">(</span><span class="n">h4</span> <span class="o">:</span> <span class="n">x</span> <span class="bp">&#8804;</span> <span class="n">B</span><span class="o">)</span> <span class="o">(</span><span class="n">h5</span> <span class="o">:</span> <span class="n">y</span> <span class="bp">&#8804;</span> <span class="n">B</span><span class="o">)</span>
+  <span class="o">(</span><span class="n">h6</span> <span class="o">:</span> <span class="mi">0</span> <span class="bp">&#8804;</span> <span class="n">u</span><span class="o">)</span> <span class="o">(</span><span class="n">h7</span> <span class="o">:</span> <span class="mi">0</span> <span class="bp">&#8804;</span> <span class="n">v</span><span class="o">)</span> <span class="o">(</span><span class="n">h8</span> <span class="o">:</span> <span class="n">u</span> <span class="bp">&lt;</span> <span class="n">A</span><span class="o">)</span> <span class="o">(</span><span class="n">h9</span> <span class="o">:</span> <span class="n">v</span> <span class="bp">&lt;</span> <span class="n">A</span><span class="o">)</span> <span class="o">:</span>
+  <span class="n">u</span> <span class="bp">*</span> <span class="n">y</span> <span class="bp">+</span> <span class="n">v</span> <span class="bp">*</span> <span class="n">x</span> <span class="bp">+</span> <span class="n">u</span> <span class="bp">*</span> <span class="n">v</span> <span class="bp">&lt;</span> <span class="mi">3</span> <span class="bp">*</span> <span class="n">A</span> <span class="bp">*</span> <span class="n">B</span> <span class="o">:=</span>
+<span class="k">calc</span> <span class="n">u</span> <span class="bp">*</span> <span class="n">y</span> <span class="bp">+</span> <span class="n">v</span> <span class="bp">*</span> <span class="n">x</span> <span class="bp">+</span> <span class="n">u</span> <span class="bp">*</span> <span class="n">v</span>
+    <span class="bp">&#8804;</span> <span class="n">u</span> <span class="bp">*</span> <span class="n">B</span> <span class="bp">+</span> <span class="n">v</span> <span class="bp">*</span> <span class="n">B</span> <span class="bp">+</span> <span class="n">u</span> <span class="bp">*</span> <span class="n">v</span> <span class="o">:</span> <span class="kd">by</span> <span class="gr">sorry</span>
+<span class="bp">...</span> <span class="bp">&#8804;</span> <span class="n">A</span> <span class="bp">*</span> <span class="n">B</span> <span class="bp">+</span> <span class="n">A</span> <span class="bp">*</span> <span class="n">B</span> <span class="bp">+</span> <span class="n">A</span> <span class="bp">*</span> <span class="n">v</span> <span class="o">:</span> <span class="kd">by</span> <span class="gr">sorry</span>
+<span class="bp">...</span> <span class="bp">&#8804;</span> <span class="n">A</span> <span class="bp">*</span> <span class="n">B</span> <span class="bp">+</span> <span class="n">A</span> <span class="bp">*</span> <span class="n">B</span> <span class="bp">+</span> <span class="mi">1</span> <span class="bp">*</span> <span class="n">v</span> <span class="o">:</span> <span class="kd">by</span> <span class="gr">sorry</span>
+<span class="bp">...</span> <span class="bp">&#8804;</span> <span class="n">A</span> <span class="bp">*</span> <span class="n">B</span> <span class="bp">+</span> <span class="n">A</span> <span class="bp">*</span> <span class="n">B</span> <span class="bp">+</span> <span class="n">B</span> <span class="bp">*</span> <span class="n">v</span> <span class="o">:</span> <span class="kd">by</span> <span class="gr">sorry</span>
+<span class="bp">...</span> <span class="bp">&lt;</span> <span class="n">A</span> <span class="bp">*</span> <span class="n">B</span> <span class="bp">+</span> <span class="n">A</span> <span class="bp">*</span> <span class="n">B</span> <span class="bp">+</span> <span class="n">B</span> <span class="bp">*</span> <span class="n">A</span> <span class="o">:</span> <span class="kd">by</span> <span class="gr">sorry</span>
+<span class="bp">...</span> <span class="bp">=</span> <span class="mi">3</span> <span class="bp">*</span> <span class="n">A</span> <span class="bp">*</span> <span class="n">B</span> <span class="o">:</span> <span class="kd">by</span> <span class="gr">sorry</span>
+</pre></div>
+</div>
+</section>
+<section id="id37">
+<h3><span class="section-number">1.4.5. </span>Example<a class="headerlink" href="#id37" title="Permalink to this headline">&#61633;</a></h3>
+<p>Here is an example with a small subtlety.</p>
+<div class="admonition-problem admonition">
+<p class="admonition-title">Problem</p>
+<p>Show that if <span class="math notranslate nohighlight">\(t\)</span> is a real number and <span class="math notranslate nohighlight">\(t\geq 10\)</span> then
+<span class="math notranslate nohighlight">\(t^2-3t+17\geq 5\)</span>.</p>
+</div>
+<p>On seeing the hypothesis <span class="math notranslate nohighlight">\(t\geq 10\)</span>, you might be tempted to &#8220;substitute&#8221; it directly into
+the expression <span class="math notranslate nohighlight">\(t^2-3t+17\)</span>.</p>
+<a class="reference internal image-reference" href="_images/cross_1.4.png"><img alt="_images/cross_1.4.png" class="align-center" src="_images/cross_1.4.png" style="width: 240px;" /></a>
+<p>This isn&#8217;t a valid solution!  From <span class="math notranslate nohighlight">\(t\geq 10\)</span> we can deduce <span class="math notranslate nohighlight">\(t^2\geq 10^2\)</span> (there is a
+general rule that squaring preserves an inequality of nonnegative numbers), and that
+<span class="math notranslate nohighlight">\(3t\geq 3\cdot 10\)</span> (by multipying the inequality by a nonnegative constant).  But the second
+inequality would be reversed under negation, <span class="math notranslate nohighlight">\(-3t\leq -3\cdot 10\)</span>, so we are not able to make
+a determination about the relative sizes of <span class="math notranslate nohighlight">\(t^2-3t+17\)</span> and <span class="math notranslate nohighlight">\(10^2-3\cdot 10+17\)</span>.</p>
+<p>Here is a valid solution to this problem.  Instead of dropping down immediately from <span class="math notranslate nohighlight">\(t^2\)</span> to
+<span class="math notranslate nohighlight">\(10^2\)</span>, we go down &#8220;halfway&#8221;, to <span class="math notranslate nohighlight">\(10t\)</span>. This can then counteract the <span class="math notranslate nohighlight">\(-3t\)</span> term,
+combining with it to give <span class="math notranslate nohighlight">\(7t\)</span>, which has a positive rather than negative coefficient,
+allowing for a valid further substitution of the given fact <span class="math notranslate nohighlight">\(t\geq 10\)</span>.</p>
+<div class="admonition-solution admonition">
+<p class="admonition-title">Solution</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}t^2-3t+17&amp;=t\cdot t-3t+17\\
+&amp;\geq 10t-3t+17\\
+&amp;=7t+17\\
+&amp;\geq 7\cdot 10+17\\
+&amp;\geq 5.\end{split}\]</div>
+</div>
+<p>Exercise: Fill in the sorries in the following Lean solution to this problem.  Also try writing out
+the incorrect solution in Lean, and check that Lean complains.</p>
+<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">{</span><span class="n">t</span> <span class="o">:</span> <span class="n">&#8474;</span><span class="o">}</span> <span class="o">(</span><span class="n">ht</span> <span class="o">:</span> <span class="n">t</span> <span class="bp">&#8805;</span> <span class="mi">10</span><span class="o">)</span> <span class="o">:</span>
+  <span class="n">t</span> <span class="bp">^</span> <span class="mi">2</span> <span class="bp">-</span> <span class="mi">3</span> <span class="bp">*</span> <span class="n">t</span> <span class="bp">-</span> <span class="mi">17</span> <span class="bp">&#8805;</span> <span class="mi">5</span> <span class="o">:=</span>
+<span class="k">calc</span> <span class="n">t</span> <span class="bp">^</span> <span class="mi">2</span> <span class="bp">-</span> <span class="mi">3</span> <span class="bp">*</span> <span class="n">t</span> <span class="bp">-</span> <span class="mi">17</span>
+  <span class="bp">=</span> <span class="n">t</span> <span class="bp">*</span> <span class="n">t</span> <span class="bp">-</span> <span class="mi">3</span> <span class="bp">*</span> <span class="n">t</span> <span class="bp">-</span> <span class="mi">17</span> <span class="o">:</span> <span class="kd">by</span> <span class="gr">sorry</span>
+<span class="bp">...</span> <span class="bp">&#8805;</span> <span class="mi">10</span> <span class="bp">*</span> <span class="n">t</span> <span class="bp">-</span> <span class="mi">3</span> <span class="bp">*</span> <span class="n">t</span> <span class="bp">-</span> <span class="mi">17</span> <span class="o">:</span> <span class="kd">by</span> <span class="gr">sorry</span>
+<span class="bp">...</span> <span class="bp">=</span> <span class="mi">7</span> <span class="bp">*</span> <span class="n">t</span> <span class="bp">-</span> <span class="mi">17</span> <span class="o">:</span> <span class="kd">by</span> <span class="gr">sorry</span>
+<span class="bp">...</span> <span class="bp">&#8805;</span> <span class="mi">7</span> <span class="bp">*</span> <span class="mi">10</span> <span class="bp">-</span> <span class="mi">17</span> <span class="o">:</span> <span class="kd">by</span> <span class="gr">sorry</span>
+<span class="bp">...</span> <span class="bp">&#8805;</span> <span class="mi">5</span> <span class="o">:</span> <span class="kd">by</span> <span class="gr">sorry</span>
+</pre></div>
+</div>
+</section>
+<section id="id38">
+<h3><span class="section-number">1.4.6. </span>Example<a class="headerlink" href="#id38" title="Permalink to this headline">&#61633;</a></h3>
+<p>Here&#8217;s another problem where it would be easy to go wrong.</p>
+<div class="admonition-problem admonition">
+<p class="admonition-title">Problem</p>
+<p>Let <span class="math notranslate nohighlight">\(n\geq 5\)</span> be an integer.  Show that <span class="math notranslate nohighlight">\(n ^ 2 &gt; 2n + 11\)</span>.</p>
+</div>
+<p>Note that &#8220;let <span class="math notranslate nohighlight">\(n\geq 5\)</span> be an integer&#8221; (as used in the problem above)
+is a common shorthand for &#8220;let <span class="math notranslate nohighlight">\(n\)</span> be an integer and suppose <span class="math notranslate nohighlight">\(n\geq 5\)</span>.&#8221;</p>
+<p>Here&#8217;s an incorrect &#8220;solution&#8221; to this problem by &#8220;substitution&#8221;:</p>
+<blockquote>
+<div><div class="math notranslate nohighlight">
+\[\begin{split}n^2&amp;\geq 5^2\\
+&amp;&gt; 2 \cdot 5+11\\
+&amp;\leq 2n+11.\end{split}\]</div>
+</div></blockquote>
+<p>What&#8217;s wrong?  Each individual deduction is valid:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(n^2\geq 5^2\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(5^2&gt; 2 \cdot 5+11\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(2 \cdot 5+11\leq 2n+11\)</span></p></li>
+</ul>
+<p>but the sequence of signs <span class="math notranslate nohighlight">\(\geq\)</span>, <span class="math notranslate nohighlight">\(&gt;\)</span>, <span class="math notranslate nohighlight">\(\leq\)</span> cannot be combined transitively.
+(If <span class="math notranslate nohighlight">\(A&gt;B\)</span> and <span class="math notranslate nohighlight">\(B\leq C\)</span>, we can draw no conclusion about the relative sizes of
+<span class="math notranslate nohighlight">\(A\)</span> and <span class="math notranslate nohighlight">\(C\)</span>.)</p>
+<p>Here is a correct solution to the problem.  Again the trick is to be more delicate at the first
+step, dropping down initially from <span class="math notranslate nohighlight">\(n^2\)</span> only to <span class="math notranslate nohighlight">\(5n\)</span>, rather than to <span class="math notranslate nohighlight">\(5^2\)</span>.</p>
+<div class="admonition-solution admonition">
+<p class="admonition-title">Solution</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}n^2&amp;=n\cdot n\\
+&amp;\geq 5n\\
+&amp;=2n+3n\\
+&amp;\geq 2n + 3 \cdot 5\\
+&amp;= 2n + 11 + 4\\
+&amp;&gt;2n+11.\end{split}\]</div>
+</div>
+<p>Exercise: Express the solution to this problem in Lean.  Also try writing out
+the incorrect solution in Lean, and check that Lean complains.</p>
+<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">{</span><span class="n">n</span> <span class="o">:</span> <span class="n">&#8484;</span><span class="o">}</span> <span class="o">(</span><span class="n">hn</span> <span class="o">:</span> <span class="n">n</span> <span class="bp">&#8805;</span> <span class="mi">5</span><span class="o">)</span> <span class="o">:</span>
+  <span class="n">n</span> <span class="bp">^</span> <span class="mi">2</span> <span class="bp">&gt;</span> <span class="mi">2</span> <span class="bp">*</span> <span class="n">n</span> <span class="bp">+</span> <span class="mi">11</span> <span class="o">:=</span>
+<span class="gr">sorry</span>
+</pre></div>
+</div>
+</section>
+<section id="sq-nonneg">
+<span id="id39"></span><h3><span class="section-number">1.4.7. </span>Example<a class="headerlink" href="#sq-nonneg" title="Permalink to this headline">&#61633;</a></h3>
+<p>The next example features a new trick.</p>
+<div class="admonition-problem admonition">
+<p class="admonition-title">Problem</p>
+<p>Let <span class="math notranslate nohighlight">\(m\)</span> and <span class="math notranslate nohighlight">\(n\)</span> be integers, and suppose that <span class="math notranslate nohighlight">\(m ^ 2 + n \le 2\)</span>.
+Show that <span class="math notranslate nohighlight">\(n \le 2\)</span>.</p>
+</div>
+<p>We solve this problem by seeing that squares are positive, so <span class="math notranslate nohighlight">\(n\)</span> must be smaller than <span class="math notranslate nohighlight">\(m ^ 2 + n\)</span>.
+(Pedantically, &#8220;smaller than or equal to&#8221;.)   So since we have an upper bound, 2, for <span class="math notranslate nohighlight">\(m ^ 2 + n\)</span>, this
+upper bound must also apply to the smaller number, <span class="math notranslate nohighlight">\(n\)</span>.</p>
+<p>Written formally, the proof looks as follows.  We use the fact that squares are positive at the second step of
+the deduction, to show that going from <span class="math notranslate nohighlight">\(0 + n\)</span> to <span class="math notranslate nohighlight">\(m ^ 2 + n\)</span> must be an increase.</p>
+<div class="admonition-solution admonition">
+<p class="admonition-title">Solution</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}n&amp;= 0 + n\\
+&amp;\le m ^ 2 + n\\
+&amp;\le 2.\end{split}\]</div>
+</div>
+<p>Lean knows that squares are positive and can deal with this kind of argument silently.</p>
+<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">{</span><span class="n">m</span> <span class="n">n</span> <span class="o">:</span> <span class="n">&#8484;</span><span class="o">}</span> <span class="o">(</span><span class="n">h</span> <span class="o">:</span> <span class="n">m</span> <span class="bp">^</span> <span class="mi">2</span> <span class="bp">+</span> <span class="n">n</span> <span class="bp">&#8804;</span> <span class="mi">2</span><span class="o">)</span> <span class="o">:</span> <span class="n">n</span> <span class="bp">&#8804;</span> <span class="mi">2</span> <span class="o">:=</span>
+<span class="k">calc</span> <span class="n">n</span> <span class="bp">=</span> <span class="mi">0</span> <span class="bp">+</span> <span class="n">n</span> <span class="o">:</span> <span class="kd">by</span> <span class="n">ring</span>
+<span class="bp">...</span> <span class="bp">&#8804;</span> <span class="n">m</span> <span class="bp">^</span> <span class="mi">2</span> <span class="bp">+</span> <span class="n">n</span> <span class="o">:</span> <span class="kd">by</span> <span class="n">ineq_tac</span> <span class="o">[]</span>
+<span class="bp">...</span> <span class="bp">&#8804;</span> <span class="mi">2</span> <span class="o">:</span> <span class="kd">by</span> <span class="n">ineq_tac</span> <span class="o">[</span><span class="n">h</span><span class="o">]</span>
+</pre></div>
+</div>
+</section>
+<section id="id40">
+<h3><span class="section-number">1.4.8. </span>Example<a class="headerlink" href="#id40" title="Permalink to this headline">&#61633;</a></h3>
+<p>Exploiting that squares are nonnegative is a very common method for proving inequalities.  Here&#8217;s another
+example, where it requires some cleverness to come up with just the right square to add: <span class="math notranslate nohighlight">\((x-y)^2\)</span>.</p>
+<div class="admonition-problem admonition" id="id41">
+<p class="admonition-title">Problem</p>
+<p>Let <span class="math notranslate nohighlight">\(x\)</span> and <span class="math notranslate nohighlight">\(y\)</span> be real numbers, and suppose that <span class="math notranslate nohighlight">\(x ^ 2 + y ^ 2 \le 1\)</span>.
+Show that <span class="math notranslate nohighlight">\((x + y) ^ 2 &lt; 3\)</span>.</p>
+</div>
+<div class="admonition-solution admonition">
+<p class="admonition-title">Solution</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}(x + y) ^ 2 &amp;= (x + y) ^ 2 + 0\\
+&amp;\le (x + y) ^ 2 + (x - y) ^ 2\\
+&amp;= 2 (x ^ 2 + y ^ 2)\\
+&amp;\le 2 \cdot 1\\
+&amp;&lt; 3.\end{split}\]</div>
+</div>
+<p>Exercise: Fill in the sorries in the following Lean solution to this problem.</p>
+<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">{</span><span class="n">x</span> <span class="n">y</span> <span class="o">:</span> <span class="n">&#8477;</span><span class="o">}</span> <span class="o">(</span><span class="n">h</span> <span class="o">:</span> <span class="n">x</span> <span class="bp">^</span> <span class="mi">2</span> <span class="bp">+</span> <span class="n">y</span> <span class="bp">^</span> <span class="mi">2</span> <span class="bp">&#8804;</span> <span class="mi">1</span><span class="o">)</span> <span class="o">:</span> <span class="o">(</span><span class="n">x</span> <span class="bp">+</span> <span class="n">y</span><span class="o">)</span> <span class="bp">^</span> <span class="mi">2</span> <span class="bp">&lt;</span> <span class="mi">3</span> <span class="o">:=</span>
+<span class="k">calc</span> <span class="o">(</span><span class="n">x</span> <span class="bp">+</span> <span class="n">y</span><span class="o">)</span> <span class="bp">^</span> <span class="mi">2</span> <span class="bp">=</span> <span class="o">(</span><span class="n">x</span> <span class="bp">+</span> <span class="n">y</span><span class="o">)</span> <span class="bp">^</span> <span class="mi">2</span> <span class="bp">+</span> <span class="mi">0</span> <span class="o">:</span> <span class="kd">by</span> <span class="gr">sorry</span>
+<span class="bp">...</span> <span class="bp">&#8804;</span> <span class="o">(</span><span class="n">x</span> <span class="bp">+</span> <span class="n">y</span><span class="o">)</span> <span class="bp">^</span> <span class="mi">2</span> <span class="bp">+</span> <span class="o">(</span><span class="n">x</span> <span class="bp">-</span> <span class="n">y</span><span class="o">)</span> <span class="bp">^</span> <span class="mi">2</span> <span class="o">:</span> <span class="kd">by</span> <span class="gr">sorry</span>
+<span class="bp">...</span> <span class="bp">=</span> <span class="mi">2</span> <span class="bp">*</span> <span class="o">(</span><span class="n">x</span> <span class="bp">^</span> <span class="mi">2</span> <span class="bp">+</span> <span class="n">y</span> <span class="bp">^</span> <span class="mi">2</span><span class="o">)</span> <span class="o">:</span> <span class="kd">by</span> <span class="gr">sorry</span>
+<span class="bp">...</span> <span class="bp">&#8804;</span> <span class="mi">2</span> <span class="bp">*</span> <span class="mi">1</span> <span class="o">:</span> <span class="kd">by</span> <span class="gr">sorry</span>
+<span class="bp">...</span> <span class="bp">&lt;</span> <span class="mi">3</span> <span class="o">:</span> <span class="kd">by</span> <span class="gr">sorry</span>
+</pre></div>
+</div>
+</section>
+<section id="id42">
+<h3><span class="section-number">1.4.9. </span>Example<a class="headerlink" href="#id42" title="Permalink to this headline">&#61633;</a></h3>
+<p>And the same trick again &#8230;.</p>
+<div class="admonition-problem admonition" id="id43">
 <p class="admonition-title">Problem</p>
 <p>Let <span class="math notranslate nohighlight">\(a\)</span> and <span class="math notranslate nohighlight">\(b\)</span> be nonnegative rational numbers, and suppose that
 <span class="math notranslate nohighlight">\(a+b\leq 8\)</span>.  Show that <span class="math notranslate nohighlight">\(3ab+a \leq 7b+72\)</span>.</p>
@@ -944,165 +1202,9 @@ suppose that <span class="math notranslate nohighlight">\(p + q + r = 0\)</span>
 </pre></div>
 </div>
 </section>
-<section id="id37">
-<h3><span class="section-number">1.4.5. </span>Example<a class="headerlink" href="#id37" title="Permalink to this headline">&#61633;</a></h3>
-<p>In the following problem, note the use of shorthands such as <span class="math notranslate nohighlight">\(0&lt;A\leq 1\)</span>
-and <span class="math notranslate nohighlight">\(x,y\leq B\)</span> to express several related inequalities concisely.
-You can look at the Lean statement which follows to see what these shorthands
-mean more explicitly.</p>
-<div class="admonition-problem admonition" id="id38">
-<p class="admonition-title">Problem</p>
-<p>Let <span class="math notranslate nohighlight">\(u, v, x, y, A\)</span> and <span class="math notranslate nohighlight">\(B\)</span> be real numbers.
-Suppose we know that <span class="math notranslate nohighlight">\(0&lt;A\leq 1, B\geq 1, x,y\leq B, 0\leq u&lt;A\)</span>
-and <span class="math notranslate nohighlight">\(0\leq v&lt;A\)</span>. Show that <span class="math notranslate nohighlight">\(uy+vx+uv&lt;3AB\)</span>.</p>
-</div>
-<div class="admonition-solution admonition">
-<p class="admonition-title">Solution</p>
-<div class="math notranslate nohighlight">
-\[\begin{split}uy+vx+yv&amp;\leq uB+vB+yv\\
-&amp;\leq AB+AB+Av\\
-&amp;\leq AB+AB+1\cdot v\\
-&amp;\leq AB+AB+Bv\\
-&amp;&lt;AB+AB+BA \vphantom{&gt;}\\
-&amp;=3AB\end{split}\]</div>
-</div>
-<p>Exercise: Express the solution to this problem in Lean.</p>
-<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">{</span><span class="n">u</span> <span class="n">v</span> <span class="n">x</span> <span class="n">y</span> <span class="n">A</span> <span class="n">B</span> <span class="o">:</span> <span class="n">&#8477;</span><span class="o">}</span> <span class="o">(</span><span class="n">h1</span> <span class="o">:</span> <span class="mi">0</span> <span class="bp">&lt;</span> <span class="n">A</span><span class="o">)</span> <span class="o">(</span><span class="n">h2</span> <span class="o">:</span> <span class="n">A</span> <span class="bp">&#8804;</span> <span class="mi">1</span><span class="o">)</span> <span class="o">(</span><span class="n">h3</span> <span class="o">:</span> <span class="mi">1</span> <span class="bp">&#8804;</span> <span class="n">B</span><span class="o">)</span> <span class="o">(</span><span class="n">h4</span> <span class="o">:</span> <span class="n">x</span> <span class="bp">&#8804;</span> <span class="n">B</span><span class="o">)</span> <span class="o">(</span><span class="n">h5</span> <span class="o">:</span> <span class="n">y</span> <span class="bp">&#8804;</span> <span class="n">B</span><span class="o">)</span>
-<span class="o">(</span><span class="n">h6</span> <span class="o">:</span> <span class="mi">0</span> <span class="bp">&#8804;</span> <span class="n">u</span><span class="o">)</span> <span class="o">(</span><span class="n">h7</span> <span class="o">:</span> <span class="mi">0</span> <span class="bp">&#8804;</span> <span class="n">v</span><span class="o">)</span> <span class="o">(</span><span class="n">h8</span> <span class="o">:</span> <span class="n">u</span> <span class="bp">&lt;</span> <span class="n">A</span><span class="o">)</span> <span class="o">(</span><span class="n">h9</span> <span class="o">:</span> <span class="n">v</span> <span class="bp">&lt;</span> <span class="n">A</span><span class="o">)</span> <span class="o">:</span>
-  <span class="n">u</span> <span class="bp">*</span> <span class="n">y</span> <span class="bp">+</span> <span class="n">v</span> <span class="bp">*</span> <span class="n">x</span> <span class="bp">+</span> <span class="n">u</span> <span class="bp">*</span> <span class="n">v</span> <span class="bp">&lt;</span> <span class="mi">3</span> <span class="bp">*</span> <span class="n">A</span> <span class="bp">*</span> <span class="n">B</span> <span class="o">:=</span>
-<span class="gr">sorry</span>
-</pre></div>
-</div>
-</section>
-<section id="id39">
-<h3><span class="section-number">1.4.6. </span>Example<a class="headerlink" href="#id39" title="Permalink to this headline">&#61633;</a></h3>
-<div class="admonition-problem admonition" id="id40">
-<p class="admonition-title">Problem</p>
-<p>Show that if <span class="math notranslate nohighlight">\(t\)</span> is a real number and <span class="math notranslate nohighlight">\(t\geq 10\)</span> then
-<span class="math notranslate nohighlight">\(t^2-3t+17\geq 5\)</span>.</p>
-</div>
-<div class="admonition-solution admonition">
-<p class="admonition-title">Solution</p>
-<div class="math notranslate nohighlight">
-\[\begin{split}t^2-3t+17&amp;=t\cdot t-3t+17\\
-&amp;\geq 10t-3t+17\\
-&amp;=7t+17\\
-&amp;\geq 7\cdot 10+17\\
-&amp;\geq 5.\end{split}\]</div>
-</div>
-<p>Exercise: Fill in the sorries in the following Lean solution to this problem.</p>
-<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">{</span><span class="n">t</span> <span class="o">:</span> <span class="n">&#8474;</span><span class="o">}</span> <span class="o">(</span><span class="n">ht</span> <span class="o">:</span> <span class="n">t</span> <span class="bp">&#8805;</span> <span class="mi">10</span><span class="o">)</span> <span class="o">:</span>
-  <span class="n">t</span> <span class="bp">^</span> <span class="mi">2</span> <span class="bp">-</span> <span class="mi">3</span> <span class="bp">*</span> <span class="n">t</span> <span class="bp">-</span> <span class="mi">17</span> <span class="bp">&#8805;</span> <span class="mi">5</span> <span class="o">:=</span>
-<span class="k">calc</span> <span class="n">t</span> <span class="bp">^</span> <span class="mi">2</span> <span class="bp">-</span> <span class="mi">3</span> <span class="bp">*</span> <span class="n">t</span> <span class="bp">-</span> <span class="mi">17</span>
-  <span class="bp">=</span> <span class="n">t</span> <span class="bp">*</span> <span class="n">t</span> <span class="bp">-</span> <span class="mi">3</span> <span class="bp">*</span>  <span class="bp">-</span> <span class="mi">17</span> <span class="o">:</span> <span class="kd">by</span> <span class="gr">sorry</span>
-<span class="bp">...</span> <span class="bp">&#8805;</span> <span class="mi">10</span> <span class="bp">*</span> <span class="n">t</span> <span class="bp">-</span> <span class="mi">3</span> <span class="bp">*</span> <span class="n">t</span> <span class="bp">-</span> <span class="mi">17</span> <span class="o">:</span> <span class="kd">by</span> <span class="gr">sorry</span>
-<span class="bp">...</span> <span class="bp">=</span> <span class="mi">7</span> <span class="bp">*</span> <span class="n">t</span> <span class="bp">-</span> <span class="mi">17</span> <span class="o">:</span> <span class="kd">by</span> <span class="gr">sorry</span>
-<span class="bp">...</span> <span class="bp">&#8805;</span> <span class="mi">7</span> <span class="bp">*</span> <span class="mi">10</span> <span class="bp">-</span> <span class="mi">17</span> <span class="o">:</span> <span class="kd">by</span> <span class="gr">sorry</span>
-<span class="bp">...</span> <span class="bp">&#8805;</span> <span class="mi">5</span> <span class="o">:</span> <span class="kd">by</span> <span class="gr">sorry</span>
-</pre></div>
-</div>
-<p>Warning: don&#8217;t do this!</p>
-<a class="reference internal image-reference" href="_images/cross_1.4.png"><img alt="_images/cross_1.4.png" class="align-center" src="_images/cross_1.4.png" style="width: 240px;" /></a>
-</section>
-<section id="id41">
-<span id="id42"></span><h3><span class="section-number">1.4.7. </span>Example<a class="headerlink" href="#id41" title="Permalink to this headline">&#61633;</a></h3>
-<div class="admonition-problem admonition">
-<p class="admonition-title">Problem</p>
-<p>Let <span class="math notranslate nohighlight">\(n\geq 5\)</span> be an integer.  Show that <span class="math notranslate nohighlight">\(n ^ 2 &gt; 2n + 11\)</span>.</p>
-</div>
-<p>Note that &#8220;let <span class="math notranslate nohighlight">\(n\geq 5\)</span> be an integer&#8221; (as used in the problem above)
-is a common shorthand for &#8220;let <span class="math notranslate nohighlight">\(n\)</span> be an integer and suppose <span class="math notranslate nohighlight">\(n\geq 5\)</span>.&#8221;</p>
-<div class="admonition-solution admonition">
-<p class="admonition-title">Solution</p>
-<div class="math notranslate nohighlight">
-\[\begin{split}n^2&amp;=n\cdot n\\
-&amp;\geq 5n\\
-&amp;=2n+3n\\
-&amp;\geq 2n + 3 \cdot 5\\
-&amp;&gt;2n+11.\end{split}\]</div>
-</div>
-<p>Exercise: Express the solution to this problem in Lean.</p>
-</section>
-<section id="sq-nonneg">
-<span id="id43"></span><h3><span class="section-number">1.4.8. </span>Example<a class="headerlink" href="#sq-nonneg" title="Permalink to this headline">&#61633;</a></h3>
-<p>The next example is a little more mathematically sophisticated.</p>
-<div class="admonition-problem admonition">
-<p class="admonition-title">Problem</p>
-<p>Let <span class="math notranslate nohighlight">\(m\)</span> and <span class="math notranslate nohighlight">\(n\)</span> be integers, and suppose that <span class="math notranslate nohighlight">\(m ^ 2 + n \le 2\)</span>.
-Show that <span class="math notranslate nohighlight">\(n \le 2\)</span>.</p>
-</div>
-<p>We solve this problem by seeing that squares are positive, so <span class="math notranslate nohighlight">\(n\)</span> must be smaller than <span class="math notranslate nohighlight">\(m ^ 2 + n\)</span>.
-(Pedantically, &#8220;smaller than or equal to&#8221;.)   So since we have an upper bound, 2, for <span class="math notranslate nohighlight">\(m ^ 2 + n\)</span>, this
-upper bound must also apply to the smaller number, <span class="math notranslate nohighlight">\(n\)</span>.</p>
-<p>Written formally, the proof looks as follows.  We use the fact that squares are positive at the second step of
-the deduction, to show that going from <span class="math notranslate nohighlight">\(0 + n\)</span> to <span class="math notranslate nohighlight">\(m ^ 2 + n\)</span> must be an increase.</p>
-<div class="admonition-solution admonition">
-<p class="admonition-title">Solution</p>
-<div class="math notranslate nohighlight">
-\[\begin{split}n&amp;= 0 + n\\
-&amp;\le m ^ 2 + n\\
-&amp;\le 2.\end{split}\]</div>
-</div>
-<p>Lean knows that squares are positive and can deal with this kind of argument silently.</p>
-<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">{</span><span class="n">m</span> <span class="n">n</span> <span class="o">:</span> <span class="n">&#8484;</span><span class="o">}</span> <span class="o">(</span><span class="n">h</span> <span class="o">:</span> <span class="n">m</span> <span class="bp">^</span> <span class="mi">2</span> <span class="bp">+</span> <span class="n">n</span> <span class="bp">&#8804;</span> <span class="mi">2</span><span class="o">)</span> <span class="o">:</span> <span class="n">n</span> <span class="bp">&#8804;</span> <span class="mi">2</span> <span class="o">:=</span>
-<span class="k">calc</span> <span class="n">n</span> <span class="bp">=</span> <span class="mi">0</span> <span class="bp">+</span> <span class="n">n</span> <span class="o">:</span> <span class="kd">by</span> <span class="n">ring</span>
-<span class="bp">...</span> <span class="bp">&#8804;</span> <span class="n">m</span> <span class="bp">^</span> <span class="mi">2</span> <span class="bp">+</span> <span class="n">n</span> <span class="o">:</span> <span class="kd">by</span> <span class="n">ineq_tac</span> <span class="o">[]</span>
-<span class="bp">...</span> <span class="bp">&#8804;</span> <span class="mi">2</span> <span class="o">:</span> <span class="kd">by</span> <span class="n">ineq_tac</span> <span class="o">[</span><span class="n">h</span><span class="o">]</span>
-</pre></div>
-</div>
-</section>
 <section id="id44">
-<h3><span class="section-number">1.4.9. </span>Example<a class="headerlink" href="#id44" title="Permalink to this headline">&#61633;</a></h3>
-<p>Exploiting that squares are nonnegative is a very common method for proving inequalities.  Here&#8217;s another
-example, where it requires some cleverness to come up with just the right square to add: <span class="math notranslate nohighlight">\((x-y)^2\)</span>.</p>
-<div class="admonition-problem admonition" id="id45">
-<p class="admonition-title">Problem</p>
-<p>Let <span class="math notranslate nohighlight">\(x\)</span> and <span class="math notranslate nohighlight">\(y\)</span> be real numbers, and suppose that <span class="math notranslate nohighlight">\(x ^ 2 + y ^ 2 \le 1\)</span>.
-Show that <span class="math notranslate nohighlight">\((x + y) ^ 2 &lt; 3\)</span>.</p>
-</div>
-<div class="admonition-solution admonition">
-<p class="admonition-title">Solution</p>
-<div class="math notranslate nohighlight">
-\[\begin{split}(x + y) ^ 2 &amp;= (x + y) ^ 2 + 0\\
-&amp;\le (x + y) ^ 2 + (x - y) ^ 2\\
-&amp;= 2 (x ^ 2 + y ^ 2)\\
-&amp;\le 2 \cdot 1\\
-&amp;&lt; 3.\end{split}\]</div>
-</div>
-<p>Exercise: Fill in the sorries in the following Lean solution to this problem.</p>
-<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">{</span><span class="n">x</span> <span class="n">y</span> <span class="o">:</span> <span class="n">&#8477;</span><span class="o">}</span> <span class="o">(</span><span class="n">h</span> <span class="o">:</span> <span class="n">x</span> <span class="bp">^</span> <span class="mi">2</span> <span class="bp">+</span> <span class="n">y</span> <span class="bp">^</span> <span class="mi">2</span> <span class="bp">&#8804;</span> <span class="mi">1</span><span class="o">)</span> <span class="o">:</span> <span class="o">(</span><span class="n">x</span> <span class="bp">+</span> <span class="n">y</span><span class="o">)</span> <span class="bp">^</span> <span class="mi">2</span> <span class="bp">&lt;</span> <span class="mi">3</span> <span class="o">:=</span>
-<span class="k">calc</span> <span class="o">(</span><span class="n">x</span> <span class="bp">+</span> <span class="n">y</span><span class="o">)</span> <span class="bp">^</span> <span class="mi">2</span> <span class="bp">=</span> <span class="o">(</span><span class="n">x</span> <span class="bp">+</span> <span class="n">y</span><span class="o">)</span> <span class="bp">^</span> <span class="mi">2</span> <span class="bp">+</span> <span class="mi">0</span> <span class="o">:</span> <span class="kd">by</span> <span class="gr">sorry</span>
-<span class="bp">...</span> <span class="bp">&#8804;</span> <span class="o">(</span><span class="n">x</span> <span class="bp">+</span> <span class="n">y</span><span class="o">)</span> <span class="bp">^</span> <span class="mi">2</span> <span class="bp">+</span> <span class="o">(</span><span class="n">x</span> <span class="bp">-</span> <span class="n">y</span><span class="o">)</span> <span class="bp">^</span> <span class="mi">2</span> <span class="o">:</span> <span class="kd">by</span> <span class="gr">sorry</span>
-<span class="bp">...</span> <span class="bp">=</span> <span class="mi">2</span> <span class="bp">*</span> <span class="o">(</span><span class="n">x</span> <span class="bp">^</span> <span class="mi">2</span> <span class="bp">+</span> <span class="n">y</span> <span class="bp">^</span> <span class="mi">2</span><span class="o">)</span> <span class="o">:</span> <span class="kd">by</span> <span class="gr">sorry</span>
-<span class="bp">...</span> <span class="bp">&#8804;</span> <span class="mi">2</span> <span class="bp">*</span> <span class="mi">1</span> <span class="o">:</span> <span class="kd">by</span> <span class="gr">sorry</span>
-<span class="bp">...</span> <span class="bp">&lt;</span> <span class="mi">3</span> <span class="o">:</span> <span class="kd">by</span> <span class="gr">sorry</span>
-</pre></div>
-</div>
-</section>
-<section id="id46">
-<h3><span class="section-number">1.4.10. </span>Example<a class="headerlink" href="#id46" title="Permalink to this headline">&#61633;</a></h3>
-<p>Here&#8217;s another example using the trick of adding the square of a subtracted quantity.  You may have
-heard of the &#8220;arithmetic mean-geometric mean inquality&#8221;; this is a variant.</p>
-<div class="admonition-problem admonition" id="id47">
-<p class="admonition-title">Problem</p>
-<p>Let <span class="math notranslate nohighlight">\(a\)</span> and <span class="math notranslate nohighlight">\(b\)</span> be real numbers.  Show that <span class="math notranslate nohighlight">\(a ^ 2 + b ^ 2 \ge 2ab\)</span>.</p>
-</div>
-<div class="admonition-solution admonition">
-<p class="admonition-title">Solution</p>
-<div class="math notranslate nohighlight">
-\[\begin{split}a ^ 2 + b ^2 &amp;= (a - b) ^ 2 + 2ab\\
-&amp;\ge 0 + 2ab\\
-&amp;= 2ab.\end{split}\]</div>
-</div>
-<p>Exercise: Express the solution to this problem in Lean.</p>
-<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">(</span><span class="n">a</span> <span class="n">b</span> <span class="o">:</span> <span class="n">&#8477;</span><span class="o">)</span> <span class="o">:</span> <span class="n">a</span> <span class="bp">^</span> <span class="mi">2</span> <span class="bp">+</span> <span class="n">b</span> <span class="bp">^</span> <span class="mi">2</span> <span class="bp">&#8805;</span> <span class="mi">2</span> <span class="bp">*</span> <span class="n">a</span> <span class="bp">*</span> <span class="n">b</span> <span class="o">:=</span>
-<span class="gr">sorry</span>
-</pre></div>
-</div>
-</section>
-<section id="id48">
-<h3><span class="section-number">1.4.11. </span>Example<a class="headerlink" href="#id48" title="Permalink to this headline">&#61633;</a></h3>
-<p>Finally, here&#8217;s a particularly wild example <a class="footnote-reference brackets" href="#id51" id="id49">2</a> of the technique,  invoking the nonnegativity of three
+<h3><span class="section-number">1.4.10. </span>Example<a class="headerlink" href="#id44" title="Permalink to this headline">&#61633;</a></h3>
+<p>Finally, here&#8217;s a particularly wild example <a class="footnote-reference brackets" href="#id47" id="id45">2</a> of the technique,  invoking the nonnegativity of three
 separate squares: <span class="math notranslate nohighlight">\((a ^ 2 (b ^ 2 - c ^ 2)) ^ 2\)</span>, <span class="math notranslate nohighlight">\((b ^ 4 - c ^ 4) ^ 2\)</span>, and
 <span class="math notranslate nohighlight">\((a ^ 2 b c - b ^ 2 c ^ 2) ^ 2\)</span>.</p>
 <div class="admonition-problem admonition">
@@ -1131,8 +1233,8 @@ separate squares: <span class="math notranslate nohighlight">\((a ^ 2 (b ^ 2 - c
 </pre></div>
 </div>
 </section>
-<section id="id50">
-<h3><span class="section-number">1.4.12. </span>Exercises<a class="headerlink" href="#id50" title="Permalink to this headline">&#61633;</a></h3>
+<section id="id46">
+<h3><span class="section-number">1.4.11. </span>Exercises<a class="headerlink" href="#id46" title="Permalink to this headline">&#61633;</a></h3>
 <p>1. Let <span class="math notranslate nohighlight">\(x\)</span> and <span class="math notranslate nohighlight">\(y\)</span> be integers and suppose that
 <span class="math notranslate nohighlight">\(x+3 \geq 2y\)</span> and <span class="math notranslate nohighlight">\(1 \le y\)</span>.  Show that <span class="math notranslate nohighlight">\(x \geq -1\)</span>.</p>
 <div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">{</span><span class="n">x</span> <span class="n">y</span> <span class="o">:</span> <span class="n">&#8484;</span><span class="o">}</span> <span class="o">(</span><span class="n">h1</span> <span class="o">:</span> <span class="n">x</span> <span class="bp">+</span> <span class="mi">3</span> <span class="bp">&#8805;</span> <span class="mi">2</span> <span class="bp">*</span> <span class="n">y</span><span class="o">)</span> <span class="o">(</span><span class="n">h2</span> <span class="o">:</span> <span class="mi">1</span> <span class="bp">&#8804;</span> <span class="n">y</span><span class="o">)</span> <span class="o">:</span>
@@ -1175,9 +1277,16 @@ separate squares: <span class="math notranslate nohighlight">\((a ^ 2 (b ^ 2 - c
 <span class="gr">sorry</span>
 </pre></div>
 </div>
+<ol class="arabic simple" start="6">
+<li><p>Let <span class="math notranslate nohighlight">\(a\)</span> and <span class="math notranslate nohighlight">\(b\)</span> be real numbers.  Show that <span class="math notranslate nohighlight">\(a ^ 2 + b ^ 2 \ge 2ab\)</span>.</p></li>
+</ol>
+<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">(</span><span class="n">a</span> <span class="n">b</span> <span class="o">:</span> <span class="n">&#8477;</span><span class="o">)</span> <span class="o">:</span> <span class="n">a</span> <span class="bp">^</span> <span class="mi">2</span> <span class="bp">+</span> <span class="n">b</span> <span class="bp">^</span> <span class="mi">2</span> <span class="bp">&#8805;</span> <span class="mi">2</span> <span class="bp">*</span> <span class="n">a</span> <span class="bp">*</span> <span class="n">b</span> <span class="o">:=</span>
+<span class="gr">sorry</span>
+</pre></div>
+</div>
 <p class="rubric">Footnotes</p>
 <dl class="footnote brackets">
-<dt class="label" id="id51"><span class="brackets"><a class="fn-backref" href="#id49">2</a></span></dt>
+<dt class="label" id="id47"><span class="brackets"><a class="fn-backref" href="#id45">2</a></span></dt>
 <dd><p>Adapted from <a class="reference external" href="https://www.imo-official.org/year_info.aspx?year=2001">IMO 2001</a>, problem 2.</p>
 </dd>
 </dl>
