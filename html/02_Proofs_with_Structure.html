@@ -219,7 +219,7 @@ the behaviour of inequalities under multiplication/powers do not apply.</p>
 <p>By the hypothesis, <span class="math notranslate nohighlight">\(0 \le b - a\)</span>.</p>
 <p>Therefore <span class="math notranslate nohighlight">\(\frac{(b - a)[(b - a)^2+3(b+a)^2]}{4}\)</span> is nonnegative, so</p>
 <div class="math notranslate nohighlight">
-\[\begin{split}a ^ 3 &amp;\le a ^ 3 + \frac{(b - a)[(b - a)^2+3(b+a)^2]}{4}\\
+\[\begin{split}a ^ 3 &amp;\le a ^ 3 + \frac{(b - a)\left[(b - a)^2+3(b+a)^2\right]}{4}\\
 &amp;= b ^ 3.\end{split}\]</div>
 </div>
 <div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">(</span><span class="n">a</span> <span class="n">b</span> <span class="o">:</span> <span class="n">&#8477;</span><span class="o">)</span> <span class="o">(</span><span class="n">h</span> <span class="o">:</span> <span class="n">a</span> <span class="bp">&#8804;</span> <span class="n">b</span><span class="o">)</span> <span class="o">:</span> <span class="n">a</span> <span class="bp">^</span> <span class="mi">3</span> <span class="bp">&#8804;</span> <span class="n">b</span> <span class="bp">^</span> <span class="mi">3</span> <span class="o">:=</span>
