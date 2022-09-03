@@ -48,14 +48,12 @@ example {n : ℤ} (hn : n ≥ 5) :
 sorry
 
 example {m n : ℤ} (h : m ^ 2 + n ≤ 2) : n ≤ 2 :=
-calc n = 0 + n : by ring
-... ≤ m ^ 2 + n : by ineq_tac []
+calc n ≤ m ^ 2 + n : by ineq_tac []
 ... ≤ 2 : by ineq_tac [h]
 
 
 example {x y : ℝ} (h : x ^ 2 + y ^ 2 ≤ 1) : (x + y) ^ 2 < 3 :=
-calc (x + y) ^ 2 = (x + y) ^ 2 + 0 : by sorry
-... ≤ (x + y) ^ 2 + (x - y) ^ 2 : by sorry
+calc (x + y) ^ 2 ≤ (x + y) ^ 2 + (x - y) ^ 2 : by sorry
 ... = 2 * (x ^ 2 + y ^ 2) : by sorry
 ... ≤ 2 * 1 : by sorry
 ... < 3 : by sorry
@@ -63,20 +61,17 @@ calc (x + y) ^ 2 = (x + y) ^ 2 + 0 : by sorry
 example {a b : ℚ} (h1 : a ≥ 0) (h2 : b ≥ 0) (h3 : a + b ≤ 8) : 
   3 * a * b + a ≤ 7 * b + 72 :=
 calc 3 * a * b + a
-  = 3 * a * b + 0 + 0 + a : by sorry
-... ≤ 3 * a * b + 2 * b ^ 2 + a ^ 2 + a : by sorry
+    ≤ 2 * b ^ 2 + a ^ 2 + (3 * a * b + a) : by sorry
 ... = 2 * ((a + b) * b) + ((a + b) * a) + a : by sorry
 ... ≤ 2 * (8 * b) + (8 * a) + a : by sorry
 ... = 7 * b + 9 * (a + b) : by sorry
 ... ≤ 7 * b + 9 * 8 : by sorry
-... = 7 * b + 72 : by sorry
-
+... = 7 * b + 72 : by by sorry
 
 example {a b c : ℝ} :
   a ^ 2 * (a ^ 6 + 8 * b ^ 3 * c ^ 3) ≤ (a ^ 4 + b ^ 4 + c ^ 4) ^ 2 :=
 calc a ^ 2 * (a ^ 6 + 8 * b ^ 3 * c ^ 3)
-    = 0 + 0 + 0 + a ^ 2 * (a ^ 6 + 8 * b ^ 3 * c ^ 3) : by ring
-... ≤ 2 * (a ^ 2 * (b ^ 2 - c ^ 2)) ^ 2 
+    ≤ 2 * (a ^ 2 * (b ^ 2 - c ^ 2)) ^ 2 
       + (b ^ 4 - c ^ 4) ^ 2
       + 4 * (a ^ 2 * b * c - b ^ 2 * c ^ 2) ^ 2 
       + a ^ 2 * (a ^ 6 + 8 * b ^ 3 * c ^ 3) : by ineq_tac []
@@ -86,7 +81,6 @@ calc a ^ 2 * (a ^ 6 + 8 * b ^ 3 * c ^ 3)
 example {x y : ℤ} (h1 : x + 3 ≥ 2 * y) (h2 : 1 ≤ y) : 
   x ≥ -1 :=
 sorry
-
 
 example {a b : ℚ} (h1 : 3 ≤ a) (h2 : a + 2 * b ≥ 4) : 
   a + b ≥ 3 :=
@@ -108,5 +102,6 @@ example {x : ℚ} :
   x ^ 2 - 2 * x ≥ -1 :=
 sorry
 
-example (a b : ℝ) : a ^ 2 + b ^ 2 ≥ 2 * a * b :=
+example (a b : ℝ) :
+  a ^ 2 + b ^ 2 ≥ 2 * a * b :=
 sorry

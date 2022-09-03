@@ -27,12 +27,13 @@ meta def strict_mono_rules : user_attribute :=
 
 -- order matters here: need division and subtraction to be recognized as such, prioritized over
 -- multiplications/additions which are definitionally equal
-attribute [mono_rules] pow_le_pow_of_le_left div_le_div_of_le
+attribute [mono_rules] 
+  le_add_of_nonneg_right le_add_of_nonneg_left
+  pow_le_pow_of_le_left div_le_div_of_le
   mul_le_mul_of_nonneg_left mul_le_mul_of_nonneg_right
   mul_le_mul_of_nonpos_left mul_le_mul_of_nonpos_right
   sub_le_sub add_le_add
-  le_add_of_nonneg_right le_add_of_nonneg_left
-
+  
 -- order matters here: need division and subtraction to be recognized as such, prioritized over
 -- multiplications/additions which are definitionally equal
 attribute [strict_mono_rules] pow_lt_pow_of_lt_left div_lt_div_of_lt mul_lt_mul_of_pos_left
