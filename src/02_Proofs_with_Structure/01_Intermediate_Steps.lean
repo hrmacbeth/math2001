@@ -4,13 +4,25 @@ import data.real.basic
 import tactics.inequalities
 
 
-example {a b : ℝ} (h1 : a - 5 * b = 4) (h2 : b + 2 = 3) : a = 9 :=
+example {a b : ℝ} (h1 : a - 5 * b = 4) (h2 : b + 2 = 3) :
+  a = 9 :=
 begin
   have hb : b = 1,
-  addarith [h2],
+  addarith h2,
   calc a = (a - 5 * b) + 5 * b : by ring
-  ... = 4 + 5 * 1 : by rwa [h1, hb]
+  ... = 4 + 5 * 1 : by rw [h1, hb]
   ... = 9 : by ring,
+end
+
+
+example {m n : ℤ} (h1 : m + 3 ≤ 2 * n - 1) (h2 : n ≤ 5) :
+  m ≤ 6 :=
+begin
+  have h3 : m + 3 ≤ 9,
+  calc m + 3 ≤ 2 * n - 1 : by sorry
+  ... ≤ 2 * 5 - 1 : by sorry
+  ... = 9 : by sorry,
+  sorry,
 end
 
 
@@ -24,6 +36,13 @@ begin
   calc r = (r + r) / 2 : by sorry
   ... ≤ ((3 - s) + (3 + s)) / 2 : by sorry
   ... = 3 : by sorry
+end
+
+
+example {x y : ℤ} (hx : x + 3 ≤ 2) (hy : y + 2 * x ≥ 3) : 
+  y > 3 :=
+begin
+  sorry
 end
 
 

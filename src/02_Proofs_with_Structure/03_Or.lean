@@ -42,7 +42,7 @@ begin
   have hn0 : n ≤ 0 ∨ 1 ≤ n := le_or_lt n 0,
   cases hn0 with hn0 hn0,
   { have : 0 ≤ - n,
-    addarith [hn0],
+    addarith hn0,
     have hn : -n ≤ 1 ∨ 2 ≤ -n := le_or_lt (-n) 1,
     cases hn,
     { apply ne_of_lt,
