@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>2. Proofs with structure &mdash; The mechanics of proof 0.1 documentation</title>
+  <title>2. Proofs with structure &mdash; The mechanics of proof  documentation</title>
       <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
       <link rel="stylesheet" href="_static/css/custom.css" type="text/css" />
@@ -48,13 +48,15 @@
 <li class="toctree-l3"><a class="reference internal" href="#id2">2.1.2. Example</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#id3">2.1.3. Example</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#id4">2.1.4. Example</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id5">2.1.5. Example</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id6">2.1.6. Example</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#invoking-lemmas">2.2. Invoking lemmas</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#id5">2.2.1. Example</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id8">2.2.2. Example</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id9">2.2.3. Example</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id10">2.2.4. Example</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id7">2.2.1. Example</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id10">2.2.2. Example</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id11">2.2.3. Example</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id12">2.2.4. Example</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#integral-domain-step1">2.2.5. Example</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#exercises">2.2.6. Exercises</a></li>
 </ul>
@@ -62,10 +64,10 @@
 <li class="toctree-l2"><a class="reference internal" href="#or-and-proof-by-cases">2.3. &#8220;Or&#8221; and proof by cases</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#sq-ne-two">2.3.1. Example</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#integral-domain-step3">2.3.2. Example</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id16">2.3.3. Example</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id18">2.3.3. Example</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#solve-quadratic">2.3.4. Example</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id18">2.3.5. Example</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id19">2.3.6. Exercises</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id20">2.3.5. Example</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id21">2.3.6. Exercises</a></li>
 </ul>
 </li>
 </ul>
@@ -133,20 +135,197 @@ in to help solve for <span class="math notranslate nohighlight">\(a\)</span>.</p
 &amp;= 4 + 5 \cdot 1 \\
 &amp;= 9.\end{split}\]</div>
 </div>
-<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">{</span><span class="n">a</span> <span class="n">b</span> <span class="o">:</span> <span class="n">&#8477;</span><span class="o">}</span> <span class="o">(</span><span class="n">h1</span> <span class="o">:</span> <span class="n">a</span> <span class="bp">-</span> <span class="mi">5</span> <span class="bp">*</span> <span class="n">b</span> <span class="bp">=</span> <span class="mi">4</span><span class="o">)</span> <span class="o">(</span><span class="n">h2</span> <span class="o">:</span> <span class="n">b</span> <span class="bp">+</span> <span class="mi">2</span> <span class="bp">=</span> <span class="mi">3</span><span class="o">)</span> <span class="o">:</span> <span class="n">a</span> <span class="bp">=</span> <span class="mi">9</span> <span class="o">:=</span>
+<p>This is the first time we have seen a proof with words.  The sentence</p>
+<blockquote>
+<div><p>Since <span class="math notranslate nohighlight">\(b+2=3\)</span>, we have <span class="math notranslate nohighlight">\(b=1\)</span>.</p>
+</div></blockquote>
+<p>is a use of the reasoning discussed in <a class="reference internal" href="01_Proofs_by_Calculation.html#shortcut"><span class="std std-numref">Section 1.5</span></a>:  The fact <span class="math notranslate nohighlight">\(b=1\)</span> is
+deduced from the hypothesis <span class="math notranslate nohighlight">\(b+2=3\)</span> by mentally subtracting 2 from both sides, and this is
+considered sufficiently obvious that we don&#8217;t explain the reasoning apart from indicating which of
+the hypotheses is being invoked.</p>
+<p id="therefore-discussion">We have now added one more fact, <span class="math notranslate nohighlight">\(b=1\)</span>, to our toolbox of known facts in this problem, and
+we carry out a calculational proof in which this fact is used (it is substituted, together with
+<span class="math notranslate nohighlight">\(a-5b=4\)</span>, at the step <span class="math notranslate nohighlight">\((a - 5b) + 5b = 4 + 5 \cdot 1\)</span>).  The word &#8220;Therefore&#8221;
+(synonyms: &#8220;Thus&#8221;, &#8220;So&#8221;) introduces this calculational proof; its meaning is that the fact just
+proved will be used in the reasoning which follows.</p>
+<p>Here is how this argument looks in Lean.  The order is slightly different.  We state <span class="math notranslate nohighlight">\(b=1\)</span>
+with the keyword <code class="docutils literal notranslate"><span class="pre">have</span> <span class="pre">hb</span></code>, which sets it up as an <em>intermediate goal</em>, named <code class="docutils literal notranslate"><span class="pre">hb</span></code>.  This is
+immediately followed by the reasoning to justify this fact:  adding/subtracting something from the
+hypothesis <span class="math notranslate nohighlight">\(b+2=3\)</span>, which in this problem is named <code class="docutils literal notranslate"><span class="pre">h2</span></code>.  Then we give a calculational
+proof as usual, in which the fact <span class="math notranslate nohighlight">\(b=1\)</span> (under the name <code class="docutils literal notranslate"><span class="pre">hb</span></code>) gets used at some point.</p>
+<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">{</span><span class="n">a</span> <span class="n">b</span> <span class="o">:</span> <span class="n">&#8477;</span><span class="o">}</span> <span class="o">(</span><span class="n">h1</span> <span class="o">:</span> <span class="n">a</span> <span class="bp">-</span> <span class="mi">5</span> <span class="bp">*</span> <span class="n">b</span> <span class="bp">=</span> <span class="mi">4</span><span class="o">)</span> <span class="o">(</span><span class="n">h2</span> <span class="o">:</span> <span class="n">b</span> <span class="bp">+</span> <span class="mi">2</span> <span class="bp">=</span> <span class="mi">3</span><span class="o">)</span> <span class="o">:</span>
+  <span class="n">a</span> <span class="bp">=</span> <span class="mi">9</span> <span class="o">:=</span>
 <span class="kd">begin</span>
   <span class="k">have</span> <span class="n">hb</span> <span class="o">:</span> <span class="n">b</span> <span class="bp">=</span> <span class="mi">1</span><span class="o">,</span>
-  <span class="n">addarith</span> <span class="o">[</span><span class="n">h2</span><span class="o">],</span>
+  <span class="n">addarith</span> <span class="n">h2</span><span class="o">,</span>
   <span class="k">calc</span> <span class="n">a</span> <span class="bp">=</span> <span class="o">(</span><span class="n">a</span> <span class="bp">-</span> <span class="mi">5</span> <span class="bp">*</span> <span class="n">b</span><span class="o">)</span> <span class="bp">+</span> <span class="mi">5</span> <span class="bp">*</span> <span class="n">b</span> <span class="o">:</span> <span class="kd">by</span> <span class="n">ring</span>
-  <span class="bp">...</span> <span class="bp">=</span> <span class="mi">4</span> <span class="bp">+</span> <span class="mi">5</span> <span class="bp">*</span> <span class="mi">1</span> <span class="o">:</span> <span class="kd">by</span> <span class="n">rwa</span> <span class="o">[</span><span class="n">h1</span><span class="o">,</span> <span class="n">hb</span><span class="o">]</span>
+  <span class="bp">...</span> <span class="bp">=</span> <span class="mi">4</span> <span class="bp">+</span> <span class="mi">5</span> <span class="bp">*</span> <span class="mi">1</span> <span class="o">:</span> <span class="kd">by</span> <span class="n">rw</span> <span class="o">[</span><span class="n">h1</span><span class="o">,</span> <span class="n">hb</span><span class="o">]</span>
   <span class="bp">...</span> <span class="bp">=</span> <span class="mi">9</span> <span class="o">:</span> <span class="kd">by</span> <span class="n">ring</span><span class="o">,</span>
 <span class="kd">end</span>
 </pre></div>
 </div>
+<p>It&#8217;s not so hard to understand this proof step by step by reading the Lean code.  But Lean actually
+provides a powerful tool to help us understand structured proofs: the <em>Lean Infoview</em> window, which
+we will now use for the first time.  Let&#8217;s walk through what the infoview can tell us as we work
+through this problem.</p>
+<ol class="arabic">
+<li><p>Put your cursor at the start of the line</p>
+<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="k">have</span> <span class="n">hb</span> <span class="o">:</span> <span class="n">b</span> <span class="bp">=</span> <span class="mi">1</span><span class="o">,</span>
+</pre></div>
+</div>
+<p>and look at the Lean Infoview window.  We see this:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>1 goal
+
+a b : &#8477;
+h1 : a - 5 * b = 4
+h2 : b + 2 = 3
+&#8866; a = 9
+</pre></div>
+</div>
+<p>This is simply a vertically-displayed version of the problem we started with:</p>
+<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">{</span><span class="n">a</span> <span class="n">b</span> <span class="o">:</span> <span class="n">&#8477;</span><span class="o">}</span> <span class="o">(</span><span class="n">h1</span> <span class="o">:</span> <span class="n">a</span> <span class="bp">-</span> <span class="mi">5</span> <span class="bp">*</span> <span class="n">b</span> <span class="bp">=</span> <span class="mi">4</span><span class="o">)</span> <span class="o">(</span><span class="n">h2</span> <span class="o">:</span> <span class="n">b</span> <span class="bp">+</span> <span class="mi">2</span> <span class="bp">=</span> <span class="mi">3</span><span class="o">)</span> <span class="o">:</span>
+  <span class="n">a</span> <span class="bp">=</span> <span class="mi">9</span> <span class="o">:=</span>
+</pre></div>
+</div>
+<p>It lists all the variables and hypotheses given to us in the problem, and, next to the symbol
+<code class="docutils literal notranslate"><span class="pre">&#8866;</span></code>, it displays our <em>goal</em>: to show <code class="docutils literal notranslate"><span class="pre">a</span> <span class="pre">=</span> <span class="pre">9</span></code>.</p>
+</li>
+<li><p>Move your cursor to the end of the line</p>
+<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="k">have</span> <span class="n">hb</span> <span class="o">:</span> <span class="n">b</span> <span class="bp">=</span> <span class="mi">1</span><span class="o">,</span>
+</pre></div>
+</div>
+<p>or equivalently to the start of the line</p>
+<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="n">addarith</span> <span class="n">h2</span><span class="o">,</span>
+</pre></div>
+</div>
+<p>The infoview now displays the following:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>2 goals
+
+a b : &#8477;
+h1 : a - 5 * b = 4
+h2 : b + 2 = 3
+&#8866; b = 1
+
+a b : &#8477;
+h1 : a - 5 * b = 4
+h2 : b + 2 = 3
+hb : b = 1
+&#8866; a = 9
+</pre></div>
+</div>
+<p>This is the consequence of the instruction <code class="docutils literal notranslate"><span class="pre">have</span> <span class="pre">hb</span> <span class="pre">:</span> <span class="pre">b</span> <span class="pre">=</span> <span class="pre">1</span></code>.  We now have two goals:</p>
+<ul class="simple">
+<li><p>prove that <code class="docutils literal notranslate"><span class="pre">b</span> <span class="pre">=</span> <span class="pre">1</span></code>, using the original information in the problem (<code class="docutils literal notranslate"><span class="pre">h1</span></code> and <code class="docutils literal notranslate"><span class="pre">h2</span></code>)</p></li>
+<li><p>prove that <code class="docutils literal notranslate"><span class="pre">a</span> <span class="pre">=</span> <span class="pre">9</span></code> (which was our original goal), using the original information in
+the problem (<code class="docutils literal notranslate"><span class="pre">h1</span></code> and <code class="docutils literal notranslate"><span class="pre">h2</span></code>) <strong>plus</strong> the newly-proved fact <code class="docutils literal notranslate"><span class="pre">hb</span></code> that <code class="docutils literal notranslate"><span class="pre">b</span> <span class="pre">=</span> <span class="pre">1</span></code>.</p></li>
+</ul>
+</li>
+<li><p>Next, move your cursor to the end of the line</p>
+<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="n">addarith</span> <span class="n">h2</span><span class="o">,</span>
+</pre></div>
+</div>
+<p>or equivalently to the start of the line</p>
+<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="k">calc</span> <span class="n">a</span> <span class="bp">=</span> <span class="o">(</span><span class="n">a</span> <span class="bp">-</span> <span class="mi">5</span> <span class="bp">*</span> <span class="n">b</span><span class="o">)</span> <span class="bp">+</span> <span class="mi">5</span> <span class="bp">*</span> <span class="n">b</span> <span class="o">:</span> <span class="kd">by</span> <span class="n">ring</span>
+</pre></div>
+</div>
+<p>We are back to one goal in the infoview, the second of the two goals seen at the previous stage:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>1 goal
+
+a b : &#8477;
+h1 : a - 5 * b = 4
+h2 : b + 2 = 3
+hb : b = 1
+&#8866; a = 9
+</pre></div>
+</div>
+<p>This is because the instruction <code class="docutils literal notranslate"><span class="pre">addarith</span> <span class="pre">h2</span></code> successfully resolved the first goal.</p>
+</li>
+<li><p>Finally, move your cursor to the end of the last line of code,</p>
+<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="bp">...</span> <span class="bp">=</span> <span class="mi">9</span> <span class="o">:</span> <span class="kd">by</span> <span class="n">ring</span><span class="o">,</span>
+</pre></div>
+</div>
+<p>The infoview now displays no tasks for us. Instead it displays the message</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>goals accomplished &#127881;
+</pre></div>
+</div>
+<p>which serves as a visual confirmation that the <code class="docutils literal notranslate"><span class="pre">calc</span></code> block solved the last of the goals, thus
+completing the problem.</p>
+</li>
+</ol>
 </section>
 <section id="id2">
 <h3><span class="section-number">2.1.2. </span>Example<a class="headerlink" href="#id2" title="Permalink to this headline">&#61633;</a></h3>
-<p>Let&#8217;s redo another example, this time <a class="reference internal" href="01_Proofs_by_Calculation.html#id31"><span class="std std-numref">Example 1.4.2</span></a>.  The problem was:</p>
+<p>Here&#8217;s another example of reasoning in which we establish an intermediate goal before the main
+proof.</p>
+<div class="admonition-problem admonition">
+<p class="admonition-title">Problem</p>
+<p>Let <span class="math notranslate nohighlight">\(m\)</span> and <span class="math notranslate nohighlight">\(n\)</span> be integers, and suppose that <span class="math notranslate nohighlight">\(m+3\le 2n-1\)</span> and <span class="math notranslate nohighlight">\(n\le 5\)</span>.
+Show that <span class="math notranslate nohighlight">\(m\le 6\)</span>.</p>
+</div>
+<div class="admonition-solution admonition">
+<p class="admonition-title">Solution</p>
+<p>We have that</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}m+3&amp;\le 2n-1\\
+&amp;\le 2\cdot 5-1\\
+&amp;= 9,\end{split}\]</div>
+<p>so <span class="math notranslate nohighlight">\(m \le 6\)</span>.</p>
+</div>
+<p>Here, the text</p>
+<blockquote>
+<div><p>We have that</p>
+</div></blockquote>
+<p>followed by a calculational proof serves as both a statement of an intermediate goal and as its
+proof.  The intermediate goal is <span class="math notranslate nohighlight">\(m+3\le 9\)</span>, since this is what can be read off as proved by
+the given calculation: the top left expression is <span class="math notranslate nohighlight">\(m+3\)</span>, the bottom right expression is
+<span class="math notranslate nohighlight">\(9\)</span>, and the sequence of relations <span class="math notranslate nohighlight">\(\le\)</span>, <span class="math notranslate nohighlight">\(\le\)</span>, <span class="math notranslate nohighlight">\(=\)</span> at the steps in
+between together establish the relation <span class="math notranslate nohighlight">\(\le\)</span> between <span class="math notranslate nohighlight">\(m+3\)</span> and <span class="math notranslate nohighlight">\(9\)</span>.</p>
+<p>We <a class="reference internal" href="#therefore-discussion"><span class="std std-ref">previously discussed</span></a> the meaning of &#8220;therefore&#8221;/&#8221;thus&#8221;/&#8221;so&#8221;. Here
+the text</p>
+<blockquote>
+<div><p>so <span class="math notranslate nohighlight">\(m \le 6\)</span>.</p>
+</div></blockquote>
+<p>tells us that the fact just proved (<span class="math notranslate nohighlight">\(m+3\le 9\)</span>) implies that <span class="math notranslate nohighlight">\(m \le 6\)</span>, by a proof
+which is too straightforward to require further details; in this case it&#8217;s another example of the
+add/subtract-from-both-sides reasoning discussed in <a class="reference internal" href="01_Proofs_by_Calculation.html#shortcut"><span class="std std-numref">Section 1.5</span></a>.</p>
+<p>Exercise: Here is a Lean setup for this problem, with the stated calculational proof of an
+intermediate goal.  Fill in all the sorries in this calculational proof and the final deduction.</p>
+<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">{</span><span class="n">m</span> <span class="n">n</span> <span class="o">:</span> <span class="n">&#8484;</span><span class="o">}</span> <span class="o">(</span><span class="n">h1</span> <span class="o">:</span> <span class="n">m</span> <span class="bp">+</span> <span class="mi">3</span> <span class="bp">&#8804;</span> <span class="mi">2</span> <span class="bp">*</span> <span class="n">n</span> <span class="bp">-</span> <span class="mi">1</span><span class="o">)</span> <span class="o">(</span><span class="n">h2</span> <span class="o">:</span> <span class="n">n</span> <span class="bp">&#8804;</span> <span class="mi">5</span><span class="o">)</span> <span class="o">:</span>
+  <span class="n">m</span> <span class="bp">&#8804;</span> <span class="mi">6</span> <span class="o">:=</span>
+<span class="kd">begin</span>
+  <span class="k">have</span> <span class="n">h3</span> <span class="o">:</span> <span class="n">m</span> <span class="bp">+</span> <span class="mi">3</span> <span class="bp">&#8804;</span> <span class="mi">9</span><span class="o">,</span>
+  <span class="k">calc</span> <span class="n">m</span> <span class="bp">+</span> <span class="mi">3</span> <span class="bp">&#8804;</span> <span class="mi">2</span> <span class="bp">*</span> <span class="n">n</span> <span class="bp">-</span> <span class="mi">1</span> <span class="o">:</span> <span class="kd">by</span> <span class="gr">sorry</span>
+  <span class="bp">...</span> <span class="bp">&#8804;</span> <span class="mi">2</span> <span class="bp">*</span> <span class="mi">5</span> <span class="bp">-</span> <span class="mi">1</span> <span class="o">:</span> <span class="kd">by</span> <span class="gr">sorry</span>
+  <span class="bp">...</span> <span class="bp">=</span> <span class="mi">9</span> <span class="o">:</span> <span class="kd">by</span> <span class="gr">sorry</span><span class="o">,</span>
+  <span class="gr">sorry</span><span class="o">,</span>
+<span class="kd">end</span>
+</pre></div>
+</div>
+<p>Notice that, right after the line</p>
+<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="k">have</span> <span class="n">h3</span> <span class="o">:</span> <span class="n">m</span> <span class="bp">+</span> <span class="mi">3</span> <span class="bp">&#8804;</span> <span class="mi">9</span><span class="o">,</span>
+</pre></div>
+</div>
+<p>the infoview displays two goals:</p>
+<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="mi">2</span> <span class="n">goals</span>
+
+<span class="n">m</span> <span class="n">n</span> <span class="o">:</span> <span class="n">&#8484;</span>
+<span class="n">h1</span> <span class="o">:</span> <span class="n">m</span> <span class="bp">+</span> <span class="mi">3</span> <span class="bp">&#8804;</span> <span class="mi">2</span> <span class="bp">*</span> <span class="n">n</span> <span class="bp">-</span> <span class="mi">1</span>
+<span class="n">h2</span> <span class="o">:</span> <span class="n">n</span> <span class="bp">&#8804;</span> <span class="mi">5</span>
+<span class="bp">&#8866;</span> <span class="n">m</span> <span class="bp">+</span> <span class="mi">3</span> <span class="bp">&#8804;</span> <span class="mi">9</span>
+
+<span class="n">m</span> <span class="n">n</span> <span class="o">:</span> <span class="n">&#8484;</span>
+<span class="n">h1</span> <span class="o">:</span> <span class="n">m</span> <span class="bp">+</span> <span class="mi">3</span> <span class="bp">&#8804;</span> <span class="mi">2</span> <span class="bp">*</span> <span class="n">n</span> <span class="bp">-</span> <span class="mi">1</span>
+<span class="n">h2</span> <span class="o">:</span> <span class="n">n</span> <span class="bp">&#8804;</span> <span class="mi">5</span>
+<span class="n">h3</span> <span class="o">:</span> <span class="n">m</span> <span class="bp">+</span> <span class="mi">3</span> <span class="bp">&#8804;</span> <span class="mi">9</span>
+<span class="bp">&#8866;</span> <span class="n">m</span> <span class="bp">&#8804;</span> <span class="mi">6</span>
+</pre></div>
+</div>
+<p>The first of these goals is established by the <code class="docutils literal notranslate"><span class="pre">calc</span></code>-block, and the second is established by a
+one-line argument which you will need to fill in (the final sorry).</p>
+</section>
+<section id="id3">
+<h3><span class="section-number">2.1.3. </span>Example<a class="headerlink" href="#id3" title="Permalink to this headline">&#61633;</a></h3>
+<p>Let&#8217;s redo another example, this time <a class="reference internal" href="01_Proofs_by_Calculation.html#id32"><span class="std std-numref">Example 1.4.2</span></a>.  The problem was:</p>
 <div class="admonition-problem admonition">
 <p class="admonition-title">Problem</p>
 <p>Let <span class="math notranslate nohighlight">\(r\)</span> and <span class="math notranslate nohighlight">\(s\)</span> be rational numbers, and suppose that
@@ -166,8 +345,9 @@ Therefore</p>
 </div>
 <p>There are two intermediate steps in this problem: proving that <span class="math notranslate nohighlight">\(r \leq 3 + s\)</span> and that
 <span class="math notranslate nohighlight">\(r \leq 3 - s\)</span>.</p>
-<p>Exercise: Here is a Lean setup with this problem, with the stated intermediate goals and the stated
-calculational proof as the final step.  Fill in all the sorries.</p>
+<p>Exercise: Here is a Lean setup for this problem, with the stated intermediate goals, and the stated
+calculational proof as the final step.  Fill in all the sorries.  Also, try to predict what the
+infoview will display at each position in the proof, and then compare your prediction with reality.</p>
 <div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">{</span><span class="n">r</span> <span class="n">s</span> <span class="o">:</span> <span class="n">&#8474;</span><span class="o">}</span> <span class="o">(</span><span class="n">h1</span> <span class="o">:</span> <span class="n">s</span> <span class="bp">+</span> <span class="mi">3</span> <span class="bp">&#8805;</span> <span class="n">r</span><span class="o">)</span> <span class="o">(</span><span class="n">h2</span> <span class="o">:</span> <span class="n">s</span> <span class="bp">+</span> <span class="n">r</span> <span class="bp">&#8804;</span> <span class="mi">3</span><span class="o">)</span> <span class="o">:</span>
   <span class="n">r</span> <span class="bp">&#8804;</span> <span class="mi">3</span> <span class="o">:=</span>
 <span class="kd">begin</span>
@@ -182,8 +362,36 @@ calculational proof as the final step.  Fill in all the sorries.</p>
 </pre></div>
 </div>
 </section>
-<section id="id3">
-<h3><span class="section-number">2.1.3. </span>Example<a class="headerlink" href="#id3" title="Permalink to this headline">&#61633;</a></h3>
+<section id="id4">
+<h3><span class="section-number">2.1.4. </span>Example<a class="headerlink" href="#id4" title="Permalink to this headline">&#61633;</a></h3>
+<p>And let&#8217;s redo one more example, this time <a class="reference internal" href="01_Proofs_by_Calculation.html#id30"><span class="std std-numref">Example 1.4.1</span></a>.  The problem was:</p>
+<div class="admonition-problem admonition">
+<p class="admonition-title">Problem</p>
+<p>Let <span class="math notranslate nohighlight">\(x\)</span> and <span class="math notranslate nohighlight">\(y\)</span> be integers, and suppose that
+<span class="math notranslate nohighlight">\(x + 3 \le 2\)</span> and <span class="math notranslate nohighlight">\(y + 2x\geq 3\)</span>.  Show that <span class="math notranslate nohighlight">\(y&gt;3\)</span>.</p>
+</div>
+<p>Here is a solution which uses an intermediate goal.</p>
+<div class="admonition-solution admonition">
+<p class="admonition-title">Solution</p>
+<p>Since <span class="math notranslate nohighlight">\(x + 3 \le 2\)</span>, we have <span class="math notranslate nohighlight">\(x \leq -1\)</span>. So</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}y&amp;\geq 3-2x\\
+&amp;\geq 3-2\cdot -1\\
+&amp;&gt;3.\end{split}\]</div>
+</div>
+<p>Exercise: Identify the intermediate goal, and express this solution in Lean.</p>
+<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">{</span><span class="n">x</span> <span class="n">y</span> <span class="o">:</span> <span class="n">&#8484;</span><span class="o">}</span> <span class="o">(</span><span class="n">hx</span> <span class="o">:</span> <span class="n">x</span> <span class="bp">+</span> <span class="mi">3</span> <span class="bp">&#8804;</span> <span class="mi">2</span><span class="o">)</span> <span class="o">(</span><span class="n">hy</span> <span class="o">:</span> <span class="n">y</span> <span class="bp">+</span> <span class="mi">2</span> <span class="bp">*</span> <span class="n">x</span> <span class="bp">&#8805;</span> <span class="mi">3</span><span class="o">)</span> <span class="o">:</span>
+  <span class="n">y</span> <span class="bp">&gt;</span> <span class="mi">3</span> <span class="o">:=</span>
+<span class="kd">begin</span>
+  <span class="gr">sorry</span>
+<span class="kd">end</span>
+</pre></div>
+</div>
+</section>
+<section id="id5">
+<h3><span class="section-number">2.1.5. </span>Example<a class="headerlink" href="#id5" title="Permalink to this headline">&#61633;</a></h3>
+<p>We conclude with a couple more exercises translating text solutions into Lean solutions.  These
+examples are mathematically a little harder.</p>
 <div class="admonition-problem admonition">
 <p class="admonition-title">Problem</p>
 <p>Let <span class="math notranslate nohighlight">\(a\)</span> and <span class="math notranslate nohighlight">\(b\)</span> be real numbers and suppose that <span class="math notranslate nohighlight">\(-b \le a \le b\)</span>.
@@ -195,9 +403,16 @@ Show that <span class="math notranslate nohighlight">\(a ^ 2 \le b ^ 2\)</span>.
 second part of the hypothesis, <span class="math notranslate nohighlight">\(0 \le b - a\)</span>.</p>
 <p>Therefore <span class="math notranslate nohighlight">\((b + a)(b - a)\)</span> is nonnegative, so</p>
 <div class="math notranslate nohighlight">
-\[\begin{split}a ^ 2 &amp; &amp;\le a ^ 2 + (b+a)(b-a)\\
+\[\begin{split}a ^ 2  &amp;\le a ^ 2 + (b+a)(b-a)\\
 &amp;= b ^ 2.\end{split}\]</div>
 </div>
+<p>Exercise: Identify the two intermediate goals, and express this solution in Lean.  (Note that Lean
+is a little more powerful here than the human reader:  you do not need to give any Lean translation of
+the step</p>
+<blockquote>
+<div><p>Therefore <span class="math notranslate nohighlight">\((b + a)(b - a)\)</span> is nonnegative,</p>
+</div></blockquote>
+<p>instead Lean will figure this out by itself at the point where this is needed.)</p>
 <div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">(</span><span class="n">a</span> <span class="n">b</span> <span class="o">:</span> <span class="n">&#8477;</span><span class="o">)</span> <span class="o">(</span><span class="n">h1</span> <span class="o">:</span> <span class="bp">-</span><span class="n">b</span> <span class="bp">&#8804;</span> <span class="n">a</span><span class="o">)</span> <span class="o">(</span><span class="n">h2</span> <span class="o">:</span> <span class="n">a</span> <span class="bp">&#8804;</span> <span class="n">b</span><span class="o">)</span> <span class="o">:</span> <span class="n">a</span> <span class="bp">^</span> <span class="mi">2</span> <span class="bp">&#8804;</span> <span class="n">b</span> <span class="bp">^</span> <span class="mi">2</span> <span class="o">:=</span>
 <span class="kd">begin</span>
   <span class="gr">sorry</span>
@@ -205,8 +420,8 @@ second part of the hypothesis, <span class="math notranslate nohighlight">\(0 \l
 </pre></div>
 </div>
 </section>
-<section id="id4">
-<h3><span class="section-number">2.1.4. </span>Example<a class="headerlink" href="#id4" title="Permalink to this headline">&#61633;</a></h3>
+<section id="id6">
+<h3><span class="section-number">2.1.6. </span>Example<a class="headerlink" href="#id6" title="Permalink to this headline">&#61633;</a></h3>
 <div class="admonition-problem admonition">
 <p class="admonition-title">Problem</p>
 <p>Let <span class="math notranslate nohighlight">\(a\)</span> and <span class="math notranslate nohighlight">\(b\)</span> be real numbers and suppose that <span class="math notranslate nohighlight">\(a \le b\)</span>.
@@ -214,10 +429,11 @@ Show that <span class="math notranslate nohighlight">\(a ^ 3 \le b ^ 3\)</span>.
 </div>
 <p>Notice that we are not assuming that <span class="math notranslate nohighlight">\(a\)</span> and <span class="math notranslate nohighlight">\(b\)</span> be positive, so our easier tricks for
 the behaviour of inequalities under multiplication/powers do not apply.</p>
+<p>Exercise: Identify the intermediate goal, and express this solution in Lean.</p>
 <div class="admonition-solution admonition">
 <p class="admonition-title">Solution</p>
-<p>By the hypothesis, <span class="math notranslate nohighlight">\(0 \le b - a\)</span>.</p>
-<p>Therefore <span class="math notranslate nohighlight">\(\frac{(b - a)[(b - a)^2+3(b+a)^2]}{4}\)</span> is nonnegative, so</p>
+<p>Since <span class="math notranslate nohighlight">\(a \le b\)</span>, we have <span class="math notranslate nohighlight">\(0 \le b - a\)</span>.</p>
+<p>Therefore <span class="math notranslate nohighlight">\(\frac{(b - a)\left[(b - a)^2+3(b+a)^2\right]}{4}\)</span> is nonnegative, so</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}a ^ 3 &amp;\le a ^ 3 + \frac{(b - a)\left[(b - a)^2+3(b+a)^2\right]}{4}\\
 &amp;= b ^ 3.\end{split}\]</div>
@@ -232,8 +448,8 @@ the behaviour of inequalities under multiplication/powers do not apply.</p>
 </section>
 <section id="invoking-lemmas">
 <span id="lemmas"></span><h2><span class="section-number">2.2. </span>Invoking lemmas<a class="headerlink" href="#invoking-lemmas" title="Permalink to this headline">&#61633;</a></h2>
-<section id="id5">
-<h3><span class="section-number">2.2.1. </span>Example<a class="headerlink" href="#id5" title="Permalink to this headline">&#61633;</a></h3>
+<section id="id7">
+<h3><span class="section-number">2.2.1. </span>Example<a class="headerlink" href="#id7" title="Permalink to this headline">&#61633;</a></h3>
 <p>Here&#8217;s a style of problem we haven&#8217;t seen before, in which the goal is a <em>disequality</em>,
 <span class="math notranslate nohighlight">\(x\ne 1\)</span>, rather than an equality (<span class="math notranslate nohighlight">\(=\)</span>) or inequality (<span class="math notranslate nohighlight">\(\le\)</span>, <span class="math notranslate nohighlight">\(&lt;\)</span>,
 <span class="math notranslate nohighlight">\(\ge\)</span>, <span class="math notranslate nohighlight">\(&gt;\)</span>).</p>
@@ -252,11 +468,11 @@ the behaviour of inequalities under multiplication/powers do not apply.</p>
 <p>What happened in this problem?  We used a piece of &#8220;general knowledge&#8221;, that if one number is
 strictly smaller than another then they can&#8217;t be the same.  Or at least, this feels like general
 knowledge &#8211; just common sense! &#8211; but really it is a <em>lemma</em>:  a fact that has been proved already
-<a class="footnote-reference brackets" href="#id12" id="id6">1</a>
+<a class="footnote-reference brackets" href="#id14" id="id8">1</a>
 by us or someone else, and which we are allowed to invoke in our proof.</p>
 <p>When working in Lean, if we want to invoke a lemma in this way, we need to call it out by name.
 Someone earlier, in the big Lean mathematical library, has proved this fact and named it
-<code class="docutils literal notranslate"><span class="pre">ne_of_lt</span></code>: <a class="footnote-reference brackets" href="#id13" id="id7">2</a></p>
+<code class="docutils literal notranslate"><span class="pre">ne_of_lt</span></code>: <a class="footnote-reference brackets" href="#id15" id="id9">2</a></p>
 <div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">lemma</span> <span class="n">ne_of_lt</span> <span class="o">{</span><span class="n">a</span> <span class="n">b</span> <span class="o">:</span> <span class="n">&#8474;</span><span class="o">}</span> <span class="o">(</span><span class="n">h</span> <span class="o">:</span> <span class="n">a</span> <span class="bp">&lt;</span> <span class="n">b</span><span class="o">)</span> <span class="o">:</span> <span class="n">a</span> <span class="bp">&#8800;</span> <span class="n">b</span> <span class="o">:=</span>
 </pre></div>
 </div>
@@ -313,8 +529,8 @@ But I do need to explicitly mention the name of the lemma,</p>
 </div>
 <p>because &#8220;it&#8217;s general knowledge!&#8221; is not a precise enough justification for Lean to find it.</p>
 </section>
-<section id="id8">
-<h3><span class="section-number">2.2.2. </span>Example<a class="headerlink" href="#id8" title="Permalink to this headline">&#61633;</a></h3>
+<section id="id10">
+<h3><span class="section-number">2.2.2. </span>Example<a class="headerlink" href="#id10" title="Permalink to this headline">&#61633;</a></h3>
 <p>Here&#8217;s a similar problem, in which I will prove a disequality by showing the left-hand side is
 <em>larger</em>, rather than (as in the previous problem) <em>smaller</em>.</p>
 <div class="admonition-problem admonition">
@@ -337,8 +553,8 @@ But I do need to explicitly mention the name of the lemma,</p>
 </pre></div>
 </div>
 </section>
-<section id="id9">
-<h3><span class="section-number">2.2.3. </span>Example<a class="headerlink" href="#id9" title="Permalink to this headline">&#61633;</a></h3>
+<section id="id11">
+<h3><span class="section-number">2.2.3. </span>Example<a class="headerlink" href="#id11" title="Permalink to this headline">&#61633;</a></h3>
 <div class="admonition-problem admonition">
 <p class="admonition-title">Problem</p>
 <p>Let <span class="math notranslate nohighlight">\(a\)</span> and <span class="math notranslate nohighlight">\(b\)</span> be real numbers, and suppose that <span class="math notranslate nohighlight">\(a^2+b^2=0\)</span>.  Show that
@@ -364,8 +580,8 @@ since squares are nonnegative.  For the first,</p>
 </pre></div>
 </div>
 </section>
-<section id="id10">
-<h3><span class="section-number">2.2.4. </span>Example<a class="headerlink" href="#id10" title="Permalink to this headline">&#61633;</a></h3>
+<section id="id12">
+<h3><span class="section-number">2.2.4. </span>Example<a class="headerlink" href="#id12" title="Permalink to this headline">&#61633;</a></h3>
 <p>Here is another commonly-used lemma which replaces one goal by two (hopefully easier) goals:
 if you know that <span class="math notranslate nohighlight">\(0&lt;ab\)</span> and <span class="math notranslate nohighlight">\(0 \le a\)</span>, then you can conclude that <span class="math notranslate nohighlight">\(0&lt;b\)</span>.</p>
 <p>(You
@@ -415,7 +631,7 @@ positive, before going on to the main goal.</p>
 </div>
 </section>
 <section id="integral-domain-step1">
-<span id="id11"></span><h3><span class="section-number">2.2.5. </span>Example<a class="headerlink" href="#integral-domain-step1" title="Permalink to this headline">&#61633;</a></h3>
+<span id="id13"></span><h3><span class="section-number">2.2.5. </span>Example<a class="headerlink" href="#integral-domain-step1" title="Permalink to this headline">&#61633;</a></h3>
 <p>Finally, here&#8217;s an example in which we need to use several lemmas.  Try to pick them out in the
 text proof as they are used.</p>
 <div class="admonition-problem admonition">
@@ -491,11 +707,11 @@ the lemmas used in that example.</p>
 </div>
 <p class="rubric">Footnotes</p>
 <dl class="footnote brackets">
-<dt class="label" id="id12"><span class="brackets"><a class="fn-backref" href="#id6">1</a></span></dt>
+<dt class="label" id="id14"><span class="brackets"><a class="fn-backref" href="#id8">1</a></span></dt>
 <dd><p>In this case, as a consequence of the definition of the relation <span class="math notranslate nohighlight">\(&lt;\)</span> on the rational
 numbers.  See section TODO.</p>
 </dd>
-<dt class="label" id="id13"><span class="brackets"><a class="fn-backref" href="#id7">2</a></span></dt>
+<dt class="label" id="id15"><span class="brackets"><a class="fn-backref" href="#id9">2</a></span></dt>
 <dd><p>Here <code class="docutils literal notranslate"><span class="pre">ne</span></code> stands for &#8220;not equal&#8221;, <code class="docutils literal notranslate"><span class="pre">lt</span></code> stands for (TODO ???), and the <code class="docutils literal notranslate"><span class="pre">of</span></code> means that
 we are deducing a <code class="docutils literal notranslate"><span class="pre">ne</span></code> statement from a <code class="docutils literal notranslate"><span class="pre">lt</span></code> statement. The standard Lean mathematical
 library has many such naming conventions, but you don&#8217;t need to follow them; you can call your
@@ -507,7 +723,7 @@ own lemmas <code class="docutils literal notranslate"><span class="pre">foo</spa
 <section id="or-and-proof-by-cases">
 <span id="or"></span><h2><span class="section-number">2.3. </span>&#8220;Or&#8221; and proof by cases<a class="headerlink" href="#or-and-proof-by-cases" title="Permalink to this headline">&#61633;</a></h2>
 <section id="sq-ne-two">
-<span id="id14"></span><h3><span class="section-number">2.3.1. </span>Example<a class="headerlink" href="#sq-ne-two" title="Permalink to this headline">&#61633;</a></h3>
+<span id="id16"></span><h3><span class="section-number">2.3.1. </span>Example<a class="headerlink" href="#sq-ne-two" title="Permalink to this headline">&#61633;</a></h3>
 <div class="admonition-problem admonition">
 <p class="admonition-title">Problem</p>
 <p>Let <span class="math notranslate nohighlight">\(n\)</span> be any natural number.  Show that <span class="math notranslate nohighlight">\(n ^ 2 \ne 2\)</span>.</p>
@@ -540,7 +756,7 @@ own lemmas <code class="docutils literal notranslate"><span class="pre">foo</spa
 </div>
 </section>
 <section id="integral-domain-step3">
-<span id="id15"></span><h3><span class="section-number">2.3.2. </span>Example<a class="headerlink" href="#integral-domain-step3" title="Permalink to this headline">&#61633;</a></h3>
+<span id="id17"></span><h3><span class="section-number">2.3.2. </span>Example<a class="headerlink" href="#integral-domain-step3" title="Permalink to this headline">&#61633;</a></h3>
 <p>We showed in <a class="reference internal" href="#integral-domain-step1"><span class="std std-numref">Example 2.2.5</span></a> that if <span class="math notranslate nohighlight">\(ab=0\)</span> and
 <span class="math notranslate nohighlight">\(0 &lt; a\)</span>, then <span class="math notranslate nohighlight">\(b = 0\)</span>.  Later, in the
 <a class="reference internal" href="#integral-domain-step2"><span class="std std-ref">exercises to that section</span></a>, we showed that that if <span class="math notranslate nohighlight">\(ab=0\)</span> and
@@ -584,8 +800,8 @@ alternative.</p>
 <code class="docutils literal notranslate"><span class="pre">eq_zero_or_eq_zero_of_mul_eq_zero</span></code>.  It&#8217;s clearly an important fact, and we&#8217;ll use it and its
 variants in later problems.</p>
 </section>
-<section id="id16">
-<h3><span class="section-number">2.3.3. </span>Example<a class="headerlink" href="#id16" title="Permalink to this headline">&#61633;</a></h3>
+<section id="id18">
+<h3><span class="section-number">2.3.3. </span>Example<a class="headerlink" href="#id18" title="Permalink to this headline">&#61633;</a></h3>
 <p>In <a class="reference internal" href="#sq-ne-two"><span class="std std-numref">Example 2.3.1</span></a> we showed that no natural number squares to 2.  It is also
 true that no integer squares to 2, but since order laws are more complicated when negative numbers
 are involved, the proof is more complicated, requiring cases within cases.</p>
@@ -625,7 +841,7 @@ braces, as follows.</p>
   <span class="k">have</span> <span class="n">hn0</span> <span class="o">:</span> <span class="n">n</span> <span class="bp">&#8804;</span> <span class="mi">0</span> <span class="bp">&#8744;</span> <span class="mi">1</span> <span class="bp">&#8804;</span> <span class="n">n</span> <span class="o">:=</span> <span class="n">le_or_lt</span> <span class="n">n</span> <span class="mi">0</span><span class="o">,</span>
   <span class="n">cases</span> <span class="n">hn0</span> <span class="k">with</span> <span class="n">hn0</span> <span class="n">hn0</span><span class="o">,</span>
   <span class="o">{</span> <span class="k">have</span> <span class="o">:</span> <span class="mi">0</span> <span class="bp">&#8804;</span> <span class="bp">-</span> <span class="n">n</span><span class="o">,</span>
-    <span class="n">addarith</span> <span class="o">[</span><span class="n">hn0</span><span class="o">],</span>
+    <span class="n">addarith</span> <span class="n">hn0</span><span class="o">,</span>
     <span class="k">have</span> <span class="n">hn</span> <span class="o">:</span> <span class="bp">-</span><span class="n">n</span> <span class="bp">&#8804;</span> <span class="mi">1</span> <span class="bp">&#8744;</span> <span class="mi">2</span> <span class="bp">&#8804;</span> <span class="bp">-</span><span class="n">n</span> <span class="o">:=</span> <span class="n">le_or_lt</span> <span class="o">(</span><span class="bp">-</span><span class="n">n</span><span class="o">)</span> <span class="mi">1</span><span class="o">,</span>
     <span class="n">cases</span> <span class="n">hn</span><span class="o">,</span>
     <span class="o">{</span> <span class="n">apply</span> <span class="n">ne_of_lt</span><span class="o">,</span>
@@ -649,7 +865,7 @@ braces, as follows.</p>
 </div>
 </section>
 <section id="solve-quadratic">
-<span id="id17"></span><h3><span class="section-number">2.3.4. </span>Example<a class="headerlink" href="#solve-quadratic" title="Permalink to this headline">&#61633;</a></h3>
+<span id="id19"></span><h3><span class="section-number">2.3.4. </span>Example<a class="headerlink" href="#solve-quadratic" title="Permalink to this headline">&#61633;</a></h3>
 <p>Let&#8217;s solve a quadratic equation; this is a classic situation where the result has an &#8220;or&#8221; in it.
 We will get to use the fact proved in <a class="reference internal" href="#integral-domain-step3"><span class="std std-numref">Example 2.3.2</span></a>: if the
 product of two numbers is zero, then one of them is zero.</p>
@@ -683,8 +899,8 @@ and it is left to the reader to observe that <span class="math notranslate nohig
 </pre></div>
 </div>
 </section>
-<section id="id18">
-<h3><span class="section-number">2.3.5. </span>Example<a class="headerlink" href="#id18" title="Permalink to this headline">&#61633;</a></h3>
+<section id="id20">
+<h3><span class="section-number">2.3.5. </span>Example<a class="headerlink" href="#id20" title="Permalink to this headline">&#61633;</a></h3>
 <p>Here&#8217;s a similar, but easier, problem.</p>
 <div class="admonition-problem admonition">
 <p class="admonition-title">Problem</p>
@@ -707,8 +923,8 @@ model.</p>
 </pre></div>
 </div>
 </section>
-<section id="id19">
-<h3><span class="section-number">2.3.6. </span>Exercises<a class="headerlink" href="#id19" title="Permalink to this headline">&#61633;</a></h3>
+<section id="id21">
+<h3><span class="section-number">2.3.6. </span>Exercises<a class="headerlink" href="#id21" title="Permalink to this headline">&#61633;</a></h3>
 <ol class="arabic simple">
 <li><p>Let <span class="math notranslate nohighlight">\(n\)</span> be any natural number.  Show that <span class="math notranslate nohighlight">\(n ^ 2 \ne 7\)</span>.</p></li>
 </ol>
