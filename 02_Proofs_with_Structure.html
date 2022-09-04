@@ -62,12 +62,14 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#or-and-proof-by-cases">2.3. &#8220;Or&#8221; and proof by cases</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#sq-ne-two">2.3.1. Example</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#integral-domain-step3">2.3.2. Example</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id16">2.3.1. Example</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#sq-ne-two">2.3.2. Example</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#id18">2.3.3. Example</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#solve-quadratic">2.3.4. Example</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id20">2.3.5. Example</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id21">2.3.6. Exercises</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#integral-domain-step3">2.3.4. Example</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#solve-quadratic">2.3.5. Example</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id21">2.3.6. Example</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id22">2.3.7. Example</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id23">2.3.8. Exercises</a></li>
 </ul>
 </li>
 </ul>
@@ -429,7 +431,6 @@ Show that <span class="math notranslate nohighlight">\(a ^ 3 \le b ^ 3\)</span>.
 </div>
 <p>Notice that we are not assuming that <span class="math notranslate nohighlight">\(a\)</span> and <span class="math notranslate nohighlight">\(b\)</span> be positive, so our easier tricks for
 the behaviour of inequalities under multiplication/powers do not apply.</p>
-<p>Exercise: Identify the intermediate goal, and express this solution in Lean.</p>
 <div class="admonition-solution admonition">
 <p class="admonition-title">Solution</p>
 <p>Since <span class="math notranslate nohighlight">\(a \le b\)</span>, we have <span class="math notranslate nohighlight">\(0 \le b - a\)</span>.</p>
@@ -438,6 +439,7 @@ the behaviour of inequalities under multiplication/powers do not apply.</p>
 \[\begin{split}a ^ 3 &amp;\le a ^ 3 + \frac{(b - a)\left[(b - a)^2+3(b+a)^2\right]}{4}\\
 &amp;= b ^ 3.\end{split}\]</div>
 </div>
+<p>Exercise: Identify the intermediate goal, and express this solution in Lean.</p>
 <div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">(</span><span class="n">a</span> <span class="n">b</span> <span class="o">:</span> <span class="n">&#8477;</span><span class="o">)</span> <span class="o">(</span><span class="n">h</span> <span class="o">:</span> <span class="n">a</span> <span class="bp">&#8804;</span> <span class="n">b</span><span class="o">)</span> <span class="o">:</span> <span class="n">a</span> <span class="bp">^</span> <span class="mi">3</span> <span class="bp">&#8804;</span> <span class="n">b</span> <span class="bp">^</span> <span class="mi">3</span> <span class="o">:=</span>
 <span class="kd">begin</span>
   <span class="gr">sorry</span>
@@ -647,7 +649,7 @@ text proof as they are used.</p>
 </div>
 <p>In Lean, the relevant lemmas are <a class="reference internal" href="#le-antisymm"><span class="std std-ref">the antisymmetry lemma</span></a>, together with two
 variants on <a class="reference internal" href="#pos-of-mul-pos-right"><span class="std std-ref">the lemma deducing positivity from positivity of a multiple</span></a>.</p>
-<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">lemma</span> <span class="n">eq_zero_of_mul_pos_eq_zero</span> <span class="o">{</span><span class="n">b</span> <span class="o">:</span> <span class="n">&#8477;</span><span class="o">}</span> <span class="o">(</span><span class="n">a</span> <span class="o">:</span> <span class="n">&#8477;</span><span class="o">)</span> <span class="o">(</span><span class="n">h</span> <span class="o">:</span> <span class="n">a</span> <span class="bp">*</span> <span class="n">b</span> <span class="bp">=</span> <span class="mi">0</span><span class="o">)</span> <span class="o">(</span><span class="n">ha</span> <span class="o">:</span> <span class="mi">0</span> <span class="bp">&lt;</span> <span class="n">a</span><span class="o">)</span> <span class="o">:</span>
+<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">lemma</span> <span class="n">eq_zero_of_mul_pos_eq_zero</span> <span class="o">{</span><span class="n">b</span> <span class="o">:</span> <span class="n">&#8477;</span><span class="o">}</span> <span class="o">(</span><span class="n">a</span> <span class="o">:</span> <span class="n">&#8477;</span><span class="o">)</span> <span class="o">(</span><span class="n">H1</span> <span class="o">:</span> <span class="n">a</span> <span class="bp">*</span> <span class="n">b</span> <span class="bp">=</span> <span class="mi">0</span><span class="o">)</span> <span class="o">(</span><span class="n">H2</span> <span class="o">:</span> <span class="mi">0</span> <span class="bp">&lt;</span> <span class="n">a</span><span class="o">)</span> <span class="o">:</span>
   <span class="n">b</span> <span class="bp">=</span> <span class="mi">0</span> <span class="o">:=</span>
 <span class="kd">begin</span>
   <span class="gr">sorry</span>
@@ -655,7 +657,7 @@ variants on <a class="reference internal" href="#pos-of-mul-pos-right"><span cla
 </pre></div>
 </div>
 <p>Unusually, we&#8217;re giving this problem a name in Lean, <code class="docutils literal notranslate"><span class="pre">eq_zero_of_mul_pos_eq_zero</span></code>, for future reference.
-This is because we&#8217;ll use it later in <a class="reference internal" href="#integral-domain-step3"><span class="std std-numref">Example 2.3.2</span></a>.</p>
+This is because we&#8217;ll use it later in <a class="reference internal" href="#integral-domain-step3"><span class="std std-numref">Example 2.3.4</span></a>.</p>
 </section>
 <section id="exercises">
 <h3><span class="section-number">2.2.6. </span>Exercises<a class="headerlink" href="#exercises" title="Permalink to this headline">&#61633;</a></h3>
@@ -698,7 +700,7 @@ involved will be different, but see if you can guess their names by analogy with
 the lemmas used in that example.</p>
 </li>
 </ol>
-<div class="highlight-lean notranslate" id="integral-domain-step2"><div class="highlight"><pre><span></span><span class="kd">lemma</span> <span class="n">eq_zero_of_mul_neg_eq_zero</span> <span class="o">{</span><span class="n">b</span> <span class="o">:</span> <span class="n">&#8477;</span><span class="o">}</span> <span class="o">(</span><span class="n">a</span> <span class="o">:</span> <span class="n">&#8477;</span><span class="o">)</span> <span class="o">(</span><span class="n">h</span> <span class="o">:</span> <span class="n">a</span> <span class="bp">*</span> <span class="n">b</span> <span class="bp">=</span> <span class="mi">0</span><span class="o">)</span> <span class="o">(</span><span class="n">ha</span> <span class="o">:</span> <span class="n">a</span> <span class="bp">&lt;</span> <span class="mi">0</span><span class="o">)</span> <span class="o">:</span>
+<div class="highlight-lean notranslate" id="integral-domain-step2"><div class="highlight"><pre><span></span><span class="kd">lemma</span> <span class="n">eq_zero_of_mul_neg_eq_zero</span> <span class="o">{</span><span class="n">b</span> <span class="o">:</span> <span class="n">&#8477;</span><span class="o">}</span> <span class="o">(</span><span class="n">a</span> <span class="o">:</span> <span class="n">&#8477;</span><span class="o">)</span> <span class="o">(</span><span class="n">H1</span> <span class="o">:</span> <span class="n">a</span> <span class="bp">*</span> <span class="n">b</span> <span class="bp">=</span> <span class="mi">0</span><span class="o">)</span> <span class="o">(</span><span class="n">H2</span> <span class="o">:</span> <span class="n">a</span> <span class="bp">&lt;</span> <span class="mi">0</span><span class="o">)</span> <span class="o">:</span>
   <span class="n">b</span> <span class="bp">=</span> <span class="mi">0</span> <span class="o">:=</span>
 <span class="kd">begin</span>
   <span class="gr">sorry</span>
@@ -722,12 +724,89 @@ own lemmas <code class="docutils literal notranslate"><span class="pre">foo</spa
 </section>
 <section id="or-and-proof-by-cases">
 <span id="or"></span><h2><span class="section-number">2.3. </span>&#8220;Or&#8221; and proof by cases<a class="headerlink" href="#or-and-proof-by-cases" title="Permalink to this headline">&#61633;</a></h2>
+<section id="id16">
+<h3><span class="section-number">2.3.1. </span>Example<a class="headerlink" href="#id16" title="Permalink to this headline">&#61633;</a></h3>
+<p>In mathematics, the word &#8220;or&#8221; (denoted <span class="math notranslate nohighlight">\(\lor\)</span> as a logical symbol) can connect two
+statements. For example, here is a problem in which the hypothesis is an &#8220;or&#8221;-statement.</p>
+<div class="admonition-problem admonition">
+<p class="admonition-title">Problem</p>
+<p>Let <span class="math notranslate nohighlight">\(x\)</span> and <span class="math notranslate nohighlight">\(y\)</span> be real numbers and suppose that either <span class="math notranslate nohighlight">\(x=1\)</span> or
+<span class="math notranslate nohighlight">\(y=-1\)</span>.  Show that <span class="math notranslate nohighlight">\(xy+x=y + 1\)</span>.</p>
+</div>
+<p>The hypothesis</p>
+<blockquote>
+<div><p><span class="math notranslate nohighlight">\(x=1\)</span> or <span class="math notranslate nohighlight">\(y=-1\)</span></p>
+</div></blockquote>
+<p>tells us that at least one of the alternatives <span class="math notranslate nohighlight">\(x=1\)</span>, <span class="math notranslate nohighlight">\(y=-1\)</span> must occur (and possibly
+both, but this needs no special consideration).  So a solution to this problem simply involves
+considering these two alternatives in turn.  This is called a <em>proof by cases</em>.</p>
+<div class="admonition-solution admonition">
+<p class="admonition-title">Solution</p>
+<p>If <span class="math notranslate nohighlight">\(x=1\)</span>, then</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}xy+x&amp;=1\cdot y+1\\
+&amp;= y+1,\end{split}\]</div>
+<p>and if <span class="math notranslate nohighlight">\(y=-1\)</span> then</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}xy+x&amp;=x\cdot -1+x\\
+&amp;=-1+1\\
+&amp;=y+1.\end{split}\]</div>
+</div>
+<p>In Lean, an &#8220;or&#8221;-statement is represented using the logical symbol <code class="docutils literal notranslate"><span class="pre">&#8744;</span></code>.  At the start of
+this problem, the infoview displays one task, with <code class="docutils literal notranslate"><span class="pre">h</span></code> as the &#8220;or&#8221;-statement hypothesis, and the
+goal as proving that <span class="math notranslate nohighlight">\(xy+x=y + 1\)</span>.</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>1 goal
+
+x y : &#8477;
+h : x = 1 &#8744; y = -1
+&#8866; x * y + x = y + 1
+</pre></div>
+</div>
+<p>To consider in turn the two cases represented by an &#8220;or&#8221;-statement, we use the tactic <code class="docutils literal notranslate"><span class="pre">cases</span></code>.
+After applying this tactic, the infoview now displays two simpler tasks.  The goal in each task is
+still to prove that <span class="math notranslate nohighlight">\(xy+x=y + 1\)</span>, but the hypothesis has changed: to the left alternative,
+<code class="docutils literal notranslate"><span class="pre">x</span> <span class="pre">=</span> <span class="pre">1</span></code>, in the first task, and to the right alternative, <code class="docutils literal notranslate"><span class="pre">y</span> <span class="pre">=</span> <span class="pre">-1</span></code> in the second task.</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>2 goals
+
+x y : &#8477;
+hx : x = 1
+&#8866; x * y + x = y + 1
+
+x y : &#8477;
+hy : y = -1
+&#8866; x * y + x = y + 1
+</pre></div>
+</div>
+<p>We can then solve these simpler tasks one by one, giving a calculational proof of each.</p>
+<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">{</span><span class="n">x</span> <span class="n">y</span> <span class="o">:</span> <span class="n">&#8477;</span><span class="o">}</span> <span class="o">(</span><span class="n">h</span> <span class="o">:</span> <span class="n">x</span> <span class="bp">=</span> <span class="mi">1</span> <span class="bp">&#8744;</span> <span class="n">y</span> <span class="bp">=</span> <span class="bp">-</span><span class="mi">1</span><span class="o">)</span> <span class="o">:</span> <span class="n">x</span> <span class="bp">*</span> <span class="n">y</span> <span class="bp">+</span> <span class="n">x</span> <span class="bp">=</span> <span class="n">y</span> <span class="bp">+</span> <span class="mi">1</span> <span class="o">:=</span>
+<span class="kd">begin</span>
+  <span class="n">cases</span> <span class="n">h</span> <span class="k">with</span> <span class="n">hx</span> <span class="n">hy</span><span class="o">,</span>
+  <span class="k">calc</span> <span class="n">x</span> <span class="bp">*</span> <span class="n">y</span> <span class="bp">+</span> <span class="n">x</span> <span class="bp">=</span> <span class="mi">1</span> <span class="bp">*</span> <span class="n">y</span> <span class="bp">+</span> <span class="mi">1</span> <span class="o">:</span> <span class="kd">by</span> <span class="n">rw</span> <span class="o">[</span><span class="n">hx</span><span class="o">]</span>
+  <span class="bp">...</span> <span class="bp">=</span> <span class="n">y</span> <span class="bp">+</span> <span class="mi">1</span> <span class="o">:</span> <span class="kd">by</span> <span class="n">ring</span><span class="o">,</span>
+  <span class="k">calc</span> <span class="n">x</span> <span class="bp">*</span> <span class="n">y</span> <span class="bp">+</span> <span class="n">x</span> <span class="bp">=</span> <span class="n">x</span> <span class="bp">*</span> <span class="bp">-</span><span class="mi">1</span> <span class="bp">+</span> <span class="n">x</span> <span class="o">:</span> <span class="kd">by</span> <span class="n">rw</span> <span class="o">[</span><span class="n">hy</span><span class="o">]</span>
+  <span class="bp">...</span> <span class="bp">=</span> <span class="bp">-</span><span class="mi">1</span> <span class="bp">+</span> <span class="mi">1</span> <span class="o">:</span> <span class="kd">by</span> <span class="n">ring</span>
+  <span class="bp">...</span> <span class="bp">=</span> <span class="n">y</span> <span class="bp">+</span> <span class="mi">1</span> <span class="o">:</span> <span class="kd">by</span> <span class="n">rw</span> <span class="o">[</span><span class="n">hy</span><span class="o">],</span>
+<span class="kd">end</span>
+</pre></div>
+</div>
+</section>
 <section id="sq-ne-two">
-<span id="id16"></span><h3><span class="section-number">2.3.1. </span>Example<a class="headerlink" href="#sq-ne-two" title="Permalink to this headline">&#61633;</a></h3>
+<span id="id17"></span><h3><span class="section-number">2.3.2. </span>Example<a class="headerlink" href="#sq-ne-two" title="Permalink to this headline">&#61633;</a></h3>
+<p>More commonly, you will give a proof by cases for a problem in which there is no hypothesis
+directly structured as an &#8220;or&#8221;-statement. Instead, you will create such a hypothesis yourself, by
+setting up and proving an intermediate goal which is an &#8220;or&#8221;-statement.</p>
 <div class="admonition-problem admonition">
 <p class="admonition-title">Problem</p>
 <p>Let <span class="math notranslate nohighlight">\(n\)</span> be any natural number.  Show that <span class="math notranslate nohighlight">\(n ^ 2 \ne 2\)</span>.</p>
 </div>
+<p>In this problem, we will case-split on the &#8220;or&#8221;-statement</p>
+<blockquote>
+<div><p><span class="math notranslate nohighlight">\(n \le 1\)</span> or <span class="math notranslate nohighlight">\(2 \le n\)</span>.</p>
+</div></blockquote>
+<p>On paper this can be stated without a proof, although really it comes as the application of a lemma
+about the natural numbers:  in general, either <span class="math notranslate nohighlight">\(n\)</span> is less than or equal to one natural
+number or it&#8217;s greater than or equal to the next one.  The solution to the problem is easy after
+this case-split.</p>
 <div class="admonition-solution admonition">
 <p class="admonition-title">Solution</p>
 <p>We consider separately the cases <span class="math notranslate nohighlight">\(n \le 1\)</span> and <span class="math notranslate nohighlight">\(2 \le n\)</span>.</p>
@@ -740,29 +819,88 @@ own lemmas <code class="docutils literal notranslate"><span class="pre">foo</spa
 \[\begin{split}2 &amp;&lt; 2 ^ 2\\
 &amp; \le n ^ 2.\end{split}\]</div>
 </div>
+<p>In Lean, we set up this &#8220;or&#8221;-statement explicitly as an intermediate goal</p>
+<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="k">have</span> <span class="n">hn</span> <span class="o">:</span> <span class="n">n</span> <span class="bp">&#8804;</span> <span class="mi">1</span> <span class="bp">&#8744;</span> <span class="mi">2</span> <span class="bp">&#8804;</span> <span class="n">n</span><span class="o">,</span>
+</pre></div>
+</div>
+<p>and prove it by applying the right lemma,</p>
+<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">lemma</span> <span class="n">le_or_lt</span> <span class="o">(</span><span class="n">a</span> <span class="n">b</span> <span class="o">:</span> <span class="n">&#8469;</span><span class="o">)</span> <span class="o">:</span> <span class="n">a</span> <span class="bp">&#8804;</span> <span class="n">b</span> <span class="bp">&#8744;</span> <span class="n">b</span> <span class="bp">+</span> <span class="mi">1</span> <span class="bp">&#8804;</span> <span class="n">a</span> <span class="o">:=</span>
+</pre></div>
+</div>
+<p>After establishing the intermediate goal, we case-split on that fact, and are left with two tasks
+corresponding to the two cases:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>2 goals
+
+n : &#8469;
+hn : n &#8804; 1
+&#8866; n ^ 2 &#8800; 2
+
+n : &#8469;
+hn : 2 &#8804; n
+&#8866; n ^ 2 &#8800; 2
+</pre></div>
+</div>
+<p>Exercise:  The first case has been written up in Lean.  Fill in the details of the second case.</p>
 <div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">{</span><span class="n">n</span> <span class="o">:</span> <span class="n">&#8469;</span><span class="o">}</span> <span class="o">:</span> <span class="n">n</span> <span class="bp">^</span> <span class="mi">2</span> <span class="bp">&#8800;</span> <span class="mi">2</span> <span class="o">:=</span>
 <span class="kd">begin</span>
-  <span class="k">have</span> <span class="n">hn</span> <span class="o">:</span> <span class="n">n</span> <span class="bp">&#8804;</span> <span class="mi">1</span> <span class="bp">&#8744;</span> <span class="mi">2</span> <span class="bp">&#8804;</span> <span class="n">n</span> <span class="o">:=</span> <span class="n">le_or_lt</span> <span class="n">n</span> <span class="mi">1</span><span class="o">,</span>
+  <span class="k">have</span> <span class="n">hn</span> <span class="o">:</span> <span class="n">n</span> <span class="bp">&#8804;</span> <span class="mi">1</span> <span class="bp">&#8744;</span> <span class="mi">2</span> <span class="bp">&#8804;</span> <span class="n">n</span><span class="o">,</span>
+  <span class="n">apply</span> <span class="n">le_or_lt</span><span class="o">,</span>
   <span class="n">cases</span> <span class="n">hn</span> <span class="k">with</span> <span class="n">hn</span> <span class="n">hn</span><span class="o">,</span>
   <span class="n">apply</span> <span class="n">ne_of_lt</span><span class="o">,</span>
-  <span class="k">have</span> <span class="o">:</span> <span class="mi">0</span> <span class="bp">&#8804;</span> <span class="n">n</span> <span class="o">:=</span> <span class="gr">sorry</span><span class="o">,</span> <span class="c1">-- soon will be built into `positivity`</span>
   <span class="k">calc</span> <span class="n">n</span> <span class="bp">^</span> <span class="mi">2</span> <span class="bp">&#8804;</span> <span class="mi">1</span> <span class="bp">^</span> <span class="mi">2</span> <span class="o">:</span> <span class="kd">by</span> <span class="n">ineq_tac</span> <span class="o">[</span><span class="n">hn</span><span class="o">]</span>
   <span class="bp">...</span> <span class="bp">&lt;</span> <span class="mi">2</span> <span class="o">:</span> <span class="kd">by</span> <span class="n">norm_num</span><span class="o">,</span>
-  <span class="n">apply</span> <span class="n">ne_of_gt</span><span class="o">,</span>
-  <span class="k">calc</span> <span class="mi">2</span> <span class="bp">&lt;</span> <span class="mi">2</span> <span class="bp">^</span> <span class="mi">2</span> <span class="o">:</span> <span class="kd">by</span> <span class="n">norm_num</span>
-  <span class="bp">...</span> <span class="bp">&#8804;</span> <span class="n">n</span> <span class="bp">^</span> <span class="mi">2</span> <span class="o">:</span> <span class="kd">by</span> <span class="n">ineq_tac</span> <span class="o">[</span><span class="n">hn</span><span class="o">],</span>
+  <span class="gr">sorry</span><span class="o">,</span>
+<span class="kd">end</span>
+</pre></div>
+</div>
+</section>
+<section id="id18">
+<h3><span class="section-number">2.3.3. </span>Example<a class="headerlink" href="#id18" title="Permalink to this headline">&#61633;</a></h3>
+<p>So far we have discussed how to deal with an &#8220;or&#8221;-statement appearing in a hypothesis.  Let us turn
+to how to deal with an &#8220;or&#8221;-statement appearing in a goal.  This is quite easy:  you have to prove
+one or the other of the alternatives in the &#8220;or&#8221;-statement, so just announce which one you expect
+to work, and then prove it.</p>
+<div class="admonition-problem admonition">
+<p class="admonition-title">Problem</p>
+<p>Let <span class="math notranslate nohighlight">\(x\)</span> be a real number for which <span class="math notranslate nohighlight">\(2x+1=5\)</span>.  Show that either <span class="math notranslate nohighlight">\(x=1\)</span> or
+<span class="math notranslate nohighlight">\(x=2\)</span>.</p>
+</div>
+<div class="admonition-solution admonition">
+<p class="admonition-title">Solution</p>
+<p>We will show <span class="math notranslate nohighlight">\(x=2\)</span>.  Indeed,</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}x &amp;=\frac{(2x+1)-1}{2}\\
+&amp;=\frac{5-1}{2}\\
+&amp;=2.\end{split}\]</div>
+</div>
+<p>In Lean, use the tactic <code class="docutils literal notranslate"><span class="pre">right</span></code> to announce you will be proving the right alternative of the goal
+(or <code class="docutils literal notranslate"><span class="pre">left</span></code> for the left one).  This changes the goal displayed in the infoview: from</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>&#8866; x = 1 &#8744; x = 2
+</pre></div>
+</div>
+<p>before the tactic application to</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>&#8866; x = 2
+</pre></div>
+</div>
+<p>afterwards.</p>
+<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">{</span><span class="n">x</span> <span class="o">:</span> <span class="n">&#8477;</span><span class="o">}</span> <span class="o">(</span><span class="n">hx</span> <span class="o">:</span> <span class="mi">2</span> <span class="bp">*</span> <span class="n">x</span> <span class="bp">+</span> <span class="mi">1</span> <span class="bp">=</span> <span class="mi">5</span><span class="o">)</span> <span class="o">:</span> <span class="n">x</span> <span class="bp">=</span> <span class="mi">1</span> <span class="bp">&#8744;</span> <span class="n">x</span> <span class="bp">=</span> <span class="mi">2</span> <span class="o">:=</span>
+<span class="kd">begin</span>
+  <span class="n">right</span><span class="o">,</span>
+  <span class="k">calc</span> <span class="n">x</span> <span class="bp">=</span> <span class="o">((</span><span class="mi">2</span> <span class="bp">*</span> <span class="n">x</span> <span class="bp">+</span> <span class="mi">1</span><span class="o">)</span> <span class="bp">-</span> <span class="mi">1</span><span class="o">)</span> <span class="bp">/</span> <span class="mi">2</span> <span class="o">:</span> <span class="kd">by</span> <span class="n">ring</span>
+  <span class="bp">...</span> <span class="bp">=</span> <span class="o">(</span><span class="mi">5</span> <span class="bp">-</span> <span class="mi">1</span><span class="o">)</span> <span class="bp">/</span> <span class="mi">2</span> <span class="o">:</span> <span class="kd">by</span> <span class="n">rw</span> <span class="n">hx</span>
+  <span class="bp">...</span> <span class="bp">=</span> <span class="mi">2</span> <span class="o">:</span> <span class="kd">by</span> <span class="n">norm_num</span><span class="o">,</span>
 <span class="kd">end</span>
 </pre></div>
 </div>
 </section>
 <section id="integral-domain-step3">
-<span id="id17"></span><h3><span class="section-number">2.3.2. </span>Example<a class="headerlink" href="#integral-domain-step3" title="Permalink to this headline">&#61633;</a></h3>
+<span id="id19"></span><h3><span class="section-number">2.3.4. </span>Example<a class="headerlink" href="#integral-domain-step3" title="Permalink to this headline">&#61633;</a></h3>
+<p>Let&#8217;s do an example which features both these styles of logical reasoning.</p>
 <p>We showed in <a class="reference internal" href="#integral-domain-step1"><span class="std std-numref">Example 2.2.5</span></a> that if <span class="math notranslate nohighlight">\(ab=0\)</span> and
 <span class="math notranslate nohighlight">\(0 &lt; a\)</span>, then <span class="math notranslate nohighlight">\(b = 0\)</span>.  Later, in the
 <a class="reference internal" href="#integral-domain-step2"><span class="std std-ref">exercises to that section</span></a>, we showed that that if <span class="math notranslate nohighlight">\(ab=0\)</span> and
-<span class="math notranslate nohighlight">\(a &lt; 0\)</span>, then <span class="math notranslate nohighlight">\(b = 0\)</span>.</p>
-<p>Using a case analysis on <span class="math notranslate nohighlight">\(a\)</span>, we can now prove a more
-general lemma valid for all values of <span class="math notranslate nohighlight">\(a\)</span>.</p>
+<span class="math notranslate nohighlight">\(a &lt; 0\)</span>, then <span class="math notranslate nohighlight">\(b = 0\)</span>. We now prove a more
+general lemma valid for all values of <span class="math notranslate nohighlight">\(a\)</span>, using a case analysis on <span class="math notranslate nohighlight">\(a\)</span>.</p>
 <div class="admonition-problem admonition">
 <p class="admonition-title">Problem</p>
 <p>Let <span class="math notranslate nohighlight">\(a\)</span> and <span class="math notranslate nohighlight">\(b\)</span> be real numbers, and suppose that <span class="math notranslate nohighlight">\(ab = 0\)</span>.  Show that either
@@ -778,9 +916,19 @@ alternative.</p>
 <p><strong>Case 3</strong> (<span class="math notranslate nohighlight">\(0 &lt; a\)</span>):  We have that <span class="math notranslate nohighlight">\(ab=0\)</span> and <span class="math notranslate nohighlight">\(0 &lt;a\)</span>. So by the lemma proved in
 <a class="reference internal" href="#integral-domain-step1"><span class="std std-numref">Example 2.2.5</span></a>, we have that <span class="math notranslate nohighlight">\(b=0\)</span>, the second alternative.</p>
 </div>
+<p>In Lean, the lemma which allows a case split depending on whether a number <span class="math notranslate nohighlight">\(a\)</span> is less than,
+equal to, or greater than another number is the lemma <code class="docutils literal notranslate"><span class="pre">lt_trichotomy</span></code>:</p>
+<div class="highlight-lean notranslate" id="trichotomy-statement"><div class="highlight"><pre><span></span><span class="kd">lemma</span> <span class="n">lt_trichotomy</span> <span class="o">(</span><span class="n">x</span> <span class="n">y</span> <span class="o">:</span> <span class="n">&#8477;</span><span class="o">)</span> <span class="o">:</span> <span class="n">x</span> <span class="bp">&lt;</span> <span class="n">y</span> <span class="bp">&#8744;</span> <span class="n">x</span> <span class="bp">=</span> <span class="n">y</span> <span class="bp">&#8744;</span> <span class="n">x</span> <span class="bp">&lt;</span> <span class="n">y</span> <span class="o">:=</span>
+</pre></div>
+</div>
+<p>This is a variant on the lemma <code class="docutils literal notranslate"><span class="pre">le_or_lt</span></code> from <a class="reference internal" href="#sq-ne-two"><span class="std std-numref">Example 2.3.2</span></a>; there we
+considered two cases for the relative sizes of two numbers, here we consider three cases.</p>
+<p>Exercise:  The first two cases have been written up in Lean.  Fill in the details of the third
+case.</p>
 <div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">{</span><span class="n">a</span> <span class="n">b</span> <span class="o">:</span> <span class="n">&#8477;</span><span class="o">}</span> <span class="o">(</span><span class="n">h</span> <span class="o">:</span> <span class="n">a</span> <span class="bp">*</span> <span class="n">b</span> <span class="bp">=</span> <span class="mi">0</span><span class="o">)</span> <span class="o">:</span> <span class="n">a</span> <span class="bp">=</span> <span class="mi">0</span> <span class="bp">&#8744;</span> <span class="n">b</span> <span class="bp">=</span> <span class="mi">0</span> <span class="o">:=</span>
 <span class="kd">begin</span>
-  <span class="k">have</span> <span class="n">ha</span> <span class="o">:</span> <span class="n">a</span> <span class="bp">&lt;</span> <span class="mi">0</span> <span class="bp">&#8744;</span> <span class="n">a</span> <span class="bp">=</span> <span class="mi">0</span> <span class="bp">&#8744;</span> <span class="mi">0</span> <span class="bp">&lt;</span> <span class="n">a</span> <span class="o">:=</span> <span class="n">lt_trichotomy</span> <span class="n">a</span> <span class="mi">0</span><span class="o">,</span>
+  <span class="k">have</span> <span class="n">ha</span> <span class="o">:</span> <span class="n">a</span> <span class="bp">&lt;</span> <span class="mi">0</span> <span class="bp">&#8744;</span> <span class="n">a</span> <span class="bp">=</span> <span class="mi">0</span> <span class="bp">&#8744;</span> <span class="mi">0</span> <span class="bp">&lt;</span> <span class="n">a</span><span class="o">,</span>
+  <span class="n">apply</span> <span class="n">lt_trichotomy</span><span class="o">,</span>
   <span class="n">cases</span> <span class="n">ha</span> <span class="k">with</span> <span class="n">ha</span> <span class="n">ha</span><span class="o">,</span>
   <span class="n">right</span><span class="o">,</span>
   <span class="n">apply</span> <span class="n">eq_zero_of_mul_neg_eq_zero</span> <span class="n">a</span><span class="o">,</span>
@@ -789,10 +937,52 @@ alternative.</p>
   <span class="n">cases</span> <span class="n">ha</span> <span class="k">with</span> <span class="n">ha</span> <span class="n">ha</span><span class="o">,</span>
   <span class="n">left</span><span class="o">,</span>
   <span class="n">apply</span> <span class="n">ha</span><span class="o">,</span>
+  <span class="gr">sorry</span><span class="o">,</span>
+<span class="kd">end</span>
+</pre></div>
+</div>
+<p>This proof looks rather unwieldy in Lean.  Let&#8217;s discuss a few idioms for writing it more briefly.</p>
+<p>Firstly, if you wish to set up an intermediate goal, like <code class="docutils literal notranslate"><span class="pre">ha</span></code> here, which can be proved by
+<code class="docutils literal notranslate"><span class="pre">apply</span></code>-ing single lemma, then you can write both intermediate goal and proof on a single line, by
+filling in the necessary information in the lemma: the two arguments <code class="docutils literal notranslate"><span class="pre">x</span></code> and <code class="docutils literal notranslate"><span class="pre">y</span></code> from the
+<a class="reference internal" href="#trichotomy-statement"><span class="std std-ref">lemma statement</span></a>, which in this application are <code class="docutils literal notranslate"><span class="pre">a</span></code> and <code class="docutils literal notranslate"><span class="pre">0</span></code>
+respectively.  So</p>
+<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="k">have</span> <span class="n">ha</span> <span class="o">:</span> <span class="n">a</span> <span class="bp">&lt;</span> <span class="mi">0</span> <span class="bp">&#8744;</span> <span class="n">a</span> <span class="bp">=</span> <span class="mi">0</span> <span class="bp">&#8744;</span> <span class="mi">0</span> <span class="bp">&lt;</span> <span class="n">a</span><span class="o">,</span>
+<span class="n">apply</span> <span class="n">lt_trichotomy</span><span class="o">,</span>
+</pre></div>
+</div>
+<p>can be shortened to</p>
+<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="k">have</span> <span class="n">ha</span> <span class="o">:</span> <span class="n">a</span> <span class="bp">&lt;</span> <span class="mi">0</span> <span class="bp">&#8744;</span> <span class="n">a</span> <span class="bp">=</span> <span class="mi">0</span> <span class="bp">&#8744;</span> <span class="mi">0</span> <span class="bp">&lt;</span> <span class="n">a</span> <span class="o">:=</span> <span class="n">lt_trichotomy</span> <span class="n">a</span> <span class="mi">0</span><span class="o">,</span>
+</pre></div>
+</div>
+<p>Secondly, when <code class="docutils literal notranslate"><span class="pre">apply</span></code>-ing a lemma statement produces goals which themselves are proved by
+<code class="docutils literal notranslate"><span class="pre">apply</span></code>-ing other hypotheses or lemma statements, these <code class="docutils literal notranslate"><span class="pre">apply</span></code> statements can be combined.
+Here</p>
+<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="n">apply</span> <span class="n">eq_zero_of_mul_neg_eq_zero</span> <span class="n">a</span><span class="o">,</span>
+<span class="n">apply</span> <span class="n">h</span><span class="o">,</span>
+<span class="n">apply</span> <span class="n">ha</span><span class="o">,</span>
+</pre></div>
+</div>
+<p>can be shortened to</p>
+<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="n">apply</span> <span class="n">eq_zero_of_mul_neg_eq_zero</span> <span class="n">a</span> <span class="n">h</span> <span class="n">ha</span><span class="o">,</span>
+</pre></div>
+</div>
+<p>Referring back to the <a class="reference internal" href="#integral-domain-step2"><span class="std std-ref">statement of this lemma</span></a>
+<code class="docutils literal notranslate"><span class="pre">eq_zero_of_mul_neg_eq_zero</span></code>, you will see that that lemma had hypotheses
+<code class="docutils literal notranslate"><span class="pre">(H1</span> <span class="pre">:</span> <span class="pre">a</span> <span class="pre">*</span> <span class="pre">b</span> <span class="pre">=</span> <span class="pre">0)</span> <span class="pre">(H2</span> <span class="pre">:</span> <span class="pre">a</span> <span class="pre">&lt;</span> <span class="pre">0)</span></code>, and effectively we are filling in the proofs of those preconditions
+with the appropriate justifications, <code class="docutils literal notranslate"><span class="pre">h</span></code> and <code class="docutils literal notranslate"><span class="pre">ha</span></code> respectively.</p>
+<p>Exercise:  Here is how the partial proof looks after being made more efficient in the ways
+discussed.  Adapt your proof of the third case using the same idioms.</p>
+<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">{</span><span class="n">a</span> <span class="n">b</span> <span class="o">:</span> <span class="n">&#8477;</span><span class="o">}</span> <span class="o">(</span><span class="n">h</span> <span class="o">:</span> <span class="n">a</span> <span class="bp">*</span> <span class="n">b</span> <span class="bp">=</span> <span class="mi">0</span><span class="o">)</span> <span class="o">:</span> <span class="n">a</span> <span class="bp">=</span> <span class="mi">0</span> <span class="bp">&#8744;</span> <span class="n">b</span> <span class="bp">=</span> <span class="mi">0</span> <span class="o">:=</span>
+<span class="kd">begin</span>
+  <span class="k">have</span> <span class="n">ha</span> <span class="o">:</span> <span class="n">a</span> <span class="bp">&lt;</span> <span class="mi">0</span> <span class="bp">&#8744;</span> <span class="n">a</span> <span class="bp">=</span> <span class="mi">0</span> <span class="bp">&#8744;</span> <span class="mi">0</span> <span class="bp">&lt;</span> <span class="n">a</span> <span class="o">:=</span> <span class="n">lt_trichotomy</span> <span class="n">a</span> <span class="mi">0</span><span class="o">,</span>
+  <span class="n">cases</span> <span class="n">ha</span> <span class="k">with</span> <span class="n">ha</span> <span class="n">ha</span><span class="o">,</span>
   <span class="n">right</span><span class="o">,</span>
-  <span class="n">apply</span> <span class="n">eq_zero_of_mul_pos_eq_zero</span> <span class="n">a</span><span class="o">,</span>
-  <span class="n">apply</span> <span class="n">h</span><span class="o">,</span>
+  <span class="n">apply</span> <span class="n">eq_zero_of_mul_neg_eq_zero</span> <span class="n">a</span> <span class="n">h</span> <span class="n">ha</span><span class="o">,</span>
+  <span class="n">cases</span> <span class="n">ha</span> <span class="k">with</span> <span class="n">ha</span> <span class="n">ha</span><span class="o">,</span>
+  <span class="n">left</span><span class="o">,</span>
   <span class="n">apply</span> <span class="n">ha</span><span class="o">,</span>
+  <span class="gr">sorry</span><span class="o">,</span>
 <span class="kd">end</span>
 </pre></div>
 </div>
@@ -800,9 +990,68 @@ alternative.</p>
 <code class="docutils literal notranslate"><span class="pre">eq_zero_or_eq_zero_of_mul_eq_zero</span></code>.  It&#8217;s clearly an important fact, and we&#8217;ll use it and its
 variants in later problems.</p>
 </section>
-<section id="id18">
-<h3><span class="section-number">2.3.3. </span>Example<a class="headerlink" href="#id18" title="Permalink to this headline">&#61633;</a></h3>
-<p>In <a class="reference internal" href="#sq-ne-two"><span class="std std-numref">Example 2.3.1</span></a> we showed that no natural number squares to 2.  It is also
+<section id="solve-quadratic">
+<span id="id20"></span><h3><span class="section-number">2.3.5. </span>Example<a class="headerlink" href="#solve-quadratic" title="Permalink to this headline">&#61633;</a></h3>
+<p>Let&#8217;s solve a quadratic equation; this is a classic situation where the result has an &#8220;or&#8221; in it.
+We will get to use the fact proved in <a class="reference internal" href="#integral-domain-step3"><span class="std std-numref">Example 2.3.4</span></a>: if the
+product of two numbers is zero, then one of them is zero.</p>
+<div class="admonition-problem admonition">
+<p class="admonition-title">Problem</p>
+<p>Let <span class="math notranslate nohighlight">\(x\)</span> be a real number for which <span class="math notranslate nohighlight">\(x^2-3x+2=0\)</span>.  Show that either <span class="math notranslate nohighlight">\(x=1\)</span> or
+<span class="math notranslate nohighlight">\(x=2\)</span>.</p>
+</div>
+<div class="admonition-solution admonition">
+<p class="admonition-title">Solution</p>
+<p>We have that</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}(x-1)(x-2) &amp;= x ^ 2 - 3x+2\\
+&amp;=0.\end{split}\]</div>
+<p>So either <span class="math notranslate nohighlight">\(x-1=0\)</span> or <span class="math notranslate nohighlight">\(x-2=0\)</span>.</p>
+<p>If <span class="math notranslate nohighlight">\(x-1=0\)</span>, then <span class="math notranslate nohighlight">\(x=1\)</span>.</p>
+<p>If <span class="math notranslate nohighlight">\(x-2=0\)</span>, then <span class="math notranslate nohighlight">\(x=2\)</span>.</p>
+</div>
+<p>In this solution, the case division argument is written a little more casually than in previous
+examples.  The phrases &#8220;If <span class="math notranslate nohighlight">\(x-1=0\)</span>&#8221; and &#8220;If <span class="math notranslate nohighlight">\(x-2=0\)</span>&#8221; silently introduce the two cases,
+and it is left to the reader to observe that <span class="math notranslate nohighlight">\(x=1\)</span> is the left alternative of
+&#8220;<span class="math notranslate nohighlight">\(x=1\)</span> or <span class="math notranslate nohighlight">\(x=2\)</span>&#8221;, which finishes the problem (similarly for the second case).</p>
+<p>Exercise: Fill in the gaps in the following Lean version of the argument.</p>
+<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">{</span><span class="n">x</span> <span class="o">:</span> <span class="n">&#8477;</span><span class="o">}</span> <span class="o">(</span><span class="n">hx</span> <span class="o">:</span> <span class="n">x</span> <span class="bp">^</span> <span class="mi">2</span> <span class="bp">-</span> <span class="mi">3</span> <span class="bp">*</span> <span class="n">x</span> <span class="bp">+</span> <span class="mi">2</span> <span class="bp">=</span> <span class="mi">0</span><span class="o">)</span> <span class="o">:</span> <span class="n">x</span> <span class="bp">=</span> <span class="mi">1</span> <span class="bp">&#8744;</span> <span class="n">x</span> <span class="bp">=</span> <span class="mi">2</span> <span class="o">:=</span>
+<span class="kd">begin</span>
+  <span class="k">have</span> <span class="n">hx&#39;</span> <span class="o">:</span> <span class="n">x</span> <span class="bp">-</span> <span class="mi">1</span> <span class="bp">=</span> <span class="mi">0</span> <span class="bp">&#8744;</span> <span class="n">x</span> <span class="bp">-</span> <span class="mi">2</span> <span class="bp">=</span> <span class="mi">0</span><span class="o">,</span>
+  <span class="n">apply</span> <span class="n">eq_zero_or_eq_zero_of_mul_eq_zero</span><span class="o">,</span>
+  <span class="gr">sorry</span><span class="o">,</span>
+  <span class="gr">sorry</span><span class="o">,</span>
+<span class="kd">end</span>
+</pre></div>
+</div>
+</section>
+<section id="id21">
+<h3><span class="section-number">2.3.6. </span>Example<a class="headerlink" href="#id21" title="Permalink to this headline">&#61633;</a></h3>
+<p>Here&#8217;s a similar, but easier, problem.</p>
+<div class="admonition-problem admonition">
+<p class="admonition-title">Problem</p>
+<p>Let <span class="math notranslate nohighlight">\(a\)</span> be a real number for which <span class="math notranslate nohighlight">\(a ^ 2=0\)</span>.  Show that <span class="math notranslate nohighlight">\(a=0\)</span>.</p>
+</div>
+<div class="admonition-solution admonition">
+<p class="admonition-title">Solution</p>
+<p>We have that</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}a \cdot a &amp;= a ^ 2 \\
+&amp;=0.\end{split}\]</div>
+<p>So either <span class="math notranslate nohighlight">\(a=0\)</span> or <span class="math notranslate nohighlight">\(a=0\)</span>, and in either case we are done.</p>
+</div>
+<p>Exercise: Write this argument in Lean, using <a class="reference internal" href="#solve-quadratic"><span class="std std-numref">Example 2.3.5</span></a> as a
+model.</p>
+<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">{</span><span class="n">a</span> <span class="o">:</span> <span class="n">&#8477;</span><span class="o">}</span> <span class="o">(</span><span class="n">ha</span> <span class="o">:</span> <span class="n">a</span> <span class="bp">^</span> <span class="mi">2</span> <span class="bp">=</span> <span class="mi">0</span><span class="o">)</span> <span class="o">:</span> <span class="n">a</span> <span class="bp">=</span> <span class="mi">0</span> <span class="o">:=</span>
+<span class="kd">begin</span>
+  <span class="gr">sorry</span><span class="o">,</span>
+<span class="kd">end</span>
+</pre></div>
+</div>
+</section>
+<section id="id22">
+<h3><span class="section-number">2.3.7. </span>Example<a class="headerlink" href="#id22" title="Permalink to this headline">&#61633;</a></h3>
+<p>In <a class="reference internal" href="#sq-ne-two"><span class="std std-numref">Example 2.3.2</span></a> we showed that no natural number squares to 2.  It is also
 true that no integer squares to 2, but since order laws are more complicated when negative numbers
 are involved, the proof is more complicated, requiring cases within cases.</p>
 <div class="admonition-problem admonition">
@@ -864,68 +1113,19 @@ braces, as follows.</p>
 </pre></div>
 </div>
 </section>
-<section id="solve-quadratic">
-<span id="id19"></span><h3><span class="section-number">2.3.4. </span>Example<a class="headerlink" href="#solve-quadratic" title="Permalink to this headline">&#61633;</a></h3>
-<p>Let&#8217;s solve a quadratic equation; this is a classic situation where the result has an &#8220;or&#8221; in it.
-We will get to use the fact proved in <a class="reference internal" href="#integral-domain-step3"><span class="std std-numref">Example 2.3.2</span></a>: if the
-product of two numbers is zero, then one of them is zero.</p>
-<div class="admonition-problem admonition">
-<p class="admonition-title">Problem</p>
-<p>Let <span class="math notranslate nohighlight">\(x\)</span> be a real number for which <span class="math notranslate nohighlight">\(x^2-3x+2=0\)</span>.  Show that either <span class="math notranslate nohighlight">\(x=1\)</span> or
-<span class="math notranslate nohighlight">\(x=2\)</span>.</p>
-</div>
-<div class="admonition-solution admonition">
-<p class="admonition-title">Solution</p>
-<p>We have that</p>
-<div class="math notranslate nohighlight">
-\[\begin{split}(x-1)(x-2) &amp;= x ^ 2 - 3x+2\\
-&amp;=0.\end{split}\]</div>
-<p>So either <span class="math notranslate nohighlight">\(x-1=0\)</span> or <span class="math notranslate nohighlight">\(x-2=0\)</span>.</p>
-<p>If <span class="math notranslate nohighlight">\(x-1=0\)</span>, then <span class="math notranslate nohighlight">\(x=1\)</span>.</p>
-<p>If <span class="math notranslate nohighlight">\(x-2=0\)</span>, then <span class="math notranslate nohighlight">\(x=2\)</span>.</p>
-</div>
-<p>In this solution, the case division argument is written a little more casually than in previous
-examples.  The phrases &#8220;If <span class="math notranslate nohighlight">\(x-1=0\)</span>&#8221; and &#8220;If <span class="math notranslate nohighlight">\(x-2=0\)</span>&#8221; silently introduce the two cases,
-and it is left to the reader to observe that <span class="math notranslate nohighlight">\(x=1\)</span> is the left alternative of
-&#8220;<span class="math notranslate nohighlight">\(x=1\)</span> or <span class="math notranslate nohighlight">\(x=2\)</span>&#8221;, which finishes the problem (similarly for the second case).</p>
-<p>Exercise: Fill in the gaps in the following Lean version of the argument.</p>
-<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">{</span><span class="n">x</span> <span class="o">:</span> <span class="n">&#8477;</span><span class="o">}</span> <span class="o">(</span><span class="n">hx</span> <span class="o">:</span> <span class="n">x</span> <span class="bp">^</span> <span class="mi">2</span> <span class="bp">-</span> <span class="mi">3</span> <span class="bp">*</span> <span class="n">x</span> <span class="bp">+</span> <span class="mi">2</span> <span class="bp">=</span> <span class="mi">0</span><span class="o">)</span> <span class="o">:</span> <span class="n">x</span> <span class="bp">=</span> <span class="mi">1</span> <span class="bp">&#8744;</span> <span class="n">x</span> <span class="bp">=</span> <span class="mi">2</span> <span class="o">:=</span>
-<span class="kd">begin</span>
-  <span class="k">have</span> <span class="n">hx&#39;</span> <span class="o">:</span> <span class="n">x</span> <span class="bp">-</span> <span class="mi">1</span> <span class="bp">=</span> <span class="mi">0</span> <span class="bp">&#8744;</span> <span class="n">x</span> <span class="bp">-</span> <span class="mi">2</span> <span class="bp">=</span> <span class="mi">0</span><span class="o">,</span>
-  <span class="n">apply</span> <span class="n">eq_zero_or_eq_zero_of_mul_eq_zero</span><span class="o">,</span>
-  <span class="gr">sorry</span><span class="o">,</span>
-  <span class="gr">sorry</span><span class="o">,</span>
-<span class="kd">end</span>
-</pre></div>
-</div>
-</section>
-<section id="id20">
-<h3><span class="section-number">2.3.5. </span>Example<a class="headerlink" href="#id20" title="Permalink to this headline">&#61633;</a></h3>
-<p>Here&#8217;s a similar, but easier, problem.</p>
-<div class="admonition-problem admonition">
-<p class="admonition-title">Problem</p>
-<p>Let <span class="math notranslate nohighlight">\(a\)</span> be a real number for which <span class="math notranslate nohighlight">\(a ^ 2=0\)</span>.  Show that <span class="math notranslate nohighlight">\(a=0\)</span>.</p>
-</div>
-<div class="admonition-solution admonition">
-<p class="admonition-title">Solution</p>
-<p>We have that</p>
-<div class="math notranslate nohighlight">
-\[\begin{split}a \cdot a &amp;= a ^ 2 \\
-&amp;=0.\end{split}\]</div>
-<p>So either <span class="math notranslate nohighlight">\(a=0\)</span> or <span class="math notranslate nohighlight">\(a=0\)</span>, and in either case we are done.</p>
-</div>
-<p>Exercise: Write this argument in Lean, using <a class="reference internal" href="#solve-quadratic"><span class="std std-numref">Example 2.3.4</span></a> as a
-model.</p>
-<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">{</span><span class="n">a</span> <span class="o">:</span> <span class="n">&#8477;</span><span class="o">}</span> <span class="o">(</span><span class="n">ha</span> <span class="o">:</span> <span class="n">a</span> <span class="bp">^</span> <span class="mi">2</span> <span class="bp">=</span> <span class="mi">0</span><span class="o">)</span> <span class="o">:</span> <span class="n">a</span> <span class="bp">=</span> <span class="mi">0</span> <span class="o">:=</span>
-<span class="kd">begin</span>
-  <span class="gr">sorry</span><span class="o">,</span>
-<span class="kd">end</span>
-</pre></div>
-</div>
-</section>
-<section id="id21">
-<h3><span class="section-number">2.3.6. </span>Exercises<a class="headerlink" href="#id21" title="Permalink to this headline">&#61633;</a></h3>
+<section id="id23">
+<h3><span class="section-number">2.3.8. </span>Exercises<a class="headerlink" href="#id23" title="Permalink to this headline">&#61633;</a></h3>
 <ol class="arabic simple">
+<li><p>Let <span class="math notranslate nohighlight">\(x\)</span> be a real number and suppose that either <span class="math notranslate nohighlight">\(x=1\)</span> or
+<span class="math notranslate nohighlight">\(x=2\)</span>.  Show that <span class="math notranslate nohighlight">\(x^2-3x+2=0\)</span>.</p></li>
+</ol>
+<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">{</span><span class="n">x</span> <span class="o">:</span> <span class="n">&#8477;</span><span class="o">}</span> <span class="o">(</span><span class="n">h</span> <span class="o">:</span> <span class="n">x</span> <span class="bp">=</span> <span class="mi">1</span> <span class="bp">&#8744;</span> <span class="n">x</span> <span class="bp">=</span> <span class="mi">2</span><span class="o">)</span> <span class="o">:</span> <span class="n">x</span> <span class="bp">^</span> <span class="mi">2</span> <span class="bp">-</span> <span class="mi">3</span> <span class="bp">*</span> <span class="n">x</span> <span class="bp">+</span> <span class="mi">2</span> <span class="bp">=</span> <span class="mi">0</span> <span class="o">:=</span>
+<span class="kd">begin</span>
+  <span class="gr">sorry</span><span class="o">,</span>
+<span class="kd">end</span>
+</pre></div>
+</div>
+<ol class="arabic simple" start="2">
 <li><p>Let <span class="math notranslate nohighlight">\(n\)</span> be any natural number.  Show that <span class="math notranslate nohighlight">\(n ^ 2 \ne 7\)</span>.</p></li>
 </ol>
 <div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">{</span><span class="n">n</span> <span class="o">:</span> <span class="n">&#8469;</span><span class="o">}</span> <span class="o">:</span> <span class="n">n</span> <span class="bp">^</span> <span class="mi">2</span> <span class="bp">&#8800;</span> <span class="mi">7</span> <span class="o">:=</span>
@@ -934,7 +1134,7 @@ model.</p>
 <span class="kd">end</span>
 </pre></div>
 </div>
-<ol class="arabic simple" start="2">
+<ol class="arabic simple" start="3">
 <li><p>Let <span class="math notranslate nohighlight">\(a\)</span> be a real number and suppose that <span class="math notranslate nohighlight">\(a ^ 3 = 0\)</span>.
 Show that <span class="math notranslate nohighlight">\(a = 0\)</span>.</p></li>
 </ol>
@@ -944,7 +1144,27 @@ Show that <span class="math notranslate nohighlight">\(a = 0\)</span>.</p></li>
 <span class="kd">end</span>
 </pre></div>
 </div>
-<ol class="arabic simple" start="3">
+<ol class="arabic simple" start="4">
+<li><p>Let <span class="math notranslate nohighlight">\(s\)</span> and <span class="math notranslate nohighlight">\(t\)</span> be rational numbers for which <span class="math notranslate nohighlight">\(s = 3 - t\)</span>.
+Show that either <span class="math notranslate nohighlight">\(s + t = 3\)</span> or <span class="math notranslate nohighlight">\(s + t = 5\)</span>.</p></li>
+</ol>
+<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">{</span><span class="n">s</span> <span class="n">t</span> <span class="o">:</span> <span class="n">&#8474;</span><span class="o">}</span> <span class="o">(</span><span class="n">h</span> <span class="o">:</span> <span class="n">s</span> <span class="bp">=</span> <span class="mi">3</span> <span class="bp">-</span> <span class="n">t</span><span class="o">)</span> <span class="o">:</span> <span class="n">s</span> <span class="bp">+</span> <span class="n">t</span> <span class="bp">=</span> <span class="mi">3</span> <span class="bp">&#8744;</span> <span class="n">s</span> <span class="bp">+</span> <span class="n">t</span> <span class="bp">=</span> <span class="mi">5</span> <span class="o">:=</span>
+<span class="kd">begin</span>
+  <span class="gr">sorry</span><span class="o">,</span>
+<span class="kd">end</span>
+</pre></div>
+</div>
+<ol class="arabic simple" start="5">
+<li><p>Let <span class="math notranslate nohighlight">\(x\)</span> be a real number for which <span class="math notranslate nohighlight">\(x^2+2x-3=0\)</span>.  Show that either <span class="math notranslate nohighlight">\(x=-3\)</span> or
+<span class="math notranslate nohighlight">\(x=1\)</span>.</p></li>
+</ol>
+<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">{</span><span class="n">x</span> <span class="o">:</span> <span class="n">&#8477;</span><span class="o">}</span> <span class="o">(</span><span class="n">hx</span> <span class="o">:</span> <span class="n">x</span> <span class="bp">^</span> <span class="mi">2</span> <span class="bp">+</span> <span class="mi">2</span> <span class="bp">*</span> <span class="n">x</span> <span class="bp">-</span> <span class="mi">3</span> <span class="bp">=</span> <span class="mi">0</span><span class="o">)</span> <span class="o">:</span> <span class="n">x</span> <span class="bp">=</span> <span class="bp">-</span><span class="mi">3</span> <span class="bp">&#8744;</span> <span class="n">x</span> <span class="bp">=</span> <span class="mi">1</span> <span class="o">:=</span>
+<span class="kd">begin</span>
+  <span class="gr">sorry</span><span class="o">,</span>
+<span class="kd">end</span>
+</pre></div>
+</div>
+<ol class="arabic simple" start="6">
 <li><p>Let <span class="math notranslate nohighlight">\(x\)</span> and <span class="math notranslate nohighlight">\(y\)</span> be real numbers for which <span class="math notranslate nohighlight">\(x ^ 2 + 5 y = y ^ 2 + 5 x\)</span>.
 Show that either <span class="math notranslate nohighlight">\(x = y\)</span> or <span class="math notranslate nohighlight">\(x + y = 5\)</span>.</p></li>
 </ol>
