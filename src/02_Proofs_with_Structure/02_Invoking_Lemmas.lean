@@ -36,7 +36,7 @@ end
 
 
 
-lemma eq_zero_of_mul_pos_eq_zero {b : ℝ} (a : ℝ) (h : a * b = 0) (ha : 0 < a) :
+lemma eq_zero_of_mul_pos_eq_zero {b : ℝ} (a : ℝ) (H1 : a * b = 0) (H2 : 0 < a) :
   b = 0 :=
 begin
   sorry
@@ -55,7 +55,7 @@ begin
 end
 
 
-lemma eq_zero_of_mul_neg_eq_zero {b : ℝ} (a : ℝ) (h : a * b = 0) (ha : a < 0) :
+lemma eq_zero_of_mul_neg_eq_zero {b : ℝ} (a : ℝ) (H1 : a * b = 0) (H2 : a < 0) :
   b = 0 :=
 begin
   sorry
