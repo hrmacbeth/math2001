@@ -82,7 +82,7 @@ your instructor!</p>
 right-hand side, or vice versa.</p>
 <p class="rubric">apply (first use: <a class="reference internal" href="02_Proofs_with_Structure.html#lemmas"><span class="std std-numref">Section 2.2</span></a>)</p>
 <p>Invokes a specified lemma to modify the goal.</p>
-<p class="rubric">cases (first use: <a class="reference internal" href="02_Proofs_with_Structure.html#or"><span class="std std-numref">Section 2.3</span></a>)</p>
+<p class="rubric">cases (first use for <span class="math notranslate nohighlight">\(\lor\)</span>: <a class="reference internal" href="02_Proofs_with_Structure.html#or"><span class="std std-numref">Section 2.3</span></a>; for <span class="math notranslate nohighlight">\(\land\)</span>: <a class="reference internal" href="02_Proofs_with_Structure.html#and"><span class="std std-numref">Section 2.4</span></a>)</p>
 <p>Takes apart a hypothesis of the form &#8220;or&#8221; (<span class="math notranslate nohighlight">\(\lor\)</span>), &#8220;and&#8221; (<span class="math notranslate nohighlight">\(\land\)</span>) or &#8220;there exists&#8221;
 (<span class="math notranslate nohighlight">\(\exists\)</span>).</p>
 <p class="rubric">left (first use: <a class="reference internal" href="02_Proofs_with_Structure.html#or"><span class="std std-numref">Section 2.3</span></a>)</p>
@@ -100,8 +100,8 @@ replacement is &#8220;obviously&#8221; a valid inequality deduction.</p>
 <p>A &#8220;substitution-like&#8221; tactic for congruences: looks for the left-hand side of a specified
 modular arithmetic fact in the goal, and replaces it with the right-hand side of that fact, if that
 replacement is &#8220;obviously&#8221; a valid modular arithmetic deduction.</p>
-<p class="rubric">norm_num</p>
-<p>Proves numeric facts, like <span class="math notranslate nohighlight">\(3\cdot 12 &lt; 13 + 25\)</span>.</p>
+<p class="rubric">norm_num (first use: <a class="reference internal" href="01_Proofs_by_Calculation.html#proving-inequalities"><span class="std std-numref">Section 1.4</span></a>)</p>
+<p>Proves numeric facts, like <span class="math notranslate nohighlight">\(3\cdot 12 &lt; 13 + 25\)</span> or <span class="math notranslate nohighlight">\(3\cdot 5+1=4\cdot 4\)</span>.</p>
 <p class="rubric">right (first use: <a class="reference internal" href="02_Proofs_with_Structure.html#or"><span class="std std-numref">Section 2.3</span></a>)</p>
 <p>Selects the right alternative of an &#8220;or&#8221; goal (<span class="math notranslate nohighlight">\(\lor\)</span>).</p>
 <p class="rubric">ring (first use: <a class="reference internal" href="01_Proofs_by_Calculation.html#proving-equalities-in-lean"><span class="std std-numref">Section 1.2</span></a>)</p>
@@ -110,6 +110,8 @@ is effectively &#8220;expand out both sides and rearrange&#8221;.</p>
 <p class="rubric">rw (first use: <a class="reference internal" href="01_Proofs_by_Calculation.html#proving-equalities-in-lean"><span class="std std-numref">Section 1.2</span></a>)</p>
 <p>Substitution: looks for the left-hand side of a specified equality fact in the goal, and replaces it with
 the right-hand side of that fact.</p>
+<p class="rubric">split (first use: <a class="reference internal" href="02_Proofs_with_Structure.html#and"><span class="std std-numref">Section 2.4</span></a>)</p>
+<p>Splits an &#8220;and&#8221; goal (<span class="math notranslate nohighlight">\(\land\)</span>) into sub-goals for its left and right parts.</p>
 </section>
 
 

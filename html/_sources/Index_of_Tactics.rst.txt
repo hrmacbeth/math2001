@@ -16,7 +16,7 @@ right-hand side, or vice versa.
 
 Invokes a specified lemma to modify the goal.
 
-.. rubric:: cases (first use: :numref:`Section %s <or>`)
+.. rubric:: cases (first use for :math:`\lor`: :numref:`Section %s <or>`; for :math:`\land`: :numref:`Section %s <and>`)
 
 Takes apart a hypothesis of the form "or" (:math:`\lor`), "and" (:math:`\land`) or "there exists"
 (:math:`\exists`).
@@ -46,9 +46,9 @@ A "substitution-like" tactic for congruences: looks for the left-hand side of a 
 modular arithmetic fact in the goal, and replaces it with the right-hand side of that fact, if that
 replacement is "obviously" a valid modular arithmetic deduction.
 
-.. rubric:: norm_num
+.. rubric:: norm_num (first use: :numref:`Section %s <proving_inequalities>`)
 
-Proves numeric facts, like :math:`3\cdot 12 < 13 + 25`.
+Proves numeric facts, like :math:`3\cdot 12 < 13 + 25` or :math:`3\cdot 5+1=4\cdot 4`.
 
 .. rubric:: right (first use: :numref:`Section %s <or>`)
 
@@ -63,3 +63,7 @@ is effectively "expand out both sides and rearrange".
 
 Substitution: looks for the left-hand side of a specified equality fact in the goal, and replaces it with
 the right-hand side of that fact.
+
+.. rubric:: split (first use: :numref:`Section %s <and>`)
+
+Splits an "and" goal (:math:`\land`) into sub-goals for its left and right parts.

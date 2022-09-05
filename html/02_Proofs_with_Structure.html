@@ -55,7 +55,7 @@
 <li class="toctree-l2"><a class="reference internal" href="#invoking-lemmas">2.2. Invoking lemmas</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#id7">2.2.1. Example</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#id10">2.2.2. Example</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id11">2.2.3. Example</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#sum-sq-eq-zero1">2.2.3. Example</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#id12">2.2.4. Example</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#integral-domain-step1">2.2.5. Example</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#exercises">2.2.6. Exercises</a></li>
@@ -67,9 +67,17 @@
 <li class="toctree-l3"><a class="reference internal" href="#id18">2.3.3. Example</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#integral-domain-step3">2.3.4. Example</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#solve-quadratic">2.3.5. Example</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id21">2.3.6. Example</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#pow-eq-zero-disc">2.3.6. Example</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#id22">2.3.7. Example</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#id23">2.3.8. Exercises</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#and">2.4. &#8220;And&#8221;</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id25">2.4.1. Example</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id26">2.4.2. Example</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id27">2.4.3. Example</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id28">2.4.4. Example</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id29">2.4.5. Exercises</a></li>
 </ul>
 </li>
 </ul>
@@ -555,8 +563,8 @@ But I do need to explicitly mention the name of the lemma,</p>
 </pre></div>
 </div>
 </section>
-<section id="id11">
-<h3><span class="section-number">2.2.3. </span>Example<a class="headerlink" href="#id11" title="Permalink to this headline">&#61633;</a></h3>
+<section id="sum-sq-eq-zero1">
+<span id="id11"></span><h3><span class="section-number">2.2.3. </span>Example<a class="headerlink" href="#sum-sq-eq-zero1" title="Permalink to this headline">&#61633;</a></h3>
 <div class="admonition-problem admonition">
 <p class="admonition-title">Problem</p>
 <p>Let <span class="math notranslate nohighlight">\(a\)</span> and <span class="math notranslate nohighlight">\(b\)</span> be real numbers, and suppose that <span class="math notranslate nohighlight">\(a^2+b^2=0\)</span>.  Show that
@@ -567,8 +575,7 @@ But I do need to explicitly mention the name of the lemma,</p>
 <p>It suffices to prove that both <span class="math notranslate nohighlight">\(a ^ 2 \le 0\)</span> and <span class="math notranslate nohighlight">\(a ^ 2 &#8805; 0\)</span>.  The second is clear
 since squares are nonnegative.  For the first,</p>
 <div class="math notranslate nohighlight">
-\[\begin{split}a ^ 2 &amp;= a ^ 2 + 0 \\
-&amp;\le a ^ 2 + b ^ 2\\
+\[\begin{split}a ^ 2 \le a ^ 2 + b ^ 2\\
 &amp;=0.\end{split}\]</div>
 </div>
 <p>In Lean use this lemma, the &#8220;antisymmetry of the <span class="math notranslate nohighlight">\(\le\)</span> relation&#8221;:</p>
@@ -1025,8 +1032,8 @@ and it is left to the reader to observe that <span class="math notranslate nohig
 </pre></div>
 </div>
 </section>
-<section id="id21">
-<h3><span class="section-number">2.3.6. </span>Example<a class="headerlink" href="#id21" title="Permalink to this headline">&#61633;</a></h3>
+<section id="pow-eq-zero-disc">
+<span id="id21"></span><h3><span class="section-number">2.3.6. </span>Example<a class="headerlink" href="#pow-eq-zero-disc" title="Permalink to this headline">&#61633;</a></h3>
 <p>Here&#8217;s a similar, but easier, problem.</p>
 <div class="admonition-problem admonition">
 <p class="admonition-title">Problem</p>
@@ -1046,6 +1053,14 @@ model.</p>
 <span class="kd">begin</span>
   <span class="gr">sorry</span><span class="o">,</span>
 <span class="kd">end</span>
+</pre></div>
+</div>
+<p>The fact that <span class="math notranslate nohighlight">\(a^2=0\)</span> implies <span class="math notranslate nohighlight">\(a=0\)</span> is again a standard lemma, something we will we use
+again and take for granted.  More generally, <span class="math notranslate nohighlight">\(a^3=0\)</span> implies <span class="math notranslate nohighlight">\(a=0\)</span>, and
+<span class="math notranslate nohighlight">\(a^4=0\)</span> implies <span class="math notranslate nohighlight">\(a=0\)</span>, and so on.  (The <span class="math notranslate nohighlight">\(a^3\)</span> case is set up as an
+<a class="reference internal" href="#pow-eq-zero-ex"><span class="std std-ref">exercise in this section</span></a>; if you can do this you will understand the idea
+for all successive cases.)  This lemma is recorded in Lean as <code class="docutils literal notranslate"><span class="pre">pow_eq_zero'</span></code>:</p>
+<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">lemma</span> <span class="n">pow_eq_zero&#39;</span> <span class="o">{</span><span class="n">x</span> <span class="o">:</span> <span class="n">&#8477;</span><span class="o">}</span> <span class="o">(</span><span class="n">n</span> <span class="o">:</span> <span class="n">&#8469;</span><span class="o">)</span> <span class="o">(</span><span class="n">H</span> <span class="o">:</span> <span class="n">x</span><span class="bp">^</span><span class="n">n</span> <span class="bp">=</span> <span class="mi">0</span><span class="o">)</span> <span class="o">:</span> <span class="n">x</span> <span class="bp">=</span> <span class="mi">0</span> <span class="o">:=</span>
 </pre></div>
 </div>
 </section>
@@ -1134,7 +1149,7 @@ braces, as follows.</p>
 <span class="kd">end</span>
 </pre></div>
 </div>
-<ol class="arabic simple" start="3">
+<ol class="arabic simple" id="pow-eq-zero-ex" start="3">
 <li><p>Let <span class="math notranslate nohighlight">\(a\)</span> be a real number and suppose that <span class="math notranslate nohighlight">\(a ^ 3 = 0\)</span>.
 Show that <span class="math notranslate nohighlight">\(a = 0\)</span>.</p></li>
 </ol>
@@ -1171,6 +1186,263 @@ Show that either <span class="math notranslate nohighlight">\(x = y\)</span> or 
 <div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">{</span><span class="n">x</span> <span class="n">y</span> <span class="o">:</span> <span class="n">&#8477;</span><span class="o">}</span> <span class="o">(</span><span class="n">hxy</span> <span class="o">:</span> <span class="n">x</span> <span class="bp">^</span> <span class="mi">2</span> <span class="bp">+</span> <span class="mi">5</span> <span class="bp">*</span> <span class="n">y</span> <span class="bp">=</span> <span class="n">y</span> <span class="bp">^</span> <span class="mi">2</span> <span class="bp">+</span> <span class="mi">5</span> <span class="bp">*</span> <span class="n">x</span><span class="o">)</span> <span class="o">:</span> <span class="n">x</span> <span class="bp">=</span> <span class="n">y</span> <span class="bp">&#8744;</span> <span class="n">x</span> <span class="bp">+</span> <span class="n">y</span> <span class="bp">=</span> <span class="mi">5</span> <span class="o">:=</span>
 <span class="kd">begin</span>
   <span class="gr">sorry</span><span class="o">,</span>
+<span class="kd">end</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="and">
+<span id="id24"></span><h2><span class="section-number">2.4. </span>&#8220;And&#8221;<a class="headerlink" href="#and" title="Permalink to this headline">&#61633;</a></h2>
+<section id="id25">
+<h3><span class="section-number">2.4.1. </span>Example<a class="headerlink" href="#id25" title="Permalink to this headline">&#61633;</a></h3>
+<p>In mathematics, the word &#8220;and&#8221; (denoted <span class="math notranslate nohighlight">\(\land\)</span> as a logical symbol), like &#8220;or&#8221;, can connect
+two statements. For example, here is a problem in which the hypothesis is an &#8220;and&#8221;-statement.</p>
+<div class="admonition-problem admonition">
+<p class="admonition-title">Problem</p>
+<p>Let <span class="math notranslate nohighlight">\(x\)</span> and <span class="math notranslate nohighlight">\(y\)</span> be integers and suppose that <span class="math notranslate nohighlight">\(2x-y=4\)</span>
+and <span class="math notranslate nohighlight">\(y-x+1=2\)</span>.  Prove that <span class="math notranslate nohighlight">\(x=5\)</span>.</p>
+</div>
+<p>In fact, we studied this problem before, in <a class="reference internal" href="01_Proofs_by_Calculation.html#simultaneous"><span class="std std-numref">Example 1.3.6</span></a>.  Then, we
+considered the problem as having two separate hypotheses:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(2x-y=4\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(y-x+1=2\)</span></p></li>
+</ul>
+<p>but now for the sake of argument we&#8217;re considering it as having a single hypothesis:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(2x-y=4\)</span> and <span class="math notranslate nohighlight">\(y-x+1=2\)</span>.</p></li>
+</ul>
+<p>The distinction is pretty pedantic, and invisible in the text.  In Lean, it&#8217;s more visible: we
+might find ourselves in a situation with a hypothesis which explicitly features the <code class="docutils literal notranslate"><span class="pre">&#8743;</span></code> symbol,
+like</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>1 goal
+
+x y : &#8484;
+h : 2 * x - y = 4 &#8743; y - x + 1 = 2
+&#8866; x = 5
+</pre></div>
+</div>
+<p>In such a situation, the tactic <code class="docutils literal notranslate"><span class="pre">cases</span></code> will split up an &#8220;and&#8221; hypothesis into its constituent
+parts,</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>1 goal
+
+x y : &#8484;
+h1 : 2 * x - y = 4
+h2 : y - x + 1 = 2
+&#8866; x = 5
+</pre></div>
+</div>
+<p>and then the problem can be solved accessing each of these parts separately, as needed.  In this
+case we have effectively brought the problem back to the setup of
+<a class="reference internal" href="01_Proofs_by_Calculation.html#simultaneous"><span class="std std-numref">Example 1.3.6</span></a>.</p>
+<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">{</span><span class="n">x</span> <span class="n">y</span> <span class="o">:</span> <span class="n">&#8484;</span><span class="o">}</span> <span class="o">(</span><span class="n">h</span> <span class="o">:</span> <span class="mi">2</span> <span class="bp">*</span> <span class="n">x</span> <span class="bp">-</span> <span class="n">y</span> <span class="bp">=</span> <span class="mi">4</span> <span class="bp">&#8743;</span> <span class="n">y</span> <span class="bp">-</span> <span class="n">x</span> <span class="bp">+</span> <span class="mi">1</span> <span class="bp">=</span> <span class="mi">2</span><span class="o">)</span> <span class="o">:</span>
+  <span class="n">x</span> <span class="bp">=</span> <span class="mi">5</span> <span class="o">:=</span>
+<span class="kd">begin</span>
+  <span class="n">cases</span> <span class="n">h</span> <span class="k">with</span> <span class="n">h1</span> <span class="n">h2</span><span class="o">,</span>
+  <span class="k">calc</span> <span class="n">x</span> <span class="bp">=</span> <span class="o">(</span><span class="mi">2</span> <span class="bp">*</span> <span class="n">x</span> <span class="bp">-</span> <span class="n">y</span><span class="o">)</span> <span class="bp">+</span> <span class="o">(</span><span class="n">y</span> <span class="bp">-</span> <span class="n">x</span> <span class="bp">+</span> <span class="mi">1</span><span class="o">)</span> <span class="bp">-</span> <span class="mi">1</span> <span class="o">:</span> <span class="kd">by</span> <span class="n">ring</span>
+  <span class="bp">...</span> <span class="bp">=</span> <span class="mi">4</span> <span class="bp">+</span> <span class="mi">2</span> <span class="bp">-</span> <span class="mi">1</span> <span class="o">:</span> <span class="kd">by</span> <span class="n">rw</span> <span class="o">[</span><span class="n">h1</span><span class="o">,</span> <span class="n">h2</span><span class="o">]</span>
+  <span class="bp">...</span> <span class="bp">=</span> <span class="mi">5</span> <span class="o">:</span> <span class="kd">by</span> <span class="n">ring</span><span class="o">,</span>
+<span class="kd">end</span>
+</pre></div>
+</div>
+</section>
+<section id="id26">
+<h3><span class="section-number">2.4.2. </span>Example<a class="headerlink" href="#id26" title="Permalink to this headline">&#61633;</a></h3>
+<p>&#8220;And&#8221; hypotheses turn up relatively rarely in the wild.  One situation in which one might occur is
+when a single hypothesis has two natural consequences, which are paired together in a lemma.  For
+example, if <span class="math notranslate nohighlight">\(x^2 \le y^2\)</span> for some positive number <span class="math notranslate nohighlight">\(y\)</span>, then one can draw the conclusion
+<span class="math notranslate nohighlight">\(-y \le x \le y\)</span>, which is shorthand (recall <a class="reference internal" href="01_Proofs_by_Calculation.html#shorthand"><span class="std std-numref">Example 1.4.4</span></a>) for
+&#8220;<span class="math notranslate nohighlight">\(-y\leq x\)</span> and <span class="math notranslate nohighlight">\(x\le y\)</span>.&#8221;</p>
+<div class="admonition-problem admonition">
+<p class="admonition-title">Problem</p>
+<p>Let <span class="math notranslate nohighlight">\(p\)</span> be a rational number for which <span class="math notranslate nohighlight">\(p^2\le 9\)</span>.  Show that <span class="math notranslate nohighlight">\(p\le 5\)</span>.</p>
+</div>
+<div class="admonition-solution admonition">
+<p class="admonition-title">Solution</p>
+<p>We have that</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}p^2&amp;\le 9\\
+&amp;= 3^2,\end{split}\]</div>
+<p>and 3 is positive, so <span class="math notranslate nohighlight">\(-3\le p\le 3\)</span>.  Thus</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}p&amp;\le 3\\
+&amp;\le 5.\end{split}\]</div>
+</div>
+<p>In Lean, we use the lemma <code class="docutils literal notranslate"><span class="pre">abs_le_of_sq_le_sq'</span></code> for this argument.  Note the <code class="docutils literal notranslate"><span class="pre">&#8743;</span></code> in the
+conclusion of the lemma statement.</p>
+<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">lemma</span> <span class="n">abs_le_of_sq_le_sq&#39;</span> <span class="o">{</span><span class="n">x</span> <span class="n">y</span> <span class="o">:</span> <span class="n">&#8474;</span><span class="o">}</span> <span class="o">(</span><span class="n">h1</span> <span class="o">:</span> <span class="n">x</span> <span class="bp">^</span> <span class="mi">2</span> <span class="bp">&#8804;</span> <span class="n">y</span> <span class="bp">^</span> <span class="mi">2</span><span class="o">)</span> <span class="o">(</span><span class="n">h2</span> <span class="o">:</span> <span class="mi">0</span> <span class="bp">&#8804;</span> <span class="n">y</span><span class="o">)</span> <span class="o">:</span> <span class="bp">-</span><span class="n">y</span> <span class="bp">&#8804;</span> <span class="n">x</span> <span class="bp">&#8743;</span> <span class="n">x</span> <span class="bp">&#8804;</span> <span class="n">y</span> <span class="o">:=</span>
+</pre></div>
+</div>
+<p>Exercise: I have written the intermediate goal <code class="docutils literal notranslate"><span class="pre">hp'</span> <span class="pre">:</span> <span class="pre">-3</span> <span class="pre">&#8804;</span> <span class="pre">p</span> <span class="pre">&#8743;</span> <span class="pre">p</span> <span class="pre">&#8804;</span> <span class="pre">3</span></code> and its proof in Lean. Deal
+with this &#8220;and&#8221; hypothesis and then finish the proof in Lean.</p>
+<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">{</span><span class="n">p</span> <span class="o">:</span> <span class="n">&#8474;</span><span class="o">}</span> <span class="o">(</span><span class="n">hp</span> <span class="o">:</span> <span class="n">p</span> <span class="bp">^</span> <span class="mi">2</span> <span class="bp">=</span> <span class="mi">9</span><span class="o">)</span> <span class="o">:</span> <span class="n">p</span> <span class="bp">&#8804;</span> <span class="mi">5</span> <span class="o">:=</span>
+<span class="kd">begin</span>
+  <span class="k">have</span> <span class="n">hp&#39;</span> <span class="o">:</span> <span class="bp">-</span><span class="mi">3</span> <span class="bp">&#8804;</span> <span class="n">p</span> <span class="bp">&#8743;</span> <span class="n">p</span> <span class="bp">&#8804;</span> <span class="mi">3</span><span class="o">,</span>
+  <span class="n">apply</span> <span class="n">abs_le_of_sq_le_sq&#39;</span><span class="o">,</span>
+  <span class="k">calc</span> <span class="n">p</span> <span class="bp">^</span> <span class="mi">2</span> <span class="bp">&#8804;</span> <span class="mi">9</span> <span class="o">:</span> <span class="kd">by</span> <span class="n">addarith</span> <span class="n">hp</span>
+  <span class="bp">...</span> <span class="bp">=</span> <span class="mi">3</span> <span class="bp">^</span> <span class="mi">2</span> <span class="o">:</span> <span class="kd">by</span> <span class="n">norm_num</span><span class="o">,</span>
+  <span class="n">norm_num</span><span class="o">,</span>
+  <span class="gr">sorry</span><span class="o">,</span>
+<span class="kd">end</span>
+</pre></div>
+</div>
+</section>
+<section id="id27">
+<h3><span class="section-number">2.4.3. </span>Example<a class="headerlink" href="#id27" title="Permalink to this headline">&#61633;</a></h3>
+<p>It also sometimes happens that the goal of a problem features an &#8220;and&#8221; statement.  For example, you
+might be given a system of simultaneous equations, and asked to determine the values of all the
+variables appearing.  Here&#8217;s a system of simultaneous equations we saw before in
+<a class="reference internal" href="01_Proofs_by_Calculation.html#id20"><span class="std std-numref">Example 1.3.3</span></a>, but the problem statement has been tweaked to ask us to find the
+values of both <span class="math notranslate nohighlight">\(a\)</span> and <span class="math notranslate nohighlight">\(b\)</span>.</p>
+<div class="admonition-problem admonition">
+<p class="admonition-title">Problem</p>
+<p>Let <span class="math notranslate nohighlight">\(a\)</span> and <span class="math notranslate nohighlight">\(b\)</span> be real numbers and suppose that <span class="math notranslate nohighlight">\(a-5b=4\)</span>
+and <span class="math notranslate nohighlight">\(b+2=3\)</span>.  Show that <span class="math notranslate nohighlight">\(a=9\)</span> and <span class="math notranslate nohighlight">\(b=1\)</span>.</p>
+</div>
+<p>One way to solve such a problem is to establish the two facts asked for completely independently:</p>
+<div class="admonition-solution admonition">
+<p class="admonition-title">Solution</p>
+<p>We have,</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}a
+&amp;= 4 + 5b \\
+&amp;= -6 + 5(b + 2) \\
+&amp;= -6 + 5 \cdot 3 \\
+&amp;= 9,\end{split}\]</div>
+<p>and since <span class="math notranslate nohighlight">\(b+2=3\)</span>, we have <span class="math notranslate nohighlight">\(b=1\)</span>.</p>
+</div>
+<p>In Lean, we write this proof using the <code class="docutils literal notranslate"><span class="pre">split</span></code> tactic, which takes a problem in which the goal is
+an &#8220;and&#8221; statement,</p>
+<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="mi">1</span> <span class="n">goal</span>
+
+<span class="n">a</span> <span class="n">b</span> <span class="o">:</span> <span class="n">&#8477;</span>
+<span class="n">h1</span> <span class="o">:</span> <span class="n">a</span> <span class="bp">-</span> <span class="mi">5</span> <span class="bp">*</span> <span class="n">b</span> <span class="bp">=</span> <span class="mi">4</span>
+<span class="n">h2</span> <span class="o">:</span> <span class="n">b</span> <span class="bp">+</span> <span class="mi">2</span> <span class="bp">=</span> <span class="mi">3</span>
+<span class="bp">&#8866;</span> <span class="n">a</span> <span class="bp">=</span> <span class="mi">9</span> <span class="bp">&#8743;</span> <span class="n">b</span> <span class="bp">=</span> <span class="mi">1</span>
+</pre></div>
+</div>
+<p>and reduces it two simpler tasks, one for each part of the &#8220;and&#8221;.</p>
+<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="mi">2</span> <span class="n">goals</span>
+
+<span class="n">a</span> <span class="n">b</span> <span class="o">:</span> <span class="n">&#8477;</span>
+<span class="n">h1</span> <span class="o">:</span> <span class="n">a</span> <span class="bp">-</span> <span class="mi">5</span> <span class="bp">*</span> <span class="n">b</span> <span class="bp">=</span> <span class="mi">4</span>
+<span class="n">h2</span> <span class="o">:</span> <span class="n">b</span> <span class="bp">+</span> <span class="mi">2</span> <span class="bp">=</span> <span class="mi">3</span>
+<span class="bp">&#8866;</span> <span class="n">a</span> <span class="bp">=</span> <span class="mi">9</span>
+
+<span class="n">a</span> <span class="n">b</span> <span class="o">:</span> <span class="n">&#8477;</span>
+<span class="n">h1</span> <span class="o">:</span> <span class="n">a</span> <span class="bp">-</span> <span class="mi">5</span> <span class="bp">*</span> <span class="n">b</span> <span class="bp">=</span> <span class="mi">4</span>
+<span class="n">h2</span> <span class="o">:</span> <span class="n">b</span> <span class="bp">+</span> <span class="mi">2</span> <span class="bp">=</span> <span class="mi">3</span>
+<span class="bp">&#8866;</span> <span class="n">b</span> <span class="bp">=</span> <span class="mi">1</span>
+</pre></div>
+</div>
+<p>We then write up Lean proofs for these two tasks, one after the other.</p>
+<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">{</span><span class="n">a</span> <span class="n">b</span> <span class="o">:</span> <span class="n">&#8477;</span><span class="o">}</span> <span class="o">(</span><span class="n">h1</span> <span class="o">:</span> <span class="n">a</span> <span class="bp">-</span> <span class="mi">5</span> <span class="bp">*</span> <span class="n">b</span> <span class="bp">=</span> <span class="mi">4</span><span class="o">)</span> <span class="o">(</span><span class="n">h2</span> <span class="o">:</span> <span class="n">b</span> <span class="bp">+</span> <span class="mi">2</span> <span class="bp">=</span> <span class="mi">3</span><span class="o">)</span> <span class="o">:</span>
+  <span class="n">a</span> <span class="bp">=</span> <span class="mi">9</span> <span class="bp">&#8743;</span> <span class="n">b</span> <span class="bp">=</span> <span class="mi">1</span> <span class="o">:=</span>
+<span class="kd">begin</span>
+  <span class="n">split</span><span class="o">,</span>
+  <span class="k">calc</span> <span class="n">a</span> <span class="bp">=</span> <span class="mi">4</span> <span class="bp">+</span> <span class="mi">5</span> <span class="bp">*</span> <span class="n">b</span> <span class="o">:</span> <span class="kd">by</span> <span class="n">addarith</span> <span class="n">h1</span>
+  <span class="bp">...</span> <span class="bp">=</span> <span class="bp">-</span><span class="mi">6</span> <span class="bp">+</span> <span class="mi">5</span> <span class="bp">*</span> <span class="o">(</span><span class="n">b</span> <span class="bp">+</span> <span class="mi">2</span><span class="o">)</span> <span class="o">:</span> <span class="kd">by</span> <span class="n">ring</span>
+  <span class="bp">...</span> <span class="bp">=</span> <span class="bp">-</span><span class="mi">6</span> <span class="bp">+</span> <span class="mi">5</span> <span class="bp">*</span> <span class="mi">3</span> <span class="o">:</span> <span class="kd">by</span> <span class="n">rw</span> <span class="o">[</span><span class="n">h2</span><span class="o">]</span>
+  <span class="bp">...</span> <span class="bp">=</span> <span class="mi">9</span> <span class="o">:</span> <span class="kd">by</span> <span class="n">ring</span><span class="o">,</span>
+  <span class="n">addarith</span> <span class="n">h2</span><span class="o">,</span>
+<span class="kd">end</span>
+</pre></div>
+</div>
+<p>Alternatively, there might be an intermediate step which you wish to establish and then use in both
+parts of the proof.  For example, you might want to first solve for <span class="math notranslate nohighlight">\(b\)</span>, and then use that to
+shorten the work of solving for <span class="math notranslate nohighlight">\(a\)</span>.</p>
+<div class="admonition-solution admonition">
+<p class="admonition-title">Solution</p>
+<p>Since <span class="math notranslate nohighlight">\(b+2=3\)</span>, we have <span class="math notranslate nohighlight">\(b=1\)</span>.  Therefore</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}a
+&amp;= 4 + 5b \\
+&amp;= 4 + 5 \cdot 3 \\
+&amp;= 9.\end{split}\]</div>
+</div>
+<p>It is typically left to the reader to check that both parts of the desired goal, <span class="math notranslate nohighlight">\(a=9\)</span> and
+<span class="math notranslate nohighlight">\(b=1\)</span>, are established somewhere along the way.</p>
+<p>Here is how this proof looks in Lean.  The important observation is that if there is something you
+want to use in both parts of the proof (here, the fact <span class="math notranslate nohighlight">\(b=1\)</span>), then this must be established
+before the tactic <code class="docutils literal notranslate"><span class="pre">split</span></code> is used.  When the tactic <code class="docutils literal notranslate"><span class="pre">split</span></code> is used, all facts established so
+far become available for both of the two tasks created:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>2 goals
+
+a b : &#8477;
+h1 : a - 5 * b = 4
+h2 : b + 2 = 3
+hb : b = 1
+&#8866; a = 9
+
+a b : &#8477;
+h1 : a - 5 * b = 4
+h2 : b + 2 = 3
+hb : b = 1
+&#8866; b = 1
+</pre></div>
+</div>
+<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">{</span><span class="n">a</span> <span class="n">b</span> <span class="o">:</span> <span class="n">&#8477;</span><span class="o">}</span> <span class="o">(</span><span class="n">h1</span> <span class="o">:</span> <span class="n">a</span> <span class="bp">-</span> <span class="mi">5</span> <span class="bp">*</span> <span class="n">b</span> <span class="bp">=</span> <span class="mi">4</span><span class="o">)</span> <span class="o">(</span><span class="n">h2</span> <span class="o">:</span> <span class="n">b</span> <span class="bp">+</span> <span class="mi">2</span> <span class="bp">=</span> <span class="mi">3</span><span class="o">)</span> <span class="o">:</span>
+  <span class="n">a</span> <span class="bp">=</span> <span class="mi">9</span> <span class="bp">&#8743;</span> <span class="n">b</span> <span class="bp">=</span> <span class="mi">1</span> <span class="o">:=</span>
+<span class="kd">begin</span>
+  <span class="k">have</span> <span class="n">hb</span> <span class="o">:</span> <span class="n">b</span> <span class="bp">=</span> <span class="mi">1</span><span class="o">,</span>
+  <span class="n">addarith</span> <span class="n">h2</span><span class="o">,</span>
+  <span class="n">split</span><span class="o">,</span>
+  <span class="k">calc</span> <span class="n">a</span> <span class="bp">=</span> <span class="mi">4</span> <span class="bp">+</span> <span class="mi">5</span> <span class="bp">*</span> <span class="n">b</span> <span class="o">:</span> <span class="kd">by</span> <span class="n">addarith</span> <span class="n">h1</span>
+  <span class="bp">...</span> <span class="bp">=</span> <span class="mi">4</span> <span class="bp">+</span> <span class="mi">5</span> <span class="bp">*</span> <span class="mi">1</span> <span class="o">:</span> <span class="kd">by</span> <span class="n">rw</span> <span class="o">[</span><span class="n">hb</span><span class="o">]</span>
+  <span class="bp">...</span> <span class="bp">=</span> <span class="mi">9</span> <span class="o">:</span> <span class="kd">by</span> <span class="n">ring</span><span class="o">,</span>
+  <span class="n">apply</span> <span class="n">hb</span><span class="o">,</span>
+<span class="kd">end</span>
+</pre></div>
+</div>
+</section>
+<section id="id28">
+<h3><span class="section-number">2.4.4. </span>Example<a class="headerlink" href="#id28" title="Permalink to this headline">&#61633;</a></h3>
+<p>One more example with an &#8220;and&#8221; in the goal.</p>
+<div class="admonition-problem admonition">
+<p class="admonition-title">Problem</p>
+<p>Let <span class="math notranslate nohighlight">\(a\)</span> and <span class="math notranslate nohighlight">\(b\)</span> be real numbers and suppose that <span class="math notranslate nohighlight">\(a^2+b^2=0\)</span>.  Show that
+<span class="math notranslate nohighlight">\(a=0\)</span> and <span class="math notranslate nohighlight">\(b=0\)</span>.</p>
+</div>
+<div class="admonition-solution admonition">
+<p class="admonition-title">Solution</p>
+<p>We first show that <span class="math notranslate nohighlight">\(a^2=0\)</span>.  <span class="math notranslate nohighlight">\((\star)\)</span> Indeed,</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}a ^ 2 &amp;\le a ^ 2 + b ^ 2\\
+&amp;=0.\end{split}\]</div>
+<p>and also since squares are nonnegative <span class="math notranslate nohighlight">\(a^2\geq 0\)</span>.</p>
+<p>By <span class="math notranslate nohighlight">\((\star)\)</span>, <span class="math notranslate nohighlight">\(a=0\)</span>.  Also, by <span class="math notranslate nohighlight">\((\star)\)</span>,</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}b ^ 2 &amp;= a ^ 2 + b ^ 2\\
+&amp;=0,\end{split}\]</div>
+<p>so <span class="math notranslate nohighlight">\(b=0\)</span>.</p>
+</div>
+<p>Parts of this problem might feel familiar.  The proof of the intermediate goal, <span class="math notranslate nohighlight">\(a^2=0\)</span>, is
+a repeat of <a class="reference internal" href="#sum-sq-eq-zero1"><span class="std std-numref">Example 2.2.3</span></a>.  The deduction from <span class="math notranslate nohighlight">\(a^2=0\)</span> that
+<span class="math notranslate nohighlight">\(a=0\)</span> (and likewise for <span class="math notranslate nohighlight">\(b\)</span>) was justified in <a class="reference internal" href="#pow-eq-zero-disc"><span class="std std-numref">Example 2.3.6</span></a>.</p>
+<p>Here is the problem statement in Lean, together with a proof of the intermediate goal <span class="math notranslate nohighlight">\(a^2=0\)</span>
+copied from <a class="reference internal" href="#sum-sq-eq-zero1"><span class="std std-numref">Example 2.2.3</span></a>.  Fill in the rest of the proof.  As per the
+discussion in <a class="reference internal" href="#pow-eq-zero-disc"><span class="std std-numref">Example 2.3.6</span></a>, the fact that <span class="math notranslate nohighlight">\(x^2=0\)</span> implies
+<span class="math notranslate nohighlight">\(x=0\)</span> can be invoked by the library lemma <code class="docutils literal notranslate"><span class="pre">pow_eq_zero'</span> <span class="pre">2</span></code> (here the <code class="docutils literal notranslate"><span class="pre">2</span></code> is to indicate
+the power).</p>
+<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">{</span><span class="n">a</span> <span class="n">b</span> <span class="o">:</span> <span class="n">&#8477;</span><span class="o">}</span> <span class="o">(</span><span class="n">h1</span> <span class="o">:</span> <span class="n">a</span> <span class="bp">^</span> <span class="mi">2</span> <span class="bp">+</span> <span class="n">b</span> <span class="bp">^</span> <span class="mi">2</span> <span class="bp">=</span> <span class="mi">0</span><span class="o">)</span> <span class="o">:</span> <span class="n">a</span> <span class="bp">=</span> <span class="mi">0</span> <span class="bp">&#8743;</span> <span class="n">b</span> <span class="bp">=</span> <span class="mi">0</span> <span class="o">:=</span>
+<span class="kd">begin</span>
+  <span class="k">have</span> <span class="n">h2</span> <span class="o">:</span> <span class="n">a</span> <span class="bp">^</span> <span class="mi">2</span> <span class="bp">=</span> <span class="mi">0</span><span class="o">,</span>
+  <span class="o">{</span> <span class="n">apply</span> <span class="n">le_antisymm</span><span class="o">,</span>
+    <span class="k">calc</span> <span class="n">a</span> <span class="bp">^</span> <span class="mi">2</span> <span class="bp">&#8804;</span> <span class="n">a</span> <span class="bp">^</span> <span class="mi">2</span> <span class="bp">+</span> <span class="n">b</span> <span class="bp">^</span> <span class="mi">2</span> <span class="o">:</span> <span class="kd">by</span> <span class="n">ineq_tac</span> <span class="o">[]</span>
+    <span class="bp">...</span> <span class="bp">=</span> <span class="mi">0</span> <span class="o">:</span> <span class="kd">by</span> <span class="n">rw</span> <span class="n">h1</span><span class="o">,</span>
+    <span class="n">ineq_tac</span> <span class="o">[]</span> <span class="o">},</span>
+  <span class="gr">sorry</span><span class="o">,</span>
+<span class="kd">end</span>
+</pre></div>
+</div>
+</section>
+<section id="id29">
+<h3><span class="section-number">2.4.5. </span>Exercises<a class="headerlink" href="#id29" title="Permalink to this headline">&#61633;</a></h3>
+<p>1. Let <span class="math notranslate nohighlight">\(x\)</span> and <span class="math notranslate nohighlight">\(y\)</span> be rational numbers and suppose that <span class="math notranslate nohighlight">\(x + y = 5\)</span> and
+<span class="math notranslate nohighlight">\(x + 2y = 7\)</span>.  Show that <span class="math notranslate nohighlight">\(x=3\)</span> and <span class="math notranslate nohighlight">\(y=2\)</span>.</p>
+<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">{</span><span class="n">x</span> <span class="n">y</span> <span class="o">:</span> <span class="n">&#8474;</span><span class="o">}</span> <span class="o">(</span><span class="n">h</span> <span class="o">:</span> <span class="n">x</span> <span class="bp">+</span> <span class="n">y</span> <span class="bp">=</span> <span class="mi">5</span> <span class="bp">&#8743;</span> <span class="n">x</span> <span class="bp">+</span> <span class="mi">2</span> <span class="bp">*</span> <span class="n">y</span> <span class="bp">=</span> <span class="mi">7</span><span class="o">)</span> <span class="o">:</span> <span class="n">x</span> <span class="bp">=</span> <span class="mi">3</span> <span class="bp">&#8743;</span> <span class="n">y</span> <span class="bp">=</span> <span class="mi">2</span> <span class="o">:=</span>
+<span class="kd">begin</span>
+  <span class="gr">sorry</span>
 <span class="kd">end</span>
 </pre></div>
 </div>
