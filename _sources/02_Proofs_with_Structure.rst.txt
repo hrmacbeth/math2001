@@ -6,3 +6,4 @@ Proofs with structure
 .. include:: 02_Proofs_with_Structure/01_Intermediate_Steps.inc
 .. include:: 02_Proofs_with_Structure/02_Invoking_Lemmas.inc
 .. include:: 02_Proofs_with_Structure/03_Or.inc
+.. include:: 02_Proofs_with_Structure/04_And.inc
