@@ -7,3 +7,4 @@ Proofs with structure
 .. include:: 02_Proofs_with_Structure/02_Invoking_Lemmas.inc
 .. include:: 02_Proofs_with_Structure/03_Or.inc
 .. include:: 02_Proofs_with_Structure/04_And.inc
+.. include:: 02_Proofs_with_Structure/05_Exists.inc

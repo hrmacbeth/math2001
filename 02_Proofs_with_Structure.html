@@ -80,6 +80,18 @@
 <li class="toctree-l3"><a class="reference internal" href="#id29">2.4.5. Exercises</a></li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="#existence-proofs">2.5. Existence proofs</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id30">2.5.1. Example</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id31">2.5.2. Example</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id32">2.5.3. Example</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id33">2.5.4. Example</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id34">2.5.5. Example</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id35">2.5.6. Example</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id36">2.5.7. Example</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id37">2.5.8. Example</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id38">2.5.9. Exercises</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="03_Parity_and_Divisibility.html">3. Parity and divisibility</a></li>
@@ -1140,8 +1152,10 @@ braces, as follows.</p>
 <span class="kd">end</span>
 </pre></div>
 </div>
-<ol class="arabic simple" start="2">
-<li><p>Let <span class="math notranslate nohighlight">\(n\)</span> be any natural number.  Show that <span class="math notranslate nohighlight">\(n ^ 2 \ne 7\)</span>.</p></li>
+<ol class="arabic" start="2">
+<li><p>Let <span class="math notranslate nohighlight">\(n\)</span> be any natural number.  Show that <span class="math notranslate nohighlight">\(n ^ 2 \ne 7\)</span>.</p>
+<p>You will probably use the same lemma(s) as in <a class="reference internal" href="#sq-ne-two"><span class="std std-numref">Example 2.3.2</span></a>.</p>
+</li>
 </ol>
 <div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">{</span><span class="n">n</span> <span class="o">:</span> <span class="n">&#8469;</span><span class="o">}</span> <span class="o">:</span> <span class="n">n</span> <span class="bp">^</span> <span class="mi">2</span> <span class="bp">&#8800;</span> <span class="mi">7</span> <span class="o">:=</span>
 <span class="kd">begin</span>
@@ -1149,9 +1163,11 @@ braces, as follows.</p>
 <span class="kd">end</span>
 </pre></div>
 </div>
-<ol class="arabic simple" id="pow-eq-zero-ex" start="3">
+<ol class="arabic" id="pow-eq-zero-ex" start="3">
 <li><p>Let <span class="math notranslate nohighlight">\(a\)</span> be a real number and suppose that <span class="math notranslate nohighlight">\(a ^ 3 = 0\)</span>.
-Show that <span class="math notranslate nohighlight">\(a = 0\)</span>.</p></li>
+Show that <span class="math notranslate nohighlight">\(a = 0\)</span>.</p>
+<p>You will probably use the same lemma(s) as in <a class="reference internal" href="#pow-eq-zero-disc"><span class="std std-numref">Example 2.3.6</span></a>.</p>
+</li>
 </ol>
 <div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">{</span><span class="n">a</span> <span class="o">:</span> <span class="n">&#8477;</span><span class="o">}</span> <span class="o">(</span><span class="n">ha</span> <span class="o">:</span> <span class="n">a</span> <span class="bp">^</span> <span class="mi">3</span> <span class="bp">=</span> <span class="mi">0</span><span class="o">)</span> <span class="o">:</span> <span class="n">a</span> <span class="bp">=</span> <span class="mi">0</span> <span class="o">:=</span>
 <span class="kd">begin</span>
@@ -1169,9 +1185,11 @@ Show that either <span class="math notranslate nohighlight">\(s + t = 3\)</span>
 <span class="kd">end</span>
 </pre></div>
 </div>
-<ol class="arabic simple" start="5">
+<ol class="arabic" start="5">
 <li><p>Let <span class="math notranslate nohighlight">\(x\)</span> be a real number for which <span class="math notranslate nohighlight">\(x^2+2x-3=0\)</span>.  Show that either <span class="math notranslate nohighlight">\(x=-3\)</span> or
-<span class="math notranslate nohighlight">\(x=1\)</span>.</p></li>
+<span class="math notranslate nohighlight">\(x=1\)</span>.</p>
+<p>You will probably use the same lemma(s) as in <a class="reference internal" href="#solve-quadratic"><span class="std std-numref">Example 2.3.5</span></a>.</p>
+</li>
 </ol>
 <div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">{</span><span class="n">x</span> <span class="o">:</span> <span class="n">&#8477;</span><span class="o">}</span> <span class="o">(</span><span class="n">hx</span> <span class="o">:</span> <span class="n">x</span> <span class="bp">^</span> <span class="mi">2</span> <span class="bp">+</span> <span class="mi">2</span> <span class="bp">*</span> <span class="n">x</span> <span class="bp">-</span> <span class="mi">3</span> <span class="bp">=</span> <span class="mi">0</span><span class="o">)</span> <span class="o">:</span> <span class="n">x</span> <span class="bp">=</span> <span class="bp">-</span><span class="mi">3</span> <span class="bp">&#8744;</span> <span class="n">x</span> <span class="bp">=</span> <span class="mi">1</span> <span class="o">:=</span>
 <span class="kd">begin</span>
@@ -1278,10 +1296,10 @@ with this &#8220;and&#8221; hypothesis and then finish the proof in Lean.</p>
 <div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">{</span><span class="n">p</span> <span class="o">:</span> <span class="n">&#8474;</span><span class="o">}</span> <span class="o">(</span><span class="n">hp</span> <span class="o">:</span> <span class="n">p</span> <span class="bp">^</span> <span class="mi">2</span> <span class="bp">=</span> <span class="mi">9</span><span class="o">)</span> <span class="o">:</span> <span class="n">p</span> <span class="bp">&#8804;</span> <span class="mi">5</span> <span class="o">:=</span>
 <span class="kd">begin</span>
   <span class="k">have</span> <span class="n">hp&#39;</span> <span class="o">:</span> <span class="bp">-</span><span class="mi">3</span> <span class="bp">&#8804;</span> <span class="n">p</span> <span class="bp">&#8743;</span> <span class="n">p</span> <span class="bp">&#8804;</span> <span class="mi">3</span><span class="o">,</span>
-  <span class="n">apply</span> <span class="n">abs_le_of_sq_le_sq&#39;</span><span class="o">,</span>
-  <span class="k">calc</span> <span class="n">p</span> <span class="bp">^</span> <span class="mi">2</span> <span class="bp">&#8804;</span> <span class="mi">9</span> <span class="o">:</span> <span class="kd">by</span> <span class="n">addarith</span> <span class="n">hp</span>
-  <span class="bp">...</span> <span class="bp">=</span> <span class="mi">3</span> <span class="bp">^</span> <span class="mi">2</span> <span class="o">:</span> <span class="kd">by</span> <span class="n">norm_num</span><span class="o">,</span>
-  <span class="n">norm_num</span><span class="o">,</span>
+  <span class="o">{</span> <span class="n">apply</span> <span class="n">abs_le_of_sq_le_sq&#39;</span><span class="o">,</span>
+    <span class="k">calc</span> <span class="n">p</span> <span class="bp">^</span> <span class="mi">2</span> <span class="bp">&#8804;</span> <span class="mi">9</span> <span class="o">:</span> <span class="kd">by</span> <span class="n">addarith</span> <span class="n">hp</span>
+    <span class="bp">...</span> <span class="bp">=</span> <span class="mi">3</span> <span class="bp">^</span> <span class="mi">2</span> <span class="o">:</span> <span class="kd">by</span> <span class="n">norm_num</span><span class="o">,</span>
+    <span class="n">norm_num</span><span class="o">,</span> <span class="o">},</span>
   <span class="gr">sorry</span><span class="o">,</span>
 <span class="kd">end</span>
 </pre></div>
@@ -1340,11 +1358,11 @@ an &#8220;and&#8221; statement,</p>
   <span class="n">a</span> <span class="bp">=</span> <span class="mi">9</span> <span class="bp">&#8743;</span> <span class="n">b</span> <span class="bp">=</span> <span class="mi">1</span> <span class="o">:=</span>
 <span class="kd">begin</span>
   <span class="n">split</span><span class="o">,</span>
-  <span class="k">calc</span> <span class="n">a</span> <span class="bp">=</span> <span class="mi">4</span> <span class="bp">+</span> <span class="mi">5</span> <span class="bp">*</span> <span class="n">b</span> <span class="o">:</span> <span class="kd">by</span> <span class="n">addarith</span> <span class="n">h1</span>
-  <span class="bp">...</span> <span class="bp">=</span> <span class="bp">-</span><span class="mi">6</span> <span class="bp">+</span> <span class="mi">5</span> <span class="bp">*</span> <span class="o">(</span><span class="n">b</span> <span class="bp">+</span> <span class="mi">2</span><span class="o">)</span> <span class="o">:</span> <span class="kd">by</span> <span class="n">ring</span>
-  <span class="bp">...</span> <span class="bp">=</span> <span class="bp">-</span><span class="mi">6</span> <span class="bp">+</span> <span class="mi">5</span> <span class="bp">*</span> <span class="mi">3</span> <span class="o">:</span> <span class="kd">by</span> <span class="n">rw</span> <span class="o">[</span><span class="n">h2</span><span class="o">]</span>
-  <span class="bp">...</span> <span class="bp">=</span> <span class="mi">9</span> <span class="o">:</span> <span class="kd">by</span> <span class="n">ring</span><span class="o">,</span>
-  <span class="n">addarith</span> <span class="n">h2</span><span class="o">,</span>
+  <span class="o">{</span> <span class="k">calc</span> <span class="n">a</span> <span class="bp">=</span> <span class="mi">4</span> <span class="bp">+</span> <span class="mi">5</span> <span class="bp">*</span> <span class="n">b</span> <span class="o">:</span> <span class="kd">by</span> <span class="n">addarith</span> <span class="n">h1</span>
+    <span class="bp">...</span> <span class="bp">=</span> <span class="bp">-</span><span class="mi">6</span> <span class="bp">+</span> <span class="mi">5</span> <span class="bp">*</span> <span class="o">(</span><span class="n">b</span> <span class="bp">+</span> <span class="mi">2</span><span class="o">)</span> <span class="o">:</span> <span class="kd">by</span> <span class="n">ring</span>
+    <span class="bp">...</span> <span class="bp">=</span> <span class="bp">-</span><span class="mi">6</span> <span class="bp">+</span> <span class="mi">5</span> <span class="bp">*</span> <span class="mi">3</span> <span class="o">:</span> <span class="kd">by</span> <span class="n">rw</span> <span class="o">[</span><span class="n">h2</span><span class="o">]</span>
+    <span class="bp">...</span> <span class="bp">=</span> <span class="mi">9</span> <span class="o">:</span> <span class="kd">by</span> <span class="n">ring</span><span class="o">,</span> <span class="o">},</span>
+  <span class="o">{</span> <span class="n">addarith</span> <span class="n">h2</span><span class="o">,</span> <span class="o">},</span>
 <span class="kd">end</span>
 </pre></div>
 </div>
@@ -1385,12 +1403,12 @@ hb : b = 1
   <span class="n">a</span> <span class="bp">=</span> <span class="mi">9</span> <span class="bp">&#8743;</span> <span class="n">b</span> <span class="bp">=</span> <span class="mi">1</span> <span class="o">:=</span>
 <span class="kd">begin</span>
   <span class="k">have</span> <span class="n">hb</span> <span class="o">:</span> <span class="n">b</span> <span class="bp">=</span> <span class="mi">1</span><span class="o">,</span>
-  <span class="n">addarith</span> <span class="n">h2</span><span class="o">,</span>
+  <span class="o">{</span> <span class="n">addarith</span> <span class="n">h2</span> <span class="o">},</span>
   <span class="n">split</span><span class="o">,</span>
-  <span class="k">calc</span> <span class="n">a</span> <span class="bp">=</span> <span class="mi">4</span> <span class="bp">+</span> <span class="mi">5</span> <span class="bp">*</span> <span class="n">b</span> <span class="o">:</span> <span class="kd">by</span> <span class="n">addarith</span> <span class="n">h1</span>
-  <span class="bp">...</span> <span class="bp">=</span> <span class="mi">4</span> <span class="bp">+</span> <span class="mi">5</span> <span class="bp">*</span> <span class="mi">1</span> <span class="o">:</span> <span class="kd">by</span> <span class="n">rw</span> <span class="o">[</span><span class="n">hb</span><span class="o">]</span>
-  <span class="bp">...</span> <span class="bp">=</span> <span class="mi">9</span> <span class="o">:</span> <span class="kd">by</span> <span class="n">ring</span><span class="o">,</span>
-  <span class="n">apply</span> <span class="n">hb</span><span class="o">,</span>
+  <span class="o">{</span> <span class="k">calc</span> <span class="n">a</span> <span class="bp">=</span> <span class="mi">4</span> <span class="bp">+</span> <span class="mi">5</span> <span class="bp">*</span> <span class="n">b</span> <span class="o">:</span> <span class="kd">by</span> <span class="n">addarith</span> <span class="n">h1</span>
+    <span class="bp">...</span> <span class="bp">=</span> <span class="mi">4</span> <span class="bp">+</span> <span class="mi">5</span> <span class="bp">*</span> <span class="mi">1</span> <span class="o">:</span> <span class="kd">by</span> <span class="n">rw</span> <span class="o">[</span><span class="n">hb</span><span class="o">]</span>
+    <span class="bp">...</span> <span class="bp">=</span> <span class="mi">9</span> <span class="o">:</span> <span class="kd">by</span> <span class="n">ring</span><span class="o">,</span> <span class="o">},</span>
+  <span class="o">{</span> <span class="n">apply</span> <span class="n">hb</span><span class="o">,</span> <span class="o">},</span>
 <span class="kd">end</span>
 </pre></div>
 </div>
@@ -1410,7 +1428,7 @@ hb : b = 1
 \[\begin{split}a ^ 2 &amp;\le a ^ 2 + b ^ 2\\
 &amp;=0.\end{split}\]</div>
 <p>and also since squares are nonnegative <span class="math notranslate nohighlight">\(a^2\geq 0\)</span>.</p>
-<p>By <span class="math notranslate nohighlight">\((\star)\)</span>, <span class="math notranslate nohighlight">\(a=0\)</span>.  Also, by <span class="math notranslate nohighlight">\((\star)\)</span>,</p>
+<p>By <span class="math notranslate nohighlight">\((\star)\)</span>, <span class="math notranslate nohighlight">\(a=0\)</span>.  Also by <span class="math notranslate nohighlight">\((\star)\)</span>,</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}b ^ 2 &amp;= a ^ 2 + b ^ 2\\
 &amp;=0,\end{split}\]</div>
@@ -1443,6 +1461,292 @@ the power).</p>
 <div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">{</span><span class="n">x</span> <span class="n">y</span> <span class="o">:</span> <span class="n">&#8474;</span><span class="o">}</span> <span class="o">(</span><span class="n">h</span> <span class="o">:</span> <span class="n">x</span> <span class="bp">+</span> <span class="n">y</span> <span class="bp">=</span> <span class="mi">5</span> <span class="bp">&#8743;</span> <span class="n">x</span> <span class="bp">+</span> <span class="mi">2</span> <span class="bp">*</span> <span class="n">y</span> <span class="bp">=</span> <span class="mi">7</span><span class="o">)</span> <span class="o">:</span> <span class="n">x</span> <span class="bp">=</span> <span class="mi">3</span> <span class="bp">&#8743;</span> <span class="n">y</span> <span class="bp">=</span> <span class="mi">2</span> <span class="o">:=</span>
 <span class="kd">begin</span>
   <span class="gr">sorry</span>
+<span class="kd">end</span>
+</pre></div>
+</div>
+<ol class="arabic" start="2">
+<li><p>Let <span class="math notranslate nohighlight">\(a\)</span> and <span class="math notranslate nohighlight">\(b\)</span> be real numbers and suppose that <span class="math notranslate nohighlight">\(ab=a=b\)</span>.  Show that either
+<span class="math notranslate nohighlight">\(a=b=0\)</span> or <span class="math notranslate nohighlight">\(a=b=1\)</span>.</p>
+<p>You will probably need the lemma <code class="docutils literal notranslate"><span class="pre">eq_zero_or_eq_zero_of_mul_eq_zero</span></code> proved in
+<a class="reference internal" href="#integral-domain-step3"><span class="std std-numref">Example 2.3.4</span></a>.</p>
+</li>
+</ol>
+<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">{</span><span class="n">a</span> <span class="n">b</span> <span class="o">:</span> <span class="n">&#8477;</span><span class="o">}</span> <span class="o">(</span><span class="n">h1</span> <span class="o">:</span> <span class="n">a</span> <span class="bp">*</span> <span class="n">b</span> <span class="bp">=</span> <span class="n">a</span><span class="o">)</span> <span class="o">(</span><span class="n">h2</span> <span class="o">:</span> <span class="n">a</span> <span class="bp">*</span> <span class="n">b</span> <span class="bp">=</span> <span class="n">b</span><span class="o">)</span> <span class="o">:</span>
+  <span class="o">(</span><span class="n">a</span> <span class="bp">=</span> <span class="mi">0</span> <span class="bp">&#8743;</span> <span class="n">b</span> <span class="bp">=</span> <span class="mi">0</span><span class="o">)</span> <span class="bp">&#8744;</span> <span class="o">(</span><span class="n">a</span> <span class="bp">=</span> <span class="mi">1</span> <span class="bp">&#8743;</span> <span class="n">b</span> <span class="bp">=</span> <span class="mi">1</span><span class="o">)</span> <span class="o">:=</span>
+<span class="kd">begin</span>
+  <span class="gr">sorry</span>
+<span class="kd">end</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="existence-proofs">
+<span id="exists"></span><h2><span class="section-number">2.5. </span>Existence proofs<a class="headerlink" href="#existence-proofs" title="Permalink to this headline">&#61633;</a></h2>
+<section id="id30">
+<h3><span class="section-number">2.5.1. </span>Example<a class="headerlink" href="#id30" title="Permalink to this headline">&#61633;</a></h3>
+<div class="admonition-problem admonition">
+<p class="admonition-title">Problem</p>
+<p>Let <span class="math notranslate nohighlight">\(a\)</span> be a rational number, and suppose that there exists a rational number <span class="math notranslate nohighlight">\(b\)</span>,
+such that <span class="math notranslate nohighlight">\(a=b^2+1\)</span>.  Show that <span class="math notranslate nohighlight">\(a&gt;0\)</span>.</p>
+</div>
+<div class="admonition-solution admonition">
+<p class="admonition-title">Solution</p>
+<p>Let <span class="math notranslate nohighlight">\(b\)</span> be a rational number such that <span class="math notranslate nohighlight">\(a=b^2+1\)</span>. We have,</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}a &amp;=b^2+1\\
+&amp;&gt;0.\end{split}\]</div>
+</div>
+<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">{</span><span class="n">a</span> <span class="o">:</span> <span class="n">&#8474;</span><span class="o">}</span> <span class="o">(</span><span class="n">h</span> <span class="o">:</span> <span class="bp">&#8707;</span> <span class="n">b</span> <span class="o">:</span> <span class="n">&#8474;</span><span class="o">,</span> <span class="n">a</span> <span class="bp">=</span> <span class="n">b</span> <span class="bp">^</span> <span class="mi">2</span> <span class="bp">+</span> <span class="mi">1</span><span class="o">)</span> <span class="o">:</span> <span class="n">a</span> <span class="bp">&gt;</span> <span class="mi">0</span> <span class="o">:=</span>
+<span class="kd">begin</span>
+  <span class="n">cases</span> <span class="n">h</span> <span class="k">with</span> <span class="n">b</span> <span class="n">hb</span><span class="o">,</span>
+  <span class="k">calc</span> <span class="n">a</span> <span class="bp">=</span> <span class="n">b</span> <span class="bp">^</span> <span class="mi">2</span> <span class="bp">+</span> <span class="mi">1</span> <span class="o">:</span> <span class="n">hb</span>
+  <span class="bp">...</span> <span class="bp">&gt;</span> <span class="mi">0</span> <span class="o">:</span> <span class="kd">by</span> <span class="n">ineq_tac</span> <span class="o">[],</span>
+<span class="kd">end</span>
+</pre></div>
+</div>
+</section>
+<section id="id31">
+<h3><span class="section-number">2.5.2. </span>Example<a class="headerlink" href="#id31" title="Permalink to this headline">&#61633;</a></h3>
+<div class="admonition-problem admonition">
+<p class="admonition-title">Problem</p>
+<p>Let <span class="math notranslate nohighlight">\(t\)</span> be a real number, and suppose that there exists a real number <span class="math notranslate nohighlight">\(a\)</span>,
+such that <span class="math notranslate nohighlight">\(at&lt;0\)</span>.  Show that <span class="math notranslate nohighlight">\(t\ne 0\)</span>.</p>
+</div>
+<div class="admonition-solution admonition">
+<p class="admonition-title">Solution</p>
+<p>Let <span class="math notranslate nohighlight">\(x\)</span> be a rational number such that <span class="math notranslate nohighlight">\(xt&lt;0\)</span>. We consider separately the cases
+<span class="math notranslate nohighlight">\(x\le 0\)</span> and <span class="math notranslate nohighlight">\(0&lt;x\)</span>.</p>
+<p><strong>Case 1</strong> (<span class="math notranslate nohighlight">\(x \le 0\)</span>):  Since <span class="math notranslate nohighlight">\(xt&lt;0\)</span> and <span class="math notranslate nohighlight">\(x \le 0\)</span>, we have that
+<span class="math notranslate nohighlight">\(0 &lt; t\)</span>, and so <span class="math notranslate nohighlight">\(t\ne 0\)</span>,</p>
+<p><strong>Case 2</strong> (<span class="math notranslate nohighlight">\(0&lt;x\)</span>):  Since <span class="math notranslate nohighlight">\(xt&lt;0\)</span> and <span class="math notranslate nohighlight">\(0 \le x\)</span>, we have that
+<span class="math notranslate nohighlight">\(t &lt; 0\)</span>, and so <span class="math notranslate nohighlight">\(t\ne 0\)</span>,</p>
+</div>
+<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">{</span><span class="n">t</span> <span class="o">:</span> <span class="n">&#8477;</span><span class="o">}</span> <span class="o">(</span><span class="n">h</span> <span class="o">:</span> <span class="bp">&#8707;</span> <span class="n">a</span> <span class="o">:</span> <span class="n">&#8477;</span><span class="o">,</span> <span class="n">a</span> <span class="bp">*</span> <span class="n">t</span> <span class="bp">&lt;</span> <span class="mi">0</span><span class="o">)</span> <span class="o">:</span> <span class="n">t</span> <span class="bp">&#8800;</span> <span class="mi">0</span> <span class="o">:=</span>
+<span class="kd">begin</span>
+  <span class="n">cases</span> <span class="n">h</span> <span class="k">with</span> <span class="n">x</span> <span class="n">hxt</span><span class="o">,</span>
+  <span class="k">have</span> <span class="n">H</span> <span class="o">:</span> <span class="n">x</span> <span class="bp">&#8804;</span> <span class="mi">0</span> <span class="bp">&#8744;</span> <span class="mi">0</span> <span class="bp">&lt;</span> <span class="n">x</span> <span class="o">:=</span> <span class="n">le_or_gt</span> <span class="n">x</span> <span class="mi">0</span><span class="o">,</span>
+  <span class="n">cases</span> <span class="n">H</span> <span class="k">with</span> <span class="n">hx</span> <span class="n">hx</span><span class="o">,</span>
+  <span class="o">{</span> <span class="n">apply</span> <span class="n">ne_of_gt</span><span class="o">,</span>
+    <span class="n">apply</span> <span class="n">pos_of_mul_neg_right</span> <span class="n">hxt</span> <span class="n">hx</span><span class="o">,</span> <span class="o">},</span>
+  <span class="gr">sorry</span><span class="o">,</span>
+<span class="kd">end</span>
+</pre></div>
+</div>
+</section>
+<section id="id32">
+<h3><span class="section-number">2.5.3. </span>Example<a class="headerlink" href="#id32" title="Permalink to this headline">&#61633;</a></h3>
+<div class="admonition-problem admonition">
+<p class="admonition-title">Problem</p>
+<p>Show that there exists an integer <span class="math notranslate nohighlight">\(n\)</span>, such that <span class="math notranslate nohighlight">\(12n=84\)</span>.</p>
+</div>
+<div class="admonition-solution admonition">
+<p class="admonition-title">Solution</p>
+<p>The integer <span class="math notranslate nohighlight">\(7\)</span> has this property.  Indeed, <span class="math notranslate nohighlight">\(12 \cdot 7=84\)</span>.</p>
+</div>
+<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">:</span> <span class="bp">&#8707;</span> <span class="n">n</span> <span class="o">:</span> <span class="n">&#8484;</span><span class="o">,</span> <span class="mi">12</span> <span class="bp">*</span> <span class="n">n</span> <span class="bp">=</span> <span class="mi">84</span> <span class="o">:=</span>
+<span class="kd">begin</span>
+  <span class="n">use</span> <span class="mi">7</span><span class="o">,</span>
+  <span class="n">norm_num</span><span class="o">,</span>
+<span class="kd">end</span>
+</pre></div>
+</div>
+</section>
+<section id="id33">
+<h3><span class="section-number">2.5.4. </span>Example<a class="headerlink" href="#id33" title="Permalink to this headline">&#61633;</a></h3>
+<div class="admonition-problem admonition">
+<p class="admonition-title">Problem</p>
+<p>Let <span class="math notranslate nohighlight">\(x\)</span> be a real number.  Show that there exists a real number <span class="math notranslate nohighlight">\(y\)</span>, such that
+<span class="math notranslate nohighlight">\(y&gt;x\)</span>.</p>
+</div>
+<div class="admonition-solution admonition">
+<p class="admonition-title">Solution</p>
+<p>The real number <span class="math notranslate nohighlight">\(x + 1\)</span> has this property.  Indeed, <span class="math notranslate nohighlight">\(x+1&gt;x\)</span>.</p>
+</div>
+<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">(</span><span class="n">x</span> <span class="o">:</span> <span class="n">&#8477;</span><span class="o">)</span> <span class="o">:</span> <span class="bp">&#8707;</span> <span class="n">y</span> <span class="o">:</span> <span class="n">&#8477;</span><span class="o">,</span> <span class="n">y</span> <span class="bp">&gt;</span> <span class="n">x</span> <span class="o">:=</span>
+<span class="kd">begin</span>
+  <span class="n">use</span> <span class="n">x</span> <span class="bp">+</span> <span class="mi">1</span><span class="o">,</span>
+  <span class="n">ineq_tac</span> <span class="o">[],</span>
+<span class="kd">end</span>
+</pre></div>
+</div>
+</section>
+<section id="id34">
+<h3><span class="section-number">2.5.5. </span>Example<a class="headerlink" href="#id34" title="Permalink to this headline">&#61633;</a></h3>
+<div class="admonition-problem admonition">
+<p class="admonition-title">Problem</p>
+<p>Show that there exist integers <span class="math notranslate nohighlight">\(m\)</span> and <span class="math notranslate nohighlight">\(n\)</span>, such that
+<span class="math notranslate nohighlight">\(m^2-n^2=11\)</span>.</p>
+</div>
+<div class="admonition-solution admonition">
+<p class="admonition-title">Solution</p>
+<p>We can take <span class="math notranslate nohighlight">\(m=6\)</span>, <span class="math notranslate nohighlight">\(n=5\)</span>.  Indeed,</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}6^2-5^2&amp;=36-25\\
+&amp;=11.\end{split}\]</div>
+</div>
+<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">:</span> <span class="bp">&#8707;</span> <span class="n">m</span> <span class="n">n</span> <span class="o">:</span> <span class="n">&#8484;</span><span class="o">,</span> <span class="n">m</span> <span class="bp">^</span> <span class="mi">2</span> <span class="bp">-</span> <span class="n">n</span> <span class="bp">^</span> <span class="mi">2</span> <span class="bp">=</span> <span class="mi">11</span> <span class="o">:=</span>
+<span class="kd">begin</span>
+  <span class="gr">sorry</span><span class="o">,</span>
+<span class="kd">end</span>
+</pre></div>
+</div>
+</section>
+<section id="id35">
+<h3><span class="section-number">2.5.6. </span>Example<a class="headerlink" href="#id35" title="Permalink to this headline">&#61633;</a></h3>
+<div class="admonition-problem admonition">
+<p class="admonition-title">Problem</p>
+<p>Let <span class="math notranslate nohighlight">\(a\)</span> be an integer.  Show that there exist integers <span class="math notranslate nohighlight">\(m\)</span> and <span class="math notranslate nohighlight">\(n\)</span>, such that
+<span class="math notranslate nohighlight">\(m^2-n^2=2a+1\)</span>.</p>
+</div>
+<div class="admonition-solution admonition">
+<p class="admonition-title">Solution</p>
+<p>We can take <span class="math notranslate nohighlight">\(m=a+1\)</span>, <span class="math notranslate nohighlight">\(n=a\)</span>.  Indeed,</p>
+<div class="math notranslate nohighlight">
+\[(a+1)^2-a^2=2a+1.\]</div>
+</div>
+<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">(</span><span class="n">a</span> <span class="o">:</span> <span class="n">&#8484;</span><span class="o">)</span> <span class="o">:</span> <span class="bp">&#8707;</span> <span class="n">m</span> <span class="n">n</span> <span class="o">:</span> <span class="n">&#8484;</span><span class="o">,</span> <span class="n">m</span> <span class="bp">^</span> <span class="mi">2</span> <span class="bp">-</span> <span class="n">n</span> <span class="bp">^</span> <span class="mi">2</span> <span class="bp">=</span> <span class="mi">2</span> <span class="bp">*</span> <span class="n">a</span> <span class="bp">+</span> <span class="mi">1</span> <span class="o">:=</span>
+<span class="kd">begin</span>
+  <span class="gr">sorry</span><span class="o">,</span>
+<span class="kd">end</span>
+</pre></div>
+</div>
+</section>
+<section id="id36">
+<h3><span class="section-number">2.5.7. </span>Example<a class="headerlink" href="#id36" title="Permalink to this headline">&#61633;</a></h3>
+<div class="admonition-problem admonition">
+<p class="admonition-title">Problem</p>
+<p>Let <span class="math notranslate nohighlight">\(p\)</span> and <span class="math notranslate nohighlight">\(q\)</span> be real numbers, and suppose <span class="math notranslate nohighlight">\(p&lt;q\)</span>.  Show that there exists a
+real number <span class="math notranslate nohighlight">\(x\)</span>, such that <span class="math notranslate nohighlight">\(p&lt;x&lt;q\)</span>.</p>
+</div>
+<div class="admonition-solution admonition">
+<p class="admonition-title">Solution</p>
+<p>We will show that <span class="math notranslate nohighlight">\(\frac{p+q}{2}\)</span> has this property. Indeed,</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}p&amp;=\frac{p+p}{2}\\
+&amp;&lt;\frac{p+q}{2},\end{split}\]</div>
+<p>and</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\frac{p+q}{2} &amp;&lt;\frac{q+q}{2}\\
+&amp;=q.\end{split}\]</div>
+</div>
+<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">{</span><span class="n">p</span> <span class="n">q</span> <span class="o">:</span> <span class="n">&#8477;</span><span class="o">}</span> <span class="o">(</span><span class="n">h</span> <span class="o">:</span> <span class="n">p</span> <span class="bp">&lt;</span> <span class="n">q</span><span class="o">)</span> <span class="o">:</span> <span class="bp">&#8707;</span> <span class="n">x</span><span class="o">,</span> <span class="n">p</span> <span class="bp">&lt;</span> <span class="n">x</span> <span class="bp">&#8743;</span> <span class="n">x</span> <span class="bp">&lt;</span> <span class="n">q</span> <span class="o">:=</span>
+<span class="kd">begin</span>
+  <span class="gr">sorry</span><span class="o">,</span>
+<span class="kd">end</span>
+</pre></div>
+</div>
+</section>
+<section id="id37">
+<h3><span class="section-number">2.5.8. </span>Example<a class="headerlink" href="#id37" title="Permalink to this headline">&#61633;</a></h3>
+<blockquote>
+<div><p>I remember once going to see him [Ramanujan] when he was lying ill at Putney. I had ridden in taxi cab number
+1729 and remarked that the number seemed to me rather a dull one, and that I hoped it was not an
+unfavorable omen. &#8220;No,&#8221; he replied, &#8220;it is a very interesting number; it is the smallest number
+expressible as the sum of two cubes in two different ways.&#8221;</p>
+<p class="attribution">&#8212;G. H. Hardy, <em>Ramanujan: Twelve lectures on subjects suggested by his life and work</em></p>
+</div></blockquote>
+<div class="admonition-problem admonition">
+<p class="admonition-title">Problem</p>
+<p>Show that there exist natural numbers <span class="math notranslate nohighlight">\(a\)</span>, <span class="math notranslate nohighlight">\(b\)</span>, <span class="math notranslate nohighlight">\(c\)</span> and <span class="math notranslate nohighlight">\(d\)</span>, such that
+<span class="math notranslate nohighlight">\(a^3+b^3=1729=c^3+d^3\)</span>, but <span class="math notranslate nohighlight">\(a\ne c\)</span> and <span class="math notranslate nohighlight">\(a\ne d\)</span>.</p>
+</div>
+<div class="admonition-solution admonition">
+<p class="admonition-title">Solution</p>
+<p>We can take <span class="math notranslate nohighlight">\(a=1\)</span>, <span class="math notranslate nohighlight">\(b=12\)</span>, <span class="math notranslate nohighlight">\(c=9\)</span>, <span class="math notranslate nohighlight">\(d=10\)</span>.</p>
+</div>
+<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">:</span> <span class="bp">&#8707;</span> <span class="n">a</span> <span class="n">b</span> <span class="n">c</span> <span class="n">d</span> <span class="o">:</span> <span class="n">&#8469;</span><span class="o">,</span> <span class="n">a</span> <span class="bp">^</span> <span class="mi">3</span> <span class="bp">+</span> <span class="n">b</span> <span class="bp">^</span> <span class="mi">3</span> <span class="bp">=</span> <span class="mi">1729</span> <span class="bp">&#8743;</span> <span class="n">c</span> <span class="bp">^</span> <span class="mi">3</span> <span class="bp">+</span> <span class="n">d</span> <span class="bp">^</span> <span class="mi">3</span> <span class="bp">=</span> <span class="mi">1729</span> <span class="bp">&#8743;</span> <span class="n">a</span> <span class="bp">&#8800;</span> <span class="n">c</span> <span class="bp">&#8743;</span> <span class="n">a</span> <span class="bp">&#8800;</span> <span class="n">d</span> <span class="o">:=</span>
+<span class="kd">begin</span>
+  <span class="n">use</span> <span class="o">[</span><span class="mi">1</span><span class="o">,</span> <span class="mi">12</span><span class="o">,</span> <span class="mi">9</span><span class="o">,</span> <span class="mi">10</span><span class="o">],</span>
+  <span class="n">split</span><span class="o">,</span>
+  <span class="n">norm_num</span><span class="o">,</span>
+  <span class="n">split</span><span class="o">,</span>
+  <span class="n">norm_num</span><span class="o">,</span>
+  <span class="n">split</span><span class="o">,</span>
+  <span class="n">norm_num</span><span class="o">,</span>
+  <span class="n">norm_num</span><span class="o">,</span>
+<span class="kd">end</span>
+</pre></div>
+</div>
+</section>
+<section id="id38">
+<h3><span class="section-number">2.5.9. </span>Exercises<a class="headerlink" href="#id38" title="Permalink to this headline">&#61633;</a></h3>
+<ol class="arabic simple">
+<li><p>Show that there exists a rational number <span class="math notranslate nohighlight">\(t\)</span>, such that <span class="math notranslate nohighlight">\(t^2=1.69\)</span>.</p></li>
+</ol>
+<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">:</span> <span class="bp">&#8707;</span> <span class="n">t</span> <span class="o">:</span> <span class="n">&#8474;</span><span class="o">,</span> <span class="n">t</span> <span class="bp">^</span> <span class="mi">2</span> <span class="bp">=</span> <span class="mi">1</span><span class="bp">.</span><span class="mi">69</span> <span class="o">:=</span>
+<span class="kd">begin</span>
+  <span class="gr">sorry</span><span class="o">,</span>
+<span class="kd">end</span>
+</pre></div>
+</div>
+<ol class="arabic simple" start="2">
+<li><p>Show that there exist integers <span class="math notranslate nohighlight">\(m\)</span> and <span class="math notranslate nohighlight">\(n\)</span>, such that <span class="math notranslate nohighlight">\(m^2+n^2=85\)</span>.</p></li>
+</ol>
+<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">:</span> <span class="bp">&#8707;</span> <span class="n">m</span> <span class="n">n</span> <span class="o">:</span> <span class="n">&#8484;</span><span class="o">,</span> <span class="n">m</span> <span class="bp">^</span> <span class="mi">2</span> <span class="bp">+</span> <span class="n">n</span> <span class="bp">^</span> <span class="mi">2</span> <span class="bp">=</span> <span class="mi">85</span> <span class="o">:=</span>
+<span class="kd">begin</span>
+  <span class="gr">sorry</span><span class="o">,</span>
+<span class="kd">end</span>
+</pre></div>
+</div>
+<ol class="arabic simple" start="3">
+<li><p>Show that there exists a real number <span class="math notranslate nohighlight">\(x\)</span>, such that <span class="math notranslate nohighlight">\(x&lt;0\)</span> and <span class="math notranslate nohighlight">\(x^2&lt;1\)</span>.</p></li>
+</ol>
+<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">:</span> <span class="bp">&#8707;</span> <span class="n">t</span> <span class="o">:</span> <span class="n">&#8477;</span><span class="o">,</span> <span class="n">t</span> <span class="bp">&lt;</span> <span class="mi">0</span> <span class="bp">&#8743;</span> <span class="n">t</span> <span class="bp">^</span> <span class="mi">2</span> <span class="bp">&lt;</span> <span class="mi">1</span> <span class="o">:=</span>
+<span class="kd">begin</span>
+  <span class="gr">sorry</span><span class="o">,</span>
+<span class="kd">end</span>
+</pre></div>
+</div>
+<ol class="arabic simple" start="4">
+<li><p>Show that there exist natural numbers <span class="math notranslate nohighlight">\(a\)</span> and <span class="math notranslate nohighlight">\(b\)</span>, such that <span class="math notranslate nohighlight">\(2 ^ a = 5b+1\)</span>.</p></li>
+</ol>
+<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">:</span> <span class="bp">&#8707;</span> <span class="n">a</span> <span class="n">b</span> <span class="o">:</span> <span class="n">&#8469;</span><span class="o">,</span> <span class="mi">2</span> <span class="bp">^</span> <span class="n">a</span> <span class="bp">=</span> <span class="mi">5</span> <span class="bp">*</span> <span class="n">b</span> <span class="bp">+</span> <span class="mi">1</span> <span class="o">:=</span>
+<span class="kd">begin</span>
+  <span class="gr">sorry</span><span class="o">,</span>
+<span class="kd">end</span>
+</pre></div>
+</div>
+<ol class="arabic simple" start="5">
+<li><p>Let <span class="math notranslate nohighlight">\(x\)</span> be a rational number. Show that there exists a rational number <span class="math notranslate nohighlight">\(y\)</span>, such
+that <span class="math notranslate nohighlight">\(y^2&gt;x\)</span>.</p></li>
+</ol>
+<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">(</span><span class="n">x</span> <span class="o">:</span> <span class="n">&#8474;</span><span class="o">)</span> <span class="o">:</span> <span class="bp">&#8707;</span> <span class="n">y</span> <span class="o">:</span> <span class="n">&#8474;</span><span class="o">,</span> <span class="n">y</span> <span class="bp">^</span> <span class="mi">2</span> <span class="bp">&gt;</span> <span class="n">x</span> <span class="o">:=</span>
+<span class="kd">begin</span>
+  <span class="gr">sorry</span><span class="o">,</span>
+<span class="kd">end</span>
+</pre></div>
+</div>
+<ol class="arabic simple" start="6">
+<li><p>Let <span class="math notranslate nohighlight">\(t\)</span> be a real number, and suppose that there exists a real number <span class="math notranslate nohighlight">\(a\)</span>,
+such that <span class="math notranslate nohighlight">\(at+1&lt;a+t\)</span>.  Show that <span class="math notranslate nohighlight">\(t\ne 1\)</span>.</p></li>
+</ol>
+<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">{</span><span class="n">t</span> <span class="o">:</span> <span class="n">&#8477;</span><span class="o">}</span> <span class="o">(</span><span class="n">h</span> <span class="o">:</span> <span class="bp">&#8707;</span> <span class="n">a</span> <span class="o">:</span> <span class="n">&#8477;</span><span class="o">,</span> <span class="n">a</span> <span class="bp">*</span> <span class="n">t</span> <span class="bp">+</span> <span class="mi">1</span> <span class="bp">&lt;</span> <span class="n">a</span> <span class="bp">+</span> <span class="n">t</span><span class="o">)</span> <span class="o">:</span> <span class="n">t</span> <span class="bp">&#8800;</span> <span class="mi">1</span> <span class="o">:=</span>
+<span class="kd">begin</span>
+  <span class="gr">sorry</span><span class="o">,</span>
+<span class="kd">end</span>
+</pre></div>
+</div>
+<ol class="arabic simple" start="7">
+<li><p>Let <span class="math notranslate nohighlight">\(m\)</span> be an integer, and suppose that there exists an integer <span class="math notranslate nohighlight">\(a\)</span>,
+such that <span class="math notranslate nohighlight">\(2a=m\)</span>.  Show that <span class="math notranslate nohighlight">\(m\ne 5\)</span>.</p></li>
+</ol>
+<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">{</span><span class="n">m</span> <span class="o">:</span> <span class="n">&#8484;</span><span class="o">}</span> <span class="o">(</span><span class="n">h</span> <span class="o">:</span> <span class="bp">&#8707;</span> <span class="n">a</span><span class="o">,</span> <span class="mi">2</span> <span class="bp">*</span> <span class="n">a</span> <span class="bp">=</span> <span class="n">m</span><span class="o">)</span> <span class="o">:</span> <span class="n">m</span> <span class="bp">&#8800;</span> <span class="mi">5</span> <span class="o">:=</span>
+<span class="kd">begin</span>
+  <span class="gr">sorry</span><span class="o">,</span>
+<span class="kd">end</span>
+</pre></div>
+</div>
+<ol class="arabic simple" start="8">
+<li><p>Let <span class="math notranslate nohighlight">\(a\)</span>, <span class="math notranslate nohighlight">\(b\)</span> and <span class="math notranslate nohighlight">\(c\)</span> be nonnegative real numbers, and suppose that
+<span class="math notranslate nohighlight">\(a\le b+c\)</span>, <span class="math notranslate nohighlight">\(b\le a+c\)</span> and <span class="math notranslate nohighlight">\(c\le a+b\)</span>.  Show that there exist nonnegative
+real numbers <span class="math notranslate nohighlight">\(x\)</span>, <span class="math notranslate nohighlight">\(y\)</span> and <span class="math notranslate nohighlight">\(z\)</span> such that <span class="math notranslate nohighlight">\(a=y+z\)</span>, <span class="math notranslate nohighlight">\(b=x+z\)</span> and
+<span class="math notranslate nohighlight">\(c=x+y\)</span>.</p></li>
+</ol>
+<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">{</span><span class="n">a</span> <span class="n">b</span> <span class="n">c</span> <span class="o">:</span> <span class="n">&#8477;</span><span class="o">}</span> <span class="o">(</span><span class="n">ha</span> <span class="o">:</span> <span class="n">a</span> <span class="bp">&#8804;</span> <span class="n">b</span> <span class="bp">+</span> <span class="n">c</span><span class="o">)</span> <span class="o">(</span><span class="n">hb</span> <span class="o">:</span> <span class="n">b</span> <span class="bp">&#8804;</span> <span class="n">a</span> <span class="bp">+</span> <span class="n">c</span><span class="o">)</span> <span class="o">(</span><span class="n">hc</span> <span class="o">:</span> <span class="n">c</span> <span class="bp">&#8804;</span> <span class="n">a</span> <span class="bp">+</span> <span class="n">b</span><span class="o">)</span>
+  <span class="o">(</span><span class="n">ha&#39;</span> <span class="o">:</span> <span class="mi">0</span> <span class="bp">&#8804;</span> <span class="n">a</span><span class="o">)</span> <span class="o">(</span><span class="n">hb&#39;</span> <span class="o">:</span> <span class="mi">0</span> <span class="bp">&#8804;</span> <span class="n">b</span><span class="o">)</span> <span class="o">(</span><span class="n">hc&#39;</span> <span class="o">:</span> <span class="mi">0</span> <span class="bp">&#8804;</span> <span class="n">c</span><span class="o">)</span> <span class="o">:</span>
+  <span class="bp">&#8707;</span> <span class="n">x</span> <span class="n">y</span> <span class="n">z</span><span class="o">,</span> <span class="n">x</span> <span class="bp">&#8805;</span> <span class="mi">0</span> <span class="bp">&#8743;</span> <span class="n">y</span> <span class="bp">&#8805;</span> <span class="mi">0</span> <span class="bp">&#8743;</span> <span class="n">z</span> <span class="bp">&#8805;</span> <span class="mi">0</span> <span class="bp">&#8743;</span> <span class="n">a</span> <span class="bp">=</span> <span class="n">y</span> <span class="bp">+</span> <span class="n">z</span> <span class="bp">&#8743;</span> <span class="n">b</span> <span class="bp">=</span> <span class="n">x</span> <span class="bp">+</span> <span class="n">z</span> <span class="bp">&#8743;</span> <span class="n">c</span> <span class="bp">=</span> <span class="n">x</span> <span class="bp">+</span> <span class="n">y</span> <span class="o">:=</span>
+<span class="kd">begin</span>
+  <span class="gr">sorry</span><span class="o">,</span>
 <span class="kd">end</span>
 </pre></div>
 </div>
