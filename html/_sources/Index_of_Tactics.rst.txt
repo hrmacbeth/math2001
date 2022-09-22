@@ -16,7 +16,7 @@ right-hand side, or vice versa.
 
 Invokes a specified lemma to modify the goal.
 
-.. rubric:: cases (first use for :math:`\lor`: :numref:`Section %s <or>`; for :math:`\land`: :numref:`Section %s <and>`)
+.. rubric:: cases (first use for :math:`\lor`: :numref:`Section %s <or>`; for :math:`\land`: :numref:`Section %s <and>`; for :math:`\exists`: :numref:`Section %s <exists>`)
 
 Takes apart a hypothesis of the form "or" (:math:`\lor`), "and" (:math:`\land`) or "there exists"
 (:math:`\exists`).
@@ -67,3 +67,7 @@ the right-hand side of that fact.
 .. rubric:: split (first use: :numref:`Section %s <and>`)
 
 Splits an "and" goal (:math:`\land`) into sub-goals for its left and right parts.
+
+.. rubric:: use (first use: :numref:`Section %s <exists>`)
+
+Provides a witness to an existential goal (:math:`\exists`).

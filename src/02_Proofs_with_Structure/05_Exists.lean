@@ -1,6 +1,6 @@
 /- Copyright (c) Heather Macbeth, 2022.  All rights reserved. -/
 
-import data.real.sqrt
+import data.real.basic
 import library.arithmetic
 import tactics.inequalities
 
@@ -81,7 +81,7 @@ begin
 end
 
 
-example : ∃ t : ℝ, t < 0 ∧ t ^ 2 < 1 :=
+example : ∃ x : ℝ, x < 0 ∧ x ^ 2 < 1 :=
 begin
   sorry,
 end
