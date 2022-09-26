@@ -21,6 +21,10 @@ Invokes a specified lemma to modify the goal.
 Takes apart a hypothesis of the form "or" (:math:`\lor`), "and" (:math:`\land`) or "there exists"
 (:math:`\exists`).
 
+.. rubric:: dsimp (first use: :numref:`Section %s <parity>`)
+
+Unfolds a definition.
+
 .. rubric:: left (first use: :numref:`Section %s <or>`)
 
 Selects the left alternative of an "or" goal (:math:`\lor`).
