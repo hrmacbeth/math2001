@@ -106,6 +106,14 @@
 <p class="admonition-title">Definition</p>
 <p>An integer <span class="math notranslate nohighlight">\(a\)</span> is <em>odd</em>, if there exists an integer <span class="math notranslate nohighlight">\(k\)</span>, such that <span class="math notranslate nohighlight">\(a=2k+1\)</span>.</p>
 </div>
+<p>Here&#8217;s how we make a definition in Lean.</p>
+<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">def</span> <span class="n">odd</span> <span class="o">(</span><span class="n">a</span> <span class="o">:</span> <span class="n">&#8484;</span><span class="o">)</span> <span class="o">:</span> <span class="kt">Prop</span> <span class="o">:=</span> <span class="bp">&#8707;</span> <span class="n">k</span><span class="o">,</span> <span class="n">a</span> <span class="bp">=</span> <span class="mi">2</span> <span class="bp">*</span> <span class="n">k</span> <span class="bp">+</span> <span class="mi">1</span>
+</pre></div>
+</div>
+<p>On paper, you need to memorize every definition; this is crucial to be able to work with them.
+In Lean, when you see a term whose definition you&#8217;d like to double-check, you can right-click
+(Windows) / two-finger-click (Mac) to bring up an option &#8220;Go to Definition&#8221;.  This will bring you
+back to the place in the Lean code where the definition was introduced.</p>
 <div class="admonition-problem admonition">
 <p class="admonition-title">Problem</p>
 <p>Show that <span class="math notranslate nohighlight">\(7\)</span> is odd.</p>
@@ -114,30 +122,22 @@
 <p class="admonition-title">Solution</p>
 <p><span class="math notranslate nohighlight">\(7=2\cdot 3+1\)</span>, so <span class="math notranslate nohighlight">\(7\)</span> is odd.</p>
 </div>
-<p>The definition <code class="docutils literal notranslate"><span class="pre">odd</span></code> already exists in the Lean library.  Here&#8217;s how this problem looks in Lean,
-using the pre-existing definition of <code class="docutils literal notranslate"><span class="pre">odd</span></code>:</p>
+<p>Here&#8217;s how this problem looks in Lean.</p>
 <div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">:</span> <span class="n">odd</span> <span class="o">(</span><span class="mi">7</span><span class="o">:</span><span class="n">&#8484;</span><span class="o">)</span> <span class="o">:=</span>
 <span class="kd">begin</span>
   <span class="gr">sorry</span>
 <span class="kd">end</span>
 </pre></div>
 </div>
-<p>On paper, you just need to memorize definitions.
-In Lean, when you see a term whose definition you&#8217;d like to double-check, you can right-click
-(Windows) / two-finger-click (Mac) to bring up an option &#8220;Go to Definition&#8221;.  When you go to the
-definition of <code class="docutils literal notranslate"><span class="pre">odd</span></code>, you will
-see the Lean translation of the definition of &#8220;odd&#8221;:</p>
-<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">def</span> <span class="n">odd</span> <span class="o">(</span><span class="n">a</span> <span class="o">:</span> <span class="n">&#8484;</span><span class="o">)</span> <span class="o">:</span> <span class="kt">Prop</span> <span class="o">:=</span> <span class="bp">&#8707;</span> <span class="n">k</span><span class="o">,</span> <span class="n">a</span> <span class="bp">=</span> <span class="mi">2</span> <span class="bp">*</span> <span class="n">k</span> <span class="bp">+</span> <span class="mi">1</span>
-</pre></div>
-</div>
-<p>You can also check a definition within a proof using the <code class="docutils literal notranslate"><span class="pre">dsimp</span></code> (&#8220;definitional-simplify&#8221;) tactic.
-In this problem, the goal state at the start is:</p>
+<p>The goal state at the start is:</p>
 <div class="highlight-text notranslate"><div class="highlight"><pre><span></span>1 goal
 
 &#8866; odd 7
 </pre></div>
 </div>
-<p>You can type <code class="docutils literal notranslate"><span class="pre">dsimp</span> <span class="pre">[odd]</span></code> within the proof to have the definition of &#8220;odd&#8221; unfolded for you:</p>
+<p>You can check a definition within a proof using the <code class="docutils literal notranslate"><span class="pre">dsimp</span></code> (&#8220;definitional-simplify&#8221;) tactic.
+Here, you can type <code class="docutils literal notranslate"><span class="pre">dsimp</span> <span class="pre">[odd]</span></code> within the proof to have the definition of &#8220;odd&#8221; unfolded for
+you:</p>
 <div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">:</span> <span class="n">odd</span> <span class="o">(</span><span class="mi">7</span><span class="o">:</span><span class="n">&#8484;</span><span class="o">)</span> <span class="o">:=</span>
 <span class="kd">begin</span>
   <span class="n">dsimp</span> <span class="o">[</span><span class="n">odd</span><span class="o">],</span>
@@ -153,6 +153,7 @@ In this problem, the goal state at the start is:</p>
 </pre></div>
 </div>
 <p>This is optional, though; the proof will still work if you delete the <code class="docutils literal notranslate"><span class="pre">dsimp</span></code> line.</p>
+<p>Here is the full Lean translation of the solution.</p>
 <div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">:</span> <span class="n">odd</span> <span class="o">(</span><span class="mi">7</span><span class="o">:</span><span class="n">&#8484;</span><span class="o">)</span> <span class="o">:=</span>
 <span class="kd">begin</span>
   <span class="n">dsimp</span> <span class="o">[</span><span class="n">odd</span><span class="o">],</span>
@@ -299,6 +300,9 @@ name when the definition of &#8220;odd&#8221; comes is unfolded.</p>
 <p class="admonition-title">Definition</p>
 <p>An integer <span class="math notranslate nohighlight">\(a\)</span> is <em>even</em>, if there exists an integer <span class="math notranslate nohighlight">\(k\)</span>, such that <span class="math notranslate nohighlight">\(a=2k\)</span>.</p>
 </div>
+<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">def</span> <span class="n">even</span> <span class="o">(</span><span class="n">a</span> <span class="o">:</span> <span class="n">&#8484;</span><span class="o">)</span> <span class="o">:</span> <span class="kt">Prop</span> <span class="o">:=</span> <span class="bp">&#8707;</span> <span class="n">k</span><span class="o">,</span> <span class="n">a</span> <span class="bp">=</span> <span class="mi">2</span> <span class="bp">*</span> <span class="n">k</span>
+</pre></div>
+</div>
 <div class="admonition-problem admonition">
 <p class="admonition-title">Problem</p>
 <p>Let <span class="math notranslate nohighlight">\(m\)</span> be an integer. Prove that if <span class="math notranslate nohighlight">\(m\)</span> is odd, then <span class="math notranslate nohighlight">\(3m-5\)</span> is even.</p>
@@ -334,17 +338,39 @@ name when the definition of &#8220;odd&#8221; comes is unfolded.</p>
 <section id="exercise">
 <h3><span class="section-number">3.1.9. </span>Exercise<a class="headerlink" href="#exercise" title="Permalink to this headline">&#61633;</a></h3>
 <p>In fact every integer is either even or odd; we will prove this later in the course.</p>
-<div class="admonition-problem admonition">
-<p class="admonition-title">Problem</p>
-<p>Let <span class="math notranslate nohighlight">\(n\)</span> be an integer. Prove that <span class="math notranslate nohighlight">\(n ^ 2 + 3 n + 4\)</span> is even.</p>
-</div>
 <p>In Lean this fact can be invoked as the lemma <code class="docutils literal notranslate"><span class="pre">int.even_or_odd</span></code>:</p>
 <div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">lemma</span> <span class="n">int.even_or_odd</span> <span class="o">(</span><span class="n">n</span> <span class="o">:</span> <span class="n">&#8484;</span><span class="o">)</span> <span class="o">:</span> <span class="n">even</span> <span class="n">n</span> <span class="bp">&#8744;</span> <span class="n">odd</span> <span class="n">n</span> <span class="o">:=</span>
 </pre></div>
 </div>
+<div class="admonition-problem admonition">
+<p class="admonition-title">Problem</p>
+<p>Let <span class="math notranslate nohighlight">\(n\)</span> be an integer. Prove that <span class="math notranslate nohighlight">\(n ^ 2 + 3 n + 4\)</span> is even.</p>
+</div>
+<div class="admonition-solution admonition">
+<p class="admonition-title">Solution</p>
+<p>We consider two cases, depending on whether <span class="math notranslate nohighlight">\(n\)</span> is even or odd.</p>
+<p>If <span class="math notranslate nohighlight">\(n\)</span> is even, then there exists an integer <span class="math notranslate nohighlight">\(x\)</span> such that <span class="math notranslate nohighlight">\(n=2x\)</span>.  Then</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}n ^ 2 + 3 n + 4 &amp;= (2 x) ^ 2 + 3 (2  x) + 4\\
+&amp;= 2  (2 x ^ 2 + 3 x + 2),\end{split}\]</div>
+<p>so <span class="math notranslate nohighlight">\(n ^ 2 + 3 n + 4\)</span> is even.</p>
+<p>If <span class="math notranslate nohighlight">\(n\)</span> is odd, then there exists an integer <span class="math notranslate nohighlight">\(x\)</span> such that <span class="math notranslate nohighlight">\(n=2x+1\)</span>.  Then</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}n ^ 2 + 3 n + 4 &amp;= (2  x + 1) ^ 2 + 3  (2  x + 1) + 4 \\
+&amp;= 2 (2  x ^ 2 + 5 x + 4),\end{split}\]</div>
+<p>so <span class="math notranslate nohighlight">\(n ^ 2 + 3 n + 4\)</span> is again even.</p>
+</div>
 <div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">(</span><span class="n">n</span> <span class="o">:</span> <span class="n">&#8484;</span><span class="o">)</span> <span class="o">:</span> <span class="n">even</span> <span class="o">(</span><span class="n">n</span> <span class="bp">^</span> <span class="mi">2</span> <span class="bp">+</span> <span class="mi">3</span> <span class="bp">*</span> <span class="n">n</span> <span class="bp">+</span> <span class="mi">4</span><span class="o">)</span> <span class="o">:=</span>
 <span class="kd">begin</span>
-  <span class="gr">sorry</span><span class="o">,</span>
+  <span class="n">cases</span> <span class="n">int.even_or_odd</span> <span class="n">n</span> <span class="k">with</span> <span class="n">hn</span> <span class="n">hn</span><span class="o">,</span>
+  <span class="n">cases</span> <span class="n">hn</span> <span class="k">with</span> <span class="n">x</span> <span class="n">hx</span><span class="o">,</span>
+  <span class="n">use</span> <span class="mi">2</span> <span class="bp">*</span> <span class="n">x</span> <span class="bp">^</span> <span class="mi">2</span> <span class="bp">+</span> <span class="mi">3</span> <span class="bp">*</span> <span class="n">x</span> <span class="bp">+</span> <span class="mi">2</span><span class="o">,</span>
+  <span class="k">calc</span> <span class="n">n</span> <span class="bp">^</span> <span class="mi">2</span> <span class="bp">+</span> <span class="mi">3</span> <span class="bp">*</span> <span class="n">n</span> <span class="bp">+</span> <span class="mi">4</span> <span class="bp">=</span> <span class="o">(</span><span class="mi">2</span> <span class="bp">*</span> <span class="n">x</span><span class="o">)</span> <span class="bp">^</span> <span class="mi">2</span> <span class="bp">+</span> <span class="mi">3</span> <span class="bp">*</span> <span class="o">(</span><span class="mi">2</span> <span class="bp">*</span> <span class="n">x</span><span class="o">)</span> <span class="bp">+</span> <span class="mi">4</span> <span class="o">:</span> <span class="kd">by</span> <span class="n">rw</span> <span class="n">hx</span>
+  <span class="bp">...</span> <span class="bp">=</span> <span class="mi">2</span> <span class="bp">*</span> <span class="o">(</span><span class="mi">2</span> <span class="bp">*</span> <span class="n">x</span> <span class="bp">^</span> <span class="mi">2</span> <span class="bp">+</span> <span class="mi">3</span> <span class="bp">*</span> <span class="n">x</span> <span class="bp">+</span> <span class="mi">2</span><span class="o">)</span> <span class="o">:</span> <span class="kd">by</span> <span class="n">ring</span><span class="o">,</span>
+  <span class="n">cases</span> <span class="n">hn</span> <span class="k">with</span> <span class="n">x</span> <span class="n">hx</span><span class="o">,</span>
+  <span class="n">use</span> <span class="mi">2</span> <span class="bp">*</span> <span class="n">x</span> <span class="bp">^</span> <span class="mi">2</span> <span class="bp">+</span> <span class="mi">5</span> <span class="bp">*</span> <span class="n">x</span> <span class="bp">+</span> <span class="mi">4</span><span class="o">,</span>
+  <span class="k">calc</span> <span class="n">n</span> <span class="bp">^</span> <span class="mi">2</span> <span class="bp">+</span> <span class="mi">3</span> <span class="bp">*</span> <span class="n">n</span> <span class="bp">+</span> <span class="mi">4</span> <span class="bp">=</span> <span class="o">(</span><span class="mi">2</span> <span class="bp">*</span> <span class="n">x</span> <span class="bp">+</span> <span class="mi">1</span><span class="o">)</span> <span class="bp">^</span> <span class="mi">2</span> <span class="bp">+</span> <span class="mi">3</span> <span class="bp">*</span> <span class="o">(</span><span class="mi">2</span> <span class="bp">*</span> <span class="n">x</span> <span class="bp">+</span> <span class="mi">1</span><span class="o">)</span> <span class="bp">+</span> <span class="mi">4</span> <span class="o">:</span> <span class="kd">by</span> <span class="n">rw</span> <span class="n">hx</span>
+  <span class="bp">...</span> <span class="bp">=</span> <span class="mi">2</span> <span class="bp">*</span> <span class="o">(</span><span class="mi">2</span> <span class="bp">*</span> <span class="n">x</span> <span class="bp">^</span> <span class="mi">2</span> <span class="bp">+</span> <span class="mi">5</span> <span class="bp">*</span> <span class="n">x</span> <span class="bp">+</span> <span class="mi">4</span><span class="o">)</span> <span class="o">:</span> <span class="kd">by</span> <span class="n">ring</span><span class="o">,</span>
 <span class="kd">end</span>
 </pre></div>
 </div>

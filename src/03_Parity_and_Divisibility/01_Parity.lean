@@ -1,7 +1,10 @@
-import data.int.parity
-import tactic
+import library.division
+import tactic.ring
+import tactic.norm_num
+import tactic.interval_cases
 
-attribute [irreducible] even
+
+def odd (a : ℤ) : Prop := ∃ k, a = 2 * k + 1
 
 
 example : odd (7:ℤ) :=
@@ -51,6 +54,9 @@ begin
 end
 
 
+def even (a : ℤ) : Prop := ∃ k, a = 2 * k
+
+
 example {m : ℤ} (hm : odd m) : even (3 * m - 5) :=
 begin
   sorry,
@@ -63,9 +69,25 @@ begin
 end
 
 
+lemma int.even_or_odd (n : ℤ) : even n ∨ odd n :=
+begin
+  obtain ⟨q, ⟨r, ⟨hn, h, h'⟩, -⟩, -⟩ := n.exists_unique_quotient_remainder 2 (by norm_num),
+  refine exists_or_distrib.mp ⟨q, _⟩,
+  interval_cases r; simp [hn],
+end
+
+
 example (n : ℤ) : even (n ^ 2 + 3 * n + 4) :=
 begin
-  sorry,
+  cases int.even_or_odd n with hn hn,
+  cases hn with x hx,
+  use 2 * x ^ 2 + 3 * x + 2,
+  calc n ^ 2 + 3 * n + 4 = (2 * x) ^ 2 + 3 * (2 * x) + 4 : by rw hx
+  ... = 2 * (2 * x ^ 2 + 3 * x + 2) : by ring,
+  cases hn with x hx,
+  use 2 * x ^ 2 + 5 * x + 4,
+  calc n ^ 2 + 3 * n + 4 = (2 * x + 1) ^ 2 + 3 * (2 * x + 1) + 4 : by rw hx
+  ... = 2 * (2 * x ^ 2 + 5 * x + 4) : by ring,
 end
 
 
