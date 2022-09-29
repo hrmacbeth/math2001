@@ -20,8 +20,8 @@ begin
   have hp' : -3 ≤ p ∧ p ≤ 3,
   { apply abs_le_of_sq_le_sq',
     calc p ^ 2 ≤ 9 : by addarith hp
-    ... = 3 ^ 2 : by norm_num,
-    norm_num, },
+    ... = 3 ^ 2 : by norm_num1,
+    norm_num1, },
   sorry,
 end
 

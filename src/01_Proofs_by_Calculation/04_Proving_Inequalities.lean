@@ -10,7 +10,7 @@ calc y = (y + 2 * x) - 2 * x : by ring
 ... ≥ 3 - 2 * x : by ineq_tac [hy]
 ... = 9 - 2 * (x + 3) : by ring
 ... ≥ 9 - 2 * 2 : by ineq_tac [hx]
-... > 3 : by norm_num
+... > 3 : by norm_num1
 
 
 example {r s : ℚ} (h1 : s + 3 ≥ r) (h2 : s + r ≤ 3) : 

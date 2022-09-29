@@ -24,7 +24,7 @@ begin
   cases hn with hn hn,
   apply ne_of_lt,
   calc n ^ 2 ≤ 1 ^ 2 : by ineq_tac [hn]
-  ... < 2 : by norm_num,
+  ... < 2 : by norm_num1,
   sorry,
 end
 
@@ -34,7 +34,7 @@ begin
   right,
   calc x = ((2 * x + 1) - 1) / 2 : by ring
   ... = (5 - 1) / 2 : by rw hx
-  ... = 2 : by norm_num,
+  ... = 2 : by norm_num1,
 end
 
 
@@ -93,18 +93,18 @@ begin
     { apply ne_of_lt,
       calc n ^ 2 = (-n) ^ 2 : by ring
       ... ≤ 1 ^ 2 : by ineq_tac [hn]
-      ... < 2 : by norm_num },
+      ... < 2 : by norm_num1 },
     { apply ne_of_gt,
-      calc 2 < 2 ^ 2 : by norm_num
+      calc 2 < 2 ^ 2 : by norm_num1
       ... ≤ (-n) ^ 2 : by ineq_tac [hn]
       ... = n ^ 2 : by ring } },
   { have hn : n ≤ 1 ∨ 2 ≤ n := le_or_lt n 1,
     cases hn with hn hn,
     { apply ne_of_lt,
       calc n ^ 2 ≤ 1 ^ 2 : by ineq_tac [hn]
-      ... < 2 : by norm_num },
+      ... < 2 : by norm_num1 },
     { apply ne_of_gt,
-      calc 2 < 2 ^ 2 : by norm_num
+      calc 2 < 2 ^ 2 : by norm_num1
       ... ≤ n ^ 2 : by ineq_tac [hn] } },
 end
 

@@ -10,7 +10,7 @@ begin
   apply ne_of_lt,
   calc x = (3 * x) / 3 : by ring
   ... = 2 / 3 : by rw hx
-  ... < 1 : by norm_num,
+  ... < 1 : by norm_num1,
 end
 
 

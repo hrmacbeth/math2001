@@ -9,7 +9,7 @@ example : odd (7:ℤ) :=
 begin
   dsimp [odd],
   use 3,
-  norm_num,
+  norm_num1,
 end
 
 
@@ -69,7 +69,7 @@ end
 
 lemma int.even_or_odd (n : ℤ) : even n ∨ odd n :=
 begin
-  obtain ⟨q, ⟨r, ⟨hn, h, h'⟩, -⟩, -⟩ := n.exists_unique_quotient_remainder 2 (by norm_num),
+  obtain ⟨q, ⟨r, ⟨hn, h, h'⟩, -⟩, -⟩ := n.exists_unique_quotient_remainder 2 (by norm_num1),
   refine exists_or_distrib.mp ⟨q, _⟩,
   interval_cases r; simp [hn],
 end

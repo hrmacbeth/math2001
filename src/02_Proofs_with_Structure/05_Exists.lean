@@ -27,7 +27,7 @@ end
 example : ∃ n : ℤ, 12 * n = 84 :=
 begin
   use 7,
-  norm_num,
+  norm_num1,
 end
 
 
@@ -60,12 +60,12 @@ example : ∃ a b c d : ℕ, a ^ 3 + b ^ 3 = 1729 ∧ c ^ 3 + d ^ 3 = 1729 ∧ a
 begin
   use [1, 12, 9, 10],
   split,
-  norm_num,
+  norm_num1,
   split,
-  norm_num,
+  norm_num1,
   split,
-  norm_num,
-  norm_num,
+  norm_num1,
+  norm_num1,
 end
 
 

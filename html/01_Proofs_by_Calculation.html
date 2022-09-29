@@ -906,7 +906,7 @@ that <span class="math notranslate nohighlight">\(A\geq B\)</span> and <span cla
 inequality being &#8220;substituted&#8221; &#8211; but note that if you try to use this in a situation when there
 is no rule about preservation/reversal of inequalities under the relevant operations,
 then it will fail.</p></li>
-<li><p>&#8220;Numeric facts&#8221; are justified with the tactic <code class="docutils literal notranslate"><span class="pre">norm_num</span></code>.  (This tactic can also justify
+<li><p>&#8220;Numeric facts&#8221; are justified with the tactic <code class="docutils literal notranslate"><span class="pre">norm_num1</span></code>.  (This tactic can also justify
 &#8220;numeric facts&#8221; about equalities, like <span class="math notranslate nohighlight">\(4^2+4\cdot 1=20\)</span>, for which we have previously
 used the <code class="docutils literal notranslate"><span class="pre">ring</span></code> tactic.)</p></li>
 </ul>
@@ -916,7 +916,7 @@ used the <code class="docutils literal notranslate"><span class="pre">ring</span
 <span class="bp">...</span> <span class="bp">&#8805;</span> <span class="mi">3</span> <span class="bp">-</span> <span class="mi">2</span> <span class="bp">*</span> <span class="n">x</span> <span class="o">:</span> <span class="kd">by</span> <span class="n">ineq_tac</span> <span class="o">[</span><span class="n">hy</span><span class="o">]</span>
 <span class="bp">...</span> <span class="bp">=</span> <span class="mi">9</span> <span class="bp">-</span> <span class="mi">2</span> <span class="bp">*</span> <span class="o">(</span><span class="n">x</span> <span class="bp">+</span> <span class="mi">3</span><span class="o">)</span> <span class="o">:</span> <span class="kd">by</span> <span class="n">ring</span>
 <span class="bp">...</span> <span class="bp">&#8805;</span> <span class="mi">9</span> <span class="bp">-</span> <span class="mi">2</span> <span class="bp">*</span> <span class="mi">2</span> <span class="o">:</span> <span class="kd">by</span> <span class="n">ineq_tac</span> <span class="o">[</span><span class="n">hx</span><span class="o">]</span>
-<span class="bp">...</span> <span class="bp">&gt;</span> <span class="mi">3</span> <span class="o">:</span> <span class="kd">by</span> <span class="n">norm_num</span>
+<span class="bp">...</span> <span class="bp">&gt;</span> <span class="mi">3</span> <span class="o">:</span> <span class="kd">by</span> <span class="n">norm_num1</span>
 </pre></div>
 </div>
 </section>
