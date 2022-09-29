@@ -4,4 +4,5 @@ Parity and divisibility
 =======================
 
 .. include:: 03_Parity_and_Divisibility/01_Parity.inc
+.. include:: 03_Parity_and_Divisibility/02_Divisibility.inc
 .. include:: 03_Parity_and_Divisibility/04_Modular_Arithmetic_Calculations.inc

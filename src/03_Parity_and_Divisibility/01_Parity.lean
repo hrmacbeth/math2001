@@ -91,6 +91,18 @@ begin
 end
 
 
+example : odd (-9:ℤ) :=
+begin
+  sorry,
+end
+
+
+example : even (26:ℤ) :=
+begin
+  sorry,
+end
+
+
 example {m n : ℤ} (hm : odd m) (hn : even n) : odd (n + m) :=
 begin
   sorry,
