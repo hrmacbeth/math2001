@@ -1,6 +1,4 @@
 import library.division
-import tactic.ring
-import tactic.norm_num
 import tactic.interval_cases
 
 

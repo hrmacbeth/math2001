@@ -1,8 +1,4 @@
-import tactic.norm_num
 import tactic.ring
-import tactic.ring_exp
-import algebra.divisibility
-import data.nat.parity
 
 local attribute [-norm_num] norm_num.eval_nat_int_ext
 
