@@ -1,7 +1,7 @@
 /- Copyright (c) Heather Macbeth, 2022.  All rights reserved. -/
 
 import data.real.basic
-import tactics.inequalities
+import tactics.addarith
 
 
 example {x : ℤ} (h1 : x + 4 = 2) : x = -2 := by addarith h1

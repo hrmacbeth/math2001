@@ -1,3 +1,5 @@
+/- Copyright (c) Heather Macbeth, 2022.  All rights reserved. -/
+
 import tactic.ring
 
 local attribute [-norm_num] norm_num.eval_nat_int_ext

@@ -4,8 +4,13 @@ import data.int.parity
 import library.modular
 import tactics.modular
 
-attribute [irreducible] int.mod
+attribute [irreducible] int.mod int.modeq
 local attribute [-norm_num] norm_num.eval_nat_int_ext
+
+
+example {a b : ℤ} (ha : a ≡ 2 [ZMOD 4]) :
+  a * b ^ 2 + a ^ 2 * b + 3 ≡ 2 * b ^ 2 + 2 ^ 2 * b + 3 [ZMOD 4] :=
+by mod_rw [ha]
 
 
 example {a b : ℤ} (ha : a ≡ 4 [ZMOD 5]) (hb : b ≡ 3 [ZMOD 5]) :

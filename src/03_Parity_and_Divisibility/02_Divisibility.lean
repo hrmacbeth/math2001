@@ -1,4 +1,6 @@
-import tactic.ring
+/- Copyright (c) Heather Macbeth, 2022.  All rights reserved. -/
+
+import library.division
 
 local attribute [-norm_num] norm_num.eval_nat_int_ext
 
@@ -39,7 +41,24 @@ begin
 end
 
 
+example : ¬ ((5:ℤ) ∣ 12) :=
+begin
+  apply int.not_dvd_of_exists_lt_and_lt,
+  norm_num,
+  use 2,
+  split,
+  norm_num,
+  norm_num,
+end
+
+
 example (t : ℤ) : t ∣ 0 :=
+begin
+  sorry,
+end
+
+
+example : ¬ ((3:ℤ) ∣ -10) :=
 begin
   sorry,
 end

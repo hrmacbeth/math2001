@@ -1,6 +1,7 @@
 /- Copyright (c) Heather Macbeth, 2022.  All rights reserved. -/
 
 import data.real.basic
+import tactics.addarith
 import tactics.inequalities
 
 
