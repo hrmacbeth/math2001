@@ -1,0 +1,6 @@
+.. _logic:
+
+Logic
+=====
+
+.. include:: 04_Logic/01_Forall_Implies.inc

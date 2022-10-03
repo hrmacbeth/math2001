@@ -12,9 +12,9 @@ your instructor!
 Attempts to solve an equality or inequality by moving terms from the left-hand side to the
 right-hand side, or vice versa.
 
-.. rubric:: apply (first use: :numref:`Section %s <lemmas>`)
+.. rubric:: apply (first use: :numref:`Section %s <lemmas>`; for :math:`\forall` and :math:`\to` hypotheses, :numref:`Section %s <forall_implies>`)
 
-Invokes a specified lemma to modify the goal.
+Invokes a specified lemma or hypothesis to modify the goal.
 
 .. rubric:: cases (first use for :math:`\lor`: :numref:`Section %s <or>`; for :math:`\land`: :numref:`Section %s <and>`; for :math:`\exists`: :numref:`Section %s <exists>`)
 
@@ -23,7 +23,19 @@ Takes apart a hypothesis of the form "or" (:math:`\lor`), "and" (:math:`\land`) 
 
 .. rubric:: dsimp (first use: :numref:`Section %s <parity>`)
 
-Unfolds a definition.
+Unfolds a definition.  Typically used while working on a proof rather than in the final version; it
+is useful for inspecting a goal or hypothesis more carefully, but in most cases the proof will still
+work after a ``dsimp`` line is deleted.
+
+.. rubric:: interval_cases (first use: :numref:`Section %s <forall_implies>`)
+
+Given a natural-number or integer variable :math:`n` for which numeric upper and lower bounds are
+available, produce cases for each of the numeric possibilities for :math:`n`.
+
+.. rubric:: intros (first use: :numref:`Section %s <forall_implies>`)
+
+Introduces a universally quantified variable (:math:`\forall`) or the antecedent of an implication
+(:math:`\to`).
 
 .. rubric:: left (first use: :numref:`Section %s <or>`)
 
