@@ -166,9 +166,7 @@ back to the place in the Lean code where the definition was introduced.</p>
 </pre></div>
 </div>
 <p>The goal state at the start is:</p>
-<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>1 goal
-
-&#8866; odd 7
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>&#8866; odd 7
 </pre></div>
 </div>
 <p>You can check a definition within a proof using the <code class="docutils literal notranslate"><span class="pre">dsimp</span></code> (&#8220;definitional-simplify&#8221;) tactic.
@@ -183,9 +181,7 @@ you:</p>
 </div>
 <p>After doing this, the goal is displayed using the definition of &#8220;odd&#8221; rather than with the word
 &#8220;odd&#8221;:</p>
-<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>1 goal
-
-&#8866; &#8707; (k : &#8484;), 7 = 2 * k + 1
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>&#8866; &#8707; (k : &#8484;), 7 = 2 * k + 1
 </pre></div>
 </div>
 <p>This is optional, though; the proof will still work if you delete the <code class="docutils literal notranslate"><span class="pre">dsimp</span></code> line.</p>
@@ -233,9 +229,7 @@ works?</p>
 <p>so <span class="math notranslate nohighlight">\(3n+2\)</span> is odd.</p>
 </div>
 <p>In the Lean version of the problem, the goal state initially looks like this.</p>
-<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>1 goal
-
-n : &#8484;
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>n : &#8484;
 hn : odd n
 &#8866; odd (3 * n + 2)
 </pre></div>
@@ -244,9 +238,7 @@ hn : odd n
 discussed in <a class="reference internal" href="#odd"><span class="std std-numref">Example 3.1.1</span></a>.  If you want to unfold the definition <code class="docutils literal notranslate"><span class="pre">odd</span></code> everywhere
 (goals and hypotheses), you can use <code class="docutils literal notranslate"><span class="pre">dsimp</span> <span class="pre">[odd]</span> <span class="pre">at</span> <span class="pre">*</span></code>.  After that the goal state looks like
 this:</p>
-<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>1 goal
-
-n : &#8484;
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>n : &#8484;
 hn : &#8707; (k : &#8484;), n = 2 * k + 1
 &#8866; &#8707; (k : &#8484;), 3 * n + 2 = 2 * k + 1
 </pre></div>

@@ -1,3 +1,5 @@
+/- Copyright (c) Heather Macbeth, 2022.  All rights reserved. -/
+
 import data.real.basic
 import tactic.interval_cases
 import tactics.positivity
