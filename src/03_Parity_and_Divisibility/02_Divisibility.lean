@@ -1,6 +1,9 @@
 /- Copyright (c) Heather Macbeth, 2022.  All rights reserved. -/
 
+import library.arithmetic
 import library.division
+import tactics.inequalities
+import tactics.positivity
 
 local attribute [-norm_num] norm_num.eval_nat_int_ext
 
@@ -52,6 +55,26 @@ begin
 end
 
 
+example {a b : ℕ} (hb : 0 < b) (hab : a ∣ b) : a ≤ b :=
+begin
+  cases hab with k hk,
+  have H : 1 ≤ k,
+  apply pos_of_mul_pos_right' a,
+  calc 0 < b : hb
+  ... = a * k : hk,
+  ineq_tac [],
+  calc a = a * 1 : by ring
+  ... ≤ a * k : by ineq_tac [H]
+  ... = b : by rw hk,
+end
+
+
+example {a b : ℕ} (hab : a ∣ b) (hb : 0 < b) : 0 < a :=
+begin
+  sorry,
+end
+
+
 example (t : ℤ) : t ∣ 0 :=
 begin
   sorry,
@@ -85,5 +108,18 @@ end
 
 example : ∃ a b : ℤ, 0 < b ∧ b < a ∧ a - b ∣ a + b :=
 begin
+  sorry,
+end
+
+
+example (a : ℕ) (h : a ^ 2 ∣ a) : a = 0 ∨ a = 1 :=
+begin
+  have ha : 0 ≤ a := by ineq_tac [],
+  cases eq_or_lt_of_le ha with ha ha,
+  { sorry },
+  have H1 : a ^ 2 = a,
+  { sorry },
+  have H2 : a = 1 ∨ a = 0,
+  { sorry },
   sorry,
 end

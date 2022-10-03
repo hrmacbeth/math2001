@@ -40,3 +40,15 @@ begin
   have h₂ : q₀ + 1 ≤ q + 1 := lt_of_mul_lt_mul_left hq₂ hb.le,
   linarith,
 end
+
+/-- Criterion for a natural number not to divide another. -/
+lemma nat.not_dvd_of_exists_lt_and_lt (a : ℕ) {b : ℕ} (hb : 0 < b)
+  (h : ∃ q, b * q < a ∧ a < b * (q + 1)) :
+  ¬b ∣ a :=
+begin
+  rintros ⟨q₀, rfl⟩,
+  obtain ⟨q, hq₁, hq₂⟩ := h,
+  have h₁ : q + 1 ≤ q₀ := lt_of_mul_lt_mul_left hq₁ hb.le,
+  have h₂ : q₀ + 1 ≤ q + 1 := lt_of_mul_lt_mul_left hq₂ hb.le,
+  linarith,
+end

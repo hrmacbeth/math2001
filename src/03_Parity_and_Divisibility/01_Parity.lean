@@ -1,6 +1,8 @@
 /- Copyright (c) Heather Macbeth, 2022.  All rights reserved. -/
 
 import library.division
+import tactics.addarith
+import tactics.inequalities
 import tactic.interval_cases
 
 
@@ -122,6 +124,12 @@ end
 
 
 example (n : ℤ) : odd (5 * n ^ 2 + 3 * n + 7) :=
+begin
+  sorry,
+end
+
+
+example (n : ℤ) : ∃ m ≥ n, odd m :=
 begin
   sorry,
 end
