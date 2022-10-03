@@ -185,12 +185,12 @@ either at least <span class="math notranslate nohighlight">\(a\)</span> or at mo
 any real number whose square is at most 2. <a class="footnote-reference brackets" href="#id10" id="id5">1</a> Let <span class="math notranslate nohighlight">\(b\)</span> be another real number with the same
 two properties.  Prove that <span class="math notranslate nohighlight">\(a=b\)</span>.</p>
 </div>
-<p>Let&#8217;s phrase the statement</p>
+<p>Consider the hypothesis in this problem that</p>
 <blockquote>
-<div><p><span class="math notranslate nohighlight">\(a\)</span> which is greater than or equal to any real number whose square is at most 2</p>
+<div><p><span class="math notranslate nohighlight">\(a\)</span> is greater than or equal to any real number whose square is at most 2.</p>
 </div></blockquote>
-<p>a bit more pedantically.  There is an implicit universal quantification, and also an <em>implication</em>
-(&#8220;if &#8230;. then &#8230;.&#8221;):</p>
+<p>Implicitly, there is a a universal quantification (&#8220;any real number&#8221;), and also an <em>implication</em>,
+so a more pedantic version of this hypothesis would be</p>
 <blockquote>
 <div><p>for all real numbers <span class="math notranslate nohighlight">\(y\)</span>, if <span class="math notranslate nohighlight">\(y^2\le 2\)</span> then <span class="math notranslate nohighlight">\(y\le a\)</span>.</p>
 </div></blockquote>
@@ -224,7 +224,7 @@ hb2 : &#8704; (y : &#8477;), y ^ 2 &#8804; 2 &#8594; y &#8804; b
 </pre></div>
 </div>
 <p>The hypothesis <code class="docutils literal notranslate"><span class="pre">&#8704;</span> <span class="pre">(y</span> <span class="pre">:</span> <span class="pre">&#8477;),</span> <span class="pre">y</span> <span class="pre">^</span> <span class="pre">2</span> <span class="pre">&#8804;</span> <span class="pre">2</span> <span class="pre">&#8594;</span> <span class="pre">y</span> <span class="pre">&#8804;</span> <span class="pre">b</span></code> has been applied to the goal <code class="docutils literal notranslate"><span class="pre">a</span> <span class="pre">&#8804;</span> <span class="pre">b</span></code>, leaving
-the hopefully-easier goal <code class="docutils literal notranslate"><span class="pre">a</span> <span class="pre">^</span> <span class="pre">2</span> <span class="pre">&#8804;</span> <span class="pre">2</span></code> of proving the antecedent of the implication.</p>
+the hopefully-easier goal <code class="docutils literal notranslate"><span class="pre">a</span> <span class="pre">^</span> <span class="pre">2</span> <span class="pre">&#8804;</span> <span class="pre">2</span></code>: proving the antecedent of the implication.</p>
 <p>Fill in the second part of the proof.</p>
 <div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">{</span><span class="n">a</span> <span class="n">b</span> <span class="o">:</span> <span class="n">&#8477;</span><span class="o">}</span> <span class="o">(</span><span class="n">ha1</span> <span class="o">:</span> <span class="n">a</span> <span class="bp">^</span> <span class="mi">2</span> <span class="bp">&#8804;</span> <span class="mi">2</span><span class="o">)</span> <span class="o">(</span><span class="n">hb1</span> <span class="o">:</span> <span class="n">b</span> <span class="bp">^</span> <span class="mi">2</span> <span class="bp">&#8804;</span> <span class="mi">2</span><span class="o">)</span> <span class="o">(</span><span class="n">ha2</span> <span class="o">:</span> <span class="bp">&#8704;</span> <span class="n">y</span><span class="o">,</span> <span class="n">y</span> <span class="bp">^</span> <span class="mi">2</span> <span class="bp">&#8804;</span> <span class="mi">2</span> <span class="bp">&#8594;</span> <span class="n">y</span> <span class="bp">&#8804;</span> <span class="n">a</span><span class="o">)</span>
   <span class="o">(</span><span class="n">hb2</span> <span class="o">:</span> <span class="bp">&#8704;</span> <span class="n">y</span><span class="o">,</span> <span class="n">y</span> <span class="bp">^</span> <span class="mi">2</span> <span class="bp">&#8804;</span> <span class="mi">2</span> <span class="bp">&#8594;</span> <span class="n">y</span> <span class="bp">&#8804;</span> <span class="n">b</span><span class="o">)</span> <span class="o">:</span>
@@ -257,15 +257,11 @@ it is true that <span class="math notranslate nohighlight">\(b \le x^2-2x\)</spa
 <p>We solve the problem by formally introducing a particular, arbitrary real number <span class="math notranslate nohighlight">\(x\)</span> (&#8220;let
 <span class="math notranslate nohighlight">\(x\)</span> be a real number&#8221;) and proving the desired statement for that <span class="math notranslate nohighlight">\(x\)</span>.  In Lean this
 argument is performed by the tactic <code class="docutils literal notranslate"><span class="pre">intros</span></code>.  Before the use of this tactic, the goal state is</p>
-<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>1 goal
-
-&#8866; &#8704; (x : &#8477;), -1 &#8804; x ^ 2 - 2 * x
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>&#8866; &#8704; (x : &#8477;), -1 &#8804; x ^ 2 - 2 * x
 </pre></div>
 </div>
 <p>After the use of this tactic, the goal state is</p>
-<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>1 goal
-
-x : &#8477;
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>x : &#8477;
 &#8866; -1 &#8804; x ^ 2 - 2 * x
 </pre></div>
 </div>
