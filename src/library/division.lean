@@ -6,27 +6,31 @@ import tactic.linarith
 -- slightly less concrete form of the division algorithm than mathlib's
 
 lemma int.exists_unique_quotient_remainder' (a b : ℤ) (h : 0 < b) :
-  ∃! p : ℤ × ℤ, p.2 + b * p.1 = a ∧ 0 ≤ p.2 ∧ p.2 < b :=
+  ∃! r : ℤ, 0 ≤ r ∧ r < b ∧ ∃ q : ℤ, r + b * q = a:=
 begin
-  simp only [← int.div_mod_unique h, exists_unique, prod.exists],
+  suffices : ∃! r : ℤ, ∃ q : ℤ, r + b * q = a ∧ 0 ≤ r ∧ r < b,
+  { convert this,
+    ext r,
+    tauto },
+  simp_rw ← int.div_mod_unique h,
   tidy,
 end
 
 /-- The division algorithm. -/
 lemma int.exists_unique_quotient_remainder (a b : ℤ) (h : 0 < b) :
-  ∃! p : ℤ × ℤ, a = b * p.1 + p.2 ∧ 0 ≤ p.2 ∧ p.2 < b :=
+  ∃! r : ℤ, 0 ≤ r ∧ r < b ∧ ∃ q : ℤ, a = b * q + r :=
 begin
   convert a.exists_unique_quotient_remainder' b h,
-  congrm λ p, _ ∧ _ ∧ _,
+  congrm λ r, _ ∧ _ ∧ ∃ q, _,
   split; intros h; linear_combination -h
 end
 
 /-- The division algorithm, weak form. -/
 lemma int.exists_quotient_remainder (a b : ℤ) (h : 0 < b) :
-  ∃ q r : ℤ, a = b * q + r ∧ 0 ≤ r ∧ r < b :=
+  ∃ q r : ℤ, 0 ≤ r ∧ r < b ∧ a = b * q + r :=
 begin
-  obtain ⟨⟨q, r⟩, h, -⟩ := int.exists_unique_quotient_remainder a b h,
-  use ⟨q, r, h⟩,
+  obtain ⟨r, ⟨h₁, h₂, q, h₃⟩, -⟩ := int.exists_unique_quotient_remainder a b h,
+  exact ⟨q, r, h₁, h₂, h₃⟩,
 end
 
 /-- Criterion for an integer not to divide another. -/
