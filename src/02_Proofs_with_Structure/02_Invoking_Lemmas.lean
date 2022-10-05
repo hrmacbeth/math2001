@@ -62,3 +62,11 @@ begin
   sorry
 end
 
+
+example {x : ℚ} (h1 : x ^ 2 = 4) (h2 : 1 < x) : x = 2 :=
+begin
+  have hx : x + 2 ≠ 0,
+  sorry,
+  sorry,
+end
+

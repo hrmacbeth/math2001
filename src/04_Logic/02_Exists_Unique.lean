@@ -1,10 +1,14 @@
+/- Copyright (c) Heather Macbeth, 2022.  All rights reserved. -/
+
 import data.real.basic
 import library.arithmetic
-import library.division
+import library.parity
 import tactics.addarith
 import tactics.inequalities
 import tactics.positivity
 import tactic.interval_cases
+
+open int
 
 
 example : ∃! a : ℝ, 3 * a + 1 = 7 :=
@@ -73,10 +77,7 @@ begin
 end
 
 
-def int.odd (a : ℤ) : Prop := ∃ k, a = 2 * k + 1
-def int.even (a : ℤ) : Prop := ∃ k, a = 2 * k
-
-example (n : ℤ) : int.even n ∨ int.odd n :=
+example (n : ℤ) : even n ∨ odd n :=
 begin
   sorry,
 end

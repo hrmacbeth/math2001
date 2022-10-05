@@ -1,12 +1,11 @@
 /- Copyright (c) Heather Macbeth, 2022.  All rights reserved. -/
 
-import library.division
+import library.parity
 import tactics.addarith
 import tactics.inequalities
 import tactic.interval_cases
 
-
-def odd (a : ℤ) : Prop := ∃ k, a = 2 * k + 1
+open int
 
 
 example : odd (7:ℤ) :=
@@ -56,9 +55,6 @@ begin
 end
 
 
-def even (a : ℤ) : Prop := ∃ k, a = 2 * k
-
-
 example {m : ℤ} (hm : odd m) : even (3 * m - 5) :=
 begin
   sorry,
@@ -68,14 +64,6 @@ end
 example {n : ℤ} (hn : even n) : odd (n ^ 2 + 2 * n - 5) :=
 begin
   sorry,
-end
-
-
-lemma int.even_or_odd (n : ℤ) : even n ∨ odd n :=
-begin
-  obtain ⟨q, r, h, h', hn⟩ := n.exists_quotient_remainder 2 (by norm_num1),
-  refine exists_or_distrib.mp ⟨q, _⟩,
-  interval_cases r; simp [hn],
 end
 
 

@@ -70,16 +70,16 @@ def prime (p : ℕ) : Prop := 2 ≤ p ∧ ∀ (m : ℕ) (hm : m ∣ p), m = 1 �
 example : prime 2 :=
 begin
   split,
-  { norm_num, },
+  { norm_num1, },
   intros m hmp,
   have hp : 0 < 2 := by norm_num,
   have hmp_le : m ≤ 2 := nat.le_of_dvd hp hmp,
   have h1m : 1 ≤ m := nat.pos_of_dvd_of_pos hmp hp,
   interval_cases m,
   { left,
-    norm_num, },
+    norm_num1, },
   { right,
-    norm_num, },
+    norm_num1, },
 end
 
 

@@ -21,6 +21,10 @@ Invokes a specified lemma or hypothesis to modify the goal.
 Takes apart a hypothesis of the form "or" (:math:`\lor`), "and" (:math:`\land`) or "there exists"
 (:math:`\exists`).
 
+.. rubric:: contradiction (first use: :numref:`Section %s <contradiction_hyp>`)
+
+If there are two contradictory hypotheses available, this concludes the proof.
+
 .. rubric:: dsimp (first use: :numref:`Section %s <parity>`)
 
 Unfolds a definition.  Typically used while working on a proof rather than in the final version; it
@@ -35,7 +39,7 @@ available, produce cases for each of the numeric possibilities for :math:`n`.
 .. rubric:: intros (first use: :numref:`Section %s <forall_implies>`)
 
 Introduces a universally quantified variable (:math:`\forall`) or the antecedent of an implication
-(:math:`\to`).
+(:math:`\to`) from the goal.
 
 .. rubric:: left (first use: :numref:`Section %s <or>`)
 
@@ -62,7 +66,7 @@ A "substitution-like" tactic for congruences: looks for the left-hand side of a 
 modular arithmetic fact in the goal, and replaces it with the right-hand side of that fact, if that
 replacement is "obviously" a valid modular arithmetic deduction.
 
-.. rubric:: norm_num1 (first use: :numref:`Section %s <proving_inequalities>`)
+.. rubric:: norm_num1 (first use: :numref:`Section %s <proving_inequalities>`; with ``at`` for contradictions: :numref:`Section %s <contradiction_hyp>`)
 
 Proves numeric facts, like :math:`3\cdot 12 < 13 + 25` or :math:`3\cdot 5+1=4\cdot 4`.
 

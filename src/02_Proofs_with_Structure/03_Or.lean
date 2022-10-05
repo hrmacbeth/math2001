@@ -143,3 +143,13 @@ example {x y : ℝ} (hxy : x ^ 2 + 5 * y = y ^ 2 + 5 * x) : x = y ∨ x + y = 5 
 begin
   sorry,
 end
+
+
+example {a b c : ℚ} (ha : a ≠ 0) (h : a * b = a * c) : b = c :=
+begin
+  have h1  : a * (b - c) = 0,
+  sorry,
+  have h2 : b - c = 0,
+  sorry,
+  sorry,
+end

@@ -16,13 +16,33 @@ begin
   tidy,
 end
 
+lemma nat.exists_unique_quotient_remainder' (a b : ℕ) (h : 0 < b) :
+  ∃! r : ℕ, r < b ∧ ∃ q : ℕ, r + b * q = a:=
+begin
+  suffices : ∃! r : ℕ, ∃ q : ℕ, r + b * q = a ∧ r < b,
+  { convert this,
+    ext r,
+    tauto },
+  simp_rw ← nat.div_mod_unique h,
+  tidy,
+end
+
 /-- The division algorithm. -/
 lemma int.exists_unique_quotient_remainder (a b : ℤ) (h : 0 < b) :
   ∃! r : ℤ, 0 ≤ r ∧ r < b ∧ ∃ q : ℤ, a = b * q + r :=
 begin
   convert a.exists_unique_quotient_remainder' b h,
   congrm λ r, _ ∧ _ ∧ ∃ q, _,
-  split; intros h; linear_combination -h
+  split; rintros rfl; rw add_comm,
+end
+
+/-- The division algorithm. -/
+lemma nat.exists_unique_quotient_remainder (a b : ℕ) (h : 0 < b) :
+  ∃! r : ℕ, r < b ∧ ∃ q : ℕ, a = b * q + r :=
+begin
+  convert a.exists_unique_quotient_remainder' b h,
+  congrm λ r, _ ∧ ∃ q, _,
+  split; rintros rfl; rw add_comm,
 end
 
 /-- The division algorithm, weak form. -/
@@ -31,6 +51,14 @@ lemma int.exists_quotient_remainder (a b : ℤ) (h : 0 < b) :
 begin
   obtain ⟨r, ⟨h₁, h₂, q, h₃⟩, -⟩ := int.exists_unique_quotient_remainder a b h,
   exact ⟨q, r, h₁, h₂, h₃⟩,
+end
+
+/-- The division algorithm, weak form. -/
+lemma nat.exists_quotient_remainder (a b : ℕ) (h : 0 < b) :
+  ∃ q r : ℕ, r < b ∧ a = b * q + r :=
+begin
+  obtain ⟨r, ⟨h₁, q, h₂⟩, -⟩ := nat.exists_unique_quotient_remainder a b h,
+  exact ⟨q, r, h₁, h₂⟩,
 end
 
 /-- Criterion for an integer not to divide another. -/
