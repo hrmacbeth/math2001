@@ -5,3 +5,4 @@ Logic
 
 .. include:: 04_Logic/01_Forall_Implies.inc
 .. include:: 04_Logic/02_Exists_Unique.inc
+.. include:: 04_Logic/03_Contradictory_Hypotheses.inc
