@@ -70,7 +70,8 @@
 <li class="toctree-l3"><a class="reference internal" href="#pos-of-mul-pos-right-proof">4.3.1. Example</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#prime-test">4.3.2. Example</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#norm-num-contradiction">4.3.3. Example</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id20">4.3.4. Exercises</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id20">4.3.4. Example</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id21">4.3.5. Exercises</a></li>
 </ul>
 </li>
 </ul>
@@ -115,10 +116,10 @@
 <p>Let <span class="math notranslate nohighlight">\(a\)</span> be a real number and suppose that for all real numbers <span class="math notranslate nohighlight">\(x\)</span>,
 it is true that <span class="math notranslate nohighlight">\(a\le x^2-2x\)</span>.  Show that <span class="math notranslate nohighlight">\(a\le -1\)</span>.</p>
 </div>
-<figure class="align-center" id="id21">
+<figure class="align-center" id="id22">
 <a class="reference internal image-reference" href="_images/04_logic_01_parabola.png"><img alt="_images/04_logic_01_parabola.png" src="_images/04_logic_01_parabola.png" style="width: 320.0px; height: 320.0px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 4.1 </span><span class="caption-text">The parabola <span class="math notranslate nohighlight">\(y= x^2-2x\)</span>.</span><a class="headerlink" href="#id21" title="Permalink to this image">&#61633;</a></p>
+<p><span class="caption-number">Fig. 4.1 </span><span class="caption-text">The parabola <span class="math notranslate nohighlight">\(y= x^2-2x\)</span>.</span><a class="headerlink" href="#id22" title="Permalink to this image">&#61633;</a></p>
 </figcaption>
 </figure>
 <p>Specifying that a formula or predicate is meant to be true for all values of a variable <span class="math notranslate nohighlight">\(x\)</span>,
@@ -895,7 +896,62 @@ close the goal.</p>
 </div>
 </section>
 <section id="id20">
-<h3><span class="section-number">4.3.4. </span>Exercises<a class="headerlink" href="#id20" title="Permalink to this headline">&#61633;</a></h3>
+<h3><span class="section-number">4.3.4. </span>Example<a class="headerlink" href="#id20" title="Permalink to this headline">&#61633;</a></h3>
+<p>Here&#8217;s a harder example, with many cases.</p>
+<div class="admonition-problem admonition">
+<p class="admonition-title">Problem</p>
+<p>Let <span class="math notranslate nohighlight">\(a\)</span>, <span class="math notranslate nohighlight">\(b\)</span> and <span class="math notranslate nohighlight">\(c\)</span> be positive natural numbers satisfying <span class="math notranslate nohighlight">\(a^2+b^2=c^2\)</span>.
+Show that <span class="math notranslate nohighlight">\(3 \le a\)</span>.</p>
+</div>
+<p>Three numbers satisfying this equation are called a <em>Pythagorean triple</em>, since by Pythagoras&#8217;
+theorem this means that they form the three sides of a right-angled triangle.  The natural numbers
+3, 4, 5 satisfy this equation:  <span class="math notranslate nohighlight">\(3^2+4^2=5^2\)</span>.  There are other solutions, like 5, 12, 13, but
+we are showing in this problem that 3, 4, 5 is the smallest solution.</p>
+<div class="admonition-solution admonition">
+<p class="admonition-title">Solution</p>
+<p>Either <span class="math notranslate nohighlight">\(a \le 2\)</span> or  <span class="math notranslate nohighlight">\(3 \le a\)</span>.  If  <span class="math notranslate nohighlight">\(3 \le a\)</span> then we are done.  We will derive
+a contradiction if  <span class="math notranslate nohighlight">\(a \le 2\)</span>.</p>
+<p>Either <span class="math notranslate nohighlight">\(b \le 1\)</span> or  <span class="math notranslate nohighlight">\(2 \le b\)</span>.  We will consider these two cases separately.</p>
+<p><strong>Case 1</strong> (<span class="math notranslate nohighlight">\(b \le 1\)</span>):</p>
+<p>We have that</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}c ^ 2 &amp; = a ^ 2 + b ^ 2 \\
+&amp;\le 2^2+1^2\\
+&amp;&lt;3^2.\end{split}\]</div>
+<p>Since 3 is positive, this implies that <span class="math notranslate nohighlight">\(c&lt;3\)</span>.  We now have upper bounds <span class="math notranslate nohighlight">\(a \le 2\)</span>,
+<span class="math notranslate nohighlight">\(b \le 1\)</span>, <span class="math notranslate nohighlight">\(c &lt; 3\)</span>, so <span class="math notranslate nohighlight">\(a\)</span> is 1 or 2, <span class="math notranslate nohighlight">\(b\)</span> is 1, and <span class="math notranslate nohighlight">\(c\)</span> is 1 or 2.
+We can analyze all these cases and check they don&#8217;t work:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}1^2+1^2&amp;\ne 1^2,\\
+2^2+1^2&amp;\ne 1^2,\\
+1^2+1^2&amp;\ne 2^2,\\
+2^2+1^2&amp;\ne 2^2.\end{split}\]</div>
+<p><strong>Case 2</strong> (<span class="math notranslate nohighlight">\(2 \le b\)</span>):</p>
+<p>We have that</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}b ^ 2 &amp;&lt; a ^ 2 + b ^ 2 \\
+    &amp; = c ^ 2,\end{split}\]</div>
+<p>so <span class="math notranslate nohighlight">\(b&lt;c\)</span>, so <span class="math notranslate nohighlight">\(b+1\le c\)</span>.  But also</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}c ^ 2 &amp;= a ^ 2 + b ^ 2 \\
+  &amp;&#8804; 2 ^ 2 + b ^ 2 \\
+  &amp; = b ^ 2 + 2 \cdot 2 \\
+  &amp; &#8804; b ^ 2 + 2 b \\
+  &amp; &lt; b ^ 2 + 2b + 1\\
+  &amp; = (b + 1) ^ 2,\end{split}\]</div>
+<p>so <span class="math notranslate nohighlight">\(c&lt;b+1\)</span>, so it is false that <span class="math notranslate nohighlight">\(b+1\le c\)</span>.  These two facts contradict each other.</p>
+</div>
+<p>Write this proof up in Lean.  It will be long; my version is 22 lines.</p>
+<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">{</span><span class="n">a</span> <span class="n">b</span> <span class="n">c</span> <span class="o">:</span> <span class="n">&#8469;</span><span class="o">}</span> <span class="o">(</span><span class="n">ha</span> <span class="o">:</span> <span class="mi">0</span> <span class="bp">&lt;</span> <span class="n">a</span><span class="o">)</span> <span class="o">(</span><span class="n">hb</span> <span class="o">:</span> <span class="mi">0</span> <span class="bp">&lt;</span> <span class="n">b</span><span class="o">)</span> <span class="o">(</span><span class="n">hc</span> <span class="o">:</span> <span class="mi">0</span> <span class="bp">&lt;</span> <span class="n">c</span><span class="o">)</span> <span class="o">(</span><span class="n">h_pyth</span> <span class="o">:</span> <span class="n">a</span> <span class="bp">^</span> <span class="mi">2</span> <span class="bp">+</span> <span class="n">b</span> <span class="bp">^</span> <span class="mi">2</span> <span class="bp">=</span> <span class="n">c</span> <span class="bp">^</span> <span class="mi">2</span><span class="o">)</span> <span class="o">:</span>
+  <span class="mi">3</span> <span class="bp">&#8804;</span> <span class="n">a</span> <span class="o">:=</span>
+<span class="kd">begin</span>
+  <span class="gr">sorry</span><span class="o">,</span>
+<span class="kd">end</span>
+</pre></div>
+</div>
+</section>
+<section id="id21">
+<h3><span class="section-number">4.3.5. </span>Exercises<a class="headerlink" href="#id21" title="Permalink to this headline">&#61633;</a></h3>
 <ol class="arabic simple">
 <li><p>Let <span class="math notranslate nohighlight">\(x\)</span> and <span class="math notranslate nohighlight">\(y\)</span> be real numbers, with <span class="math notranslate nohighlight">\(x\)</span> nonnegative, and let
 <span class="math notranslate nohighlight">\(n\)</span> is a positive natural number.  Prove that if then <span class="math notranslate nohighlight">\(y^n \le x^n\)</span> then

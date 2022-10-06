@@ -91,6 +91,13 @@ begin
 end
 
 
+example {a b c : ℕ} (ha : 0 < a) (hb : 0 < b) (hc : 0 < c) (h_pyth : a ^ 2 + b ^ 2 = c ^ 2) :
+  3 ≤ a :=
+begin
+  sorry,
+end
+
+
 example {x y : ℝ} (n : ℕ) (hx : 0 ≤ x) (hn : 0 < n) (h : y ^ n ≤ x ^ n) :
   y ≤ x :=
 begin
