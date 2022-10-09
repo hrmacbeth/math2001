@@ -2,7 +2,6 @@
 
 import data.real.basic
 import tactic.interval_cases
-import tactics.positivity
 import tactics.inequalities
 
 

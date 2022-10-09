@@ -5,7 +5,6 @@ import library.arithmetic
 import library.parity
 import tactics.addarith
 import tactics.inequalities
-import tactics.positivity
 import tactic.interval_cases
 
 open int

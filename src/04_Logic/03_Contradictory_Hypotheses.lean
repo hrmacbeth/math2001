@@ -1,29 +1,16 @@
 /- Copyright (c) Heather Macbeth, 2022.  All rights reserved. -/
 
 import data.real.basic
+import library.modular
 import library.parity
 import tactics.addarith
-import tactics.positivity
 import tactics.inequalities
+import tactics.modular
+import tactics.norm_num
 import tactic.interval_cases
 
 local attribute [-norm_num] norm_num.eval_nat_int_ext
 local attribute [-simp] nat.not_two_dvd_bit1 two_dvd_bit0
-
--- move later
-namespace norm_num
-open tactic
-
-lemma not_false : (¬ false) = true := not_eq_of_eq_false rfl
-
-lemma not_true : (¬ true) = false := not_eq_of_eq_true rfl
-
-@[norm_num] meta def eval_not_Prop : expr → tactic (expr × expr)
-| `(¬ false) := pure (`(true), `(not_false))
-| `(¬ true) := pure (`(false), `(not_true))
-| _ := failed
-
-end norm_num
 
 
 example {y : ℝ} (x : ℝ) (h : 0 < x * y) (hx : 0 ≤ x) : 0 < y :=
@@ -91,6 +78,25 @@ begin
 end
 
 
+example (n : ℤ) (hn : n ^ 2 + n + 1 ≡ 1 [ZMOD 3]) : n ≡ 0 [ZMOD 3] ∨ n ≡ 2 [ZMOD 3] :=
+begin
+  mod_cases n 3,
+  { -- case 1: `n ≡ 0 [ZMOD 3]`
+    left,
+    apply h, }, -- contradiction!
+  { -- case 2: `n ≡ 1 [ZMOD 3]`
+    have H :=
+    calc (0:ℤ) ≡ 0 + 3 * 1 [ZMOD 3] : by symmetry; apply int.modeq_add_fac'
+    ... = 1 ^ 2 + 1 + 1: by norm_num
+    ... ≡ n ^ 2 + n + 1 [ZMOD 3] : by mod_rw h
+    ... ≡ 1 [ZMOD 3] : hn,
+    norm_num1 at H, },
+  { -- case 3: `n ≡ 2 [ZMOD 3]`
+    right,
+    apply h },
+end
+
+
 example {a b c : ℕ} (ha : 0 < a) (hb : 0 < b) (hc : 0 < c) (h_pyth : a ^ 2 + b ^ 2 = c ^ 2) :
   3 ≤ a :=
 begin
@@ -100,6 +106,12 @@ end
 
 example {x y : ℝ} (n : ℕ) (hx : 0 ≤ x) (hn : 0 < n) (h : y ^ n ≤ x ^ n) :
   y ≤ x :=
+begin
+  sorry,
+end
+
+
+example (n : ℤ) (hn : n ^ 2 ≡ 4 [ZMOD 5]) : n ≡ 2 [ZMOD 5] ∨ n ≡ 3 [ZMOD 5] :=
 begin
   sorry,
 end

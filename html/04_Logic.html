@@ -71,7 +71,8 @@
 <li class="toctree-l3"><a class="reference internal" href="#prime-test">4.3.2. Example</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#norm-num-contradiction">4.3.3. Example</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#id20">4.3.4. Example</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id21">4.3.5. Exercises</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id21">4.3.5. Example</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id22">4.3.6. Exercises</a></li>
 </ul>
 </li>
 </ul>
@@ -116,10 +117,10 @@
 <p>Let <span class="math notranslate nohighlight">\(a\)</span> be a real number and suppose that for all real numbers <span class="math notranslate nohighlight">\(x\)</span>,
 it is true that <span class="math notranslate nohighlight">\(a\le x^2-2x\)</span>.  Show that <span class="math notranslate nohighlight">\(a\le -1\)</span>.</p>
 </div>
-<figure class="align-center" id="id22">
+<figure class="align-center" id="id23">
 <a class="reference internal image-reference" href="_images/04_logic_01_parabola.png"><img alt="_images/04_logic_01_parabola.png" src="_images/04_logic_01_parabola.png" style="width: 320.0px; height: 320.0px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 4.1 </span><span class="caption-text">The parabola <span class="math notranslate nohighlight">\(y= x^2-2x\)</span>.</span><a class="headerlink" href="#id22" title="Permalink to this image">&#61633;</a></p>
+<p><span class="caption-number">Fig. 4.1 </span><span class="caption-text">The parabola <span class="math notranslate nohighlight">\(y= x^2-2x\)</span>.</span><a class="headerlink" href="#id23" title="Permalink to this image">&#61633;</a></p>
 </figcaption>
 </figure>
 <p>Specifying that a formula or predicate is meant to be true for all values of a variable <span class="math notranslate nohighlight">\(x\)</span>,
@@ -897,6 +898,53 @@ close the goal.</p>
 </section>
 <section id="id20">
 <h3><span class="section-number">4.3.4. </span>Example<a class="headerlink" href="#id20" title="Permalink to this headline">&#61633;</a></h3>
+<div class="admonition-problem admonition">
+<p class="admonition-title">Problem</p>
+<p>Show that if <span class="math notranslate nohighlight">\(n^2+n+1\equiv 1\mod 3\)</span> then <span class="math notranslate nohighlight">\(n\equiv 0\mod 3\)</span> or
+<span class="math notranslate nohighlight">\(n\equiv 2\mod 3\)</span>.</p>
+</div>
+<div class="admonition-solution admonition">
+<p class="admonition-title">Solution</p>
+<p>We consider cases according to the residue of <span class="math notranslate nohighlight">\(n\)</span> modulo 3.  If <span class="math notranslate nohighlight">\(n\equiv 0\mod 3\)</span> or
+<span class="math notranslate nohighlight">\(n\equiv 2\mod 3\)</span>, then we are done.  Otherwise, <span class="math notranslate nohighlight">\(n\equiv 1\mod 3\)</span>, so</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}0 &amp;\equiv 0 + 3 \cdot 1 \mod 3 \\
+  &amp; = 1 ^ 2 + 1 + 1\\
+  &amp;\equiv n ^ 2 + n + 1 \mod 3\\
+  &amp;\equiv 1 \mod 3,\end{split}\]</div>
+<p>contradiction.</p>
+</div>
+<p>Notice that in the above proof we did some extra work to get <span class="math notranslate nohighlight">\(0\equiv 1\mod 3\)</span> for the
+contradiction, rather than <span class="math notranslate nohighlight">\(3\equiv 0\mod 3\)</span>, which could have been obtained more easily:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}3 &amp; = 1 ^ 2 + 1 + 1\\
+  &amp;\equiv \ldots\end{split}\]</div>
+<p>For the purposes of this course, we will treat as &#8220;obviously true/false&#8221; only congruences
+<span class="math notranslate nohighlight">\(i\equiv j\mod n\)</span> for which <span class="math notranslate nohighlight">\(0 \le i&lt;n\)</span> and <span class="math notranslate nohighlight">\(0 \le j&lt;n\)</span>.  We will ask that
+congruences involving larger numbers be explicitly reduced modulo <span class="math notranslate nohighlight">\(n\)</span>, as we did here in
+reducing <span class="math notranslate nohighlight">\(3=1 ^ 2 + 1 + 1\)</span> to <span class="math notranslate nohighlight">\(0 + 3 \cdot 1 \mod 3\)</span> and thus to <span class="math notranslate nohighlight">\(0\)</span>.</p>
+<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">(</span><span class="n">n</span> <span class="o">:</span> <span class="n">&#8484;</span><span class="o">)</span> <span class="o">(</span><span class="n">hn</span> <span class="o">:</span> <span class="n">n</span> <span class="bp">^</span> <span class="mi">2</span> <span class="bp">+</span> <span class="n">n</span> <span class="bp">+</span> <span class="mi">1</span> <span class="bp">&#8801;</span> <span class="mi">1</span> <span class="o">[</span><span class="n">ZMOD</span> <span class="mi">3</span><span class="o">])</span> <span class="o">:</span> <span class="n">n</span> <span class="bp">&#8801;</span> <span class="mi">0</span> <span class="o">[</span><span class="n">ZMOD</span> <span class="mi">3</span><span class="o">]</span> <span class="bp">&#8744;</span> <span class="n">n</span> <span class="bp">&#8801;</span> <span class="mi">2</span> <span class="o">[</span><span class="n">ZMOD</span> <span class="mi">3</span><span class="o">]</span> <span class="o">:=</span>
+<span class="kd">begin</span>
+  <span class="n">mod_cases</span> <span class="n">n</span> <span class="mi">3</span><span class="o">,</span>
+  <span class="o">{</span> <span class="c1">-- case 1: `n &#8801; 0 [ZMOD 3]`</span>
+    <span class="n">left</span><span class="o">,</span>
+    <span class="n">apply</span> <span class="n">h</span><span class="o">,</span> <span class="o">},</span> <span class="c1">-- contradiction!</span>
+  <span class="o">{</span> <span class="c1">-- case 2: `n &#8801; 1 [ZMOD 3]`</span>
+    <span class="k">have</span> <span class="n">H</span> <span class="o">:=</span>
+    <span class="k">calc</span> <span class="o">(</span><span class="mi">0</span><span class="o">:</span><span class="n">&#8484;</span><span class="o">)</span> <span class="bp">&#8801;</span> <span class="mi">0</span> <span class="bp">+</span> <span class="mi">3</span> <span class="bp">*</span> <span class="mi">1</span> <span class="o">[</span><span class="n">ZMOD</span> <span class="mi">3</span><span class="o">]</span> <span class="o">:</span> <span class="kd">by</span> <span class="n">symmetry</span><span class="bp">;</span> <span class="n">apply</span> <span class="n">int.modeq_add_fac&#39;</span>
+    <span class="bp">...</span> <span class="bp">=</span> <span class="mi">1</span> <span class="bp">^</span> <span class="mi">2</span> <span class="bp">+</span> <span class="mi">1</span> <span class="bp">+</span> <span class="mi">1</span><span class="o">:</span> <span class="kd">by</span> <span class="n">norm_num</span>
+    <span class="bp">...</span> <span class="bp">&#8801;</span> <span class="n">n</span> <span class="bp">^</span> <span class="mi">2</span> <span class="bp">+</span> <span class="n">n</span> <span class="bp">+</span> <span class="mi">1</span> <span class="o">[</span><span class="n">ZMOD</span> <span class="mi">3</span><span class="o">]</span> <span class="o">:</span> <span class="kd">by</span> <span class="n">mod_rw</span> <span class="n">h</span>
+    <span class="bp">...</span> <span class="bp">&#8801;</span> <span class="mi">1</span> <span class="o">[</span><span class="n">ZMOD</span> <span class="mi">3</span><span class="o">]</span> <span class="o">:</span> <span class="n">hn</span><span class="o">,</span>
+    <span class="n">norm_num1</span> <span class="n">at</span> <span class="n">H</span><span class="o">,</span> <span class="o">},</span>
+  <span class="o">{</span> <span class="c1">-- case 3: `n &#8801; 2 [ZMOD 3]`</span>
+    <span class="n">right</span><span class="o">,</span>
+    <span class="n">apply</span> <span class="n">h</span> <span class="o">},</span>
+<span class="kd">end</span>
+</pre></div>
+</div>
+</section>
+<section id="id21">
+<h3><span class="section-number">4.3.5. </span>Example<a class="headerlink" href="#id21" title="Permalink to this headline">&#61633;</a></h3>
 <p>Here&#8217;s a harder example, with many cases.</p>
 <div class="admonition-problem admonition">
 <p class="admonition-title">Problem</p>
@@ -950,8 +998,8 @@ We can analyze all these cases and check they don&#8217;t work:</p>
 </pre></div>
 </div>
 </section>
-<section id="id21">
-<h3><span class="section-number">4.3.5. </span>Exercises<a class="headerlink" href="#id21" title="Permalink to this headline">&#61633;</a></h3>
+<section id="id22">
+<h3><span class="section-number">4.3.6. </span>Exercises<a class="headerlink" href="#id22" title="Permalink to this headline">&#61633;</a></h3>
 <ol class="arabic simple">
 <li><p>Let <span class="math notranslate nohighlight">\(x\)</span> and <span class="math notranslate nohighlight">\(y\)</span> be real numbers, with <span class="math notranslate nohighlight">\(x\)</span> nonnegative, and let
 <span class="math notranslate nohighlight">\(n\)</span> is a positive natural number.  Prove that if then <span class="math notranslate nohighlight">\(y^n \le x^n\)</span> then
@@ -969,6 +1017,15 @@ We can analyze all these cases and check they don&#8217;t work:</p>
 </pre></div>
 </div>
 <ol class="arabic simple" start="2">
+<li><p>Show that if <span class="math notranslate nohighlight">\(n^2\equiv 4\mod 5\)</span> then <span class="math notranslate nohighlight">\(n\equiv 2\mod 5\)</span> or <span class="math notranslate nohighlight">\(n\equiv 3\mod 5\)</span>.</p></li>
+</ol>
+<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">(</span><span class="n">n</span> <span class="o">:</span> <span class="n">&#8484;</span><span class="o">)</span> <span class="o">(</span><span class="n">hn</span> <span class="o">:</span> <span class="n">n</span> <span class="bp">^</span> <span class="mi">2</span> <span class="bp">&#8801;</span> <span class="mi">4</span> <span class="o">[</span><span class="n">ZMOD</span> <span class="mi">5</span><span class="o">])</span> <span class="o">:</span> <span class="n">n</span> <span class="bp">&#8801;</span> <span class="mi">2</span> <span class="o">[</span><span class="n">ZMOD</span> <span class="mi">5</span><span class="o">]</span> <span class="bp">&#8744;</span> <span class="n">n</span> <span class="bp">&#8801;</span> <span class="mi">3</span> <span class="o">[</span><span class="n">ZMOD</span> <span class="mi">5</span><span class="o">]</span> <span class="o">:=</span>
+<span class="kd">begin</span>
+  <span class="gr">sorry</span><span class="o">,</span>
+<span class="kd">end</span>
+</pre></div>
+</div>
+<ol class="arabic simple" start="3">
 <li><p>Show that 7 is prime.</p></li>
 </ol>
 <div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">:</span> <span class="n">prime</span> <span class="mi">7</span> <span class="o">:=</span>
@@ -977,7 +1034,7 @@ We can analyze all these cases and check they don&#8217;t work:</p>
 <span class="kd">end</span>
 </pre></div>
 </div>
-<ol class="arabic" start="3">
+<ol class="arabic" start="4">
 <li><p>Give a different proof of a problem from the exercises to <a class="reference internal" href="02_Proofs_with_Structure.html#lemmas"><span class="std std-numref">Section 2.2</span></a>: Let
 <span class="math notranslate nohighlight">\(x\)</span>
 be a rational number whose square is 4, and which is greater than 1.  Show that <span class="math notranslate nohighlight">\(x=2\)</span>.</p>
@@ -994,7 +1051,7 @@ then rule out one of them. (You may find it convenient to deduce a numeric contr
 <span class="kd">end</span>
 </pre></div>
 </div>
-<ol class="arabic simple" start="4">
+<ol class="arabic simple" start="5">
 <li><p>Show that a prime number is either 2 or odd.</p></li>
 </ol>
 <div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">(</span><span class="n">p</span> <span class="o">:</span> <span class="n">&#8469;</span><span class="o">)</span> <span class="o">(</span><span class="n">h</span> <span class="o">:</span> <span class="n">prime</span> <span class="n">p</span><span class="o">)</span> <span class="o">:</span> <span class="n">p</span> <span class="bp">=</span> <span class="mi">2</span> <span class="bp">&#8744;</span> <span class="n">odd</span> <span class="n">p</span> <span class="o">:=</span>

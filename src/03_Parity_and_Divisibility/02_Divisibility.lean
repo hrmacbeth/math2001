@@ -3,7 +3,6 @@
 import library.arithmetic
 import library.division
 import tactics.inequalities
-import tactics.positivity
 
 local attribute [-norm_num] norm_num.eval_nat_int_ext
 

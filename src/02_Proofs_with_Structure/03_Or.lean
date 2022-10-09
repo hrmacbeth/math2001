@@ -3,7 +3,6 @@
 import data.real.basic
 import tactics.addarith
 import tactics.inequalities
-import tactics.positivity
 import library.arithmetic2
 
 
