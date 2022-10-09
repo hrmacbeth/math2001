@@ -928,14 +928,14 @@ reducing <span class="math notranslate nohighlight">\(3=1 ^ 2 + 1 + 1\)</span> t
   <span class="n">mod_cases</span> <span class="n">n</span> <span class="mi">3</span><span class="o">,</span>
   <span class="o">{</span> <span class="c1">-- case 1: `n &#8801; 0 [ZMOD 3]`</span>
     <span class="n">left</span><span class="o">,</span>
-    <span class="n">apply</span> <span class="n">h</span><span class="o">,</span> <span class="o">},</span> <span class="c1">-- contradiction!</span>
+    <span class="n">apply</span> <span class="n">h</span><span class="o">,</span> <span class="o">},</span>
   <span class="o">{</span> <span class="c1">-- case 2: `n &#8801; 1 [ZMOD 3]`</span>
     <span class="k">have</span> <span class="n">H</span> <span class="o">:=</span>
     <span class="k">calc</span> <span class="o">(</span><span class="mi">0</span><span class="o">:</span><span class="n">&#8484;</span><span class="o">)</span> <span class="bp">&#8801;</span> <span class="mi">0</span> <span class="bp">+</span> <span class="mi">3</span> <span class="bp">*</span> <span class="mi">1</span> <span class="o">[</span><span class="n">ZMOD</span> <span class="mi">3</span><span class="o">]</span> <span class="o">:</span> <span class="kd">by</span> <span class="n">symmetry</span><span class="bp">;</span> <span class="n">apply</span> <span class="n">int.modeq_add_fac&#39;</span>
     <span class="bp">...</span> <span class="bp">=</span> <span class="mi">1</span> <span class="bp">^</span> <span class="mi">2</span> <span class="bp">+</span> <span class="mi">1</span> <span class="bp">+</span> <span class="mi">1</span><span class="o">:</span> <span class="kd">by</span> <span class="n">norm_num</span>
     <span class="bp">...</span> <span class="bp">&#8801;</span> <span class="n">n</span> <span class="bp">^</span> <span class="mi">2</span> <span class="bp">+</span> <span class="n">n</span> <span class="bp">+</span> <span class="mi">1</span> <span class="o">[</span><span class="n">ZMOD</span> <span class="mi">3</span><span class="o">]</span> <span class="o">:</span> <span class="kd">by</span> <span class="n">mod_rw</span> <span class="n">h</span>
     <span class="bp">...</span> <span class="bp">&#8801;</span> <span class="mi">1</span> <span class="o">[</span><span class="n">ZMOD</span> <span class="mi">3</span><span class="o">]</span> <span class="o">:</span> <span class="n">hn</span><span class="o">,</span>
-    <span class="n">norm_num1</span> <span class="n">at</span> <span class="n">H</span><span class="o">,</span> <span class="o">},</span>
+    <span class="n">norm_num1</span> <span class="n">at</span> <span class="n">H</span><span class="o">,</span> <span class="o">},</span> <span class="c1">-- contradiction!</span>
   <span class="o">{</span> <span class="c1">-- case 3: `n &#8801; 2 [ZMOD 3]`</span>
     <span class="n">right</span><span class="o">,</span>
     <span class="n">apply</span> <span class="n">h</span> <span class="o">},</span>
