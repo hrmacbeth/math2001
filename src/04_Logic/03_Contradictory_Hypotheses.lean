@@ -83,14 +83,14 @@ begin
   mod_cases n 3,
   { -- case 1: `n ≡ 0 [ZMOD 3]`
     left,
-    apply h, }, -- contradiction!
+    apply h, },
   { -- case 2: `n ≡ 1 [ZMOD 3]`
     have H :=
     calc (0:ℤ) ≡ 0 + 3 * 1 [ZMOD 3] : by symmetry; apply int.modeq_add_fac'
     ... = 1 ^ 2 + 1 + 1: by norm_num
     ... ≡ n ^ 2 + n + 1 [ZMOD 3] : by mod_rw h
     ... ≡ 1 [ZMOD 3] : hn,
-    norm_num1 at H, },
+    norm_num1 at H, }, -- contradiction!
   { -- case 3: `n ≡ 2 [ZMOD 3]`
     right,
     apply h },
