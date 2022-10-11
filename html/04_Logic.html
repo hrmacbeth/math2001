@@ -591,7 +591,7 @@ theorem.</p>
 <div class="admonition-problem admonition">
 <p class="admonition-title">Problem</p>
 <p>Show that there exists a unique integer <span class="math notranslate nohighlight">\(r\)</span>, such that <span class="math notranslate nohighlight">\(0\le r &lt; 5\)</span> and
-<span class="math notranslate nohighlight">\(14=5q+r\)</span>.</p>
+<span class="math notranslate nohighlight">\(14=5q+r\)</span> for some integer <span class="math notranslate nohighlight">\(q\)</span>.</p>
 </div>
 <div class="admonition-solution admonition">
 <p class="admonition-title">Solution</p>
@@ -697,7 +697,7 @@ integer <span class="math notranslate nohighlight">\(r\)</span>, such that <span
 </div>
 <ol class="arabic simple" start="3">
 <li><p>Show that there exists a unique integer <span class="math notranslate nohighlight">\(r\)</span>, such that <span class="math notranslate nohighlight">\(0\le r &lt; 3\)</span> and
-<span class="math notranslate nohighlight">\(11=3q+r\)</span>.</p></li>
+<span class="math notranslate nohighlight">\(11=3q+r\)</span> for some integer <span class="math notranslate nohighlight">\(q\)</span>.</p></li>
 </ol>
 <div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">:</span> <span class="bp">&#8707;!</span> <span class="n">r</span> <span class="o">:</span> <span class="n">&#8484;</span><span class="o">,</span> <span class="mi">0</span> <span class="bp">&#8804;</span> <span class="n">r</span> <span class="bp">&#8743;</span> <span class="n">r</span> <span class="bp">&lt;</span> <span class="mi">3</span> <span class="bp">&#8743;</span> <span class="bp">&#8707;</span> <span class="n">q</span> <span class="o">:</span> <span class="n">&#8484;</span><span class="o">,</span> <span class="mi">11</span> <span class="bp">=</span> <span class="mi">3</span> <span class="bp">*</span> <span class="n">q</span> <span class="bp">+</span> <span class="n">r</span> <span class="o">:=</span>
 <span class="kd">begin</span>
@@ -922,7 +922,7 @@ contradiction, rather than <span class="math notranslate nohighlight">\(3\equiv 
 <p>For the purposes of this course, we will treat as &#8220;obviously true/false&#8221; only congruences
 <span class="math notranslate nohighlight">\(i\equiv j\mod n\)</span> for which <span class="math notranslate nohighlight">\(0 \le i&lt;n\)</span> and <span class="math notranslate nohighlight">\(0 \le j&lt;n\)</span>.  We will ask that
 congruences involving larger numbers be explicitly reduced modulo <span class="math notranslate nohighlight">\(n\)</span>, as we did here in
-reducing <span class="math notranslate nohighlight">\(3=1 ^ 2 + 1 + 1\)</span> to <span class="math notranslate nohighlight">\(0 + 3 \cdot 1 \mod 3\)</span> and thus to <span class="math notranslate nohighlight">\(0\)</span>.</p>
+reducing <span class="math notranslate nohighlight">\(3=1 ^ 2 + 1 + 1\)</span> to <span class="math notranslate nohighlight">\(0 + 3 \cdot 1\)</span> modulo 3 and thus to <span class="math notranslate nohighlight">\(0\)</span>.</p>
 <div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">(</span><span class="n">n</span> <span class="o">:</span> <span class="n">&#8484;</span><span class="o">)</span> <span class="o">(</span><span class="n">hn</span> <span class="o">:</span> <span class="n">n</span> <span class="bp">^</span> <span class="mi">2</span> <span class="bp">+</span> <span class="n">n</span> <span class="bp">+</span> <span class="mi">1</span> <span class="bp">&#8801;</span> <span class="mi">1</span> <span class="o">[</span><span class="n">ZMOD</span> <span class="mi">3</span><span class="o">])</span> <span class="o">:</span> <span class="n">n</span> <span class="bp">&#8801;</span> <span class="mi">0</span> <span class="o">[</span><span class="n">ZMOD</span> <span class="mi">3</span><span class="o">]</span> <span class="bp">&#8744;</span> <span class="n">n</span> <span class="bp">&#8801;</span> <span class="mi">2</span> <span class="o">[</span><span class="n">ZMOD</span> <span class="mi">3</span><span class="o">]</span> <span class="o">:=</span>
 <span class="kd">begin</span>
   <span class="n">mod_cases</span> <span class="n">n</span> <span class="mi">3</span><span class="o">,</span>
