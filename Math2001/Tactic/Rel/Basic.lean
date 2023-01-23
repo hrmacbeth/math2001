@@ -23,7 +23,7 @@ def RelConfig : SolveByElim.Config :=
 def IneqRelDischarge (g : MVarId) : MetaM (Option (List MVarId)) :=
 do withTransparency .reducible (Meta.Positivity.positivity g); pure (some []) <|> pure none
 
-syntax (name := ineqRelSyntax) "ineq_rel" (args)? : tactic
+syntax (name := ineqRelSyntax) "rel" (args)? : tactic
 
 def Lean.MVarId.Rel (disch : MVarId → MetaM (Option (List MVarId))) (attr : Name)
     (add : List Term) (g : MVarId) :
@@ -31,7 +31,7 @@ def Lean.MVarId.Rel (disch : MVarId → MetaM (Option (List MVarId))) (attr : Na
   let cfg : SolveByElim.Config := { RelConfig with discharge := disch }
   solveByElim.processSyntax cfg true false add [] #[mkIdent attr] [g]
 
-elab_rules : tactic | `(tactic| ineq_rel $[$t:args]?) => do
+elab_rules : tactic | `(tactic| rel $[$t:args]?) => do
   let (_, add, _) := parseArgs t
   liftMetaTactic <| Lean.MVarId.Rel IneqRelDischarge `ineq_rules add
 

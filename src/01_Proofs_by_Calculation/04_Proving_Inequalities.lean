@@ -7,9 +7,9 @@ import Math2001.Tactic.Rel
 example {x y : ℤ} (hx : x + 3 ≤ 2) (hy : y + 2 * x ≥ 3) : y > 3 :=
   calc
     y = y + 2 * x - 2 * x := by ring
-    _ ≥ 3 - 2 * x := by ineq_rel [hy]
+    _ ≥ 3 - 2 * x := by rel [hy]
     _ = 9 - 2 * (x + 3) := by ring
-    _ ≥ 9 - 2 * 2 := by ineq_rel [hx]
+    _ ≥ 9 - 2 * 2 := by rel [hx]
     _ > 3 := by norm_num1
 
 
@@ -48,8 +48,8 @@ example {n : ℤ} (hn : n ≥ 5) : n ^ 2 > 2 * n + 11 :=
 
 example {m n : ℤ} (h : m ^ 2 + n ≤ 2) : n ≤ 2 :=
   calc
-    n ≤ m ^ 2 + n := by ineq_rel
-    _ ≤ 2 := by ineq_rel [h]
+    n ≤ m ^ 2 + n := by rel
+    _ ≤ 2 := by rel [h]
 
 
 example {x y : ℝ} (h : x ^ 2 + y ^ 2 ≤ 1) : (x + y) ^ 2 < 3 :=
@@ -74,7 +74,7 @@ example {a b c : ℝ} : a ^ 2 * (a ^ 6 + 8 * b ^ 3 * c ^ 3) ≤ (a ^ 4 + b ^ 4 +
     a ^ 2 * (a ^ 6 + 8 * b ^ 3 * c ^ 3)
       ≤ 2 * (a ^ 2 * (b ^ 2 - c ^ 2)) ^ 2 + (b ^ 4 - c ^ 4) ^ 2
           + 4 * (a ^ 2 * b * c - b ^ 2 * c ^ 2) ^ 2
-          + a ^ 2 * (a ^ 6 + 8 * b ^ 3 * c ^ 3) := by ineq_rel
+          + a ^ 2 * (a ^ 6 + 8 * b ^ 3 * c ^ 3) := by rel
     _ = (a ^ 4 + b ^ 4 + c ^ 4) ^ 2 := by ring
 
 

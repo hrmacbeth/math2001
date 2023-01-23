@@ -21,7 +21,7 @@ example {n : ℕ} : n ^ 2 ≠ 2 := by
   cases' hn with hn hn
   apply ne_of_lt
   calc
-    n ^ 2 ≤ 1 ^ 2 := by ineq_rel [hn]
+    n ^ 2 ≤ 1 ^ 2 := by rel [hn]
     _ < 2 := by norm_num1
   sorry
 
@@ -75,23 +75,23 @@ example {n : ℤ} : n ^ 2 ≠ 2 := by
     · apply ne_of_lt
       calc
         n ^ 2 = (-n) ^ 2 := by ring
-        _ ≤ (1:ℤ) ^ 2 := by ineq_rel [hn]
+        _ ≤ (1:ℤ) ^ 2 := by rel [hn]
         _ < 2 := by norm_num1
     · apply ne_of_gt
       calc
         2 < 2 ^ 2 := by norm_num1
-        _ ≤ (-n) ^ 2 := by ineq_rel [hn]
+        _ ≤ (-n) ^ 2 := by rel [hn]
         _ = n ^ 2 := by ring
   · have hn : n ≤ 1 ∨ 2 ≤ n := le_or_lt n 1
     cases' hn with hn hn
     · apply ne_of_lt
       calc
-        n ^ 2 ≤ (1:ℤ) ^ 2 := by ineq_rel [hn]
+        n ^ 2 ≤ (1:ℤ) ^ 2 := by rel [hn]
         _ < (2:ℤ) := by norm_num1
     · apply ne_of_gt
       calc
         2 < 2 ^ 2 := by norm_num1
-        _ ≤ n ^ 2 := by ineq_rel [hn]
+        _ ≤ n ^ 2 := by rel [hn]
 
 
 example {x : ℝ} (h : x = 1 ∨ x = 2) : x ^ 2 - 3 * x + 2 = 0 := by
