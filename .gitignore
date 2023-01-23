@@ -3,4 +3,5 @@
 /_target
 /leanpkg.path
 /lake-packages
+/build
 /.cache
