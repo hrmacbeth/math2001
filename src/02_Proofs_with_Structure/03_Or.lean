@@ -2,6 +2,7 @@
 import Mathlib.Data.Real.Basic
 import Math2001.Library.Arithmetic
 import Math2001.Tactic.Addarith
+import Math2001.Tactic.Numbers
 import Math2001.Tactic.Rel
 
 
@@ -22,7 +23,7 @@ example {n : ℕ} : n ^ 2 ≠ 2 := by
   apply ne_of_lt
   calc
     n ^ 2 ≤ 1 ^ 2 := by rel [hn]
-    _ < 2 := by norm_num1
+    _ < 2 := by numbers
   sorry
 
 example {x : ℝ} (hx : 2 * x + 1 = 5) : x = 1 ∨ x = 2 := by
@@ -30,7 +31,7 @@ example {x : ℝ} (hx : 2 * x + 1 = 5) : x = 1 ∨ x = 2 := by
   calc
     x = (2 * x + 1 - 1) / 2 := by ring
     _ = (5 - 1) / 2 := by rw [hx]
-    _ = 2 := by norm_num1
+    _ = 2 := by numbers
 
 
 example {a b : ℝ} (h : a * b = 0) : a = 0 ∨ b = 0 := by
@@ -76,10 +77,10 @@ example {n : ℤ} : n ^ 2 ≠ 2 := by
       calc
         n ^ 2 = (-n) ^ 2 := by ring
         _ ≤ (1:ℤ) ^ 2 := by rel [hn]
-        _ < 2 := by norm_num1
+        _ < 2 := by numbers
     · apply ne_of_gt
       calc
-        2 < 2 ^ 2 := by norm_num1
+        2 < 2 ^ 2 := by numbers
         _ ≤ (-n) ^ 2 := by rel [hn]
         _ = n ^ 2 := by ring
   · have hn : n ≤ 1 ∨ 2 ≤ n := le_or_lt n 1
@@ -87,10 +88,10 @@ example {n : ℤ} : n ^ 2 ≠ 2 := by
     · apply ne_of_lt
       calc
         n ^ 2 ≤ (1:ℤ) ^ 2 := by rel [hn]
-        _ < (2:ℤ) := by norm_num1
+        _ < (2:ℤ) := by numbers
     · apply ne_of_gt
       calc
-        2 < 2 ^ 2 := by norm_num1
+        2 < 2 ^ 2 := by numbers
         _ ≤ n ^ 2 := by rel [hn]
 
 

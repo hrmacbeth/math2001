@@ -24,7 +24,7 @@ open Elab.Tactic Parser.Tactic
 open Mathlib Tactic Abel
 
 -- def normNumTarget (g : MVarId) : MetaM (List MVarId) := do
---   discard <| Mathlib.Meta.NormNum.normNumAt (simplifyTarget := true) g {} #[]
+--   discard <| Mathlib.Meta.NormNum.normNumAt (simplifyTarget := false) g {} #[]
 --   pure []
 
 def addarithDischarger : TacticM Unit := do
@@ -33,7 +33,7 @@ def addarithDischarger : TacticM Unit := do
   try evalTactic (← `(tactic| push_cast [zsmul_eq_mul])) catch _ => pure ()
   try evalTactic (← `(tactic| norm_num1)) catch _ => pure ()
   -- try (liftMetaTactic normNumTarget) catch _ => pure ()
-  evalTactic (← `(tactic| done))
+  -- evalTactic (← `(tactic| done))
 
 /--
 `addarith` attempts to use specified linear (in)equality hypotheses to prove a linear (in)equality
@@ -50,4 +50,4 @@ elab_rules : tactic | `(tactic| addarith $[[$args,*]]?) => withMainContext do
     Linarith.linarith true
       (← ((args.map (TSepArray.getElems)).getD {}).mapM (elabTerm ·.raw none)).toList
       { discharger := addarithDischarger })
-  -- <|> throwError "addarith failed to prove this"
+  <|> throwError "addarith failed to prove this"

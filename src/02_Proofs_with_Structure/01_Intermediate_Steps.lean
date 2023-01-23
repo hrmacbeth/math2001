@@ -1,6 +1,7 @@
 /- Copyright (c) Heather Macbeth, 2022.  All rights reserved. -/
 import Mathlib.Data.Real.Basic
 import Math2001.Tactic.Addarith
+import Math2001.Tactic.Numbers
 import Math2001.Tactic.Rel
 
 example {a b : ℝ} (h1 : a - 5 * b = 4) (h2 : b + 2 = 3) : a = 9 := by

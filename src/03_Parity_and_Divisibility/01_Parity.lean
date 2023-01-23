@@ -1,6 +1,7 @@
 /- Copyright (c) Heather Macbeth, 2022.  All rights reserved. -/
 import Math2001.Library.Parity
 import Math2001.Tactic.Addarith
+import Math2001.Tactic.Numbers
 import Math2001.Tactic.Rel
 
 open Int
@@ -9,7 +10,7 @@ open Int
 example : Odd (7 : ℤ) := by
   dsimp [Odd]
   use 3
-  norm_num1
+  numbers
 
 
 example : Odd (-3 : ℤ) := by

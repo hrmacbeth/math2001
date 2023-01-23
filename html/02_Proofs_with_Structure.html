@@ -507,7 +507,7 @@ hx : 3 * x = 2
   <span class="k">calc</span>
     <span class="n">x</span> <span class="bp">=</span> <span class="mi">3</span> <span class="bp">*</span> <span class="n">x</span> <span class="bp">/</span> <span class="mi">3</span> <span class="o">:=</span> <span class="kd">by</span> <span class="n">ring</span>
     <span class="n">_</span> <span class="bp">=</span> <span class="mi">2</span> <span class="bp">/</span> <span class="mi">3</span> <span class="o">:=</span> <span class="kd">by</span> <span class="n">rw</span> <span class="o">[</span><span class="n">hx</span><span class="o">]</span>
-    <span class="n">_</span> <span class="bp">&lt;</span> <span class="mi">1</span> <span class="o">:=</span> <span class="kd">by</span> <span class="n">norm_num1</span>
+    <span class="n">_</span> <span class="bp">&lt;</span> <span class="mi">1</span> <span class="o">:=</span> <span class="kd">by</span> <span class="n">numbers</span>
 </pre></div>
 </div>
 <p>Comparing the text proof and the Lean proof, you will notice that the phrasing in invoking the
@@ -839,8 +839,8 @@ hn : 2 &#8804; n
   <span class="n">cases&#39;</span> <span class="n">hn</span> <span class="k">with</span> <span class="n">hn</span> <span class="n">hn</span>
   <span class="n">apply</span> <span class="n">ne_of_lt</span>
   <span class="k">calc</span>
-    <span class="n">n</span> <span class="bp">^</span> <span class="mi">2</span> <span class="bp">&#8804;</span> <span class="mi">1</span> <span class="bp">^</span> <span class="mi">2</span> <span class="o">:=</span> <span class="kd">by</span> <span class="n">ineq_rel</span> <span class="o">[</span><span class="n">hn</span><span class="o">]</span>
-    <span class="n">_</span> <span class="bp">&lt;</span> <span class="mi">2</span> <span class="o">:=</span> <span class="kd">by</span> <span class="n">norm_num1</span>
+    <span class="n">n</span> <span class="bp">^</span> <span class="mi">2</span> <span class="bp">&#8804;</span> <span class="mi">1</span> <span class="bp">^</span> <span class="mi">2</span> <span class="o">:=</span> <span class="kd">by</span> <span class="n">rel</span> <span class="o">[</span><span class="n">hn</span><span class="o">]</span>
+    <span class="n">_</span> <span class="bp">&lt;</span> <span class="mi">2</span> <span class="o">:=</span> <span class="kd">by</span> <span class="n">numbers</span>
   <span class="gr">sorry</span>
 </pre></div>
 </div>
@@ -879,7 +879,7 @@ to work, and then prove it.</p>
   <span class="k">calc</span>
     <span class="n">x</span> <span class="bp">=</span> <span class="o">(</span><span class="mi">2</span> <span class="bp">*</span> <span class="n">x</span> <span class="bp">+</span> <span class="mi">1</span> <span class="bp">-</span> <span class="mi">1</span><span class="o">)</span> <span class="bp">/</span> <span class="mi">2</span> <span class="o">:=</span> <span class="kd">by</span> <span class="n">ring</span>
     <span class="n">_</span> <span class="bp">=</span> <span class="o">(</span><span class="mi">5</span> <span class="bp">-</span> <span class="mi">1</span><span class="o">)</span> <span class="bp">/</span> <span class="mi">2</span> <span class="o">:=</span> <span class="kd">by</span> <span class="n">rw</span> <span class="o">[</span><span class="n">hx</span><span class="o">]</span>
-    <span class="n">_</span> <span class="bp">=</span> <span class="mi">2</span> <span class="o">:=</span> <span class="kd">by</span> <span class="n">norm_num1</span>
+    <span class="n">_</span> <span class="bp">=</span> <span class="mi">2</span> <span class="o">:=</span> <span class="kd">by</span> <span class="n">numbers</span>
 </pre></div>
 </div>
 </section>
@@ -1085,23 +1085,23 @@ sub-proof with the symbol <code class="docutils literal notranslate"><span class
     <span class="bp">&#183;</span> <span class="n">apply</span> <span class="n">ne_of_lt</span>
       <span class="k">calc</span>
         <span class="n">n</span> <span class="bp">^</span> <span class="mi">2</span> <span class="bp">=</span> <span class="o">(</span><span class="bp">-</span><span class="n">n</span><span class="o">)</span> <span class="bp">^</span> <span class="mi">2</span> <span class="o">:=</span> <span class="kd">by</span> <span class="n">ring</span>
-        <span class="n">_</span> <span class="bp">&#8804;</span> <span class="o">(</span><span class="mi">1</span><span class="o">:</span><span class="n">&#8484;</span><span class="o">)</span> <span class="bp">^</span> <span class="mi">2</span> <span class="o">:=</span> <span class="kd">by</span> <span class="n">ineq_rel</span> <span class="o">[</span><span class="n">hn</span><span class="o">]</span>
-        <span class="n">_</span> <span class="bp">&lt;</span> <span class="mi">2</span> <span class="o">:=</span> <span class="kd">by</span> <span class="n">norm_num1</span>
+        <span class="n">_</span> <span class="bp">&#8804;</span> <span class="o">(</span><span class="mi">1</span><span class="o">:</span><span class="n">&#8484;</span><span class="o">)</span> <span class="bp">^</span> <span class="mi">2</span> <span class="o">:=</span> <span class="kd">by</span> <span class="n">rel</span> <span class="o">[</span><span class="n">hn</span><span class="o">]</span>
+        <span class="n">_</span> <span class="bp">&lt;</span> <span class="mi">2</span> <span class="o">:=</span> <span class="kd">by</span> <span class="n">numbers</span>
     <span class="bp">&#183;</span> <span class="n">apply</span> <span class="n">ne_of_gt</span>
       <span class="k">calc</span>
-        <span class="mi">2</span> <span class="bp">&lt;</span> <span class="mi">2</span> <span class="bp">^</span> <span class="mi">2</span> <span class="o">:=</span> <span class="kd">by</span> <span class="n">norm_num1</span>
-        <span class="n">_</span> <span class="bp">&#8804;</span> <span class="o">(</span><span class="bp">-</span><span class="n">n</span><span class="o">)</span> <span class="bp">^</span> <span class="mi">2</span> <span class="o">:=</span> <span class="kd">by</span> <span class="n">ineq_rel</span> <span class="o">[</span><span class="n">hn</span><span class="o">]</span>
+        <span class="mi">2</span> <span class="bp">&lt;</span> <span class="mi">2</span> <span class="bp">^</span> <span class="mi">2</span> <span class="o">:=</span> <span class="kd">by</span> <span class="n">numbers</span>
+        <span class="n">_</span> <span class="bp">&#8804;</span> <span class="o">(</span><span class="bp">-</span><span class="n">n</span><span class="o">)</span> <span class="bp">^</span> <span class="mi">2</span> <span class="o">:=</span> <span class="kd">by</span> <span class="n">rel</span> <span class="o">[</span><span class="n">hn</span><span class="o">]</span>
         <span class="n">_</span> <span class="bp">=</span> <span class="n">n</span> <span class="bp">^</span> <span class="mi">2</span> <span class="o">:=</span> <span class="kd">by</span> <span class="n">ring</span>
   <span class="bp">&#183;</span> <span class="k">have</span> <span class="n">hn</span> <span class="o">:</span> <span class="n">n</span> <span class="bp">&#8804;</span> <span class="mi">1</span> <span class="bp">&#8744;</span> <span class="mi">2</span> <span class="bp">&#8804;</span> <span class="n">n</span> <span class="o">:=</span> <span class="n">le_or_lt</span> <span class="n">n</span> <span class="mi">1</span>
     <span class="n">cases&#39;</span> <span class="n">hn</span> <span class="k">with</span> <span class="n">hn</span> <span class="n">hn</span>
     <span class="bp">&#183;</span> <span class="n">apply</span> <span class="n">ne_of_lt</span>
       <span class="k">calc</span>
-        <span class="n">n</span> <span class="bp">^</span> <span class="mi">2</span> <span class="bp">&#8804;</span> <span class="o">(</span><span class="mi">1</span><span class="o">:</span><span class="n">&#8484;</span><span class="o">)</span> <span class="bp">^</span> <span class="mi">2</span> <span class="o">:=</span> <span class="kd">by</span> <span class="n">ineq_rel</span> <span class="o">[</span><span class="n">hn</span><span class="o">]</span>
-        <span class="n">_</span> <span class="bp">&lt;</span> <span class="o">(</span><span class="mi">2</span><span class="o">:</span><span class="n">&#8484;</span><span class="o">)</span> <span class="o">:=</span> <span class="kd">by</span> <span class="n">norm_num1</span>
+        <span class="n">n</span> <span class="bp">^</span> <span class="mi">2</span> <span class="bp">&#8804;</span> <span class="o">(</span><span class="mi">1</span><span class="o">:</span><span class="n">&#8484;</span><span class="o">)</span> <span class="bp">^</span> <span class="mi">2</span> <span class="o">:=</span> <span class="kd">by</span> <span class="n">rel</span> <span class="o">[</span><span class="n">hn</span><span class="o">]</span>
+        <span class="n">_</span> <span class="bp">&lt;</span> <span class="o">(</span><span class="mi">2</span><span class="o">:</span><span class="n">&#8484;</span><span class="o">)</span> <span class="o">:=</span> <span class="kd">by</span> <span class="n">numbers</span>
     <span class="bp">&#183;</span> <span class="n">apply</span> <span class="n">ne_of_gt</span>
       <span class="k">calc</span>
-        <span class="mi">2</span> <span class="bp">&lt;</span> <span class="mi">2</span> <span class="bp">^</span> <span class="mi">2</span> <span class="o">:=</span> <span class="kd">by</span> <span class="n">norm_num1</span>
-        <span class="n">_</span> <span class="bp">&#8804;</span> <span class="n">n</span> <span class="bp">^</span> <span class="mi">2</span> <span class="o">:=</span> <span class="kd">by</span> <span class="n">ineq_rel</span> <span class="o">[</span><span class="n">hn</span><span class="o">]</span>
+        <span class="mi">2</span> <span class="bp">&lt;</span> <span class="mi">2</span> <span class="bp">^</span> <span class="mi">2</span> <span class="o">:=</span> <span class="kd">by</span> <span class="n">numbers</span>
+        <span class="n">_</span> <span class="bp">&#8804;</span> <span class="n">n</span> <span class="bp">^</span> <span class="mi">2</span> <span class="o">:=</span> <span class="kd">by</span> <span class="n">rel</span> <span class="o">[</span><span class="n">hn</span><span class="o">]</span>
 </pre></div>
 </div>
 </section>
@@ -1266,8 +1266,8 @@ with this &#8220;and&#8221; hypothesis and then finish the proof in Lean.</p>
   <span class="bp">&#183;</span> <span class="n">apply</span> <span class="n">abs_le_of_sq_le_sq&#39;</span>
     <span class="k">calc</span>
       <span class="n">p</span> <span class="bp">^</span> <span class="mi">2</span> <span class="bp">&#8804;</span> <span class="mi">9</span> <span class="o">:=</span> <span class="kd">by</span> <span class="n">addarith</span> <span class="o">[</span><span class="n">hp</span><span class="o">]</span>
-      <span class="n">_</span> <span class="bp">=</span> <span class="mi">3</span> <span class="bp">^</span> <span class="mi">2</span> <span class="o">:=</span> <span class="kd">by</span> <span class="n">norm_num1</span>
-    <span class="n">norm_num1</span>
+      <span class="n">_</span> <span class="bp">=</span> <span class="mi">3</span> <span class="bp">^</span> <span class="mi">2</span> <span class="o">:=</span> <span class="kd">by</span> <span class="n">numbers</span>
+    <span class="n">numbers</span>
   <span class="gr">sorry</span>
 </pre></div>
 </div>
@@ -1402,9 +1402,9 @@ the <code class="docutils literal notranslate"><span class="pre">2</span></code>
   <span class="k">have</span> <span class="n">h2</span> <span class="o">:</span> <span class="n">a</span> <span class="bp">^</span> <span class="mi">2</span> <span class="bp">=</span> <span class="mi">0</span>
   <span class="bp">&#183;</span> <span class="n">apply</span> <span class="n">le_antisymm</span>
     <span class="k">calc</span>
-      <span class="n">a</span> <span class="bp">^</span> <span class="mi">2</span> <span class="bp">&#8804;</span> <span class="n">a</span> <span class="bp">^</span> <span class="mi">2</span> <span class="bp">+</span> <span class="n">b</span> <span class="bp">^</span> <span class="mi">2</span> <span class="o">:=</span> <span class="kd">by</span> <span class="n">ineq_rel</span>
+      <span class="n">a</span> <span class="bp">^</span> <span class="mi">2</span> <span class="bp">&#8804;</span> <span class="n">a</span> <span class="bp">^</span> <span class="mi">2</span> <span class="bp">+</span> <span class="n">b</span> <span class="bp">^</span> <span class="mi">2</span> <span class="o">:=</span> <span class="kd">by</span> <span class="n">rel</span>
       <span class="n">_</span> <span class="bp">=</span> <span class="mi">0</span> <span class="o">:=</span> <span class="kd">by</span> <span class="n">rw</span> <span class="o">[</span><span class="n">h1</span><span class="o">]</span>
-    <span class="n">ineq_rel</span>
+    <span class="n">rel</span>
   <span class="gr">sorry</span>
 </pre></div>
 </div>
@@ -1450,7 +1450,7 @@ such that <span class="math notranslate nohighlight">\(a=b^2+1\)</span>.  Show t
   <span class="n">cases&#39;</span> <span class="n">h</span> <span class="k">with</span> <span class="n">b</span> <span class="n">hb</span>
   <span class="k">calc</span>
     <span class="n">a</span> <span class="bp">=</span> <span class="n">b</span> <span class="bp">^</span> <span class="mi">2</span> <span class="bp">+</span> <span class="mi">1</span> <span class="o">:=</span> <span class="n">hb</span>
-    <span class="n">_</span> <span class="bp">&gt;</span> <span class="mi">0</span> <span class="o">:=</span> <span class="kd">by</span> <span class="n">ineq_rel</span>
+    <span class="n">_</span> <span class="bp">&gt;</span> <span class="mi">0</span> <span class="o">:=</span> <span class="kd">by</span> <span class="n">rel</span>
 </pre></div>
 </div>
 </section>
@@ -1492,7 +1492,7 @@ such that <span class="math notranslate nohighlight">\(at&lt;0\)</span>.  Show t
 </div>
 <div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">:</span> <span class="bp">&#8707;</span> <span class="n">n</span> <span class="o">:</span> <span class="n">&#8484;</span><span class="o">,</span> <span class="mi">12</span> <span class="bp">*</span> <span class="n">n</span> <span class="bp">=</span> <span class="mi">84</span> <span class="o">:=</span> <span class="kd">by</span>
   <span class="n">use</span> <span class="mi">7</span>
-  <span class="n">norm_num1</span>
+  <span class="n">numbers</span>
 </pre></div>
 </div>
 </section>
@@ -1509,7 +1509,7 @@ such that <span class="math notranslate nohighlight">\(at&lt;0\)</span>.  Show t
 </div>
 <div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">(</span><span class="n">x</span> <span class="o">:</span> <span class="n">&#8477;</span><span class="o">)</span> <span class="o">:</span> <span class="bp">&#8707;</span> <span class="n">y</span> <span class="o">:</span> <span class="n">&#8477;</span><span class="o">,</span> <span class="n">y</span> <span class="bp">&gt;</span> <span class="n">x</span> <span class="o">:=</span> <span class="kd">by</span>
   <span class="n">use</span> <span class="n">x</span> <span class="bp">+</span> <span class="mi">1</span>
-  <span class="n">ineq_rel</span>
+  <span class="n">rel</span>
 </pre></div>
 </div>
 </section>
@@ -1597,12 +1597,12 @@ expressible as the sum of two cubes in two different ways.&#8221;</p>
 <div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">:</span> <span class="bp">&#8707;</span> <span class="n">a</span> <span class="n">b</span> <span class="n">c</span> <span class="n">d</span> <span class="o">:</span> <span class="n">&#8469;</span><span class="o">,</span> <span class="n">a</span> <span class="bp">^</span> <span class="mi">3</span> <span class="bp">+</span> <span class="n">b</span> <span class="bp">^</span> <span class="mi">3</span> <span class="bp">=</span> <span class="mi">1729</span> <span class="bp">&#8743;</span> <span class="n">c</span> <span class="bp">^</span> <span class="mi">3</span> <span class="bp">+</span> <span class="n">d</span> <span class="bp">^</span> <span class="mi">3</span> <span class="bp">=</span> <span class="mi">1729</span> <span class="bp">&#8743;</span> <span class="n">a</span> <span class="bp">&#8800;</span> <span class="n">c</span> <span class="bp">&#8743;</span> <span class="n">a</span> <span class="bp">&#8800;</span> <span class="n">d</span> <span class="o">:=</span> <span class="kd">by</span>
   <span class="n">use</span> <span class="mi">1</span><span class="o">,</span> <span class="mi">12</span><span class="o">,</span> <span class="mi">9</span><span class="o">,</span> <span class="mi">10</span>
   <span class="n">constructor</span>
-  <span class="n">norm_num1</span>
+  <span class="n">numbers</span>
   <span class="n">constructor</span>
-  <span class="n">norm_num1</span>
+  <span class="n">numbers</span>
   <span class="n">constructor</span>
-  <span class="n">norm_num1</span>
-  <span class="n">norm_num1</span>
+  <span class="n">numbers</span>
+  <span class="n">numbers</span>
 </pre></div>
 </div>
 </section>

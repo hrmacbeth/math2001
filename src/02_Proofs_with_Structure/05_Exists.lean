@@ -1,6 +1,7 @@
 /- Copyright (c) Heather Macbeth, 2022.  All rights reserved. -/
 import Mathlib.Data.Real.Basic
 import Math2001.Tactic.Addarith
+import Math2001.Tactic.Numbers
 import Math2001.Tactic.Rel
 
 
@@ -21,7 +22,7 @@ example {t : ℝ} (h : ∃ a : ℝ, a * t < 0) : t ≠ 0 := by
 
 example : ∃ n : ℤ, 12 * n = 84 := by
   use 7
-  norm_num1
+  numbers
 
 
 example (x : ℝ) : ∃ y : ℝ, y > x := by
@@ -41,12 +42,12 @@ example {p q : ℝ} (h : p < q) : ∃ x, p < x ∧ x < q := by
 example : ∃ a b c d : ℕ, a ^ 3 + b ^ 3 = 1729 ∧ c ^ 3 + d ^ 3 = 1729 ∧ a ≠ c ∧ a ≠ d := by
   use 1, 12, 9, 10
   constructor
-  norm_num1
+  numbers
   constructor
-  norm_num1
+  numbers
   constructor
-  norm_num1
-  norm_num1
+  numbers
+  numbers
 
 
 example : ∃ t : ℚ, t ^ 2 = 1.69 := by

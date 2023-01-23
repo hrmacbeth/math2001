@@ -1,6 +1,7 @@
 /- Copyright (c) Heather Macbeth, 2022.  All rights reserved. -/
 import Mathlib.Data.Real.Basic
 import Math2001.Tactic.Addarith
+import Math2001.Tactic.Numbers
 import Math2001.Tactic.Rel
 
 
@@ -17,8 +18,8 @@ example {p : ℚ} (hp : p ^ 2 = 9) : p ≤ 5 := by
   · apply abs_le_of_sq_le_sq'
     calc
       p ^ 2 ≤ 9 := by addarith [hp]
-      _ = 3 ^ 2 := by norm_num1
-    norm_num1
+      _ = 3 ^ 2 := by numbers
+    numbers
   sorry
 
 example {a b : ℝ} (h1 : a - 5 * b = 4) (h2 : b + 2 = 3) : a = 9 ∧ b = 1 := by

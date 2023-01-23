@@ -1,6 +1,7 @@
 /- Copyright (c) Heather Macbeth, 2022.  All rights reserved. -/
 import Mathlib.Data.Real.Basic
 import Math2001.Tactic.Rel
+import Math2001.Tactic.Numbers
 
 
 
@@ -10,7 +11,7 @@ example {x y : ℤ} (hx : x + 3 ≤ 2) (hy : y + 2 * x ≥ 3) : y > 3 :=
     _ ≥ 3 - 2 * x := by rel [hy]
     _ = 9 - 2 * (x + 3) := by ring
     _ ≥ 9 - 2 * 2 := by rel [hx]
-    _ > 3 := by norm_num1
+    _ > 3 := by numbers
 
 
 example {r s : ℚ} (h1 : s + 3 ≥ r) (h2 : s + r ≤ 3) : r ≤ 3 :=

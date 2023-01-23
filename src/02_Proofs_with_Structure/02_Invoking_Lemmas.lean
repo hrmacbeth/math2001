@@ -1,6 +1,7 @@
 /- Copyright (c) Heather Macbeth, 2022.  All rights reserved. -/
 import Mathlib.Data.Real.Basic
 import Math2001.Tactic.Addarith
+import Math2001.Tactic.Numbers
 import Math2001.Tactic.Rel
 
 example {x : ℚ} (hx : 3 * x = 2) : x ≠ 1 := by
@@ -8,7 +9,7 @@ example {x : ℚ} (hx : 3 * x = 2) : x ≠ 1 := by
   calc
     x = 3 * x / 3 := by ring
     _ = 2 / 3 := by rw [hx]
-    _ < 1 := by norm_num1
+    _ < 1 := by numbers
 
 example {y : ℝ} : y ^ 2 + 1 ≠ 0 := by
   sorry
