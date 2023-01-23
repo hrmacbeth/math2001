@@ -50,7 +50,7 @@ Selects the left alternative of an "or" goal (:math:`\lor`).
 Sets up an intermediate goal, so that, after that's proved, you have that fact available as an
 extra hypothesis.
 
-.. rubric:: *ineq_tac* (first use: :numref:`Section %s <proving_inequalities>`)
+.. rubric:: *rel* (first use: :numref:`Section %s <proving_inequalities>`)
 
 A "substitution-like" tactic for inequalities: looks for the left-hand side of a specified
 inequality fact in the goal, and replaces it with the right-hand side of that fact, if that
@@ -60,13 +60,13 @@ replacement is "obviously" a valid inequality deduction.
 
 Introduces cases for a variable according to its residue modulo a specified number.
 
-.. rubric:: *mod_rw* (first use: :numref:`Section %s <using_modular>`)
+.. rubric:: *mod_rel* (first use: :numref:`Section %s <using_modular>`)
 
 A "substitution-like" tactic for congruences: looks for the left-hand side of a specified
 modular arithmetic fact in the goal, and replaces it with the right-hand side of that fact, if that
 replacement is "obviously" a valid modular arithmetic deduction.
 
-.. rubric:: norm_num1 (first use: :numref:`Section %s <proving_inequalities>`; with ``at`` for contradictions: :numref:`Section %s <contradiction_hyp>`)
+.. rubric:: numbers (first use: :numref:`Section %s <proving_inequalities>`; with ``at`` for contradictions: :numref:`Section %s <contradiction_hyp>`)
 
 Proves numeric facts, like :math:`3\cdot 12 < 13 + 25` or :math:`3\cdot 5+1=4\cdot 4`.
 
