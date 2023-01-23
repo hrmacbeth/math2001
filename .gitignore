@@ -2,3 +2,5 @@
 *.olean
 /_target
 /leanpkg.path
+/lake-packages
+/.cache

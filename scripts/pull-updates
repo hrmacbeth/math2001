@@ -1,0 +1,16 @@
+HC=$(git rev-parse HEAD)
+git stash -u
+git pull
+if ! git stash pop
+then
+  git reset --hard $HC
+  git stash pop
+  echo ""
+  echo "We cannot get the latest changes to the class materials, because you have local changes that conflict with them."
+  echo "The conflicting files should be visible in the trace message above, after the word CONFLICT."
+  echo "To erase your local changes, run the command `reset-all`."
+  echo "(Warning: this cannot be undone.)"
+  echo "Remember that you should only be modifying files in your personal working directories."
+else 
+  lake exe cache get
+fi

@@ -1,8 +1,12 @@
-image: leanprovercommunity/mathlib:gitpod
+image:
+  file: .docker/gitpod/Dockerfile
 
 vscode:
   extensions:
-    - jroesch.lean
+    - leanprover.lean4
 
 tasks:
-  - init: . /home/gitpod/.profile && leanpkg configure && leanproject get-mathlib-cache && leanproject build
+  - init: |
+      lake exe cache get
+    command: |
+      PATH="$PATH:/workspace/math2001/scripts"
