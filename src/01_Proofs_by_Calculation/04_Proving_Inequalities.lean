@@ -49,7 +49,7 @@ example {n : ℤ} (hn : n ≥ 5) : n ^ 2 > 2 * n + 11 :=
 
 example {m n : ℤ} (h : m ^ 2 + n ≤ 2) : n ≤ 2 :=
   calc
-    n ≤ m ^ 2 + n := by rel
+    n ≤ m ^ 2 + n := by extra
     _ ≤ 2 := by rel [h]
 
 
@@ -75,7 +75,7 @@ example {a b c : ℝ} : a ^ 2 * (a ^ 6 + 8 * b ^ 3 * c ^ 3) ≤ (a ^ 4 + b ^ 4 +
     a ^ 2 * (a ^ 6 + 8 * b ^ 3 * c ^ 3)
       ≤ 2 * (a ^ 2 * (b ^ 2 - c ^ 2)) ^ 2 + (b ^ 4 - c ^ 4) ^ 2
           + 4 * (a ^ 2 * b * c - b ^ 2 * c ^ 2) ^ 2
-          + a ^ 2 * (a ^ 6 + 8 * b ^ 3 * c ^ 3) := by rel
+          + a ^ 2 * (a ^ 6 + 8 * b ^ 3 * c ^ 3) := by extra
     _ = (a ^ 4 + b ^ 4 + c ^ 4) ^ 2 := by ring
 
 

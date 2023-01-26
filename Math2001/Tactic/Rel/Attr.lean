@@ -7,4 +7,8 @@ import Mathlib.Tactic.TagAttr
 
 register_tag_attr ineq_rules
 
+register_tag_attr ineq_extra
+
 register_tag_attr mod_rules
+
+register_tag_attr mod_extra

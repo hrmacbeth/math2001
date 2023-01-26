@@ -9,7 +9,7 @@ example {a : ℚ} (h : ∃ b : ℚ, a = b ^ 2 + 1) : a > 0 := by
   cases' h with b hb
   calc
     a = b ^ 2 + 1 := hb
-    _ > 0 := by rel
+    _ > 0 := by extra
 
 
 example {t : ℝ} (h : ∃ a : ℝ, a * t < 0) : t ≠ 0 := by
@@ -27,7 +27,7 @@ example : ∃ n : ℤ, 12 * n = 84 := by
 
 example (x : ℝ) : ∃ y : ℝ, y > x := by
   use x + 1
-  rel
+  extra
 
 
 example : ∃ m n : ℤ, m ^ 2 - n ^ 2 = 11 := by

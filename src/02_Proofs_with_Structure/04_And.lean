@@ -46,9 +46,9 @@ example {a b : ℝ} (h1 : a ^ 2 + b ^ 2 = 0) : a = 0 ∧ b = 0 := by
   have h2 : a ^ 2 = 0
   · apply le_antisymm
     calc
-      a ^ 2 ≤ a ^ 2 + b ^ 2 := by rel
+      a ^ 2 ≤ a ^ 2 + b ^ 2 := by extra
       _ = 0 := by rw [h1]      
-    rel
+    extra
   sorry
 
 example {x y : ℚ} (h : x + y = 5 ∧ x + 2 * y = 7) : x = 3 ∧ y = 2 := by

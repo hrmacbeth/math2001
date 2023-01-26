@@ -7,6 +7,7 @@ import Mathlib.Data.Int.ModEq
 import Mathlib.Tactic.Positivity
 import Mathlib.Tactic.SolveByElim
 import Math2001.Tactic.Rel.Attr
+import Mathlib.Tactic.LibrarySearch
 
 open Lean Meta Elab Tactic Syntax
 open Mathlib Tactic SolveByElim
@@ -25,6 +26,8 @@ do withTransparency .reducible (Meta.Positivity.positivity g); pure (some []) <|
 
 syntax (name := ineqRelSyntax) "rel" (args)? : tactic
 
+syntax (name := ineqExtraSyntax) "extra" (args)? : tactic
+
 def Lean.MVarId.Rel (disch : MVarId → MetaM (Option (List MVarId))) (attr : Name)
     (add : List Term) (g : MVarId) :
     MetaM (List MVarId) := do
@@ -35,6 +38,9 @@ elab_rules : tactic | `(tactic| rel $[$t:args]?) => do
   let (_, add, _) := parseArgs t
   liftMetaTactic <| Lean.MVarId.Rel IneqRelDischarge `ineq_rules add
 
+elab_rules : tactic | `(tactic| extra) => do
+  liftMetaTactic <| Lean.MVarId.Rel IneqRelDischarge `ineq_extra []
+
 syntax (name := modRwSyntax) "mod_rel" (args)? : tactic
 
 elab_rules : tactic | `(tactic| mod_rel $[$t:args]?) => do
@@ -43,9 +49,6 @@ elab_rules : tactic | `(tactic| mod_rel $[$t:args]?) => do
 
 attribute [ineq_rules]
   le_refl
-  -- might move these first ones to a different tactic `extra`
-  le_add_of_nonneg_right le_add_of_nonneg_left
-  lt_add_of_pos_right lt_add_of_pos_left
   -- deliberately no `add_lt_add` since this is an unsafe lemma appplication in the context
   add_le_add add_lt_add_left add_lt_add_right
   sub_le_sub sub_lt_sub_left sub_lt_sub_right
@@ -57,6 +60,16 @@ attribute [ineq_rules]
   -- want to apply this only forward on hypotheses, not backward on a general goal
   -- put it last but would be good to implement directly as forward reasoning
   le_of_lt
+
+lemma IneqExtra.neg_le_sub_self_of_nonneg [LinearOrderedAddCommGroup G] {a b : G} (h : 0 ≤ a) :
+    -b ≤ a - b := by
+  rw [sub_eq_add_neg]
+  apply le_add_of_nonneg_left h
+
+attribute [ineq_extra]
+  le_add_of_nonneg_right le_add_of_nonneg_left
+  lt_add_of_pos_right lt_add_of_pos_left
+  IneqExtra.neg_le_sub_self_of_nonneg
 
 attribute [mod_rules]
   Int.ModEq.refl
