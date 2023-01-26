@@ -35,11 +35,13 @@ def Lean.MVarId.Rel (disch : MVarId → MetaM (Option (List MVarId))) (attr : Na
   solveByElim.processSyntax cfg true false add [] #[mkIdent attr] [g]
 
 elab_rules : tactic | `(tactic| rel $[$t:args]?) => do
-  let (_, add, _) := parseArgs t
-  liftMetaTactic <| Lean.MVarId.Rel IneqRelDischarge `ineq_rules add
+  (let (_, add, _) := parseArgs t
+  liftMetaTactic <| Lean.MVarId.Rel IneqRelDischarge `ineq_rules add)
+  <|> throwError "cannot prove this by 'substituting' the listed inequalities"
 
 elab_rules : tactic | `(tactic| extra) => do
-  liftMetaTactic <| Lean.MVarId.Rel IneqRelDischarge `ineq_extra []
+  (liftMetaTactic <| Lean.MVarId.Rel IneqRelDischarge `ineq_extra [])
+  <|> throwError "the two sides don't differ by a positive quantity"
 
 syntax (name := modRwSyntax) "mod_rel" (args)? : tactic
 
@@ -70,6 +72,8 @@ attribute [ineq_extra]
   le_add_of_nonneg_right le_add_of_nonneg_left
   lt_add_of_pos_right lt_add_of_pos_left
   IneqExtra.neg_le_sub_self_of_nonneg
+  add_le_add_left add_le_add_right add_lt_add_left add_lt_add_right
+  sub_le_sub_left sub_le_sub_right sub_lt_sub_left sub_lt_sub_right
 
 attribute [mod_rules]
   Int.ModEq.refl
