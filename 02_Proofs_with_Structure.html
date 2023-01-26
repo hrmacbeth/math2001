@@ -1405,9 +1405,9 @@ the <code class="docutils literal notranslate"><span class="pre">2</span></code>
   <span class="k">have</span> <span class="n">h2</span> <span class="o">:</span> <span class="n">a</span> <span class="bp">^</span> <span class="mi">2</span> <span class="bp">=</span> <span class="mi">0</span>
   <span class="bp">&#183;</span> <span class="n">apply</span> <span class="n">le_antisymm</span>
     <span class="k">calc</span>
-      <span class="n">a</span> <span class="bp">^</span> <span class="mi">2</span> <span class="bp">&#8804;</span> <span class="n">a</span> <span class="bp">^</span> <span class="mi">2</span> <span class="bp">+</span> <span class="n">b</span> <span class="bp">^</span> <span class="mi">2</span> <span class="o">:=</span> <span class="kd">by</span> <span class="n">rel</span>
+      <span class="n">a</span> <span class="bp">^</span> <span class="mi">2</span> <span class="bp">&#8804;</span> <span class="n">a</span> <span class="bp">^</span> <span class="mi">2</span> <span class="bp">+</span> <span class="n">b</span> <span class="bp">^</span> <span class="mi">2</span> <span class="o">:=</span> <span class="kd">by</span> <span class="n">extra</span>
       <span class="n">_</span> <span class="bp">=</span> <span class="mi">0</span> <span class="o">:=</span> <span class="kd">by</span> <span class="n">rw</span> <span class="o">[</span><span class="n">h1</span><span class="o">]</span>
-    <span class="n">rel</span>
+    <span class="n">extra</span>
   <span class="gr">sorry</span>
 </pre></div>
 </div>
@@ -1453,7 +1453,7 @@ such that <span class="math notranslate nohighlight">\(a=b^2+1\)</span>.  Show t
   <span class="n">cases&#39;</span> <span class="n">h</span> <span class="k">with</span> <span class="n">b</span> <span class="n">hb</span>
   <span class="k">calc</span>
     <span class="n">a</span> <span class="bp">=</span> <span class="n">b</span> <span class="bp">^</span> <span class="mi">2</span> <span class="bp">+</span> <span class="mi">1</span> <span class="o">:=</span> <span class="n">hb</span>
-    <span class="n">_</span> <span class="bp">&gt;</span> <span class="mi">0</span> <span class="o">:=</span> <span class="kd">by</span> <span class="n">rel</span>
+    <span class="n">_</span> <span class="bp">&gt;</span> <span class="mi">0</span> <span class="o">:=</span> <span class="kd">by</span> <span class="n">extra</span>
 </pre></div>
 </div>
 </section>
@@ -1512,7 +1512,7 @@ such that <span class="math notranslate nohighlight">\(at&lt;0\)</span>.  Show t
 </div>
 <div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">(</span><span class="n">x</span> <span class="o">:</span> <span class="n">&#8477;</span><span class="o">)</span> <span class="o">:</span> <span class="bp">&#8707;</span> <span class="n">y</span> <span class="o">:</span> <span class="n">&#8477;</span><span class="o">,</span> <span class="n">y</span> <span class="bp">&gt;</span> <span class="n">x</span> <span class="o">:=</span> <span class="kd">by</span>
   <span class="n">use</span> <span class="n">x</span> <span class="bp">+</span> <span class="mi">1</span>
-  <span class="n">rel</span>
+  <span class="n">extra</span>
 </pre></div>
 </div>
 </section>
