@@ -6,5 +6,5 @@ import Math2001.Tactic.Rel
 
 
 /- 5 points -/
-example {n : ℤ} (hn : n ≥ 5) : n ^ 2 > 2 * n + 11 :=
+theorem problem1 {n : ℤ} (hn : n ≥ 5) : n ^ 2 > 2 * n + 11 :=
   sorry
