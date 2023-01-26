@@ -28,3 +28,6 @@ without yet the explanatory paragraphs which would be needed to solve them.
    :hidden:
 
    Index_of_Tactics
+
+.. toctree::
+   Homework

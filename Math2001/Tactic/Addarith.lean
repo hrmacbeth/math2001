@@ -23,17 +23,11 @@ syntax (name := addarith) "addarith" (" [" term,* "]")? : tactic
 open Elab.Tactic Parser.Tactic
 open Mathlib Tactic Abel
 
--- def normNumTarget (g : MVarId) : MetaM (List MVarId) := do
---   discard <| Mathlib.Meta.NormNum.normNumAt (simplifyTarget := false) g {} #[]
---   pure []
-
 def addarithDischarger : TacticM Unit := do
-  try evalTactic (← `(tactic| simp only [one_mul, neg_mul])) catch _ => pure ()
+  try evalTactic (← `(tactic| simp (config := { decide := false }) only [one_mul, neg_mul])) catch _ => pure ()
   abelNFTarget {}
-  try evalTactic (← `(tactic| push_cast [zsmul_eq_mul])) catch _ => pure ()
+  try evalTactic (← `(tactic| push_cast (config := { decide := false }) [zsmul_eq_mul])) catch _ => pure ()
   try evalTactic (← `(tactic| norm_num1)) catch _ => pure ()
-  -- try (liftMetaTactic normNumTarget) catch _ => pure ()
-  -- evalTactic (← `(tactic| done))
 
 /--
 `addarith` attempts to use specified linear (in)equality hypotheses to prove a linear (in)equality
