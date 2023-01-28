@@ -13,7 +13,7 @@ open Lean Meta Elab Tactic Syntax
 open Mathlib Tactic SolveByElim
 
 def RelConfig : SolveByElim.Config :=
-{ transparency := .reducible
+{ transparency := .instances
   -- On applying a lemma or hypothesis successfully, don't backtrack
   discharge := fun _ => pure none
   failAtMaxDepth := false

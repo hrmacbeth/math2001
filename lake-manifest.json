@@ -28,9 +28,9 @@
   {"git":
    {"url": "https://github.com/leanprover-community/mathlib4",
     "subDir?": null,
-    "rev": "2d89601314d2bed7189644f5935e89c61531a860",
+    "rev": "393185894f987a7d396c43052bd57cb9891939ec",
     "name": "mathlib",
-    "inputRev?": "2d89601314d2bed7189644f5935e89c61531a860"}},
+    "inputRev?": "393185894f987a7d396c43052bd57cb9891939ec"}},
   {"git":
    {"url": "https://github.com/gebner/quote4",
     "subDir?": null,
@@ -62,8 +62,8 @@
     "name": "autograder",
     "inputRev?": "1c9c67a3d0c3d5d5b159c37e3146323d3b6f4bb1"}},
   {"git":
-   {"url": "https://github.com/leanprover/std4",
+   {"url": "https://github.com/hrmacbeth/std4",
     "subDir?": null,
-    "rev": "04b3c9831e0c141713a70e68af7e40973ec9a1ff",
+    "rev": "8595bab1a6cfec28afbd2d4989acda1705d5bc91",
     "name": "std",
     "inputRev?": "main"}}]}
