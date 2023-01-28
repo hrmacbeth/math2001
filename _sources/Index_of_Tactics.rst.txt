@@ -31,6 +31,12 @@ Unfolds a definition.  Typically used while working on a proof rather than in th
 is useful for inspecting a goal or hypothesis more carefully, but in most cases the proof will still
 work after a ``dsimp`` line is deleted.
 
+.. rubric:: *extra* (first use: :numref:`Section %s <proving_inequalities>`; for congruences: :numref:`Section %s <using_modular>`)
+
+A comparison tactic for inequalities, or other relations such as congruences: checks an inequality
+whose two sides differ by the addition of a positive quantity, a congruence mod 3 whose two sides
+differ by a multiple of 3, etc.
+
 .. rubric:: interval_cases (first use: :numref:`Section %s <forall_implies>`)
 
 Given a natural-number or integer variable :math:`n` for which numeric upper and lower bounds are
@@ -54,21 +60,16 @@ extra hypothesis.
 
 Introduces cases for a variable according to its residue modulo a specified number.
 
-.. rubric:: *mod_rel* (first use: :numref:`Section %s <using_modular>`)
-
-A "substitution-like" tactic for congruences: looks for the left-hand side of a specified
-modular arithmetic fact in the goal, and replaces it with the right-hand side of that fact, if that
-replacement is "obviously" a valid modular arithmetic deduction.
-
 .. rubric:: numbers (first use: :numref:`Section %s <proving_inequalities>`; with ``at`` for contradictions: :numref:`Section %s <contradiction_hyp>`)
 
 Proves numeric facts, like :math:`3\cdot 12 < 13 + 25` or :math:`3\cdot 5+1=4\cdot 4`.
 
-.. rubric:: *rel* (first use: :numref:`Section %s <proving_inequalities>`)
+.. rubric:: *rel* (first use: :numref:`Section %s <proving_inequalities>`; for congruences: :numref:`Section %s <using_modular>`)
 
-A "substitution-like" tactic for inequalities: looks for the left-hand side of a specified
-inequality fact in the goal, and replaces it with the right-hand side of that fact, if that
-replacement is "obviously" a valid inequality deduction.
+A "substitution-like" tactic for inequalities, or other relations such as congruences: looks for
+the left-hand side of a specified inequality (or congruence, ...) fact in the goal, and replaces it
+with the right-hand side of that fact, if that replacement is "obviously" a valid inequality
+(or modular arithmetic, ...) deduction.
 
 .. rubric:: right (first use: :numref:`Section %s <or>`)
 

@@ -95,6 +95,10 @@ right-hand side, or vice versa.</p>
 <p>Unfolds a definition.  Typically used while working on a proof rather than in the final version; it
 is useful for inspecting a goal or hypothesis more carefully, but in most cases the proof will still
 work after a <code class="docutils literal notranslate"><span class="pre">dsimp</span></code> line is deleted.</p>
+<p class="rubric"><em>extra</em> (first use: <a class="reference internal" href="01_Proofs_by_Calculation.html#proving-inequalities"><span class="std std-numref">Section 1.4</span></a>; for congruences: <a class="reference internal" href="03_Parity_and_Divisibility.html#using-modular"><span class="std std-numref">Section 3.4</span></a>)</p>
+<p>A comparison tactic for inequalities, or other relations such as congruences: checks an inequality
+whose two sides differ by the addition of a positive quantity, a congruence mod 3 whose two sides
+differ by a multiple of 3, etc.</p>
 <p class="rubric">interval_cases (first use: <code class="xref std std-numref docutils literal notranslate"><span class="pre">Section</span> <span class="pre">%s</span></code>)</p>
 <p>Given a natural-number or integer variable <span class="math notranslate nohighlight">\(n\)</span> for which numeric upper and lower bounds are
 available, produce cases for each of the numeric possibilities for <span class="math notranslate nohighlight">\(n\)</span>.</p>
@@ -106,18 +110,15 @@ available, produce cases for each of the numeric possibilities for <span class="
 <p class="rubric">have (first use: <a class="reference internal" href="02_Proofs_with_Structure.html#tactic-mode"><span class="std std-numref">Section 2.1</span></a>)</p>
 <p>Sets up an intermediate goal, so that, after that&#8217;s proved, you have that fact available as an
 extra hypothesis.</p>
-<p class="rubric">mod_cases (first use: <code class="xref std std-numref docutils literal notranslate"><span class="pre">Section</span> <span class="pre">%s</span></code>)</p>
+<p class="rubric">mod_cases (first use: <a class="reference internal" href="03_Parity_and_Divisibility.html#using-modular"><span class="std std-numref">Section 3.4</span></a>)</p>
 <p>Introduces cases for a variable according to its residue modulo a specified number.</p>
-<p class="rubric"><em>mod_rel</em> (first use: <code class="xref std std-numref docutils literal notranslate"><span class="pre">Section</span> <span class="pre">%s</span></code>)</p>
-<p>A &#8220;substitution-like&#8221; tactic for congruences: looks for the left-hand side of a specified
-modular arithmetic fact in the goal, and replaces it with the right-hand side of that fact, if that
-replacement is &#8220;obviously&#8221; a valid modular arithmetic deduction.</p>
 <p class="rubric">numbers (first use: <a class="reference internal" href="01_Proofs_by_Calculation.html#proving-inequalities"><span class="std std-numref">Section 1.4</span></a>; with <code class="docutils literal notranslate"><span class="pre">at</span></code> for contradictions: <code class="xref std std-numref docutils literal notranslate"><span class="pre">Section</span> <span class="pre">%s</span></code>)</p>
 <p>Proves numeric facts, like <span class="math notranslate nohighlight">\(3\cdot 12 &lt; 13 + 25\)</span> or <span class="math notranslate nohighlight">\(3\cdot 5+1=4\cdot 4\)</span>.</p>
-<p class="rubric"><em>rel</em> (first use: <a class="reference internal" href="01_Proofs_by_Calculation.html#proving-inequalities"><span class="std std-numref">Section 1.4</span></a>)</p>
-<p>A &#8220;substitution-like&#8221; tactic for inequalities: looks for the left-hand side of a specified
-inequality fact in the goal, and replaces it with the right-hand side of that fact, if that
-replacement is &#8220;obviously&#8221; a valid inequality deduction.</p>
+<p class="rubric"><em>rel</em> (first use: <a class="reference internal" href="01_Proofs_by_Calculation.html#proving-inequalities"><span class="std std-numref">Section 1.4</span></a>; for congruences: <a class="reference internal" href="03_Parity_and_Divisibility.html#using-modular"><span class="std std-numref">Section 3.4</span></a>)</p>
+<p>A &#8220;substitution-like&#8221; tactic for inequalities, or other relations such as congruences: looks for
+the left-hand side of a specified inequality (or congruence, &#8230;) fact in the goal, and replaces it
+with the right-hand side of that fact, if that replacement is &#8220;obviously&#8221; a valid inequality
+(or modular arithmetic, &#8230;) deduction.</p>
 <p class="rubric">right (first use: <a class="reference internal" href="02_Proofs_with_Structure.html#or"><span class="std std-numref">Section 2.3</span></a>)</p>
 <p>Selects the right alternative of an &#8220;or&#8221; goal (<span class="math notranslate nohighlight">\(\lor\)</span>).</p>
 <p class="rubric">ring (first use: <a class="reference internal" href="01_Proofs_by_Calculation.html#proving-equalities-in-lean"><span class="std std-numref">Section 1.2</span></a>)</p>
