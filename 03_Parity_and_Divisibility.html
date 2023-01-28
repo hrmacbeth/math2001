@@ -57,6 +57,33 @@
 <li class="toctree-l3"><a class="reference internal" href="#exercises">3.1.10. Exercises</a></li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="#divisibility">3.2. Divisibility</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id10">3.2.1. Example</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id11">3.2.2. Example</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id12">3.2.3. Example</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id13">3.2.4. Example</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id14">3.2.5. Example</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#not-divisible">3.2.6. Example</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#dvd-bd-1">3.2.7. Example</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#dvd-bd-2">3.2.8. Example</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id18">3.2.9. Exercises</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#modular-arithmetic-theory">3.3. Modular arithmetic: theory</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id19">3.3.1. Example</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id20">3.3.2. Example</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id21">3.3.3. Example</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id22">3.3.4. Exercise</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id23">3.3.5. Exercise</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id24">3.3.6. Example</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#no-mod-division">3.3.7. Example</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id26">3.3.8. Example</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id27">3.3.9. Exercise</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id28">3.3.10. Example</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#apply-mod-lemmas-example">3.3.11. Example</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id30">3.3.12. Exercises</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -399,6 +426,628 @@ name when the definition of &#8220;odd&#8221; comes is unfolded.</p>
 <p>8.  Let <span class="math notranslate nohighlight">\(a\)</span>, <span class="math notranslate nohighlight">\(b\)</span> and <span class="math notranslate nohighlight">\(c\)</span> be integers.  Show that at least one of <span class="math notranslate nohighlight">\(a-b\)</span>,
 <span class="math notranslate nohighlight">\(a+c\)</span> or <span class="math notranslate nohighlight">\(b-c\)</span> is even.</p>
 <div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">(</span><span class="n">a</span> <span class="n">b</span> <span class="n">c</span> <span class="o">:</span> <span class="n">&#8484;</span><span class="o">)</span> <span class="o">:</span> <span class="n">Even</span> <span class="o">(</span><span class="n">a</span> <span class="bp">-</span> <span class="n">b</span><span class="o">)</span> <span class="bp">&#8744;</span> <span class="n">Even</span> <span class="o">(</span><span class="n">a</span> <span class="bp">+</span> <span class="n">c</span><span class="o">)</span> <span class="bp">&#8744;</span> <span class="n">Even</span> <span class="o">(</span><span class="n">b</span> <span class="bp">-</span> <span class="n">c</span><span class="o">)</span> <span class="o">:=</span> <span class="kd">by</span>
+  <span class="gr">sorry</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="divisibility">
+<span id="id9"></span><h2><span class="section-number">3.2. </span>Divisibility<a class="headerlink" href="#divisibility" title="Permalink to this headline">&#61633;</a></h2>
+<section id="id10">
+<h3><span class="section-number">3.2.1. </span>Example<a class="headerlink" href="#id10" title="Permalink to this headline">&#61633;</a></h3>
+<p>Another mathematical definition you may have seen before is the definition of divisibility.</p>
+<div class="admonition-definition admonition">
+<p class="admonition-title">Definition</p>
+<p>A natural number <span class="math notranslate nohighlight">\(b\)</span> <em>is divisible by</em> another natural number <span class="math notranslate nohighlight">\(a\)</span>, if there exists
+a natural number <span class="math notranslate nohighlight">\(c\)</span>, such that <span class="math notranslate nohighlight">\(b=ac\)</span>.</p>
+</div>
+<p>For example,</p>
+<div class="admonition-problem admonition">
+<p class="admonition-title">Problem</p>
+<p>Show that the natural number 88 is divisible by 11.</p>
+</div>
+<div class="admonition-solution admonition">
+<p class="admonition-title">Solution</p>
+<p><span class="math notranslate nohighlight">\(88 = 11 \cdot 8\)</span>.</p>
+</div>
+<p>Divisibility is a very important concept, and there are several different names for it.  All the
+following mean the same thing:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(b\)</span> <em>is divisible by</em> <span class="math notranslate nohighlight">\(a\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(b\)</span> <em>is a multiple of</em> <span class="math notranslate nohighlight">\(a\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(a\)</span> <em>is a divisor of</em> <span class="math notranslate nohighlight">\(b\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(a\)</span> <em>is a factor of</em> <span class="math notranslate nohighlight">\(b\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(a\)</span> <em>divides</em> <span class="math notranslate nohighlight">\(b\)</span></p></li>
+</ul>
+<p>We will most frequently use the last of these, &#8220;<span class="math notranslate nohighlight">\(a\)</span> <em>divides</em> <span class="math notranslate nohighlight">\(b\)</span>,&#8221; since it&#8217;s the most
+compact.  There is also a standard notation, <span class="math notranslate nohighlight">\(a \mid b\)</span>, which we will also use frequently.</p>
+<p>In Lean, the definition of divisibility is already in the library,
+together with many theorems about it.  We will typically work with this definition in Lean using
+the notation, <code class="docutils literal notranslate"><span class="pre">&#8739;</span></code>, which you can type in Lean as <code class="docutils literal notranslate"><span class="pre">\|</span></code> or <code class="docutils literal notranslate"><span class="pre">\mid</span></code>.  (In general, hover over a
+symbol in VSCode with your mouse to find out how to type it.)</p>
+<p>As in <a class="reference internal" href="#odd"><span class="std std-numref">Example 3.1.1</span></a>, the <code class="docutils literal notranslate"><span class="pre">dsimp</span></code> in the following Lean solution is optional, but
+can be used to remind yourself of the definition of divisibility (<span class="math notranslate nohighlight">\(\mid\)</span>) in the context of
+the proof.</p>
+<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">:</span> <span class="o">(</span><span class="mi">11</span> <span class="o">:</span> <span class="n">&#8469;</span><span class="o">)</span> <span class="bp">&#8739;</span> <span class="mi">88</span> <span class="o">:=</span> <span class="kd">by</span>
+  <span class="n">dsimp</span> <span class="o">[(</span><span class="bp">&#183;</span> <span class="bp">&#8739;</span> <span class="bp">&#183;</span><span class="o">)]</span>
+  <span class="n">use</span> <span class="mi">8</span>
+  <span class="n">numbers</span>
+</pre></div>
+</div>
+</section>
+<section id="id11">
+<h3><span class="section-number">3.2.2. </span>Example<a class="headerlink" href="#id11" title="Permalink to this headline">&#61633;</a></h3>
+<p>Another feature of this definition is that, although we stated it above for natural numbers, we
+will also often want to consider divisibility of integers.  Here is the corresponding definition for
+integers:</p>
+<div class="admonition-definition admonition">
+<p class="admonition-title">Definition</p>
+<p>An integer <span class="math notranslate nohighlight">\(b\)</span> <em>is divisible by</em> another integer <span class="math notranslate nohighlight">\(a\)</span>, if there exists an integer
+<span class="math notranslate nohighlight">\(c\)</span>, such that <span class="math notranslate nohighlight">\(b=ac\)</span>.</p>
+</div>
+<p>We also use all the same variant terminology and the same notation <span class="math notranslate nohighlight">\(a \mid b\)</span> for integer
+divisibility.</p>
+<div class="admonition-problem admonition">
+<p class="admonition-title">Problem</p>
+<p>Show that the integer 6 is divisible by -2.</p>
+</div>
+<div class="admonition-solution admonition">
+<p class="admonition-title">Solution</p>
+<p><span class="math notranslate nohighlight">\(6 = -2 \cdot -3\)</span>.</p>
+</div>
+<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">:</span> <span class="o">(</span><span class="bp">-</span><span class="mi">2</span> <span class="o">:</span> <span class="n">&#8484;</span><span class="o">)</span> <span class="bp">&#8739;</span> <span class="mi">6</span> <span class="o">:=</span> <span class="kd">by</span>
+  <span class="gr">sorry</span>
+</pre></div>
+</div>
+</section>
+<section id="id12">
+<h3><span class="section-number">3.2.3. </span>Example<a class="headerlink" href="#id12" title="Permalink to this headline">&#61633;</a></h3>
+<div class="admonition-problem admonition">
+<p class="admonition-title">Problem</p>
+<p>Let <span class="math notranslate nohighlight">\(a\)</span> and <span class="math notranslate nohighlight">\(b\)</span> be integers and suppose that <span class="math notranslate nohighlight">\(a \mid b\)</span>.  Show that
+<span class="math notranslate nohighlight">\(a \mid b^2+2b\)</span>.</p>
+</div>
+<div class="admonition-solution admonition">
+<p class="admonition-title">Solution</p>
+<p>Since <span class="math notranslate nohighlight">\(a \mid b\)</span>, there exists an integer <span class="math notranslate nohighlight">\(k\)</span> such that <span class="math notranslate nohighlight">\(b=ak\)</span>.  Then</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}b ^ 2 + 2 b &amp;= (a k) ^ 2 + 2 (a k) \\
+&amp; = a (k (a k + 2)).\end{split}\]</div>
+<p>So <span class="math notranslate nohighlight">\(a \mid b^2+2b\)</span>.</p>
+</div>
+<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">{</span><span class="n">a</span> <span class="n">b</span> <span class="o">:</span> <span class="n">&#8484;</span><span class="o">}</span> <span class="o">(</span><span class="n">hab</span> <span class="o">:</span> <span class="n">a</span> <span class="bp">&#8739;</span> <span class="n">b</span><span class="o">)</span> <span class="o">:</span> <span class="n">a</span> <span class="bp">&#8739;</span> <span class="n">b</span> <span class="bp">^</span> <span class="mi">2</span> <span class="bp">+</span> <span class="mi">2</span> <span class="bp">*</span> <span class="n">b</span> <span class="o">:=</span> <span class="kd">by</span>
+  <span class="n">cases&#39;</span> <span class="n">hab</span> <span class="k">with</span> <span class="n">k</span> <span class="n">hk</span>
+  <span class="n">use</span> <span class="n">k</span> <span class="bp">*</span> <span class="o">(</span><span class="n">a</span> <span class="bp">*</span> <span class="n">k</span> <span class="bp">+</span> <span class="mi">2</span><span class="o">)</span>
+  <span class="k">calc</span>
+    <span class="n">b</span> <span class="bp">^</span> <span class="mi">2</span> <span class="bp">+</span> <span class="mi">2</span> <span class="bp">*</span> <span class="n">b</span> <span class="bp">=</span> <span class="o">(</span><span class="n">a</span> <span class="bp">*</span> <span class="n">k</span><span class="o">)</span> <span class="bp">^</span> <span class="mi">2</span> <span class="bp">+</span> <span class="mi">2</span> <span class="bp">*</span> <span class="o">(</span><span class="n">a</span> <span class="bp">*</span> <span class="n">k</span><span class="o">)</span> <span class="o">:=</span> <span class="kd">by</span> <span class="n">rw</span> <span class="o">[</span><span class="n">hk</span><span class="o">]</span>
+    <span class="n">_</span> <span class="bp">=</span> <span class="n">a</span> <span class="bp">*</span> <span class="o">(</span><span class="n">k</span> <span class="bp">*</span> <span class="o">(</span><span class="n">a</span> <span class="bp">*</span> <span class="n">k</span> <span class="bp">+</span> <span class="mi">2</span><span class="o">))</span> <span class="o">:=</span> <span class="kd">by</span> <span class="n">ring</span>
+</pre></div>
+</div>
+</section>
+<section id="id13">
+<h3><span class="section-number">3.2.4. </span>Example<a class="headerlink" href="#id13" title="Permalink to this headline">&#61633;</a></h3>
+<div class="admonition-problem admonition">
+<p class="admonition-title">Problem</p>
+<p>Let <span class="math notranslate nohighlight">\(a\)</span>, <span class="math notranslate nohighlight">\(b\)</span> and <span class="math notranslate nohighlight">\(c\)</span> be natural numbers and suppose that <span class="math notranslate nohighlight">\(a \mid b\)</span> and
+<span class="math notranslate nohighlight">\(b ^2\mid c\)</span>.  Show that <span class="math notranslate nohighlight">\(a^2 \mid c\)</span>.</p>
+</div>
+<div class="admonition-solution admonition">
+<p class="admonition-title">Solution</p>
+<p>Since <span class="math notranslate nohighlight">\(a \mid b\)</span>, there exists a natural number <span class="math notranslate nohighlight">\(x\)</span> such that <span class="math notranslate nohighlight">\(b=ax\)</span>.
+Since <span class="math notranslate nohighlight">\(b^2 \mid c\)</span>, there exists a natural number <span class="math notranslate nohighlight">\(y\)</span> such that <span class="math notranslate nohighlight">\(c=b^2y\)</span>.  Then</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}c &amp;= b ^ 2 y \\
+&amp; = (a x) ^ 2 y\\
+&amp; = a ^ 2 (x ^ 2 y).\end{split}\]</div>
+<p>So <span class="math notranslate nohighlight">\(a ^2 \mid c\)</span>.</p>
+</div>
+<p>Translate this solution into Lean.
+As usual, if you wish, you can use the command <code class="docutils literal notranslate"><span class="pre">dsimp</span> <span class="pre">[(&#8739;)]</span> <span class="pre">at</span> <span class="pre">*</span></code> to unfold <span class="math notranslate nohighlight">\(\mid\)</span> to its
+definition everywhere in the goal state, though this will have no effect on the correctness of the
+proof.</p>
+<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">{</span><span class="n">a</span> <span class="n">b</span> <span class="n">c</span> <span class="o">:</span> <span class="n">&#8469;</span><span class="o">}</span> <span class="o">(</span><span class="n">hab</span> <span class="o">:</span> <span class="n">a</span> <span class="bp">&#8739;</span> <span class="n">b</span><span class="o">)</span> <span class="o">(</span><span class="n">hbc</span> <span class="o">:</span> <span class="n">b</span> <span class="bp">^</span> <span class="mi">2</span> <span class="bp">&#8739;</span> <span class="n">c</span><span class="o">)</span> <span class="o">:</span> <span class="n">a</span> <span class="bp">^</span> <span class="mi">2</span> <span class="bp">&#8739;</span> <span class="n">c</span> <span class="o">:=</span> <span class="kd">by</span>
+  <span class="gr">sorry</span>
+</pre></div>
+</div>
+</section>
+<section id="id14">
+<h3><span class="section-number">3.2.5. </span>Example<a class="headerlink" href="#id14" title="Permalink to this headline">&#61633;</a></h3>
+<div class="admonition-problem admonition">
+<p class="admonition-title">Problem</p>
+<p>Let <span class="math notranslate nohighlight">\(x\)</span>, <span class="math notranslate nohighlight">\(y\)</span> and <span class="math notranslate nohighlight">\(z\)</span> be natural numbers and suppose that <span class="math notranslate nohighlight">\(xy \mid z\)</span>.
+Show that <span class="math notranslate nohighlight">\(x \mid z\)</span>.</p>
+</div>
+<div class="admonition-solution admonition">
+<p class="admonition-title">Solution</p>
+<p>Since <span class="math notranslate nohighlight">\(xy \mid z\)</span>, there exists a natural number <span class="math notranslate nohighlight">\(t\)</span> such that <span class="math notranslate nohighlight">\(z=(xy)t\)</span>.  Then</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}z &amp;= (xy)t \\
+&amp; = x(yt).\end{split}\]</div>
+<p>So <span class="math notranslate nohighlight">\(x \mid z\)</span>.</p>
+</div>
+<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">{</span><span class="n">x</span> <span class="n">y</span> <span class="n">z</span> <span class="o">:</span> <span class="n">&#8469;</span><span class="o">}</span> <span class="o">(</span><span class="n">h</span> <span class="o">:</span> <span class="n">x</span> <span class="bp">*</span> <span class="n">y</span> <span class="bp">&#8739;</span> <span class="n">z</span><span class="o">)</span> <span class="o">:</span> <span class="n">x</span> <span class="bp">&#8739;</span> <span class="n">z</span> <span class="o">:=</span> <span class="kd">by</span>
+  <span class="gr">sorry</span>
+</pre></div>
+</div>
+</section>
+<section id="not-divisible">
+<span id="id15"></span><h3><span class="section-number">3.2.6. </span>Example<a class="headerlink" href="#not-divisible" title="Permalink to this headline">&#61633;</a></h3>
+<p>You might wonder how to show that a number is <em>not</em> divisible by another number.  A convenient test
+here is a theorem which we will prove later in the course: if an integer <span class="math notranslate nohighlight">\(b\)</span> is strictly
+between two consecutive multiples of a positive integer <span class="math notranslate nohighlight">\(a\)</span>, then it is not a multiple of
+<span class="math notranslate nohighlight">\(a\)</span>.  More formally, if there exists an integer <span class="math notranslate nohighlight">\(q\)</span> such that
+<span class="math notranslate nohighlight">\(a \cdot q&lt;b&lt;a\cdot (q + 1)\)</span>, then <span class="math notranslate nohighlight">\(b\)</span> is not a multiple of <span class="math notranslate nohighlight">\(a\)</span>.  Here is an
+example applying this test:</p>
+<div class="admonition-problem admonition">
+<p class="admonition-title">Problem</p>
+<p>Show that 12 is not divisible by 5.</p>
+</div>
+<div class="admonition-solution admonition">
+<p class="admonition-title">Solution</p>
+<p>5 is positive and <span class="math notranslate nohighlight">\(5 \cdot 2 &lt; 12 &lt; 5 \cdot (2 + 1)\)</span>.</p>
+</div>
+<p>In Lean, this test is available as the lemma <code class="docutils literal notranslate"><span class="pre">Int.not_dvd_of_exists_lt_and_lt</span></code>:</p>
+<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">lemma</span> <span class="n">Int.not_dvd_of_exists_lt_and_lt</span> <span class="o">(</span><span class="n">a</span> <span class="o">:</span> <span class="n">&#8484;</span><span class="o">)</span> <span class="o">{</span><span class="n">b</span> <span class="o">:</span> <span class="n">&#8484;</span><span class="o">}</span> <span class="o">(</span><span class="n">hb</span> <span class="o">:</span> <span class="mi">0</span> <span class="bp">&lt;</span> <span class="n">b</span><span class="o">)</span>
+  <span class="o">(</span><span class="n">h</span> <span class="o">:</span> <span class="bp">&#8707;</span> <span class="n">q</span><span class="o">,</span> <span class="n">b</span> <span class="bp">*</span> <span class="n">q</span> <span class="bp">&lt;</span> <span class="n">a</span> <span class="bp">&#8743;</span> <span class="n">a</span> <span class="bp">&lt;</span> <span class="n">b</span> <span class="bp">*</span> <span class="o">(</span><span class="n">q</span> <span class="bp">+</span> <span class="mi">1</span><span class="o">))</span> <span class="o">:</span>
+  <span class="bp">&#172;</span><span class="n">b</span> <span class="bp">&#8739;</span> <span class="n">a</span> <span class="o">:=</span>
+</pre></div>
+</div>
+<p>And here is the same solution written up in Lean.</p>
+<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">:</span> <span class="bp">&#172;</span><span class="o">(</span><span class="mi">5</span> <span class="o">:</span> <span class="n">&#8484;</span><span class="o">)</span> <span class="bp">&#8739;</span> <span class="mi">12</span> <span class="o">:=</span> <span class="kd">by</span>
+  <span class="n">apply</span> <span class="n">Int.not_dvd_of_exists_lt_and_lt</span>
+  <span class="bp">&#183;</span> <span class="n">numbers</span>
+  <span class="n">use</span> <span class="mi">2</span>
+  <span class="n">constructor</span>
+  <span class="bp">&#183;</span> <span class="n">numbers</span>
+  <span class="bp">&#183;</span> <span class="n">numbers</span>
+</pre></div>
+</div>
+</section>
+<section id="dvd-bd-1">
+<span id="id16"></span><h3><span class="section-number">3.2.7. </span>Example<a class="headerlink" href="#dvd-bd-1" title="Permalink to this headline">&#61633;</a></h3>
+<div class="admonition-problem admonition">
+<p class="admonition-title">Problem</p>
+<p>Let <span class="math notranslate nohighlight">\(a\)</span> and <span class="math notranslate nohighlight">\(b\)</span> be natural numbers, with <span class="math notranslate nohighlight">\(b\)</span> positive, and suppose that
+<span class="math notranslate nohighlight">\(a\)</span> divides <span class="math notranslate nohighlight">\(b\)</span>.  Show that <span class="math notranslate nohighlight">\(a \le b\)</span>.</p>
+</div>
+<div class="admonition-solution admonition">
+<p class="admonition-title">Solution</p>
+<p>Since <span class="math notranslate nohighlight">\(a \mid b\)</span>, there exists a natural number <span class="math notranslate nohighlight">\(k\)</span> such that <span class="math notranslate nohighlight">\(b=ak\)</span>.</p>
+<p>We first show <span class="math notranslate nohighlight">\(1 \le k\)</span>.  It suffices to show that <span class="math notranslate nohighlight">\(0&lt;k\)</span>, which is true since</p>
+<div class="math notranslate nohighlight">
+\[0 &lt; b =ak\]</div>
+<p>and <span class="math notranslate nohighlight">\(0\le a\)</span>.</p>
+<p>Now, we have</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}a &amp;= a \cdot 1 \\
+&amp;&#8804; a k \\
+&amp;= b.\end{split}\]</div>
+</div>
+<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">{</span><span class="n">a</span> <span class="n">b</span> <span class="o">:</span> <span class="n">&#8469;</span><span class="o">}</span> <span class="o">(</span><span class="n">hb</span> <span class="o">:</span> <span class="mi">0</span> <span class="bp">&lt;</span> <span class="n">b</span><span class="o">)</span> <span class="o">(</span><span class="n">hab</span> <span class="o">:</span> <span class="n">a</span> <span class="bp">&#8739;</span> <span class="n">b</span><span class="o">)</span> <span class="o">:</span> <span class="n">a</span> <span class="bp">&#8804;</span> <span class="n">b</span> <span class="o">:=</span> <span class="kd">by</span>
+  <span class="n">cases&#39;</span> <span class="n">hab</span> <span class="k">with</span> <span class="n">k</span> <span class="n">hk</span>
+  <span class="k">have</span> <span class="n">H</span> <span class="o">:</span> <span class="mi">1</span> <span class="bp">&#8804;</span> <span class="n">k</span>
+  <span class="bp">&#183;</span> <span class="n">apply</span> <span class="n">pos_of_mul_pos_right</span> <span class="o">(</span><span class="n">a</span> <span class="o">:=</span> <span class="n">a</span><span class="o">)</span>
+    <span class="bp">&#183;</span> <span class="k">calc</span>
+        <span class="mi">0</span> <span class="bp">&lt;</span> <span class="n">b</span> <span class="o">:=</span> <span class="n">hb</span>
+        <span class="n">_</span> <span class="bp">=</span> <span class="n">a</span> <span class="bp">*</span> <span class="n">k</span> <span class="o">:=</span> <span class="n">hk</span>
+    <span class="bp">&#183;</span> <span class="n">extra</span>
+  <span class="k">calc</span>
+    <span class="n">a</span> <span class="bp">=</span> <span class="n">a</span> <span class="bp">*</span> <span class="mi">1</span> <span class="o">:=</span> <span class="kd">by</span> <span class="n">ring</span>
+    <span class="n">_</span> <span class="bp">&#8804;</span> <span class="n">a</span> <span class="bp">*</span> <span class="n">k</span> <span class="o">:=</span> <span class="kd">by</span> <span class="n">rel</span> <span class="o">[</span><span class="n">H</span><span class="o">]</span>
+    <span class="n">_</span> <span class="bp">=</span> <span class="n">b</span> <span class="o">:=</span> <span class="kd">by</span> <span class="n">rw</span> <span class="o">[</span><span class="n">hk</span><span class="o">]</span>
+</pre></div>
+</div>
+<p>This lemma is available in the main Lean library under the name <code class="docutils literal notranslate"><span class="pre">Nat.le_of_dvd</span></code>.</p>
+</section>
+<section id="dvd-bd-2">
+<span id="id17"></span><h3><span class="section-number">3.2.8. </span>Example<a class="headerlink" href="#dvd-bd-2" title="Permalink to this headline">&#61633;</a></h3>
+<div class="admonition-problem admonition">
+<p class="admonition-title">Problem</p>
+<p>Let <span class="math notranslate nohighlight">\(a\)</span> and <span class="math notranslate nohighlight">\(b\)</span> be natural numbers, with <span class="math notranslate nohighlight">\(b\)</span> positive, and suppose that
+<span class="math notranslate nohighlight">\(a\)</span> divides <span class="math notranslate nohighlight">\(b\)</span>.  Show that <span class="math notranslate nohighlight">\(a\)</span> is positive.</p>
+</div>
+<div class="admonition-solution admonition">
+<p class="admonition-title">Solution</p>
+<p>Since <span class="math notranslate nohighlight">\(a \mid b\)</span>, there exists a natural number <span class="math notranslate nohighlight">\(k\)</span> such that <span class="math notranslate nohighlight">\(b=ak\)</span>.</p>
+<p>We have</p>
+<div class="math notranslate nohighlight">
+\[0 &lt; b = a k\]</div>
+<p>and <span class="math notranslate nohighlight">\(0\le k\)</span>, so <span class="math notranslate nohighlight">\(0&lt;a\)</span>.</p>
+</div>
+<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">{</span><span class="n">a</span> <span class="n">b</span> <span class="o">:</span> <span class="n">&#8469;</span><span class="o">}</span> <span class="o">(</span><span class="n">hab</span> <span class="o">:</span> <span class="n">a</span> <span class="bp">&#8739;</span> <span class="n">b</span><span class="o">)</span> <span class="o">(</span><span class="n">hb</span> <span class="o">:</span> <span class="mi">0</span> <span class="bp">&lt;</span> <span class="n">b</span><span class="o">)</span> <span class="o">:</span> <span class="mi">0</span> <span class="bp">&lt;</span> <span class="n">a</span> <span class="o">:=</span> <span class="kd">by</span>
+  <span class="gr">sorry</span>
+</pre></div>
+</div>
+<p>This lemma is also available in the main Lean library, under the name <code class="docutils literal notranslate"><span class="pre">Nat.pos_of_dvd_of_pos</span></code>.</p>
+</section>
+<section id="id18">
+<h3><span class="section-number">3.2.9. </span>Exercises<a class="headerlink" href="#id18" title="Permalink to this headline">&#61633;</a></h3>
+<ol class="arabic simple">
+<li><p>Show that 0 is divisible by every integer <span class="math notranslate nohighlight">\(t\)</span>.</p></li>
+</ol>
+<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">(</span><span class="n">t</span> <span class="o">:</span> <span class="n">&#8484;</span><span class="o">)</span> <span class="o">:</span> <span class="n">t</span> <span class="bp">&#8739;</span> <span class="mi">0</span> <span class="o">:=</span> <span class="kd">by</span>
+  <span class="gr">sorry</span>
+</pre></div>
+</div>
+<ol class="arabic simple" start="2">
+<li><p>Show that -10 is not divisible by 3.</p></li>
+</ol>
+<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">:</span> <span class="bp">&#172;</span><span class="o">(</span><span class="mi">3</span> <span class="o">:</span> <span class="n">&#8484;</span><span class="o">)</span> <span class="bp">&#8739;</span> <span class="bp">-</span><span class="mi">10</span> <span class="o">:=</span> <span class="kd">by</span>
+  <span class="gr">sorry</span>
+</pre></div>
+</div>
+<ol class="arabic simple" start="3">
+<li><p>Let <span class="math notranslate nohighlight">\(a\)</span> and <span class="math notranslate nohighlight">\(b\)</span> be integers and suppose that <span class="math notranslate nohighlight">\(a \mid b\)</span>.  Show that
+<span class="math notranslate nohighlight">\(a \mid 3b^3-b^2+5b\)</span>.</p></li>
+</ol>
+<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">{</span><span class="n">a</span> <span class="n">b</span> <span class="o">:</span> <span class="n">&#8484;</span><span class="o">}</span> <span class="o">(</span><span class="n">hab</span> <span class="o">:</span> <span class="n">a</span> <span class="bp">&#8739;</span> <span class="n">b</span><span class="o">)</span> <span class="o">:</span> <span class="n">a</span> <span class="bp">&#8739;</span> <span class="mi">3</span> <span class="bp">*</span> <span class="n">b</span> <span class="bp">^</span> <span class="mi">3</span> <span class="bp">-</span> <span class="n">b</span> <span class="bp">^</span> <span class="mi">2</span> <span class="bp">+</span> <span class="mi">5</span> <span class="bp">*</span> <span class="n">b</span> <span class="o">:=</span> <span class="kd">by</span>
+  <span class="gr">sorry</span>
+</pre></div>
+</div>
+<ol class="arabic simple" start="4">
+<li><p>Let <span class="math notranslate nohighlight">\(a\)</span>, <span class="math notranslate nohighlight">\(b\)</span> and <span class="math notranslate nohighlight">\(c\)</span> be integers and suppose that <span class="math notranslate nohighlight">\(a^2\)</span> divides <span class="math notranslate nohighlight">\(b\)</span>
+and <span class="math notranslate nohighlight">\(b^3\)</span> divides <span class="math notranslate nohighlight">\(c\)</span>.  Show that <span class="math notranslate nohighlight">\(a^6\)</span> divides <span class="math notranslate nohighlight">\(c\)</span>.</p></li>
+</ol>
+<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">{</span><span class="n">a</span> <span class="n">b</span> <span class="n">c</span> <span class="o">:</span> <span class="n">&#8484;</span><span class="o">}</span> <span class="o">(</span><span class="n">hab</span> <span class="o">:</span> <span class="n">a</span> <span class="bp">^</span> <span class="mi">2</span> <span class="bp">&#8739;</span> <span class="n">b</span><span class="o">)</span> <span class="o">(</span><span class="n">hbc</span> <span class="o">:</span> <span class="n">b</span> <span class="bp">^</span> <span class="mi">3</span> <span class="bp">&#8739;</span> <span class="n">c</span><span class="o">)</span> <span class="o">:</span> <span class="n">a</span> <span class="bp">^</span> <span class="mi">6</span> <span class="bp">&#8739;</span> <span class="n">c</span> <span class="o">:=</span> <span class="kd">by</span>
+  <span class="gr">sorry</span>
+</pre></div>
+</div>
+<ol class="arabic simple" start="5">
+<li><p>Show that there exists a natural number <span class="math notranslate nohighlight">\(n&gt;0\)</span>, such that <span class="math notranslate nohighlight">\(9\)</span> is a factor of
+<span class="math notranslate nohighlight">\(2^n-1\)</span>.</p></li>
+</ol>
+<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">:</span> <span class="bp">&#8707;</span> <span class="n">n</span> <span class="o">:</span> <span class="n">&#8469;</span><span class="o">,</span> <span class="mi">0</span> <span class="bp">&lt;</span> <span class="n">n</span> <span class="bp">&#8743;</span> <span class="mi">9</span> <span class="bp">&#8739;</span> <span class="mi">2</span> <span class="bp">^</span> <span class="n">n</span> <span class="bp">-</span> <span class="mi">1</span> <span class="o">:=</span> <span class="kd">by</span>
+  <span class="gr">sorry</span>
+</pre></div>
+</div>
+<ol class="arabic simple" start="6">
+<li><p>Show that there exists integers <span class="math notranslate nohighlight">\(a\)</span> and <span class="math notranslate nohighlight">\(b\)</span>, with <span class="math notranslate nohighlight">\(0&lt;b&lt;a\)</span>, such that
+<span class="math notranslate nohighlight">\(a-b \mid a+b\)</span>.</p></li>
+</ol>
+<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">:</span> <span class="bp">&#8707;</span> <span class="n">a</span> <span class="n">b</span> <span class="o">:</span> <span class="n">&#8484;</span><span class="o">,</span> <span class="mi">0</span> <span class="bp">&lt;</span> <span class="n">b</span> <span class="bp">&#8743;</span> <span class="n">b</span> <span class="bp">&lt;</span> <span class="n">a</span> <span class="bp">&#8743;</span> <span class="n">a</span> <span class="bp">-</span> <span class="n">b</span> <span class="bp">&#8739;</span> <span class="n">a</span> <span class="bp">+</span> <span class="n">b</span> <span class="o">:=</span> <span class="kd">by</span>
+  <span class="gr">sorry</span>
+</pre></div>
+</div>
+<ol class="arabic simple" start="7">
+<li><p>(hard) Let <span class="math notranslate nohighlight">\(a\)</span> be a natural number and suppose that <span class="math notranslate nohighlight">\(a^2 \mid a\)</span>.  Show that
+<span class="math notranslate nohighlight">\(a=0\)</span> or <span class="math notranslate nohighlight">\(a=1\)</span>.</p></li>
+</ol>
+<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">(</span><span class="n">a</span> <span class="o">:</span> <span class="n">&#8469;</span><span class="o">)</span> <span class="o">(</span><span class="n">h</span> <span class="o">:</span> <span class="n">a</span> <span class="bp">^</span> <span class="mi">2</span> <span class="bp">&#8739;</span> <span class="n">a</span><span class="o">)</span> <span class="o">:</span> <span class="n">a</span> <span class="bp">=</span> <span class="mi">0</span> <span class="bp">&#8744;</span> <span class="n">a</span> <span class="bp">=</span> <span class="mi">1</span> <span class="o">:=</span> <span class="kd">by</span>
+  <span class="k">have</span> <span class="n">ha</span> <span class="o">:</span> <span class="mi">0</span> <span class="bp">&#8804;</span> <span class="n">a</span> <span class="o">:=</span> <span class="kd">by</span> <span class="n">extra</span>
+  <span class="n">cases&#39;</span> <span class="n">eq_or_lt_of_le</span> <span class="n">ha</span> <span class="k">with</span> <span class="n">ha</span> <span class="n">ha</span>
+  <span class="bp">&#183;</span> <span class="gr">sorry</span>
+  <span class="k">have</span> <span class="n">H1</span> <span class="o">:</span> <span class="n">a</span> <span class="bp">^</span> <span class="mi">2</span> <span class="bp">=</span> <span class="n">a</span>
+  <span class="bp">&#183;</span> <span class="gr">sorry</span>
+  <span class="k">have</span> <span class="n">H2</span> <span class="o">:</span> <span class="n">a</span> <span class="bp">=</span> <span class="mi">1</span> <span class="bp">&#8744;</span> <span class="n">a</span> <span class="bp">=</span> <span class="mi">0</span>
+  <span class="bp">&#183;</span> <span class="gr">sorry</span>
+  <span class="gr">sorry</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="modular-arithmetic-theory">
+<span id="theory-modular"></span><h2><span class="section-number">3.3. </span>Modular arithmetic: theory<a class="headerlink" href="#modular-arithmetic-theory" title="Permalink to this headline">&#61633;</a></h2>
+<div class="admonition-definition admonition">
+<p class="admonition-title">Definition</p>
+<p>The integers <span class="math notranslate nohighlight">\(a\)</span> and <span class="math notranslate nohighlight">\(b\)</span> are <em>congruent modulo</em> <span class="math notranslate nohighlight">\(n\)</span>, if <span class="math notranslate nohighlight">\(n\mid (a - b)\)</span>.</p>
+</div>
+<p>We use the notation <span class="math notranslate nohighlight">\(a\equiv b \mod n\)</span> to denote that <span class="math notranslate nohighlight">\(a\)</span> and <span class="math notranslate nohighlight">\(b\)</span> are congruent
+modulo <span class="math notranslate nohighlight">\(n\)</span>.</p>
+<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">def</span> <span class="n">Int.ModEq</span> <span class="o">(</span><span class="n">n</span> <span class="n">a</span> <span class="n">b</span> <span class="o">:</span> <span class="n">&#8484;</span><span class="o">)</span> <span class="o">:</span> <span class="kt">Prop</span> <span class="o">:=</span> <span class="n">n</span> <span class="bp">&#8739;</span> <span class="n">a</span> <span class="bp">-</span> <span class="n">b</span>
+
+<span class="kd">notation</span><span class="o">:</span><span class="mi">50</span> <span class="n">a</span> <span class="s2">&quot; &#8801; &quot;</span> <span class="n">b</span> <span class="s2">&quot; [ZMOD &quot;</span> <span class="n">n</span> <span class="s2">&quot;]&quot;</span> <span class="bp">=&gt;</span> <span class="n">Int.ModEq</span> <span class="n">n</span> <span class="n">a</span> <span class="n">b</span>
+</pre></div>
+</div>
+<section id="id19">
+<h3><span class="section-number">3.3.1. </span>Example<a class="headerlink" href="#id19" title="Permalink to this headline">&#61633;</a></h3>
+<div class="admonition-problem admonition">
+<p class="admonition-title">Problem</p>
+<p>Show that <span class="math notranslate nohighlight">\(11\equiv 3 \mod 4\)</span>.</p>
+</div>
+<div class="admonition-solution admonition">
+<p class="admonition-title">Solution</p>
+<p><span class="math notranslate nohighlight">\(11-3=4\cdot 2\)</span>, so <span class="math notranslate nohighlight">\(4\mid(11-3)\)</span>.</p>
+</div>
+<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">:</span> <span class="mi">11</span> <span class="bp">&#8801;</span> <span class="mi">3</span> <span class="o">[</span><span class="n">ZMOD</span> <span class="mi">4</span><span class="o">]</span> <span class="o">:=</span> <span class="kd">by</span>
+  <span class="n">use</span> <span class="mi">2</span>
+  <span class="n">numbers</span>
+</pre></div>
+</div>
+</section>
+<section id="id20">
+<h3><span class="section-number">3.3.2. </span>Example<a class="headerlink" href="#id20" title="Permalink to this headline">&#61633;</a></h3>
+<div class="admonition-problem admonition">
+<p class="admonition-title">Problem</p>
+<p>Show that <span class="math notranslate nohighlight">\(-5\equiv 1 \mod 3\)</span>.</p>
+</div>
+<div class="admonition-solution admonition">
+<p class="admonition-title">Solution</p>
+<p><span class="math notranslate nohighlight">\(-5-1=3\cdot -2\)</span>, so <span class="math notranslate nohighlight">\(3\mid(-5-1)\)</span>.</p>
+</div>
+<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">:</span> <span class="bp">-</span><span class="mi">5</span> <span class="bp">&#8801;</span> <span class="mi">1</span> <span class="o">[</span><span class="n">ZMOD</span> <span class="mi">3</span><span class="o">]</span> <span class="o">:=</span> <span class="kd">by</span>
+  <span class="gr">sorry</span>
+</pre></div>
+</div>
+</section>
+<section id="id21">
+<h3><span class="section-number">3.3.3. </span>Example<a class="headerlink" href="#id21" title="Permalink to this headline">&#61633;</a></h3>
+<div class="admonition-lemma-addition-rule-for-modular-arithmetic admonition">
+<p class="admonition-title">Lemma (addition rule for modular arithmetic)</p>
+<p>Let <span class="math notranslate nohighlight">\(a\)</span>, <span class="math notranslate nohighlight">\(b\)</span>, <span class="math notranslate nohighlight">\(c\)</span>, <span class="math notranslate nohighlight">\(d\)</span> and <span class="math notranslate nohighlight">\(n\)</span> be integers, and suppose that
+<span class="math notranslate nohighlight">\(a\equiv b \mod n\)</span> and <span class="math notranslate nohighlight">\(c\equiv d \mod n\)</span>.  Then <span class="math notranslate nohighlight">\(a+c\equiv b+d \mod n\)</span>.</p>
+</div>
+<div class="admonition-solution admonition">
+<p class="admonition-title">Solution</p>
+<p>Since <span class="math notranslate nohighlight">\(a\equiv b \mod n\)</span>, there exists an integer <span class="math notranslate nohighlight">\(x\)</span> such that <span class="math notranslate nohighlight">\(a-b=nx\)</span>.
+Since <span class="math notranslate nohighlight">\(c\equiv d \mod n\)</span>, there exists an integer <span class="math notranslate nohighlight">\(y\)</span> such that <span class="math notranslate nohighlight">\(c-d=ny\)</span>.
+Then</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}a + c - (b + d) &amp;= (a - b) + (c - d) \\
+&amp;= n x + n y \\
+&amp;= n (x + y),\end{split}\]</div>
+<p>so <span class="math notranslate nohighlight">\(a+c\equiv b+d \mod n\)</span>.</p>
+</div>
+<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">theorem</span> <span class="n">Int.ModEq.add</span> <span class="o">{</span><span class="n">n</span> <span class="n">a</span> <span class="n">b</span> <span class="n">c</span> <span class="n">d</span> <span class="o">:</span> <span class="n">&#8484;</span><span class="o">}</span> <span class="o">(</span><span class="n">h1</span> <span class="o">:</span> <span class="n">a</span> <span class="bp">&#8801;</span> <span class="n">b</span> <span class="o">[</span><span class="n">ZMOD</span> <span class="n">n</span><span class="o">])</span> <span class="o">(</span><span class="n">h2</span> <span class="o">:</span> <span class="n">c</span> <span class="bp">&#8801;</span> <span class="n">d</span> <span class="o">[</span><span class="n">ZMOD</span> <span class="n">n</span><span class="o">])</span> <span class="o">:</span>
+    <span class="n">a</span> <span class="bp">+</span> <span class="n">c</span> <span class="bp">&#8801;</span> <span class="n">b</span> <span class="bp">+</span> <span class="n">d</span> <span class="o">[</span><span class="n">ZMOD</span> <span class="n">n</span><span class="o">]</span> <span class="o">:=</span> <span class="kd">by</span>
+  <span class="n">dsimp</span> <span class="o">[</span><span class="n">Int.ModEq</span><span class="o">]</span> <span class="n">at</span> <span class="bp">*</span>
+  <span class="n">cases&#39;</span> <span class="n">h1</span> <span class="k">with</span> <span class="n">x</span> <span class="n">hx</span>
+  <span class="n">cases&#39;</span> <span class="n">h2</span> <span class="k">with</span> <span class="n">y</span> <span class="n">hy</span>
+  <span class="n">use</span> <span class="n">x</span> <span class="bp">+</span> <span class="n">y</span>
+  <span class="k">calc</span>
+    <span class="n">a</span> <span class="bp">+</span> <span class="n">c</span> <span class="bp">-</span> <span class="o">(</span><span class="n">b</span> <span class="bp">+</span> <span class="n">d</span><span class="o">)</span> <span class="bp">=</span> <span class="n">a</span> <span class="bp">-</span> <span class="n">b</span> <span class="bp">+</span> <span class="o">(</span><span class="n">c</span> <span class="bp">-</span> <span class="n">d</span><span class="o">)</span> <span class="o">:=</span> <span class="kd">by</span> <span class="n">ring</span>
+    <span class="n">_</span> <span class="bp">=</span> <span class="n">n</span> <span class="bp">*</span> <span class="n">x</span> <span class="bp">+</span> <span class="n">n</span> <span class="bp">*</span> <span class="n">y</span> <span class="o">:=</span> <span class="kd">by</span> <span class="n">rw</span> <span class="o">[</span><span class="n">hx</span><span class="o">,</span> <span class="n">hy</span><span class="o">]</span>
+    <span class="n">_</span> <span class="bp">=</span> <span class="n">n</span> <span class="bp">*</span> <span class="o">(</span><span class="n">x</span> <span class="bp">+</span> <span class="n">y</span><span class="o">)</span> <span class="o">:=</span> <span class="kd">by</span> <span class="n">ring</span>
+</pre></div>
+</div>
+</section>
+<section id="id22">
+<h3><span class="section-number">3.3.4. </span>Exercise<a class="headerlink" href="#id22" title="Permalink to this headline">&#61633;</a></h3>
+<div class="admonition-lemma-subtraction-rule-for-modular-arithmetic admonition">
+<p class="admonition-title">Lemma (subtraction rule for modular arithmetic)</p>
+<p>Let <span class="math notranslate nohighlight">\(a\)</span>, <span class="math notranslate nohighlight">\(b\)</span>, <span class="math notranslate nohighlight">\(c\)</span>, <span class="math notranslate nohighlight">\(d\)</span> and <span class="math notranslate nohighlight">\(n\)</span> be integers, and suppose that
+<span class="math notranslate nohighlight">\(a\equiv b \mod n\)</span> and <span class="math notranslate nohighlight">\(c\equiv d \mod n\)</span>.  Then <span class="math notranslate nohighlight">\(a-c\equiv b-d \mod n\)</span>.</p>
+</div>
+<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">theorem</span> <span class="n">Int.ModEq.sub</span> <span class="o">{</span><span class="n">n</span> <span class="n">a</span> <span class="n">b</span> <span class="n">c</span> <span class="n">d</span> <span class="o">:</span> <span class="n">&#8484;</span><span class="o">}</span> <span class="o">(</span><span class="n">h1</span> <span class="o">:</span> <span class="n">a</span> <span class="bp">&#8801;</span> <span class="n">b</span> <span class="o">[</span><span class="n">ZMOD</span> <span class="n">n</span><span class="o">])</span> <span class="o">(</span><span class="n">h2</span> <span class="o">:</span> <span class="n">c</span> <span class="bp">&#8801;</span> <span class="n">d</span> <span class="o">[</span><span class="n">ZMOD</span> <span class="n">n</span><span class="o">])</span> <span class="o">:</span>
+    <span class="n">a</span> <span class="bp">-</span> <span class="n">c</span> <span class="bp">&#8801;</span> <span class="n">b</span> <span class="bp">-</span> <span class="n">d</span> <span class="o">[</span><span class="n">ZMOD</span> <span class="n">n</span><span class="o">]</span> <span class="o">:=</span> <span class="kd">by</span>
+  <span class="gr">sorry</span>
+</pre></div>
+</div>
+</section>
+<section id="id23">
+<h3><span class="section-number">3.3.5. </span>Exercise<a class="headerlink" href="#id23" title="Permalink to this headline">&#61633;</a></h3>
+<div class="admonition-lemma-negation-rule-for-modular-arithmetic admonition">
+<p class="admonition-title">Lemma (negation rule for modular arithmetic)</p>
+<p>Let <span class="math notranslate nohighlight">\(a\)</span>, <span class="math notranslate nohighlight">\(b\)</span> and <span class="math notranslate nohighlight">\(n\)</span> be integers, and suppose that
+<span class="math notranslate nohighlight">\(a\equiv b \mod n\)</span>.  Then <span class="math notranslate nohighlight">\(-a\equiv -b \mod n\)</span>.</p>
+</div>
+<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">theorem</span> <span class="n">Int.ModEq.neg</span> <span class="o">{</span><span class="n">n</span> <span class="n">a</span> <span class="n">b</span> <span class="o">:</span> <span class="n">&#8484;</span><span class="o">}</span> <span class="o">(</span><span class="n">h1</span> <span class="o">:</span> <span class="n">a</span> <span class="bp">&#8801;</span> <span class="n">b</span> <span class="o">[</span><span class="n">ZMOD</span> <span class="n">n</span><span class="o">])</span> <span class="o">:</span> <span class="bp">-</span><span class="n">a</span> <span class="bp">&#8801;</span> <span class="bp">-</span><span class="n">b</span> <span class="o">[</span><span class="n">ZMOD</span> <span class="n">n</span><span class="o">]</span> <span class="o">:=</span> <span class="kd">by</span>
+  <span class="gr">sorry</span>
+</pre></div>
+</div>
+</section>
+<section id="id24">
+<h3><span class="section-number">3.3.6. </span>Example<a class="headerlink" href="#id24" title="Permalink to this headline">&#61633;</a></h3>
+<div class="admonition-lemma-multiplication-rule-for-modular-arithmetic admonition">
+<p class="admonition-title">Lemma (multiplication rule for modular arithmetic)</p>
+<p>Let <span class="math notranslate nohighlight">\(a\)</span>, <span class="math notranslate nohighlight">\(b\)</span>, <span class="math notranslate nohighlight">\(c\)</span>, <span class="math notranslate nohighlight">\(d\)</span> and <span class="math notranslate nohighlight">\(n\)</span> be integers, and suppose that
+<span class="math notranslate nohighlight">\(a\equiv b \mod n\)</span> and <span class="math notranslate nohighlight">\(c\equiv d \mod n\)</span>.  Then <span class="math notranslate nohighlight">\(ac\equiv bd \mod n\)</span>.</p>
+</div>
+<div class="admonition-solution admonition">
+<p class="admonition-title">Solution</p>
+<p>Since <span class="math notranslate nohighlight">\(a\equiv b \mod n\)</span>, there exists an integer <span class="math notranslate nohighlight">\(x\)</span> such that <span class="math notranslate nohighlight">\(a-b=nx\)</span>.
+Since <span class="math notranslate nohighlight">\(c\equiv d \mod n\)</span>, there exists an integer <span class="math notranslate nohighlight">\(y\)</span> such that <span class="math notranslate nohighlight">\(c-d=ny\)</span>.
+Then</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}a c - b d &amp;= (a - b) c + b (c - d) \\
+&amp;= (n x)  c + b  (n y) \\
+&amp; = n (x c + b y),\end{split}\]</div>
+<p>so <span class="math notranslate nohighlight">\(ac\equiv bd \mod n\)</span>.</p>
+</div>
+<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">theorem</span> <span class="n">Int.ModEq.mul</span> <span class="o">{</span><span class="n">n</span> <span class="n">a</span> <span class="n">b</span> <span class="n">c</span> <span class="n">d</span> <span class="o">:</span> <span class="n">&#8484;</span><span class="o">}</span> <span class="o">(</span><span class="n">h1</span> <span class="o">:</span> <span class="n">a</span> <span class="bp">&#8801;</span> <span class="n">b</span> <span class="o">[</span><span class="n">ZMOD</span> <span class="n">n</span><span class="o">])</span> <span class="o">(</span><span class="n">h2</span> <span class="o">:</span> <span class="n">c</span> <span class="bp">&#8801;</span> <span class="n">d</span> <span class="o">[</span><span class="n">ZMOD</span> <span class="n">n</span><span class="o">])</span> <span class="o">:</span>
+    <span class="n">a</span> <span class="bp">*</span> <span class="n">c</span> <span class="bp">&#8801;</span> <span class="n">b</span> <span class="bp">*</span> <span class="n">d</span> <span class="o">[</span><span class="n">ZMOD</span> <span class="n">n</span><span class="o">]</span> <span class="o">:=</span> <span class="kd">by</span>
+  <span class="n">cases&#39;</span> <span class="n">h1</span> <span class="k">with</span> <span class="n">x</span> <span class="n">hx</span>
+  <span class="n">cases&#39;</span> <span class="n">h2</span> <span class="k">with</span> <span class="n">y</span> <span class="n">hy</span>
+  <span class="n">use</span> <span class="n">x</span> <span class="bp">*</span> <span class="n">c</span> <span class="bp">+</span> <span class="n">b</span> <span class="bp">*</span> <span class="n">y</span>
+  <span class="k">calc</span>
+    <span class="n">a</span> <span class="bp">*</span> <span class="n">c</span> <span class="bp">-</span> <span class="n">b</span> <span class="bp">*</span> <span class="n">d</span> <span class="bp">=</span> <span class="o">(</span><span class="n">a</span> <span class="bp">-</span> <span class="n">b</span><span class="o">)</span> <span class="bp">*</span> <span class="n">c</span> <span class="bp">+</span> <span class="n">b</span> <span class="bp">*</span> <span class="o">(</span><span class="n">c</span> <span class="bp">-</span> <span class="n">d</span><span class="o">)</span> <span class="o">:=</span> <span class="kd">by</span> <span class="n">ring</span>
+    <span class="n">_</span> <span class="bp">=</span> <span class="n">n</span> <span class="bp">*</span> <span class="n">x</span> <span class="bp">*</span> <span class="n">c</span> <span class="bp">+</span> <span class="n">b</span> <span class="bp">*</span> <span class="o">(</span><span class="n">n</span> <span class="bp">*</span> <span class="n">y</span><span class="o">)</span> <span class="o">:=</span> <span class="kd">by</span> <span class="n">rw</span> <span class="o">[</span><span class="n">hx</span><span class="o">,</span> <span class="n">hy</span><span class="o">]</span>
+    <span class="n">_</span> <span class="bp">=</span> <span class="n">n</span> <span class="bp">*</span> <span class="o">(</span><span class="n">x</span> <span class="bp">*</span> <span class="n">c</span> <span class="bp">+</span> <span class="n">b</span> <span class="bp">*</span> <span class="n">y</span><span class="o">)</span> <span class="o">:=</span> <span class="kd">by</span> <span class="n">ring</span>
+</pre></div>
+</div>
+</section>
+<section id="no-mod-division">
+<span id="id25"></span><h3><span class="section-number">3.3.7. </span>Example<a class="headerlink" href="#no-mod-division" title="Permalink to this headline">&#61633;</a></h3>
+<p>Warning:  There is no &#8220;division rule&#8221; for modular arithmetic!</p>
+<div class="admonition-problem admonition">
+<p class="admonition-title">Problem</p>
+<p>It is possible to have integers <span class="math notranslate nohighlight">\(a\)</span>, <span class="math notranslate nohighlight">\(b\)</span>, <span class="math notranslate nohighlight">\(c\)</span>, <span class="math notranslate nohighlight">\(d\)</span> and <span class="math notranslate nohighlight">\(n\)</span> with
+<span class="math notranslate nohighlight">\(a\equiv b \mod n\)</span> and <span class="math notranslate nohighlight">\(c\equiv d \mod n\)</span>, but <span class="math notranslate nohighlight">\(\frac{a}{c}\not\equiv \frac{b}{d} \mod n\)</span>.</p>
+</div>
+<div class="admonition-solution admonition">
+<p class="admonition-title">Solution</p>
+<p>We can take <span class="math notranslate nohighlight">\(a=10\)</span>, <span class="math notranslate nohighlight">\(b=18\)</span>, <span class="math notranslate nohighlight">\(c=2\)</span>, <span class="math notranslate nohighlight">\(d=6\)</span>.  Indeed,</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(10-18=4\cdot -2\)</span>, so <span class="math notranslate nohighlight">\(10\equiv 18 \mod 4\)</span>;</p></li>
+<li><p><span class="math notranslate nohighlight">\(2-6=4\cdot -1\)</span>, so <span class="math notranslate nohighlight">\(2\equiv 6 \mod 4\)</span>;</p></li>
+<li><p><span class="math notranslate nohighlight">\(\frac{10}{2}-\frac{18}{6}=2\)</span> lies between the consecutive multiples <span class="math notranslate nohighlight">\(4 \cdot 0\)</span> and
+<span class="math notranslate nohighlight">\(4 \cdot (0 + 1)\)</span> of 4, so <span class="math notranslate nohighlight">\(\frac{10}{2}\not\equiv \frac{18}{6} \mod 4\)</span>,</p></li>
+</ul>
+</div>
+<p>Notice that here we&#8217;re using the test for non-divisibility from
+<a class="reference internal" href="#not-divisible"><span class="std std-numref">Example 3.2.6</span></a>, which was written up in Lean as the lemma
+<code class="docutils literal notranslate"><span class="pre">int.not_dvd_of_exists_lt_and_lt</span></code>.</p>
+<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">:</span> <span class="bp">&#8707;</span> <span class="n">a</span> <span class="n">b</span> <span class="n">c</span> <span class="n">d</span><span class="o">,</span> <span class="n">a</span> <span class="bp">&#8801;</span> <span class="n">b</span> <span class="o">[</span><span class="n">ZMOD</span> <span class="mi">4</span><span class="o">]</span> <span class="bp">&#8743;</span> <span class="n">c</span> <span class="bp">&#8801;</span> <span class="n">d</span> <span class="o">[</span><span class="n">ZMOD</span> <span class="mi">4</span><span class="o">]</span> <span class="bp">&#8743;</span> <span class="bp">&#172;</span><span class="n">a</span> <span class="bp">/</span> <span class="n">c</span> <span class="bp">&#8801;</span> <span class="n">b</span> <span class="bp">/</span> <span class="n">d</span> <span class="o">[</span><span class="n">ZMOD</span> <span class="mi">4</span><span class="o">]</span> <span class="o">:=</span> <span class="kd">by</span>
+  <span class="n">use</span> <span class="mi">10</span><span class="o">,</span> <span class="mi">18</span><span class="o">,</span> <span class="mi">2</span><span class="o">,</span> <span class="mi">6</span>
+  <span class="n">constructor</span>
+  <span class="bp">&#183;</span> <span class="n">use</span> <span class="bp">-</span><span class="mi">2</span>
+    <span class="n">numbers</span>
+  <span class="n">constructor</span>
+  <span class="bp">&#183;</span> <span class="n">use</span> <span class="bp">-</span><span class="mi">1</span>
+    <span class="n">numbers</span>
+  <span class="n">apply</span> <span class="n">Int.not_dvd_of_exists_lt_and_lt</span>
+  <span class="bp">&#183;</span> <span class="n">numbers</span>
+  <span class="n">use</span> <span class="mi">0</span>
+  <span class="n">constructor</span>
+  <span class="bp">&#183;</span> <span class="n">numbers</span>
+  <span class="bp">&#183;</span> <span class="n">numbers</span>
+</pre></div>
+</div>
+</section>
+<section id="id26">
+<h3><span class="section-number">3.3.8. </span>Example<a class="headerlink" href="#id26" title="Permalink to this headline">&#61633;</a></h3>
+<div class="admonition-lemma-squaring-rule-for-modular-arithmetic admonition">
+<p class="admonition-title">Lemma (squaring rule for modular arithmetic)</p>
+<p>Let <span class="math notranslate nohighlight">\(a\)</span>, <span class="math notranslate nohighlight">\(b\)</span> and <span class="math notranslate nohighlight">\(n\)</span> be integers, and suppose that
+<span class="math notranslate nohighlight">\(a\equiv b \mod n\)</span>.  Then <span class="math notranslate nohighlight">\(a^2\equiv b^2 \mod n\)</span>.</p>
+</div>
+<div class="admonition-solution admonition">
+<p class="admonition-title">Solution</p>
+<p>Since <span class="math notranslate nohighlight">\(a\equiv b \mod n\)</span>, there exists an integer <span class="math notranslate nohighlight">\(x\)</span> such that <span class="math notranslate nohighlight">\(a-b=nx\)</span>.
+Then</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}a ^ 2 - b ^ 2 &amp;= (a - b)  (a + b) \\
+&amp;= (n x) (a + b) \\
+&amp;= n  (x  (a + b)).\end{split}\]</div>
+</div>
+<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">theorem</span> <span class="n">Int.ModEq.pow_two</span> <span class="o">(</span><span class="n">h</span> <span class="o">:</span> <span class="n">a</span> <span class="bp">&#8801;</span> <span class="n">b</span> <span class="o">[</span><span class="n">ZMOD</span> <span class="n">n</span><span class="o">])</span> <span class="o">:</span> <span class="n">a</span> <span class="bp">^</span> <span class="mi">2</span> <span class="bp">&#8801;</span> <span class="n">b</span> <span class="bp">^</span> <span class="mi">2</span> <span class="o">[</span><span class="n">ZMOD</span> <span class="n">n</span><span class="o">]</span> <span class="o">:=</span> <span class="kd">by</span>
+  <span class="n">cases&#39;</span> <span class="n">h</span> <span class="k">with</span> <span class="n">x</span> <span class="n">hx</span>
+  <span class="n">use</span> <span class="n">x</span> <span class="bp">*</span> <span class="o">(</span><span class="n">a</span> <span class="bp">+</span> <span class="n">b</span><span class="o">)</span>
+  <span class="k">calc</span>
+    <span class="n">a</span> <span class="bp">^</span> <span class="mi">2</span> <span class="bp">-</span> <span class="n">b</span> <span class="bp">^</span> <span class="mi">2</span> <span class="bp">=</span> <span class="o">(</span><span class="n">a</span> <span class="bp">-</span> <span class="n">b</span><span class="o">)</span> <span class="bp">*</span> <span class="o">(</span><span class="n">a</span> <span class="bp">+</span> <span class="n">b</span><span class="o">)</span> <span class="o">:=</span> <span class="kd">by</span> <span class="n">ring</span>
+    <span class="n">_</span> <span class="bp">=</span> <span class="n">n</span> <span class="bp">*</span> <span class="n">x</span> <span class="bp">*</span> <span class="o">(</span><span class="n">a</span> <span class="bp">+</span> <span class="n">b</span><span class="o">)</span> <span class="o">:=</span> <span class="kd">by</span> <span class="n">rw</span> <span class="o">[</span><span class="n">hx</span><span class="o">]</span>
+    <span class="n">_</span> <span class="bp">=</span> <span class="n">n</span> <span class="bp">*</span> <span class="o">(</span><span class="n">x</span> <span class="bp">*</span> <span class="o">(</span><span class="n">a</span> <span class="bp">+</span> <span class="n">b</span><span class="o">))</span> <span class="o">:=</span> <span class="kd">by</span> <span class="n">ring</span>
+</pre></div>
+</div>
+</section>
+<section id="id27">
+<h3><span class="section-number">3.3.9. </span>Exercise<a class="headerlink" href="#id27" title="Permalink to this headline">&#61633;</a></h3>
+<div class="admonition-lemma-cubing-rule-for-modular-arithmetic admonition">
+<p class="admonition-title">Lemma (cubing rule for modular arithmetic)</p>
+<p>Let <span class="math notranslate nohighlight">\(a\)</span>, <span class="math notranslate nohighlight">\(b\)</span> and <span class="math notranslate nohighlight">\(n\)</span> be integers, and suppose that
+<span class="math notranslate nohighlight">\(a\equiv b \mod n\)</span>.  Then <span class="math notranslate nohighlight">\(a^3\equiv b^3 \mod n\)</span>.</p>
+</div>
+<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">theorem</span> <span class="n">Int.ModEq.pow_three</span> <span class="o">(</span><span class="n">h</span> <span class="o">:</span> <span class="n">a</span> <span class="bp">&#8801;</span> <span class="n">b</span> <span class="o">[</span><span class="n">ZMOD</span> <span class="n">n</span><span class="o">])</span> <span class="o">:</span> <span class="n">a</span> <span class="bp">^</span> <span class="mi">3</span> <span class="bp">&#8801;</span> <span class="n">b</span> <span class="bp">^</span> <span class="mi">3</span> <span class="o">[</span><span class="n">ZMOD</span> <span class="n">n</span><span class="o">]</span> <span class="o">:=</span> <span class="kd">by</span>
+  <span class="gr">sorry</span>
+</pre></div>
+</div>
+<p>In fact the same is true for any power, although we don&#8217;t yet have the tools to prove it.  We&#8217;ll
+come back to this later in the course.</p>
+<div class="admonition-lemma-power-rule-for-modular-arithmetic admonition">
+<p class="admonition-title">Lemma (power rule for modular arithmetic)</p>
+<p>Let <span class="math notranslate nohighlight">\(k\)</span> be a natural number and let <span class="math notranslate nohighlight">\(a\)</span>, <span class="math notranslate nohighlight">\(b\)</span> and <span class="math notranslate nohighlight">\(n\)</span> be integers, and
+suppose that <span class="math notranslate nohighlight">\(a\equiv b \mod n\)</span>.  Then <span class="math notranslate nohighlight">\(a^k\equiv b^k \mod n\)</span>.</p>
+</div>
+<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">theorem</span> <span class="n">Int.ModEq.pow</span> <span class="o">(</span><span class="n">k</span> <span class="o">:</span> <span class="n">&#8469;</span><span class="o">)</span> <span class="o">(</span><span class="n">h</span> <span class="o">:</span> <span class="n">a</span> <span class="bp">&#8801;</span> <span class="n">b</span> <span class="o">[</span><span class="n">ZMOD</span> <span class="n">n</span><span class="o">])</span> <span class="o">:</span> <span class="n">a</span> <span class="bp">^</span> <span class="n">k</span> <span class="bp">&#8801;</span> <span class="n">b</span> <span class="bp">^</span> <span class="n">k</span> <span class="o">[</span><span class="n">ZMOD</span> <span class="n">n</span><span class="o">]</span> <span class="o">:=</span>
+  <span class="gr">sorry</span> <span class="c1">-- we&#39;ll prove this later in the course</span>
+</pre></div>
+</div>
+</section>
+<section id="id28">
+<h3><span class="section-number">3.3.10. </span>Example<a class="headerlink" href="#id28" title="Permalink to this headline">&#61633;</a></h3>
+<div class="admonition-lemma-reflexivity-rule-for-modular-arithmetic admonition">
+<p class="admonition-title">Lemma (reflexivity rule for modular arithmetic)</p>
+<p>Let <span class="math notranslate nohighlight">\(a\)</span> and <span class="math notranslate nohighlight">\(n\)</span> be integers. Then <span class="math notranslate nohighlight">\(a\equiv a \mod n\)</span>.</p>
+</div>
+<div class="admonition-solution admonition">
+<p class="admonition-title">Solution</p>
+<p><span class="math notranslate nohighlight">\(a-a=n\cdot 0\)</span>, so <span class="math notranslate nohighlight">\(n\mid a - a\)</span>.</p>
+</div>
+<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">theorem</span> <span class="n">Int.ModEq.refl</span> <span class="o">(</span><span class="n">a</span> <span class="o">:</span> <span class="n">&#8484;</span><span class="o">)</span> <span class="o">:</span> <span class="n">a</span> <span class="bp">&#8801;</span> <span class="n">a</span> <span class="o">[</span><span class="n">ZMOD</span> <span class="n">n</span><span class="o">]</span> <span class="o">:=</span> <span class="kd">by</span>
+  <span class="n">use</span> <span class="mi">0</span>
+  <span class="n">ring</span>
+</pre></div>
+</div>
+</section>
+<section id="apply-mod-lemmas-example">
+<span id="id29"></span><h3><span class="section-number">3.3.11. </span>Example<a class="headerlink" href="#apply-mod-lemmas-example" title="Permalink to this headline">&#61633;</a></h3>
+<p>Whew! That was a lot of lemmas.  But they pay off, as you will now see.  Suppose we now encounter
+some very specific modular arithmetic problem of the same general type as we&#8217;ve seen before: the
+congruence modulo <span class="math notranslate nohighlight">\(n\)</span> of two expressions which differ in a kind of spot-the-difference way,
+like a &#8220;rewriting&#8221; by one congruence.  For example,</p>
+<div class="admonition-problem admonition">
+<p class="admonition-title">Problem</p>
+<p>Let <span class="math notranslate nohighlight">\(a\)</span>, <span class="math notranslate nohighlight">\(b\)</span> and <span class="math notranslate nohighlight">\(n\)</span> be integers, and suppose that <span class="math notranslate nohighlight">\(a\equiv 2 \mod 4\)</span>.
+Show that <span class="math notranslate nohighlight">\(a b ^ 2 + a ^ 2 b + 3 a \equiv 2 b ^ 2 + 2 ^ 2 \cdot b + 3 \cdot 2 \mod 4\)</span>.</p>
+</div>
+<p>We could solve this by working directly from the definition, which is rather painful:</p>
+<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">{</span><span class="n">a</span> <span class="n">b</span> <span class="o">:</span> <span class="n">&#8484;</span><span class="o">}</span> <span class="o">(</span><span class="n">ha</span> <span class="o">:</span> <span class="n">a</span> <span class="bp">&#8801;</span> <span class="mi">2</span> <span class="o">[</span><span class="n">ZMOD</span> <span class="mi">4</span><span class="o">])</span> <span class="o">:</span>
+    <span class="n">a</span> <span class="bp">*</span> <span class="n">b</span> <span class="bp">^</span> <span class="mi">2</span> <span class="bp">+</span> <span class="n">a</span> <span class="bp">^</span> <span class="mi">2</span> <span class="bp">*</span> <span class="n">b</span> <span class="bp">+</span> <span class="mi">3</span> <span class="bp">*</span> <span class="n">a</span> <span class="bp">&#8801;</span> <span class="mi">2</span> <span class="bp">*</span> <span class="n">b</span> <span class="bp">^</span> <span class="mi">2</span> <span class="bp">+</span> <span class="mi">2</span> <span class="bp">^</span> <span class="mi">2</span> <span class="bp">*</span> <span class="n">b</span> <span class="bp">+</span> <span class="mi">3</span> <span class="bp">*</span> <span class="mi">2</span> <span class="o">[</span><span class="n">ZMOD</span> <span class="mi">4</span><span class="o">]</span> <span class="o">:=</span> <span class="kd">by</span>
+  <span class="n">cases&#39;</span> <span class="n">ha</span> <span class="k">with</span> <span class="n">x</span> <span class="n">hx</span>
+  <span class="n">use</span> <span class="n">x</span> <span class="bp">*</span> <span class="o">(</span><span class="n">b</span> <span class="bp">^</span> <span class="mi">2</span> <span class="bp">+</span> <span class="n">a</span> <span class="bp">*</span> <span class="n">b</span> <span class="bp">+</span> <span class="mi">2</span> <span class="bp">*</span> <span class="n">b</span> <span class="bp">+</span> <span class="mi">3</span><span class="o">)</span>
+  <span class="k">calc</span>
+    <span class="n">a</span> <span class="bp">*</span> <span class="n">b</span> <span class="bp">^</span> <span class="mi">2</span> <span class="bp">+</span> <span class="n">a</span> <span class="bp">^</span> <span class="mi">2</span> <span class="bp">*</span> <span class="n">b</span> <span class="bp">+</span> <span class="mi">3</span> <span class="bp">*</span> <span class="n">a</span> <span class="bp">-</span> <span class="o">(</span><span class="mi">2</span> <span class="bp">*</span> <span class="n">b</span> <span class="bp">^</span> <span class="mi">2</span> <span class="bp">+</span> <span class="mi">2</span> <span class="bp">^</span> <span class="mi">2</span> <span class="bp">*</span> <span class="n">b</span> <span class="bp">+</span> <span class="mi">3</span> <span class="bp">*</span> <span class="mi">2</span><span class="o">)</span> <span class="bp">=</span>
+        <span class="o">(</span><span class="n">a</span> <span class="bp">-</span> <span class="mi">2</span><span class="o">)</span> <span class="bp">*</span> <span class="o">(</span><span class="n">b</span> <span class="bp">^</span> <span class="mi">2</span> <span class="bp">+</span> <span class="n">a</span> <span class="bp">*</span> <span class="n">b</span> <span class="bp">+</span> <span class="mi">2</span> <span class="bp">*</span> <span class="n">b</span> <span class="bp">+</span> <span class="mi">3</span><span class="o">)</span> <span class="o">:=</span>
+      <span class="kd">by</span> <span class="n">ring</span>
+    <span class="n">_</span> <span class="bp">=</span> <span class="mi">4</span> <span class="bp">*</span> <span class="n">x</span> <span class="bp">*</span> <span class="o">(</span><span class="n">b</span> <span class="bp">^</span> <span class="mi">2</span> <span class="bp">+</span> <span class="n">a</span> <span class="bp">*</span> <span class="n">b</span> <span class="bp">+</span> <span class="mi">2</span> <span class="bp">*</span> <span class="n">b</span> <span class="bp">+</span> <span class="mi">3</span><span class="o">)</span> <span class="o">:=</span> <span class="kd">by</span> <span class="n">rw</span> <span class="o">[</span><span class="n">hx</span><span class="o">]</span>
+    <span class="n">_</span> <span class="bp">=</span> <span class="mi">4</span> <span class="bp">*</span> <span class="o">(</span><span class="n">x</span> <span class="bp">*</span> <span class="o">(</span><span class="n">b</span> <span class="bp">^</span> <span class="mi">2</span> <span class="bp">+</span> <span class="n">a</span> <span class="bp">*</span> <span class="n">b</span> <span class="bp">+</span> <span class="mi">2</span> <span class="bp">*</span> <span class="n">b</span> <span class="bp">+</span> <span class="mi">3</span><span class="o">))</span> <span class="o">:=</span> <span class="kd">by</span> <span class="n">ring</span>
+</pre></div>
+</div>
+<p>Or, better, we can solve this by applying the right combination of the lemmas we already proved,
+in the right order.  This requires much less thinking:</p>
+<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">{</span><span class="n">a</span> <span class="n">b</span> <span class="o">:</span> <span class="n">&#8484;</span><span class="o">}</span> <span class="o">(</span><span class="n">ha</span> <span class="o">:</span> <span class="n">a</span> <span class="bp">&#8801;</span> <span class="mi">2</span> <span class="o">[</span><span class="n">ZMOD</span> <span class="mi">4</span><span class="o">])</span> <span class="o">:</span>
+    <span class="n">a</span> <span class="bp">*</span> <span class="n">b</span> <span class="bp">^</span> <span class="mi">2</span> <span class="bp">+</span> <span class="n">a</span> <span class="bp">^</span> <span class="mi">2</span> <span class="bp">*</span> <span class="n">b</span> <span class="bp">+</span> <span class="mi">3</span> <span class="bp">&#8801;</span> <span class="mi">2</span> <span class="bp">*</span> <span class="n">b</span> <span class="bp">^</span> <span class="mi">2</span> <span class="bp">+</span> <span class="mi">2</span> <span class="bp">^</span> <span class="mi">2</span> <span class="bp">*</span> <span class="n">b</span> <span class="bp">+</span> <span class="mi">3</span> <span class="o">[</span><span class="n">ZMOD</span> <span class="mi">4</span><span class="o">]</span> <span class="o">:=</span> <span class="kd">by</span>
+  <span class="n">apply</span> <span class="n">Int.ModEq.add</span>
+  <span class="n">apply</span> <span class="n">Int.ModEq.add</span>
+  <span class="n">apply</span> <span class="n">Int.ModEq.mul</span>
+  <span class="n">apply</span> <span class="n">ha</span>
+  <span class="n">apply</span> <span class="n">Int.ModEq.refl</span>
+  <span class="n">apply</span> <span class="n">Int.ModEq.mul</span>
+  <span class="n">apply</span> <span class="n">Int.ModEq.pow</span>
+  <span class="n">apply</span> <span class="n">ha</span>
+  <span class="n">apply</span> <span class="n">Int.ModEq.refl</span>
+  <span class="n">apply</span> <span class="n">Int.ModEq.refl</span>
+</pre></div>
+</div>
+</section>
+<section id="id30">
+<h3><span class="section-number">3.3.12. </span>Exercises<a class="headerlink" href="#id30" title="Permalink to this headline">&#61633;</a></h3>
+<ol class="arabic simple">
+<li><p>Show that <span class="math notranslate nohighlight">\(34\equiv 104 \mod 5\)</span>.</p></li>
+</ol>
+<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">:</span> <span class="mi">34</span> <span class="bp">&#8801;</span> <span class="mi">104</span> <span class="o">[</span><span class="n">ZMOD</span> <span class="mi">5</span><span class="o">]</span> <span class="o">:=</span> <span class="kd">by</span>
+  <span class="gr">sorry</span>
+</pre></div>
+</div>
+<ol class="arabic simple" start="2">
+<li><p>(symmetry rule for modular arithmetic) Let <span class="math notranslate nohighlight">\(a\)</span>, <span class="math notranslate nohighlight">\(b\)</span> and <span class="math notranslate nohighlight">\(n\)</span> be integers, and
+suppose that <span class="math notranslate nohighlight">\(a\equiv b \mod n\)</span>.  Show that <span class="math notranslate nohighlight">\(b\equiv a \mod n\)</span>.</p></li>
+</ol>
+<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">theorem</span> <span class="n">Int.ModEq.symm</span> <span class="o">(</span><span class="n">h</span> <span class="o">:</span> <span class="n">a</span> <span class="bp">&#8801;</span> <span class="n">b</span> <span class="o">[</span><span class="n">ZMOD</span> <span class="n">n</span><span class="o">])</span> <span class="o">:</span> <span class="n">b</span> <span class="bp">&#8801;</span> <span class="n">a</span> <span class="o">[</span><span class="n">ZMOD</span> <span class="n">n</span><span class="o">]</span> <span class="o">:=</span> <span class="kd">by</span>
+  <span class="gr">sorry</span>
+</pre></div>
+</div>
+<ol class="arabic simple" start="3">
+<li><p>(transitivity rule for modular arithmetic) Let <span class="math notranslate nohighlight">\(a\)</span>, <span class="math notranslate nohighlight">\(b\)</span>, <span class="math notranslate nohighlight">\(c\)</span> and <span class="math notranslate nohighlight">\(n\)</span> be
+integers, and suppose that <span class="math notranslate nohighlight">\(a\equiv b \mod n\)</span> and <span class="math notranslate nohighlight">\(b\equiv c \mod n\)</span>.  Show that
+<span class="math notranslate nohighlight">\(a\equiv c \mod n\)</span>.</p></li>
+</ol>
+<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">theorem</span> <span class="n">Int.ModEq.trans</span> <span class="o">(</span><span class="n">h1</span> <span class="o">:</span> <span class="n">a</span> <span class="bp">&#8801;</span> <span class="n">b</span> <span class="o">[</span><span class="n">ZMOD</span> <span class="n">n</span><span class="o">])</span> <span class="o">(</span><span class="n">h2</span> <span class="o">:</span> <span class="n">b</span> <span class="bp">&#8801;</span> <span class="n">c</span> <span class="o">[</span><span class="n">ZMOD</span> <span class="n">n</span><span class="o">])</span> <span class="o">:</span> <span class="n">a</span> <span class="bp">&#8801;</span> <span class="n">c</span> <span class="o">[</span><span class="n">ZMOD</span> <span class="n">n</span><span class="o">]</span> <span class="o">:=</span> <span class="kd">by</span>
+  <span class="gr">sorry</span>
+</pre></div>
+</div>
+<ol class="arabic simple" start="4">
+<li><p>Let <span class="math notranslate nohighlight">\(a\)</span>, <span class="math notranslate nohighlight">\(c\)</span> and <span class="math notranslate nohighlight">\(n\)</span> be integers.  Show that <span class="math notranslate nohighlight">\(a+nc\equiv a \mod n\)</span>.</p></li>
+</ol>
+<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">theorem</span> <span class="n">Int.modEq_add_fac&#39;</span> <span class="o">:</span> <span class="n">a</span> <span class="bp">+</span> <span class="n">n</span> <span class="bp">*</span> <span class="n">c</span> <span class="bp">&#8801;</span> <span class="n">a</span> <span class="o">[</span><span class="n">ZMOD</span> <span class="n">n</span><span class="o">]</span> <span class="o">:=</span> <span class="kd">by</span>
+  <span class="gr">sorry</span>
+</pre></div>
+</div>
+<ol class="arabic simple" start="5">
+<li><p>Give an alternative solution (i.e., with different numbers) to
+<a class="reference internal" href="#no-mod-division"><span class="std std-numref">Example 3.3.7</span></a>.</p></li>
+</ol>
+<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">:</span> <span class="bp">&#8707;</span> <span class="n">a</span> <span class="n">b</span> <span class="n">c</span> <span class="n">d</span><span class="o">,</span> <span class="n">a</span> <span class="bp">&#8801;</span> <span class="n">b</span> <span class="o">[</span><span class="n">ZMOD</span> <span class="mi">4</span><span class="o">]</span> <span class="bp">&#8743;</span> <span class="n">c</span> <span class="bp">&#8801;</span> <span class="n">d</span> <span class="o">[</span><span class="n">ZMOD</span> <span class="mi">4</span><span class="o">]</span> <span class="bp">&#8743;</span> <span class="bp">&#172;</span><span class="n">a</span> <span class="bp">/</span> <span class="n">c</span> <span class="bp">&#8801;</span> <span class="n">b</span> <span class="bp">/</span> <span class="n">d</span> <span class="o">[</span><span class="n">ZMOD</span> <span class="mi">4</span><span class="o">]</span> <span class="o">:=</span> <span class="kd">by</span> <span class="gr">sorry</span>
+</pre></div>
+</div>
+<ol class="arabic" start="6">
+<li><p>Let <span class="math notranslate nohighlight">\(k\)</span> be an integer, and suppose that <span class="math notranslate nohighlight">\(k\equiv 3 \mod 5\)</span>.  Then
+<span class="math notranslate nohighlight">\(4 k + k ^ 3 + 3\equiv 4 \cdot 3 + 3 ^ 3 + 3 \mod 5\)</span>.</p>
+<p>Give two solutions, following the style of the two solutions in
+<a class="reference internal" href="#apply-mod-lemmas-example"><span class="std std-numref">Example 3.3.11</span></a>.</p>
+</li>
+</ol>
+<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">{</span><span class="n">k</span> <span class="o">:</span> <span class="n">&#8484;</span><span class="o">}</span> <span class="o">(</span><span class="n">hb</span> <span class="o">:</span> <span class="n">k</span> <span class="bp">&#8801;</span> <span class="mi">3</span> <span class="o">[</span><span class="n">ZMOD</span> <span class="mi">5</span><span class="o">])</span> <span class="o">:</span>
+    <span class="mi">4</span> <span class="bp">*</span> <span class="n">k</span> <span class="bp">+</span> <span class="n">k</span> <span class="bp">^</span> <span class="mi">3</span> <span class="bp">+</span> <span class="mi">3</span> <span class="bp">&#8801;</span> <span class="mi">4</span> <span class="bp">*</span> <span class="mi">3</span> <span class="bp">+</span> <span class="mi">3</span> <span class="bp">^</span> <span class="mi">3</span> <span class="bp">+</span> <span class="mi">3</span> <span class="o">[</span><span class="n">ZMOD</span> <span class="mi">5</span><span class="o">]</span> <span class="o">:=</span> <span class="kd">by</span>
   <span class="gr">sorry</span>
 </pre></div>
 </div>
