@@ -9,8 +9,8 @@ import Mathlib.Tactic.SolveByElim
 import Math2001.Tactic.Rel.Attr
 import Mathlib.Tactic.LibrarySearch
 
-open Lean Meta Elab Tactic Syntax
-open Mathlib Tactic SolveByElim
+open Lean Meta Elab
+open Mathlib Tactic
 
 def RelConfig : SolveByElim.Config :=
 { transparency := .instances
@@ -24,30 +24,47 @@ def RelConfig : SolveByElim.Config :=
 def IneqRelDischarge (g : MVarId) : MetaM (Option (List MVarId)) :=
 do withTransparency .reducible (Meta.Positivity.positivity g); pure (some []) <|> pure none
 
-syntax (name := ineqRelSyntax) "rel" (args)? : tactic
-
-syntax (name := ineqExtraSyntax) "extra" (args)? : tactic
-
 def Lean.MVarId.Rel (disch : MVarId → MetaM (Option (List MVarId))) (attr : Name)
-    (add : List Term) (g : MVarId) :
+    (add : List Term) (m : MessageData) (g : MVarId) :
     MetaM (List MVarId) := do
   let cfg : SolveByElim.Config := { RelConfig with discharge := disch }
-  solveByElim.processSyntax cfg true false add [] #[mkIdent attr] [g]
+  let [] ← SolveByElim.solveByElim.processSyntax cfg true false add [] #[mkIdent attr] [g]
+    | throwError m
+  return []
 
-elab_rules : tactic | `(tactic| rel $[$t:args]?) => do
-  (let (_, add, _) := parseArgs t
-  liftMetaTactic <| Lean.MVarId.Rel IneqRelDischarge `ineq_rules add)
-  <|> throwError "cannot prove this by 'substituting' the listed inequalities"
+syntax (name := IneqRelSyntax) "ineq_rel" " [" term,* "] " : tactic
+syntax (name := ModRelSyntax) "mod_rel" " [" term,* "] " : tactic
+syntax (name := RelSyntax) "rel" " [" term,* "] " : tactic
 
-elab_rules : tactic | `(tactic| extra) => do
-  (liftMetaTactic <| Lean.MVarId.Rel IneqRelDischarge `ineq_extra [])
-  <|> throwError "the two sides don't differ by a positive quantity"
+elab_rules : tactic | `(tactic| ineq_rel [$t,*]) => do
+  liftMetaTactic <|
+    Lean.MVarId.Rel IneqRelDischarge `ineq_rules t.getElems.toList
+      "cannot prove this by 'substituting' the listed relationships"
 
-syntax (name := modRwSyntax) "mod_rel" (args)? : tactic
+elab_rules : tactic | `(tactic| mod_rel [$t,*]) => do
+  liftMetaTactic <|
+    Lean.MVarId.Rel (fun _ => pure none) `mod_rules t.getElems.toList
+      "cannot prove this by 'substituting' the listed relationships"
 
-elab_rules : tactic | `(tactic| mod_rel $[$t:args]?) => do
-  let (_, add, _) := parseArgs t
-  liftMetaTactic <| Lean.MVarId.Rel (fun _ => pure none) `mod_rules add
+macro_rules | `(tactic| rel [$t,*]) => `(tactic| ineq_rel [$t,*])
+macro_rules | `(tactic| rel [$t,*]) => `(tactic| mod_rel [$t,*])
+
+syntax (name := IneqExtraSyntax) "ineq_extra" : tactic
+syntax (name := ModExtraSyntax) "mod_extra" : tactic
+syntax (name := ExtraSyntax) "extra" : tactic
+
+elab_rules : tactic | `(tactic| ineq_extra) => do
+  liftMetaTactic <|
+    Lean.MVarId.Rel IneqRelDischarge `ineq_extra []
+      "the two sides don't differ by a neutral quantity for the relation"
+
+elab_rules : tactic | `(tactic| mod_extra) => do
+  liftMetaTactic <|
+    Lean.MVarId.Rel (fun _ => pure none) `mod_extra []
+      "the two sides don't differ by a neutral quantity for the relation"
+
+macro_rules | `(tactic| extra) => `(tactic| ineq_extra)
+macro_rules | `(tactic| extra) => `(tactic| mod_extra)
 
 attribute [ineq_rules]
   le_refl
@@ -82,4 +99,38 @@ attribute [mod_rules]
   Int.ModEq.sub_right Int.ModEq.sub_left Int.ModEq.sub
   Int.ModEq.mul_right Int.ModEq.mul_left Int.ModEq.mul
   Int.ModEq.neg Int.ModEq.pow
+
+theorem Int.modEq_add_fac_self' : n * t + a ≡ a [ZMOD n] := by
+  rw [add_comm]
+  apply Int.modEq_add_fac_self
+
+theorem Int.modEq_add_fac_self'' : a + t * n ≡ a [ZMOD n] := by
+  rw [mul_comm]
+  apply Int.modEq_add_fac_self
+
+theorem Int.modEq_add_fac_self''' : t * n + a ≡ a [ZMOD n] := by
+  rw [add_comm]
+  apply Int.modEq_add_fac_self''
+
+theorem Int.modEq_sub_fac_self : a - n * t ≡ a [ZMOD n] := by
+  rw [sub_eq_add_neg, ← mul_neg]
+  apply Int.modEq_add_fac_self
+
+theorem Int.modEq_sub_fac_self' : n * t - a ≡ -a [ZMOD n] := by
+  rw [sub_eq_add_neg]
+  apply Int.modEq_add_fac_self'
+
+theorem Int.modEq_sub_fac_self'' : a - t * n ≡ a [ZMOD n] := by
+  rw [mul_comm]
+  apply Int.modEq_sub_fac_self
+
+theorem Int.modEq_sub_fac_self''' : t * n - a ≡ -a [ZMOD n] := by
+  rw [sub_eq_add_neg]
+  apply Int.modEq_add_fac_self'''
+
+attribute [mod_extra]
+  Int.modEq_add_fac_self Int.modEq_add_fac_self' Int.modEq_add_fac_self'' Int.modEq_add_fac_self'''
+  Int.modEq_sub_fac_self Int.modEq_sub_fac_self' Int.modEq_sub_fac_self'' Int.modEq_sub_fac_self'''
+  Int.ModEq.add_right Int.ModEq.add_left
+  Int.ModEq.sub_right Int.ModEq.sub_left
 
