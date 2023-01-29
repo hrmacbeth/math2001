@@ -67,21 +67,22 @@
 <li class="toctree-l3"><a class="reference internal" href="#id25">1.3.7. Example</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#id26">1.3.8. Example</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#id27">1.3.9. Example</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id28">1.3.10. Exercises</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id28">1.3.10. Example</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id29">1.3.11. Exercises</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#proving-inequalities">1.4. Proving inequalities</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#id30">1.4.1. Example</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id32">1.4.2. Example</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id34">1.4.3. Example</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id31">1.4.1. Example</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id33">1.4.2. Example</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id35">1.4.3. Example</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#shorthand">1.4.4. Example</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id38">1.4.5. Example</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id39">1.4.6. Example</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id39">1.4.5. Example</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id40">1.4.6. Example</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#sq-nonneg">1.4.7. Example</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id41">1.4.8. Example</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id43">1.4.9. Example</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id45">1.4.10. Example</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id47">1.4.11. Exercises</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id42">1.4.8. Example</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id44">1.4.9. Example</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id46">1.4.10. Example</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id48">1.4.11. Exercises</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#a-shortcut">1.5. A shortcut</a></li>
@@ -89,6 +90,7 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="02_Proofs_with_Structure.html">2. Proofs with structure</a></li>
 <li class="toctree-l1"><a class="reference internal" href="03_Parity_and_Divisibility.html">3. Parity and divisibility</a></li>
+<li class="toctree-l1"><a class="reference internal" href="04_Proofs_with_Structure_II.html">4. Proofs with structure, II</a></li>
 </ul>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="Index_of_Tactics.html">Index of Lean tactics</a></li>
@@ -635,6 +637,28 @@ a clever combination of the hypotheses.</p>
 </section>
 <section id="id26">
 <h3><span class="section-number">1.3.8. </span>Example<a class="headerlink" href="#id26" title="Permalink to this headline">&#61633;</a></h3>
+<p>And another &#8211; in this case we have to combine the tricks of the last two examples, taking varying
+multiples of the hypotheses to cancel the <span class="math notranslate nohighlight">\(y\)</span> and then dividing through by the multiple of
+<span class="math notranslate nohighlight">\(x\)</span> that is left.</p>
+<div class="admonition-problem admonition">
+<p class="admonition-title">Problem</p>
+<p>Let <span class="math notranslate nohighlight">\(x\)</span> and <span class="math notranslate nohighlight">\(y\)</span> be real numbers, and suppose that
+<span class="math notranslate nohighlight">\(x + y = 4\)</span> and <span class="math notranslate nohighlight">\(5x-3y=4\)</span>. Show that <span class="math notranslate nohighlight">\(x=2\)</span>.</p>
+</div>
+<div class="admonition-solution admonition">
+<p class="admonition-title">Solution</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}x &amp;= \frac{3(x+y)+(5x-3y)}{8}\\
+&amp;=\frac{3\cdot 4+4}{8}\\
+&amp;=2.\end{split}\]</div>
+</div>
+<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">{</span><span class="n">x</span> <span class="n">y</span> <span class="o">:</span> <span class="n">&#8477;</span><span class="o">}</span> <span class="o">(</span><span class="n">h1</span> <span class="o">:</span> <span class="n">x</span> <span class="bp">+</span> <span class="n">y</span> <span class="bp">=</span> <span class="mi">4</span><span class="o">)</span> <span class="o">(</span><span class="n">h2</span> <span class="o">:</span> <span class="mi">5</span> <span class="bp">*</span> <span class="n">x</span> <span class="bp">-</span> <span class="mi">3</span> <span class="bp">*</span> <span class="n">y</span> <span class="bp">=</span> <span class="mi">4</span><span class="o">)</span> <span class="o">:</span> <span class="n">x</span> <span class="bp">=</span> <span class="mi">2</span> <span class="o">:=</span>
+  <span class="gr">sorry</span>
+</pre></div>
+</div>
+</section>
+<section id="id27">
+<h3><span class="section-number">1.3.9. </span>Example<a class="headerlink" href="#id27" title="Permalink to this headline">&#61633;</a></h3>
 <p>Finally, let&#8217;s do a few examples involving equations of degree greater than one.</p>
 <div class="admonition-problem admonition">
 <p class="admonition-title">Problem</p>
@@ -670,8 +694,8 @@ big algebraic calculation, one substitution step, then one more algebra step.</p
 </pre></div>
 </div>
 </section>
-<section id="id27">
-<h3><span class="section-number">1.3.9. </span>Example<a class="headerlink" href="#id27" title="Permalink to this headline">&#61633;</a></h3>
+<section id="id28">
+<h3><span class="section-number">1.3.10. </span>Example<a class="headerlink" href="#id28" title="Permalink to this headline">&#61633;</a></h3>
 <p>Here&#8217;s another example where the principle of successively hunting down a match
 for the highest-degree remaining term is useful.</p>
 <div class="admonition-problem admonition">
@@ -714,8 +738,8 @@ and simplifying, so you can state the result without writing out the method.</p>
 </pre></div>
 </div>
 </section>
-<section id="id28">
-<h3><span class="section-number">1.3.10. </span>Exercises<a class="headerlink" href="#id28" title="Permalink to this headline">&#61633;</a></h3>
+<section id="id29">
+<h3><span class="section-number">1.3.11. </span>Exercises<a class="headerlink" href="#id29" title="Permalink to this headline">&#61633;</a></h3>
 <p>Give proofs by calculation for each of the following problems.</p>
 <ol class="arabic simple">
 <li><p>Let <span class="math notranslate nohighlight">\(x\)</span> and <span class="math notranslate nohighlight">\(y\)</span> be real numbers and suppose that <span class="math notranslate nohighlight">\(x = 3\)</span>
@@ -850,9 +874,9 @@ suppose that <span class="math notranslate nohighlight">\(p + q + r = 0\)</span>
 </section>
 </section>
 <section id="proving-inequalities">
-<span id="id29"></span><h2><span class="section-number">1.4. </span>Proving inequalities<a class="headerlink" href="#proving-inequalities" title="Permalink to this headline">&#61633;</a></h2>
-<section id="id30">
-<span id="id31"></span><h3><span class="section-number">1.4.1. </span>Example<a class="headerlink" href="#id30" title="Permalink to this headline">&#61633;</a></h3>
+<span id="id30"></span><h2><span class="section-number">1.4. </span>Proving inequalities<a class="headerlink" href="#proving-inequalities" title="Permalink to this headline">&#61633;</a></h2>
+<section id="id31">
+<span id="id32"></span><h3><span class="section-number">1.4.1. </span>Example<a class="headerlink" href="#id31" title="Permalink to this headline">&#61633;</a></h3>
 <p>Proofs by calculation are also well-suited to proving inequalities: that is, facts featuring an
 <span class="math notranslate nohighlight">\(&lt;\)</span>, <span class="math notranslate nohighlight">\(\le\)</span>, <span class="math notranslate nohighlight">\(&gt;\)</span> or <span class="math notranslate nohighlight">\(\ge\)</span>.  Consider the following worked example:</p>
 <div class="admonition-problem admonition">
@@ -932,8 +956,8 @@ used the <code class="docutils literal notranslate"><span class="pre">ring</span
 </pre></div>
 </div>
 </section>
-<section id="id32">
-<span id="id33"></span><h3><span class="section-number">1.4.2. </span>Example<a class="headerlink" href="#id32" title="Permalink to this headline">&#61633;</a></h3>
+<section id="id33">
+<span id="id34"></span><h3><span class="section-number">1.4.2. </span>Example<a class="headerlink" href="#id33" title="Permalink to this headline">&#61633;</a></h3>
 <p>Here&#8217;s another worked example of a proof by calculation of an inequality.</p>
 <div class="admonition-problem admonition">
 <p class="admonition-title">Problem</p>
@@ -968,9 +992,9 @@ a <span class="math notranslate nohighlight">\(=\)</span>, and the &#8220;net re
 </pre></div>
 </div>
 </section>
-<section id="id34">
-<h3><span class="section-number">1.4.3. </span>Example<a class="headerlink" href="#id34" title="Permalink to this headline">&#61633;</a></h3>
-<p id="id35">One more similar problem:</p>
+<section id="id35">
+<h3><span class="section-number">1.4.3. </span>Example<a class="headerlink" href="#id35" title="Permalink to this headline">&#61633;</a></h3>
+<p id="id36">One more similar problem:</p>
 <div class="admonition-problem admonition">
 <p class="admonition-title">Problem</p>
 <p>Let <span class="math notranslate nohighlight">\(x\)</span> and <span class="math notranslate nohighlight">\(y\)</span> be real numbers and suppose that
@@ -991,12 +1015,12 @@ a <span class="math notranslate nohighlight">\(=\)</span>, and the &#8220;net re
 </div>
 </section>
 <section id="shorthand">
-<span id="id36"></span><h3><span class="section-number">1.4.4. </span>Example<a class="headerlink" href="#shorthand" title="Permalink to this headline">&#61633;</a></h3>
+<span id="id37"></span><h3><span class="section-number">1.4.4. </span>Example<a class="headerlink" href="#shorthand" title="Permalink to this headline">&#61633;</a></h3>
 <p>In the following problem, note the use of shorthands such as <span class="math notranslate nohighlight">\(0&lt;A\leq 1\)</span>
 and <span class="math notranslate nohighlight">\(x,y\leq B\)</span> to express several related inequalities concisely.
 You can look at the Lean statement which follows to see what these shorthands
 mean more explicitly.</p>
-<div class="admonition-problem admonition" id="id37">
+<div class="admonition-problem admonition" id="id38">
 <p class="admonition-title">Problem</p>
 <p>Let <span class="math notranslate nohighlight">\(u, v, x, y, A\)</span> and <span class="math notranslate nohighlight">\(B\)</span> be real numbers.
 Suppose we know that <span class="math notranslate nohighlight">\(0&lt;A\leq 1, B\geq 1, x,y\leq B, 0\leq u&lt;A\)</span>
@@ -1038,8 +1062,8 @@ determine which of the nine hypotheses is being used at each step.</p>
 </pre></div>
 </div>
 </section>
-<section id="id38">
-<h3><span class="section-number">1.4.5. </span>Example<a class="headerlink" href="#id38" title="Permalink to this headline">&#61633;</a></h3>
+<section id="id39">
+<h3><span class="section-number">1.4.5. </span>Example<a class="headerlink" href="#id39" title="Permalink to this headline">&#61633;</a></h3>
 <p>Here is an example with a small subtlety.</p>
 <div class="admonition-problem admonition">
 <p class="admonition-title">Problem</p>
@@ -1080,8 +1104,8 @@ the incorrect solution in Lean, and check that Lean complains.</p>
 </pre></div>
 </div>
 </section>
-<section id="id39">
-<h3><span class="section-number">1.4.6. </span>Example<a class="headerlink" href="#id39" title="Permalink to this headline">&#61633;</a></h3>
+<section id="id40">
+<h3><span class="section-number">1.4.6. </span>Example<a class="headerlink" href="#id40" title="Permalink to this headline">&#61633;</a></h3>
 <p>Here&#8217;s another problem where it would be easy to go wrong.</p>
 <div class="admonition-problem admonition">
 <p class="admonition-title">Problem</p>
@@ -1125,7 +1149,7 @@ the incorrect solution in Lean, and check that Lean complains.</p>
 </div>
 </section>
 <section id="sq-nonneg">
-<span id="id40"></span><h3><span class="section-number">1.4.7. </span>Example<a class="headerlink" href="#sq-nonneg" title="Permalink to this headline">&#61633;</a></h3>
+<span id="id41"></span><h3><span class="section-number">1.4.7. </span>Example<a class="headerlink" href="#sq-nonneg" title="Permalink to this headline">&#61633;</a></h3>
 <p>The next example features a new trick.</p>
 <div class="admonition-problem admonition">
 <p class="admonition-title">Problem</p>
@@ -1149,11 +1173,11 @@ upper bound must also apply to the smaller number, <span class="math notranslate
 </pre></div>
 </div>
 </section>
-<section id="id41">
-<h3><span class="section-number">1.4.8. </span>Example<a class="headerlink" href="#id41" title="Permalink to this headline">&#61633;</a></h3>
+<section id="id42">
+<h3><span class="section-number">1.4.8. </span>Example<a class="headerlink" href="#id42" title="Permalink to this headline">&#61633;</a></h3>
 <p>Exploiting that squares are nonnegative is a very common method for proving inequalities.  Here&#8217;s another
 example, where it requires some cleverness to come up with just the right square to add: <span class="math notranslate nohighlight">\((x-y)^2\)</span>.</p>
-<div class="admonition-problem admonition" id="id42">
+<div class="admonition-problem admonition" id="id43">
 <p class="admonition-title">Problem</p>
 <p>Let <span class="math notranslate nohighlight">\(x\)</span> and <span class="math notranslate nohighlight">\(y\)</span> be real numbers, and suppose that <span class="math notranslate nohighlight">\(x ^ 2 + y ^ 2 \le 1\)</span>.
 Show that <span class="math notranslate nohighlight">\((x + y) ^ 2 &lt; 3\)</span>.</p>
@@ -1176,10 +1200,10 @@ Show that <span class="math notranslate nohighlight">\((x + y) ^ 2 &lt; 3\)</spa
 </pre></div>
 </div>
 </section>
-<section id="id43">
-<h3><span class="section-number">1.4.9. </span>Example<a class="headerlink" href="#id43" title="Permalink to this headline">&#61633;</a></h3>
+<section id="id44">
+<h3><span class="section-number">1.4.9. </span>Example<a class="headerlink" href="#id44" title="Permalink to this headline">&#61633;</a></h3>
 <p>And the same trick again &#8230;.</p>
-<div class="admonition-problem admonition" id="id44">
+<div class="admonition-problem admonition" id="id45">
 <p class="admonition-title">Problem</p>
 <p>Let <span class="math notranslate nohighlight">\(a\)</span> and <span class="math notranslate nohighlight">\(b\)</span> be nonnegative rational numbers, and suppose that
 <span class="math notranslate nohighlight">\(a+b\leq 8\)</span>.  Show that <span class="math notranslate nohighlight">\(3ab+a \leq 7b+72\)</span>.</p>
@@ -1207,9 +1231,9 @@ Show that <span class="math notranslate nohighlight">\((x + y) ^ 2 &lt; 3\)</spa
 </pre></div>
 </div>
 </section>
-<section id="id45">
-<h3><span class="section-number">1.4.10. </span>Example<a class="headerlink" href="#id45" title="Permalink to this headline">&#61633;</a></h3>
-<p>Finally, here&#8217;s a particularly wild example <a class="footnote-reference brackets" href="#id48" id="id46">2</a> of the technique,  invoking the nonnegativity of three
+<section id="id46">
+<h3><span class="section-number">1.4.10. </span>Example<a class="headerlink" href="#id46" title="Permalink to this headline">&#61633;</a></h3>
+<p>Finally, here&#8217;s a particularly wild example <a class="footnote-reference brackets" href="#id49" id="id47">2</a> of the technique,  invoking the nonnegativity of three
 separate squares: <span class="math notranslate nohighlight">\((a ^ 2 (b ^ 2 - c ^ 2)) ^ 2\)</span>, <span class="math notranslate nohighlight">\((b ^ 4 - c ^ 4) ^ 2\)</span>, and
 <span class="math notranslate nohighlight">\((a ^ 2 b c - b ^ 2 c ^ 2) ^ 2\)</span>.</p>
 <div class="admonition-problem admonition">
@@ -1235,8 +1259,8 @@ separate squares: <span class="math notranslate nohighlight">\((a ^ 2 (b ^ 2 - c
 </pre></div>
 </div>
 </section>
-<section id="id47">
-<h3><span class="section-number">1.4.11. </span>Exercises<a class="headerlink" href="#id47" title="Permalink to this headline">&#61633;</a></h3>
+<section id="id48">
+<h3><span class="section-number">1.4.11. </span>Exercises<a class="headerlink" href="#id48" title="Permalink to this headline">&#61633;</a></h3>
 <ol class="arabic simple">
 <li><p>Let <span class="math notranslate nohighlight">\(x\)</span> and <span class="math notranslate nohighlight">\(y\)</span> be integers and suppose that
 <span class="math notranslate nohighlight">\(x+3 \geq 2y\)</span> and <span class="math notranslate nohighlight">\(1 \le y\)</span>.  Show that <span class="math notranslate nohighlight">\(x \geq -1\)</span>.</p></li>
@@ -1294,7 +1318,7 @@ separate squares: <span class="math notranslate nohighlight">\((a ^ 2 (b ^ 2 - c
 </div>
 <p class="rubric">Footnotes</p>
 <dl class="footnote brackets">
-<dt class="label" id="id48"><span class="brackets"><a class="fn-backref" href="#id46">2</a></span></dt>
+<dt class="label" id="id49"><span class="brackets"><a class="fn-backref" href="#id47">2</a></span></dt>
 <dd><p>Adapted from <a class="reference external" href="https://www.imo-official.org/year_info.aspx?year=2001">IMO 2001</a>, problem 2.</p>
 </dd>
 </dl>

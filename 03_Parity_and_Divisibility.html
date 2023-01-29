@@ -21,7 +21,7 @@
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Index of Lean tactics" href="Index_of_Tactics.html" />
+    <link rel="next" title="4. Proofs with structure, II" href="04_Proofs_with_Structure_II.html" />
     <link rel="prev" title="2. Proofs with structure" href="02_Proofs_with_Structure.html" /> 
 </head>
 
@@ -92,8 +92,16 @@
 <li class="toctree-l3"><a class="reference internal" href="#id35">3.4.5. Exercises</a></li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="#bezout-s-identity">3.5. B&#233;zout&#8217;s identity</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id36">3.5.1. Example</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id37">3.5.2. Example</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id38">3.5.3. Example</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id39">3.5.4. Exercises</a></li>
 </ul>
 </li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="04_Proofs_with_Structure_II.html">4. Proofs with structure, II</a></li>
 </ul>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="Index_of_Tactics.html">Index of Lean tactics</a></li>
@@ -1221,6 +1229,135 @@ Show that <span class="math notranslate nohighlight">\(n^3+7n\equiv 2\mod 3\)</s
 </div>
 </section>
 </section>
+<section id="bezout-s-identity">
+<span id="bezout"></span><h2><span class="section-number">3.5. </span>B&#233;zout&#8217;s identity<a class="headerlink" href="#bezout-s-identity" title="Permalink to this headline">&#61633;</a></h2>
+<section id="id36">
+<h3><span class="section-number">3.5.1. </span>Example<a class="headerlink" href="#id36" title="Permalink to this headline">&#61633;</a></h3>
+<div class="admonition-problem admonition">
+<p class="admonition-title">Problem</p>
+<p>Let <span class="math notranslate nohighlight">\(n\)</span> be an integer and suppose that <span class="math notranslate nohighlight">\(5n\)</span> is a multiple of <span class="math notranslate nohighlight">\(8\)</span>.  Show that
+<span class="math notranslate nohighlight">\(n\)</span> is also a multiple of <span class="math notranslate nohighlight">\(8\)</span>.</p>
+</div>
+<div class="admonition-solution admonition">
+<p class="admonition-title">Solution</p>
+<p>Since <span class="math notranslate nohighlight">\(8\mid 5n\)</span>, there exists an integer <span class="math notranslate nohighlight">\(a\)</span> such that <span class="math notranslate nohighlight">\(5n=8a\)</span>.  Then</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}n &amp;= -3  (5  n) + 16 n \\
+&amp;= -3  (8  a) + 16  n \\
+&amp; = 8 (-3 a + 2  n),\end{split}\]</div>
+<p>so <span class="math notranslate nohighlight">\(8\mid n\)</span>.</p>
+</div>
+<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">{</span><span class="n">n</span> <span class="o">:</span> <span class="n">&#8484;</span><span class="o">}</span> <span class="o">(</span><span class="n">hn</span> <span class="o">:</span> <span class="mi">8</span> <span class="bp">&#8739;</span> <span class="mi">5</span> <span class="bp">*</span> <span class="n">n</span><span class="o">)</span> <span class="o">:</span> <span class="mi">8</span> <span class="bp">&#8739;</span> <span class="n">n</span> <span class="o">:=</span> <span class="kd">by</span>
+  <span class="n">cases&#39;</span> <span class="n">hn</span> <span class="k">with</span> <span class="n">a</span> <span class="n">ha</span>
+  <span class="n">use</span> <span class="bp">-</span><span class="mi">3</span> <span class="bp">*</span> <span class="n">a</span> <span class="bp">+</span> <span class="mi">2</span> <span class="bp">*</span> <span class="n">n</span>
+  <span class="k">calc</span>
+    <span class="n">n</span> <span class="bp">=</span> <span class="bp">-</span><span class="mi">3</span> <span class="bp">*</span> <span class="o">(</span><span class="mi">5</span> <span class="bp">*</span> <span class="n">n</span><span class="o">)</span> <span class="bp">+</span> <span class="mi">16</span> <span class="bp">*</span> <span class="n">n</span> <span class="o">:=</span> <span class="kd">by</span> <span class="n">ring</span>
+    <span class="n">_</span> <span class="bp">=</span> <span class="bp">-</span><span class="mi">3</span> <span class="bp">*</span> <span class="o">(</span><span class="mi">8</span> <span class="bp">*</span> <span class="n">a</span><span class="o">)</span> <span class="bp">+</span> <span class="mi">16</span> <span class="bp">*</span> <span class="n">n</span> <span class="o">:=</span> <span class="kd">by</span> <span class="n">rw</span> <span class="o">[</span><span class="n">ha</span><span class="o">]</span>
+    <span class="n">_</span> <span class="bp">=</span> <span class="mi">8</span> <span class="bp">*</span> <span class="o">(</span><span class="bp">-</span><span class="mi">3</span> <span class="bp">*</span> <span class="n">a</span> <span class="bp">+</span> <span class="mi">2</span> <span class="bp">*</span> <span class="n">n</span><span class="o">)</span> <span class="o">:=</span> <span class="kd">by</span> <span class="n">ring</span>
+</pre></div>
+</div>
+<p>Such a problem will typically have many possible solutions.  Here is another solution.</p>
+<div class="admonition-solution admonition">
+<p class="admonition-title">Solution</p>
+<p>Since <span class="math notranslate nohighlight">\(8\mid 5n\)</span>, there exists an integer <span class="math notranslate nohighlight">\(a\)</span> such that <span class="math notranslate nohighlight">\(5n=8a\)</span>.  Then</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}n &amp;= 5 (5  n) - 24 n \\
+&amp;= 5  (8  a) -24  n \\
+&amp; = 8 (5 a - 3  n),\end{split}\]</div>
+<p>so <span class="math notranslate nohighlight">\(8\mid n\)</span>.</p>
+</div>
+<p>Try typing the variant solution up in Lean.</p>
+<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">{</span><span class="n">n</span> <span class="o">:</span> <span class="n">&#8484;</span><span class="o">}</span> <span class="o">(</span><span class="n">hn</span> <span class="o">:</span> <span class="mi">8</span> <span class="bp">&#8739;</span> <span class="mi">5</span> <span class="bp">*</span> <span class="n">n</span><span class="o">)</span> <span class="o">:</span> <span class="mi">8</span> <span class="bp">&#8739;</span> <span class="n">n</span> <span class="o">:=</span> <span class="kd">by</span>
+  <span class="gr">sorry</span>
+</pre></div>
+</div>
+</section>
+<section id="id37">
+<h3><span class="section-number">3.5.2. </span>Example<a class="headerlink" href="#id37" title="Permalink to this headline">&#61633;</a></h3>
+<div class="admonition-problem admonition">
+<p class="admonition-title">Problem</p>
+<p>Show that if for some integer <span class="math notranslate nohighlight">\(n\)</span> we have that <span class="math notranslate nohighlight">\(5\)</span> divides <span class="math notranslate nohighlight">\(3n\)</span>, then <span class="math notranslate nohighlight">\(n\)</span>
+also divides <span class="math notranslate nohighlight">\(n\)</span>.</p>
+</div>
+<div class="admonition-solution admonition">
+<p class="admonition-title">Solution</p>
+<p>Since <span class="math notranslate nohighlight">\(5\mid 3n\)</span>, there exists an integer <span class="math notranslate nohighlight">\(x\)</span> such that <span class="math notranslate nohighlight">\(3n=5x\)</span>.  Then</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}n &amp;= 2  (3  n) - 5 n \\
+&amp;= 2  (5  x) - 5  n \\
+&amp; = 5 (2x -  n),\end{split}\]</div>
+<p>so <span class="math notranslate nohighlight">\(5\mid n\)</span>.</p>
+</div>
+<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">{</span><span class="n">n</span> <span class="o">:</span> <span class="n">&#8484;</span><span class="o">}</span> <span class="o">(</span><span class="n">h1</span> <span class="o">:</span> <span class="mi">5</span> <span class="bp">&#8739;</span> <span class="mi">3</span> <span class="bp">*</span> <span class="n">n</span><span class="o">)</span> <span class="o">:</span> <span class="mi">5</span> <span class="bp">&#8739;</span> <span class="n">n</span> <span class="o">:=</span> <span class="kd">by</span>
+  <span class="gr">sorry</span>
+</pre></div>
+</div>
+</section>
+<section id="id38">
+<h3><span class="section-number">3.5.3. </span>Example<a class="headerlink" href="#id38" title="Permalink to this headline">&#61633;</a></h3>
+<div class="admonition-problem admonition">
+<p class="admonition-title">Problem</p>
+<p>Let <span class="math notranslate nohighlight">\(m\)</span> be an integer which is divisible by 5 and by 8.  Show that it is also divisible by
+40.</p>
+</div>
+<div class="admonition-solution admonition">
+<p class="admonition-title">Solution</p>
+<p>Since <span class="math notranslate nohighlight">\(5\mid m\)</span>, there exists an integer <span class="math notranslate nohighlight">\(a\)</span> such that <span class="math notranslate nohighlight">\(m=5a\)</span>.
+Since <span class="math notranslate nohighlight">\(8\mid m\)</span>, there exists an integer <span class="math notranslate nohighlight">\(b\)</span> such that <span class="math notranslate nohighlight">\(m=8b\)</span>.  Then</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}m &amp;= -15 m + 16 m\\
+&amp;= -15 (8 a) + 16  m \\
+&amp;= -15 (8  a) + 16  (5  b) \\
+&amp; = 40 (-3  a + 2  b),\end{split}\]</div>
+<p>so <span class="math notranslate nohighlight">\(40\mid m\)</span>.</p>
+</div>
+<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">{</span><span class="n">m</span> <span class="o">:</span> <span class="n">&#8484;</span><span class="o">}</span> <span class="o">(</span><span class="n">h2</span> <span class="o">:</span> <span class="mi">5</span> <span class="bp">&#8739;</span> <span class="n">m</span><span class="o">)</span> <span class="o">(</span><span class="n">h1</span> <span class="o">:</span> <span class="mi">8</span> <span class="bp">&#8739;</span> <span class="n">m</span><span class="o">)</span> <span class="o">:</span> <span class="mi">40</span> <span class="bp">&#8739;</span> <span class="n">m</span> <span class="o">:=</span> <span class="kd">by</span>
+  <span class="n">cases&#39;</span> <span class="n">h1</span> <span class="k">with</span> <span class="n">a</span> <span class="n">ha</span>
+  <span class="n">cases&#39;</span> <span class="n">h2</span> <span class="k">with</span> <span class="n">b</span> <span class="n">hb</span>
+  <span class="n">use</span> <span class="bp">-</span><span class="mi">3</span> <span class="bp">*</span> <span class="n">a</span> <span class="bp">+</span> <span class="mi">2</span> <span class="bp">*</span> <span class="n">b</span>
+  <span class="k">calc</span>
+    <span class="n">m</span> <span class="bp">=</span> <span class="bp">-</span><span class="mi">15</span> <span class="bp">*</span> <span class="n">m</span> <span class="bp">+</span> <span class="mi">16</span> <span class="bp">*</span> <span class="n">m</span> <span class="o">:=</span> <span class="kd">by</span> <span class="n">ring</span>
+    <span class="n">_</span> <span class="bp">=</span> <span class="bp">-</span><span class="mi">15</span> <span class="bp">*</span> <span class="o">(</span><span class="mi">8</span> <span class="bp">*</span> <span class="n">a</span><span class="o">)</span> <span class="bp">+</span> <span class="mi">16</span> <span class="bp">*</span> <span class="n">m</span> <span class="o">:=</span> <span class="kd">by</span> <span class="n">rw</span> <span class="o">[</span><span class="n">ha</span><span class="o">]</span>
+    <span class="n">_</span> <span class="bp">=</span> <span class="bp">-</span><span class="mi">15</span> <span class="bp">*</span> <span class="o">(</span><span class="mi">8</span> <span class="bp">*</span> <span class="n">a</span><span class="o">)</span> <span class="bp">+</span> <span class="mi">16</span> <span class="bp">*</span> <span class="o">(</span><span class="mi">5</span> <span class="bp">*</span> <span class="n">b</span><span class="o">)</span> <span class="o">:=</span> <span class="kd">by</span> <span class="n">rw</span> <span class="o">[</span><span class="n">hb</span><span class="o">]</span>
+    <span class="n">_</span> <span class="bp">=</span> <span class="mi">40</span> <span class="bp">*</span> <span class="o">(</span><span class="bp">-</span><span class="mi">3</span> <span class="bp">*</span> <span class="n">a</span> <span class="bp">+</span> <span class="mi">2</span> <span class="bp">*</span> <span class="n">b</span><span class="o">)</span> <span class="o">:=</span> <span class="kd">by</span> <span class="n">ring</span>
+</pre></div>
+</div>
+</section>
+<section id="id39">
+<h3><span class="section-number">3.5.4. </span>Exercises<a class="headerlink" href="#id39" title="Permalink to this headline">&#61633;</a></h3>
+<ol class="arabic simple">
+<li><p>Show that if 6 divides <span class="math notranslate nohighlight">\(11n\)</span>, then it divides <span class="math notranslate nohighlight">\(n\)</span>.</p></li>
+</ol>
+<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">{</span><span class="n">n</span> <span class="o">:</span> <span class="n">&#8484;</span><span class="o">}</span> <span class="o">(</span><span class="n">hn</span> <span class="o">:</span> <span class="mi">6</span> <span class="bp">&#8739;</span> <span class="mi">11</span> <span class="bp">*</span> <span class="n">n</span><span class="o">)</span> <span class="o">:</span> <span class="mi">6</span> <span class="bp">&#8739;</span> <span class="n">n</span> <span class="o">:=</span> <span class="kd">by</span>
+  <span class="gr">sorry</span>
+</pre></div>
+</div>
+<ol class="arabic simple" start="2">
+<li><p>Let <span class="math notranslate nohighlight">\(a\)</span> be an integer and suppose that <span class="math notranslate nohighlight">\(5a\)</span> is a multiple of <span class="math notranslate nohighlight">\(7\)</span>.  Show that
+<span class="math notranslate nohighlight">\(a\)</span> is also a multiple of <span class="math notranslate nohighlight">\(7\)</span>.</p></li>
+</ol>
+<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">{</span><span class="n">a</span> <span class="o">:</span> <span class="n">&#8484;</span><span class="o">}</span> <span class="o">(</span><span class="n">ha</span> <span class="o">:</span> <span class="mi">7</span> <span class="bp">&#8739;</span> <span class="mi">5</span> <span class="bp">*</span> <span class="n">a</span><span class="o">)</span> <span class="o">:</span> <span class="mi">7</span> <span class="bp">&#8739;</span> <span class="n">a</span> <span class="o">:=</span> <span class="kd">by</span>
+  <span class="gr">sorry</span>
+</pre></div>
+</div>
+<ol class="arabic simple" start="3">
+<li><p>Suppose that 7 and 9 are both factors of some integer <span class="math notranslate nohighlight">\(n\)</span>.  Show that 63 is also a factor of
+<span class="math notranslate nohighlight">\(n\)</span>.</p></li>
+</ol>
+<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">{</span><span class="n">n</span> <span class="o">:</span> <span class="n">&#8484;</span><span class="o">}</span> <span class="o">(</span><span class="n">h1</span> <span class="o">:</span> <span class="mi">7</span> <span class="bp">&#8739;</span> <span class="n">n</span><span class="o">)</span> <span class="o">(</span><span class="n">h2</span> <span class="o">:</span> <span class="mi">9</span> <span class="bp">&#8739;</span> <span class="n">n</span><span class="o">)</span> <span class="o">:</span> <span class="mi">63</span> <span class="bp">&#8739;</span> <span class="n">n</span> <span class="o">:=</span> <span class="kd">by</span>
+  <span class="gr">sorry</span>
+</pre></div>
+</div>
+<ol class="arabic simple" start="4">
+<li><p>Let <span class="math notranslate nohighlight">\(n\)</span> be an integer which is divisible by 5 and by 13.  Show that it is also divisible by
+65.</p></li>
+</ol>
+<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">{</span><span class="n">n</span> <span class="o">:</span> <span class="n">&#8484;</span><span class="o">}</span> <span class="o">(</span><span class="n">h1</span> <span class="o">:</span> <span class="mi">5</span> <span class="bp">&#8739;</span> <span class="n">n</span><span class="o">)</span> <span class="o">(</span><span class="n">h2</span> <span class="o">:</span> <span class="mi">13</span> <span class="bp">&#8739;</span> <span class="n">n</span><span class="o">)</span> <span class="o">:</span> <span class="mi">65</span> <span class="bp">&#8739;</span> <span class="n">n</span> <span class="o">:=</span> <span class="kd">by</span>
+  <span class="gr">sorry</span>
+</pre></div>
+</div>
+</section>
+</section>
 </section>
 
 
@@ -1228,7 +1365,7 @@ Show that <span class="math notranslate nohighlight">\(n^3+7n\equiv 2\mod 3\)</s
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
         <a href="02_Proofs_with_Structure.html" class="btn btn-neutral float-left" title="2. Proofs with structure" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="Index_of_Tactics.html" class="btn btn-neutral float-right" title="Index of Lean tactics" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="04_Proofs_with_Structure_II.html" class="btn btn-neutral float-right" title="4. Proofs with structure, II" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>

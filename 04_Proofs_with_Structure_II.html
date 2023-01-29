@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>4. Proofs with structure, II &mdash; The mechanics of proof  documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/custom.css" type="text/css" />
+    <link rel="shortcut icon" href="_static/favicon.ico"/>
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Index of Lean tactics" href="Index_of_Tactics.html" />
+    <link rel="prev" title="3. Parity and divisibility" href="03_Parity_and_Divisibility.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="index.html" class="icon icon-home"> The mechanics of proof
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="01_Proofs_by_Calculation.html">1. Proofs by calculation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="02_Proofs_with_Structure.html">2. Proofs with structure</a></li>
+<li class="toctree-l1"><a class="reference internal" href="03_Parity_and_Divisibility.html">3. Parity and divisibility</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">4. Proofs with structure, II</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#for-all-and-implication">4.1. &#8220;For all&#8221; and implication</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#example">4.1.1. Example</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id2">4.1.2. Example</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id3">4.1.3. Example</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id4">4.1.4. Example</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id6">4.1.5. Example</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id7">4.1.6. Example</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id8">4.1.7. Example</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#prime-def">4.1.8. Example</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#exercises">4.1.9. Exercises</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="Index_of_Tactics.html">Index of Lean tactics</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="Homework.html">Homework</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">The mechanics of proof</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+      <li><span class="section-number">4. </span>Proofs with structure, II</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/04_Proofs_with_Structure_II.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="proofs-with-structure-ii">
+<span id="id1"></span><h1><span class="section-number">4. </span>Proofs with structure, II<a class="headerlink" href="#proofs-with-structure-ii" title="Permalink to this headline">&#61633;</a></h1>
+<section id="for-all-and-implication">
+<span id="forall-implies"></span><h2><span class="section-number">4.1. </span>&#8220;For all&#8221; and implication<a class="headerlink" href="#for-all-and-implication" title="Permalink to this headline">&#61633;</a></h2>
+<section id="example">
+<h3><span class="section-number">4.1.1. </span>Example<a class="headerlink" href="#example" title="Permalink to this headline">&#61633;</a></h3>
+<div class="admonition-problem admonition">
+<p class="admonition-title">Problem</p>
+<p>Let <span class="math notranslate nohighlight">\(a\)</span> be a real number and suppose that for all real numbers <span class="math notranslate nohighlight">\(x\)</span>,
+it is true that <span class="math notranslate nohighlight">\(a\le x^2-2x\)</span>.  Show that <span class="math notranslate nohighlight">\(a\le -1\)</span>.</p>
+</div>
+<figure class="align-center" id="id11">
+<a class="reference internal image-reference" href="_images/04_logic_01_parabola.png"><img alt="_images/04_logic_01_parabola.png" src="_images/04_logic_01_parabola.png" style="width: 320.0px; height: 320.0px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 4.1 </span><span class="caption-text">The parabola <span class="math notranslate nohighlight">\(y= x^2-2x\)</span>.</span><a class="headerlink" href="#id11" title="Permalink to this image">&#61633;</a></p>
+</figcaption>
+</figure>
+<p>Specifying that a formula or predicate is meant to be true for all values of a variable <span class="math notranslate nohighlight">\(x\)</span>,
+like we did with <span class="math notranslate nohighlight">\(a\le x^2-2x\)</span> in the above problem, is called <em>universally quantifying</em> over
+the variable <span class="math notranslate nohighlight">\(x\)</span>.  It is expressed symbolically as <code class="docutils literal notranslate"><span class="pre">&#8704;</span></code>.</p>
+<p>To use a hypothesis with a universal quantifier, you may want to &#8220;specialize&#8221; its use to
+one particular variable. For example, in the solution below, we use the special case of the
+hypothesis in which <span class="math notranslate nohighlight">\(x\)</span> is set to 1.</p>
+<div class="admonition-solution admonition">
+<p class="admonition-title">Solution</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}a &amp;\le  1 ^ 2 - 2 \cdot 1 \\
+&amp;= -1.\end{split}\]</div>
+</div>
+<p>In Lean, perform this specialization using the <code class="docutils literal notranslate"><span class="pre">apply</span></code> tactic.</p>
+<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">{</span><span class="n">a</span> <span class="o">:</span> <span class="n">&#8477;</span><span class="o">}</span> <span class="o">(</span><span class="n">h</span> <span class="o">:</span> <span class="bp">&#8704;</span> <span class="n">x</span><span class="o">,</span> <span class="n">a</span> <span class="bp">&#8804;</span> <span class="n">x</span> <span class="bp">^</span> <span class="mi">2</span> <span class="bp">-</span> <span class="mi">2</span> <span class="bp">*</span> <span class="n">x</span><span class="o">)</span> <span class="o">:</span> <span class="n">a</span> <span class="bp">&#8804;</span> <span class="bp">-</span><span class="mi">1</span> <span class="o">:=</span>
+  <span class="k">calc</span>
+    <span class="n">a</span> <span class="bp">&#8804;</span> <span class="mi">1</span> <span class="bp">^</span> <span class="mi">2</span> <span class="bp">-</span> <span class="mi">2</span> <span class="bp">*</span> <span class="mi">1</span> <span class="o">:=</span> <span class="kd">by</span> <span class="n">apply</span> <span class="n">h</span>
+    <span class="n">_</span> <span class="bp">=</span> <span class="bp">-</span><span class="mi">1</span> <span class="o">:=</span> <span class="kd">by</span> <span class="n">numbers</span>
+</pre></div>
+</div>
+</section>
+<section id="id2">
+<h3><span class="section-number">4.1.2. </span>Example<a class="headerlink" href="#id2" title="Permalink to this headline">&#61633;</a></h3>
+<div class="admonition-problem admonition">
+<p class="admonition-title">Problem</p>
+<p>Let <span class="math notranslate nohighlight">\(n\)</span> be a natural number which is a factor of every natural number <span class="math notranslate nohighlight">\(m\)</span>.  Show that
+<span class="math notranslate nohighlight">\(n=1\)</span>.</p>
+</div>
+<div class="admonition-solution admonition">
+<p class="admonition-title">Solution</p>
+<p>Since <span class="math notranslate nohighlight">\(n\)</span> is a factor of every natural number, it is a factor of <span class="math notranslate nohighlight">\(1\)</span>.  Also notice
+that <span class="math notranslate nohighlight">\(1\)</span> is positive. So we can invoke the size bounds on factors discussed in
+<a class="reference internal" href="03_Parity_and_Divisibility.html#dvd-bd-1"><span class="std std-numref">Example 3.2.7</span></a> and <a class="reference internal" href="03_Parity_and_Divisibility.html#dvd-bd-2"><span class="std std-numref">Example 3.2.8</span></a>: <span class="math notranslate nohighlight">\(n\le 1\)</span> and
+<span class="math notranslate nohighlight">\(1 \le n\)</span>.  Therefore <span class="math notranslate nohighlight">\(n=1\)</span>.</p>
+</div>
+<p>For the Lean proof, remember that the bound from <a class="reference internal" href="03_Parity_and_Divisibility.html#dvd-bd-1"><span class="std std-numref">Example 3.2.7</span></a> is in Lean as
+<code class="docutils literal notranslate"><span class="pre">nat.le_of_dvd</span></code>, and the bound from <a class="reference internal" href="03_Parity_and_Divisibility.html#dvd-bd-2"><span class="std std-numref">Example 3.2.8</span></a> is in Lean as
+<code class="docutils literal notranslate"><span class="pre">nat.pos_of_dvd_of_pos</span></code>.</p>
+<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">{</span><span class="n">n</span> <span class="o">:</span> <span class="n">&#8469;</span><span class="o">}</span> <span class="o">(</span><span class="n">hn</span> <span class="o">:</span> <span class="bp">&#8704;</span> <span class="n">m</span><span class="o">,</span> <span class="n">n</span> <span class="bp">&#8739;</span> <span class="n">m</span><span class="o">)</span> <span class="o">:</span> <span class="n">n</span> <span class="bp">=</span> <span class="mi">1</span> <span class="o">:=</span> <span class="kd">by</span>
+  <span class="gr">sorry</span>
+</pre></div>
+</div>
+</section>
+<section id="id3">
+<h3><span class="section-number">4.1.3. </span>Example<a class="headerlink" href="#id3" title="Permalink to this headline">&#61633;</a></h3>
+<div class="admonition-problem admonition">
+<p class="admonition-title">Problem</p>
+<p>Let <span class="math notranslate nohighlight">\(a\)</span> and <span class="math notranslate nohighlight">\(b\)</span> be real numbers and suppose that every real number <span class="math notranslate nohighlight">\(x\)</span> is
+either at least <span class="math notranslate nohighlight">\(a\)</span> or at most <span class="math notranslate nohighlight">\(b\)</span>. Show that <span class="math notranslate nohighlight">\(a \le b\)</span>.</p>
+</div>
+<div class="admonition-solution admonition">
+<p class="admonition-title">Solution</p>
+<p>Consider the real number <span class="math notranslate nohighlight">\(\frac {a+b}{2}\)</span>.  It is either at least <span class="math notranslate nohighlight">\(a\)</span> or at most
+<span class="math notranslate nohighlight">\(b\)</span>.</p>
+<p><strong>Case 1:</strong> <span class="math notranslate nohighlight">\(\frac {a+b}{2} \geq a\)</span>. Then</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}b &amp;= 2 \left(\frac{a + b} {2}\right) - a\\
+&amp;\geq 2 \cdot a - a \\
+&amp; = a.\end{split}\]</div>
+<p><strong>Case 2:</strong> <span class="math notranslate nohighlight">\(\frac {a+b}{2} \leq b\)</span>.  Then</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}a &amp;= 2 \left(\frac{a + b} {2}\right) - b\\
+&amp;\leq 2 \cdot b - b \\
+&amp; = b.\end{split}\]</div>
+</div>
+<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">{</span><span class="n">a</span> <span class="n">b</span> <span class="o">:</span> <span class="n">&#8477;</span><span class="o">}</span> <span class="o">(</span><span class="n">h</span> <span class="o">:</span> <span class="bp">&#8704;</span> <span class="n">x</span><span class="o">,</span> <span class="n">x</span> <span class="bp">&#8805;</span> <span class="n">a</span> <span class="bp">&#8744;</span> <span class="n">x</span> <span class="bp">&#8804;</span> <span class="n">b</span><span class="o">)</span> <span class="o">:</span> <span class="n">a</span> <span class="bp">&#8804;</span> <span class="n">b</span> <span class="o">:=</span> <span class="kd">by</span>
+  <span class="gr">sorry</span>
+</pre></div>
+</div>
+</section>
+<section id="id4">
+<h3><span class="section-number">4.1.4. </span>Example<a class="headerlink" href="#id4" title="Permalink to this headline">&#61633;</a></h3>
+<div class="admonition-problem admonition">
+<p class="admonition-title">Problem</p>
+<p>Let <span class="math notranslate nohighlight">\(a\)</span> a real number whose square is at most 2, and which is greater than or equal to
+any real number whose square is at most 2. <a class="footnote-reference brackets" href="#id10" id="id5">1</a> Let <span class="math notranslate nohighlight">\(b\)</span> be another real number with the same
+two properties.  Prove that <span class="math notranslate nohighlight">\(a=b\)</span>.</p>
+</div>
+<p>Consider the hypothesis in this problem that</p>
+<blockquote>
+<div><p><span class="math notranslate nohighlight">\(a\)</span> is greater than or equal to any real number whose square is at most 2.</p>
+</div></blockquote>
+<p>Implicitly, there is a a universal quantification (&#8220;any real number&#8221;), and also an <em>implication</em>,
+so a more pedantic version of this hypothesis would be</p>
+<blockquote>
+<div><p>for all real numbers <span class="math notranslate nohighlight">\(y\)</span>, if <span class="math notranslate nohighlight">\(y^2\le 2\)</span> then <span class="math notranslate nohighlight">\(y\le a\)</span>.</p>
+</div></blockquote>
+<p>We can specialize such a hypothesis to any particular choice of <span class="math notranslate nohighlight">\(y\)</span> for which the
+<em>antecedent</em> <span class="math notranslate nohighlight">\(y^2\le 2\)</span> is true.</p>
+<div class="admonition-solution admonition">
+<p class="admonition-title">Solution</p>
+<p>Since <span class="math notranslate nohighlight">\(a^2\le 2\)</span>, and <span class="math notranslate nohighlight">\(b\)</span> is greater than or equal to any real number whose square is
+at most 2, <span class="math notranslate nohighlight">\(a \le b\)</span>.</p>
+<p>Since <span class="math notranslate nohighlight">\(b^2\le 2\)</span>, and <span class="math notranslate nohighlight">\(a\)</span> is greater than or equal to any real number whose square is
+at most 2, <span class="math notranslate nohighlight">\(b \le a\)</span>.</p>
+<p>Therefore <span class="math notranslate nohighlight">\(a=b\)</span>.</p>
+</div>
+<p>In Lean, an implication is expressed using the symbol <code class="docutils literal notranslate"><span class="pre">&#8594;</span></code>.  The tactic <code class="docutils literal notranslate"><span class="pre">apply</span></code> works for
+hypotheses featuring implications.  In the proof below, the goal state before <code class="docutils literal notranslate"><span class="pre">apply</span> <span class="pre">hb2</span></code> is</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>a b: &#8477;
+ha1 : a ^ 2 &#8804; 2
+hb1 : b ^ 2 &#8804; 2
+ha2 : &#8704; (y : &#8477;), y ^ 2 &#8804; 2 &#8594; y &#8804; a
+hb2 : &#8704; (y : &#8477;), y ^ 2 &#8804; 2 &#8594; y &#8804; b
+&#8866; a &#8804; b
+</pre></div>
+</div>
+<p>and after the goal state it is</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>a b : &#8477;
+ha1 : a ^ 2 &#8804; 2
+hb1 : b ^ 2 &#8804; 2
+ha2 : &#8704; (y : &#8477;), y ^ 2 &#8804; 2 &#8594; y &#8804; a
+hb2 : &#8704; (y : &#8477;), y ^ 2 &#8804; 2 &#8594; y &#8804; b
+&#8866; a ^ 2 &#8804; 2
+</pre></div>
+</div>
+<p>The hypothesis <code class="docutils literal notranslate"><span class="pre">&#8704;</span> <span class="pre">(y</span> <span class="pre">:</span> <span class="pre">&#8477;),</span> <span class="pre">y</span> <span class="pre">^</span> <span class="pre">2</span> <span class="pre">&#8804;</span> <span class="pre">2</span> <span class="pre">&#8594;</span> <span class="pre">y</span> <span class="pre">&#8804;</span> <span class="pre">b</span></code> has been applied to the goal <code class="docutils literal notranslate"><span class="pre">a</span> <span class="pre">&#8804;</span> <span class="pre">b</span></code>, leaving
+the hopefully-easier goal <code class="docutils literal notranslate"><span class="pre">a</span> <span class="pre">^</span> <span class="pre">2</span> <span class="pre">&#8804;</span> <span class="pre">2</span></code>: proving the antecedent of the implication.</p>
+<p>Fill in the second part of the proof.</p>
+<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">{</span><span class="n">a</span> <span class="n">b</span> <span class="o">:</span> <span class="n">&#8477;</span><span class="o">}</span> <span class="o">(</span><span class="n">ha1</span> <span class="o">:</span> <span class="n">a</span> <span class="bp">^</span> <span class="mi">2</span> <span class="bp">&#8804;</span> <span class="mi">2</span><span class="o">)</span> <span class="o">(</span><span class="n">hb1</span> <span class="o">:</span> <span class="n">b</span> <span class="bp">^</span> <span class="mi">2</span> <span class="bp">&#8804;</span> <span class="mi">2</span><span class="o">)</span> <span class="o">(</span><span class="n">ha2</span> <span class="o">:</span> <span class="bp">&#8704;</span> <span class="n">y</span><span class="o">,</span> <span class="n">y</span> <span class="bp">^</span> <span class="mi">2</span> <span class="bp">&#8804;</span> <span class="mi">2</span> <span class="bp">&#8594;</span> <span class="n">y</span> <span class="bp">&#8804;</span> <span class="n">a</span><span class="o">)</span>
+    <span class="o">(</span><span class="n">hb2</span> <span class="o">:</span> <span class="bp">&#8704;</span> <span class="n">y</span><span class="o">,</span> <span class="n">y</span> <span class="bp">^</span> <span class="mi">2</span> <span class="bp">&#8804;</span> <span class="mi">2</span> <span class="bp">&#8594;</span> <span class="n">y</span> <span class="bp">&#8804;</span> <span class="n">b</span><span class="o">)</span> <span class="o">:</span>
+    <span class="n">a</span> <span class="bp">=</span> <span class="n">b</span> <span class="o">:=</span> <span class="kd">by</span>
+  <span class="n">apply</span> <span class="n">le_antisymm</span>
+  <span class="bp">&#183;</span> <span class="n">apply</span> <span class="n">hb2</span>
+    <span class="n">apply</span> <span class="n">ha1</span>
+  <span class="bp">&#183;</span> <span class="gr">sorry</span>
+</pre></div>
+</div>
+</section>
+<section id="id6">
+<h3><span class="section-number">4.1.5. </span>Example<a class="headerlink" href="#id6" title="Permalink to this headline">&#61633;</a></h3>
+<div class="admonition-problem admonition">
+<p class="admonition-title">Problem</p>
+<p>Show that there exists a real number <span class="math notranslate nohighlight">\(b\)</span> such that for every real number <span class="math notranslate nohighlight">\(x\)</span>,
+it is true that <span class="math notranslate nohighlight">\(b \le x^2-2x\)</span>.</p>
+</div>
+<p>Notice that in this problem a universally quantified statement appears in the goal:
+&#8220;for every real number <span class="math notranslate nohighlight">\(x\)</span>, &#8230;.&#8221;</p>
+<div class="admonition-solution admonition">
+<p class="admonition-title">Solution</p>
+<p>We show that -1 has this property.  Indeed, let <span class="math notranslate nohighlight">\(x\)</span> be a real number; then</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}-1 &amp;\le -1 + (x-1)^2 \\
+&amp;=x^2-2x.\end{split}\]</div>
+</div>
+<p>We solve the problem by formally introducing a particular, arbitrary real number <span class="math notranslate nohighlight">\(x\)</span> (&#8220;let
+<span class="math notranslate nohighlight">\(x\)</span> be a real number&#8221;) and proving the desired statement for that <span class="math notranslate nohighlight">\(x\)</span>.  In Lean this
+argument is performed by the tactic <code class="docutils literal notranslate"><span class="pre">intros</span></code>.  Before the use of this tactic, the goal state is</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>&#8866; &#8704; (x : &#8477;), -1 &#8804; x ^ 2 - 2 * x
+</pre></div>
+</div>
+<p>After the use of this tactic, the goal state is</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>x : &#8477;
+&#8866; -1 &#8804; x ^ 2 - 2 * x
+</pre></div>
+</div>
+<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">:</span> <span class="bp">&#8707;</span> <span class="n">b</span> <span class="o">:</span> <span class="n">&#8477;</span><span class="o">,</span> <span class="bp">&#8704;</span> <span class="n">x</span> <span class="o">:</span> <span class="n">&#8477;</span><span class="o">,</span> <span class="n">b</span> <span class="bp">&#8804;</span> <span class="n">x</span> <span class="bp">^</span> <span class="mi">2</span> <span class="bp">-</span> <span class="mi">2</span> <span class="bp">*</span> <span class="n">x</span> <span class="o">:=</span> <span class="kd">by</span>
+  <span class="n">use</span> <span class="bp">-</span><span class="mi">1</span>
+  <span class="n">intro</span> <span class="n">x</span>
+  <span class="k">calc</span>
+    <span class="bp">-</span><span class="mi">1</span> <span class="bp">&#8804;</span> <span class="bp">-</span><span class="mi">1</span> <span class="bp">+</span> <span class="o">(</span><span class="n">x</span> <span class="bp">-</span> <span class="mi">1</span><span class="o">)</span> <span class="bp">^</span> <span class="mi">2</span> <span class="o">:=</span> <span class="kd">by</span> <span class="n">extra</span>
+    <span class="n">_</span> <span class="bp">=</span> <span class="n">x</span> <span class="bp">^</span> <span class="mi">2</span> <span class="bp">-</span> <span class="mi">2</span> <span class="bp">*</span> <span class="n">x</span> <span class="o">:=</span> <span class="kd">by</span> <span class="n">ring</span>
+</pre></div>
+</div>
+</section>
+<section id="id7">
+<h3><span class="section-number">4.1.6. </span>Example<a class="headerlink" href="#id7" title="Permalink to this headline">&#61633;</a></h3>
+<div class="admonition-problem admonition">
+<p class="admonition-title">Problem</p>
+<p>Show that there exists a real number <span class="math notranslate nohighlight">\(c\)</span> such that for all real numbers <span class="math notranslate nohighlight">\(x\)</span> and
+<span class="math notranslate nohighlight">\(y\)</span>, if <span class="math notranslate nohighlight">\(x^2+y^2\le 3\)</span>, then <span class="math notranslate nohighlight">\(x+y\geq c\)</span>.</p>
+</div>
+<p>Here the goal contains universal quantification over <span class="math notranslate nohighlight">\(x\)</span> and <span class="math notranslate nohighlight">\(y\)</span>, as well as an
+implication: &#8220;if <span class="math notranslate nohighlight">\(x^2+y^2\le 3\)</span>, then &#8230;.&#8221;  In solving the problem, we formally introduce
+the variables <span class="math notranslate nohighlight">\(x\)</span> and <span class="math notranslate nohighlight">\(y\)</span> and also the hypothesis <span class="math notranslate nohighlight">\(x^2+y^2\le 4\)</span> which they are
+assumed to satisfy:</p>
+<div class="admonition-solution admonition">
+<p class="admonition-title">Solution</p>
+<p>We show that -3 has this property.  Indeed, let <span class="math notranslate nohighlight">\(x\)</span> and <span class="math notranslate nohighlight">\(y\)</span> be real numbers and
+suppose that <span class="math notranslate nohighlight">\(x^2+y^2\le 4\)</span>.  Then</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}(x + y) ^ 2 &amp;\le (x + y) ^ 2 + (x - y) ^ 2 \\
+&amp;= 2 (x ^ 2 + y ^ 2) \\
+&amp;\le 2 \cdot 4 \\
+&amp;\le 3 ^ 2.\end{split}\]</div>
+<p>So <span class="math notranslate nohighlight">\(x + y \geq -3\)</span> (and also <span class="math notranslate nohighlight">\(x + y \leq 3\)</span>).</p>
+</div>
+<p>In Lean, the introduction of both the variables <span class="math notranslate nohighlight">\(x\)</span> and <span class="math notranslate nohighlight">\(y\)</span> and the hypothesis
+<span class="math notranslate nohighlight">\(x^2+y^2\le 4\)</span> is done using the <code class="docutils literal notranslate"><span class="pre">intros</span></code> tactic.  To deduce from
+<span class="math notranslate nohighlight">\((x + y) ^ 2 \le 3 ^ 2\)</span> that <span class="math notranslate nohighlight">\(-3 &#8804; x + y\)</span> and <span class="math notranslate nohighlight">\(x + y &#8804; 3\)</span>, you will need to use
+the lemma</p>
+<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">lemma</span> <span class="n">abs_le_of_sq_le_sq&#39;</span> <span class="o">(</span><span class="n">h</span> <span class="o">:</span> <span class="n">x</span> <span class="bp">^</span> <span class="mi">2</span> <span class="bp">&#8804;</span> <span class="n">y</span> <span class="bp">^</span> <span class="mi">2</span><span class="o">)</span> <span class="o">(</span><span class="n">hy</span> <span class="o">:</span> <span class="mi">0</span> <span class="bp">&#8804;</span> <span class="n">y</span><span class="o">)</span> <span class="o">:</span> <span class="bp">-</span><span class="n">y</span> <span class="bp">&#8804;</span> <span class="n">x</span> <span class="bp">&#8743;</span> <span class="n">x</span> <span class="bp">&#8804;</span> <span class="n">y</span> <span class="o">:=</span>
+</pre></div>
+</div>
+<p>which we previously saw in <a class="reference internal" href="02_Proofs_with_Structure.html#abs-le-of-sq-le-sq"><span class="std std-numref">Example 2.4.2</span></a>.</p>
+<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">:</span> <span class="bp">&#8707;</span> <span class="n">c</span> <span class="o">:</span> <span class="n">&#8477;</span><span class="o">,</span> <span class="bp">&#8704;</span> <span class="n">x</span> <span class="n">y</span><span class="o">,</span> <span class="n">x</span> <span class="bp">^</span> <span class="mi">2</span> <span class="bp">+</span> <span class="n">y</span> <span class="bp">^</span> <span class="mi">2</span> <span class="bp">&#8804;</span> <span class="mi">4</span> <span class="bp">&#8594;</span> <span class="n">x</span> <span class="bp">+</span> <span class="n">y</span> <span class="bp">&#8805;</span> <span class="n">c</span> <span class="o">:=</span> <span class="kd">by</span>
+  <span class="gr">sorry</span>
+</pre></div>
+</div>
+</section>
+<section id="id8">
+<h3><span class="section-number">4.1.7. </span>Example<a class="headerlink" href="#id8" title="Permalink to this headline">&#61633;</a></h3>
+<div class="admonition-definition admonition">
+<p class="admonition-title">Definition</p>
+<p>A property is true <em>for all sufficiently large integers</em> <span class="math notranslate nohighlight">\(n\)</span>, if there exists an integer
+<span class="math notranslate nohighlight">\(N\)</span>, such that that property is true for all integers <span class="math notranslate nohighlight">\(n\geq N\)</span>.</p>
+</div>
+<p>Likewise for rational numbers, real numbers, &#8230;.</p>
+<div class="admonition-problem admonition">
+<p class="admonition-title">Problem</p>
+<p>Show that for all sufficiently large integers <span class="math notranslate nohighlight">\(n\)</span>, it is true that
+<span class="math notranslate nohighlight">\(n ^ 3 &#8805; 4n ^ 2 + 7\)</span>.</p>
+</div>
+<p>In the solution that follows, &#8220;For all <span class="math notranslate nohighlight">\(n\geq 5\)</span>&#8221; is a shorter way of expressing, &#8220;Let
+<span class="math notranslate nohighlight">\(n\)</span> be an integer and suppose that <span class="math notranslate nohighlight">\(n\geq 5\)</span>&#8221;.</p>
+<div class="admonition-solution admonition">
+<p class="admonition-title">Solution</p>
+<p>For all <span class="math notranslate nohighlight">\(n\geq 5\)</span>,</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}n ^ 3 &amp;= n \cdot n ^ 2 \\
+&amp;\geq 5 n ^ 2 \\
+&amp; = 4 n ^ 2 + n ^ 2\\
+&amp; \geq 4 n ^ 2 + 5 ^ 2 \\
+&amp; = 4 n ^ 2 + 7 + 18 \\
+&amp; &#8805; 4 n ^ 2 + 7.\end{split}\]</div>
+</div>
+<p>I have provided the notation <code class="docutils literal notranslate"><span class="pre">forall_sufficiently_large</span></code> to express this and similar problems in
+Lean.</p>
+<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">:</span> <span class="n">forall_sufficiently_large</span> <span class="n">n</span> <span class="o">:</span> <span class="n">&#8484;</span><span class="o">,</span> <span class="n">n</span> <span class="bp">^</span> <span class="mi">3</span> <span class="bp">&#8805;</span> <span class="mi">4</span> <span class="bp">*</span> <span class="n">n</span> <span class="bp">^</span> <span class="mi">2</span> <span class="bp">+</span> <span class="mi">7</span> <span class="o">:=</span> <span class="kd">by</span>
+  <span class="n">dsimp</span>
+  <span class="n">use</span> <span class="mi">5</span>
+  <span class="n">intro</span> <span class="n">n</span> <span class="n">hn</span>
+  <span class="k">calc</span>
+    <span class="n">n</span> <span class="bp">^</span> <span class="mi">3</span> <span class="bp">=</span> <span class="n">n</span> <span class="bp">*</span> <span class="n">n</span> <span class="bp">^</span> <span class="mi">2</span> <span class="o">:=</span> <span class="kd">by</span> <span class="n">ring</span>
+    <span class="n">_</span> <span class="bp">&#8805;</span> <span class="mi">5</span> <span class="bp">*</span> <span class="n">n</span> <span class="bp">^</span> <span class="mi">2</span> <span class="o">:=</span> <span class="kd">by</span> <span class="n">rel</span> <span class="o">[</span><span class="n">hn</span><span class="o">]</span>
+    <span class="n">_</span> <span class="bp">=</span> <span class="mi">4</span> <span class="bp">*</span> <span class="n">n</span> <span class="bp">^</span> <span class="mi">2</span> <span class="bp">+</span> <span class="n">n</span> <span class="bp">^</span> <span class="mi">2</span> <span class="o">:=</span> <span class="kd">by</span> <span class="n">ring</span>
+    <span class="n">_</span> <span class="bp">&#8805;</span> <span class="mi">4</span> <span class="bp">*</span> <span class="n">n</span> <span class="bp">^</span> <span class="mi">2</span> <span class="bp">+</span> <span class="mi">5</span> <span class="bp">^</span> <span class="mi">2</span> <span class="o">:=</span> <span class="kd">by</span> <span class="n">rel</span> <span class="o">[</span><span class="n">hn</span><span class="o">]</span>
+    <span class="n">_</span> <span class="bp">=</span> <span class="mi">4</span> <span class="bp">*</span> <span class="n">n</span> <span class="bp">^</span> <span class="mi">2</span> <span class="bp">+</span> <span class="mi">7</span> <span class="bp">+</span> <span class="mi">18</span> <span class="o">:=</span> <span class="kd">by</span> <span class="n">ring</span>
+    <span class="n">_</span> <span class="bp">&#8805;</span> <span class="mi">4</span> <span class="bp">*</span> <span class="n">n</span> <span class="bp">^</span> <span class="mi">2</span> <span class="bp">+</span> <span class="mi">7</span> <span class="o">:=</span> <span class="kd">by</span> <span class="n">extra</span>
+</pre></div>
+</div>
+</section>
+<section id="prime-def">
+<span id="id9"></span><h3><span class="section-number">4.1.8. </span>Example<a class="headerlink" href="#prime-def" title="Permalink to this headline">&#61633;</a></h3>
+<div class="admonition-definition admonition">
+<p class="admonition-title">Definition</p>
+<p>A natural number <span class="math notranslate nohighlight">\(p\)</span> is <em>prime</em>, if it is at least <span class="math notranslate nohighlight">\(2\)</span>, and the only factors
+of <span class="math notranslate nohighlight">\(p\)</span> are <span class="math notranslate nohighlight">\(1\)</span> and <span class="math notranslate nohighlight">\(p\)</span>.</p>
+</div>
+<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">def</span> <span class="n">Prime</span> <span class="o">(</span><span class="n">p</span> <span class="o">:</span> <span class="n">&#8469;</span><span class="o">)</span> <span class="o">:</span> <span class="kt">Prop</span> <span class="o">:=</span>
+  <span class="mi">2</span> <span class="bp">&#8804;</span> <span class="n">p</span> <span class="bp">&#8743;</span> <span class="bp">&#8704;</span> <span class="n">m</span> <span class="o">:</span> <span class="n">&#8469;</span><span class="o">,</span> <span class="n">m</span> <span class="bp">&#8739;</span> <span class="n">p</span> <span class="bp">&#8594;</span> <span class="n">m</span> <span class="bp">=</span> <span class="mi">1</span> <span class="bp">&#8744;</span> <span class="n">m</span> <span class="bp">=</span> <span class="n">p</span>
+</pre></div>
+</div>
+<div class="admonition-problem admonition">
+<p class="admonition-title">Problem</p>
+<p>Show that 2 is prime.</p>
+</div>
+<div class="admonition-solution admonition">
+<p class="admonition-title">Solution</p>
+<p>Clearly <span class="math notranslate nohighlight">\(2 \le 2\)</span>.  Let <span class="math notranslate nohighlight">\(m\)</span> be a factor of <span class="math notranslate nohighlight">\(2\)</span>.  Since <span class="math notranslate nohighlight">\(2\)</span> is positive,
+by the size bounds on factors discussed in <a class="reference internal" href="03_Parity_and_Divisibility.html#dvd-bd-1"><span class="std std-numref">Example 3.2.7</span></a> and
+<a class="reference internal" href="03_Parity_and_Divisibility.html#dvd-bd-2"><span class="std std-numref">Example 3.2.8</span></a>, we have that <span class="math notranslate nohighlight">\(m \le 2\)</span> and <span class="math notranslate nohighlight">\(1 \le m\)</span>.  The only
+natural numbers <span class="math notranslate nohighlight">\(m\)</span> satisfying <span class="math notranslate nohighlight">\(m \le 2\)</span> and <span class="math notranslate nohighlight">\(1 \le m\)</span> are <span class="math notranslate nohighlight">\(1\)</span> and
+<span class="math notranslate nohighlight">\(2\)</span>, so as required <span class="math notranslate nohighlight">\(m=1\)</span> or <span class="math notranslate nohighlight">\(m=2\)</span>.</p>
+</div>
+<p>One new technique used in this solution is to observe from numeric bounds on a natural number (like
+<span class="math notranslate nohighlight">\(m \le 2\)</span> and <span class="math notranslate nohighlight">\(1 \le m\)</span> here) that there are finitely many possibilities (here,
+<span class="math notranslate nohighlight">\(m=1\)</span> or <span class="math notranslate nohighlight">\(m=2\)</span>.)  In Lean, we use the tactic <code class="docutils literal notranslate"><span class="pre">interval_cases</span></code> for this kind of
+argument.  It also works for integers, but it doesn&#8217;t work for rational numbers or real numbers &#8211;
+why?</p>
+<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">:</span> <span class="n">Prime</span> <span class="mi">2</span> <span class="o">:=</span> <span class="kd">by</span>
+  <span class="n">constructor</span>
+  <span class="bp">&#183;</span> <span class="n">numbers</span>
+  <span class="n">intro</span> <span class="n">m</span> <span class="n">hmp</span>
+  <span class="k">have</span> <span class="n">hp</span> <span class="o">:</span> <span class="mi">0</span> <span class="bp">&lt;</span> <span class="mi">2</span> <span class="o">:=</span> <span class="kd">by</span> <span class="n">norm_num</span>
+  <span class="k">have</span> <span class="n">hmp_le</span> <span class="o">:</span> <span class="n">m</span> <span class="bp">&#8804;</span> <span class="mi">2</span> <span class="o">:=</span> <span class="n">Nat.le_of_dvd</span> <span class="n">hp</span> <span class="n">hmp</span>
+  <span class="k">have</span> <span class="n">h1m</span> <span class="o">:</span> <span class="mi">1</span> <span class="bp">&#8804;</span> <span class="n">m</span> <span class="o">:=</span> <span class="n">Nat.pos_of_dvd_of_pos</span> <span class="n">hmp</span> <span class="n">hp</span>
+  <span class="n">interval_cases</span> <span class="n">m</span>
+  <span class="bp">&#183;</span> <span class="n">left</span>
+    <span class="n">numbers</span>
+  <span class="bp">&#183;</span> <span class="n">right</span>
+    <span class="n">numbers</span>
+</pre></div>
+</div>
+</section>
+<section id="exercises">
+<h3><span class="section-number">4.1.9. </span>Exercises<a class="headerlink" href="#exercises" title="Permalink to this headline">&#61633;</a></h3>
+<ol class="arabic simple">
+<li><p>Let <span class="math notranslate nohighlight">\(a\)</span> be a rational number and suppose that for all rational numbers <span class="math notranslate nohighlight">\(b\)</span>,
+<span class="math notranslate nohighlight">\(a\ge -3+4b-b^2\)</span>.  Show that <span class="math notranslate nohighlight">\(a\ge 1\)</span>.</p></li>
+</ol>
+<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">{</span><span class="n">a</span> <span class="o">:</span> <span class="n">&#8474;</span><span class="o">}</span> <span class="o">(</span><span class="n">h</span> <span class="o">:</span> <span class="bp">&#8704;</span> <span class="n">b</span> <span class="o">:</span> <span class="n">&#8474;</span><span class="o">,</span> <span class="n">a</span> <span class="bp">&#8805;</span> <span class="bp">-</span><span class="mi">3</span> <span class="bp">+</span> <span class="mi">4</span> <span class="bp">*</span> <span class="n">b</span> <span class="bp">-</span> <span class="n">b</span> <span class="bp">^</span> <span class="mi">2</span><span class="o">)</span> <span class="o">:</span> <span class="n">a</span> <span class="bp">&#8805;</span> <span class="mi">1</span> <span class="o">:=</span>
+  <span class="gr">sorry</span>
+</pre></div>
+</div>
+<ol class="arabic simple" start="2">
+<li><p>Let <span class="math notranslate nohighlight">\(n\)</span> be an integer and suppose that every natural number <span class="math notranslate nohighlight">\(m\)</span> between 1 and 5 is a
+factor of <span class="math notranslate nohighlight">\(n\)</span>. Show that 15 is a factor of <span class="math notranslate nohighlight">\(n\)</span>.  (You may need to review
+<a class="reference internal" href="03_Parity_and_Divisibility.html#bezout"><span class="std std-numref">Section 3.5</span></a>.)</p></li>
+</ol>
+<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">{</span><span class="n">n</span> <span class="o">:</span> <span class="n">&#8484;</span><span class="o">}</span> <span class="o">(</span><span class="n">hn</span> <span class="o">:</span> <span class="bp">&#8704;</span> <span class="n">m</span><span class="o">,</span> <span class="mi">1</span> <span class="bp">&#8804;</span> <span class="n">m</span> <span class="bp">&#8594;</span> <span class="n">m</span> <span class="bp">&#8804;</span> <span class="mi">5</span> <span class="bp">&#8594;</span> <span class="n">m</span> <span class="bp">&#8739;</span> <span class="n">n</span><span class="o">)</span> <span class="o">:</span> <span class="mi">15</span> <span class="bp">&#8739;</span> <span class="n">n</span> <span class="o">:=</span> <span class="kd">by</span>
+  <span class="gr">sorry</span>
+</pre></div>
+</div>
+<ol class="arabic simple" start="3">
+<li><p>Show that there exists a natural number <span class="math notranslate nohighlight">\(n\)</span> such that every natural number <span class="math notranslate nohighlight">\(m\)</span> is at
+least <span class="math notranslate nohighlight">\(n\)</span>.</p></li>
+</ol>
+<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">:</span> <span class="bp">&#8707;</span> <span class="n">n</span> <span class="o">:</span> <span class="n">&#8469;</span><span class="o">,</span> <span class="bp">&#8704;</span> <span class="n">m</span> <span class="o">:</span> <span class="n">&#8469;</span><span class="o">,</span> <span class="n">n</span> <span class="bp">&#8804;</span> <span class="n">m</span> <span class="o">:=</span> <span class="kd">by</span>
+  <span class="gr">sorry</span>
+</pre></div>
+</div>
+<ol class="arabic simple" start="4">
+<li><p>Show that for all sufficiently large real numbers <span class="math notranslate nohighlight">\(x\)</span>,
+<span class="math notranslate nohighlight">\(x ^ 3 + 3 x &#8805; 7 x ^ 2 + 12\)</span>.</p></li>
+</ol>
+<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">:</span> <span class="n">forall_sufficiently_large</span> <span class="n">x</span> <span class="o">:</span> <span class="n">&#8477;</span><span class="o">,</span> <span class="n">x</span> <span class="bp">^</span> <span class="mi">3</span> <span class="bp">+</span> <span class="mi">3</span> <span class="bp">*</span> <span class="n">x</span> <span class="bp">&#8805;</span> <span class="mi">7</span> <span class="bp">*</span> <span class="n">x</span> <span class="bp">^</span> <span class="mi">2</span> <span class="bp">+</span> <span class="mi">12</span> <span class="o">:=</span> <span class="kd">by</span>
+  <span class="gr">sorry</span>
+</pre></div>
+</div>
+<p class="rubric">Footnotes</p>
+<dl class="footnote brackets">
+<dt class="label" id="id10"><span class="brackets"><a class="fn-backref" href="#id5">1</a></span></dt>
+<dd><p>That is, <span class="math notranslate nohighlight">\(a\)</span> is <em>maximal in the set of real numbers whose square is at most 2.</em></p>
+</dd>
+</dl>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="03_Parity_and_Divisibility.html" class="btn btn-neutral float-left" title="3. Parity and divisibility" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="Index_of_Tactics.html" class="btn btn-neutral float-right" title="Index of Lean tactics" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2022, Heather Macbeth.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

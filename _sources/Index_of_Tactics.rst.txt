@@ -60,7 +60,7 @@ extra hypothesis.
 
 Introduces cases for a variable according to its residue modulo a specified number.
 
-.. rubric:: numbers (first use: :numref:`Section %s <proving_inequalities>`; with ``at`` for contradictions: :numref:`Section %s <contradiction_hyp>`)
+.. rubric:: *numbers* (first use: :numref:`Section %s <proving_inequalities>`; with ``at`` for contradictions: :numref:`Section %s <contradiction_hyp>`)
 
 Proves numeric facts, like :math:`3\cdot 12 < 13 + 25` or :math:`3\cdot 5+1=4\cdot 4`.
 
