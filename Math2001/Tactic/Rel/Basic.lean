@@ -7,7 +7,6 @@ import Mathlib.Data.Int.ModEq
 import Mathlib.Tactic.Positivity
 import Mathlib.Tactic.SolveByElim
 import Math2001.Tactic.Rel.Attr
-import Mathlib.Tactic.LibrarySearch
 
 open Lean Meta Elab
 open Mathlib Tactic

@@ -1,0 +1,6 @@
+.. _proofs_with_structure_ii:
+
+Proofs with structure, II
+=========================
+
+.. include:: 04_Proofs_with_Structure_II/01_Forall_Implies.inc
