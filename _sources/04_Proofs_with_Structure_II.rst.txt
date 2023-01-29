@@ -4,3 +4,4 @@ Proofs with structure, II
 =========================
 
 .. include:: 04_Proofs_with_Structure_II/01_Forall_Implies.inc
+.. include:: 04_Proofs_with_Structure_II/02_Exists_Unique.inc
