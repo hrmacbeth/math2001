@@ -57,6 +57,15 @@
 <li class="toctree-l3"><a class="reference internal" href="#exercises">4.1.9. Exercises</a></li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="#there-exists-a-unique">4.2. &#8220;There exists a unique&#8221;</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id11">4.2.1. Example</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id12">4.2.2. Example</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id13">4.2.3. Example</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#division-algorithm">4.2.4. Example</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#even-or-odd-proof">4.2.5. Example</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id16">4.2.6. Exercises</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -102,10 +111,10 @@
 <p>Let <span class="math notranslate nohighlight">\(a\)</span> be a real number and suppose that for all real numbers <span class="math notranslate nohighlight">\(x\)</span>,
 it is true that <span class="math notranslate nohighlight">\(a\le x^2-2x\)</span>.  Show that <span class="math notranslate nohighlight">\(a\le -1\)</span>.</p>
 </div>
-<figure class="align-center" id="id11">
+<figure class="align-center" id="id17">
 <a class="reference internal image-reference" href="_images/04_logic_01_parabola.png"><img alt="_images/04_logic_01_parabola.png" src="_images/04_logic_01_parabola.png" style="width: 320.0px; height: 320.0px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 4.1 </span><span class="caption-text">The parabola <span class="math notranslate nohighlight">\(y= x^2-2x\)</span>.</span><a class="headerlink" href="#id11" title="Permalink to this image">&#61633;</a></p>
+<p><span class="caption-number">Fig. 4.1 </span><span class="caption-text">The parabola <span class="math notranslate nohighlight">\(y= x^2-2x\)</span>.</span><a class="headerlink" href="#id17" title="Permalink to this image">&#61633;</a></p>
 </figcaption>
 </figure>
 <p>Specifying that a formula or predicate is meant to be true for all values of a variable <span class="math notranslate nohighlight">\(x\)</span>,
@@ -433,6 +442,252 @@ least <span class="math notranslate nohighlight">\(n\)</span>.</p></li>
 <dd><p>That is, <span class="math notranslate nohighlight">\(a\)</span> is <em>maximal in the set of real numbers whose square is at most 2.</em></p>
 </dd>
 </dl>
+</section>
+</section>
+<section id="there-exists-a-unique">
+<span id="exists-unique"></span><h2><span class="section-number">4.2. </span>&#8220;There exists a unique&#8221;<a class="headerlink" href="#there-exists-a-unique" title="Permalink to this headline">&#61633;</a></h2>
+<section id="id11">
+<h3><span class="section-number">4.2.1. </span>Example<a class="headerlink" href="#id11" title="Permalink to this headline">&#61633;</a></h3>
+<div class="admonition-problem admonition">
+<p class="admonition-title">Problem</p>
+<p>Show that there exists a unique real number <span class="math notranslate nohighlight">\(a\)</span>, such that <span class="math notranslate nohighlight">\(3a+1=7\)</span>.</p>
+</div>
+<div class="admonition-solution admonition">
+<p class="admonition-title">Solution</p>
+<p>We will show that 2 is the unique real number with this property.</p>
+<p>First, we show that 2 has this property.  Indeed, <span class="math notranslate nohighlight">\(3\cdot 2+1=7\)</span>.</p>
+<p>Now, let <span class="math notranslate nohighlight">\(y\)</span> be a real number for which <span class="math notranslate nohighlight">\(3y+1=7\)</span>.  Then</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}y &amp;= \frac{(3 y + 1) - 1} {3}\\
+&amp;= \frac{7 - 1}{ 3}\\
+&amp;= 2.\end{split}\]</div>
+</div>
+<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">:</span> <span class="bp">&#8707;!</span> <span class="n">a</span> <span class="o">:</span> <span class="n">&#8477;</span><span class="o">,</span> <span class="mi">3</span> <span class="bp">*</span> <span class="n">a</span> <span class="bp">+</span> <span class="mi">1</span> <span class="bp">=</span> <span class="mi">7</span> <span class="o">:=</span> <span class="kd">by</span>
+  <span class="n">use</span> <span class="mi">2</span>
+  <span class="n">dsimp</span>
+  <span class="n">constructor</span>
+  <span class="bp">&#183;</span> <span class="n">numbers</span>
+  <span class="n">intro</span> <span class="n">y</span> <span class="n">hy</span>
+  <span class="k">calc</span>
+    <span class="n">y</span> <span class="bp">=</span> <span class="o">(</span><span class="mi">3</span> <span class="bp">*</span> <span class="n">y</span> <span class="bp">+</span> <span class="mi">1</span> <span class="bp">-</span> <span class="mi">1</span><span class="o">)</span> <span class="bp">/</span> <span class="mi">3</span> <span class="o">:=</span> <span class="kd">by</span> <span class="n">ring</span>
+    <span class="n">_</span> <span class="bp">=</span> <span class="o">(</span><span class="mi">7</span> <span class="bp">-</span> <span class="mi">1</span><span class="o">)</span> <span class="bp">/</span> <span class="mi">3</span> <span class="o">:=</span> <span class="kd">by</span> <span class="n">rw</span> <span class="o">[</span><span class="n">hy</span><span class="o">]</span>
+    <span class="n">_</span> <span class="bp">=</span> <span class="mi">2</span> <span class="o">:=</span> <span class="kd">by</span> <span class="n">numbers</span>
+</pre></div>
+</div>
+</section>
+<section id="id12">
+<h3><span class="section-number">4.2.2. </span>Example<a class="headerlink" href="#id12" title="Permalink to this headline">&#61633;</a></h3>
+<div class="admonition-problem admonition">
+<p class="admonition-title">Problem</p>
+<p>Show that there exists a unique rational number <span class="math notranslate nohighlight">\(x\)</span>, such that for every rational number
+<span class="math notranslate nohighlight">\(a\)</span> between 1 and 3, <span class="math notranslate nohighlight">\((a-x)^2\le 1\)</span>.</p>
+</div>
+<div class="admonition-solution admonition">
+<p class="admonition-title">Solution</p>
+<p>We will show that 2 is the unique rational number with this property.</p>
+<p>Firstly, if <span class="math notranslate nohighlight">\(a\)</span> is a rational number between 1 and 3, then <span class="math notranslate nohighlight">\(-1 \le a-2 \le 1\)</span>, so</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}(a-2)^2 &amp;\le 1 ^ 2\\
+&amp;=1.\end{split}\]</div>
+<p>Now, let <span class="math notranslate nohighlight">\(y\)</span> be a rational number for which,  for every rational number
+<span class="math notranslate nohighlight">\(a\)</span> between 1 and 3, <span class="math notranslate nohighlight">\((a-y)^2\le 1\)</span>.</p>
+<p>Since 1 is between 1 and 3, <span class="math notranslate nohighlight">\((1-y)^2\le 1\)</span>, and since 3 is between 1 and 3,
+<span class="math notranslate nohighlight">\((3-y)^2\le 1\)</span>.</p>
+<p>So</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}(y - 2) ^ 2 &amp;= \frac{(1 - y) ^ 2 + (3 - y) ^ 2 - 2}{ 2}\\
+&amp;&#8804;  \frac{1 + 1 - 2}{2} \\
+&amp; = 0.\end{split}\]</div>
+<p>Also <span class="math notranslate nohighlight">\((y - 2) ^ 2\geq 0\)</span>, since squares are positive.  Thus
+<span class="math notranslate nohighlight">\((y - 2) ^ 2= 0\)</span>, so <span class="math notranslate nohighlight">\(y - 2= 0\)</span>, and so <span class="math notranslate nohighlight">\(y = 2\)</span>.</p>
+</div>
+<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">:</span> <span class="bp">&#8707;!</span> <span class="n">x</span> <span class="o">:</span> <span class="n">&#8474;</span><span class="o">,</span> <span class="bp">&#8704;</span> <span class="n">a</span><span class="o">,</span> <span class="n">a</span> <span class="bp">&#8805;</span> <span class="mi">1</span> <span class="bp">&#8594;</span> <span class="n">a</span> <span class="bp">&#8804;</span> <span class="mi">3</span> <span class="bp">&#8594;</span> <span class="o">(</span><span class="n">a</span> <span class="bp">-</span> <span class="n">x</span><span class="o">)</span> <span class="bp">^</span> <span class="mi">2</span> <span class="bp">&#8804;</span> <span class="mi">1</span> <span class="o">:=</span> <span class="kd">by</span>
+  <span class="gr">sorry</span>
+</pre></div>
+</div>
+</section>
+<section id="id13">
+<h3><span class="section-number">4.2.3. </span>Example<a class="headerlink" href="#id13" title="Permalink to this headline">&#61633;</a></h3>
+<div class="admonition-problem admonition">
+<p class="admonition-title">Problem</p>
+<p>Let <span class="math notranslate nohighlight">\(x\)</span> be a rational number, and suppose that there exists a unique rational number
+<span class="math notranslate nohighlight">\(a\)</span> such that <span class="math notranslate nohighlight">\(a^2=x\)</span>.  Show that <span class="math notranslate nohighlight">\(x=0\)</span>.</p>
+</div>
+<p>More colloquially: the only rational number with a unique square root is 0.</p>
+<div class="admonition-solution admonition">
+<p class="admonition-title">Solution</p>
+<p>We first show that <span class="math notranslate nohighlight">\(-a=a\)</span>.  Indeed,</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}(-a)^2&amp;=a^2\\
+&amp;=x,\end{split}\]</div>
+<p>and since <span class="math notranslate nohighlight">\(a\)</span> is the unique rational number such that <span class="math notranslate nohighlight">\(a^2=x\)</span>, this means that
+<span class="math notranslate nohighlight">\(-a=a\)</span>.</p>
+<p>It follows that</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}a &amp;= \frac{a - (-a)}{ 2}\\
+&amp; = 0.\end{split}\]</div>
+<p>So <span class="math notranslate nohighlight">\(x=0\)</span> also:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}x &amp;= a ^ 2 \\
+&amp;= 0 ^ 2\\
+&amp; = 0.\end{split}\]</div>
+</div>
+<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">{</span><span class="n">x</span> <span class="o">:</span> <span class="n">&#8474;</span><span class="o">}</span> <span class="o">(</span><span class="n">hx</span> <span class="o">:</span> <span class="bp">&#8707;!</span> <span class="n">a</span> <span class="o">:</span> <span class="n">&#8474;</span><span class="o">,</span> <span class="n">a</span> <span class="bp">^</span> <span class="mi">2</span> <span class="bp">=</span> <span class="n">x</span><span class="o">)</span> <span class="o">:</span> <span class="n">x</span> <span class="bp">=</span> <span class="mi">0</span> <span class="o">:=</span> <span class="kd">by</span>
+  <span class="n">cases&#39;</span> <span class="n">hx</span> <span class="k">with</span> <span class="n">a</span> <span class="n">ha</span>
+  <span class="n">dsimp</span> <span class="n">at</span> <span class="n">ha</span>
+  <span class="n">cases&#39;</span> <span class="n">ha</span> <span class="k">with</span> <span class="n">ha1</span> <span class="n">ha2</span>
+  <span class="k">have</span> <span class="n">h1</span> <span class="o">:</span> <span class="bp">-</span><span class="n">a</span> <span class="bp">=</span> <span class="n">a</span>
+  <span class="bp">&#183;</span> <span class="n">apply</span> <span class="n">ha2</span>
+    <span class="k">calc</span>
+      <span class="o">(</span><span class="bp">-</span><span class="n">a</span><span class="o">)</span> <span class="bp">^</span> <span class="mi">2</span> <span class="bp">=</span> <span class="n">a</span> <span class="bp">^</span> <span class="mi">2</span> <span class="o">:=</span> <span class="kd">by</span> <span class="n">ring</span>
+      <span class="n">_</span> <span class="bp">=</span> <span class="n">x</span> <span class="o">:=</span> <span class="n">ha1</span>
+  <span class="k">have</span> <span class="n">h2</span> <span class="o">:</span> <span class="n">a</span> <span class="bp">=</span> <span class="mi">0</span>
+  <span class="bp">&#183;</span> <span class="k">calc</span>
+      <span class="n">a</span> <span class="bp">=</span> <span class="o">(</span><span class="n">a</span> <span class="bp">-</span> <span class="bp">-</span><span class="n">a</span><span class="o">)</span> <span class="bp">/</span> <span class="mi">2</span> <span class="o">:=</span> <span class="kd">by</span> <span class="n">ring</span>
+      <span class="n">_</span> <span class="bp">=</span> <span class="mi">0</span> <span class="o">:=</span> <span class="kd">by</span> <span class="n">addarith</span> <span class="o">[</span><span class="n">h1</span><span class="o">]</span>
+  <span class="k">calc</span>
+    <span class="n">x</span> <span class="bp">=</span> <span class="n">a</span> <span class="bp">^</span> <span class="mi">2</span> <span class="o">:=</span> <span class="kd">by</span> <span class="n">rw</span> <span class="o">[</span><span class="n">ha1</span><span class="o">]</span>
+    <span class="n">_</span> <span class="bp">=</span> <span class="mi">0</span> <span class="bp">^</span> <span class="mi">2</span> <span class="o">:=</span> <span class="kd">by</span> <span class="n">rw</span> <span class="o">[</span><span class="n">h2</span><span class="o">]</span>
+    <span class="n">_</span> <span class="bp">=</span> <span class="mi">0</span> <span class="o">:=</span> <span class="kd">by</span> <span class="n">ring</span>
+</pre></div>
+</div>
+</section>
+<section id="division-algorithm">
+<span id="id14"></span><h3><span class="section-number">4.2.4. </span>Example<a class="headerlink" href="#division-algorithm" title="Permalink to this headline">&#61633;</a></h3>
+<p>The following is an important theorem about the integers, which we will prove later in the course.</p>
+<div class="admonition-theorem-the-division-algorithm admonition">
+<p class="admonition-title">Theorem (the Division Algorithm)</p>
+<p>Let <span class="math notranslate nohighlight">\(a\)</span> and <span class="math notranslate nohighlight">\(b\)</span> be integers, with <span class="math notranslate nohighlight">\(b\)</span> positive.  Then there exists a unique
+integer <span class="math notranslate nohighlight">\(r\)</span>, such that <span class="math notranslate nohighlight">\(0\le r &lt; b\)</span> and <span class="math notranslate nohighlight">\(a=bq+r\)</span> for some integer <span class="math notranslate nohighlight">\(q\)</span>.</p>
+</div>
+<p>In the Lean library it is available in the following form:</p>
+<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">lemma</span> <span class="n">Int.existsUnique_quotient_remainder</span> <span class="o">(</span><span class="n">a</span> <span class="n">b</span> <span class="o">:</span> <span class="n">&#8484;</span><span class="o">)</span> <span class="o">(</span><span class="n">h</span> <span class="o">:</span> <span class="mi">0</span> <span class="bp">&lt;</span> <span class="n">b</span><span class="o">)</span> <span class="o">:</span>
+  <span class="bp">&#8707;!</span> <span class="n">r</span> <span class="o">:</span> <span class="n">&#8484;</span><span class="o">,</span> <span class="mi">0</span> <span class="bp">&#8804;</span> <span class="n">r</span> <span class="bp">&#8743;</span> <span class="n">r</span> <span class="bp">&lt;</span> <span class="n">b</span> <span class="bp">&#8743;</span> <span class="bp">&#8707;</span> <span class="n">q</span> <span class="o">:</span> <span class="n">&#8484;</span><span class="o">,</span> <span class="n">a</span> <span class="bp">=</span> <span class="n">b</span> <span class="bp">*</span> <span class="n">q</span> <span class="bp">+</span> <span class="n">r</span> <span class="o">:=</span>
+</pre></div>
+</div>
+<p>To understand this theorem better, let&#8217;s prove just one of the infinitely many cases of this
+theorem.</p>
+<div class="admonition-problem admonition">
+<p class="admonition-title">Problem</p>
+<p>Show that there exists a unique integer <span class="math notranslate nohighlight">\(r\)</span>, such that <span class="math notranslate nohighlight">\(0\le r &lt; 5\)</span> and
+<span class="math notranslate nohighlight">\(14=5q+r\)</span> for some integer <span class="math notranslate nohighlight">\(q\)</span>.</p>
+</div>
+<div class="admonition-solution admonition">
+<p class="admonition-title">Solution</p>
+<p>We will show that the unique integer with this property is 4.</p>
+<p>First, we show that 4 has this property.  It is true that <span class="math notranslate nohighlight">\(0\le 4 &lt; 5\)</span>, and for
+<span class="math notranslate nohighlight">\(q=2\)</span> it is true that <span class="math notranslate nohighlight">\(14 = 5 q + 4\)</span>.</p>
+<p>Now, let <span class="math notranslate nohighlight">\(r\)</span> be an integer for which <span class="math notranslate nohighlight">\(0\le r &lt; 5\)</span> and <span class="math notranslate nohighlight">\(14=5q+r\)</span>.</p>
+<p>We have,</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}5&amp; \cdot 1 &lt; 14 - r \\
+&amp; = (5  q + r) - r \\
+&amp; = 5q,\end{split}\]</div>
+<p>so since <span class="math notranslate nohighlight">\(5\)</span> is positive, <span class="math notranslate nohighlight">\(1&lt;q\)</span>.  Similarly, we have</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}5 q &amp;= (5 q + r) - r\\
+  &amp;= 14 - r \\
+  &amp; &lt; 5 \cdot 3\end{split}\]</div>
+<p>and so since <span class="math notranslate nohighlight">\(5\)</span> is positive, <span class="math notranslate nohighlight">\(q&lt;3\)</span>.</p>
+<p>Therefore <span class="math notranslate nohighlight">\(q\)</span> must be 2, the only integer
+strictly between 1 and 3.  So <span class="math notranslate nohighlight">\(r=14-5\cdot 2=4\)</span>.</p>
+</div>
+<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">:</span> <span class="bp">&#8707;!</span> <span class="n">r</span> <span class="o">:</span> <span class="n">&#8484;</span><span class="o">,</span> <span class="mi">0</span> <span class="bp">&#8804;</span> <span class="n">r</span> <span class="bp">&#8743;</span> <span class="n">r</span> <span class="bp">&lt;</span> <span class="mi">5</span> <span class="bp">&#8743;</span> <span class="bp">&#8707;</span> <span class="n">q</span> <span class="o">:</span> <span class="n">&#8484;</span><span class="o">,</span> <span class="mi">14</span> <span class="bp">=</span> <span class="mi">5</span> <span class="bp">*</span> <span class="n">q</span> <span class="bp">+</span> <span class="n">r</span> <span class="o">:=</span> <span class="kd">by</span>
+  <span class="n">use</span> <span class="mi">4</span>
+  <span class="n">dsimp</span>
+  <span class="n">constructor</span>
+  <span class="bp">&#183;</span> <span class="n">constructor</span>
+    <span class="bp">&#183;</span> <span class="n">numbers</span>
+    <span class="n">constructor</span>
+    <span class="bp">&#183;</span> <span class="n">numbers</span>
+    <span class="n">use</span> <span class="mi">2</span>
+    <span class="n">numbers</span>
+  <span class="n">intro</span> <span class="n">r</span> <span class="n">hr</span>
+  <span class="n">cases&#39;</span> <span class="n">hr</span> <span class="k">with</span> <span class="n">hr1</span> <span class="n">hr2</span>
+  <span class="n">cases&#39;</span> <span class="n">hr2</span> <span class="k">with</span> <span class="n">hr2</span> <span class="n">hr3</span>
+  <span class="n">cases&#39;</span> <span class="n">hr3</span> <span class="k">with</span> <span class="n">q</span> <span class="n">hr3</span>
+  <span class="k">have</span> <span class="o">:</span> <span class="mi">1</span> <span class="bp">&lt;</span> <span class="n">q</span>
+  <span class="bp">&#183;</span> <span class="n">apply</span> <span class="n">lt_of_mul_lt_mul_left</span>
+    <span class="k">calc</span>
+      <span class="mi">5</span> <span class="bp">*</span> <span class="mi">1</span> <span class="bp">&lt;</span> <span class="mi">14</span> <span class="bp">-</span> <span class="n">r</span> <span class="o">:=</span> <span class="kd">by</span> <span class="n">addarith</span> <span class="o">[</span><span class="n">hr2</span><span class="o">]</span>
+      <span class="n">_</span> <span class="bp">=</span> <span class="mi">5</span> <span class="bp">*</span> <span class="n">q</span> <span class="bp">+</span> <span class="n">r</span> <span class="bp">-</span> <span class="n">r</span> <span class="o">:=</span> <span class="kd">by</span> <span class="n">rw</span> <span class="o">[</span><span class="n">hr3</span><span class="o">]</span>
+      <span class="n">_</span> <span class="bp">=</span> <span class="mi">5</span> <span class="bp">*</span> <span class="n">q</span> <span class="o">:=</span> <span class="kd">by</span> <span class="n">ring</span>
+    <span class="n">numbers</span>
+  <span class="k">have</span> <span class="o">:</span> <span class="n">q</span> <span class="bp">&lt;</span> <span class="mi">3</span>
+  <span class="bp">&#183;</span> <span class="n">apply</span> <span class="n">lt_of_mul_lt_mul_left</span>
+    <span class="k">calc</span>
+      <span class="mi">5</span> <span class="bp">*</span> <span class="n">q</span> <span class="bp">=</span> <span class="mi">5</span> <span class="bp">*</span> <span class="n">q</span> <span class="bp">+</span> <span class="n">r</span> <span class="bp">-</span> <span class="n">r</span> <span class="o">:=</span> <span class="kd">by</span> <span class="n">ring</span>
+      <span class="n">_</span> <span class="bp">=</span> <span class="mi">14</span> <span class="bp">-</span> <span class="n">r</span> <span class="o">:=</span> <span class="kd">by</span> <span class="n">rw</span> <span class="o">[</span><span class="n">hr3</span><span class="o">]</span>
+      <span class="n">_</span> <span class="bp">&lt;</span> <span class="mi">5</span> <span class="bp">*</span> <span class="mi">3</span> <span class="o">:=</span> <span class="kd">by</span> <span class="n">addarith</span> <span class="o">[</span><span class="n">hr1</span><span class="o">]</span>
+    <span class="n">numbers</span>
+  <span class="n">interval_cases</span> <span class="n">q</span>
+  <span class="n">addarith</span> <span class="o">[</span><span class="n">hr3</span><span class="o">]</span>
+</pre></div>
+</div>
+</section>
+<section id="even-or-odd-proof">
+<span id="id15"></span><h3><span class="section-number">4.2.5. </span>Example<a class="headerlink" href="#even-or-odd-proof" title="Permalink to this headline">&#61633;</a></h3>
+<p>We can use the Division Algorithm (the theorem from the last example,
+<a class="reference internal" href="#division-algorithm"><span class="std std-numref">Example 4.2.4</span></a>) to prove the theorem from
+<a class="reference internal" href="03_Parity_and_Divisibility.html#even-or-odd"><span class="std std-numref">Example 3.1.9</span></a> whose proof we skipped.</p>
+<div class="admonition-theorem admonition">
+<p class="admonition-title">Theorem</p>
+<p>Every integer is either even or odd.</p>
+</div>
+<div class="admonition-proof admonition">
+<p class="admonition-title">Proof</p>
+<p>Let <span class="math notranslate nohighlight">\(n\)</span> be an integer.  By the Division Algorithm, there exists a unique
+integer <span class="math notranslate nohighlight">\(r\)</span>, such that <span class="math notranslate nohighlight">\(0\le r &lt; 2\)</span> and <span class="math notranslate nohighlight">\(n=2q+r\)</span> for some integer <span class="math notranslate nohighlight">\(q\)</span>.</p>
+<p>If <span class="math notranslate nohighlight">\(r=0\)</span>, then <span class="math notranslate nohighlight">\(n=2q+0=2q\)</span>, so <span class="math notranslate nohighlight">\(n\)</span> is even.</p>
+<p>If <span class="math notranslate nohighlight">\(r=1\)</span>, then <span class="math notranslate nohighlight">\(n=2q+1\)</span>, so <span class="math notranslate nohighlight">\(n\)</span> is odd.</p>
+</div>
+<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">(</span><span class="n">n</span> <span class="o">:</span> <span class="n">&#8484;</span><span class="o">)</span> <span class="o">:</span> <span class="n">Even</span> <span class="n">n</span> <span class="bp">&#8744;</span> <span class="n">Odd</span> <span class="n">n</span> <span class="o">:=</span> <span class="kd">by</span>
+  <span class="gr">sorry</span>
+</pre></div>
+</div>
+</section>
+<section id="id16">
+<h3><span class="section-number">4.2.6. </span>Exercises<a class="headerlink" href="#id16" title="Permalink to this headline">&#61633;</a></h3>
+<ol class="arabic simple">
+<li><p>Show that there exists a unique rational number <span class="math notranslate nohighlight">\(x\)</span>, such that <span class="math notranslate nohighlight">\(4x-3=9\)</span>.</p></li>
+</ol>
+<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">:</span> <span class="bp">&#8707;!</span> <span class="n">x</span> <span class="o">:</span> <span class="n">&#8474;</span><span class="o">,</span> <span class="mi">4</span> <span class="bp">*</span> <span class="n">x</span> <span class="bp">-</span> <span class="mi">3</span> <span class="bp">=</span> <span class="mi">9</span> <span class="o">:=</span> <span class="kd">by</span>
+  <span class="n">use</span> <span class="mi">3</span>
+  <span class="n">constructor</span>
+  <span class="bp">&#183;</span> <span class="n">numbers</span>
+  <span class="n">intro</span> <span class="n">y</span> <span class="n">hy</span>
+  <span class="k">calc</span>
+    <span class="n">y</span> <span class="bp">=</span> <span class="o">(</span><span class="mi">4</span> <span class="bp">*</span> <span class="n">y</span> <span class="bp">-</span> <span class="mi">3</span> <span class="bp">+</span> <span class="mi">3</span><span class="o">)</span> <span class="bp">/</span> <span class="mi">4</span> <span class="o">:=</span> <span class="kd">by</span> <span class="n">ring</span>
+    <span class="n">_</span> <span class="bp">=</span> <span class="o">(</span><span class="mi">9</span> <span class="bp">+</span> <span class="mi">3</span><span class="o">)</span> <span class="bp">/</span> <span class="mi">4</span> <span class="o">:=</span> <span class="kd">by</span> <span class="n">rw</span> <span class="o">[</span><span class="n">hy</span><span class="o">]</span>
+    <span class="n">_</span> <span class="bp">=</span> <span class="mi">3</span> <span class="o">:=</span> <span class="kd">by</span> <span class="n">numbers</span>
+</pre></div>
+</div>
+<ol class="arabic simple" start="2">
+<li><p>Show that there exists a unique natural number <span class="math notranslate nohighlight">\(n\)</span>, such that for all natural numbers
+<span class="math notranslate nohighlight">\(a\)</span>, we have <span class="math notranslate nohighlight">\(n\le a\)</span>.</p></li>
+</ol>
+<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">:</span> <span class="bp">&#8707;!</span> <span class="n">n</span> <span class="o">:</span> <span class="n">&#8469;</span><span class="o">,</span> <span class="bp">&#8704;</span> <span class="n">a</span><span class="o">,</span> <span class="n">n</span> <span class="bp">&#8804;</span> <span class="n">a</span> <span class="o">:=</span> <span class="kd">by</span>
+  <span class="gr">sorry</span>
+</pre></div>
+</div>
+<ol class="arabic simple" start="3">
+<li><p>Show that there exists a unique integer <span class="math notranslate nohighlight">\(r\)</span>, such that <span class="math notranslate nohighlight">\(0\le r &lt; 3\)</span> and
+<span class="math notranslate nohighlight">\(11=3q+r\)</span> for some integer <span class="math notranslate nohighlight">\(q\)</span>.</p></li>
+</ol>
+<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">:</span> <span class="bp">&#8707;!</span> <span class="n">r</span> <span class="o">:</span> <span class="n">&#8484;</span><span class="o">,</span> <span class="mi">0</span> <span class="bp">&#8804;</span> <span class="n">r</span> <span class="bp">&#8743;</span> <span class="n">r</span> <span class="bp">&lt;</span> <span class="mi">3</span> <span class="bp">&#8743;</span> <span class="bp">&#8707;</span> <span class="n">q</span> <span class="o">:</span> <span class="n">&#8484;</span><span class="o">,</span> <span class="mi">11</span> <span class="bp">=</span> <span class="mi">3</span> <span class="bp">*</span> <span class="n">q</span> <span class="bp">+</span> <span class="n">r</span> <span class="o">:=</span> <span class="kd">by</span>
+  <span class="gr">sorry</span>
+</pre></div>
+</div>
+<ol class="arabic simple" start="4">
+<li><p>Prove the following consequence of the Division Algorithm
+(<a class="reference internal" href="#division-algorithm"><span class="std std-numref">Example 4.2.4</span></a>), which underlies the tactic
+<code class="docutils literal notranslate"><span class="pre">mod_cases</span></code>:  Let <span class="math notranslate nohighlight">\(a\)</span> and <span class="math notranslate nohighlight">\(b\)</span> be integers, with <span class="math notranslate nohighlight">\(b\)</span> positive.  Then there
+exists an integer <span class="math notranslate nohighlight">\(z\)</span>, such that <span class="math notranslate nohighlight">\(0\le z &lt; b\)</span> and <span class="math notranslate nohighlight">\(a \equiv z \mod b\)</span>.</p></li>
+</ol>
+<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">{</span><span class="n">a</span> <span class="n">b</span> <span class="o">:</span> <span class="n">&#8484;</span><span class="o">}</span> <span class="o">(</span><span class="n">hb</span> <span class="o">:</span> <span class="mi">0</span> <span class="bp">&lt;</span> <span class="n">b</span><span class="o">)</span> <span class="o">:</span> <span class="bp">&#8707;</span> <span class="n">z</span><span class="o">,</span> <span class="mi">0</span> <span class="bp">&#8804;</span> <span class="n">z</span> <span class="bp">&#8743;</span> <span class="n">z</span> <span class="bp">&lt;</span> <span class="n">b</span> <span class="bp">&#8743;</span> <span class="n">a</span> <span class="bp">&#8801;</span> <span class="n">z</span> <span class="o">[</span><span class="n">ZMOD</span> <span class="n">b</span><span class="o">]</span> <span class="o">:=</span> <span class="kd">by</span>
+  <span class="gr">sorry</span>
+</pre></div>
+</div>
 </section>
 </section>
 </section>

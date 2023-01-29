@@ -1,5 +1,4 @@
 /- Copyright (c) Heather Macbeth, 2022.  All rights reserved. -/
-import Math2001.Library.Arithmetic
 import Math2001.Library.Division
 import Math2001.Tactic.Rel
 import Math2001.Tactic.Numbers
