@@ -16,11 +16,6 @@ right-hand side, or vice versa.
 
 Invokes a specified lemma or hypothesis to modify the goal.
 
-.. rubric:: cases (first use for :math:`\lor`: :numref:`Section %s <or>`; for :math:`\land`: :numref:`Section %s <and>`; for :math:`\exists`: :numref:`Section %s <exists>`)
-
-Takes apart a hypothesis of the form "or" (:math:`\lor`), "and" (:math:`\land`) or "there exists"
-(:math:`\exists`).
-
 .. rubric:: contradiction (first use: :numref:`Section %s <contradiction_hyp>`)
 
 If there are two contradictory hypotheses available, this concludes the proof.
@@ -63,6 +58,11 @@ Introduces cases for a variable according to its residue modulo a specified numb
 .. rubric:: *numbers* (first use: :numref:`Section %s <proving_inequalities>`; with ``at`` for contradictions: :numref:`Section %s <contradiction_hyp>`)
 
 Proves numeric facts, like :math:`3\cdot 12 < 13 + 25` or :math:`3\cdot 5+1=4\cdot 4`.
+
+.. rubric:: obtain (first use for :math:`\lor`: :numref:`Section %s <or>`; for :math:`\land`: :numref:`Section %s <and>`; for :math:`\exists`: :numref:`Section %s <exists>`)
+
+Takes apart a hypothesis of the form "or" (:math:`\lor`), "and" (:math:`\land`) or "there exists"
+(:math:`\exists`).
 
 .. rubric:: *rel* (first use: :numref:`Section %s <proving_inequalities>`; for congruences: :numref:`Section %s <using_modular>`)
 
