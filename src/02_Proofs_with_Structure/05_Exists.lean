@@ -6,16 +6,16 @@ import Math2001.Tactic.Rel
 
 
 example {a : ℚ} (h : ∃ b : ℚ, a = b ^ 2 + 1) : a > 0 := by
-  cases' h with b hb
+  obtain ⟨b, hb⟩ := h
   calc
     a = b ^ 2 + 1 := hb
     _ > 0 := by extra
 
 
 example {t : ℝ} (h : ∃ a : ℝ, a * t < 0) : t ≠ 0 := by
-  cases' h with x hxt
+  obtain ⟨x, hxt⟩ := h
   have H : x ≤ 0 ∨ 0 < x := le_or_gt x 0
-  cases' H with hx hx
+  obtain hx | hx := H
   · apply ne_of_gt
     apply pos_of_mul_neg_right hxt hx
   · sorry

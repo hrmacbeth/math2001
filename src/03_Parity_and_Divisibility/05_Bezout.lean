@@ -3,7 +3,7 @@ import Mathlib.Tactic.Ring
 
 
 example {n : ℤ} (hn : 8 ∣ 5 * n) : 8 ∣ n := by
-  cases' hn with a ha
+  obtain ⟨a, ha⟩ := hn
   use -3 * a + 2 * n
   calc
     n = -3 * (5 * n) + 16 * n := by ring
@@ -18,8 +18,8 @@ example {n : ℤ} (h1 : 5 ∣ 3 * n) : 5 ∣ n := by
   sorry
 
 example {m : ℤ} (h2 : 5 ∣ m) (h1 : 8 ∣ m) : 40 ∣ m := by
-  cases' h1 with a ha
-  cases' h2 with b hb
+  obtain ⟨a, ha⟩ := h1
+  obtain ⟨b, hb⟩ := h2
   use -3 * a + 2 * b
   calc
     m = -15 * m + 16 * m := by ring

@@ -59,7 +59,7 @@ example : Prime 2 := by
   constructor
   · numbers
   intro m hmp
-  have hp : 0 < 2 := by norm_num
+  have hp : 0 < 2 := by numbers
   have hmp_le : m ≤ 2 := Nat.le_of_dvd hp hmp
   have h1m : 1 ≤ m := Nat.pos_of_dvd_of_pos hmp hp
   interval_cases m

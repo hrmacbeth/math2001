@@ -24,9 +24,7 @@ example : ∃! x : ℚ, ∀ a, a ≥ 1 → a ≤ 3 → (a - x) ^ 2 ≤ 1 := by
   sorry
 
 example {x : ℚ} (hx : ∃! a : ℚ, a ^ 2 = x) : x = 0 := by
-  cases' hx with a ha
-  dsimp at ha
-  cases' ha with ha1 ha2
+  obtain ⟨a, ha1, ha2⟩ := hx
   have h1 : -a = a
   · apply ha2
     calc
@@ -53,9 +51,7 @@ example : ∃! r : ℤ, 0 ≤ r ∧ r < 5 ∧ ∃ q : ℤ, 14 = 5 * q + r := by
     use 2
     numbers
   intro r hr
-  cases' hr with hr1 hr2
-  cases' hr2 with hr2 hr3
-  cases' hr3 with q hr3
+  obtain ⟨hr1, hr2, q, hr3⟩ := hr
   have : 1 < q
   · apply lt_of_mul_lt_mul_left
     calc

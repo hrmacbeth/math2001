@@ -62,9 +62,43 @@ theorem Int.modEq_sub_fac_self''' : t * n - a ≡ -a [ZMOD n] := by
   rw [sub_eq_add_neg]
   apply Int.modEq_add_fac_self'''
 
+theorem Int.modEq_add_fac_self_symm : a ≡ a + n * t [ZMOD n] := by
+  apply Int.ModEq.symm
+  apply Int.modEq_add_fac_self
+
+theorem Int.modEq_add_fac_self_symm' : a ≡ n * t + a [ZMOD n] := by
+  apply Int.ModEq.symm
+  apply Int.modEq_add_fac_self'
+
+theorem Int.modEq_add_fac_self_symm'' : a ≡ a + t * n [ZMOD n] := by
+  apply Int.ModEq.symm
+  apply Int.modEq_add_fac_self''
+
+theorem Int.modEq_add_fac_self_symm''' : a ≡ t * n + a [ZMOD n] := by
+  apply Int.ModEq.symm
+  apply Int.modEq_add_fac_self'''
+
+theorem Int.modEq_sub_fac_self_symm : a ≡ a - n * t [ZMOD n] := by
+  apply Int.ModEq.symm
+  apply Int.modEq_sub_fac_self
+
+theorem Int.modEq_sub_fac_self_symm' : -a ≡ n * t - a [ZMOD n] := by
+  apply Int.ModEq.symm
+  apply Int.modEq_sub_fac_self'
+
+theorem Int.modEq_sub_fac_self_symm'' : a ≡ a - t * n [ZMOD n] := by
+  apply Int.ModEq.symm
+  apply Int.modEq_sub_fac_self''
+
+theorem Int.modEq_sub_fac_self_symm''' : -a ≡ t * n - a [ZMOD n] := by
+  apply Int.ModEq.symm
+  apply Int.modEq_add_fac_self'''
+
 attribute [mod_extra]
   Int.modEq_add_fac_self Int.modEq_add_fac_self' Int.modEq_add_fac_self'' Int.modEq_add_fac_self'''
   Int.modEq_sub_fac_self Int.modEq_sub_fac_self' Int.modEq_sub_fac_self'' Int.modEq_sub_fac_self'''
+  Int.modEq_add_fac_self_symm Int.modEq_add_fac_self_symm' Int.modEq_add_fac_self_symm'' Int.modEq_add_fac_self_symm'''
+  Int.modEq_sub_fac_self_symm Int.modEq_sub_fac_self_symm' Int.modEq_sub_fac_self_symm'' Int.modEq_sub_fac_self_symm'''
   Int.ModEq.add_right Int.ModEq.add_left
   Int.ModEq.sub_right Int.ModEq.sub_left
 

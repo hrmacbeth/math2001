@@ -19,8 +19,8 @@ example : -5 ≡ 1 [ZMOD 3] := by
 theorem Int.ModEq.add {n a b c d : ℤ} (h1 : a ≡ b [ZMOD n]) (h2 : c ≡ d [ZMOD n]) :
     a + c ≡ b + d [ZMOD n] := by
   dsimp [Int.ModEq] at *
-  cases' h1 with x hx
-  cases' h2 with y hy
+  obtain ⟨x, hx⟩ := h1
+  obtain ⟨y, hy⟩ := h2
   use x + y
   calc
     a + c - (b + d) = a - b + (c - d) := by ring
@@ -37,8 +37,8 @@ theorem Int.ModEq.neg {n a b : ℤ} (h1 : a ≡ b [ZMOD n]) : -a ≡ -b [ZMOD n]
 
 theorem Int.ModEq.mul {n a b c d : ℤ} (h1 : a ≡ b [ZMOD n]) (h2 : c ≡ d [ZMOD n]) :
     a * c ≡ b * d [ZMOD n] := by
-  cases' h1 with x hx
-  cases' h2 with y hy
+  obtain ⟨x, hx⟩ := h1
+  obtain ⟨y, hy⟩ := h2
   use x * c + b * y
   calc
     a * c - b * d = (a - b) * c + b * (c - d) := by ring
@@ -63,7 +63,7 @@ example : ∃ a b c d, a ≡ b [ZMOD 4] ∧ c ≡ d [ZMOD 4] ∧ ¬a / c ≡ b /
 
 
 theorem Int.ModEq.pow_two (h : a ≡ b [ZMOD n]) : a ^ 2 ≡ b ^ 2 [ZMOD n] := by
-  cases' h with x hx
+  obtain ⟨x, hx⟩ := h
   use x * (a + b)
   calc
     a ^ 2 - b ^ 2 = (a - b) * (a + b) := by ring
@@ -85,7 +85,7 @@ theorem Int.ModEq.refl (a : ℤ) : a ≡ a [ZMOD n] := by
 
 example {a b : ℤ} (ha : a ≡ 2 [ZMOD 4]) :
     a * b ^ 2 + a ^ 2 * b + 3 * a ≡ 2 * b ^ 2 + 2 ^ 2 * b + 3 * 2 [ZMOD 4] := by
-  cases' ha with x hx
+  obtain ⟨x, hx⟩ := ha
   use x * (b ^ 2 + a * b + 2 * b + 3)
   calc
     a * b ^ 2 + a ^ 2 * b + 3 * a - (2 * b ^ 2 + 2 ^ 2 * b + 3 * 2) =

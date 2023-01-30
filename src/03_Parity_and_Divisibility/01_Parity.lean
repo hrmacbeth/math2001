@@ -18,7 +18,7 @@ example : Odd (-3 : ℤ) := by
 
 example {n : ℤ} (hn : Odd n) : Odd (3 * n + 2) := by
   dsimp [Odd] at *
-  cases' hn with k hk
+  obtain ⟨k, hk⟩ := hn
   use 3 * k + 2
   calc
     3 * n + 2 = 3 * (2 * k + 1) + 2 := by rw [hk]
@@ -29,8 +29,8 @@ example {n : ℤ} (hn : Odd n) : Odd (7 * n - 4) := by
   sorry
 
 example {x y : ℤ} (hx : Odd x) (hy : Odd y) : Odd (x + y + 1) := by
-  cases' hx with a ha
-  cases' hy with b hb
+  obtain ⟨a, ha⟩ := hx
+  obtain ⟨b, hb⟩ := hy
   use a + b + 1
   calc
     x + y + 1 = 2 * a + 1 + (2 * b + 1) + 1 := by rw [ha, hb]
@@ -47,13 +47,13 @@ example {n : ℤ} (hn : Even n) : Odd (n ^ 2 + 2 * n - 5) := by
   sorry
 
 example (n : ℤ) : Even (n ^ 2 + 3 * n + 4) := by
-  cases' Int.even_or_odd n with hn hn
-  · cases' hn with x hx
+  obtain hn | hn := Int.even_or_odd n
+  · obtain ⟨x, hx⟩ := hn
     use 2 * x ^ 2 + 3 * x + 2
     calc
       n ^ 2 + 3 * n + 4 = (2 * x) ^ 2 + 3 * (2 * x) + 4 := by rw [hx]
       _ = 2 * (2 * x ^ 2 + 3 * x + 2) := by ring
-  · cases' hn with x hx
+  · obtain ⟨x, hx⟩ := hn
     use 2 * x ^ 2 + 5 * x + 4
     calc
       n ^ 2 + 3 * n + 4 = (2 * x + 1) ^ 2 + 3 * (2 * x + 1) + 4 := by rw [hx]

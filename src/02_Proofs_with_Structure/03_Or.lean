@@ -7,7 +7,7 @@ import Math2001.Tactic.Rel
 
 
 example {x y : ℝ} (h : x = 1 ∨ y = -1) : x * y + x = y + 1 := by
-  cases' h with hx hy
+  obtain hx | hy := h
   calc
     x * y + x = 1 * y + 1 := by rw [hx]
     _ = y + 1 := by ring    
@@ -19,7 +19,7 @@ example {x y : ℝ} (h : x = 1 ∨ y = -1) : x * y + x = y + 1 := by
 example {n : ℕ} : n ^ 2 ≠ 2 := by
   have hn : n ≤ 1 ∨ 2 ≤ n
   apply le_or_lt
-  cases' hn with hn hn
+  obtain hn | hn := hn
   apply ne_of_lt
   calc
     n ^ 2 ≤ 1 ^ 2 := by rel [hn]
@@ -37,22 +37,22 @@ example {x : ℝ} (hx : 2 * x + 1 = 5) : x = 1 ∨ x = 2 := by
 example {a b : ℝ} (h : a * b = 0) : a = 0 ∨ b = 0 := by
   have ha : a < 0 ∨ a = 0 ∨ 0 < a
   apply lt_trichotomy
-  cases' ha with ha ha
+  obtain ha | ha := ha
   right
   apply eq_zero_of_mul_neg_eq_zero a
   apply h
   apply ha
-  cases' ha with ha ha
+  obtain ha | ha := ha
   left
   apply ha
   sorry
 
 example {a b : ℝ} (h : a * b = 0) : a = 0 ∨ b = 0 := by
   have ha : a < 0 ∨ a = 0 ∨ 0 < a := lt_trichotomy a 0
-  cases' ha with ha ha
+  obtain ha | ha := ha
   right
   apply eq_zero_of_mul_neg_eq_zero a h ha
-  cases' ha with ha ha
+  obtain ha | ha := ha
   left
   apply ha
   sorry
@@ -68,11 +68,11 @@ example {a : ℝ} (ha : a ^ 2 = 0) : a = 0 := by
 
 example {n : ℤ} : n ^ 2 ≠ 2 := by
   have hn0 : n ≤ 0 ∨ 1 ≤ n := le_or_lt n 0
-  cases' hn0 with hn0 hn0
+  obtain hn0 | hn0 := hn0
   · have : 0 ≤ -n
     addarith [hn0]
     have hn : -n ≤ 1 ∨ 2 ≤ -n := le_or_lt (-n) 1
-    cases' hn with hn hn
+    obtain hn | hn := hn
     · apply ne_of_lt
       calc
         n ^ 2 = (-n) ^ 2 := by ring
@@ -84,7 +84,7 @@ example {n : ℤ} : n ^ 2 ≠ 2 := by
         _ ≤ (-n) ^ 2 := by rel [hn]
         _ = n ^ 2 := by ring
   · have hn : n ≤ 1 ∨ 2 ≤ n := le_or_lt n 1
-    cases' hn with hn hn
+    obtain hn | hn := hn
     · apply ne_of_lt
       calc
         n ^ 2 ≤ (1:ℤ) ^ 2 := by rel [hn]

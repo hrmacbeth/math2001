@@ -6,7 +6,7 @@ import Math2001.Tactic.Rel
 
 
 example {x y : ℤ} (h : 2 * x - y = 4 ∧ y - x + 1 = 2) : x = 5 := by
-  cases' h with h1 h2
+  obtain ⟨h1, h2⟩ := h
   calc
     x = 2 * x - y + (y - x + 1) - 1 := by ring
     _ = 4 + 2 - 1 := by rw [h1, h2]

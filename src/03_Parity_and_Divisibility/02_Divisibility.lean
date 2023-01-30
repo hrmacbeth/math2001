@@ -14,7 +14,7 @@ example : (-2 : ℤ) ∣ 6 := by
   sorry
 
 example {a b : ℤ} (hab : a ∣ b) : a ∣ b ^ 2 + 2 * b := by
-  cases' hab with k hk
+  obtain ⟨k, hk⟩ := hab
   use k * (a * k + 2)
   calc
     b ^ 2 + 2 * b = (a * k) ^ 2 + 2 * (a * k) := by rw [hk]
@@ -37,7 +37,7 @@ example : ¬(5 : ℤ) ∣ 12 := by
 
 
 example {a b : ℕ} (hb : 0 < b) (hab : a ∣ b) : a ≤ b := by
-  cases' hab with k hk
+  obtain ⟨k, hk⟩ := hab
   have H : 1 ≤ k
   · apply pos_of_mul_pos_right (a := a)
     · calc
@@ -73,7 +73,7 @@ example : ∃ a b : ℤ, 0 < b ∧ b < a ∧ a - b ∣ a + b := by
 
 example (a : ℕ) (h : a ^ 2 ∣ a) : a = 0 ∨ a = 1 := by
   have ha : 0 ≤ a := by extra
-  cases' eq_or_lt_of_le ha with ha ha
+  obtain ha | ha := eq_or_lt_of_le ha
   · sorry
   have H1 : a ^ 2 = a
   · sorry
