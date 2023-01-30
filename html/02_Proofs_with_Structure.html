@@ -922,12 +922,11 @@ case.</p>
 <div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">{</span><span class="n">a</span> <span class="n">b</span> <span class="o">:</span> <span class="n">&#8477;</span><span class="o">}</span> <span class="o">(</span><span class="n">h</span> <span class="o">:</span> <span class="n">a</span> <span class="bp">*</span> <span class="n">b</span> <span class="bp">=</span> <span class="mi">0</span><span class="o">)</span> <span class="o">:</span> <span class="n">a</span> <span class="bp">=</span> <span class="mi">0</span> <span class="bp">&#8744;</span> <span class="n">b</span> <span class="bp">=</span> <span class="mi">0</span> <span class="o">:=</span> <span class="kd">by</span>
   <span class="k">have</span> <span class="n">ha</span> <span class="o">:</span> <span class="n">a</span> <span class="bp">&lt;</span> <span class="mi">0</span> <span class="bp">&#8744;</span> <span class="n">a</span> <span class="bp">=</span> <span class="mi">0</span> <span class="bp">&#8744;</span> <span class="mi">0</span> <span class="bp">&lt;</span> <span class="n">a</span>
   <span class="n">apply</span> <span class="n">lt_trichotomy</span>
-  <span class="n">obtain</span> <span class="n">ha</span> <span class="bp">|</span> <span class="n">ha</span> <span class="o">:=</span> <span class="n">ha</span>
+  <span class="n">obtain</span> <span class="n">ha</span> <span class="bp">|</span> <span class="n">ha</span> <span class="bp">|</span> <span class="n">ha</span> <span class="o">:=</span> <span class="n">ha</span>
   <span class="n">right</span>
   <span class="n">apply</span> <span class="n">eq_zero_of_mul_neg_eq_zero</span> <span class="n">a</span>
   <span class="n">apply</span> <span class="n">h</span>
   <span class="n">apply</span> <span class="n">ha</span>
-  <span class="n">obtain</span> <span class="n">ha</span> <span class="bp">|</span> <span class="n">ha</span> <span class="o">:=</span> <span class="n">ha</span>
   <span class="n">left</span>
   <span class="n">apply</span> <span class="n">ha</span>
   <span class="gr">sorry</span>
@@ -967,10 +966,9 @@ with the appropriate justifications, <code class="docutils literal notranslate">
 discussed.  Adapt your proof of the third case using the same idioms.</p>
 <div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">{</span><span class="n">a</span> <span class="n">b</span> <span class="o">:</span> <span class="n">&#8477;</span><span class="o">}</span> <span class="o">(</span><span class="n">h</span> <span class="o">:</span> <span class="n">a</span> <span class="bp">*</span> <span class="n">b</span> <span class="bp">=</span> <span class="mi">0</span><span class="o">)</span> <span class="o">:</span> <span class="n">a</span> <span class="bp">=</span> <span class="mi">0</span> <span class="bp">&#8744;</span> <span class="n">b</span> <span class="bp">=</span> <span class="mi">0</span> <span class="o">:=</span> <span class="kd">by</span>
   <span class="k">have</span> <span class="n">ha</span> <span class="o">:</span> <span class="n">a</span> <span class="bp">&lt;</span> <span class="mi">0</span> <span class="bp">&#8744;</span> <span class="n">a</span> <span class="bp">=</span> <span class="mi">0</span> <span class="bp">&#8744;</span> <span class="mi">0</span> <span class="bp">&lt;</span> <span class="n">a</span> <span class="o">:=</span> <span class="n">lt_trichotomy</span> <span class="n">a</span> <span class="mi">0</span>
-  <span class="n">obtain</span> <span class="n">ha</span> <span class="bp">|</span> <span class="n">ha</span> <span class="o">:=</span> <span class="n">ha</span>
+  <span class="n">obtain</span> <span class="n">ha</span> <span class="bp">|</span> <span class="n">ha</span> <span class="bp">|</span> <span class="n">ha</span> <span class="o">:=</span> <span class="n">ha</span>
   <span class="n">right</span>
   <span class="n">apply</span> <span class="n">eq_zero_of_mul_neg_eq_zero</span> <span class="n">a</span> <span class="n">h</span> <span class="n">ha</span>
-  <span class="n">obtain</span> <span class="n">ha</span> <span class="bp">|</span> <span class="n">ha</span> <span class="o">:=</span> <span class="n">ha</span>
   <span class="n">left</span>
   <span class="n">apply</span> <span class="n">ha</span>
   <span class="gr">sorry</span>

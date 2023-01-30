@@ -37,22 +37,20 @@ example {x : ℝ} (hx : 2 * x + 1 = 5) : x = 1 ∨ x = 2 := by
 example {a b : ℝ} (h : a * b = 0) : a = 0 ∨ b = 0 := by
   have ha : a < 0 ∨ a = 0 ∨ 0 < a
   apply lt_trichotomy
-  obtain ha | ha := ha
+  obtain ha | ha | ha := ha
   right
   apply eq_zero_of_mul_neg_eq_zero a
   apply h
   apply ha
-  obtain ha | ha := ha
   left
   apply ha
   sorry
 
 example {a b : ℝ} (h : a * b = 0) : a = 0 ∨ b = 0 := by
   have ha : a < 0 ∨ a = 0 ∨ 0 < a := lt_trichotomy a 0
-  obtain ha | ha := ha
+  obtain ha | ha | ha := ha
   right
   apply eq_zero_of_mul_neg_eq_zero a h ha
-  obtain ha | ha := ha
   left
   apply ha
   sorry

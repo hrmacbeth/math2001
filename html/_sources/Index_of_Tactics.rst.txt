@@ -16,6 +16,10 @@ right-hand side, or vice versa.
 
 Invokes a specified lemma or hypothesis to modify the goal.
 
+.. rubric:: constructor (first use: :numref:`Section %s <and>`)
+
+Splits an "and" goal (:math:`\land`) into sub-goals for its left and right parts.
+
 .. rubric:: contradiction (first use: :numref:`Section %s <contradiction_hyp>`)
 
 If there are two contradictory hypotheses available, this concludes the proof.
@@ -84,10 +88,6 @@ is effectively "expand out both sides and rearrange".
 
 Substitution: looks for the left-hand side of a specified equality fact in the goal, and replaces it with
 the right-hand side of that fact.
-
-.. rubric:: split (first use: :numref:`Section %s <and>`)
-
-Splits an "and" goal (:math:`\land`) into sub-goals for its left and right parts.
 
 .. rubric:: use (first use: :numref:`Section %s <exists>`)
 
