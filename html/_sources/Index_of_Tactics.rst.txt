@@ -16,7 +16,7 @@ right-hand side, or vice versa.
 
 Invokes a specified lemma or hypothesis to modify the goal.
 
-.. rubric:: constructor (first use: :numref:`Section %s <and>`)
+.. rubric:: constructor (first use: :numref:`Section %s <and>`; for ``↔`` goals: :numref:`Section %s <iff>`)
 
 Splits an "and" goal (:math:`\land`) into sub-goals for its left and right parts.
 
@@ -84,9 +84,12 @@ Selects the right alternative of an "or" goal (:math:`\lor`).
 Solves algebraic equality goals such as :math:`(x + y) ^ 2 = x ^ 2 + 2xy + y ^ 2`, when the proof
 is effectively "expand out both sides and rearrange".
 
-.. rubric:: rw (first use: :numref:`Section %s <proving_equalities_in_lean>`)
+.. rubric:: rw (first use: :numref:`Section %s <proving_equalities_in_lean>`; for ``↔`` hypotheses/lemmas: :numref:`Section %s <iff>`)
 
 Substitution: looks for the left-hand side of a specified equality fact in the goal, and replaces it with
+the right-hand side of that fact.
+
+With ``↔`` hypotheses/lemmas, replaces the left-hand side of the specified ``↔`` fact with
 the right-hand side of that fact.
 
 .. rubric:: use (first use: :numref:`Section %s <exists>`)
