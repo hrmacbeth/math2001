@@ -12,7 +12,7 @@ the cloud on Gitpod.
 These lecture notes are aimed at the early university level and have been written for the course
 Math 2001, at Fordham University.
 
-The course is currently (Spring 2022) in progress, and new material is being added regularly.  Check
+The course is currently (Spring 2023) in progress, and new material is being added regularly.  Check
 back often for updates!
 
 Please note that later sections consist of material which has not been
