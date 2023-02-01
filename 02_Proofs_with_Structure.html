@@ -582,7 +582,7 @@ if you know that <span class="math notranslate nohighlight">\(0&lt;ab\)</span> a
 nonnegative number is positive.  But working with division in proofs is always painful &#8211; it brings
 along the need for constant checks that denominators are nonzero &#8211; so it&#8217;s convenient to have a
 formulation like this which doesn&#8217;t mention division.)</p>
-<p>We&#8217;ll prove this lemma in <a class="reference internal" href="04_Proofs_with_Structure_II.html#pos-of-mul-pos-right-proof"><span class="std std-numref">Example 4.3.1</span></a>.  For now, let&#8217;s do a problem
+<p>We&#8217;ll prove this lemma in <a class="reference internal" href="04_Proofs_with_Structure_II.html#pos-of-mul-pos-right-proof"><span class="std std-numref">Example 4.4.1</span></a>.  For now, let&#8217;s do a problem
 using this lemma.  The solution to the problem has several steps: we use this lemma to prove an
 intermediate goal, and then use the intermediate goal in the conclusion.</p>
 <div class="admonition-problem admonition">
@@ -1036,8 +1036,8 @@ model.</p>
 again and take for granted.  More generally, <span class="math notranslate nohighlight">\(a^3=0\)</span> implies <span class="math notranslate nohighlight">\(a=0\)</span>, and
 <span class="math notranslate nohighlight">\(a^4=0\)</span> implies <span class="math notranslate nohighlight">\(a=0\)</span>, and so on.  (The <span class="math notranslate nohighlight">\(a^3\)</span> case is set up as an
 <a class="reference internal" href="#pow-eq-zero-ex"><span class="std std-ref">exercise in this section</span></a>; if you can do this you will understand the idea
-for all successive cases.)  This lemma is recorded in Lean as <code class="docutils literal notranslate"><span class="pre">pow_eq_zero'</span></code>:</p>
-<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">lemma</span> <span class="n">pow_eq_zero&#39;</span> <span class="o">{</span><span class="n">x</span> <span class="o">:</span> <span class="n">&#8477;</span><span class="o">}</span> <span class="o">(</span><span class="n">n</span> <span class="o">:</span> <span class="n">&#8469;</span><span class="o">)</span> <span class="o">(</span><span class="n">H</span> <span class="o">:</span> <span class="n">x</span><span class="bp">^</span><span class="n">n</span> <span class="bp">=</span> <span class="mi">0</span><span class="o">)</span> <span class="o">:</span> <span class="n">x</span> <span class="bp">=</span> <span class="mi">0</span> <span class="o">:=</span>
+for all successive cases.)  This lemma is recorded in Lean as <code class="docutils literal notranslate"><span class="pre">pow_eq_zero</span></code>:</p>
+<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">lemma</span> <span class="n">pow_eq_zero</span> <span class="o">{</span><span class="n">x</span> <span class="o">:</span> <span class="n">&#8477;</span><span class="o">}</span> <span class="o">{</span><span class="n">n</span> <span class="o">:</span> <span class="n">&#8469;</span><span class="o">}</span> <span class="o">(</span><span class="n">H</span> <span class="o">:</span> <span class="n">x</span><span class="bp">^</span><span class="n">n</span> <span class="bp">=</span> <span class="mi">0</span><span class="o">)</span> <span class="o">:</span> <span class="n">x</span> <span class="bp">=</span> <span class="mi">0</span> <span class="o">:=</span>
 </pre></div>
 </div>
 </section>

@@ -5,16 +5,19 @@ The mechanics of proof
 
 This is a set of lecture notes dealing with how to write careful, rigorous mathematical proofs.
 The lecture notes are paired with code in the computer formalization language
-`Lean <https://leanprover-community.github.io/>`_. Head over to the associated GitHub repository,
+`Lean <https://leanprover.github.io/about/>`_. Head over to the associated GitHub repository,
 https://github.com/hrmacbeth/math2001, to download this code to your own computer or to open it in
 the cloud on Gitpod.
 
 These lecture notes are aimed at the early university level and have been written for the course
 Math 2001, at Fordham University.
 
-For now (Fall 2022), these lecture notes are work in progress, and only a few chapters have been
-written.  Testing and feedback is welcome, but please be warned that some sections contain problems
-without yet the explanatory paragraphs which would be needed to solve them.
+The course is currently (Spring 2022) in progress, and new material is being added regularly.  Check
+back often for updates!
+
+Please note that later sections consist of material which has not been
+reached yet in lectures: these sections are not yet in their final form, and might e.g. contain
+problems without yet the explanatory paragraphs which would be needed to solve them.
 
 .. toctree::
    :numbered:
