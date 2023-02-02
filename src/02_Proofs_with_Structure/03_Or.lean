@@ -75,7 +75,7 @@ example {n : ℤ} : n ^ 2 ≠ 2 := by
       calc
         n ^ 2 = (-n) ^ 2 := by ring
         _ ≤ 1 ^ 2 := by rel [hn]
-        _ < 2 := by numbers
+        _ < (2:ℤ) := by numbers
     · apply ne_of_gt
       calc
         2 < 2 ^ 2 := by numbers
@@ -86,7 +86,7 @@ example {n : ℤ} : n ^ 2 ≠ 2 := by
     · apply ne_of_lt
       calc
         n ^ 2 ≤ 1 ^ 2 := by rel [hn]
-        _ < 2 := by numbers
+        _ < (2:ℤ) := by numbers
     · apply ne_of_gt
       calc
         2 < 2 ^ 2 := by numbers
