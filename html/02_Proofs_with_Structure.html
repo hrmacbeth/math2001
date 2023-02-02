@@ -87,7 +87,7 @@
 <li class="toctree-l3"><a class="reference internal" href="#id33">2.5.4. Example</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#id34">2.5.5. Example</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#id35">2.5.6. Example</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id36">2.5.7. Example</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#between">2.5.7. Example</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#id37">2.5.8. Example</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#id38">2.5.9. Exercises</a></li>
 </ul>
@@ -1154,15 +1154,7 @@ Show that either <span class="math notranslate nohighlight">\(s + t = 3\)</span>
   <span class="gr">sorry</span>
 </pre></div>
 </div>
-<ol class="arabic simple" start="6">
-<li><p>Let <span class="math notranslate nohighlight">\(x\)</span> and <span class="math notranslate nohighlight">\(y\)</span> be real numbers for which <span class="math notranslate nohighlight">\(x ^ 2 + 5 y = y ^ 2 + 5 x\)</span>.
-Show that either <span class="math notranslate nohighlight">\(x = y\)</span> or <span class="math notranslate nohighlight">\(x + y = 5\)</span>.</p></li>
-</ol>
-<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">{</span><span class="n">x</span> <span class="n">y</span> <span class="o">:</span> <span class="n">&#8477;</span><span class="o">}</span> <span class="o">(</span><span class="n">hxy</span> <span class="o">:</span> <span class="n">x</span> <span class="bp">^</span> <span class="mi">2</span> <span class="bp">+</span> <span class="mi">5</span> <span class="bp">*</span> <span class="n">y</span> <span class="bp">=</span> <span class="n">y</span> <span class="bp">^</span> <span class="mi">2</span> <span class="bp">+</span> <span class="mi">5</span> <span class="bp">*</span> <span class="n">x</span><span class="o">)</span> <span class="o">:</span> <span class="n">x</span> <span class="bp">=</span> <span class="n">y</span> <span class="bp">&#8744;</span> <span class="n">x</span> <span class="bp">+</span> <span class="n">y</span> <span class="bp">=</span> <span class="mi">5</span> <span class="o">:=</span> <span class="kd">by</span>
-  <span class="gr">sorry</span>
-</pre></div>
-</div>
-<ol class="arabic" start="7">
+<ol class="arabic" start="6">
 <li><p>Let <span class="math notranslate nohighlight">\(a\)</span>, <span class="math notranslate nohighlight">\(b\)</span> and <span class="math notranslate nohighlight">\(c\)</span> be rational numbers, with <span class="math notranslate nohighlight">\(a\)</span> nonzero.  Show that if
 <span class="math notranslate nohighlight">\(ab=ac\)</span> then <span class="math notranslate nohighlight">\(b=c\)</span>.</p>
 <p>We used this fact in <a class="reference internal" href="#lemmas"><span class="std std-numref">Section 2.2</span></a> (the Lean name was <code class="docutils literal notranslate"><span class="pre">mul_left_cancel&#8320;</span></code>).</p>
@@ -1180,6 +1172,18 @@ Show that either <span class="math notranslate nohighlight">\(x = y\)</span> or 
   <span class="gr">sorry</span>
   <span class="k">have</span> <span class="n">h2</span> <span class="o">:</span> <span class="n">b</span> <span class="bp">-</span> <span class="n">c</span> <span class="bp">=</span> <span class="mi">0</span>
   <span class="gr">sorry</span>
+  <span class="gr">sorry</span>
+</pre></div>
+</div>
+<ol class="arabic" start="7">
+<li><p>Let <span class="math notranslate nohighlight">\(x\)</span> and <span class="math notranslate nohighlight">\(y\)</span> be real numbers for which <span class="math notranslate nohighlight">\(x ^ 2 + 5 y = y ^ 2 + 5 x\)</span>.
+Show that either <span class="math notranslate nohighlight">\(x = y\)</span> or <span class="math notranslate nohighlight">\(x + y = 5\)</span>.</p>
+<p>Some lemmas that might be useful: <code class="docutils literal notranslate"><span class="pre">eq_or_ne</span></code> (two quantities <span class="math notranslate nohighlight">\(a\)</span>, <span class="math notranslate nohighlight">\(b\)</span> are either
+equal or not equal); <code class="docutils literal notranslate"><span class="pre">mul_left_cancel&#8320;</span></code> (if <span class="math notranslate nohighlight">\(a\ne 0\)</span> and <span class="math notranslate nohighlight">\(ab=ac\)</span> then
+<span class="math notranslate nohighlight">\(b=b\)</span>); this is proved in the previous exercise!</p>
+</li>
+</ol>
+<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">{</span><span class="n">x</span> <span class="n">y</span> <span class="o">:</span> <span class="n">&#8477;</span><span class="o">}</span> <span class="o">(</span><span class="n">hxy</span> <span class="o">:</span> <span class="n">x</span> <span class="bp">^</span> <span class="mi">2</span> <span class="bp">+</span> <span class="mi">5</span> <span class="bp">*</span> <span class="n">y</span> <span class="bp">=</span> <span class="n">y</span> <span class="bp">^</span> <span class="mi">2</span> <span class="bp">+</span> <span class="mi">5</span> <span class="bp">*</span> <span class="n">x</span><span class="o">)</span> <span class="o">:</span> <span class="n">x</span> <span class="bp">=</span> <span class="n">y</span> <span class="bp">&#8744;</span> <span class="n">x</span> <span class="bp">+</span> <span class="n">y</span> <span class="bp">=</span> <span class="mi">5</span> <span class="o">:=</span> <span class="kd">by</span>
   <span class="gr">sorry</span>
 </pre></div>
 </div>
@@ -1555,8 +1559,8 @@ exactly in the form they are stated.</p>
 </pre></div>
 </div>
 </section>
-<section id="id36">
-<h3><span class="section-number">2.5.7. </span>Example<a class="headerlink" href="#id36" title="Permalink to this headline">&#61633;</a></h3>
+<section id="between">
+<span id="id36"></span><h3><span class="section-number">2.5.7. </span>Example<a class="headerlink" href="#between" title="Permalink to this headline">&#61633;</a></h3>
 <div class="admonition-problem admonition">
 <p class="admonition-title">Problem</p>
 <p>Let <span class="math notranslate nohighlight">\(p\)</span> and <span class="math notranslate nohighlight">\(q\)</span> be real numbers, and suppose <span class="math notranslate nohighlight">\(p&lt;q\)</span>.  Show that there exists a

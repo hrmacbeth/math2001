@@ -107,12 +107,12 @@ example {s t : ℚ} (h : s = 3 - t) : s + t = 3 ∨ s + t = 5 := by
 example {x : ℝ} (hx : x ^ 2 + 2 * x - 3 = 0) : x = -3 ∨ x = 1 := by
   sorry
 
-example {x y : ℝ} (hxy : x ^ 2 + 5 * y = y ^ 2 + 5 * x) : x = y ∨ x + y = 5 := by
-  sorry
-
 example {a b c : ℚ} (ha : a ≠ 0) (h : a * b = a * c) : b = c := by
   have h1 : a * (b - c) = 0
   sorry
   have h2 : b - c = 0
   sorry
+  sorry
+
+example {x y : ℝ} (hxy : x ^ 2 + 5 * y = y ^ 2 + 5 * x) : x = y ∨ x + y = 5 := by
   sorry
