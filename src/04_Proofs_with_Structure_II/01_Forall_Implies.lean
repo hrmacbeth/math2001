@@ -3,6 +3,7 @@ import Mathlib.Data.Real.Basic
 import Mathlib.Tactic.IntervalCases
 import Math2001.Tactic.Numbers
 import Math2001.Tactic.Rel
+import Math2001.Tactic.Take
 
 
 example {a : ℝ} (h : ∀ x, a ≤ x ^ 2 - 2 * x) : a ≤ -1 :=
@@ -26,7 +27,7 @@ example {a b : ℝ} (ha1 : a ^ 2 ≤ 2) (hb1 : b ^ 2 ≤ 2) (ha2 : ∀ y, y ^ 2 
   · sorry
 
 example : ∃ b : ℝ, ∀ x : ℝ, b ≤ x ^ 2 - 2 * x := by
-  use -1
+  take -1
   intro x
   calc
     -1 ≤ -1 + (x - 1) ^ 2 := by extra
@@ -40,7 +41,7 @@ notation3 "forall_sufficiently_large "(...)", "r:(scoped P => ∃ C, ∀ x ≥ C
 
 example : forall_sufficiently_large n : ℤ, n ^ 3 ≥ 4 * n ^ 2 + 7 := by
   dsimp
-  use 5
+  take 5
   intro n hn
   calc
     n ^ 3 = n * n ^ 2 := by ring

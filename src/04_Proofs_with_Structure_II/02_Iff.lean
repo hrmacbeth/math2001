@@ -5,6 +5,7 @@ import Math2001.Library.Parity
 import Math2001.Tactic.Addarith
 import Math2001.Tactic.Numbers
 import Math2001.Tactic.Rel.IneqRel
+import Math2001.Tactic.Take
 
 def Int.ModEq (n a b : ℤ) : Prop := n ∣ a - b
 
@@ -28,14 +29,14 @@ example {n : ℤ} : 8 ∣ 5 * n ↔ 8 ∣ n := by
   constructor
   · intro hn
     obtain ⟨a, ha⟩ := hn
-    use -3 * a + 2 * n
+    take -3 * a + 2 * n
     calc
       n = -3 * (5 * n) + 16 * n := by ring
       _ = -3 * (8 * a) + 16 * n := by rw [ha]
       _ = 8 * (-3 * a + 2 * n) := by ring
   · intro hn
     obtain ⟨a, ha⟩ := hn
-    use 5 * a
+    take 5 * a
     calc 5 * n = 5 * (8 * a) := by rw [ha]
     _ = 8 * (5 * a) := by ring
 
@@ -46,7 +47,7 @@ theorem odd_iff_modEq (n : ℤ) : Odd n ↔ n ≡ 1 [ZMOD 2] := by
     obtain ⟨k, hk⟩ := h
     dsimp [Int.ModEq]
     dsimp [(· ∣ ·)]
-    use k
+    take k
     addarith [hk]
   · sorry
 

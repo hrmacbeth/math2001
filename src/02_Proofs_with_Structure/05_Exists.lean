@@ -3,6 +3,7 @@ import Mathlib.Data.Real.Basic
 import Math2001.Tactic.Addarith
 import Math2001.Tactic.Numbers
 import Math2001.Tactic.Rel
+import Math2001.Tactic.Take
 
 
 example {a : ℚ} (h : ∃ b : ℚ, a = b ^ 2 + 1) : a > 0 := by
@@ -21,12 +22,12 @@ example {t : ℝ} (h : ∃ a : ℝ, a * t < 0) : t ≠ 0 := by
   · sorry
 
 example : ∃ n : ℤ, 12 * n = 84 := by
-  use 7
+  take 7
   numbers
 
 
 example (x : ℝ) : ∃ y : ℝ, y > x := by
-  use x + 1
+  take x + 1
   extra
 
 
@@ -40,7 +41,7 @@ example {p q : ℝ} (h : p < q) : ∃ x, p < x ∧ x < q := by
   sorry
 
 example : ∃ a b c d : ℕ, a ^ 3 + b ^ 3 = 1729 ∧ c ^ 3 + d ^ 3 = 1729 ∧ a ≠ c ∧ a ≠ d := by
-  use 1, 12, 9, 10
+  take 1, 12, 9, 10
   constructor
   numbers
   constructor

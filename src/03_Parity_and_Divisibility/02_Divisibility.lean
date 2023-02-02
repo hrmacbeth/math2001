@@ -2,11 +2,12 @@
 import Math2001.Library.Division
 import Math2001.Tactic.Rel
 import Math2001.Tactic.Numbers
+import Math2001.Tactic.Take
 
 
 example : (11 : ℕ) ∣ 88 := by
   dsimp [(· ∣ ·)]
-  use 8
+  take 8
   numbers
 
 
@@ -15,7 +16,7 @@ example : (-2 : ℤ) ∣ 6 := by
 
 example {a b : ℤ} (hab : a ∣ b) : a ∣ b ^ 2 + 2 * b := by
   obtain ⟨k, hk⟩ := hab
-  use k * (a * k + 2)
+  take k * (a * k + 2)
   calc
     b ^ 2 + 2 * b = (a * k) ^ 2 + 2 * (a * k) := by rw [hk]
     _ = a * (k * (a * k + 2)) := by ring
@@ -30,7 +31,7 @@ example {x y z : ℕ} (h : x * y ∣ z) : x ∣ z := by
 example : ¬(5 : ℤ) ∣ 12 := by
   apply Int.not_dvd_of_exists_lt_and_lt
   · numbers
-  use 2
+  take 2
   constructor
   · numbers
   · numbers

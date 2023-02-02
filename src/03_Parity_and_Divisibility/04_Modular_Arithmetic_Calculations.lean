@@ -2,6 +2,7 @@
 import Mathlib.Tactic.ModCases
 import Math2001.Tactic.Numbers
 import Math2001.Tactic.Rel
+import Math2001.Tactic.Take
 
 
 example {a b : ℤ} (ha : a ≡ 2 [ZMOD 4]) :
@@ -19,7 +20,7 @@ example {a b : ℤ} (ha : a ≡ 4 [ZMOD 5]) (hb : b ≡ 3 [ZMOD 5]) :
 
 
 example : ∃ a : ℤ, 6 * a ≡ 4 [ZMOD 11] := by
-  use 8
+  take 8
   calc
     6 * 8 = 4 + 4 * 11 := by numbers
     _ ≡ 4 [ZMOD 11] := by extra

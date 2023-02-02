@@ -2,6 +2,7 @@
 import Mathlib.Tactic.IntervalCases
 import Math2001.Library.Division
 import Math2001.Tactic.Numbers
+import Math2001.Tactic.Take
 
 
 def Int.ModEq (n a b : ℤ) : Prop := n ∣ a - b
@@ -10,7 +11,7 @@ notation:50 a " ≡ " b " [ZMOD " n "]" => Int.ModEq n a b
 
 
 example : 11 ≡ 3 [ZMOD 4] := by
-  use 2
+  take 2
   numbers
 
 example : -5 ≡ 1 [ZMOD 3] := by
@@ -21,7 +22,7 @@ theorem Int.ModEq.add {n a b c d : ℤ} (h1 : a ≡ b [ZMOD n]) (h2 : c ≡ d [Z
   dsimp [Int.ModEq] at *
   obtain ⟨x, hx⟩ := h1
   obtain ⟨y, hy⟩ := h2
-  use x + y
+  take x + y
   calc
     a + c - (b + d) = a - b + (c - d) := by ring
     _ = n * x + n * y := by rw [hx, hy]
@@ -39,7 +40,7 @@ theorem Int.ModEq.mul {n a b c d : ℤ} (h1 : a ≡ b [ZMOD n]) (h2 : c ≡ d [Z
     a * c ≡ b * d [ZMOD n] := by
   obtain ⟨x, hx⟩ := h1
   obtain ⟨y, hy⟩ := h2
-  use x * c + b * y
+  take x * c + b * y
   calc
     a * c - b * d = (a - b) * c + b * (c - d) := by ring
     _ = n * x * c + b * (n * y) := by rw [hx, hy]
@@ -47,16 +48,16 @@ theorem Int.ModEq.mul {n a b c d : ℤ} (h1 : a ≡ b [ZMOD n]) (h2 : c ≡ d [Z
 
 
 example : ∃ a b c d, a ≡ b [ZMOD 4] ∧ c ≡ d [ZMOD 4] ∧ ¬a / c ≡ b / d [ZMOD 4] := by
-  use 10, 18, 2, 6
+  take 10, 18, 2, 6
   constructor
-  · use -2
+  · take -2
     numbers
   constructor
-  · use -1
+  · take -1
     numbers
   apply Int.not_dvd_of_exists_lt_and_lt
   · numbers
-  use 0
+  take 0
   constructor
   · numbers
   · numbers
@@ -64,7 +65,7 @@ example : ∃ a b c d, a ≡ b [ZMOD 4] ∧ c ≡ d [ZMOD 4] ∧ ¬a / c ≡ b /
 
 theorem Int.ModEq.pow_two (h : a ≡ b [ZMOD n]) : a ^ 2 ≡ b ^ 2 [ZMOD n] := by
   obtain ⟨x, hx⟩ := h
-  use x * (a + b)
+  take x * (a + b)
   calc
     a ^ 2 - b ^ 2 = (a - b) * (a + b) := by ring
     _ = n * x * (a + b) := by rw [hx]
@@ -79,14 +80,14 @@ theorem Int.ModEq.pow (k : ℕ) (h : a ≡ b [ZMOD n]) : a ^ k ≡ b ^ k [ZMOD n
 
 
 theorem Int.ModEq.refl (a : ℤ) : a ≡ a [ZMOD n] := by
-  use 0
+  take 0
   ring
 
 
 example {a b : ℤ} (ha : a ≡ 2 [ZMOD 4]) :
     a * b ^ 2 + a ^ 2 * b + 3 * a ≡ 2 * b ^ 2 + 2 ^ 2 * b + 3 * 2 [ZMOD 4] := by
   obtain ⟨x, hx⟩ := ha
-  use x * (b ^ 2 + a * b + 2 * b + 3)
+  take x * (b ^ 2 + a * b + 2 * b + 3)
   calc
     a * b ^ 2 + a ^ 2 * b + 3 * a - (2 * b ^ 2 + 2 ^ 2 * b + 3 * 2) =
         (a - 2) * (b ^ 2 + a * b + 2 * b + 3) :=

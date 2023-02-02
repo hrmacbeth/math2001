@@ -6,6 +6,7 @@ import Math2001.Library.Parity
 import Math2001.Tactic.Addarith
 import Math2001.Tactic.Numbers
 import Math2001.Tactic.Rel
+import Math2001.Tactic.Take
 
 attribute [-simp] Nat.not_two_dvd_bit1 two_dvd_bit0
 
@@ -42,11 +43,11 @@ example : Prime 5 := by
   apply Nat.not_dvd_of_exists_lt_and_lt
   · extra
   interval_cases m
-  · use 2
+  · take 2
     constructor <;> numbers
-  · use 1
+  · take 1
     constructor <;> numbers
-  · use 1
+  · take 1
     constructor <;> numbers
 
 

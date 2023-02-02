@@ -4,12 +4,13 @@ import Math2001.Library.Parity
 import Math2001.Tactic.Addarith
 import Math2001.Tactic.Numbers
 import Math2001.Tactic.Rel.IneqRel
+import Math2001.Tactic.Take
 
 namespace Int
 
 
 example : ∃! a : ℝ, 3 * a + 1 = 7 := by
-  use 2
+  take 2
   dsimp
   constructor
   · numbers
@@ -41,14 +42,14 @@ example {x : ℚ} (hx : ∃! a : ℚ, a ^ 2 = x) : x = 0 := by
 
 
 example : ∃! r : ℤ, 0 ≤ r ∧ r < 5 ∧ ∃ q : ℤ, 14 = 5 * q + r := by
-  use 4
+  take 4
   dsimp
   constructor
   · constructor
     · numbers
     constructor
     · numbers
-    use 2
+    take 2
     numbers
   intro r hr
   obtain ⟨hr1, hr2, q, hr3⟩ := hr
@@ -74,7 +75,7 @@ example (n : ℤ) : Even n ∨ Odd n := by
   sorry
 
 example : ∃! x : ℚ, 4 * x - 3 = 9 := by
-  use 3
+  take 3
   constructor
   · numbers
   intro y hy

@@ -92,6 +92,6 @@ the right-hand side of that fact.
 With ``↔`` hypotheses/lemmas, replaces the left-hand side of the specified ``↔`` fact with
 the right-hand side of that fact.
 
-.. rubric:: use (first use: :numref:`Section %s <exists>`)
+.. rubric:: *take* (first use: :numref:`Section %s <exists>`)
 
 Provides a witness to an existential goal (:math:`\exists`).

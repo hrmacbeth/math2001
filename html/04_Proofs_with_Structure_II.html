@@ -292,7 +292,7 @@ argument is performed by the tactic <code class="docutils literal notranslate"><
 </pre></div>
 </div>
 <div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">:</span> <span class="bp">&#8707;</span> <span class="n">b</span> <span class="o">:</span> <span class="n">&#8477;</span><span class="o">,</span> <span class="bp">&#8704;</span> <span class="n">x</span> <span class="o">:</span> <span class="n">&#8477;</span><span class="o">,</span> <span class="n">b</span> <span class="bp">&#8804;</span> <span class="n">x</span> <span class="bp">^</span> <span class="mi">2</span> <span class="bp">-</span> <span class="mi">2</span> <span class="bp">*</span> <span class="n">x</span> <span class="o">:=</span> <span class="kd">by</span>
-  <span class="n">use</span> <span class="bp">-</span><span class="mi">1</span>
+  <span class="n">take</span> <span class="bp">-</span><span class="mi">1</span>
   <span class="n">intro</span> <span class="n">x</span>
   <span class="k">calc</span>
     <span class="bp">-</span><span class="mi">1</span> <span class="bp">&#8804;</span> <span class="bp">-</span><span class="mi">1</span> <span class="bp">+</span> <span class="o">(</span><span class="n">x</span> <span class="bp">-</span> <span class="mi">1</span><span class="o">)</span> <span class="bp">^</span> <span class="mi">2</span> <span class="o">:=</span> <span class="kd">by</span> <span class="n">extra</span>
@@ -365,7 +365,7 @@ the lemma</p>
 Lean.</p>
 <div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">:</span> <span class="n">forall_sufficiently_large</span> <span class="n">n</span> <span class="o">:</span> <span class="n">&#8484;</span><span class="o">,</span> <span class="n">n</span> <span class="bp">^</span> <span class="mi">3</span> <span class="bp">&#8805;</span> <span class="mi">4</span> <span class="bp">*</span> <span class="n">n</span> <span class="bp">^</span> <span class="mi">2</span> <span class="bp">+</span> <span class="mi">7</span> <span class="o">:=</span> <span class="kd">by</span>
   <span class="n">dsimp</span>
-  <span class="n">use</span> <span class="mi">5</span>
+  <span class="n">take</span> <span class="mi">5</span>
   <span class="n">intro</span> <span class="n">n</span> <span class="n">hn</span>
   <span class="k">calc</span>
     <span class="n">n</span> <span class="bp">^</span> <span class="mi">3</span> <span class="bp">=</span> <span class="n">n</span> <span class="bp">*</span> <span class="n">n</span> <span class="bp">^</span> <span class="mi">2</span> <span class="o">:=</span> <span class="kd">by</span> <span class="n">ring</span>
@@ -539,14 +539,14 @@ So</p>
   <span class="n">constructor</span>
   <span class="bp">&#183;</span> <span class="n">intro</span> <span class="n">hn</span>
     <span class="n">obtain</span> <span class="o">&#10216;</span><span class="n">a</span><span class="o">,</span> <span class="n">ha</span><span class="o">&#10217;</span> <span class="o">:=</span> <span class="n">hn</span>
-    <span class="n">use</span> <span class="bp">-</span><span class="mi">3</span> <span class="bp">*</span> <span class="n">a</span> <span class="bp">+</span> <span class="mi">2</span> <span class="bp">*</span> <span class="n">n</span>
+    <span class="n">take</span> <span class="bp">-</span><span class="mi">3</span> <span class="bp">*</span> <span class="n">a</span> <span class="bp">+</span> <span class="mi">2</span> <span class="bp">*</span> <span class="n">n</span>
     <span class="k">calc</span>
       <span class="n">n</span> <span class="bp">=</span> <span class="bp">-</span><span class="mi">3</span> <span class="bp">*</span> <span class="o">(</span><span class="mi">5</span> <span class="bp">*</span> <span class="n">n</span><span class="o">)</span> <span class="bp">+</span> <span class="mi">16</span> <span class="bp">*</span> <span class="n">n</span> <span class="o">:=</span> <span class="kd">by</span> <span class="n">ring</span>
       <span class="n">_</span> <span class="bp">=</span> <span class="bp">-</span><span class="mi">3</span> <span class="bp">*</span> <span class="o">(</span><span class="mi">8</span> <span class="bp">*</span> <span class="n">a</span><span class="o">)</span> <span class="bp">+</span> <span class="mi">16</span> <span class="bp">*</span> <span class="n">n</span> <span class="o">:=</span> <span class="kd">by</span> <span class="n">rw</span> <span class="o">[</span><span class="n">ha</span><span class="o">]</span>
       <span class="n">_</span> <span class="bp">=</span> <span class="mi">8</span> <span class="bp">*</span> <span class="o">(</span><span class="bp">-</span><span class="mi">3</span> <span class="bp">*</span> <span class="n">a</span> <span class="bp">+</span> <span class="mi">2</span> <span class="bp">*</span> <span class="n">n</span><span class="o">)</span> <span class="o">:=</span> <span class="kd">by</span> <span class="n">ring</span>
   <span class="bp">&#183;</span> <span class="n">intro</span> <span class="n">hn</span>
     <span class="n">obtain</span> <span class="o">&#10216;</span><span class="n">a</span><span class="o">,</span> <span class="n">ha</span><span class="o">&#10217;</span> <span class="o">:=</span> <span class="n">hn</span>
-    <span class="n">use</span> <span class="mi">5</span> <span class="bp">*</span> <span class="n">a</span>
+    <span class="n">take</span> <span class="mi">5</span> <span class="bp">*</span> <span class="n">a</span>
     <span class="k">calc</span> <span class="mi">5</span> <span class="bp">*</span> <span class="n">n</span> <span class="bp">=</span> <span class="mi">5</span> <span class="bp">*</span> <span class="o">(</span><span class="mi">8</span> <span class="bp">*</span> <span class="n">a</span><span class="o">)</span> <span class="o">:=</span> <span class="kd">by</span> <span class="n">rw</span> <span class="o">[</span><span class="n">ha</span><span class="o">]</span>
     <span class="n">_</span> <span class="bp">=</span> <span class="mi">8</span> <span class="bp">*</span> <span class="o">(</span><span class="mi">5</span> <span class="bp">*</span> <span class="n">a</span><span class="o">)</span> <span class="o">:=</span> <span class="kd">by</span> <span class="n">ring</span>
 </pre></div>
@@ -573,7 +573,7 @@ integer <span class="math notranslate nohighlight">\(k\)</span> such <span class
     <span class="n">obtain</span> <span class="o">&#10216;</span><span class="n">k</span><span class="o">,</span> <span class="n">hk</span><span class="o">&#10217;</span> <span class="o">:=</span> <span class="n">h</span>
     <span class="n">dsimp</span> <span class="o">[</span><span class="n">Int.ModEq</span><span class="o">]</span>
     <span class="n">dsimp</span> <span class="o">[(</span><span class="bp">&#183;</span> <span class="bp">&#8739;</span> <span class="bp">&#183;</span><span class="o">)]</span>
-    <span class="n">use</span> <span class="n">k</span>
+    <span class="n">take</span> <span class="n">k</span>
     <span class="n">addarith</span> <span class="o">[</span><span class="n">hk</span><span class="o">]</span>
   <span class="bp">&#183;</span> <span class="gr">sorry</span>
 </pre></div>
@@ -745,7 +745,7 @@ or 2.</p></li>
 &amp;= 2.\end{split}\]</div>
 </div>
 <div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">:</span> <span class="bp">&#8707;!</span> <span class="n">a</span> <span class="o">:</span> <span class="n">&#8477;</span><span class="o">,</span> <span class="mi">3</span> <span class="bp">*</span> <span class="n">a</span> <span class="bp">+</span> <span class="mi">1</span> <span class="bp">=</span> <span class="mi">7</span> <span class="o">:=</span> <span class="kd">by</span>
-  <span class="n">use</span> <span class="mi">2</span>
+  <span class="n">take</span> <span class="mi">2</span>
   <span class="n">dsimp</span>
   <span class="n">constructor</span>
   <span class="bp">&#183;</span> <span class="n">numbers</span>
@@ -873,14 +873,14 @@ theorem.</p>
 strictly between 1 and 3.  So <span class="math notranslate nohighlight">\(r=14-5\cdot 2=4\)</span>.</p>
 </div>
 <div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">:</span> <span class="bp">&#8707;!</span> <span class="n">r</span> <span class="o">:</span> <span class="n">&#8484;</span><span class="o">,</span> <span class="mi">0</span> <span class="bp">&#8804;</span> <span class="n">r</span> <span class="bp">&#8743;</span> <span class="n">r</span> <span class="bp">&lt;</span> <span class="mi">5</span> <span class="bp">&#8743;</span> <span class="bp">&#8707;</span> <span class="n">q</span> <span class="o">:</span> <span class="n">&#8484;</span><span class="o">,</span> <span class="mi">14</span> <span class="bp">=</span> <span class="mi">5</span> <span class="bp">*</span> <span class="n">q</span> <span class="bp">+</span> <span class="n">r</span> <span class="o">:=</span> <span class="kd">by</span>
-  <span class="n">use</span> <span class="mi">4</span>
+  <span class="n">take</span> <span class="mi">4</span>
   <span class="n">dsimp</span>
   <span class="n">constructor</span>
   <span class="bp">&#183;</span> <span class="n">constructor</span>
     <span class="bp">&#183;</span> <span class="n">numbers</span>
     <span class="n">constructor</span>
     <span class="bp">&#183;</span> <span class="n">numbers</span>
-    <span class="n">use</span> <span class="mi">2</span>
+    <span class="n">take</span> <span class="mi">2</span>
     <span class="n">numbers</span>
   <span class="n">intro</span> <span class="n">r</span> <span class="n">hr</span>
   <span class="n">obtain</span> <span class="o">&#10216;</span><span class="n">hr1</span><span class="o">,</span> <span class="n">hr2</span><span class="o">,</span> <span class="n">q</span><span class="o">,</span> <span class="n">hr3</span><span class="o">&#10217;</span> <span class="o">:=</span> <span class="n">hr</span>
@@ -930,7 +930,7 @@ integer <span class="math notranslate nohighlight">\(r\)</span>, such that <span
 <li><p>Show that there exists a unique rational number <span class="math notranslate nohighlight">\(x\)</span>, such that <span class="math notranslate nohighlight">\(4x-3=9\)</span>.</p></li>
 </ol>
 <div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">:</span> <span class="bp">&#8707;!</span> <span class="n">x</span> <span class="o">:</span> <span class="n">&#8474;</span><span class="o">,</span> <span class="mi">4</span> <span class="bp">*</span> <span class="n">x</span> <span class="bp">-</span> <span class="mi">3</span> <span class="bp">=</span> <span class="mi">9</span> <span class="o">:=</span> <span class="kd">by</span>
-  <span class="n">use</span> <span class="mi">3</span>
+  <span class="n">take</span> <span class="mi">3</span>
   <span class="n">constructor</span>
   <span class="bp">&#183;</span> <span class="n">numbers</span>
   <span class="n">intro</span> <span class="n">y</span> <span class="n">hy</span>
@@ -1087,11 +1087,11 @@ proved in <a class="reference internal" href="03_Parity_and_Divisibility.html#dv
   <span class="n">apply</span> <span class="n">Nat.not_dvd_of_exists_lt_and_lt</span>
   <span class="bp">&#183;</span> <span class="n">extra</span>
   <span class="n">interval_cases</span> <span class="n">m</span>
-  <span class="bp">&#183;</span> <span class="n">use</span> <span class="mi">2</span>
+  <span class="bp">&#183;</span> <span class="n">take</span> <span class="mi">2</span>
     <span class="n">constructor</span> <span class="bp">&lt;;&gt;</span> <span class="n">numbers</span>
-  <span class="bp">&#183;</span> <span class="n">use</span> <span class="mi">1</span>
+  <span class="bp">&#183;</span> <span class="n">take</span> <span class="mi">1</span>
     <span class="n">constructor</span> <span class="bp">&lt;;&gt;</span> <span class="n">numbers</span>
-  <span class="bp">&#183;</span> <span class="n">use</span> <span class="mi">1</span>
+  <span class="bp">&#183;</span> <span class="n">take</span> <span class="mi">1</span>
     <span class="n">constructor</span> <span class="bp">&lt;;&gt;</span> <span class="n">numbers</span>
 </pre></div>
 </div>

@@ -1,10 +1,11 @@
 /- Copyright (c) Heather Macbeth, 2022.  All rights reserved. -/
 import Mathlib.Tactic.Ring
+import Math2001.Tactic.Take
 
 
 example {n : ℤ} (hn : 8 ∣ 5 * n) : 8 ∣ n := by
   obtain ⟨a, ha⟩ := hn
-  use -3 * a + 2 * n
+  take -3 * a + 2 * n
   calc
     n = -3 * (5 * n) + 16 * n := by ring
     _ = -3 * (8 * a) + 16 * n := by rw [ha]
@@ -20,7 +21,7 @@ example {n : ℤ} (h1 : 5 ∣ 3 * n) : 5 ∣ n := by
 example {m : ℤ} (h2 : 5 ∣ m) (h1 : 8 ∣ m) : 40 ∣ m := by
   obtain ⟨a, ha⟩ := h1
   obtain ⟨b, hb⟩ := h2
-  use -3 * a + 2 * b
+  take -3 * a + 2 * b
   calc
     m = -15 * m + 16 * m := by ring
     _ = -15 * (8 * a) + 16 * m := by rw [ha]
