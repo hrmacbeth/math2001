@@ -1440,11 +1440,20 @@ the <code class="docutils literal notranslate"><span class="pre">2</span></code>
 <span id="exists"></span><h2><span class="section-number">2.5. </span>Existence proofs<a class="headerlink" href="#existence-proofs" title="Permalink to this headline">&#61633;</a></h2>
 <section id="id30">
 <h3><span class="section-number">2.5.1. </span>Example<a class="headerlink" href="#id30" title="Permalink to this headline">&#61633;</a></h3>
+<p>This section covers the <em>existential quantifier</em>, the logical concept expressed in English as</p>
+<blockquote>
+<div><p>There exists &#8230; such that &#8230;.</p>
+</div></blockquote>
+<p>For example, here is a problem in which a hypothesis features an existential quantifier.</p>
 <div class="admonition-problem admonition">
 <p class="admonition-title">Problem</p>
 <p>Let <span class="math notranslate nohighlight">\(a\)</span> be a rational number, and suppose that there exists a rational number <span class="math notranslate nohighlight">\(b\)</span>,
 such that <span class="math notranslate nohighlight">\(a=b^2+1\)</span>.  Show that <span class="math notranslate nohighlight">\(a&gt;0\)</span>.</p>
 </div>
+<p>The hypothesis &#8220;there exists a rational number <span class="math notranslate nohighlight">\(b\)</span>, such that <span class="math notranslate nohighlight">\(a=b^2+1\)</span>&#8221; can be broken
+down immediately to actually get our hands on the <em>witness</em> for the extistential: a rational number
+<span class="math notranslate nohighlight">\(b\)</span> satisfying <span class="math notranslate nohighlight">\(a=b^2+1\)</span> (there might be more than one, but this will just choose one
+witness). Then we can do a regular calculational proof which involves the witness <span class="math notranslate nohighlight">\(b\)</span>.</p>
 <div class="admonition-solution admonition">
 <p class="admonition-title">Solution</p>
 <p>Let <span class="math notranslate nohighlight">\(b\)</span> be a rational number such that <span class="math notranslate nohighlight">\(a=b^2+1\)</span>. We have,</p>
@@ -1452,6 +1461,9 @@ such that <span class="math notranslate nohighlight">\(a=b^2+1\)</span>.  Show t
 \[\begin{split}a &amp;=b^2+1\\
 &amp;&gt;0.\end{split}\]</div>
 </div>
+<p>The logical symbol for an existential is <span class="math notranslate nohighlight">\(\exists\)</span>.  In Lean, the tactic <code class="docutils literal notranslate"><span class="pre">obtain</span></code> is used to
+break up an existential hypothesis into a witness and a hypothesis about that witness.  The syntax
+is the same as the syntax for breaking apart an &#8220;and&#8221; (see <a class="reference internal" href="#and"><span class="std std-numref">Section 2.4</span></a>).</p>
 <div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">{</span><span class="n">a</span> <span class="o">:</span> <span class="n">&#8474;</span><span class="o">}</span> <span class="o">(</span><span class="n">h</span> <span class="o">:</span> <span class="bp">&#8707;</span> <span class="n">b</span> <span class="o">:</span> <span class="n">&#8474;</span><span class="o">,</span> <span class="n">a</span> <span class="bp">=</span> <span class="n">b</span> <span class="bp">^</span> <span class="mi">2</span> <span class="bp">+</span> <span class="mi">1</span><span class="o">)</span> <span class="o">:</span> <span class="n">a</span> <span class="bp">&gt;</span> <span class="mi">0</span> <span class="o">:=</span> <span class="kd">by</span>
   <span class="n">obtain</span> <span class="o">&#10216;</span><span class="n">b</span><span class="o">,</span> <span class="n">hb</span><span class="o">&#10217;</span> <span class="o">:=</span> <span class="n">h</span>
   <span class="k">calc</span>
@@ -1459,9 +1471,24 @@ such that <span class="math notranslate nohighlight">\(a=b^2+1\)</span>.  Show t
     <span class="n">_</span> <span class="bp">&gt;</span> <span class="mi">0</span> <span class="o">:=</span> <span class="kd">by</span> <span class="n">extra</span>
 </pre></div>
 </div>
+<p>In this problem, the goal view is initially</p>
+<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">:</span> <span class="n">&#8474;</span>
+<span class="n">h</span> <span class="o">:</span> <span class="bp">&#8707;</span> <span class="n">b</span><span class="o">,</span> <span class="n">a</span> <span class="bp">=</span> <span class="n">b</span> <span class="bp">^</span> <span class="mi">2</span> <span class="bp">+</span> <span class="mi">1</span>
+<span class="bp">&#8866;</span> <span class="n">a</span> <span class="bp">&gt;</span> <span class="mi">0</span>
+</pre></div>
+</div>
+<p>After the use of the <code class="docutils literal notranslate"><span class="pre">obtain</span></code> tactic, the existential is broken apart, so the witness appears
+separately on the variable list and can be accessed in the succeeding proof:</p>
+<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="n">b</span> <span class="o">:</span> <span class="n">&#8474;</span>
+<span class="n">hb</span> <span class="o">:</span> <span class="n">a</span> <span class="bp">=</span> <span class="n">b</span> <span class="bp">^</span> <span class="mi">2</span> <span class="bp">+</span> <span class="mi">1</span>
+<span class="bp">&#8866;</span> <span class="n">a</span> <span class="bp">&gt;</span> <span class="mi">0</span>
+</pre></div>
+</div>
 </section>
 <section id="id31">
 <h3><span class="section-number">2.5.2. </span>Example<a class="headerlink" href="#id31" title="Permalink to this headline">&#61633;</a></h3>
+<p>Here&#8217;s another problem with an existential hypothesis, &#8220;there exists a real number <span class="math notranslate nohighlight">\(a\)</span>,
+such that <span class="math notranslate nohighlight">\(at&lt;0\)</span>&#8221;.  As before we break it apart and then follow earlier methods.</p>
 <div class="admonition-problem admonition">
 <p class="admonition-title">Problem</p>
 <p>Let <span class="math notranslate nohighlight">\(t\)</span> be a real number, and suppose that there exists a real number <span class="math notranslate nohighlight">\(a\)</span>,
@@ -1476,6 +1503,9 @@ such that <span class="math notranslate nohighlight">\(at&lt;0\)</span>.  Show t
 <p><strong>Case 2</strong> (<span class="math notranslate nohighlight">\(0&lt;x\)</span>):  Since <span class="math notranslate nohighlight">\(xt&lt;0\)</span> and <span class="math notranslate nohighlight">\(0 \le x\)</span>, we have that
 <span class="math notranslate nohighlight">\(t &lt; 0\)</span>, and so <span class="math notranslate nohighlight">\(t\ne 0\)</span>,</p>
 </div>
+<p>Here is a partial solution in Lean (using <code class="docutils literal notranslate"><span class="pre">obtain</span></code> for the first step to break apart the
+existential, and then again later to perform the case division). Case 2 is missing; do that
+yourself.</p>
 <div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">{</span><span class="n">t</span> <span class="o">:</span> <span class="n">&#8477;</span><span class="o">}</span> <span class="o">(</span><span class="n">h</span> <span class="o">:</span> <span class="bp">&#8707;</span> <span class="n">a</span> <span class="o">:</span> <span class="n">&#8477;</span><span class="o">,</span> <span class="n">a</span> <span class="bp">*</span> <span class="n">t</span> <span class="bp">&lt;</span> <span class="mi">0</span><span class="o">)</span> <span class="o">:</span> <span class="n">t</span> <span class="bp">&#8800;</span> <span class="mi">0</span> <span class="o">:=</span> <span class="kd">by</span>
   <span class="n">obtain</span> <span class="o">&#10216;</span><span class="n">x</span><span class="o">,</span> <span class="n">hxt</span><span class="o">&#10217;</span> <span class="o">:=</span> <span class="n">h</span>
   <span class="k">have</span> <span class="n">H</span> <span class="o">:</span> <span class="n">x</span> <span class="bp">&#8804;</span> <span class="mi">0</span> <span class="bp">&#8744;</span> <span class="mi">0</span> <span class="bp">&lt;</span> <span class="n">x</span> <span class="o">:=</span> <span class="n">le_or_gt</span> <span class="n">x</span> <span class="mi">0</span>
@@ -1488,6 +1518,8 @@ such that <span class="math notranslate nohighlight">\(at&lt;0\)</span>.  Show t
 </section>
 <section id="simple-existential">
 <span id="id32"></span><h3><span class="section-number">2.5.3. </span>Example<a class="headerlink" href="#simple-existential" title="Permalink to this headline">&#61633;</a></h3>
+<p>To prove a problem in which the goal has an existential, you need to provide a witness yourself, and
+then verify that your proposed witness works.</p>
 <div class="admonition-problem admonition">
 <p class="admonition-title">Problem</p>
 <p>Show that there exists an integer <span class="math notranslate nohighlight">\(n\)</span>, such that <span class="math notranslate nohighlight">\(12n=84\)</span>.</p>
@@ -1496,14 +1528,27 @@ such that <span class="math notranslate nohighlight">\(at&lt;0\)</span>.  Show t
 <p class="admonition-title">Solution</p>
 <p>The integer <span class="math notranslate nohighlight">\(7\)</span> has this property.  Indeed, <span class="math notranslate nohighlight">\(12 \cdot 7=84\)</span>.</p>
 </div>
+<p>In Lean the tactic <code class="docutils literal notranslate"><span class="pre">take</span></code> is used to state what you have chosen as the witness.</p>
 <div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">:</span> <span class="bp">&#8707;</span> <span class="n">n</span> <span class="o">:</span> <span class="n">&#8484;</span><span class="o">,</span> <span class="mi">12</span> <span class="bp">*</span> <span class="n">n</span> <span class="bp">=</span> <span class="mi">84</span> <span class="o">:=</span> <span class="kd">by</span>
   <span class="n">take</span> <span class="mi">7</span>
   <span class="n">numbers</span>
 </pre></div>
 </div>
+<p>In this problem, the goal was initially</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>&#8866; &#8707; n : &#8484;, 12 * n = 84
+</pre></div>
+</div>
+<p>but after the tactic <code class="docutils literal notranslate"><span class="pre">take</span> <span class="pre">7</span></code> the goal has changed to checking that the proposed witness, 7,
+works.</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>&#8866; 12 * 7 = 84
+</pre></div>
+</div>
+<p>This is what <code class="docutils literal notranslate"><span class="pre">numbers</span></code> checks.</p>
 </section>
 <section id="id33">
 <h3><span class="section-number">2.5.4. </span>Example<a class="headerlink" href="#id33" title="Permalink to this headline">&#61633;</a></h3>
+<p>Often, it requires some creativity to come up with a witness for an existential goal.  The rest of
+this section consists of practice coming up with witnesses.</p>
 <div class="admonition-problem admonition">
 <p class="admonition-title">Problem</p>
 <p>Let <span class="math notranslate nohighlight">\(x\)</span> be a real number.  Show that there exists a real number <span class="math notranslate nohighlight">\(y\)</span>, such that
