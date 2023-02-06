@@ -22,7 +22,7 @@ example {a b : ℤ} (ha : a ≡ 4 [ZMOD 5]) (hb : b ≡ 3 [ZMOD 5]) :
 example : ∃ a : ℤ, 6 * a ≡ 4 [ZMOD 11] := by
   take 8
   calc
-    6 * 8 = 4 + 4 * 11 := by numbers
+    (6:ℤ) * 8 = 4 + 4 * 11 := by numbers
     _ ≡ 4 [ZMOD 11] := by extra
 
 
