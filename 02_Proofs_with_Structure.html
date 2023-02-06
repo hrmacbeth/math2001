@@ -82,7 +82,7 @@
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#existence-proofs">2.5. Existence proofs</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#id30">2.5.1. Example</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id31">2.5.2. Example</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#existential-hypothesis-2">2.5.2. Example</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#simple-existential">2.5.3. Example</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#id33">2.5.4. Example</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#id34">2.5.5. Example</a></li>
@@ -1485,8 +1485,8 @@ separately on the variable list and can be accessed in the succeeding proof:</p>
 </pre></div>
 </div>
 </section>
-<section id="id31">
-<h3><span class="section-number">2.5.2. </span>Example<a class="headerlink" href="#id31" title="Permalink to this headline">&#61633;</a></h3>
+<section id="existential-hypothesis-2">
+<span id="id31"></span><h3><span class="section-number">2.5.2. </span>Example<a class="headerlink" href="#existential-hypothesis-2" title="Permalink to this headline">&#61633;</a></h3>
 <p>Here&#8217;s another problem with an existential hypothesis, &#8220;there exists a real number <span class="math notranslate nohighlight">\(a\)</span>,
 such that <span class="math notranslate nohighlight">\(at&lt;0\)</span>&#8221;.  As before we break it apart and then follow earlier methods.</p>
 <div class="admonition-problem admonition">
@@ -1695,9 +1695,14 @@ that <span class="math notranslate nohighlight">\(y^2&gt;x\)</span>.</p></li>
   <span class="gr">sorry</span>
 </pre></div>
 </div>
-<ol class="arabic simple" start="6">
+<ol class="arabic" start="6">
 <li><p>Let <span class="math notranslate nohighlight">\(t\)</span> be a real number, and suppose that there exists a real number <span class="math notranslate nohighlight">\(a\)</span>,
-such that <span class="math notranslate nohighlight">\(at+1&lt;a+t\)</span>.  Show that <span class="math notranslate nohighlight">\(t\ne 1\)</span>.</p></li>
+such that <span class="math notranslate nohighlight">\(at+1&lt;a+t\)</span>.  Show that <span class="math notranslate nohighlight">\(t\ne 1\)</span>.</p>
+<p>I used the lemmas <code class="docutils literal notranslate"><span class="pre">pos_of_mul_neg_right</span></code>, <code class="docutils literal notranslate"><span class="pre">neg_of_mul_neg_right</span></code>, and <code class="docutils literal notranslate"><span class="pre">le_or_gt</span></code> in my
+solution.  See <a class="reference internal" href="#existential-hypothesis-2"><span class="std std-numref">Example 2.5.2</span></a> for a description of the first
+two.  The last one, <code class="docutils literal notranslate"><span class="pre">le_or_gt</span></code>, says that if <span class="math notranslate nohighlight">\(s\)</span> and <span class="math notranslate nohighlight">\(t\)</span> are real numbers then
+either <span class="math notranslate nohighlight">\(s \le t\)</span> or <span class="math notranslate nohighlight">\(t &lt; s\)</span>; it can be a useful case division.</p>
+</li>
 </ol>
 <div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">{</span><span class="n">t</span> <span class="o">:</span> <span class="n">&#8477;</span><span class="o">}</span> <span class="o">(</span><span class="n">h</span> <span class="o">:</span> <span class="bp">&#8707;</span> <span class="n">a</span> <span class="o">:</span> <span class="n">&#8477;</span><span class="o">,</span> <span class="n">a</span> <span class="bp">*</span> <span class="n">t</span> <span class="bp">+</span> <span class="mi">1</span> <span class="bp">&lt;</span> <span class="n">a</span> <span class="bp">+</span> <span class="n">t</span><span class="o">)</span> <span class="o">:</span> <span class="n">t</span> <span class="bp">&#8800;</span> <span class="mi">1</span> <span class="o">:=</span> <span class="kd">by</span>
   <span class="gr">sorry</span>
