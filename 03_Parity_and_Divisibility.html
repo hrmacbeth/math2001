@@ -886,28 +886,11 @@ Then</p>
 <li><p><span class="math notranslate nohighlight">\(10-18=4\cdot -2\)</span>, so <span class="math notranslate nohighlight">\(10\equiv 18 \mod 4\)</span>;</p></li>
 <li><p><span class="math notranslate nohighlight">\(2-6=4\cdot -1\)</span>, so <span class="math notranslate nohighlight">\(2\equiv 6 \mod 4\)</span>;</p></li>
 <li><p><span class="math notranslate nohighlight">\(\frac{10}{2}-\frac{18}{6}=2\)</span> lies between the consecutive multiples <span class="math notranslate nohighlight">\(4 \cdot 0\)</span> and
-<span class="math notranslate nohighlight">\(4 \cdot (0 + 1)\)</span> of 4, so <span class="math notranslate nohighlight">\(\frac{10}{2}\not\equiv \frac{18}{6} \mod 4\)</span>,</p></li>
+<span class="math notranslate nohighlight">\(4 \cdot (0 + 1)\)</span> of 4, so <span class="math notranslate nohighlight">\(\frac{10}{2}\not\equiv \frac{18}{6} \mod 4\)</span>.</p></li>
 </ul>
 </div>
 <p>Notice that here we&#8217;re using the test for non-divisibility from
-<a class="reference internal" href="#not-divisible"><span class="std std-numref">Example 3.2.6</span></a>, which was written up in Lean as the lemma
-<code class="docutils literal notranslate"><span class="pre">int.not_dvd_of_exists_lt_and_lt</span></code>.</p>
-<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">:</span> <span class="bp">&#8707;</span> <span class="n">a</span> <span class="n">b</span> <span class="n">c</span> <span class="n">d</span><span class="o">,</span> <span class="n">a</span> <span class="bp">&#8801;</span> <span class="n">b</span> <span class="o">[</span><span class="n">ZMOD</span> <span class="mi">4</span><span class="o">]</span> <span class="bp">&#8743;</span> <span class="n">c</span> <span class="bp">&#8801;</span> <span class="n">d</span> <span class="o">[</span><span class="n">ZMOD</span> <span class="mi">4</span><span class="o">]</span> <span class="bp">&#8743;</span> <span class="bp">&#172;</span><span class="n">a</span> <span class="bp">/</span> <span class="n">c</span> <span class="bp">&#8801;</span> <span class="n">b</span> <span class="bp">/</span> <span class="n">d</span> <span class="o">[</span><span class="n">ZMOD</span> <span class="mi">4</span><span class="o">]</span> <span class="o">:=</span> <span class="kd">by</span>
-  <span class="n">take</span> <span class="mi">10</span><span class="o">,</span> <span class="mi">18</span><span class="o">,</span> <span class="mi">2</span><span class="o">,</span> <span class="mi">6</span>
-  <span class="n">constructor</span>
-  <span class="bp">&#183;</span> <span class="n">take</span> <span class="bp">-</span><span class="mi">2</span>
-    <span class="n">numbers</span>
-  <span class="n">constructor</span>
-  <span class="bp">&#183;</span> <span class="n">take</span> <span class="bp">-</span><span class="mi">1</span>
-    <span class="n">numbers</span>
-  <span class="n">apply</span> <span class="n">Int.not_dvd_of_exists_lt_and_lt</span>
-  <span class="bp">&#183;</span> <span class="n">numbers</span>
-  <span class="n">take</span> <span class="mi">0</span>
-  <span class="n">constructor</span>
-  <span class="bp">&#183;</span> <span class="n">numbers</span>
-  <span class="bp">&#183;</span> <span class="n">numbers</span>
-</pre></div>
-</div>
+<a class="reference internal" href="#not-divisible"><span class="std std-numref">Example 3.2.6</span></a>.</p>
 </section>
 <section id="id26">
 <h3><span class="section-number">3.3.8. </span>Example<a class="headerlink" href="#id26" title="Permalink to this headline">&#61633;</a></h3>
