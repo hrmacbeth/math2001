@@ -60,29 +60,30 @@
 <li class="toctree-l2"><a class="reference internal" href="#if-and-only-if">4.2. &#8220;If and only if&#8221;</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#id11">4.2.1. Example</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#id12">4.2.2. Example</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id13">4.2.3. Example</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#odd-iff-modeq">4.2.3. Example</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#id14">4.2.4. Example</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#id15">4.2.5. Example</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#id16">4.2.6. Example</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id17">4.2.7. Exercises</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id17">4.2.7. Example</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id18">4.2.8. Exercises</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#there-exists-a-unique">4.3. &#8220;There exists a unique&#8221;</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#id18">4.3.1. Example</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id19">4.3.2. Example</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id20">4.3.3. Example</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id19">4.3.1. Example</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id20">4.3.2. Example</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id21">4.3.3. Example</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#division-algorithm">4.3.4. Example</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#even-or-odd-proof">4.3.5. Example</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id23">4.3.6. Exercises</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id24">4.3.6. Exercises</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#contradictory-hypotheses">4.4. Contradictory hypotheses</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#pos-of-mul-pos-right-proof">4.4.1. Example</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#prime-test">4.4.2. Example</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#numbers-contradiction">4.4.3. Example</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id27">4.4.4. Example</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id28">4.4.5. Example</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id29">4.4.6. Exercises</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id28">4.4.4. Example</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id29">4.4.5. Example</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id30">4.4.6. Exercises</a></li>
 </ul>
 </li>
 </ul>
@@ -130,10 +131,10 @@
 <p>Let <span class="math notranslate nohighlight">\(a\)</span> be a real number and suppose that for all real numbers <span class="math notranslate nohighlight">\(x\)</span>,
 it is true that <span class="math notranslate nohighlight">\(a\le x^2-2x\)</span>.  Show that <span class="math notranslate nohighlight">\(a\le -1\)</span>.</p>
 </div>
-<figure class="align-center" id="id30">
+<figure class="align-center" id="id31">
 <a class="reference internal image-reference" href="_images/04_logic_01_parabola.png"><img alt="_images/04_logic_01_parabola.png" src="_images/04_logic_01_parabola.png" style="width: 320.0px; height: 320.0px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 4.1 </span><span class="caption-text">The parabola <span class="math notranslate nohighlight">\(y= x^2-2x\)</span>.</span><a class="headerlink" href="#id30" title="Permalink to this image">&#61633;</a></p>
+<p><span class="caption-number">Fig. 4.1 </span><span class="caption-text">The parabola <span class="math notranslate nohighlight">\(y= x^2-2x\)</span>.</span><a class="headerlink" href="#id31" title="Permalink to this image">&#61633;</a></p>
 </figcaption>
 </figure>
 <p>Specifying that a formula or predicate is meant to be true for all values of a variable <span class="math notranslate nohighlight">\(x\)</span>,
@@ -506,7 +507,7 @@ an &#8220;if and only if&#8221; is an &#8220;and&#8221; statement, we use the sa
       <span class="n">_</span> <span class="bp">=</span> <span class="mi">2</span> <span class="o">:=</span> <span class="kd">by</span> <span class="n">numbers</span>
   <span class="bp">&#183;</span> <span class="n">intro</span> <span class="n">h</span>
     <span class="k">calc</span> <span class="mi">3</span> <span class="bp">*</span> <span class="n">a</span> <span class="bp">+</span> <span class="mi">1</span> <span class="bp">&#8804;</span> <span class="mi">3</span> <span class="bp">*</span> <span class="mi">2</span> <span class="bp">+</span> <span class="mi">1</span> <span class="o">:=</span> <span class="kd">by</span> <span class="n">rel</span> <span class="o">[</span><span class="n">h</span><span class="o">]</span>
-    <span class="n">_</span> <span class="bp">=</span> <span class="mi">7</span> <span class="o">:=</span> <span class="kd">by</span> <span class="n">numbers</span>
+      <span class="n">_</span> <span class="bp">=</span> <span class="mi">7</span> <span class="o">:=</span> <span class="kd">by</span> <span class="n">numbers</span>
 </pre></div>
 </div>
 </section>
@@ -548,12 +549,12 @@ So</p>
     <span class="n">obtain</span> <span class="o">&#10216;</span><span class="n">a</span><span class="o">,</span> <span class="n">ha</span><span class="o">&#10217;</span> <span class="o">:=</span> <span class="n">hn</span>
     <span class="n">take</span> <span class="mi">5</span> <span class="bp">*</span> <span class="n">a</span>
     <span class="k">calc</span> <span class="mi">5</span> <span class="bp">*</span> <span class="n">n</span> <span class="bp">=</span> <span class="mi">5</span> <span class="bp">*</span> <span class="o">(</span><span class="mi">8</span> <span class="bp">*</span> <span class="n">a</span><span class="o">)</span> <span class="o">:=</span> <span class="kd">by</span> <span class="n">rw</span> <span class="o">[</span><span class="n">ha</span><span class="o">]</span>
-    <span class="n">_</span> <span class="bp">=</span> <span class="mi">8</span> <span class="bp">*</span> <span class="o">(</span><span class="mi">5</span> <span class="bp">*</span> <span class="n">a</span><span class="o">)</span> <span class="o">:=</span> <span class="kd">by</span> <span class="n">ring</span>
+      <span class="n">_</span> <span class="bp">=</span> <span class="mi">8</span> <span class="bp">*</span> <span class="o">(</span><span class="mi">5</span> <span class="bp">*</span> <span class="n">a</span><span class="o">)</span> <span class="o">:=</span> <span class="kd">by</span> <span class="n">ring</span>
 </pre></div>
 </div>
 </section>
-<section id="id13">
-<h3><span class="section-number">4.2.3. </span>Example<a class="headerlink" href="#id13" title="Permalink to this headline">&#61633;</a></h3>
+<section id="odd-iff-modeq">
+<span id="id13"></span><h3><span class="section-number">4.2.3. </span>Example<a class="headerlink" href="#odd-iff-modeq" title="Permalink to this headline">&#61633;</a></h3>
 <div class="admonition-problem admonition">
 <p class="admonition-title">Problem</p>
 <p>Show that an integer <span class="math notranslate nohighlight">\(n\)</span> is odd, if and only if it is congruent to 1 modulo 2.</p>
@@ -685,14 +686,42 @@ the form of the left-hand side of the <code class="docutils literal notranslate"
 <div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">{</span><span class="n">n</span> <span class="o">:</span> <span class="n">&#8484;</span><span class="o">}</span> <span class="o">(</span><span class="n">hn</span> <span class="o">:</span> <span class="n">n</span> <span class="bp">^</span> <span class="mi">2</span> <span class="bp">-</span> <span class="mi">10</span> <span class="bp">*</span> <span class="n">n</span> <span class="bp">+</span> <span class="mi">24</span> <span class="bp">=</span> <span class="mi">0</span><span class="o">)</span> <span class="o">:</span> <span class="n">Even</span> <span class="n">n</span> <span class="o">:=</span> <span class="kd">by</span>
   <span class="k">have</span> <span class="n">hn2</span> <span class="o">:</span> <span class="o">(</span><span class="n">n</span> <span class="bp">-</span> <span class="mi">4</span><span class="o">)</span> <span class="bp">*</span> <span class="o">(</span><span class="n">n</span> <span class="bp">-</span> <span class="mi">6</span><span class="o">)</span> <span class="bp">=</span> <span class="mi">0</span>
   <span class="bp">&#183;</span> <span class="k">calc</span> <span class="o">(</span><span class="n">n</span> <span class="bp">-</span> <span class="mi">4</span><span class="o">)</span> <span class="bp">*</span> <span class="o">(</span><span class="n">n</span> <span class="bp">-</span> <span class="mi">6</span><span class="o">)</span> <span class="bp">=</span> <span class="n">n</span> <span class="bp">^</span> <span class="mi">2</span> <span class="bp">-</span> <span class="mi">10</span> <span class="bp">*</span> <span class="n">n</span> <span class="bp">+</span> <span class="mi">24</span> <span class="o">:=</span> <span class="kd">by</span> <span class="n">ring</span>
-        <span class="n">_</span> <span class="bp">=</span> <span class="mi">0</span> <span class="o">:=</span> <span class="n">hn</span>
+      <span class="n">_</span> <span class="bp">=</span> <span class="mi">0</span> <span class="o">:=</span> <span class="n">hn</span>
   <span class="n">rw</span> <span class="o">[</span><span class="n">mul_eq_zero</span><span class="o">]</span> <span class="n">at</span> <span class="n">hn2</span> <span class="c1">-- `hn2 : n - 4 = 0 &#8744; n - 6 = 0`</span>
   <span class="gr">sorry</span>
 </pre></div>
 </div>
 </section>
 <section id="id17">
-<h3><span class="section-number">4.2.7. </span>Exercises<a class="headerlink" href="#id17" title="Permalink to this headline">&#61633;</a></h3>
+<h3><span class="section-number">4.2.7. </span>Example<a class="headerlink" href="#id17" title="Permalink to this headline">&#61633;</a></h3>
+<p>Above, in <a class="reference internal" href="#odd-iff-modeq"><span class="std std-numref">Example 4.2.3</span></a>, we proved that an integer is odd if and only if it
+is congruent to 1 modulo 2, recording this under the name <code class="docutils literal notranslate"><span class="pre">Int.odd_iff_modEq</span></code>.  This is now also
+a convenient &#8220;if and only if&#8221; library lemma which we can use to  solve problems about parity using
+modulo arithmetic.  As an example, let&#8217;s re-do the problem from
+<a class="reference internal" href="03_Parity_and_Divisibility.html#typical-parity"><span class="std std-numref">Example 3.1.5</span></a>.</p>
+<div class="admonition-problem admonition">
+<p class="admonition-title">Problem</p>
+<p>Prove that if the integers <span class="math notranslate nohighlight">\(x\)</span> and <span class="math notranslate nohighlight">\(y\)</span> are odd, then <span class="math notranslate nohighlight">\(x+y+1\)</span> is odd.</p>
+</div>
+<div class="admonition-solution admonition">
+<p class="admonition-title">Solution</p>
+<p>We will prove that if <span class="math notranslate nohighlight">\(x\equiv 1 \mod 2\)</span> and <span class="math notranslate nohighlight">\(y\equiv 1 \mod 2\)</span> then
+<span class="math notranslate nohighlight">\(x+y+1\equiv 1 \mod 2\)</span>.  Indeed,</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}x + y + 1 &amp;\equiv 1 + 1 + 1 \mod 2\\
+&amp;= 2 \cdot 1 + 1\\
+&amp;\equiv 1\mod 2.\end{split}\]</div>
+</div>
+<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">{</span><span class="n">x</span> <span class="n">y</span> <span class="o">:</span> <span class="n">&#8484;</span><span class="o">}</span> <span class="o">(</span><span class="n">hx</span> <span class="o">:</span> <span class="n">Odd</span> <span class="n">x</span><span class="o">)</span> <span class="o">(</span><span class="n">hy</span> <span class="o">:</span> <span class="n">Odd</span> <span class="n">y</span><span class="o">)</span> <span class="o">:</span> <span class="n">Odd</span> <span class="o">(</span><span class="n">x</span> <span class="bp">+</span> <span class="n">y</span> <span class="bp">+</span> <span class="mi">1</span><span class="o">)</span> <span class="o">:=</span> <span class="kd">by</span>
+  <span class="n">rw</span> <span class="o">[</span><span class="n">Int.odd_iff_modEq</span><span class="o">]</span> <span class="n">at</span> <span class="bp">*</span>
+  <span class="k">calc</span> <span class="n">x</span> <span class="bp">+</span> <span class="n">y</span> <span class="bp">+</span> <span class="mi">1</span> <span class="bp">&#8801;</span> <span class="mi">1</span> <span class="bp">+</span> <span class="mi">1</span> <span class="bp">+</span> <span class="mi">1</span> <span class="o">[</span><span class="n">ZMOD</span> <span class="mi">2</span><span class="o">]</span> <span class="o">:=</span> <span class="kd">by</span> <span class="n">rel</span> <span class="o">[</span><span class="n">hx</span><span class="o">,</span> <span class="n">hy</span><span class="o">]</span>
+    <span class="n">_</span> <span class="bp">=</span> <span class="mi">2</span> <span class="bp">*</span> <span class="mi">1</span> <span class="bp">+</span> <span class="mi">1</span> <span class="o">:=</span> <span class="kd">by</span> <span class="n">ring</span>
+    <span class="n">_</span> <span class="bp">&#8801;</span> <span class="mi">1</span> <span class="o">[</span><span class="n">ZMOD</span> <span class="mi">2</span><span class="o">]</span> <span class="o">:=</span> <span class="kd">by</span> <span class="n">extra</span>
+</pre></div>
+</div>
+</section>
+<section id="id18">
+<h3><span class="section-number">4.2.8. </span>Exercises<a class="headerlink" href="#id18" title="Permalink to this headline">&#61633;</a></h3>
 <ol class="arabic simple">
 <li><p>Let <span class="math notranslate nohighlight">\(x\)</span> be a real number.  Show that <span class="math notranslate nohighlight">\(2x-1=11\)</span> if and only if <span class="math notranslate nohighlight">\(x=6\)</span>.</p></li>
 </ol>
@@ -712,11 +741,23 @@ are.</p></li>
 <li><p>Let <span class="math notranslate nohighlight">\(a\)</span> and <span class="math notranslate nohighlight">\(n\)</span> be integers. Show that <span class="math notranslate nohighlight">\(a\)</span> is a multiple of <span class="math notranslate nohighlight">\(n\)</span> if and
 only if <span class="math notranslate nohighlight">\(a \equiv 0 \mod n\)</span>.</p></li>
 </ol>
-<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">theorem</span> <span class="n">dvd_iff_modeq</span> <span class="o">{</span><span class="n">a</span> <span class="n">n</span> <span class="o">:</span> <span class="n">&#8484;</span><span class="o">}</span> <span class="o">:</span> <span class="n">n</span> <span class="bp">&#8739;</span> <span class="n">a</span> <span class="bp">&#8596;</span> <span class="n">a</span> <span class="bp">&#8801;</span> <span class="mi">0</span> <span class="o">[</span><span class="n">ZMOD</span> <span class="n">n</span><span class="o">]</span> <span class="o">:=</span> <span class="kd">by</span>
+<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">theorem</span> <span class="n">dvd_iff_modEq</span> <span class="o">{</span><span class="n">a</span> <span class="n">n</span> <span class="o">:</span> <span class="n">&#8484;</span><span class="o">}</span> <span class="o">:</span> <span class="n">n</span> <span class="bp">&#8739;</span> <span class="n">a</span> <span class="bp">&#8596;</span> <span class="n">a</span> <span class="bp">&#8801;</span> <span class="mi">0</span> <span class="o">[</span><span class="n">ZMOD</span> <span class="n">n</span><span class="o">]</span> <span class="o">:=</span> <span class="kd">by</span>
   <span class="gr">sorry</span>
 </pre></div>
 </div>
-<ol class="arabic simple" start="4">
+<ol class="arabic" start="4">
+<li><p>Let <span class="math notranslate nohighlight">\(a\)</span> and <span class="math notranslate nohighlight">\(b\)</span> be integers and suppose that <span class="math notranslate nohighlight">\(a \mid b\)</span>.  Show that
+<span class="math notranslate nohighlight">\(a \mid 3b^3-b^2+5b\)</span>.</p>
+<p>Note that this appeared already as an exercise in <a class="reference internal" href="03_Parity_and_Divisibility.html#divisibility"><span class="std std-numref">Section 3.2</span></a>.  But now,
+using the lemma <code class="docutils literal notranslate"><span class="pre">Int.dvd_iff_modEq</span></code> proved in the previous exercise, this kind of problem is
+much easier.</p>
+</li>
+</ol>
+<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">{</span><span class="n">a</span> <span class="n">b</span> <span class="o">:</span> <span class="n">&#8484;</span><span class="o">}</span> <span class="o">(</span><span class="n">hab</span> <span class="o">:</span> <span class="n">a</span> <span class="bp">&#8739;</span> <span class="n">b</span><span class="o">)</span> <span class="o">:</span> <span class="n">a</span> <span class="bp">&#8739;</span> <span class="mi">3</span> <span class="bp">*</span> <span class="n">b</span> <span class="bp">^</span> <span class="mi">3</span> <span class="bp">-</span> <span class="n">b</span> <span class="bp">^</span> <span class="mi">2</span> <span class="bp">+</span> <span class="mi">5</span> <span class="bp">*</span> <span class="n">b</span> <span class="o">:=</span> <span class="kd">by</span>
+  <span class="gr">sorry</span>
+</pre></div>
+</div>
+<ol class="arabic simple" start="5">
 <li><p>Let <span class="math notranslate nohighlight">\(k\)</span> be a natural number.  Show that <span class="math notranslate nohighlight">\(k^2 \le 6\)</span>, if and only if <span class="math notranslate nohighlight">\(k\)</span> is 0, 1
 or 2.</p></li>
 </ol>
@@ -728,8 +769,8 @@ or 2.</p></li>
 </section>
 <section id="there-exists-a-unique">
 <span id="exists-unique"></span><h2><span class="section-number">4.3. </span>&#8220;There exists a unique&#8221;<a class="headerlink" href="#there-exists-a-unique" title="Permalink to this headline">&#61633;</a></h2>
-<section id="id18">
-<h3><span class="section-number">4.3.1. </span>Example<a class="headerlink" href="#id18" title="Permalink to this headline">&#61633;</a></h3>
+<section id="id19">
+<h3><span class="section-number">4.3.1. </span>Example<a class="headerlink" href="#id19" title="Permalink to this headline">&#61633;</a></h3>
 <div class="admonition-problem admonition">
 <p class="admonition-title">Problem</p>
 <p>Show that there exists a unique real number <span class="math notranslate nohighlight">\(a\)</span>, such that <span class="math notranslate nohighlight">\(3a+1=7\)</span>.</p>
@@ -757,8 +798,8 @@ or 2.</p></li>
 </pre></div>
 </div>
 </section>
-<section id="id19">
-<h3><span class="section-number">4.3.2. </span>Example<a class="headerlink" href="#id19" title="Permalink to this headline">&#61633;</a></h3>
+<section id="id20">
+<h3><span class="section-number">4.3.2. </span>Example<a class="headerlink" href="#id20" title="Permalink to this headline">&#61633;</a></h3>
 <div class="admonition-problem admonition">
 <p class="admonition-title">Problem</p>
 <p>Show that there exists a unique rational number <span class="math notranslate nohighlight">\(x\)</span>, such that for every rational number
@@ -788,8 +829,8 @@ or 2.</p></li>
 </pre></div>
 </div>
 </section>
-<section id="id20">
-<h3><span class="section-number">4.3.3. </span>Example<a class="headerlink" href="#id20" title="Permalink to this headline">&#61633;</a></h3>
+<section id="id21">
+<h3><span class="section-number">4.3.3. </span>Example<a class="headerlink" href="#id21" title="Permalink to this headline">&#61633;</a></h3>
 <div class="admonition-problem admonition">
 <p class="admonition-title">Problem</p>
 <p>Let <span class="math notranslate nohighlight">\(x\)</span> be a rational number, and suppose that there exists a unique rational number
@@ -833,7 +874,7 @@ or 2.</p></li>
 </div>
 </section>
 <section id="division-algorithm">
-<span id="id21"></span><h3><span class="section-number">4.3.4. </span>Example<a class="headerlink" href="#division-algorithm" title="Permalink to this headline">&#61633;</a></h3>
+<span id="id22"></span><h3><span class="section-number">4.3.4. </span>Example<a class="headerlink" href="#division-algorithm" title="Permalink to this headline">&#61633;</a></h3>
 <p>The following is an important theorem about the integers, which we will prove later in the course.</p>
 <div class="admonition-theorem-the-division-algorithm admonition">
 <p class="admonition-title">Theorem (the Division Algorithm)</p>
@@ -904,7 +945,7 @@ strictly between 1 and 3.  So <span class="math notranslate nohighlight">\(r=14-
 </div>
 </section>
 <section id="even-or-odd-proof">
-<span id="id22"></span><h3><span class="section-number">4.3.5. </span>Example<a class="headerlink" href="#even-or-odd-proof" title="Permalink to this headline">&#61633;</a></h3>
+<span id="id23"></span><h3><span class="section-number">4.3.5. </span>Example<a class="headerlink" href="#even-or-odd-proof" title="Permalink to this headline">&#61633;</a></h3>
 <p>We can use the Division Algorithm (the theorem from the last example,
 <a class="reference internal" href="#division-algorithm"><span class="std std-numref">Example 4.3.4</span></a>) to prove the theorem from
 <a class="reference internal" href="03_Parity_and_Divisibility.html#even-or-odd"><span class="std std-numref">Example 3.1.9</span></a> whose proof we skipped.</p>
@@ -924,8 +965,8 @@ integer <span class="math notranslate nohighlight">\(r\)</span>, such that <span
 </pre></div>
 </div>
 </section>
-<section id="id23">
-<h3><span class="section-number">4.3.6. </span>Exercises<a class="headerlink" href="#id23" title="Permalink to this headline">&#61633;</a></h3>
+<section id="id24">
+<h3><span class="section-number">4.3.6. </span>Exercises<a class="headerlink" href="#id24" title="Permalink to this headline">&#61633;</a></h3>
 <ol class="arabic simple">
 <li><p>Show that there exists a unique rational number <span class="math notranslate nohighlight">\(x\)</span>, such that <span class="math notranslate nohighlight">\(4x-3=9\)</span>.</p></li>
 </ol>
@@ -971,7 +1012,7 @@ exists an integer <span class="math notranslate nohighlight">\(z\)</span>, such 
 <section id="contradictory-hypotheses">
 <span id="contradiction-hyp"></span><h2><span class="section-number">4.4. </span>Contradictory hypotheses<a class="headerlink" href="#contradictory-hypotheses" title="Permalink to this headline">&#61633;</a></h2>
 <section id="pos-of-mul-pos-right-proof">
-<span id="id24"></span><h3><span class="section-number">4.4.1. </span>Example<a class="headerlink" href="#pos-of-mul-pos-right-proof" title="Permalink to this headline">&#61633;</a></h3>
+<span id="id25"></span><h3><span class="section-number">4.4.1. </span>Example<a class="headerlink" href="#pos-of-mul-pos-right-proof" title="Permalink to this headline">&#61633;</a></h3>
 <p>Sometimes, we encounter a situation with two contradictory hypotheses.  At this point, there is no
 need to prove anything more.  Two contradictory hypotheses mean that the situation we had
 hypothesized can&#8217;t actually happen.</p>
@@ -1024,7 +1065,7 @@ that <code class="docutils literal notranslate"><span class="pre">&#172;</span><
 </div>
 </section>
 <section id="prime-test">
-<span id="id25"></span><h3><span class="section-number">4.4.2. </span>Example<a class="headerlink" href="#prime-test" title="Permalink to this headline">&#61633;</a></h3>
+<span id="id26"></span><h3><span class="section-number">4.4.2. </span>Example<a class="headerlink" href="#prime-test" title="Permalink to this headline">&#61633;</a></h3>
 <p>We defined prime numbers in <a class="reference internal" href="#prime-def"><span class="std std-numref">Example 4.1.8</span></a>, and proved that 2 was prime. Let&#8217;s now
 prove a slight reformulation of the definition, which will be convenient in showing that other
 numbers are prime.</p>
@@ -1097,7 +1138,7 @@ proved in <a class="reference internal" href="03_Parity_and_Divisibility.html#dv
 </div>
 </section>
 <section id="numbers-contradiction">
-<span id="id26"></span><h3><span class="section-number">4.4.3. </span>Example<a class="headerlink" href="#numbers-contradiction" title="Permalink to this headline">&#61633;</a></h3>
+<span id="id27"></span><h3><span class="section-number">4.4.3. </span>Example<a class="headerlink" href="#numbers-contradiction" title="Permalink to this headline">&#61633;</a></h3>
 <p>One very common way to get a contradiction is by proving that the hypotheses imply some &#8220;obviously
 false&#8221; numeric fact, whose falseness can be checked with <code class="docutils literal notranslate"><span class="pre">numbers</span></code>.</p>
 <div class="admonition-problem admonition">
@@ -1137,8 +1178,8 @@ close the goal.</p>
 </pre></div>
 </div>
 </section>
-<section id="id27">
-<h3><span class="section-number">4.4.4. </span>Example<a class="headerlink" href="#id27" title="Permalink to this headline">&#61633;</a></h3>
+<section id="id28">
+<h3><span class="section-number">4.4.4. </span>Example<a class="headerlink" href="#id28" title="Permalink to this headline">&#61633;</a></h3>
 <div class="admonition-problem admonition">
 <p class="admonition-title">Problem</p>
 <p>Show that if <span class="math notranslate nohighlight">\(n^2+n+1\equiv 1\mod 3\)</span> then <span class="math notranslate nohighlight">\(n\equiv 0\mod 3\)</span> or
@@ -1183,8 +1224,8 @@ reducing <span class="math notranslate nohighlight">\(3=1 ^ 2 + 1 + 1\)</span> t
 </pre></div>
 </div>
 </section>
-<section id="id28">
-<h3><span class="section-number">4.4.5. </span>Example<a class="headerlink" href="#id28" title="Permalink to this headline">&#61633;</a></h3>
+<section id="id29">
+<h3><span class="section-number">4.4.5. </span>Example<a class="headerlink" href="#id29" title="Permalink to this headline">&#61633;</a></h3>
 <p>Here&#8217;s a harder example, with many cases.</p>
 <div class="admonition-problem admonition">
 <p class="admonition-title">Problem</p>
@@ -1236,8 +1277,8 @@ We can analyze all these cases and check they don&#8217;t work:</p>
 </pre></div>
 </div>
 </section>
-<section id="id29">
-<h3><span class="section-number">4.4.6. </span>Exercises<a class="headerlink" href="#id29" title="Permalink to this headline">&#61633;</a></h3>
+<section id="id30">
+<h3><span class="section-number">4.4.6. </span>Exercises<a class="headerlink" href="#id30" title="Permalink to this headline">&#61633;</a></h3>
 <ol class="arabic simple">
 <li><p>Let <span class="math notranslate nohighlight">\(x\)</span> and <span class="math notranslate nohighlight">\(y\)</span> be real numbers, with <span class="math notranslate nohighlight">\(x\)</span> nonnegative, and let
 <span class="math notranslate nohighlight">\(n\)</span> is a positive natural number.  Prove that if then <span class="math notranslate nohighlight">\(y^n \le x^n\)</span> then

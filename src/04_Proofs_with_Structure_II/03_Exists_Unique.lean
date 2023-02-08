@@ -3,7 +3,7 @@ import Mathlib.Data.Real.Basic
 import Math2001.Library.Parity
 import Math2001.Tactic.Addarith
 import Math2001.Tactic.Numbers
-import Math2001.Tactic.Rel.IneqRel
+import Math2001.Tactic.Rel
 import Math2001.Tactic.Take
 
 namespace Int
@@ -90,10 +90,6 @@ example : ∃! n : ℕ, ∀ a, n ≤ a := by
 
 example : ∃! r : ℤ, 0 ≤ r ∧ r < 3 ∧ ∃ q : ℤ, 11 = 3 * q + r := by
   sorry
-
-def Int.ModEq (n a b : ℤ) : Prop := n ∣ a - b
-
-notation:50 a " ≡ " b " [ZMOD " n "]" => Int.ModEq n a b
 
 example {a b : ℤ} (hb : 0 < b) : ∃ z, 0 ≤ z ∧ z < b ∧ a ≡ z [ZMOD b] := by
   sorry

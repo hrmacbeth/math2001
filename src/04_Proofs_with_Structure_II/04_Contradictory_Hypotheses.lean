@@ -1,9 +1,9 @@
 /- Copyright (c) Heather Macbeth, 2022.  All rights reserved. -/
 import Mathlib.Data.Real.Basic
 import Mathlib.Tactic.IntervalCases
-import Mathlib.Tactic.ModCases
 import Math2001.Library.Parity
 import Math2001.Tactic.Addarith
+import Math2001.Tactic.ModCases
 import Math2001.Tactic.Numbers
 import Math2001.Tactic.Rel
 import Math2001.Tactic.Take

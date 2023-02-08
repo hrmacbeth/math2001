@@ -3,7 +3,7 @@ Copyright (c) 2023 Heather Macbeth. All rights reserved.
 Released under Apache 2.0 license as described in the file LICENSE.
 Authors: Heather Macbeth
 -/
-import Mathlib.Data.Int.ModEq
+import Math2001.Library.ModEq
 import Math2001.Tactic.Rel.Basic
 
 open Lean Elab Tactic
@@ -33,66 +33,6 @@ attribute [mod_rules]
   Int.ModEq.sub_right Int.ModEq.sub_left Int.ModEq.sub
   Int.ModEq.mul_right Int.ModEq.mul_left Int.ModEq.mul
   Int.ModEq.neg Int.ModEq.pow
-
-theorem Int.modEq_add_fac_self' : n * t + a ≡ a [ZMOD n] := by
-  rw [add_comm]
-  apply Int.modEq_add_fac_self
-
-theorem Int.modEq_add_fac_self'' : a + t * n ≡ a [ZMOD n] := by
-  rw [mul_comm]
-  apply Int.modEq_add_fac_self
-
-theorem Int.modEq_add_fac_self''' : t * n + a ≡ a [ZMOD n] := by
-  rw [add_comm]
-  apply Int.modEq_add_fac_self''
-
-theorem Int.modEq_sub_fac_self : a - n * t ≡ a [ZMOD n] := by
-  rw [sub_eq_add_neg, ← mul_neg]
-  apply Int.modEq_add_fac_self
-
-theorem Int.modEq_sub_fac_self' : n * t - a ≡ -a [ZMOD n] := by
-  rw [sub_eq_add_neg]
-  apply Int.modEq_add_fac_self'
-
-theorem Int.modEq_sub_fac_self'' : a - t * n ≡ a [ZMOD n] := by
-  rw [mul_comm]
-  apply Int.modEq_sub_fac_self
-
-theorem Int.modEq_sub_fac_self''' : t * n - a ≡ -a [ZMOD n] := by
-  rw [sub_eq_add_neg]
-  apply Int.modEq_add_fac_self'''
-
-theorem Int.modEq_add_fac_self_symm : a ≡ a + n * t [ZMOD n] := by
-  apply Int.ModEq.symm
-  apply Int.modEq_add_fac_self
-
-theorem Int.modEq_add_fac_self_symm' : a ≡ n * t + a [ZMOD n] := by
-  apply Int.ModEq.symm
-  apply Int.modEq_add_fac_self'
-
-theorem Int.modEq_add_fac_self_symm'' : a ≡ a + t * n [ZMOD n] := by
-  apply Int.ModEq.symm
-  apply Int.modEq_add_fac_self''
-
-theorem Int.modEq_add_fac_self_symm''' : a ≡ t * n + a [ZMOD n] := by
-  apply Int.ModEq.symm
-  apply Int.modEq_add_fac_self'''
-
-theorem Int.modEq_sub_fac_self_symm : a ≡ a - n * t [ZMOD n] := by
-  apply Int.ModEq.symm
-  apply Int.modEq_sub_fac_self
-
-theorem Int.modEq_sub_fac_self_symm' : -a ≡ n * t - a [ZMOD n] := by
-  apply Int.ModEq.symm
-  apply Int.modEq_sub_fac_self'
-
-theorem Int.modEq_sub_fac_self_symm'' : a ≡ a - t * n [ZMOD n] := by
-  apply Int.ModEq.symm
-  apply Int.modEq_sub_fac_self''
-
-theorem Int.modEq_sub_fac_self_symm''' : -a ≡ t * n - a [ZMOD n] := by
-  apply Int.ModEq.symm
-  apply Int.modEq_add_fac_self'''
 
 attribute [mod_extra]
   Int.modEq_add_fac_self Int.modEq_add_fac_self' Int.modEq_add_fac_self'' Int.modEq_add_fac_self'''

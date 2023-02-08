@@ -4,12 +4,8 @@ import Mathlib.Algebra.GroupWithZero.Defs
 import Math2001.Library.Parity
 import Math2001.Tactic.Addarith
 import Math2001.Tactic.Numbers
-import Math2001.Tactic.Rel.IneqRel
+import Math2001.Tactic.Rel
 import Math2001.Tactic.Take
-
-def Int.ModEq (n a b : ℤ) : Prop := n ∣ a - b
-
-notation:50 a " ≡ " b " [ZMOD " n "]" => Int.ModEq n a b
 
 namespace Int
 
@@ -22,7 +18,7 @@ example {a : ℚ} : 3 * a + 1 ≤ 7 ↔ a ≤ 2 := by
       _ = 2 := by numbers
   · intro h
     calc 3 * a + 1 ≤ 3 * 2 + 1 := by rel [h]
-    _ = 7 := by numbers
+      _ = 7 := by numbers
 
 
 example {n : ℤ} : 8 ∣ 5 * n ↔ 8 ∣ n := by
@@ -38,7 +34,7 @@ example {n : ℤ} : 8 ∣ 5 * n ↔ 8 ∣ n := by
     obtain ⟨a, ha⟩ := hn
     take 5 * a
     calc 5 * n = 5 * (8 * a) := by rw [ha]
-    _ = 8 * (5 * a) := by ring
+      _ = 8 * (5 * a) := by ring
 
 
 theorem odd_iff_modEq (n : ℤ) : Odd n ↔ n ≡ 1 [ZMOD 2] := by
@@ -67,9 +63,16 @@ example {n : ℤ} (hn : n ^ 2 - 10 * n + 24 = 0) : Even n := by
 example {n : ℤ} (hn : n ^ 2 - 10 * n + 24 = 0) : Even n := by
   have hn2 : (n - 4) * (n - 6) = 0
   · calc (n - 4) * (n - 6) = n ^ 2 - 10 * n + 24 := by ring
-        _ = 0 := hn
+      _ = 0 := hn
   rw [mul_eq_zero] at hn2 -- `hn2 : n - 4 = 0 ∨ n - 6 = 0`
   sorry
+
+example {x y : ℤ} (hx : Odd x) (hy : Odd y) : Odd (x + y + 1) := by
+  rw [Int.odd_iff_modEq] at *
+  calc x + y + 1 ≡ 1 + 1 + 1 [ZMOD 2] := by rel [hx, hy]
+    _ = 2 * 1 + 1 := by ring
+    _ ≡ 1 [ZMOD 2] := by extra  
+
 
 example {x : ℝ} : 2 * x - 1 = 11 ↔ x = 6 := by
   sorry
@@ -77,7 +80,10 @@ example {x : ℝ} : 2 * x - 1 = 11 ↔ x = 6 := by
 example {n : ℤ} : 63 ∣ n ↔ 7 ∣ n ∧ 9 ∣ n := by
   sorry
 
-theorem dvd_iff_modeq {a n : ℤ} : n ∣ a ↔ a ≡ 0 [ZMOD n] := by
+theorem dvd_iff_modEq {a n : ℤ} : n ∣ a ↔ a ≡ 0 [ZMOD n] := by
+  sorry
+
+example {a b : ℤ} (hab : a ∣ b) : a ∣ 3 * b ^ 3 - b ^ 2 + 5 * b := by
   sorry
 
 example {k : ℕ} : k ^ 2 ≤ 6 ↔ k = 0 ∨ k = 1 ∨ k = 2 := by
