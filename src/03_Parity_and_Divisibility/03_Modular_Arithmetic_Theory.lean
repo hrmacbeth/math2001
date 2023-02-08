@@ -47,22 +47,6 @@ theorem Int.ModEq.mul {n a b c d : ℤ} (h1 : a ≡ b [ZMOD n]) (h2 : c ≡ d [Z
     _ = n * (x * c + b * y) := by ring
 
 
-example : ∃ a b c d, a ≡ b [ZMOD 4] ∧ c ≡ d [ZMOD 4] ∧ ¬a / c ≡ b / d [ZMOD 4] := by
-  take 10, 18, 2, 6
-  constructor
-  · take -2
-    numbers
-  constructor
-  · take -1
-    numbers
-  apply Int.not_dvd_of_exists_lt_and_lt
-  · numbers
-  take 0
-  constructor
-  · numbers
-  · numbers
-
-
 theorem Int.ModEq.pow_two (h : a ≡ b [ZMOD n]) : a ^ 2 ≡ b ^ 2 [ZMOD n] := by
   obtain ⟨x, hx⟩ := h
   take x * (a + b)
