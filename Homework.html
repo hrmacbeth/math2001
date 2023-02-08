@@ -53,6 +53,7 @@
 <li class="toctree-l2"><a class="reference internal" href="#homework-0">Homework 0</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#homework-1">Homework 1</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#homework-2">Homework 2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#homework-3">Homework 3</a></li>
 </ul>
 </li>
 </ul>
@@ -207,6 +208,75 @@ submit a solution in words, only in Lean.</p>
 </ol>
 <div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="c">/-</span><span class="cm"> 4 points -/</span>
 <span class="kd">theorem</span> <span class="n">problem6</span> <span class="o">{</span><span class="n">p</span> <span class="n">q</span> <span class="o">:</span> <span class="n">&#8477;</span><span class="o">}</span> <span class="o">(</span><span class="n">h</span> <span class="o">:</span> <span class="n">p</span> <span class="bp">&lt;</span> <span class="n">q</span><span class="o">)</span> <span class="o">:</span> <span class="bp">&#8707;</span> <span class="n">x</span><span class="o">,</span> <span class="n">p</span> <span class="bp">&lt;</span> <span class="n">x</span> <span class="bp">&#8743;</span> <span class="n">x</span> <span class="bp">&lt;</span> <span class="n">q</span> <span class="o">:=</span> <span class="kd">by</span>
+  <span class="gr">sorry</span>
+</pre></div>
+</div>
+</section>
+<section id="homework-3">
+<span id="hw3"></span><h2>Homework 3<a class="headerlink" href="#homework-3" title="Permalink to this headline">&#61633;</a></h2>
+<ol class="arabic simple">
+<li><p>Let <span class="math notranslate nohighlight">\(x\)</span> be an integer.  Show that if <span class="math notranslate nohighlight">\(x\)</span> is odd then so is <span class="math notranslate nohighlight">\(x^3\)</span>.</p></li>
+</ol>
+<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="c">/-</span><span class="cm"> 4 points -/</span>
+<span class="kd">theorem</span> <span class="n">problem1</span> <span class="o">{</span><span class="n">x</span> <span class="o">:</span> <span class="n">&#8484;</span><span class="o">}</span> <span class="o">(</span><span class="n">hx</span> <span class="o">:</span> <span class="n">Odd</span> <span class="n">x</span><span class="o">)</span> <span class="o">:</span> <span class="n">Odd</span> <span class="o">(</span><span class="n">x</span> <span class="bp">^</span> <span class="mi">3</span><span class="o">)</span> <span class="o">:=</span> <span class="kd">by</span>
+  <span class="gr">sorry</span>
+</pre></div>
+</div>
+<ol class="arabic" start="2">
+<li><p>Let <span class="math notranslate nohighlight">\(n\)</span> be an integer.  Show that <span class="math notranslate nohighlight">\(5n^2+3n+7\)</span> is odd.</p>
+<p>You will probably use the lemma <code class="docutils literal notranslate"><span class="pre">Int.even_or_odd</span></code>, stating that an integer is either even or
+odd.</p>
+</li>
+</ol>
+<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="c">/-</span><span class="cm"> 5 points -/</span>
+<span class="kd">theorem</span> <span class="n">problem2</span> <span class="o">(</span><span class="n">n</span> <span class="o">:</span> <span class="n">&#8484;</span><span class="o">)</span> <span class="o">:</span> <span class="n">Odd</span> <span class="o">(</span><span class="mi">5</span> <span class="bp">*</span> <span class="n">n</span> <span class="bp">^</span> <span class="mi">2</span> <span class="bp">+</span> <span class="mi">3</span> <span class="bp">*</span> <span class="n">n</span> <span class="bp">+</span> <span class="mi">7</span><span class="o">)</span> <span class="o">:=</span> <span class="kd">by</span>
+  <span class="gr">sorry</span>
+</pre></div>
+</div>
+<ol class="arabic" start="3">
+<li><p>Show that -10 is not divisible by 3.</p>
+<p>You will probably use the lemma <code class="docutils literal notranslate"><span class="pre">Int.not_dvd_of_exists_lt_and_lt</span></code>, stating that if <span class="math notranslate nohighlight">\(b\)</span> is
+positive and <span class="math notranslate nohighlight">\(a\)</span> lies strictly between <span class="math notranslate nohighlight">\(bq\)</span> and <span class="math notranslate nohighlight">\(b(q+1)\)</span> then <span class="math notranslate nohighlight">\(a\)</span> is not
+a multiple of <span class="math notranslate nohighlight">\(b\)</span>.</p>
+</li>
+</ol>
+<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="c">/-</span><span class="cm"> 4 points -/</span>
+<span class="kd">theorem</span> <span class="n">problem3</span> <span class="o">:</span> <span class="bp">&#172;</span><span class="o">(</span><span class="mi">3</span> <span class="o">:</span> <span class="n">&#8484;</span><span class="o">)</span> <span class="bp">&#8739;</span> <span class="bp">-</span><span class="mi">10</span> <span class="o">:=</span> <span class="kd">by</span>
+  <span class="gr">sorry</span>
+</pre></div>
+</div>
+<ol class="arabic simple" start="4">
+<li><p>Let <span class="math notranslate nohighlight">\(a\)</span>, <span class="math notranslate nohighlight">\(b\)</span> and <span class="math notranslate nohighlight">\(c\)</span> be integers and suppose that <span class="math notranslate nohighlight">\(a^2\)</span> divides <span class="math notranslate nohighlight">\(b\)</span>
+and <span class="math notranslate nohighlight">\(b^3\)</span> divides <span class="math notranslate nohighlight">\(c\)</span>.  Show that <span class="math notranslate nohighlight">\(a^6\)</span> divides <span class="math notranslate nohighlight">\(c\)</span>.</p></li>
+</ol>
+<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="c">/-</span><span class="cm"> 4 points -/</span>
+<span class="kd">theorem</span> <span class="n">problem4</span> <span class="o">{</span><span class="n">a</span> <span class="n">b</span> <span class="n">c</span> <span class="o">:</span> <span class="n">&#8484;</span><span class="o">}</span> <span class="o">(</span><span class="n">hab</span> <span class="o">:</span> <span class="n">a</span> <span class="bp">^</span> <span class="mi">2</span> <span class="bp">&#8739;</span> <span class="n">b</span><span class="o">)</span> <span class="o">(</span><span class="n">hbc</span> <span class="o">:</span> <span class="n">b</span> <span class="bp">^</span> <span class="mi">3</span> <span class="bp">&#8739;</span> <span class="n">c</span><span class="o">)</span> <span class="o">:</span> <span class="n">a</span> <span class="bp">^</span> <span class="mi">6</span> <span class="bp">&#8739;</span> <span class="n">c</span> <span class="o">:=</span> <span class="kd">by</span>
+  <span class="gr">sorry</span>
+</pre></div>
+</div>
+<ol class="arabic simple" start="5">
+<li><p>(transitivity rule for modular arithmetic) Let <span class="math notranslate nohighlight">\(a\)</span>, <span class="math notranslate nohighlight">\(b\)</span>, <span class="math notranslate nohighlight">\(c\)</span> and <span class="math notranslate nohighlight">\(n\)</span> be
+integers, and suppose that <span class="math notranslate nohighlight">\(a\equiv b \mod n\)</span> and <span class="math notranslate nohighlight">\(b\equiv c \mod n\)</span>.  Show that
+<span class="math notranslate nohighlight">\(a\equiv c \mod n\)</span>.</p></li>
+</ol>
+<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="c">/-</span><span class="cm"> 4 points -/</span>
+<span class="kd">theorem</span> <span class="n">problem5</span> <span class="o">(</span><span class="n">h1</span> <span class="o">:</span> <span class="n">a</span> <span class="bp">&#8801;</span> <span class="n">b</span> <span class="o">[</span><span class="n">ZMOD</span> <span class="n">n</span><span class="o">])</span> <span class="o">(</span><span class="n">h2</span> <span class="o">:</span> <span class="n">b</span> <span class="bp">&#8801;</span> <span class="n">c</span> <span class="o">[</span><span class="n">ZMOD</span> <span class="n">n</span><span class="o">])</span> <span class="o">:</span> <span class="n">a</span> <span class="bp">&#8801;</span> <span class="n">c</span> <span class="o">[</span><span class="n">ZMOD</span> <span class="n">n</span><span class="o">]</span> <span class="o">:=</span> <span class="kd">by</span>
+  <span class="gr">sorry</span>
+</pre></div>
+</div>
+<ol class="arabic" start="6">
+<li><p>Let <span class="math notranslate nohighlight">\(a\)</span> and <span class="math notranslate nohighlight">\(b\)</span> be natural numbers, with <span class="math notranslate nohighlight">\(b\)</span> positive, and suppose that
+<span class="math notranslate nohighlight">\(a\)</span> divides <span class="math notranslate nohighlight">\(b\)</span>.  Show that <span class="math notranslate nohighlight">\(a\)</span> is positive.</p>
+<p>You will probably use the lemma <code class="docutils literal notranslate"><span class="pre">pos_of_mul_pos_left</span></code>, stating that if <span class="math notranslate nohighlight">\(ab\)</span> is positive
+and <span class="math notranslate nohighlight">\(b\)</span> is nonnegative then <span class="math notranslate nohighlight">\(a\)</span> is positive.  Note that the variables named <span class="math notranslate nohighlight">\(a\)</span>
+and <span class="math notranslate nohighlight">\(b\)</span> in this lemma are not necessarily the same as the variables named <span class="math notranslate nohighlight">\(a\)</span> and
+<span class="math notranslate nohighlight">\(b\)</span> in the problem!</p>
+<p>This problem is solved in words in the text in <a class="reference internal" href="03_Parity_and_Divisibility.html#dvd-bd-2"><span class="std std-numref">Example 3.2.8</span></a>, so don&#8217;t
+submit a solution in words, only in Lean.</p>
+</li>
+</ol>
+<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="c">/-</span><span class="cm"> 4 points -/</span>
+<span class="kd">theorem</span> <span class="n">problem6</span> <span class="o">{</span><span class="n">a</span> <span class="n">b</span> <span class="o">:</span> <span class="n">&#8469;</span><span class="o">}</span> <span class="o">(</span><span class="n">hab</span> <span class="o">:</span> <span class="n">a</span> <span class="bp">&#8739;</span> <span class="n">b</span><span class="o">)</span> <span class="o">(</span><span class="n">hb</span> <span class="o">:</span> <span class="mi">0</span> <span class="bp">&lt;</span> <span class="n">b</span><span class="o">)</span> <span class="o">:</span> <span class="mi">0</span> <span class="bp">&lt;</span> <span class="n">a</span> <span class="o">:=</span> <span class="kd">by</span>
   <span class="gr">sorry</span>
 </pre></div>
 </div>
