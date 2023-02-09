@@ -350,7 +350,7 @@ name when the definition of &#8220;odd&#8221; comes is unfolded.</p>
 <section id="exercise">
 <span id="even-or-odd"></span><h3><span class="section-number">3.1.9. </span>Exercise<a class="headerlink" href="#exercise" title="Permalink to this headline">&#61633;</a></h3>
 <p>In fact every integer is either even or odd; we will discuss how to prove this later, in
-<a class="reference internal" href="04_Proofs_with_Structure_II.html#even-or-odd-proof"><span class="std std-numref">Example 4.3.5</span></a>.</p>
+<a class="reference internal" href="04_Proofs_with_Structure_II.html#even-or-odd-proof"><span class="std std-numref">Example 4.2.9</span></a>.</p>
 <p>In Lean this fact can be invoked as the lemma <code class="docutils literal notranslate"><span class="pre">Int.even_or_odd</span></code>:</p>
 <div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">lemma</span> <span class="n">Int.even_or_odd</span> <span class="o">(</span><span class="n">n</span> <span class="o">:</span> <span class="n">&#8484;</span><span class="o">)</span> <span class="o">:</span> <span class="n">even</span> <span class="n">n</span> <span class="bp">&#8744;</span> <span class="n">odd</span> <span class="n">n</span> <span class="o">:=</span>
 </pre></div>
@@ -589,10 +589,10 @@ Show that <span class="math notranslate nohighlight">\(x \mid z\)</span>.</p>
 <section id="not-divisible">
 <span id="id15"></span><h3><span class="section-number">3.2.6. </span>Example<a class="headerlink" href="#not-divisible" title="Permalink to this headline">&#61633;</a></h3>
 <p>You might wonder how to show that a number is <em>not</em> divisible by another number.  A convenient test
-here is a theorem which we will prove later in the course: if an integer <span class="math notranslate nohighlight">\(b\)</span> is strictly
-between two consecutive multiples of a positive integer <span class="math notranslate nohighlight">\(a\)</span>, then it is not a multiple of
-<span class="math notranslate nohighlight">\(a\)</span>.  More formally, if there exists an integer <span class="math notranslate nohighlight">\(q\)</span> such that
-<span class="math notranslate nohighlight">\(a \cdot q&lt;b&lt;a\cdot (q + 1)\)</span>, then <span class="math notranslate nohighlight">\(b\)</span> is not a multiple of <span class="math notranslate nohighlight">\(a\)</span>.  Here is an
+here is a theorem which we will prove later in the course: if an integer <span class="math notranslate nohighlight">\(a\)</span> is strictly
+between two consecutive multiples of a positive integer <span class="math notranslate nohighlight">\(b\)</span>, then it is not a multiple of
+<span class="math notranslate nohighlight">\(b\)</span>.  More formally, if there exists an integer <span class="math notranslate nohighlight">\(q\)</span> such that
+<span class="math notranslate nohighlight">\(b \cdot q&lt;a&lt;b\cdot (q + 1)\)</span>, then <span class="math notranslate nohighlight">\(a\)</span> is not a multiple of <span class="math notranslate nohighlight">\(b\)</span>.  Here is an
 example applying this test:</p>
 <div class="admonition-problem admonition">
 <p class="admonition-title">Problem</p>
@@ -1027,7 +1027,7 @@ integers, and suppose that <span class="math notranslate nohighlight">\(a\equiv 
 <ol class="arabic simple" start="4">
 <li><p>Let <span class="math notranslate nohighlight">\(a\)</span>, <span class="math notranslate nohighlight">\(c\)</span> and <span class="math notranslate nohighlight">\(n\)</span> be integers.  Show that <span class="math notranslate nohighlight">\(a+nc\equiv a \mod n\)</span>.</p></li>
 </ol>
-<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">theorem</span> <span class="n">Int.modEq_add_fac&#39;</span> <span class="o">:</span> <span class="n">a</span> <span class="bp">+</span> <span class="n">n</span> <span class="bp">*</span> <span class="n">c</span> <span class="bp">&#8801;</span> <span class="n">a</span> <span class="o">[</span><span class="n">ZMOD</span> <span class="n">n</span><span class="o">]</span> <span class="o">:=</span> <span class="kd">by</span>
+<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">:</span> <span class="n">a</span> <span class="bp">+</span> <span class="n">n</span> <span class="bp">*</span> <span class="n">c</span> <span class="bp">&#8801;</span> <span class="n">a</span> <span class="o">[</span><span class="n">ZMOD</span> <span class="n">n</span><span class="o">]</span> <span class="o">:=</span> <span class="kd">by</span>
   <span class="gr">sorry</span>
 </pre></div>
 </div>
