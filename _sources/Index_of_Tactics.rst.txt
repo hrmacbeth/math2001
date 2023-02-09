@@ -41,7 +41,7 @@ differ by a multiple of 3, etc.
 Given a natural-number or integer variable :math:`n` for which numeric upper and lower bounds are
 available, produce cases for each of the numeric possibilities for :math:`n`.
 
-.. rubric:: intro (first use: :numref:`Section %s <forall_implies>`; for negation goals: :numref:`Section %s <contradiction>`)
+.. rubric:: intro (first use: :numref:`Section %s <forall_implies>`; for :math:`\lnot` goals: :numref:`Section %s <contradiction>`)
 
 Introduces a universally quantified variable (:math:`\forall`) or the antecedent of an implication
 (:math:`\to`) from the goal, or assumes (for the sake of contradiction) the positive version of a
