@@ -3,6 +3,7 @@ import Mathlib.Data.Real.Basic
 import Mathlib.Algebra.GroupWithZero.Defs
 import Math2001.Library.Parity
 import Math2001.Tactic.Addarith
+import Math2001.Tactic.ModCases
 import Math2001.Tactic.Numbers
 import Math2001.Tactic.Rel
 import Math2001.Tactic.Take
@@ -47,6 +48,16 @@ theorem odd_iff_modEq (n : ℤ) : Odd n ↔ n ≡ 1 [ZMOD 2] := by
     addarith [hk]
   · sorry
 
+theorem even_iff_modEq (n : ℤ) : Even n ↔ n ≡ 0 [ZMOD 2] := by
+  constructor
+  · intro h
+    obtain ⟨k, hk⟩ := h
+    dsimp [Int.ModEq]
+    dsimp [(· ∣ ·)]
+    take k
+    addarith [hk]
+  · sorry
+
 example {x : ℝ} : x ^ 2 + x - 6 = 0 ↔ x = -3 ∨ x = 2 := by
   sorry
 
@@ -73,6 +84,13 @@ example {x y : ℤ} (hx : Odd x) (hy : Odd y) : Odd (x + y + 1) := by
     _ = 2 * 1 + 1 := by ring
     _ ≡ 1 [ZMOD 2] := by extra  
 
+
+example (n : ℤ) : Even n ∨ Odd n := by
+  mod_cases hn : n % 2
+  · left
+    rw [Int.even_iff_modEq]
+    apply hn
+  · sorry
 
 example {x : ℝ} : 2 * x - 1 = 11 ↔ x = 6 := by
   sorry

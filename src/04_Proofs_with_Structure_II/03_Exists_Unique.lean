@@ -41,7 +41,7 @@ example {x : ℚ} (hx : ∃! a : ℚ, a ^ 2 = x) : x = 0 := by
     _ = 0 := by ring
 
 
-example : ∃! r : ℤ, 0 ≤ r ∧ r < 5 ∧ ∃ q : ℤ, 14 = 5 * q + r := by
+example : ∃! r : ℤ, 0 ≤ r ∧ r < 5 ∧ 14 ≡ r [ZMOD 5] := by
   take 4
   dsimp
   constructor
@@ -57,22 +57,18 @@ example : ∃! r : ℤ, 0 ≤ r ∧ r < 5 ∧ ∃ q : ℤ, 14 = 5 * q + r := by
   · apply lt_of_mul_lt_mul_left
     calc
       5 * 1 < 14 - r := by addarith [hr2]
-      _ = 5 * q + r - r := by rw [hr3]
-      _ = 5 * q := by ring
+      _ = 5 * q := by rw [hr3]
     numbers
   have : q < 3
   · apply lt_of_mul_lt_mul_left
     calc
-      5 * q = 5 * q + r - r := by ring
-      _ = 14 - r := by rw [hr3]
+      5 * q = 14 - r := by rw [hr3]
       _ < 5 * 3 := by addarith [hr1]
     numbers
   interval_cases q
   addarith [hr3]
 
 
-example (n : ℤ) : Even n ∨ Odd n := by
-  sorry
 
 example : ∃! x : ℚ, 4 * x - 3 = 9 := by
   take 3

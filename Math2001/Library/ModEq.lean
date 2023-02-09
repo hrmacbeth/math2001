@@ -1,5 +1,5 @@
 /- Copyright (c) Heather Macbeth, 2022.  All rights reserved. -/
-import Mathlib.Tactic.LinearCombination
+import Math2001.Library.Division
 
 /-- Two integers are congruent modulo `n`, if their difference is a multiple of `n`. -/
 def Int.ModEq (n a b : ℤ) : Prop := n ∣ a - b
@@ -82,3 +82,12 @@ theorem Int.modEq_sub_fac_self_symm : a ≡ a - n * t [ZMOD n] := ⟨t, by ring�
 theorem Int.modEq_sub_fac_self_symm' : -a ≡ n * t - a [ZMOD n] := ⟨-t, by ring⟩
 theorem Int.modEq_sub_fac_self_symm'' : a ≡ a - t * n [ZMOD n] := ⟨t, by ring⟩
 theorem Int.modEq_sub_fac_self_symm''' : -a ≡ t * n - a [ZMOD n] := ⟨-t, by ring⟩
+
+theorem Int.existsUnique_modEq_lt (a : ℤ) {b : ℤ} (hb : 0 < b) :
+    ∃! r : ℤ, 0 ≤ r ∧ r < b ∧ a ≡ r [ZMOD b] := by
+  obtain ⟨r, ⟨rpos, rlt, q, hq⟩, hr2⟩ := a.existsUnique_quotient_remainder b hb
+  refine ⟨r, ⟨rpos, rlt, q, ?_⟩, ?_⟩ <;> dsimp at *
+  . linear_combination hq
+  rintro r' ⟨rpos', rlt', q', hq'⟩ 
+  refine hr2 r' ⟨rpos', rlt', q', ?_⟩ 
+  linear_combination hq'
