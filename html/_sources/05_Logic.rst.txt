@@ -1,0 +1,6 @@
+.. _logic:
+
+Logic
+=====
+
+.. include:: 05_Logic/01_Logical_Equivalence.inc

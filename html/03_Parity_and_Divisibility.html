@@ -102,6 +102,7 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="04_Proofs_with_Structure_II.html">4. Proofs with structure, II</a></li>
+<li class="toctree-l1"><a class="reference internal" href="05_Logic.html">5. Logic</a></li>
 </ul>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="Index_of_Tactics.html">Index of Lean tactics</a></li>
@@ -592,7 +593,7 @@ Show that <span class="math notranslate nohighlight">\(x \mid z\)</span>.</p>
 here is a theorem which we will prove later in the course: if an integer <span class="math notranslate nohighlight">\(a\)</span> is strictly
 between two consecutive multiples of a positive integer <span class="math notranslate nohighlight">\(b\)</span>, then it is not a multiple of
 <span class="math notranslate nohighlight">\(b\)</span>.  More formally, if there exists an integer <span class="math notranslate nohighlight">\(q\)</span> such that
-<span class="math notranslate nohighlight">\(b \cdot q&lt;a&lt;b\cdot (q + 1)\)</span>, then <span class="math notranslate nohighlight">\(a\)</span> is not a multiple of <span class="math notranslate nohighlight">\(b\)</span>.  Here is an
+<span class="math notranslate nohighlight">\(bq&lt;a&lt;b(q + 1)\)</span>, then <span class="math notranslate nohighlight">\(a\)</span> is not a multiple of <span class="math notranslate nohighlight">\(b\)</span>.  Here is an
 example applying this test:</p>
 <div class="admonition-problem admonition">
 <p class="admonition-title">Problem</p>
@@ -1031,14 +1032,9 @@ integers, and suppose that <span class="math notranslate nohighlight">\(a\equiv 
   <span class="gr">sorry</span>
 </pre></div>
 </div>
-<ol class="arabic simple" start="5">
+<ol class="arabic" start="5">
 <li><p>Give an alternative solution (i.e., with different numbers) to
 <a class="reference internal" href="#no-mod-division"><span class="std std-numref">Example 3.3.7</span></a>.</p></li>
-</ol>
-<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">:</span> <span class="bp">&#8707;</span> <span class="n">a</span> <span class="n">b</span> <span class="n">c</span> <span class="n">d</span><span class="o">,</span> <span class="n">a</span> <span class="bp">&#8801;</span> <span class="n">b</span> <span class="o">[</span><span class="n">ZMOD</span> <span class="mi">4</span><span class="o">]</span> <span class="bp">&#8743;</span> <span class="n">c</span> <span class="bp">&#8801;</span> <span class="n">d</span> <span class="o">[</span><span class="n">ZMOD</span> <span class="mi">4</span><span class="o">]</span> <span class="bp">&#8743;</span> <span class="bp">&#172;</span><span class="n">a</span> <span class="bp">/</span> <span class="n">c</span> <span class="bp">&#8801;</span> <span class="n">b</span> <span class="bp">/</span> <span class="n">d</span> <span class="o">[</span><span class="n">ZMOD</span> <span class="mi">4</span><span class="o">]</span> <span class="o">:=</span> <span class="kd">by</span> <span class="gr">sorry</span>
-</pre></div>
-</div>
-<ol class="arabic" start="6">
 <li><p>Let <span class="math notranslate nohighlight">\(k\)</span> be an integer, and suppose that <span class="math notranslate nohighlight">\(k\equiv 3 \mod 5\)</span>.  Then
 <span class="math notranslate nohighlight">\(4 k + k ^ 3 + 3\equiv 4 \cdot 3 + 3 ^ 3 + 3 \mod 5\)</span>.</p>
 <p>Give two solutions, following the style of the two solutions in

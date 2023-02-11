@@ -106,7 +106,6 @@ theorem Int.ModEq.trans (h1 : a ≡ b [ZMOD n]) (h2 : b ≡ c [ZMOD n]) : a ≡ 
 example : a + n * c ≡ a [ZMOD n] := by
   sorry
 
-example : ∃ a b c d, a ≡ b [ZMOD 4] ∧ c ≡ d [ZMOD 4] ∧ ¬a / c ≡ b / d [ZMOD 4] := by sorry
 
 
 example {k : ℤ} (hb : k ≡ 3 [ZMOD 5]) :
