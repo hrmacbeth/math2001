@@ -1,5 +1,6 @@
 import Mathlib.Tactic.LeftRight
 import Mathlib.Tactic.Have
+import Math2001.Tactic.Take
 import Math2001.Tactic.TruthTable
 
 
@@ -47,6 +48,35 @@ example {P Q R : Prop} : (P ∧ (Q ∨ R)) ↔ ((P ∧ Q) ∨ (P ∧ R)) := by
 #truth_table (P ∧ Q) ∨ (P ∧ R)
 
 
+example {P Q : α → Prop} (h1 : ∀ x : α, P x) (h2 : ∀ x : α, Q x) :
+    ∀ x : α, P x ∧ Q x := by
+  intro x
+  constructor
+  · apply h1
+  · apply h2
+
+
+example {P : α → β → Prop} (h : ∃ x : α, ∀ y : β, P x y) :
+    ∀ y : β, ∃ x : α, P x y := by
+  obtain ⟨x, hx⟩ := h
+  intro y
+  take x
+  apply hx
+
+
+example {P : α → Prop} : ¬ (∃ x, P x) ↔ ∀ x, ¬ P x := by
+  constructor
+  · intro h a ha
+    have : ∃ x, P x
+    · take a
+      apply ha
+    contradiction
+  · intro h h'
+    obtain ⟨x, hx⟩ := h'
+    have : ¬ P x := h x
+    contradiction
+
+
 example {P Q : Prop} (h : P ∧ Q) : P ∨ Q := by
   sorry
 
@@ -65,5 +95,20 @@ example {P Q : Prop} (h1 : P ∨ Q) (h2 : Q → P) : P := by
 example {P : Prop} : (P ∧ P) ↔ P := by
   sorry
 
+example {P Q : Prop} : (P ∨ Q) ↔ (Q ∨ P) := by
+  sorry
+
 example {P Q : Prop} : ¬(P ∨ Q) ↔ (¬P ∧ ¬Q) := by
+  sorry
+
+example {P Q : α → Prop} (h1 : ∀ x, P x → Q x) (h2 : ∀ x, P x) : ∀ x, Q x := by
+  sorry
+
+example {P : α → β → Prop} : (∃ x y, P x y) ↔ ∃ y x, P x y := by
+  sorry
+
+example {P : α → β → Prop} : (∀ x y, P x y) ↔ ∀ y x, P x y := by
+  sorry
+
+example {P : α → Prop} {Q : Prop} : ((∃ x, P x) ∧ Q) ↔ ∃ x, (P x ∧ Q) := by
   sorry
