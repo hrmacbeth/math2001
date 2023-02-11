@@ -27,6 +27,7 @@ problems without yet the explanatory paragraphs which would be needed to solve t
    02_Proofs_with_Structure
    03_Parity_and_Divisibility
    04_Proofs_with_Structure_II
+   05_Logic
 
 .. toctree::
    :hidden:
