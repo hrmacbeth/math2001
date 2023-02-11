@@ -52,7 +52,8 @@
 <li class="toctree-l3"><a class="reference internal" href="#exercise">5.1.3. Exercise</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#id4">5.1.4. Example</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#id5">5.1.5. Example</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#exercises">5.1.6. Exercises</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id6">5.1.6. Example</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#exercises">5.1.7. Exercises</a></li>
 </ul>
 </li>
 </ul>
@@ -176,7 +177,7 @@ with contributions from Ryan Edmonds; both are undergraduates at Brown Universit
 between them can be proved in Lean.  For example,</p>
 <div class="admonition-problem admonition">
 <p class="admonition-title">Problem</p>
-<p>Show that <span class="math notranslate nohighlight">\(P \lor P\)</span> and <span class="math notranslate nohighlight">\(P\)</span> are logically equivalent.</p>
+<p>Show that <span class="math notranslate nohighlight">\(P \lor P\)</span> is logically equivalent to <span class="math notranslate nohighlight">\(P\)</span>.</p>
 </div>
 <div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">{</span><span class="n">P</span> <span class="o">:</span> <span class="kt">Prop</span><span class="o">}</span> <span class="o">:</span> <span class="o">(</span><span class="n">P</span> <span class="bp">&#8744;</span> <span class="n">P</span><span class="o">)</span> <span class="bp">&#8596;</span> <span class="n">P</span> <span class="o">:=</span> <span class="kd">by</span>
   <span class="n">constructor</span>
@@ -197,8 +198,8 @@ formulas which are logically equivalent in a way that we can&#8217;t yet demonst
 <h3><span class="section-number">5.1.5. </span>Example<a class="headerlink" href="#id5" title="Permalink to this headline">&#61633;</a></h3>
 <div class="admonition-problem admonition">
 <p class="admonition-title">Problem</p>
-<p>Show that <span class="math notranslate nohighlight">\(P \land (Q \lor R)\)</span> and <span class="math notranslate nohighlight">\((P \land Q) \lor (P \land R)\)</span> are logically
-equivalent.</p>
+<p>Show that <span class="math notranslate nohighlight">\(P \land (Q \lor R)\)</span> is logically equivalent to
+<span class="math notranslate nohighlight">\((P \land Q) \lor (P \land R)\)</span>.</p>
 </div>
 <p>This is a long one. I&#8217;ve done the first direction and left the second for you.</p>
 <div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">{</span><span class="n">P</span> <span class="n">Q</span> <span class="n">R</span> <span class="o">:</span> <span class="kt">Prop</span><span class="o">}</span> <span class="o">:</span> <span class="o">(</span><span class="n">P</span> <span class="bp">&#8743;</span> <span class="o">(</span><span class="n">Q</span> <span class="bp">&#8744;</span> <span class="n">R</span><span class="o">))</span> <span class="bp">&#8596;</span> <span class="o">((</span><span class="n">P</span> <span class="bp">&#8743;</span> <span class="n">Q</span><span class="o">)</span> <span class="bp">&#8744;</span> <span class="o">(</span><span class="n">P</span> <span class="bp">&#8743;</span> <span class="n">R</span><span class="o">))</span> <span class="o">:=</span> <span class="kd">by</span>
@@ -224,8 +225,50 @@ two Lean commands:</p>
 </pre></div>
 </div>
 </section>
+<section id="id6">
+<h3><span class="section-number">5.1.6. </span>Example<a class="headerlink" href="#id6" title="Permalink to this headline">&#61633;</a></h3>
+<p>We can also perform this kind of abstract logic game when quantifiers are involved.</p>
+<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">{</span><span class="n">P</span> <span class="n">Q</span> <span class="o">:</span> <span class="n">&#945;</span> <span class="bp">&#8594;</span> <span class="kt">Prop</span><span class="o">}</span> <span class="o">(</span><span class="n">h1</span> <span class="o">:</span> <span class="bp">&#8704;</span> <span class="n">x</span> <span class="o">:</span> <span class="n">&#945;</span><span class="o">,</span> <span class="n">P</span> <span class="n">x</span><span class="o">)</span> <span class="o">(</span><span class="n">h2</span> <span class="o">:</span> <span class="bp">&#8704;</span> <span class="n">x</span> <span class="o">:</span> <span class="n">&#945;</span><span class="o">,</span> <span class="n">Q</span> <span class="n">x</span><span class="o">)</span> <span class="o">:</span>
+    <span class="bp">&#8704;</span> <span class="n">x</span> <span class="o">:</span> <span class="n">&#945;</span><span class="o">,</span> <span class="n">P</span> <span class="n">x</span> <span class="bp">&#8743;</span> <span class="n">Q</span> <span class="n">x</span> <span class="o">:=</span> <span class="kd">by</span>
+  <span class="n">intro</span> <span class="n">x</span>
+  <span class="n">constructor</span>
+  <span class="bp">&#183;</span> <span class="n">apply</span> <span class="n">h1</span>
+  <span class="bp">&#183;</span> <span class="n">apply</span> <span class="n">h2</span>
+</pre></div>
+</div>
+<p>Here the <span class="math notranslate nohighlight">\(P\)</span> and <span class="math notranslate nohighlight">\(Q\)</span> are <em>predicates</em>, abstractions of a statement involving a variable
+(here called <span class="math notranslate nohighlight">\(x\)</span>).  Statements about quantified predicates are sometimes referred to as
+<em>first-order logic</em>.</p>
+<p>Here&#8217;s another example of abstract logical reasoning involving quantifiers.</p>
+<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">{</span><span class="n">P</span> <span class="o">:</span> <span class="n">&#945;</span> <span class="bp">&#8594;</span> <span class="n">&#946;</span> <span class="bp">&#8594;</span> <span class="kt">Prop</span><span class="o">}</span> <span class="o">(</span><span class="n">h</span> <span class="o">:</span> <span class="bp">&#8707;</span> <span class="n">x</span> <span class="o">:</span> <span class="n">&#945;</span><span class="o">,</span> <span class="bp">&#8704;</span> <span class="n">y</span> <span class="o">:</span> <span class="n">&#946;</span><span class="o">,</span> <span class="n">P</span> <span class="n">x</span> <span class="n">y</span><span class="o">)</span> <span class="o">:</span>
+    <span class="bp">&#8704;</span> <span class="n">y</span> <span class="o">:</span> <span class="n">&#946;</span><span class="o">,</span> <span class="bp">&#8707;</span> <span class="n">x</span> <span class="o">:</span> <span class="n">&#945;</span><span class="o">,</span> <span class="n">P</span> <span class="n">x</span> <span class="n">y</span> <span class="o">:=</span> <span class="kd">by</span>
+  <span class="n">obtain</span> <span class="o">&#10216;</span><span class="n">x</span><span class="o">,</span> <span class="n">hx</span><span class="o">&#10217;</span> <span class="o">:=</span> <span class="n">h</span>
+  <span class="n">intro</span> <span class="n">y</span>
+  <span class="n">take</span> <span class="n">x</span>
+  <span class="n">apply</span> <span class="n">hx</span>
+</pre></div>
+</div>
+<p>The concept of logical equivalence still makes sense in this setting.</p>
+<div class="admonition-problem admonition">
+<p class="admonition-title">Problem</p>
+<p>Show that <span class="math notranslate nohighlight">\(\lnot\exists x, P(x)\)</span> is logically equivalent to <span class="math notranslate nohighlight">\(\forall x, \lnot P(x)\)</span>.</p>
+</div>
+<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">{</span><span class="n">P</span> <span class="o">:</span> <span class="n">&#945;</span> <span class="bp">&#8594;</span> <span class="kt">Prop</span><span class="o">}</span> <span class="o">:</span> <span class="bp">&#172;</span> <span class="o">(</span><span class="bp">&#8707;</span> <span class="n">x</span><span class="o">,</span> <span class="n">P</span> <span class="n">x</span><span class="o">)</span> <span class="bp">&#8596;</span> <span class="bp">&#8704;</span> <span class="n">x</span><span class="o">,</span> <span class="bp">&#172;</span> <span class="n">P</span> <span class="n">x</span> <span class="o">:=</span> <span class="kd">by</span>
+  <span class="n">constructor</span>
+  <span class="bp">&#183;</span> <span class="n">intro</span> <span class="n">h</span> <span class="n">a</span> <span class="n">ha</span>
+    <span class="k">have</span> <span class="o">:</span> <span class="bp">&#8707;</span> <span class="n">x</span><span class="o">,</span> <span class="n">P</span> <span class="n">x</span>
+    <span class="bp">&#183;</span> <span class="n">take</span> <span class="n">a</span>
+      <span class="n">apply</span> <span class="n">ha</span>
+    <span class="n">contradiction</span>
+  <span class="bp">&#183;</span> <span class="n">intro</span> <span class="n">h</span> <span class="n">h&#39;</span>
+    <span class="n">obtain</span> <span class="o">&#10216;</span><span class="n">x</span><span class="o">,</span> <span class="n">hx</span><span class="o">&#10217;</span> <span class="o">:=</span> <span class="n">h&#39;</span>
+    <span class="k">have</span> <span class="o">:</span> <span class="bp">&#172;</span> <span class="n">P</span> <span class="n">x</span> <span class="o">:=</span> <span class="n">h</span> <span class="n">x</span>
+    <span class="n">contradiction</span>
+</pre></div>
+</div>
+</section>
 <section id="exercises">
-<h3><span class="section-number">5.1.6. </span>Exercises<a class="headerlink" href="#exercises" title="Permalink to this headline">&#61633;</a></h3>
+<h3><span class="section-number">5.1.7. </span>Exercises<a class="headerlink" href="#exercises" title="Permalink to this headline">&#61633;</a></h3>
 <ol class="arabic simple">
 <li><p>Prove the following propositional logic statement:</p></li>
 </ol>
@@ -268,12 +311,50 @@ two Lean commands:</p>
   <span class="gr">sorry</span>
 </pre></div>
 </div>
-<ol class="arabic" start="7">
+<ol class="arabic simple" start="7">
+<li><p>Prove that <span class="math notranslate nohighlight">\(P \lor Q\)</span> is logically equivalent to <span class="math notranslate nohighlight">\(Q \lor P\)</span>.</p></li>
+</ol>
+<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">{</span><span class="n">P</span> <span class="n">Q</span> <span class="o">:</span> <span class="kt">Prop</span><span class="o">}</span> <span class="o">:</span> <span class="o">(</span><span class="n">P</span> <span class="bp">&#8744;</span> <span class="n">Q</span><span class="o">)</span> <span class="bp">&#8596;</span> <span class="o">(</span><span class="n">Q</span> <span class="bp">&#8744;</span> <span class="n">P</span><span class="o">)</span> <span class="o">:=</span> <span class="kd">by</span>
+  <span class="gr">sorry</span>
+</pre></div>
+</div>
+<ol class="arabic" start="8">
 <li><p>Prove that <span class="math notranslate nohighlight">\(\lnot(P \lor Q)\)</span> is logically equivalent to <span class="math notranslate nohighlight">\(\lnot P \land \lnot Q\)</span>.</p>
 <p>This theorem is in the library under the name <code class="docutils literal notranslate"><span class="pre">not_or</span></code>. It is one of <a class="reference external" href="https://en.wikipedia.org/wiki/De_Morgan%27s_laws">&#8220;De Morgan&#8217;s laws&#8221;</a>.</p>
 </li>
 </ol>
 <div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">{</span><span class="n">P</span> <span class="n">Q</span> <span class="o">:</span> <span class="kt">Prop</span><span class="o">}</span> <span class="o">:</span> <span class="bp">&#172;</span><span class="o">(</span><span class="n">P</span> <span class="bp">&#8744;</span> <span class="n">Q</span><span class="o">)</span> <span class="bp">&#8596;</span> <span class="o">(</span><span class="bp">&#172;</span><span class="n">P</span> <span class="bp">&#8743;</span> <span class="bp">&#172;</span><span class="n">Q</span><span class="o">)</span> <span class="o">:=</span> <span class="kd">by</span>
+  <span class="gr">sorry</span>
+</pre></div>
+</div>
+<ol class="arabic simple" start="9">
+<li><p>Prove the following first-order logic statement:</p></li>
+</ol>
+<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">{</span><span class="n">P</span> <span class="n">Q</span> <span class="o">:</span> <span class="n">&#945;</span> <span class="bp">&#8594;</span> <span class="kt">Prop</span><span class="o">}</span> <span class="o">(</span><span class="n">h1</span> <span class="o">:</span> <span class="bp">&#8704;</span> <span class="n">x</span><span class="o">,</span> <span class="n">P</span> <span class="n">x</span> <span class="bp">&#8594;</span> <span class="n">Q</span> <span class="n">x</span><span class="o">)</span> <span class="o">(</span><span class="n">h2</span> <span class="o">:</span> <span class="bp">&#8704;</span> <span class="n">x</span><span class="o">,</span> <span class="n">P</span> <span class="n">x</span><span class="o">)</span> <span class="o">:</span> <span class="bp">&#8704;</span> <span class="n">x</span><span class="o">,</span> <span class="n">Q</span> <span class="n">x</span> <span class="o">:=</span> <span class="kd">by</span>
+  <span class="gr">sorry</span>
+</pre></div>
+</div>
+<ol class="arabic simple" start="10">
+<li><p>Show that <span class="math notranslate nohighlight">\(\exists x \ y, P(x, y)\)</span> is logically equivalent to
+<span class="math notranslate nohighlight">\(\exists y \ x, P(x, y)\)</span>.</p></li>
+</ol>
+<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">{</span><span class="n">P</span> <span class="o">:</span> <span class="n">&#945;</span> <span class="bp">&#8594;</span> <span class="n">&#946;</span> <span class="bp">&#8594;</span> <span class="kt">Prop</span><span class="o">}</span> <span class="o">:</span> <span class="o">(</span><span class="bp">&#8707;</span> <span class="n">x</span> <span class="n">y</span><span class="o">,</span> <span class="n">P</span> <span class="n">x</span> <span class="n">y</span><span class="o">)</span> <span class="bp">&#8596;</span> <span class="bp">&#8707;</span> <span class="n">y</span> <span class="n">x</span><span class="o">,</span> <span class="n">P</span> <span class="n">x</span> <span class="n">y</span> <span class="o">:=</span> <span class="kd">by</span>
+  <span class="gr">sorry</span>
+</pre></div>
+</div>
+<ol class="arabic simple" start="11">
+<li><p>Show that <span class="math notranslate nohighlight">\(\forall x \ y, P(x, y)\)</span> is logically equivalent to
+<span class="math notranslate nohighlight">\(\forall y \ x, P(x, y)\)</span>.</p></li>
+</ol>
+<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">{</span><span class="n">P</span> <span class="o">:</span> <span class="n">&#945;</span> <span class="bp">&#8594;</span> <span class="n">&#946;</span> <span class="bp">&#8594;</span> <span class="kt">Prop</span><span class="o">}</span> <span class="o">:</span> <span class="o">(</span><span class="bp">&#8704;</span> <span class="n">x</span> <span class="n">y</span><span class="o">,</span> <span class="n">P</span> <span class="n">x</span> <span class="n">y</span><span class="o">)</span> <span class="bp">&#8596;</span> <span class="bp">&#8704;</span> <span class="n">y</span> <span class="n">x</span><span class="o">,</span> <span class="n">P</span> <span class="n">x</span> <span class="n">y</span> <span class="o">:=</span> <span class="kd">by</span>
+  <span class="gr">sorry</span>
+</pre></div>
+</div>
+<ol class="arabic simple" start="12">
+<li><p>Show that <span class="math notranslate nohighlight">\((\exists x, P(x)) \land Q\)</span> is logically equivalent to
+<span class="math notranslate nohighlight">\(\exists x, (P(x) \land Q)\)</span>.</p></li>
+</ol>
+<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">{</span><span class="n">P</span> <span class="o">:</span> <span class="n">&#945;</span> <span class="bp">&#8594;</span> <span class="kt">Prop</span><span class="o">}</span> <span class="o">{</span><span class="n">Q</span> <span class="o">:</span> <span class="kt">Prop</span><span class="o">}</span> <span class="o">:</span> <span class="o">((</span><span class="bp">&#8707;</span> <span class="n">x</span><span class="o">,</span> <span class="n">P</span> <span class="n">x</span><span class="o">)</span> <span class="bp">&#8743;</span> <span class="n">Q</span><span class="o">)</span> <span class="bp">&#8596;</span> <span class="bp">&#8707;</span> <span class="n">x</span><span class="o">,</span> <span class="o">(</span><span class="n">P</span> <span class="n">x</span> <span class="bp">&#8743;</span> <span class="n">Q</span><span class="o">)</span> <span class="o">:=</span> <span class="kd">by</span>
   <span class="gr">sorry</span>
 </pre></div>
 </div>
