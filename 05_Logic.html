@@ -477,7 +477,7 @@ factor for it.</p>
   <span class="n">intro</span> <span class="n">h</span>
   <span class="n">dsimp</span> <span class="o">[</span><span class="n">superpowered</span><span class="o">]</span> <span class="n">at</span> <span class="n">h</span>
   <span class="k">have</span> <span class="n">four_prime</span> <span class="o">:</span> <span class="n">Prime</span> <span class="o">(</span><span class="mi">3</span> <span class="bp">^</span> <span class="mi">3</span> <span class="bp">^</span> <span class="mi">0</span> <span class="bp">+</span> <span class="mi">1</span><span class="o">)</span> <span class="o">:=</span> <span class="n">h</span> <span class="mi">0</span>
-  <span class="n">numbers</span> <span class="n">at</span> <span class="n">four_prime</span> <span class="c1">-- simplifies to `Prime 4`</span>
+  <span class="n">numbers</span> <span class="n">at</span> <span class="n">four_prime</span> <span class="c1">-- simplifies that statement to `Prime 4`</span>
   <span class="k">have</span> <span class="n">four_not_prime</span> <span class="o">:</span> <span class="bp">&#172;</span><span class="o">(</span><span class="n">Prime</span> <span class="mi">4</span><span class="o">)</span>
   <span class="bp">&#183;</span> <span class="n">apply</span> <span class="n">not_prime</span> <span class="mi">2</span>
     <span class="bp">&#183;</span> <span class="n">numbers</span> <span class="c1">-- show `2 &#8800; 1`</span>
