@@ -201,7 +201,7 @@ between them can be proved in Lean.  For example,</p>
 </pre></div>
 </div>
 <p>An important caveat here is that there is still one logic tactic which hasn&#8217;t been introduced yet
-(see <a class="reference internal" href="#lem"><span class="std std-numref">Section 5.2</span></a>.)  So there are some pairs of propositional logic
+(see <a class="reference internal" href="#lem"><span class="std std-numref">Section 5.2</span></a>).  So there are some pairs of propositional logic
 formulas which are logically equivalent in a way that we can&#8217;t yet demonstrate.</p>
 </section>
 <section id="id5">
@@ -541,7 +541,8 @@ h2 : &#172;superpowered 2
 <section id="id12">
 <h3><span class="section-number">5.2.6. </span>Example<a class="headerlink" href="#id12" title="Permalink to this headline">&#61633;</a></h3>
 <p>As noted above, it&#8217;s relatively rare to need to use the law of the excluded middle in a proof.  But
-here is one more example where it&#8217;s needed, this time from propositional logic.</p>
+here is one more example where it&#8217;s needed, this time from propositional logic: &#8220;two wrongs make a
+right&#8221;.</p>
 <div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">{</span><span class="n">P</span> <span class="o">:</span> <span class="kt">Prop</span><span class="o">}</span> <span class="o">(</span><span class="n">hP</span> <span class="o">:</span> <span class="bp">&#172;&#172;</span><span class="n">P</span><span class="o">)</span> <span class="o">:</span> <span class="n">P</span> <span class="o">:=</span> <span class="kd">by</span>
   <span class="n">by_cases</span> <span class="n">hP</span> <span class="o">:</span> <span class="n">P</span>
   <span class="bp">&#183;</span> <span class="n">apply</span> <span class="n">hP</span>
