@@ -2,6 +2,7 @@
 import Mathlib.Data.Real.Basic
 import Mathlib.Tactic.IntervalCases
 import Math2001.Library.Parity
+import Math2001.Library.Prime
 import Math2001.Tactic.Addarith
 import Math2001.Tactic.ModCases
 import Math2001.Tactic.Numbers
@@ -22,10 +23,7 @@ example {y : ℝ} (x : ℝ) (h : 0 < x * y) (hx : 0 ≤ x) : 0 < y := by
   exact H
 
 
-def Prime (p : ℕ) : Prop :=
-  2 ≤ p ∧ ∀ m : ℕ, m ∣ p → m = 1 ∨ m = p
-
-theorem prime_test {p : ℕ} (hp : 2 ≤ p) (H : ∀ m : ℕ, 1 < m → m < p → ¬m ∣ p) : Prime p := by
+example {p : ℕ} (hp : 2 ≤ p) (H : ∀ m : ℕ, 1 < m → m < p → ¬m ∣ p) : Prime p := by
   constructor
   · apply hp
   intro m hmp

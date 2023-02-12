@@ -72,6 +72,15 @@ example (n : ℕ) : ¬((n:ℤ) ^ 2 ≡ 2 [ZMOD 3]) := by
   · sorry
   · sorry
 
+example {p : ℕ} (k : ℕ) (hk1 : k ≠ 1) (hkp : k ≠ p) (hk : k ∣ p) : ¬(Prime p) := by
+  intro h
+  obtain ⟨h2, hfact⟩ := h
+  have : k = 1 ∨ k = p := hfact k hk
+  obtain hk1' | hkp' := this
+  · contradiction
+  · contradiction  
+
+
 example (a : ℤ) {b : ℤ} (hb : 0 < b)
     (h : ∃ q, b * q < a ∧ a < b * (q + 1)) : ¬b ∣ a := by
   intro H
@@ -142,5 +151,9 @@ example : ¬ (∃ N : ℕ, ∀ k > N, Nat.Even k) := by
 
 example (n : ℕ) : ¬((n:ℤ) ^ 2 ≡ 2 [ZMOD 4]) := by
   sorry
+
+example : ¬ Prime 1 := by
+  sorry
+
 example : Prime 97 := by
   sorry

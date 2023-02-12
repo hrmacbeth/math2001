@@ -56,6 +56,15 @@
 <li class="toctree-l3"><a class="reference internal" href="#exercises">5.1.7. Exercises</a></li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="#the-law-of-the-excluded-middle">5.2. The law of the excluded middle</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id7">5.2.1. Example</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id8">5.2.2. Example</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id9">5.2.3. Example</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id10">5.2.4. Example</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#lem-problem">5.2.5. Example</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id12">5.2.6. Exercises</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -157,7 +166,7 @@ automatically.</p>
 </pre></div>
 </div>
 <p>That&#8217;s how I generated these pictures! The <code class="docutils literal notranslate"><span class="pre">#truth_table</span></code> command was written by Joseph Rotella
-with contributions from Ryan Edmonds; both are undergraduates at Brown University.</p>
+with contributions from Ryan Edmonds; both are students at Brown University.</p>
 </section>
 <section id="exercise">
 <h3><span class="section-number">5.1.3. </span>Exercise<a class="headerlink" href="#exercise" title="Permalink to this headline">&#61633;</a></h3>
@@ -191,7 +200,7 @@ between them can be proved in Lean.  For example,</p>
 </pre></div>
 </div>
 <p>An important caveat here is that there is still one logic tactic which hasn&#8217;t been introduced yet
-(see <code class="xref std std-numref docutils literal notranslate"><span class="pre">Section</span> <span class="pre">%s</span></code>.)  So there are some pairs of propositional logic
+(see <a class="reference internal" href="#lem"><span class="std std-numref">Section 5.2</span></a>.)  So there are some pairs of propositional logic
 formulas which are logically equivalent in a way that we can&#8217;t yet demonstrate.</p>
 </section>
 <section id="id5">
@@ -248,7 +257,7 @@ two Lean commands:</p>
   <span class="n">apply</span> <span class="n">hx</span>
 </pre></div>
 </div>
-<p>The concept of logical equivalence still makes sense in this setting.</p>
+<p>The concept of logical equivalence also still makes sense in this setting.</p>
 <div class="admonition-problem admonition">
 <p class="admonition-title">Problem</p>
 <p>Show that <span class="math notranslate nohighlight">\(\lnot\exists x, P(x)\)</span> is logically equivalent to <span class="math notranslate nohighlight">\(\forall x, \lnot P(x)\)</span>.</p>
@@ -355,6 +364,202 @@ two Lean commands:</p>
 <span class="math notranslate nohighlight">\(\exists x, (P(x) \land Q)\)</span>.</p></li>
 </ol>
 <div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">{</span><span class="n">P</span> <span class="o">:</span> <span class="n">&#945;</span> <span class="bp">&#8594;</span> <span class="kt">Prop</span><span class="o">}</span> <span class="o">{</span><span class="n">Q</span> <span class="o">:</span> <span class="kt">Prop</span><span class="o">}</span> <span class="o">:</span> <span class="o">((</span><span class="bp">&#8707;</span> <span class="n">x</span><span class="o">,</span> <span class="n">P</span> <span class="n">x</span><span class="o">)</span> <span class="bp">&#8743;</span> <span class="n">Q</span><span class="o">)</span> <span class="bp">&#8596;</span> <span class="bp">&#8707;</span> <span class="n">x</span><span class="o">,</span> <span class="o">(</span><span class="n">P</span> <span class="n">x</span> <span class="bp">&#8743;</span> <span class="n">Q</span><span class="o">)</span> <span class="o">:=</span> <span class="kd">by</span>
+  <span class="gr">sorry</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="the-law-of-the-excluded-middle">
+<span id="lem"></span><h2><span class="section-number">5.2. </span>The law of the excluded middle<a class="headerlink" href="#the-law-of-the-excluded-middle" title="Permalink to this headline">&#61633;</a></h2>
+<p>A tradition which <a class="reference external" href="https://en.wikipedia.org/wiki/Perfect_number">goes back to the ancient Greeks</a>
+is to give a slightly silly name to a class of numbers, in order to provide shorter theorem
+statements while studying it.  In that vein, I present, just for this section &#8230; the superpowered
+numbers!</p>
+<div class="admonition-definition admonition">
+<p class="admonition-title">Definition</p>
+<p>A natural number <span class="math notranslate nohighlight">\(k\)</span> is <em>superpowered</em>, if for every natural number <span class="math notranslate nohighlight">\(n\)</span>, the number
+<span class="math notranslate nohighlight">\(k^{k^n} + 1\)</span> is prime.</p>
+</div>
+<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">def</span> <span class="n">superpowered</span> <span class="o">(</span><span class="n">k</span> <span class="o">:</span> <span class="n">&#8469;</span><span class="o">)</span> <span class="o">:</span> <span class="kt">Prop</span> <span class="o">:=</span> <span class="bp">&#8704;</span> <span class="n">n</span> <span class="o">:</span> <span class="n">&#8469;</span><span class="o">,</span> <span class="n">Prime</span> <span class="o">(</span><span class="n">k</span> <span class="bp">^</span> <span class="n">k</span> <span class="bp">^</span> <span class="n">n</span> <span class="bp">+</span> <span class="mi">1</span><span class="o">)</span>
+</pre></div>
+</div>
+<section id="id7">
+<h3><span class="section-number">5.2.1. </span>Example<a class="headerlink" href="#id7" title="Permalink to this headline">&#61633;</a></h3>
+<p>Is 0 superpowered?  <span class="math notranslate nohighlight">\(0^{0^0}+1=1\)</span>, <span class="math notranslate nohighlight">\(0^{0^1}+1=2\)</span>, <span class="math notranslate nohighlight">\(0^{0^2}+1=2\)</span>,
+<span class="math notranslate nohighlight">\(0^{0^3}+1=2\)</span>.  We can also do these calculations in Lean:</p>
+<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="bp">#</span><span class="n">numbers</span> <span class="mi">0</span> <span class="bp">^</span> <span class="mi">0</span> <span class="bp">^</span> <span class="mi">0</span> <span class="bp">+</span> <span class="mi">1</span> <span class="c1">-- 1</span>
+<span class="bp">#</span><span class="n">numbers</span> <span class="mi">0</span> <span class="bp">^</span> <span class="mi">0</span> <span class="bp">^</span> <span class="mi">1</span> <span class="bp">+</span> <span class="mi">1</span> <span class="c1">-- 2</span>
+<span class="bp">#</span><span class="n">numbers</span> <span class="mi">0</span> <span class="bp">^</span> <span class="mi">0</span> <span class="bp">^</span> <span class="mi">2</span> <span class="bp">+</span> <span class="mi">1</span> <span class="c1">-- 2</span>
+</pre></div>
+</div>
+<p>The first is not prime, the others are, but taking them together, the &#8220;for all&#8221; in the definition is
+false.  Formally:</p>
+<div class="admonition-lemma admonition">
+<p class="admonition-title">Lemma</p>
+<p>0 is not superpowered.</p>
+</div>
+<div class="admonition-proof admonition">
+<p class="admonition-title">Proof</p>
+<p>Suppose 0 were superpowered.  Then in particular <span class="math notranslate nohighlight">\(0^{0^0}+1=1\)</span> would be prime, which is a
+contradiction, since 1 is not prime.</p>
+</div>
+<p>To write this in Lean, we use the lemma <code class="docutils literal notranslate"><span class="pre">not_prime_one</span></code>, from an exercise to
+<a class="reference internal" href="04_Proofs_with_Structure_II.html#contradiction"><span class="std std-numref">Section 4.5</span></a>.</p>
+<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">theorem</span> <span class="n">not_superpowered_zero</span> <span class="o">:</span> <span class="bp">&#172;</span> <span class="n">superpowered</span> <span class="mi">0</span> <span class="o">:=</span> <span class="kd">by</span>
+  <span class="n">intro</span> <span class="n">h</span>
+  <span class="k">have</span> <span class="n">one_prime</span> <span class="o">:</span> <span class="n">Prime</span> <span class="o">(</span><span class="mi">0</span> <span class="bp">^</span> <span class="mi">0</span> <span class="bp">^</span> <span class="mi">0</span> <span class="bp">+</span> <span class="mi">1</span><span class="o">)</span> <span class="o">:=</span> <span class="n">h</span> <span class="mi">0</span>
+  <span class="n">numbers</span> <span class="n">at</span> <span class="n">one_prime</span> <span class="c1">-- simplifies that statement to `Prime 1`</span>
+  <span class="k">have</span> <span class="o">:</span> <span class="bp">&#172;</span> <span class="n">Prime</span> <span class="mi">1</span> <span class="o">:=</span> <span class="n">not_prime_one</span>
+  <span class="n">contradiction</span>
+</pre></div>
+</div>
+</section>
+<section id="id8">
+<h3><span class="section-number">5.2.2. </span>Example<a class="headerlink" href="#id8" title="Permalink to this headline">&#61633;</a></h3>
+<p>Is 1 superpowered?</p>
+<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="bp">#</span><span class="n">numbers</span> <span class="mi">1</span> <span class="bp">^</span> <span class="mi">1</span> <span class="bp">^</span> <span class="mi">0</span> <span class="bp">+</span> <span class="mi">1</span> <span class="c1">-- 2</span>
+<span class="bp">#</span><span class="n">numbers</span> <span class="mi">1</span> <span class="bp">^</span> <span class="mi">1</span> <span class="bp">^</span> <span class="mi">1</span> <span class="bp">+</span> <span class="mi">1</span> <span class="c1">-- 2</span>
+<span class="bp">#</span><span class="n">numbers</span> <span class="mi">1</span> <span class="bp">^</span> <span class="mi">1</span> <span class="bp">^</span> <span class="mi">2</span> <span class="bp">+</span> <span class="mi">1</span> <span class="c1">-- 2</span>
+</pre></div>
+</div>
+<div class="admonition-lemma admonition">
+<p class="admonition-title">Lemma</p>
+<p>1 is superpowered.</p>
+</div>
+<div class="admonition-proof admonition">
+<p class="admonition-title">Proof</p>
+<p>Let <span class="math notranslate nohighlight">\(n\)</span> be a natural number.  Then <span class="math notranslate nohighlight">\(1^{1^n}+1=1^1+1=2\)</span>, which is prime.</p>
+</div>
+<p>To write this in Lean, we use the lemma <cite>prime_two</cite>, from <a class="reference internal" href="04_Proofs_with_Structure_II.html#prime-def"><span class="std std-numref">Example 4.1.8</span></a>.</p>
+<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">theorem</span> <span class="n">superpowered_one</span> <span class="o">:</span> <span class="n">superpowered</span> <span class="mi">1</span> <span class="o">:=</span> <span class="kd">by</span>
+  <span class="n">intro</span> <span class="n">n</span>
+  <span class="n">ring_nf</span> <span class="c1">-- simplifies goal from `Prime (1 ^ 1 ^ n + 1)` to `Prime 2`</span>
+  <span class="n">apply</span> <span class="n">prime_two</span>
+</pre></div>
+</div>
+</section>
+<section id="id9">
+<h3><span class="section-number">5.2.3. </span>Example<a class="headerlink" href="#id9" title="Permalink to this headline">&#61633;</a></h3>
+<p>Is 2 superpowered?</p>
+<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="bp">#</span><span class="n">numbers</span> <span class="mi">2</span> <span class="bp">^</span> <span class="mi">2</span> <span class="bp">^</span> <span class="mi">0</span> <span class="bp">+</span> <span class="mi">1</span> <span class="c1">-- 3</span>
+<span class="bp">#</span><span class="n">numbers</span> <span class="mi">2</span> <span class="bp">^</span> <span class="mi">2</span> <span class="bp">^</span> <span class="mi">1</span> <span class="bp">+</span> <span class="mi">1</span> <span class="c1">-- 5</span>
+<span class="bp">#</span><span class="n">numbers</span> <span class="mi">2</span> <span class="bp">^</span> <span class="mi">2</span> <span class="bp">^</span> <span class="mi">2</span> <span class="bp">+</span> <span class="mi">1</span> <span class="c1">-- 17</span>
+<span class="bp">#</span><span class="n">numbers</span> <span class="mi">2</span> <span class="bp">^</span> <span class="mi">2</span> <span class="bp">^</span> <span class="mi">3</span> <span class="bp">+</span> <span class="mi">1</span> <span class="c1">-- 257</span>
+<span class="bp">#</span><span class="n">numbers</span> <span class="mi">2</span> <span class="bp">^</span> <span class="mi">2</span> <span class="bp">^</span> <span class="mi">4</span> <span class="bp">+</span> <span class="mi">1</span> <span class="c1">-- 65537</span>
+</pre></div>
+</div>
+<p>All these numbers are prime, as it happens.  But checking 257 is prime using our usual lemma
+<code class="docutils literal notranslate"><span class="pre">better_prime_test</span></code> will be a good 30 lines of calculations in Lean, and as for 65537, I
+certainly don&#8217;t have the patience.  The next one will be even worse.  Let&#8217;s leave the question of
+2 open for now.</p>
+</section>
+<section id="id10">
+<h3><span class="section-number">5.2.4. </span>Example<a class="headerlink" href="#id10" title="Permalink to this headline">&#61633;</a></h3>
+<p>Is 3 superpowered?</p>
+<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="bp">#</span><span class="n">numbers</span> <span class="mi">3</span> <span class="bp">^</span> <span class="mi">3</span> <span class="bp">^</span> <span class="mi">0</span> <span class="bp">+</span> <span class="mi">1</span> <span class="c1">-- 4</span>
+<span class="bp">#</span><span class="n">numbers</span> <span class="mi">3</span> <span class="bp">^</span> <span class="mi">3</span> <span class="bp">^</span> <span class="mi">1</span> <span class="bp">+</span> <span class="mi">1</span> <span class="c1">-- 28</span>
+<span class="bp">#</span><span class="n">numbers</span> <span class="mi">3</span> <span class="bp">^</span> <span class="mi">3</span> <span class="bp">^</span> <span class="mi">2</span> <span class="bp">+</span> <span class="mi">1</span> <span class="c1">-- 19684</span>
+</pre></div>
+</div>
+<p>Nope!  It fails even at the first step.</p>
+<div class="admonition-lemma admonition">
+<p class="admonition-title">Lemma</p>
+<p>3 is not superpowered.</p>
+</div>
+<div class="admonition-proof admonition">
+<p class="admonition-title">Proof</p>
+<p>Suppose 3 were superpowered.  Then in particular <span class="math notranslate nohighlight">\(3^{3^0}+1=4\)</span> would be prime, which is a
+contradiction, since <span class="math notranslate nohighlight">\(4=2\cdot 2\)</span>.</p>
+</div>
+<p>Remember to use the lemma <code class="docutils literal notranslate"><span class="pre">not_prime</span></code> in Lean to prove that a number is not prime by producing a
+factor for it.</p>
+<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">theorem</span> <span class="n">not_superpowered_three</span> <span class="o">:</span> <span class="bp">&#172;</span><span class="o">(</span><span class="n">superpowered</span> <span class="mi">3</span><span class="o">)</span> <span class="o">:=</span> <span class="kd">by</span>
+  <span class="n">intro</span> <span class="n">h</span>
+  <span class="n">dsimp</span> <span class="o">[</span><span class="n">superpowered</span><span class="o">]</span> <span class="n">at</span> <span class="n">h</span>
+  <span class="k">have</span> <span class="n">four_prime</span> <span class="o">:</span> <span class="n">Prime</span> <span class="o">(</span><span class="mi">3</span> <span class="bp">^</span> <span class="mi">3</span> <span class="bp">^</span> <span class="mi">0</span> <span class="bp">+</span> <span class="mi">1</span><span class="o">)</span> <span class="o">:=</span> <span class="n">h</span> <span class="mi">0</span>
+  <span class="n">numbers</span> <span class="n">at</span> <span class="n">four_prime</span> <span class="c1">-- simplifies to `Prime 4`</span>
+  <span class="k">have</span> <span class="n">four_not_prime</span> <span class="o">:</span> <span class="bp">&#172;</span><span class="o">(</span><span class="n">Prime</span> <span class="mi">4</span><span class="o">)</span>
+  <span class="bp">&#183;</span> <span class="n">apply</span> <span class="n">not_prime</span> <span class="mi">2</span>
+    <span class="bp">&#183;</span> <span class="n">numbers</span> <span class="c1">-- show `2 &#8800; 1`</span>
+    <span class="bp">&#183;</span> <span class="n">numbers</span> <span class="c1">-- show `2 &#8800; 4`</span>
+    <span class="n">take</span> <span class="mi">2</span>
+    <span class="n">numbers</span> <span class="c1">-- show `4 = 2 * 2`</span>
+  <span class="n">contradiction</span>
+</pre></div>
+</div>
+</section>
+<section id="lem-problem">
+<span id="id11"></span><h3><span class="section-number">5.2.5. </span>Example<a class="headerlink" href="#lem-problem" title="Permalink to this headline">&#61633;</a></h3>
+<p>All this was warmup.  Here is the question I really want to study.</p>
+<div class="admonition-problem admonition">
+<p class="admonition-title">Problem</p>
+<p>Prove that there exists a natural number <span class="math notranslate nohighlight">\(k\)</span>, such that <span class="math notranslate nohighlight">\(k\)</span> is superpowered and
+<span class="math notranslate nohighlight">\(k+1\)</span> is not.</p>
+</div>
+<div class="admonition-solution admonition">
+<p class="admonition-title">Solution</p>
+<p>We consider two cases, depending on whether or not 2 is superpowered.</p>
+<p>If 2 is superpowered, then <span class="math notranslate nohighlight">\(k=2\)</span> has the desired property, since 2 is superpowered and 3
+is not superpowered.</p>
+<p>If not, then <span class="math notranslate nohighlight">\(k=1\)</span> has the desired property, since 1 is superpowered and 2 is not
+superpowered.</p>
+</div>
+<p>The point about this proof is that it works even though we don&#8217;t know whether 2 is superpowered or
+not.  Either way, we have a way of solving the problem.</p>
+<p>The fact that any statement (such as &#8220;2 is superpowered&#8221;) must be either true or false is an axiom
+of mathematics, called the <em>law of the excluded middle</em>.  Therefore, this is always a valid case
+division in a proof, although it is relatively rare to need to do it.</p>
+<p>In Lean, you can perform a case division on the truth or falsehood of a statement by using the
+tactic <code class="docutils literal notranslate"><span class="pre">by_cases</span></code>.  In the proof that follows, using this tactic takes us from a goal state of</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>&#8866; &#8707; k, superpowered k &#8743; &#172;superpowered (k + 1)
+</pre></div>
+</div>
+<p>to a goal state with two goals, one under the assumption <code class="docutils literal notranslate"><span class="pre">superpowered</span> <span class="pre">2</span></code> and one under the
+assumption <code class="docutils literal notranslate"><span class="pre">&#172;</span> <span class="pre">superpowered</span> <span class="pre">2</span></code>.</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>h2 : superpowered 2
+&#8866; &#8707; k, superpowered k &#8743; &#172;superpowered (k + 1)
+
+h2 : &#172;superpowered 2
+&#8866; &#8707; k, superpowered k &#8743; &#172;superpowered (k + 1)
+</pre></div>
+</div>
+<p>Here is the full proof in Lean.</p>
+<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">:</span> <span class="bp">&#8707;</span> <span class="n">k</span> <span class="o">:</span> <span class="n">&#8469;</span><span class="o">,</span> <span class="n">superpowered</span> <span class="n">k</span> <span class="bp">&#8743;</span> <span class="bp">&#172;</span> <span class="n">superpowered</span> <span class="o">(</span><span class="n">k</span> <span class="bp">+</span> <span class="mi">1</span><span class="o">)</span> <span class="o">:=</span> <span class="kd">by</span>
+  <span class="n">by_cases</span> <span class="n">h2</span> <span class="o">:</span> <span class="n">superpowered</span> <span class="mi">2</span>
+  <span class="bp">&#183;</span> <span class="n">take</span> <span class="mi">2</span>
+    <span class="n">constructor</span>
+    <span class="bp">&#183;</span> <span class="n">apply</span> <span class="n">h2</span>
+    <span class="bp">&#183;</span> <span class="n">apply</span> <span class="n">not_superpowered_three</span>
+  <span class="bp">&#183;</span> <span class="n">take</span> <span class="mi">1</span>
+    <span class="n">constructor</span>
+    <span class="bp">&#183;</span> <span class="n">apply</span> <span class="n">superpowered_one</span>
+    <span class="bp">&#183;</span> <span class="n">apply</span> <span class="n">h2</span>
+</pre></div>
+</div>
+</section>
+<section id="id12">
+<h3><span class="section-number">5.2.6. </span>Exercises<a class="headerlink" href="#id12" title="Permalink to this headline">&#61633;</a></h3>
+<ol class="arabic simple">
+<li><p>Let us call a real number <span class="math notranslate nohighlight">\(x\)</span> <em>tribalanced</em>, if for every natural number <span class="math notranslate nohighlight">\(n\)</span>, the
+inequality <span class="math notranslate nohighlight">\(\left(1+\frac{x}{n}\right)^n&lt;3\)</span> holds.  Show that there exists a real number
+<span class="math notranslate nohighlight">\(x\)</span>, such that <span class="math notranslate nohighlight">\(x\)</span> is tribalanced and <span class="math notranslate nohighlight">\(x+1\)</span> is not.</p></li>
+</ol>
+<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">def</span> <span class="n">tribalanced</span> <span class="o">(</span><span class="n">x</span> <span class="o">:</span> <span class="n">&#8477;</span><span class="o">)</span> <span class="o">:</span> <span class="kt">Prop</span> <span class="o">:=</span> <span class="bp">&#8704;</span> <span class="n">n</span> <span class="o">:</span> <span class="n">&#8469;</span><span class="o">,</span> <span class="o">(</span><span class="mi">1</span> <span class="bp">+</span> <span class="n">x</span> <span class="bp">/</span> <span class="n">n</span><span class="o">)</span> <span class="bp">^</span> <span class="n">n</span> <span class="bp">&lt;</span> <span class="mi">3</span>
+
+<span class="kd">example</span> <span class="o">:</span> <span class="bp">&#8707;</span> <span class="n">x</span> <span class="o">:</span> <span class="n">&#8477;</span><span class="o">,</span> <span class="n">tribalanced</span> <span class="n">x</span> <span class="bp">&#8743;</span> <span class="bp">&#172;</span> <span class="n">tribalanced</span> <span class="o">(</span><span class="n">x</span> <span class="bp">+</span> <span class="mi">1</span><span class="o">)</span> <span class="o">:=</span> <span class="kd">by</span>
+  <span class="gr">sorry</span>
+</pre></div>
+</div>
+<ol class="arabic" start="2">
+<li><p>In case you&#8217;re still wondering:  2 is not superpowered.  The question was raised in 1650 by the
+mathematician Pierre de Fermat, who observed, as we did, that 3, 5, 17, 257 and 65537 are all
+prime. It was settled in 1732, when Leonhard Euler showed that the next number in the sequence,
+<span class="math notranslate nohighlight">\(2^{2^5}+1=4294967297\)</span>, is equal to <span class="math notranslate nohighlight">\(641 \cdot 6700417\)</span> and therefore not prime.</p>
+<p>Use Euler&#8217;s discovery to give a proof without case division to the problem in
+<a class="reference internal" href="#lem-problem"><span class="std std-numref">Example 5.2.5</span></a>.</p>
+</li>
+</ol>
+<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">:</span> <span class="bp">&#8707;</span> <span class="n">k</span> <span class="o">:</span> <span class="n">&#8469;</span><span class="o">,</span> <span class="n">superpowered</span> <span class="n">k</span> <span class="bp">&#8743;</span> <span class="bp">&#172;</span> <span class="n">superpowered</span> <span class="o">(</span><span class="n">k</span> <span class="bp">+</span> <span class="mi">1</span><span class="o">)</span> <span class="o">:=</span> <span class="kd">by</span>
   <span class="gr">sorry</span>
 </pre></div>
 </div>

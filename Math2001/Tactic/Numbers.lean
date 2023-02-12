@@ -12,3 +12,6 @@ numerical expressions.
 -/
 elab (name := numbers) "numbers" loc:(location ?) : tactic =>
   elabNormNum mkNullNode loc (simpOnly := true) (useSimp := false)
+
+macro (name := normNumCmd) "#numbers" ppSpace e:term : command =>
+  `(command| #conv norm_num1 => $e)

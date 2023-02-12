@@ -1,6 +1,7 @@
 /- Copyright (c) Heather Macbeth, 2022.  All rights reserved. -/
 import Mathlib.Data.Real.Basic
 import Mathlib.Tactic.IntervalCases
+import Math2001.Library.Prime
 import Math2001.Tactic.Numbers
 import Math2001.Tactic.Rel
 import Math2001.Tactic.Take
@@ -52,8 +53,6 @@ example : forall_sufficiently_large n : ℤ, n ^ 3 ≥ 4 * n ^ 2 + 7 := by
     _ ≥ 4 * n ^ 2 + 7 := by extra
 
 
-def Prime (p : ℕ) : Prop :=
-  2 ≤ p ∧ ∀ m : ℕ, m ∣ p → m = 1 ∨ m = p
 
 
 example : Prime 2 := by
@@ -70,6 +69,14 @@ example : Prime 2 := by
     numbers
 
 
+example : ¬(Prime 6) := by
+  apply not_prime 2
+  · numbers -- show `2 ≠ 1` 
+  · numbers -- show `2 ≠ 6` 
+  · take 3
+    numbers -- show `6 = 2 * 3`
+
+
 example {a : ℚ} (h : ∀ b : ℚ, a ≥ -3 + 4 * b - b ^ 2) : a ≥ 1 :=
   sorry
 
@@ -80,4 +87,7 @@ example : ∃ n : ℕ, ∀ m : ℕ, n ≤ m := by
   sorry
 
 example : forall_sufficiently_large x : ℝ, x ^ 3 + 3 * x ≥ 7 * x ^ 2 + 12 := by
+  sorry
+
+example : ¬(Prime 45) := by
   sorry
