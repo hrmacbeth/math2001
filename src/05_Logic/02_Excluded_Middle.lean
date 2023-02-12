@@ -2,6 +2,7 @@ import Mathlib.Data.Real.Basic
 import Math2001.Library.Prime
 import Math2001.Tactic.Numbers
 import Math2001.Tactic.Take
+import Math2001.Tactic.TruthTable
 
 
 def superpowered (k : ℕ) : Prop := ∀ n : ℕ, Prime (k ^ k ^ n + 1)
@@ -43,7 +44,7 @@ theorem superpowered_one : superpowered 1 := by
 #numbers 3 ^ 3 ^ 2 + 1 -- 19684
 
 
-theorem not_superpowered_three : ¬(superpowered 3) := by
+theorem not_superpowered_three : ¬ superpowered 3 := by
   intro h
   dsimp [superpowered] at h
   have four_prime : Prime (3 ^ 3 ^ 0 + 1) := h 0
@@ -69,9 +70,18 @@ example : ∃ k : ℕ, superpowered k ∧ ¬ superpowered (k + 1) := by
     · apply h2      
 
 
+example {P : Prop} (hP : ¬¬P) : P := by
+  by_cases hP : P
+  · apply hP
+  · contradiction
+
+
 def tribalanced (x : ℝ) : Prop := ∀ n : ℕ, (1 + x / n) ^ n < 3
 
 example : ∃ x : ℝ, tribalanced x ∧ ¬ tribalanced (x + 1) := by
+  sorry
+
+example (P Q : Prop) : (¬P → ¬Q) ↔ (Q → P) := by
   sorry
 
 example : ∃ k : ℕ, superpowered k ∧ ¬ superpowered (k + 1) := by

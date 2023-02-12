@@ -10,7 +10,7 @@ example {P Q : Prop} (h1 : P ∨ Q) (h2 : ¬ Q) : P := by
   · contradiction  
 
 
-example {P Q : Prop} : P → (P ∨ ¬ Q) := by
+example (P Q : Prop) : P → (P ∨ ¬ Q) := by
   intro hP
   left
   apply hP
@@ -19,7 +19,7 @@ example {P Q : Prop} : P → (P ∨ ¬ Q) := by
 #truth_table ¬(P ∧ ¬ Q)
 
 
-example {P : Prop} : (P ∨ P) ↔ P := by
+example (P : Prop) : (P ∨ P) ↔ P := by
   constructor
   · intro h
     obtain h1 | h2 := h
@@ -30,7 +30,7 @@ example {P : Prop} : (P ∨ P) ↔ P := by
     apply h
 
 
-example {P Q R : Prop} : (P ∧ (Q ∨ R)) ↔ ((P ∧ Q) ∨ (P ∧ R)) := by
+example (P Q R : Prop) : (P ∧ (Q ∨ R)) ↔ ((P ∧ Q) ∨ (P ∧ R)) := by
   constructor
   · intro h
     obtain ⟨h1, h2 | h2⟩ := h
@@ -64,7 +64,7 @@ example {P : α → β → Prop} (h : ∃ x : α, ∀ y : β, P x y) :
   apply hx
 
 
-example {P : α → Prop} : ¬ (∃ x, P x) ↔ ∀ x, ¬ P x := by
+example (P : α → Prop) : ¬ (∃ x, P x) ↔ ∀ x, ¬ P x := by
   constructor
   · intro h a ha
     have : ∃ x, P x
@@ -83,7 +83,7 @@ example {P Q : Prop} (h : P ∧ Q) : P ∨ Q := by
 example {P Q R : Prop} (h1 : P → Q) (h2 : P → R) (h3 : P) : Q ∧ R := by
   sorry
 
-example {P : Prop} : ¬(P ∧ ¬ P) := by
+example (P : Prop) : ¬(P ∧ ¬ P) := by
   sorry
 
 example {P Q : Prop} (h1 : P ↔ ¬ Q) (h2 : Q) : ¬ P := by
@@ -92,23 +92,23 @@ example {P Q : Prop} (h1 : P ↔ ¬ Q) (h2 : Q) : ¬ P := by
 example {P Q : Prop} (h1 : P ∨ Q) (h2 : Q → P) : P := by
   sorry
 
-example {P : Prop} : (P ∧ P) ↔ P := by
+example (P : Prop) : (P ∧ P) ↔ P := by
   sorry
 
-example {P Q : Prop} : (P ∨ Q) ↔ (Q ∨ P) := by
+example (P Q : Prop) : (P ∨ Q) ↔ (Q ∨ P) := by
   sorry
 
-example {P Q : Prop} : ¬(P ∨ Q) ↔ (¬P ∧ ¬Q) := by
+example (P Q : Prop) : ¬(P ∨ Q) ↔ (¬P ∧ ¬Q) := by
   sorry
 
 example {P Q : α → Prop} (h1 : ∀ x, P x → Q x) (h2 : ∀ x, P x) : ∀ x, Q x := by
   sorry
 
-example {P : α → β → Prop} : (∃ x y, P x y) ↔ ∃ y x, P x y := by
+example (P : α → β → Prop) : (∃ x y, P x y) ↔ ∃ y x, P x y := by
   sorry
 
-example {P : α → β → Prop} : (∀ x y, P x y) ↔ ∀ y x, P x y := by
+example (P : α → β → Prop) : (∀ x y, P x y) ↔ ∀ y x, P x y := by
   sorry
 
-example {P : α → Prop} {Q : Prop} : ((∃ x, P x) ∧ Q) ↔ ∃ x, (P x ∧ Q) := by
+example (P : α → Prop) (Q : Prop) : ((∃ x, P x) ∧ Q) ↔ ∃ x, (P x ∧ Q) := by
   sorry

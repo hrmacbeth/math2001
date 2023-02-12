@@ -62,7 +62,8 @@
 <li class="toctree-l3"><a class="reference internal" href="#id9">5.2.3. Example</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#id10">5.2.4. Example</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#lem-problem">5.2.5. Example</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id12">5.2.6. Exercises</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id12">5.2.6. Example</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id13">5.2.7. Exercises</a></li>
 </ul>
 </li>
 </ul>
@@ -116,7 +117,7 @@ can still be used.</p>
 </div>
 <p>It&#8217;s hardly worth trying to write proofs like this in words.  The <span class="math notranslate nohighlight">\(P\)</span> and <span class="math notranslate nohighlight">\(Q\)</span> are
 abstract propositions (<code class="docutils literal notranslate"><span class="pre">Prop</span></code>), and this is just a game of manipulation.</p>
-<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">{</span><span class="n">P</span> <span class="n">Q</span> <span class="o">:</span> <span class="kt">Prop</span><span class="o">}</span> <span class="o">:</span> <span class="n">P</span> <span class="bp">&#8594;</span> <span class="o">(</span><span class="n">P</span> <span class="bp">&#8744;</span> <span class="bp">&#172;</span> <span class="n">Q</span><span class="o">)</span> <span class="o">:=</span> <span class="kd">by</span>
+<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">(</span><span class="n">P</span> <span class="n">Q</span> <span class="o">:</span> <span class="kt">Prop</span><span class="o">)</span> <span class="o">:</span> <span class="n">P</span> <span class="bp">&#8594;</span> <span class="o">(</span><span class="n">P</span> <span class="bp">&#8744;</span> <span class="bp">&#172;</span> <span class="n">Q</span><span class="o">)</span> <span class="o">:=</span> <span class="kd">by</span>
   <span class="n">intro</span> <span class="n">hP</span>
   <span class="n">left</span>
   <span class="n">apply</span> <span class="n">hP</span>
@@ -188,7 +189,7 @@ between them can be proved in Lean.  For example,</p>
 <p class="admonition-title">Problem</p>
 <p>Show that <span class="math notranslate nohighlight">\(P \lor P\)</span> is logically equivalent to <span class="math notranslate nohighlight">\(P\)</span>.</p>
 </div>
-<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">{</span><span class="n">P</span> <span class="o">:</span> <span class="kt">Prop</span><span class="o">}</span> <span class="o">:</span> <span class="o">(</span><span class="n">P</span> <span class="bp">&#8744;</span> <span class="n">P</span><span class="o">)</span> <span class="bp">&#8596;</span> <span class="n">P</span> <span class="o">:=</span> <span class="kd">by</span>
+<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">(</span><span class="n">P</span> <span class="o">:</span> <span class="kt">Prop</span><span class="o">)</span> <span class="o">:</span> <span class="o">(</span><span class="n">P</span> <span class="bp">&#8744;</span> <span class="n">P</span><span class="o">)</span> <span class="bp">&#8596;</span> <span class="n">P</span> <span class="o">:=</span> <span class="kd">by</span>
   <span class="n">constructor</span>
   <span class="bp">&#183;</span> <span class="n">intro</span> <span class="n">h</span>
     <span class="n">obtain</span> <span class="n">h1</span> <span class="bp">|</span> <span class="n">h2</span> <span class="o">:=</span> <span class="n">h</span>
@@ -211,7 +212,7 @@ formulas which are logically equivalent in a way that we can&#8217;t yet demonst
 <span class="math notranslate nohighlight">\((P \land Q) \lor (P \land R)\)</span>.</p>
 </div>
 <p>This is a long one. I&#8217;ve done the first direction and left the second for you.</p>
-<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">{</span><span class="n">P</span> <span class="n">Q</span> <span class="n">R</span> <span class="o">:</span> <span class="kt">Prop</span><span class="o">}</span> <span class="o">:</span> <span class="o">(</span><span class="n">P</span> <span class="bp">&#8743;</span> <span class="o">(</span><span class="n">Q</span> <span class="bp">&#8744;</span> <span class="n">R</span><span class="o">))</span> <span class="bp">&#8596;</span> <span class="o">((</span><span class="n">P</span> <span class="bp">&#8743;</span> <span class="n">Q</span><span class="o">)</span> <span class="bp">&#8744;</span> <span class="o">(</span><span class="n">P</span> <span class="bp">&#8743;</span> <span class="n">R</span><span class="o">))</span> <span class="o">:=</span> <span class="kd">by</span>
+<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">(</span><span class="n">P</span> <span class="n">Q</span> <span class="n">R</span> <span class="o">:</span> <span class="kt">Prop</span><span class="o">)</span> <span class="o">:</span> <span class="o">(</span><span class="n">P</span> <span class="bp">&#8743;</span> <span class="o">(</span><span class="n">Q</span> <span class="bp">&#8744;</span> <span class="n">R</span><span class="o">))</span> <span class="bp">&#8596;</span> <span class="o">((</span><span class="n">P</span> <span class="bp">&#8743;</span> <span class="n">Q</span><span class="o">)</span> <span class="bp">&#8744;</span> <span class="o">(</span><span class="n">P</span> <span class="bp">&#8743;</span> <span class="n">R</span><span class="o">))</span> <span class="o">:=</span> <span class="kd">by</span>
   <span class="n">constructor</span>
   <span class="bp">&#183;</span> <span class="n">intro</span> <span class="n">h</span>
     <span class="n">obtain</span> <span class="o">&#10216;</span><span class="n">h1</span><span class="o">,</span> <span class="n">h2</span> <span class="bp">|</span> <span class="n">h2</span><span class="o">&#10217;</span> <span class="o">:=</span> <span class="n">h</span>
@@ -262,7 +263,7 @@ two Lean commands:</p>
 <p class="admonition-title">Problem</p>
 <p>Show that <span class="math notranslate nohighlight">\(\lnot\exists x, P(x)\)</span> is logically equivalent to <span class="math notranslate nohighlight">\(\forall x, \lnot P(x)\)</span>.</p>
 </div>
-<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">{</span><span class="n">P</span> <span class="o">:</span> <span class="n">&#945;</span> <span class="bp">&#8594;</span> <span class="kt">Prop</span><span class="o">}</span> <span class="o">:</span> <span class="bp">&#172;</span> <span class="o">(</span><span class="bp">&#8707;</span> <span class="n">x</span><span class="o">,</span> <span class="n">P</span> <span class="n">x</span><span class="o">)</span> <span class="bp">&#8596;</span> <span class="bp">&#8704;</span> <span class="n">x</span><span class="o">,</span> <span class="bp">&#172;</span> <span class="n">P</span> <span class="n">x</span> <span class="o">:=</span> <span class="kd">by</span>
+<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">(</span><span class="n">P</span> <span class="o">:</span> <span class="n">&#945;</span> <span class="bp">&#8594;</span> <span class="kt">Prop</span><span class="o">)</span> <span class="o">:</span> <span class="bp">&#172;</span> <span class="o">(</span><span class="bp">&#8707;</span> <span class="n">x</span><span class="o">,</span> <span class="n">P</span> <span class="n">x</span><span class="o">)</span> <span class="bp">&#8596;</span> <span class="bp">&#8704;</span> <span class="n">x</span><span class="o">,</span> <span class="bp">&#172;</span> <span class="n">P</span> <span class="n">x</span> <span class="o">:=</span> <span class="kd">by</span>
   <span class="n">constructor</span>
   <span class="bp">&#183;</span> <span class="n">intro</span> <span class="n">h</span> <span class="n">a</span> <span class="n">ha</span>
     <span class="k">have</span> <span class="o">:</span> <span class="bp">&#8707;</span> <span class="n">x</span><span class="o">,</span> <span class="n">P</span> <span class="n">x</span>
@@ -295,7 +296,7 @@ two Lean commands:</p>
 <ol class="arabic simple" start="3">
 <li><p>Prove the following propositional logic statement:</p></li>
 </ol>
-<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">{</span><span class="n">P</span> <span class="o">:</span> <span class="kt">Prop</span><span class="o">}</span> <span class="o">:</span> <span class="bp">&#172;</span><span class="o">(</span><span class="n">P</span> <span class="bp">&#8743;</span> <span class="bp">&#172;</span> <span class="n">P</span><span class="o">)</span> <span class="o">:=</span> <span class="kd">by</span>
+<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">(</span><span class="n">P</span> <span class="o">:</span> <span class="kt">Prop</span><span class="o">)</span> <span class="o">:</span> <span class="bp">&#172;</span><span class="o">(</span><span class="n">P</span> <span class="bp">&#8743;</span> <span class="bp">&#172;</span> <span class="n">P</span><span class="o">)</span> <span class="o">:=</span> <span class="kd">by</span>
   <span class="gr">sorry</span>
 </pre></div>
 </div>
@@ -316,14 +317,14 @@ two Lean commands:</p>
 <ol class="arabic simple" start="6">
 <li><p>Prove that <span class="math notranslate nohighlight">\(P \land P\)</span> is logically equivalent to <span class="math notranslate nohighlight">\(P\)</span>.</p></li>
 </ol>
-<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">{</span><span class="n">P</span> <span class="o">:</span> <span class="kt">Prop</span><span class="o">}</span> <span class="o">:</span> <span class="o">(</span><span class="n">P</span> <span class="bp">&#8743;</span> <span class="n">P</span><span class="o">)</span> <span class="bp">&#8596;</span> <span class="n">P</span> <span class="o">:=</span> <span class="kd">by</span>
+<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">(</span><span class="n">P</span> <span class="o">:</span> <span class="kt">Prop</span><span class="o">)</span> <span class="o">:</span> <span class="o">(</span><span class="n">P</span> <span class="bp">&#8743;</span> <span class="n">P</span><span class="o">)</span> <span class="bp">&#8596;</span> <span class="n">P</span> <span class="o">:=</span> <span class="kd">by</span>
   <span class="gr">sorry</span>
 </pre></div>
 </div>
 <ol class="arabic simple" start="7">
 <li><p>Prove that <span class="math notranslate nohighlight">\(P \lor Q\)</span> is logically equivalent to <span class="math notranslate nohighlight">\(Q \lor P\)</span>.</p></li>
 </ol>
-<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">{</span><span class="n">P</span> <span class="n">Q</span> <span class="o">:</span> <span class="kt">Prop</span><span class="o">}</span> <span class="o">:</span> <span class="o">(</span><span class="n">P</span> <span class="bp">&#8744;</span> <span class="n">Q</span><span class="o">)</span> <span class="bp">&#8596;</span> <span class="o">(</span><span class="n">Q</span> <span class="bp">&#8744;</span> <span class="n">P</span><span class="o">)</span> <span class="o">:=</span> <span class="kd">by</span>
+<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">(</span><span class="n">P</span> <span class="n">Q</span> <span class="o">:</span> <span class="kt">Prop</span><span class="o">)</span> <span class="o">:</span> <span class="o">(</span><span class="n">P</span> <span class="bp">&#8744;</span> <span class="n">Q</span><span class="o">)</span> <span class="bp">&#8596;</span> <span class="o">(</span><span class="n">Q</span> <span class="bp">&#8744;</span> <span class="n">P</span><span class="o">)</span> <span class="o">:=</span> <span class="kd">by</span>
   <span class="gr">sorry</span>
 </pre></div>
 </div>
@@ -332,7 +333,7 @@ two Lean commands:</p>
 <p>This theorem is in the library under the name <code class="docutils literal notranslate"><span class="pre">not_or</span></code>. It is one of <a class="reference external" href="https://en.wikipedia.org/wiki/De_Morgan%27s_laws">&#8220;De Morgan&#8217;s laws&#8221;</a>.</p>
 </li>
 </ol>
-<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">{</span><span class="n">P</span> <span class="n">Q</span> <span class="o">:</span> <span class="kt">Prop</span><span class="o">}</span> <span class="o">:</span> <span class="bp">&#172;</span><span class="o">(</span><span class="n">P</span> <span class="bp">&#8744;</span> <span class="n">Q</span><span class="o">)</span> <span class="bp">&#8596;</span> <span class="o">(</span><span class="bp">&#172;</span><span class="n">P</span> <span class="bp">&#8743;</span> <span class="bp">&#172;</span><span class="n">Q</span><span class="o">)</span> <span class="o">:=</span> <span class="kd">by</span>
+<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">(</span><span class="n">P</span> <span class="n">Q</span> <span class="o">:</span> <span class="kt">Prop</span><span class="o">)</span> <span class="o">:</span> <span class="bp">&#172;</span><span class="o">(</span><span class="n">P</span> <span class="bp">&#8744;</span> <span class="n">Q</span><span class="o">)</span> <span class="bp">&#8596;</span> <span class="o">(</span><span class="bp">&#172;</span><span class="n">P</span> <span class="bp">&#8743;</span> <span class="bp">&#172;</span><span class="n">Q</span><span class="o">)</span> <span class="o">:=</span> <span class="kd">by</span>
   <span class="gr">sorry</span>
 </pre></div>
 </div>
@@ -347,7 +348,7 @@ two Lean commands:</p>
 <li><p>Show that <span class="math notranslate nohighlight">\(\exists x \ y, P(x, y)\)</span> is logically equivalent to
 <span class="math notranslate nohighlight">\(\exists y \ x, P(x, y)\)</span>.</p></li>
 </ol>
-<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">{</span><span class="n">P</span> <span class="o">:</span> <span class="n">&#945;</span> <span class="bp">&#8594;</span> <span class="n">&#946;</span> <span class="bp">&#8594;</span> <span class="kt">Prop</span><span class="o">}</span> <span class="o">:</span> <span class="o">(</span><span class="bp">&#8707;</span> <span class="n">x</span> <span class="n">y</span><span class="o">,</span> <span class="n">P</span> <span class="n">x</span> <span class="n">y</span><span class="o">)</span> <span class="bp">&#8596;</span> <span class="bp">&#8707;</span> <span class="n">y</span> <span class="n">x</span><span class="o">,</span> <span class="n">P</span> <span class="n">x</span> <span class="n">y</span> <span class="o">:=</span> <span class="kd">by</span>
+<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">(</span><span class="n">P</span> <span class="o">:</span> <span class="n">&#945;</span> <span class="bp">&#8594;</span> <span class="n">&#946;</span> <span class="bp">&#8594;</span> <span class="kt">Prop</span><span class="o">)</span> <span class="o">:</span> <span class="o">(</span><span class="bp">&#8707;</span> <span class="n">x</span> <span class="n">y</span><span class="o">,</span> <span class="n">P</span> <span class="n">x</span> <span class="n">y</span><span class="o">)</span> <span class="bp">&#8596;</span> <span class="bp">&#8707;</span> <span class="n">y</span> <span class="n">x</span><span class="o">,</span> <span class="n">P</span> <span class="n">x</span> <span class="n">y</span> <span class="o">:=</span> <span class="kd">by</span>
   <span class="gr">sorry</span>
 </pre></div>
 </div>
@@ -355,7 +356,7 @@ two Lean commands:</p>
 <li><p>Show that <span class="math notranslate nohighlight">\(\forall x \ y, P(x, y)\)</span> is logically equivalent to
 <span class="math notranslate nohighlight">\(\forall y \ x, P(x, y)\)</span>.</p></li>
 </ol>
-<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">{</span><span class="n">P</span> <span class="o">:</span> <span class="n">&#945;</span> <span class="bp">&#8594;</span> <span class="n">&#946;</span> <span class="bp">&#8594;</span> <span class="kt">Prop</span><span class="o">}</span> <span class="o">:</span> <span class="o">(</span><span class="bp">&#8704;</span> <span class="n">x</span> <span class="n">y</span><span class="o">,</span> <span class="n">P</span> <span class="n">x</span> <span class="n">y</span><span class="o">)</span> <span class="bp">&#8596;</span> <span class="bp">&#8704;</span> <span class="n">y</span> <span class="n">x</span><span class="o">,</span> <span class="n">P</span> <span class="n">x</span> <span class="n">y</span> <span class="o">:=</span> <span class="kd">by</span>
+<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">(</span><span class="n">P</span> <span class="o">:</span> <span class="n">&#945;</span> <span class="bp">&#8594;</span> <span class="n">&#946;</span> <span class="bp">&#8594;</span> <span class="kt">Prop</span><span class="o">)</span> <span class="o">:</span> <span class="o">(</span><span class="bp">&#8704;</span> <span class="n">x</span> <span class="n">y</span><span class="o">,</span> <span class="n">P</span> <span class="n">x</span> <span class="n">y</span><span class="o">)</span> <span class="bp">&#8596;</span> <span class="bp">&#8704;</span> <span class="n">y</span> <span class="n">x</span><span class="o">,</span> <span class="n">P</span> <span class="n">x</span> <span class="n">y</span> <span class="o">:=</span> <span class="kd">by</span>
   <span class="gr">sorry</span>
 </pre></div>
 </div>
@@ -363,7 +364,7 @@ two Lean commands:</p>
 <li><p>Show that <span class="math notranslate nohighlight">\((\exists x, P(x)) \land Q\)</span> is logically equivalent to
 <span class="math notranslate nohighlight">\(\exists x, (P(x) \land Q)\)</span>.</p></li>
 </ol>
-<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">{</span><span class="n">P</span> <span class="o">:</span> <span class="n">&#945;</span> <span class="bp">&#8594;</span> <span class="kt">Prop</span><span class="o">}</span> <span class="o">{</span><span class="n">Q</span> <span class="o">:</span> <span class="kt">Prop</span><span class="o">}</span> <span class="o">:</span> <span class="o">((</span><span class="bp">&#8707;</span> <span class="n">x</span><span class="o">,</span> <span class="n">P</span> <span class="n">x</span><span class="o">)</span> <span class="bp">&#8743;</span> <span class="n">Q</span><span class="o">)</span> <span class="bp">&#8596;</span> <span class="bp">&#8707;</span> <span class="n">x</span><span class="o">,</span> <span class="o">(</span><span class="n">P</span> <span class="n">x</span> <span class="bp">&#8743;</span> <span class="n">Q</span><span class="o">)</span> <span class="o">:=</span> <span class="kd">by</span>
+<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">(</span><span class="n">P</span> <span class="o">:</span> <span class="n">&#945;</span> <span class="bp">&#8594;</span> <span class="kt">Prop</span><span class="o">)</span> <span class="o">(</span><span class="n">Q</span> <span class="o">:</span> <span class="kt">Prop</span><span class="o">)</span> <span class="o">:</span> <span class="o">((</span><span class="bp">&#8707;</span> <span class="n">x</span><span class="o">,</span> <span class="n">P</span> <span class="n">x</span><span class="o">)</span> <span class="bp">&#8743;</span> <span class="n">Q</span><span class="o">)</span> <span class="bp">&#8596;</span> <span class="bp">&#8707;</span> <span class="n">x</span><span class="o">,</span> <span class="o">(</span><span class="n">P</span> <span class="n">x</span> <span class="bp">&#8743;</span> <span class="n">Q</span><span class="o">)</span> <span class="o">:=</span> <span class="kd">by</span>
   <span class="gr">sorry</span>
 </pre></div>
 </div>
@@ -473,7 +474,7 @@ contradiction, since <span class="math notranslate nohighlight">\(4=2\cdot 2\)</
 </div>
 <p>Remember to use the lemma <code class="docutils literal notranslate"><span class="pre">not_prime</span></code> in Lean to prove that a number is not prime by producing a
 factor for it.</p>
-<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">theorem</span> <span class="n">not_superpowered_three</span> <span class="o">:</span> <span class="bp">&#172;</span><span class="o">(</span><span class="n">superpowered</span> <span class="mi">3</span><span class="o">)</span> <span class="o">:=</span> <span class="kd">by</span>
+<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">theorem</span> <span class="n">not_superpowered_three</span> <span class="o">:</span> <span class="bp">&#172;</span> <span class="n">superpowered</span> <span class="mi">3</span> <span class="o">:=</span> <span class="kd">by</span>
   <span class="n">intro</span> <span class="n">h</span>
   <span class="n">dsimp</span> <span class="o">[</span><span class="n">superpowered</span><span class="o">]</span> <span class="n">at</span> <span class="n">h</span>
   <span class="k">have</span> <span class="n">four_prime</span> <span class="o">:</span> <span class="n">Prime</span> <span class="o">(</span><span class="mi">3</span> <span class="bp">^</span> <span class="mi">3</span> <span class="bp">^</span> <span class="mi">0</span> <span class="bp">+</span> <span class="mi">1</span><span class="o">)</span> <span class="o">:=</span> <span class="n">h</span> <span class="mi">0</span>
@@ -538,7 +539,18 @@ h2 : &#172;superpowered 2
 </div>
 </section>
 <section id="id12">
-<h3><span class="section-number">5.2.6. </span>Exercises<a class="headerlink" href="#id12" title="Permalink to this headline">&#61633;</a></h3>
+<h3><span class="section-number">5.2.6. </span>Example<a class="headerlink" href="#id12" title="Permalink to this headline">&#61633;</a></h3>
+<p>As noted above, it&#8217;s relatively rare to need to use the law of the excluded middle in a proof.  But
+here is one more example where it&#8217;s needed, this time from propositional logic.</p>
+<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">{</span><span class="n">P</span> <span class="o">:</span> <span class="kt">Prop</span><span class="o">}</span> <span class="o">(</span><span class="n">hP</span> <span class="o">:</span> <span class="bp">&#172;&#172;</span><span class="n">P</span><span class="o">)</span> <span class="o">:</span> <span class="n">P</span> <span class="o">:=</span> <span class="kd">by</span>
+  <span class="n">by_cases</span> <span class="n">hP</span> <span class="o">:</span> <span class="n">P</span>
+  <span class="bp">&#183;</span> <span class="n">apply</span> <span class="n">hP</span>
+  <span class="bp">&#183;</span> <span class="n">contradiction</span>
+</pre></div>
+</div>
+</section>
+<section id="id13">
+<h3><span class="section-number">5.2.7. </span>Exercises<a class="headerlink" href="#id13" title="Permalink to this headline">&#61633;</a></h3>
 <ol class="arabic simple">
 <li><p>Let us call a real number <span class="math notranslate nohighlight">\(x\)</span> <em>tribalanced</em>, if for every natural number <span class="math notranslate nohighlight">\(n\)</span>, the
 inequality <span class="math notranslate nohighlight">\(\left(1+\frac{x}{n}\right)^n&lt;3\)</span> holds.  Show that there exists a real number
@@ -551,10 +563,21 @@ inequality <span class="math notranslate nohighlight">\(\left(1+\frac{x}{n}\righ
 </pre></div>
 </div>
 <ol class="arabic" start="2">
+<li><p>Prove that <span class="math notranslate nohighlight">\(\lnot P \to \lnot Q\)</span> is logically equivalent to <span class="math notranslate nohighlight">\(Q \to P\)</span>.  You will
+need to use the law of the excluded middle.</p>
+<p>This logical equivalence is known as the <em>principle of contraposition</em>.  You might like to
+compare their truth tables as a sanity check.</p>
+</li>
+</ol>
+<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">(</span><span class="n">P</span> <span class="n">Q</span> <span class="o">:</span> <span class="kt">Prop</span><span class="o">)</span> <span class="o">:</span> <span class="o">(</span><span class="bp">&#172;</span><span class="n">P</span> <span class="bp">&#8594;</span> <span class="bp">&#172;</span><span class="n">Q</span><span class="o">)</span> <span class="bp">&#8596;</span> <span class="o">(</span><span class="n">Q</span> <span class="bp">&#8594;</span> <span class="n">P</span><span class="o">)</span> <span class="o">:=</span> <span class="kd">by</span>
+  <span class="gr">sorry</span>
+</pre></div>
+</div>
+<ol class="arabic" start="3">
 <li><p>In case you&#8217;re still wondering:  2 is not superpowered.  The question was raised in 1650 by the
 mathematician Pierre de Fermat, who observed, as we did, that 3, 5, 17, 257 and 65537 are all
 prime. It was settled in 1732, when Leonhard Euler showed that the next number in the sequence,
-<span class="math notranslate nohighlight">\(2^{2^5}+1=4294967297\)</span>, is equal to <span class="math notranslate nohighlight">\(641 \cdot 6700417\)</span> and therefore not prime.</p>
+<span class="math notranslate nohighlight">\(2^{2^5}+1=4294967297\)</span>, is equal to <span class="math notranslate nohighlight">\(641 \times 6700417\)</span> and therefore not prime.</p>
 <p>Use Euler&#8217;s discovery to give a proof without case division to the problem in
 <a class="reference internal" href="#lem-problem"><span class="std std-numref">Example 5.2.5</span></a>.</p>
 </li>
