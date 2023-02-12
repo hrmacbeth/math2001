@@ -16,6 +16,10 @@ right-hand side, or vice versa.
 
 Invokes a specified lemma or hypothesis to modify the goal.
 
+.. rubric:: by_cases (first use: :numref:`Section %s <lem>`)
+
+Case-splits on whether a given statement is true or false.
+
 .. rubric:: constructor (first use: :numref:`Section %s <and>`; for ``↔`` goals: :numref:`Section %s <iff>`)
 
 Splits an "and" goal (:math:`\land`) into sub-goals for its left and right parts.
