@@ -1048,14 +1048,7 @@ strictly between 1 and 3.  So <span class="math notranslate nohighlight">\(r=14-
 <li><p>Show that there exists a unique rational number <span class="math notranslate nohighlight">\(x\)</span>, such that <span class="math notranslate nohighlight">\(4x-3=9\)</span>.</p></li>
 </ol>
 <div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">:</span> <span class="bp">&#8707;!</span> <span class="n">x</span> <span class="o">:</span> <span class="n">&#8474;</span><span class="o">,</span> <span class="mi">4</span> <span class="bp">*</span> <span class="n">x</span> <span class="bp">-</span> <span class="mi">3</span> <span class="bp">=</span> <span class="mi">9</span> <span class="o">:=</span> <span class="kd">by</span>
-  <span class="n">take</span> <span class="mi">3</span>
-  <span class="n">constructor</span>
-  <span class="bp">&#183;</span> <span class="n">numbers</span>
-  <span class="n">intro</span> <span class="n">y</span> <span class="n">hy</span>
-  <span class="k">calc</span>
-    <span class="n">y</span> <span class="bp">=</span> <span class="o">(</span><span class="mi">4</span> <span class="bp">*</span> <span class="n">y</span> <span class="bp">-</span> <span class="mi">3</span> <span class="bp">+</span> <span class="mi">3</span><span class="o">)</span> <span class="bp">/</span> <span class="mi">4</span> <span class="o">:=</span> <span class="kd">by</span> <span class="n">ring</span>
-    <span class="n">_</span> <span class="bp">=</span> <span class="o">(</span><span class="mi">9</span> <span class="bp">+</span> <span class="mi">3</span><span class="o">)</span> <span class="bp">/</span> <span class="mi">4</span> <span class="o">:=</span> <span class="kd">by</span> <span class="n">rw</span> <span class="o">[</span><span class="n">hy</span><span class="o">]</span>
-    <span class="n">_</span> <span class="bp">=</span> <span class="mi">3</span> <span class="o">:=</span> <span class="kd">by</span> <span class="n">numbers</span>
+  <span class="gr">sorry</span>
 </pre></div>
 </div>
 <ol class="arabic simple" start="2">
@@ -1068,19 +1061,9 @@ strictly between 1 and 3.  So <span class="math notranslate nohighlight">\(r=14-
 </div>
 <ol class="arabic simple" start="3">
 <li><p>Show that there exists a unique integer <span class="math notranslate nohighlight">\(r\)</span>, such that <span class="math notranslate nohighlight">\(0\le r &lt; 3\)</span> and
-<span class="math notranslate nohighlight">\(11=3q+r\)</span> for some integer <span class="math notranslate nohighlight">\(q\)</span>.</p></li>
+<span class="math notranslate nohighlight">\(11\equiv r\mod 3\)</span>.</p></li>
 </ol>
-<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">:</span> <span class="bp">&#8707;!</span> <span class="n">r</span> <span class="o">:</span> <span class="n">&#8484;</span><span class="o">,</span> <span class="mi">0</span> <span class="bp">&#8804;</span> <span class="n">r</span> <span class="bp">&#8743;</span> <span class="n">r</span> <span class="bp">&lt;</span> <span class="mi">3</span> <span class="bp">&#8743;</span> <span class="bp">&#8707;</span> <span class="n">q</span> <span class="o">:</span> <span class="n">&#8484;</span><span class="o">,</span> <span class="mi">11</span> <span class="bp">=</span> <span class="mi">3</span> <span class="bp">*</span> <span class="n">q</span> <span class="bp">+</span> <span class="n">r</span> <span class="o">:=</span> <span class="kd">by</span>
-  <span class="gr">sorry</span>
-</pre></div>
-</div>
-<ol class="arabic simple" start="4">
-<li><p>Prove the following consequence of the Division Algorithm
-(<a class="reference internal" href="#division-algorithm"><span class="std std-numref">Example 4.3.4</span></a>), which underlies the tactic
-<code class="docutils literal notranslate"><span class="pre">mod_cases</span></code>:  Let <span class="math notranslate nohighlight">\(a\)</span> and <span class="math notranslate nohighlight">\(b\)</span> be integers, with <span class="math notranslate nohighlight">\(b\)</span> positive.  Then there
-exists an integer <span class="math notranslate nohighlight">\(z\)</span>, such that <span class="math notranslate nohighlight">\(0\le z &lt; b\)</span> and <span class="math notranslate nohighlight">\(a \equiv z \mod b\)</span>.</p></li>
-</ol>
-<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">{</span><span class="n">a</span> <span class="n">b</span> <span class="o">:</span> <span class="n">&#8484;</span><span class="o">}</span> <span class="o">(</span><span class="n">hb</span> <span class="o">:</span> <span class="mi">0</span> <span class="bp">&lt;</span> <span class="n">b</span><span class="o">)</span> <span class="o">:</span> <span class="bp">&#8707;</span> <span class="n">z</span><span class="o">,</span> <span class="mi">0</span> <span class="bp">&#8804;</span> <span class="n">z</span> <span class="bp">&#8743;</span> <span class="n">z</span> <span class="bp">&lt;</span> <span class="n">b</span> <span class="bp">&#8743;</span> <span class="n">a</span> <span class="bp">&#8801;</span> <span class="n">z</span> <span class="o">[</span><span class="n">ZMOD</span> <span class="n">b</span><span class="o">]</span> <span class="o">:=</span> <span class="kd">by</span>
+<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">:</span> <span class="bp">&#8707;!</span> <span class="n">r</span> <span class="o">:</span> <span class="n">&#8484;</span><span class="o">,</span> <span class="mi">0</span> <span class="bp">&#8804;</span> <span class="n">r</span> <span class="bp">&#8743;</span> <span class="n">r</span> <span class="bp">&lt;</span> <span class="mi">3</span> <span class="bp">&#8743;</span> <span class="mi">11</span> <span class="bp">&#8801;</span> <span class="n">r</span> <span class="o">[</span><span class="n">ZMOD</span> <span class="mi">3</span><span class="o">]</span> <span class="o">:=</span> <span class="kd">by</span>
   <span class="gr">sorry</span>
 </pre></div>
 </div>

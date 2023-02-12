@@ -47,7 +47,7 @@ theorem not_superpowered_three : ¬(superpowered 3) := by
   intro h
   dsimp [superpowered] at h
   have four_prime : Prime (3 ^ 3 ^ 0 + 1) := h 0
-  numbers at four_prime -- simplifies to `Prime 4`
+  numbers at four_prime -- simplifies that statement to `Prime 4`
   have four_not_prime : ¬(Prime 4)
   · apply not_prime 2
     · numbers -- show `2 ≠ 1` 

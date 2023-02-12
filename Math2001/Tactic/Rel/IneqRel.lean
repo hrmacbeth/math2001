@@ -56,3 +56,4 @@ attribute [ineq_extra]
   IneqExtra.neg_le_sub_self_of_nonneg
   add_le_add_left add_le_add_right add_lt_add_left add_lt_add_right
   sub_le_sub_left sub_le_sub_right sub_lt_sub_left sub_lt_sub_right
+  le_refl

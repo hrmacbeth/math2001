@@ -71,21 +71,10 @@ example : ∃! r : ℤ, 0 ≤ r ∧ r < 5 ∧ 14 ≡ r [ZMOD 5] := by
 
 
 example : ∃! x : ℚ, 4 * x - 3 = 9 := by
-  take 3
-  constructor
-  · numbers
-  intro y hy
-  calc
-    y = (4 * y - 3 + 3) / 4 := by ring
-    _ = (9 + 3) / 4 := by rw [hy]
-    _ = 3 := by numbers
-
+  sorry
 
 example : ∃! n : ℕ, ∀ a, n ≤ a := by
   sorry
 
-example : ∃! r : ℤ, 0 ≤ r ∧ r < 3 ∧ ∃ q : ℤ, 11 = 3 * q + r := by
-  sorry
-
-example {a b : ℤ} (hb : 0 < b) : ∃ z, 0 ≤ z ∧ z < b ∧ a ≡ z [ZMOD b] := by
+example : ∃! r : ℤ, 0 ≤ r ∧ r < 3 ∧ 11 ≡ r [ZMOD 3] := by
   sorry

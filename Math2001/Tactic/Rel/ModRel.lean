@@ -41,4 +41,4 @@ attribute [mod_extra]
   Int.modEq_sub_fac_self_symm Int.modEq_sub_fac_self_symm' Int.modEq_sub_fac_self_symm'' Int.modEq_sub_fac_self_symm'''
   Int.ModEq.add_right Int.ModEq.add_left
   Int.ModEq.sub_right Int.ModEq.sub_left
-
+  Int.ModEq.refl
