@@ -92,6 +92,9 @@ example {P Q : Prop} (h1 : P ↔ ¬ Q) (h2 : Q) : ¬ P := by
 example {P Q : Prop} (h1 : P ∨ Q) (h2 : Q → P) : P := by
   sorry
 
+example {P Q R : Prop} (h : P ↔ Q) : (P ∧ R) ↔ (Q ∧ R) := by
+  sorry
+
 example (P : Prop) : (P ∧ P) ↔ P := by
   sorry
 
@@ -102,6 +105,9 @@ example (P Q : Prop) : ¬(P ∨ Q) ↔ (¬P ∧ ¬Q) := by
   sorry
 
 example {P Q : α → Prop} (h1 : ∀ x, P x → Q x) (h2 : ∀ x, P x) : ∀ x, Q x := by
+  sorry
+
+example {P Q : α → Prop} (h : ∀ x, P x ↔ Q x) : (∃ x, P x) ↔ (∃ x, Q x) := by
   sorry
 
 example (P : α → β → Prop) : (∃ x y, P x y) ↔ ∃ y x, P x y := by

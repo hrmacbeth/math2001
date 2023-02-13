@@ -17,8 +17,9 @@ syntax (name := IneqRelSyntax) "ineq_rel" " [" term,* "] " : tactic
 
 elab_rules : tactic | `(tactic| ineq_rel [$t,*]) => do
   liftMetaTactic <|
-    Lean.MVarId.Rel IneqRelDischarge `ineq_rules t.getElems.toList
+    Lean.MVarId.Rel `ineq_rules t.getElems.toList
       "cannot prove this by 'substituting' the listed relationships"
+      IneqRelDischarge
 
 macro_rules | `(tactic| rel [$t,*]) => `(tactic| ineq_rel [$t,*])
 
@@ -26,8 +27,9 @@ syntax (name := IneqExtraSyntax) "ineq_extra" : tactic
 
 elab_rules : tactic | `(tactic| ineq_extra) => do
   liftMetaTactic <|
-    Lean.MVarId.Rel IneqRelDischarge `ineq_extra []
+    Lean.MVarId.Rel `ineq_extra []
       "the two sides don't differ by a neutral quantity for the relation"
+      IneqRelDischarge
 
 macro_rules | `(tactic| extra) => `(tactic| ineq_extra)
 

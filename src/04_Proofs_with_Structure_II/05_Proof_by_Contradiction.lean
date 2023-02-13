@@ -72,7 +72,7 @@ example (n : ℕ) : ¬((n:ℤ) ^ 2 ≡ 2 [ZMOD 3]) := by
   · sorry
   · sorry
 
-example {p : ℕ} (k : ℕ) (hk1 : k ≠ 1) (hkp : k ≠ p) (hk : k ∣ p) : ¬(Prime p) := by
+example {p : ℕ} (k : ℕ) (hk1 : k ≠ 1) (hkp : k ≠ p) (hk : k ∣ p) : ¬ Prime p := by
   intro h
   obtain ⟨h2, hfact⟩ := h
   have : k = 1 ∨ k = p := hfact k hk

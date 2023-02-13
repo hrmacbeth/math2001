@@ -5,3 +5,4 @@ Logic
 
 .. include:: 05_Logic/01_Logical_Equivalence.inc
 .. include:: 05_Logic/02_Excluded_Middle.inc
+.. include:: 05_Logic/03_Negation_Algorithm.inc

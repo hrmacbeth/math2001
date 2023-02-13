@@ -52,7 +52,7 @@
 <li class="toctree-l3"><a class="reference internal" href="#exercise">5.1.3. Exercise</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#id4">5.1.4. Example</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#id5">5.1.5. Example</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id6">5.1.6. Example</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#quantifier-logical-equivalence">5.1.6. Example</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#exercises">5.1.7. Exercises</a></li>
 </ul>
 </li>
@@ -64,6 +64,15 @@
 <li class="toctree-l3"><a class="reference internal" href="#lem-problem">5.2.5. Example</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#id12">5.2.6. Example</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#id13">5.2.7. Exercises</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#normal-form-for-negations">5.3. Normal form for negations</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#negation-normalize-intro">5.3.1. Example</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id15">5.3.2. Example</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id16">5.3.3. Example</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id17">5.3.4. Example</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id18">5.3.5. Example</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#negation-normalize-exercises">5.3.6. Exercises</a></li>
 </ul>
 </li>
 </ul>
@@ -235,8 +244,8 @@ two Lean commands:</p>
 </pre></div>
 </div>
 </section>
-<section id="id6">
-<h3><span class="section-number">5.1.6. </span>Example<a class="headerlink" href="#id6" title="Permalink to this headline">&#61633;</a></h3>
+<section id="quantifier-logical-equivalence">
+<span id="id6"></span><h3><span class="section-number">5.1.6. </span>Example<a class="headerlink" href="#quantifier-logical-equivalence" title="Permalink to this headline">&#61633;</a></h3>
 <p>We can also perform this kind of abstract logic game when quantifiers are involved.</p>
 <div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">{</span><span class="n">P</span> <span class="n">Q</span> <span class="o">:</span> <span class="n">&#945;</span> <span class="bp">&#8594;</span> <span class="kt">Prop</span><span class="o">}</span> <span class="o">(</span><span class="n">h1</span> <span class="o">:</span> <span class="bp">&#8704;</span> <span class="n">x</span> <span class="o">:</span> <span class="n">&#945;</span><span class="o">,</span> <span class="n">P</span> <span class="n">x</span><span class="o">)</span> <span class="o">(</span><span class="n">h2</span> <span class="o">:</span> <span class="bp">&#8704;</span> <span class="n">x</span> <span class="o">:</span> <span class="n">&#945;</span><span class="o">,</span> <span class="n">Q</span> <span class="n">x</span><span class="o">)</span> <span class="o">:</span>
     <span class="bp">&#8704;</span> <span class="n">x</span> <span class="o">:</span> <span class="n">&#945;</span><span class="o">,</span> <span class="n">P</span> <span class="n">x</span> <span class="bp">&#8743;</span> <span class="n">Q</span> <span class="n">x</span> <span class="o">:=</span> <span class="kd">by</span>
@@ -278,7 +287,7 @@ two Lean commands:</p>
 </div>
 </section>
 <section id="exercises">
-<h3><span class="section-number">5.1.7. </span>Exercises<a class="headerlink" href="#exercises" title="Permalink to this headline">&#61633;</a></h3>
+<span id="logical-equivalence-exercises"></span><h3><span class="section-number">5.1.7. </span>Exercises<a class="headerlink" href="#exercises" title="Permalink to this headline">&#61633;</a></h3>
 <ol class="arabic simple">
 <li><p>Prove the following propositional logic statement:</p></li>
 </ol>
@@ -315,20 +324,27 @@ two Lean commands:</p>
 </pre></div>
 </div>
 <ol class="arabic simple" start="6">
+<li><p>Prove the following propositional logic statement:</p></li>
+</ol>
+<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">{</span><span class="n">P</span> <span class="n">Q</span> <span class="n">R</span> <span class="o">:</span> <span class="kt">Prop</span><span class="o">}</span> <span class="o">(</span><span class="n">h</span> <span class="o">:</span> <span class="n">P</span> <span class="bp">&#8596;</span> <span class="n">Q</span><span class="o">)</span> <span class="o">:</span> <span class="o">(</span><span class="n">P</span> <span class="bp">&#8743;</span> <span class="n">R</span><span class="o">)</span> <span class="bp">&#8596;</span> <span class="o">(</span><span class="n">Q</span> <span class="bp">&#8743;</span> <span class="n">R</span><span class="o">)</span> <span class="o">:=</span> <span class="kd">by</span>
+  <span class="gr">sorry</span>
+</pre></div>
+</div>
+<ol class="arabic simple" start="7">
 <li><p>Prove that <span class="math notranslate nohighlight">\(P \land P\)</span> is logically equivalent to <span class="math notranslate nohighlight">\(P\)</span>.</p></li>
 </ol>
 <div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">(</span><span class="n">P</span> <span class="o">:</span> <span class="kt">Prop</span><span class="o">)</span> <span class="o">:</span> <span class="o">(</span><span class="n">P</span> <span class="bp">&#8743;</span> <span class="n">P</span><span class="o">)</span> <span class="bp">&#8596;</span> <span class="n">P</span> <span class="o">:=</span> <span class="kd">by</span>
   <span class="gr">sorry</span>
 </pre></div>
 </div>
-<ol class="arabic simple" start="7">
+<ol class="arabic simple" start="8">
 <li><p>Prove that <span class="math notranslate nohighlight">\(P \lor Q\)</span> is logically equivalent to <span class="math notranslate nohighlight">\(Q \lor P\)</span>.</p></li>
 </ol>
 <div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">(</span><span class="n">P</span> <span class="n">Q</span> <span class="o">:</span> <span class="kt">Prop</span><span class="o">)</span> <span class="o">:</span> <span class="o">(</span><span class="n">P</span> <span class="bp">&#8744;</span> <span class="n">Q</span><span class="o">)</span> <span class="bp">&#8596;</span> <span class="o">(</span><span class="n">Q</span> <span class="bp">&#8744;</span> <span class="n">P</span><span class="o">)</span> <span class="o">:=</span> <span class="kd">by</span>
   <span class="gr">sorry</span>
 </pre></div>
 </div>
-<ol class="arabic" start="8">
+<ol class="arabic" start="9">
 <li><p>Prove that <span class="math notranslate nohighlight">\(\lnot(P \lor Q)\)</span> is logically equivalent to <span class="math notranslate nohighlight">\(\lnot P \land \lnot Q\)</span>.</p>
 <p>This theorem is in the library under the name <code class="docutils literal notranslate"><span class="pre">not_or</span></code>. It is one of <a class="reference external" href="https://en.wikipedia.org/wiki/De_Morgan%27s_laws">&#8220;De Morgan&#8217;s laws&#8221;</a>.</p>
 </li>
@@ -337,14 +353,21 @@ two Lean commands:</p>
   <span class="gr">sorry</span>
 </pre></div>
 </div>
-<ol class="arabic simple" start="9">
+<ol class="arabic simple" start="10">
 <li><p>Prove the following first-order logic statement:</p></li>
 </ol>
 <div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">{</span><span class="n">P</span> <span class="n">Q</span> <span class="o">:</span> <span class="n">&#945;</span> <span class="bp">&#8594;</span> <span class="kt">Prop</span><span class="o">}</span> <span class="o">(</span><span class="n">h1</span> <span class="o">:</span> <span class="bp">&#8704;</span> <span class="n">x</span><span class="o">,</span> <span class="n">P</span> <span class="n">x</span> <span class="bp">&#8594;</span> <span class="n">Q</span> <span class="n">x</span><span class="o">)</span> <span class="o">(</span><span class="n">h2</span> <span class="o">:</span> <span class="bp">&#8704;</span> <span class="n">x</span><span class="o">,</span> <span class="n">P</span> <span class="n">x</span><span class="o">)</span> <span class="o">:</span> <span class="bp">&#8704;</span> <span class="n">x</span><span class="o">,</span> <span class="n">Q</span> <span class="n">x</span> <span class="o">:=</span> <span class="kd">by</span>
   <span class="gr">sorry</span>
 </pre></div>
 </div>
-<ol class="arabic simple" start="10">
+<ol class="arabic simple" start="11">
+<li><p>Prove the following first-order logic statement:</p></li>
+</ol>
+<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">{</span><span class="n">P</span> <span class="n">Q</span> <span class="o">:</span> <span class="n">&#945;</span> <span class="bp">&#8594;</span> <span class="kt">Prop</span><span class="o">}</span> <span class="o">(</span><span class="n">h</span> <span class="o">:</span> <span class="bp">&#8704;</span> <span class="n">x</span><span class="o">,</span> <span class="n">P</span> <span class="n">x</span> <span class="bp">&#8596;</span> <span class="n">Q</span> <span class="n">x</span><span class="o">)</span> <span class="o">:</span> <span class="o">(</span><span class="bp">&#8707;</span> <span class="n">x</span><span class="o">,</span> <span class="n">P</span> <span class="n">x</span><span class="o">)</span> <span class="bp">&#8596;</span> <span class="o">(</span><span class="bp">&#8707;</span> <span class="n">x</span><span class="o">,</span> <span class="n">Q</span> <span class="n">x</span><span class="o">)</span> <span class="o">:=</span> <span class="kd">by</span>
+  <span class="gr">sorry</span>
+</pre></div>
+</div>
+<ol class="arabic simple" start="12">
 <li><p>Show that <span class="math notranslate nohighlight">\(\exists x \ y, P(x, y)\)</span> is logically equivalent to
 <span class="math notranslate nohighlight">\(\exists y \ x, P(x, y)\)</span>.</p></li>
 </ol>
@@ -352,7 +375,7 @@ two Lean commands:</p>
   <span class="gr">sorry</span>
 </pre></div>
 </div>
-<ol class="arabic simple" start="11">
+<ol class="arabic simple" start="13">
 <li><p>Show that <span class="math notranslate nohighlight">\(\forall x \ y, P(x, y)\)</span> is logically equivalent to
 <span class="math notranslate nohighlight">\(\forall y \ x, P(x, y)\)</span>.</p></li>
 </ol>
@@ -360,7 +383,7 @@ two Lean commands:</p>
   <span class="gr">sorry</span>
 </pre></div>
 </div>
-<ol class="arabic simple" start="12">
+<ol class="arabic simple" start="14">
 <li><p>Show that <span class="math notranslate nohighlight">\((\exists x, P(x)) \land Q\)</span> is logically equivalent to
 <span class="math notranslate nohighlight">\(\exists x, (P(x) \land Q)\)</span>.</p></li>
 </ol>
@@ -381,7 +404,7 @@ numbers!</p>
 <p>A natural number <span class="math notranslate nohighlight">\(k\)</span> is <em>superpowered</em>, if for every natural number <span class="math notranslate nohighlight">\(n\)</span>, the number
 <span class="math notranslate nohighlight">\(k^{k^n} + 1\)</span> is prime.</p>
 </div>
-<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">def</span> <span class="n">superpowered</span> <span class="o">(</span><span class="n">k</span> <span class="o">:</span> <span class="n">&#8469;</span><span class="o">)</span> <span class="o">:</span> <span class="kt">Prop</span> <span class="o">:=</span> <span class="bp">&#8704;</span> <span class="n">n</span> <span class="o">:</span> <span class="n">&#8469;</span><span class="o">,</span> <span class="n">Prime</span> <span class="o">(</span><span class="n">k</span> <span class="bp">^</span> <span class="n">k</span> <span class="bp">^</span> <span class="n">n</span> <span class="bp">+</span> <span class="mi">1</span><span class="o">)</span>
+<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">def</span> <span class="n">Superpowered</span> <span class="o">(</span><span class="n">k</span> <span class="o">:</span> <span class="n">&#8469;</span><span class="o">)</span> <span class="o">:</span> <span class="kt">Prop</span> <span class="o">:=</span> <span class="bp">&#8704;</span> <span class="n">n</span> <span class="o">:</span> <span class="n">&#8469;</span><span class="o">,</span> <span class="n">Prime</span> <span class="o">(</span><span class="n">k</span> <span class="bp">^</span> <span class="n">k</span> <span class="bp">^</span> <span class="n">n</span> <span class="bp">+</span> <span class="mi">1</span><span class="o">)</span>
 </pre></div>
 </div>
 <section id="id7">
@@ -406,7 +429,7 @@ contradiction, since 1 is not prime.</p>
 </div>
 <p>To write this in Lean, we use the lemma <code class="docutils literal notranslate"><span class="pre">not_prime_one</span></code>, from an exercise to
 <a class="reference internal" href="04_Proofs_with_Structure_II.html#contradiction"><span class="std std-numref">Section 4.5</span></a>.</p>
-<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">theorem</span> <span class="n">not_superpowered_zero</span> <span class="o">:</span> <span class="bp">&#172;</span> <span class="n">superpowered</span> <span class="mi">0</span> <span class="o">:=</span> <span class="kd">by</span>
+<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">theorem</span> <span class="n">not_superpowered_zero</span> <span class="o">:</span> <span class="bp">&#172;</span> <span class="n">Superpowered</span> <span class="mi">0</span> <span class="o">:=</span> <span class="kd">by</span>
   <span class="n">intro</span> <span class="n">h</span>
   <span class="k">have</span> <span class="n">one_prime</span> <span class="o">:</span> <span class="n">Prime</span> <span class="o">(</span><span class="mi">0</span> <span class="bp">^</span> <span class="mi">0</span> <span class="bp">^</span> <span class="mi">0</span> <span class="bp">+</span> <span class="mi">1</span><span class="o">)</span> <span class="o">:=</span> <span class="n">h</span> <span class="mi">0</span>
   <span class="n">numbers</span> <span class="n">at</span> <span class="n">one_prime</span> <span class="c1">-- simplifies that statement to `Prime 1`</span>
@@ -431,8 +454,8 @@ contradiction, since 1 is not prime.</p>
 <p class="admonition-title">Proof</p>
 <p>Let <span class="math notranslate nohighlight">\(n\)</span> be a natural number.  Then <span class="math notranslate nohighlight">\(1^{1^n}+1=1^1+1=2\)</span>, which is prime.</p>
 </div>
-<p>To write this in Lean, we use the lemma <cite>prime_two</cite>, from <a class="reference internal" href="04_Proofs_with_Structure_II.html#prime-def"><span class="std std-numref">Example 4.1.8</span></a>.</p>
-<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">theorem</span> <span class="n">superpowered_one</span> <span class="o">:</span> <span class="n">superpowered</span> <span class="mi">1</span> <span class="o">:=</span> <span class="kd">by</span>
+<p>To write this in Lean, we use the lemma <code class="docutils literal notranslate"><span class="pre">prime_two</span></code>, from <a class="reference internal" href="04_Proofs_with_Structure_II.html#prime-def"><span class="std std-numref">Example 4.1.8</span></a>.</p>
+<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">theorem</span> <span class="n">superpowered_one</span> <span class="o">:</span> <span class="n">Superpowered</span> <span class="mi">1</span> <span class="o">:=</span> <span class="kd">by</span>
   <span class="n">intro</span> <span class="n">n</span>
   <span class="n">ring_nf</span> <span class="c1">-- simplifies goal from `Prime (1 ^ 1 ^ n + 1)` to `Prime 2`</span>
   <span class="n">apply</span> <span class="n">prime_two</span>
@@ -474,12 +497,12 @@ contradiction, since <span class="math notranslate nohighlight">\(4=2\cdot 2\)</
 </div>
 <p>Remember to use the lemma <code class="docutils literal notranslate"><span class="pre">not_prime</span></code> in Lean to prove that a number is not prime by producing a
 factor for it.</p>
-<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">theorem</span> <span class="n">not_superpowered_three</span> <span class="o">:</span> <span class="bp">&#172;</span> <span class="n">superpowered</span> <span class="mi">3</span> <span class="o">:=</span> <span class="kd">by</span>
+<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">theorem</span> <span class="n">not_superpowered_three</span> <span class="o">:</span> <span class="bp">&#172;</span> <span class="n">Superpowered</span> <span class="mi">3</span> <span class="o">:=</span> <span class="kd">by</span>
   <span class="n">intro</span> <span class="n">h</span>
-  <span class="n">dsimp</span> <span class="o">[</span><span class="n">superpowered</span><span class="o">]</span> <span class="n">at</span> <span class="n">h</span>
+  <span class="n">dsimp</span> <span class="o">[</span><span class="n">Superpowered</span><span class="o">]</span> <span class="n">at</span> <span class="n">h</span>
   <span class="k">have</span> <span class="n">four_prime</span> <span class="o">:</span> <span class="n">Prime</span> <span class="o">(</span><span class="mi">3</span> <span class="bp">^</span> <span class="mi">3</span> <span class="bp">^</span> <span class="mi">0</span> <span class="bp">+</span> <span class="mi">1</span><span class="o">)</span> <span class="o">:=</span> <span class="n">h</span> <span class="mi">0</span>
   <span class="n">numbers</span> <span class="n">at</span> <span class="n">four_prime</span> <span class="c1">-- simplifies that statement to `Prime 4`</span>
-  <span class="k">have</span> <span class="n">four_not_prime</span> <span class="o">:</span> <span class="bp">&#172;</span><span class="o">(</span><span class="n">Prime</span> <span class="mi">4</span><span class="o">)</span>
+  <span class="k">have</span> <span class="n">four_not_prime</span> <span class="o">:</span> <span class="bp">&#172;</span> <span class="n">Prime</span> <span class="mi">4</span>
   <span class="bp">&#183;</span> <span class="n">apply</span> <span class="n">not_prime</span> <span class="mi">2</span>
     <span class="bp">&#183;</span> <span class="n">numbers</span> <span class="c1">-- show `2 &#8800; 1`</span>
     <span class="bp">&#183;</span> <span class="n">numbers</span> <span class="c1">-- show `2 &#8800; 4`</span>
@@ -512,21 +535,21 @@ of mathematics, called the <em>law of the excluded middle</em>.  Therefore, this
 division in a proof, although it is relatively rare to need to do it.</p>
 <p>In Lean, you can perform a case division on the truth or falsehood of a statement by using the
 tactic <code class="docutils literal notranslate"><span class="pre">by_cases</span></code>.  In the proof that follows, using this tactic takes us from a goal state of</p>
-<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>&#8866; &#8707; k, superpowered k &#8743; &#172;superpowered (k + 1)
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>&#8866; &#8707; k, Superpowered k &#8743; &#172; Superpowered (k + 1)
 </pre></div>
 </div>
-<p>to a goal state with two goals, one under the assumption <code class="docutils literal notranslate"><span class="pre">superpowered</span> <span class="pre">2</span></code> and one under the
-assumption <code class="docutils literal notranslate"><span class="pre">&#172;</span> <span class="pre">superpowered</span> <span class="pre">2</span></code>.</p>
-<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>h2 : superpowered 2
-&#8866; &#8707; k, superpowered k &#8743; &#172;superpowered (k + 1)
+<p>to a goal state with two goals, one under the assumption <code class="docutils literal notranslate"><span class="pre">Superpowered</span> <span class="pre">2</span></code> and one under the
+assumption <code class="docutils literal notranslate"><span class="pre">&#172;</span> <span class="pre">Superpowered</span> <span class="pre">2</span></code>.</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>h2 : Superpowered 2
+&#8866; &#8707; k, Superpowered k &#8743; &#172; Superpowered (k + 1)
 
-h2 : &#172;superpowered 2
-&#8866; &#8707; k, superpowered k &#8743; &#172;superpowered (k + 1)
+h2 : &#172; Superpowered 2
+&#8866; &#8707; k, Superpowered k &#8743; &#172; Superpowered (k + 1)
 </pre></div>
 </div>
 <p>Here is the full proof in Lean.</p>
-<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">:</span> <span class="bp">&#8707;</span> <span class="n">k</span> <span class="o">:</span> <span class="n">&#8469;</span><span class="o">,</span> <span class="n">superpowered</span> <span class="n">k</span> <span class="bp">&#8743;</span> <span class="bp">&#172;</span> <span class="n">superpowered</span> <span class="o">(</span><span class="n">k</span> <span class="bp">+</span> <span class="mi">1</span><span class="o">)</span> <span class="o">:=</span> <span class="kd">by</span>
-  <span class="n">by_cases</span> <span class="n">h2</span> <span class="o">:</span> <span class="n">superpowered</span> <span class="mi">2</span>
+<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">:</span> <span class="bp">&#8707;</span> <span class="n">k</span> <span class="o">:</span> <span class="n">&#8469;</span><span class="o">,</span> <span class="n">Superpowered</span> <span class="n">k</span> <span class="bp">&#8743;</span> <span class="bp">&#172;</span> <span class="n">Superpowered</span> <span class="o">(</span><span class="n">k</span> <span class="bp">+</span> <span class="mi">1</span><span class="o">)</span> <span class="o">:=</span> <span class="kd">by</span>
+  <span class="n">by_cases</span> <span class="n">h2</span> <span class="o">:</span> <span class="n">Superpowered</span> <span class="mi">2</span>
   <span class="bp">&#183;</span> <span class="n">take</span> <span class="mi">2</span>
     <span class="n">constructor</span>
     <span class="bp">&#183;</span> <span class="n">apply</span> <span class="n">h2</span>
@@ -557,9 +580,9 @@ right&#8221;.</p>
 inequality <span class="math notranslate nohighlight">\(\left(1+\frac{x}{n}\right)^n&lt;3\)</span> holds.  Show that there exists a real number
 <span class="math notranslate nohighlight">\(x\)</span>, such that <span class="math notranslate nohighlight">\(x\)</span> is tribalanced and <span class="math notranslate nohighlight">\(x+1\)</span> is not.</p></li>
 </ol>
-<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">def</span> <span class="n">tribalanced</span> <span class="o">(</span><span class="n">x</span> <span class="o">:</span> <span class="n">&#8477;</span><span class="o">)</span> <span class="o">:</span> <span class="kt">Prop</span> <span class="o">:=</span> <span class="bp">&#8704;</span> <span class="n">n</span> <span class="o">:</span> <span class="n">&#8469;</span><span class="o">,</span> <span class="o">(</span><span class="mi">1</span> <span class="bp">+</span> <span class="n">x</span> <span class="bp">/</span> <span class="n">n</span><span class="o">)</span> <span class="bp">^</span> <span class="n">n</span> <span class="bp">&lt;</span> <span class="mi">3</span>
+<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">def</span> <span class="n">Tribalanced</span> <span class="o">(</span><span class="n">x</span> <span class="o">:</span> <span class="n">&#8477;</span><span class="o">)</span> <span class="o">:</span> <span class="kt">Prop</span> <span class="o">:=</span> <span class="bp">&#8704;</span> <span class="n">n</span> <span class="o">:</span> <span class="n">&#8469;</span><span class="o">,</span> <span class="o">(</span><span class="mi">1</span> <span class="bp">+</span> <span class="n">x</span> <span class="bp">/</span> <span class="n">n</span><span class="o">)</span> <span class="bp">^</span> <span class="n">n</span> <span class="bp">&lt;</span> <span class="mi">3</span>
 
-<span class="kd">example</span> <span class="o">:</span> <span class="bp">&#8707;</span> <span class="n">x</span> <span class="o">:</span> <span class="n">&#8477;</span><span class="o">,</span> <span class="n">tribalanced</span> <span class="n">x</span> <span class="bp">&#8743;</span> <span class="bp">&#172;</span> <span class="n">tribalanced</span> <span class="o">(</span><span class="n">x</span> <span class="bp">+</span> <span class="mi">1</span><span class="o">)</span> <span class="o">:=</span> <span class="kd">by</span>
+<span class="kd">example</span> <span class="o">:</span> <span class="bp">&#8707;</span> <span class="n">x</span> <span class="o">:</span> <span class="n">&#8477;</span><span class="o">,</span> <span class="n">Tribalanced</span> <span class="n">x</span> <span class="bp">&#8743;</span> <span class="bp">&#172;</span> <span class="n">Tribalanced</span> <span class="o">(</span><span class="n">x</span> <span class="bp">+</span> <span class="mi">1</span><span class="o">)</span> <span class="o">:=</span> <span class="kd">by</span>
   <span class="gr">sorry</span>
 </pre></div>
 </div>
@@ -583,7 +606,301 @@ prime. It was settled in 1732, when Leonhard Euler showed that the next number i
 <a class="reference internal" href="#lem-problem"><span class="std std-numref">Example 5.2.5</span></a>.</p>
 </li>
 </ol>
-<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">:</span> <span class="bp">&#8707;</span> <span class="n">k</span> <span class="o">:</span> <span class="n">&#8469;</span><span class="o">,</span> <span class="n">superpowered</span> <span class="n">k</span> <span class="bp">&#8743;</span> <span class="bp">&#172;</span> <span class="n">superpowered</span> <span class="o">(</span><span class="n">k</span> <span class="bp">+</span> <span class="mi">1</span><span class="o">)</span> <span class="o">:=</span> <span class="kd">by</span>
+<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">:</span> <span class="bp">&#8707;</span> <span class="n">k</span> <span class="o">:</span> <span class="n">&#8469;</span><span class="o">,</span> <span class="n">Superpowered</span> <span class="n">k</span> <span class="bp">&#8743;</span> <span class="bp">&#172;</span> <span class="n">Superpowered</span> <span class="o">(</span><span class="n">k</span> <span class="bp">+</span> <span class="mi">1</span><span class="o">)</span> <span class="o">:=</span> <span class="kd">by</span>
+  <span class="gr">sorry</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="normal-form-for-negations">
+<span id="negation-normalize"></span><h2><span class="section-number">5.3. </span>Normal form for negations<a class="headerlink" href="#normal-form-for-negations" title="Permalink to this headline">&#61633;</a></h2>
+<section id="negation-normalize-intro">
+<span id="id14"></span><h3><span class="section-number">5.3.1. </span>Example<a class="headerlink" href="#negation-normalize-intro" title="Permalink to this headline">&#61633;</a></h3>
+<p>An important family of logical equivalences allows us to &#8220;push&#8221; negations inwards in a logical
+statement.  For example, we proved a rule for negating <span class="math notranslate nohighlight">\(\exists\)</span> in
+<a class="reference internal" href="#quantifier-logical-equivalence"><span class="std std-numref">Example 5.1.6</span></a> (that <span class="math notranslate nohighlight">\(\lnot\exists x, P(x)\)</span> is
+logically equivalent to <span class="math notranslate nohighlight">\(\forall x, \lnot P(x)\)</span>), and a rule for negating <span class="math notranslate nohighlight">\(\lor\)</span> in the
+exercises to <a class="reference internal" href="#logical-equivalence"><span class="std std-numref">Section 5.1</span></a> (that <span class="math notranslate nohighlight">\(\lnot(P \lor Q)\)</span> is
+logically equivalent to <span class="math notranslate nohighlight">\(\lnot P \land \lnot Q\)</span>).</p>
+<p>Let&#8217;s do one more of this form, a rule for negating <span class="math notranslate nohighlight">\(\land\)</span>.  This one requires the use of
+the law of the excluded middle.  I have done the first half and left the second half for you.</p>
+<div class="admonition-problem admonition">
+<p class="admonition-title">Problem</p>
+<p>Show that <span class="math notranslate nohighlight">\(\lnot(P \land Q)\)</span> is logically equivalent to <span class="math notranslate nohighlight">\(\lnot P \lor \lnot Q\)</span>.</p>
+</div>
+<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">(</span><span class="n">P</span> <span class="n">Q</span> <span class="o">:</span> <span class="kt">Prop</span><span class="o">)</span> <span class="o">:</span> <span class="bp">&#172;</span> <span class="o">(</span><span class="n">P</span> <span class="bp">&#8743;</span> <span class="n">Q</span><span class="o">)</span> <span class="bp">&#8596;</span> <span class="o">(</span><span class="bp">&#172;</span> <span class="n">P</span> <span class="bp">&#8744;</span> <span class="bp">&#172;</span> <span class="n">Q</span><span class="o">)</span> <span class="o">:=</span> <span class="kd">by</span>
+  <span class="n">constructor</span>
+  <span class="bp">&#183;</span> <span class="n">intro</span> <span class="n">h</span>
+    <span class="n">by_cases</span> <span class="n">hP</span> <span class="o">:</span> <span class="n">P</span>
+    <span class="bp">&#183;</span> <span class="n">right</span>
+      <span class="n">intro</span> <span class="n">hQ</span>
+      <span class="k">have</span> <span class="n">hPQ</span> <span class="o">:</span> <span class="n">P</span> <span class="bp">&#8743;</span> <span class="n">Q</span>
+      <span class="bp">&#183;</span> <span class="n">constructor</span>
+        <span class="bp">&#183;</span> <span class="n">apply</span> <span class="n">hP</span>
+        <span class="bp">&#183;</span> <span class="n">apply</span> <span class="n">hQ</span>
+      <span class="n">contradiction</span>
+    <span class="bp">&#183;</span> <span class="n">left</span>
+      <span class="n">apply</span> <span class="n">hP</span>
+  <span class="bp">&#183;</span> <span class="gr">sorry</span>
+</pre></div>
+</div>
+<p>Here is the full set of rules, together with their Lean lemma names.  The remaining proofs have been
+left for the exercises to this section.</p>
+<span id="negation-rule-table"></span><table class="colwidths-given docutils align-default" id="id20">
+<caption><span class="caption-number">Table 5.1 </span><span class="caption-text">Logical equivalences for negations</span><a class="headerlink" href="#id20" title="Permalink to this table">&#61633;</a></caption>
+<colgroup>
+<col style="width: 8%" />
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 32%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Operation</p></th>
+<th class="head"><p>Negation-outward</p></th>
+<th class="head"><p>Negation-inward</p></th>
+<th class="head"><p>Lean name</p></th>
+<th class="head"><p>Proof</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><span class="math notranslate nohighlight">\(\lnot\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\lnot(\lnot P)\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(P\)</span></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">not_not</span></code></p></td>
+<td><p><a class="reference internal" href="#negation-normalize-exercises"><span class="std std-numref">Exercises 5.3.6</span></a></p></td>
+</tr>
+<tr class="row-odd"><td><p><span class="math notranslate nohighlight">\(\lor\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\lnot(P \lor Q)\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\lnot P \land \lnot Q\)</span></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">not_or</span></code></p></td>
+<td><p><a class="reference internal" href="#logical-equivalence-exercises"><span class="std std-numref">Exercises 5.1.7</span></a></p></td>
+</tr>
+<tr class="row-even"><td><p><span class="math notranslate nohighlight">\(\land\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\lnot(P \land Q)\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\lnot P \lor \lnot Q\)</span></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">not_and_or</span></code></p></td>
+<td><p><a class="reference internal" href="#negation-normalize-intro"><span class="std std-numref">Example 5.3.1</span></a></p></td>
+</tr>
+<tr class="row-odd"><td><p><span class="math notranslate nohighlight">\(\to\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\lnot(P \to Q)\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(P \land \lnot Q\)</span></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">not_imp</span></code></p></td>
+<td><p><a class="reference internal" href="#negation-normalize-exercises"><span class="std std-numref">Exercises 5.3.6</span></a></p></td>
+</tr>
+<tr class="row-even"><td><p><span class="math notranslate nohighlight">\(\exists\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\lnot(\exists x, P(x))\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\forall x, \lnot P(x)\)</span></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">not_exists</span></code></p></td>
+<td><p><a class="reference internal" href="#quantifier-logical-equivalence"><span class="std std-numref">Example 5.1.6</span></a></p></td>
+</tr>
+<tr class="row-odd"><td><p><span class="math notranslate nohighlight">\(\forall\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\lnot(\forall x, P(x))\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\exists x, \lnot P(x)\)</span></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">not_forall</span></code></p></td>
+<td><p><a class="reference internal" href="#negation-normalize-exercises"><span class="std std-numref">Exercises 5.3.6</span></a></p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="id15">
+<h3><span class="section-number">5.3.2. </span>Example<a class="headerlink" href="#id15" title="Permalink to this headline">&#61633;</a></h3>
+<p>By applying these rules in sequence, any mathematical statement can be brought to a form with
+&#8220;negations on the inside&#8221;.  This is generally the most convenient form for proofs (compare the
+relative awkwardness of the contradiction proofs in <a class="reference internal" href="04_Proofs_with_Structure_II.html#contradiction-hyp"><span class="std std-numref">Section 4.4</span></a> and
+<a class="reference internal" href="04_Proofs_with_Structure_II.html#contradiction"><span class="std std-numref">Section 4.5</span></a> with the proofs in earlier sections).</p>
+<p>Here is an example of this process.</p>
+<div class="admonition-problem admonition">
+<p class="admonition-title">Problem</p>
+<p>Show that <span class="math notranslate nohighlight">\(\lnot(\forall m :\mathbb{Z}, m\ne 2 \to \exists n:\mathbb{Z},n^2 = m)\)</span> is
+logically equivalent to
+<span class="math notranslate nohighlight">\(\exists m :\mathbb{Z},  m\ne 2\land \forall n :\mathbb{Z},n^2 &#8800; m\)</span>.</p>
+</div>
+<p>We can prove this in Lean with a calculation using the <code class="docutils literal notranslate"><span class="pre">rel</span></code> tactic, rewriting at each step by
+one of the rules in <a class="reference internal" href="#negation-rule-table"><span class="std std-numref">Table 5.1</span></a>.</p>
+<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">:</span> <span class="bp">&#172;</span><span class="o">(</span><span class="bp">&#8704;</span> <span class="n">m</span> <span class="o">:</span> <span class="n">&#8484;</span><span class="o">,</span> <span class="n">m</span> <span class="bp">&#8800;</span> <span class="mi">2</span> <span class="bp">&#8594;</span> <span class="bp">&#8707;</span> <span class="n">n</span> <span class="o">:</span> <span class="n">&#8484;</span><span class="o">,</span> <span class="n">n</span> <span class="bp">^</span> <span class="mi">2</span> <span class="bp">=</span> <span class="n">m</span><span class="o">)</span> <span class="bp">&#8596;</span> <span class="bp">&#8707;</span> <span class="n">m</span> <span class="o">:</span> <span class="n">&#8484;</span><span class="o">,</span> <span class="n">m</span> <span class="bp">&#8800;</span> <span class="mi">2</span> <span class="bp">&#8743;</span> <span class="bp">&#8704;</span> <span class="n">n</span> <span class="o">:</span> <span class="n">&#8484;</span><span class="o">,</span> <span class="n">n</span> <span class="bp">^</span> <span class="mi">2</span> <span class="bp">&#8800;</span> <span class="n">m</span> <span class="o">:=</span>
+  <span class="k">calc</span> <span class="bp">&#172;</span><span class="o">(</span><span class="bp">&#8704;</span> <span class="n">m</span> <span class="o">:</span> <span class="n">&#8484;</span><span class="o">,</span> <span class="n">m</span> <span class="bp">&#8800;</span> <span class="mi">2</span> <span class="bp">&#8594;</span> <span class="bp">&#8707;</span> <span class="n">n</span> <span class="o">:</span> <span class="n">&#8484;</span><span class="o">,</span> <span class="n">n</span> <span class="bp">^</span> <span class="mi">2</span> <span class="bp">=</span> <span class="n">m</span><span class="o">)</span>
+      <span class="bp">&#8596;</span> <span class="bp">&#8707;</span> <span class="n">m</span> <span class="o">:</span> <span class="n">&#8484;</span><span class="o">,</span> <span class="bp">&#172;</span><span class="o">(</span><span class="n">m</span> <span class="bp">&#8800;</span> <span class="mi">2</span> <span class="bp">&#8594;</span> <span class="bp">&#8707;</span> <span class="n">n</span> <span class="o">:</span> <span class="n">&#8484;</span><span class="o">,</span> <span class="n">n</span> <span class="bp">^</span> <span class="mi">2</span> <span class="bp">=</span> <span class="n">m</span><span class="o">)</span> <span class="o">:=</span> <span class="kd">by</span> <span class="n">rel</span> <span class="o">[</span><span class="n">not_forall</span><span class="o">]</span>
+    <span class="n">_</span> <span class="bp">&#8596;</span> <span class="bp">&#8707;</span> <span class="n">m</span> <span class="o">:</span> <span class="n">&#8484;</span><span class="o">,</span> <span class="n">m</span> <span class="bp">&#8800;</span> <span class="mi">2</span> <span class="bp">&#8743;</span> <span class="bp">&#172;</span><span class="o">(</span><span class="bp">&#8707;</span> <span class="n">n</span> <span class="o">:</span> <span class="n">&#8484;</span><span class="o">,</span> <span class="n">n</span> <span class="bp">^</span> <span class="mi">2</span> <span class="bp">=</span> <span class="n">m</span><span class="o">)</span> <span class="o">:=</span> <span class="kd">by</span> <span class="n">rel</span> <span class="o">[</span><span class="n">not_imp</span><span class="o">]</span>
+    <span class="n">_</span> <span class="bp">&#8596;</span> <span class="bp">&#8707;</span> <span class="n">m</span> <span class="o">:</span> <span class="n">&#8484;</span><span class="o">,</span> <span class="n">m</span> <span class="bp">&#8800;</span> <span class="mi">2</span> <span class="bp">&#8743;</span> <span class="bp">&#8704;</span> <span class="n">n</span> <span class="o">:</span> <span class="n">&#8484;</span><span class="o">,</span> <span class="n">n</span> <span class="bp">^</span> <span class="mi">2</span> <span class="bp">&#8800;</span> <span class="n">m</span> <span class="o">:=</span> <span class="kd">by</span> <span class="n">rel</span> <span class="o">[</span><span class="n">not_exists</span><span class="o">]</span>
+</pre></div>
+</div>
+</section>
+<section id="id16">
+<h3><span class="section-number">5.3.3. </span>Example<a class="headerlink" href="#id16" title="Permalink to this headline">&#61633;</a></h3>
+<p>Try it yourself!</p>
+<div class="admonition-problem admonition">
+<p class="admonition-title">Problem</p>
+<p>Show that <span class="math notranslate nohighlight">\(\lnot(\forall n :\mathbb{Z}, \exists m : \mathbb{Z}, n^2 &lt; m &lt; (n+1)^2)\)</span> is
+logically equivalent to
+<span class="math notranslate nohighlight">\(\exists n :\mathbb{Z}, \forall m : \mathbb{Z}, n^2 \geq m \lor m \geq (n+1)^2\)</span>.</p>
+</div>
+<p>In this problem, in addition to the rules from <a class="reference internal" href="#negation-rule-table"><span class="std std-numref">Table 5.1</span></a>, you&#8217;ll need
+to use the lemma <code class="docutils literal notranslate"><span class="pre">not_lt</span></code> to convert the negation of a <span class="math notranslate nohighlight">\(&lt;\)</span> to a <span class="math notranslate nohighlight">\(\geq\)</span>.</p>
+<p>Also notice that <span class="math notranslate nohighlight">\(n^2 &lt; m &lt; (n+1)^2\)</span> is shorthand for <span class="math notranslate nohighlight">\(n^2 &lt; m \land m &lt; (n+1)^2\)</span>.
+We have encountered this point before, in <a class="reference internal" href="01_Proofs_by_Calculation.html#shorthand"><span class="std std-numref">Example 1.4.4</span></a>.</p>
+<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">:</span> <span class="bp">&#172;</span><span class="o">(</span><span class="bp">&#8704;</span> <span class="n">n</span> <span class="o">:</span> <span class="n">&#8484;</span><span class="o">,</span> <span class="bp">&#8707;</span> <span class="n">m</span> <span class="o">:</span> <span class="n">&#8484;</span><span class="o">,</span> <span class="n">n</span> <span class="bp">^</span> <span class="mi">2</span> <span class="bp">&lt;</span> <span class="n">m</span> <span class="bp">&#8743;</span> <span class="n">m</span> <span class="bp">&lt;</span> <span class="o">(</span><span class="n">n</span> <span class="bp">+</span> <span class="mi">1</span><span class="o">)</span> <span class="bp">^</span> <span class="mi">2</span><span class="o">)</span>
+    <span class="bp">&#8596;</span> <span class="bp">&#8707;</span> <span class="n">n</span> <span class="o">:</span> <span class="n">&#8484;</span><span class="o">,</span> <span class="bp">&#8704;</span> <span class="n">m</span> <span class="o">:</span> <span class="n">&#8484;</span><span class="o">,</span> <span class="n">n</span> <span class="bp">^</span> <span class="mi">2</span> <span class="bp">&#8805;</span> <span class="n">m</span> <span class="bp">&#8744;</span> <span class="n">m</span> <span class="bp">&#8805;</span> <span class="o">(</span><span class="n">n</span> <span class="bp">+</span> <span class="mi">1</span><span class="o">)</span> <span class="bp">^</span> <span class="mi">2</span> <span class="o">:=</span>
+  <span class="gr">sorry</span>
+</pre></div>
+</div>
+</section>
+<section id="id17">
+<h3><span class="section-number">5.3.4. </span>Example<a class="headerlink" href="#id17" title="Permalink to this headline">&#61633;</a></h3>
+<p>This process is clearly very formulaic.  You should learn to do it in your head.
+And as usual, when a proof process is formulaic, there is a Lean tactic to do it for us.  The tactic
+is called <code class="docutils literal notranslate"><span class="pre">push_neg</span></code>.  Here it is, with output, on the last two examples:</p>
+<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="bp">#</span><span class="n">push_neg</span> <span class="bp">&#172;</span><span class="o">(</span><span class="bp">&#8704;</span> <span class="n">m</span> <span class="o">:</span> <span class="n">&#8484;</span><span class="o">,</span> <span class="n">m</span> <span class="bp">&#8800;</span> <span class="mi">2</span> <span class="bp">&#8594;</span> <span class="bp">&#8707;</span> <span class="n">n</span> <span class="o">:</span> <span class="n">&#8484;</span><span class="o">,</span> <span class="n">n</span> <span class="bp">^</span> <span class="mi">2</span> <span class="bp">=</span> <span class="n">m</span><span class="o">)</span>
+  <span class="c1">-- &#8707; m, m &#8800; 2 &#8743; &#8704; (n : &#8484;), n ^ 2 &#8800; m</span>
+
+<span class="bp">#</span><span class="n">push_neg</span> <span class="bp">&#172;</span><span class="o">(</span><span class="bp">&#8704;</span> <span class="n">n</span> <span class="o">:</span> <span class="n">&#8484;</span><span class="o">,</span> <span class="bp">&#8707;</span> <span class="n">m</span> <span class="o">:</span> <span class="n">&#8484;</span><span class="o">,</span> <span class="n">n</span> <span class="bp">^</span> <span class="mi">2</span> <span class="bp">&lt;</span> <span class="n">m</span> <span class="bp">&#8743;</span> <span class="n">m</span> <span class="bp">&lt;</span> <span class="o">(</span><span class="n">n</span> <span class="bp">+</span> <span class="mi">1</span><span class="o">)</span> <span class="bp">^</span> <span class="mi">2</span><span class="o">)</span>
+  <span class="c1">-- &#8707; n, &#8704; (m : &#8484;), n ^ 2 &lt; m &#8594; (n + 1) ^ 2 &#8804; m</span>
+</pre></div>
+</div>
+<p>Work out the following negations in your head, then check your work using the Lean output.</p>
+<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="bp">#</span><span class="n">push_neg</span> <span class="bp">&#172;</span><span class="o">(</span><span class="bp">&#8707;</span> <span class="n">m</span> <span class="n">n</span> <span class="o">:</span> <span class="n">&#8484;</span><span class="o">,</span> <span class="bp">&#8704;</span> <span class="n">t</span> <span class="o">:</span> <span class="n">&#8477;</span><span class="o">,</span> <span class="n">m</span> <span class="bp">&lt;</span> <span class="n">t</span> <span class="bp">&#8743;</span> <span class="n">t</span> <span class="bp">&lt;</span> <span class="n">n</span><span class="o">)</span>
+<span class="bp">#</span><span class="n">push_neg</span> <span class="bp">&#172;</span><span class="o">(</span><span class="bp">&#8704;</span> <span class="n">a</span> <span class="o">:</span> <span class="n">&#8469;</span><span class="o">,</span> <span class="bp">&#8707;</span> <span class="n">x</span> <span class="n">y</span> <span class="o">:</span> <span class="n">&#8469;</span><span class="o">,</span> <span class="n">x</span> <span class="bp">*</span> <span class="n">y</span> <span class="bp">&#8739;</span> <span class="n">a</span> <span class="bp">&#8594;</span> <span class="n">x</span> <span class="bp">&#8739;</span> <span class="n">a</span> <span class="bp">&#8743;</span> <span class="n">y</span> <span class="bp">&#8739;</span> <span class="n">a</span><span class="o">)</span>
+<span class="bp">#</span><span class="n">push_neg</span> <span class="bp">&#172;</span><span class="o">(</span><span class="bp">&#8704;</span> <span class="n">m</span> <span class="o">:</span> <span class="n">&#8484;</span><span class="o">,</span> <span class="n">m</span> <span class="bp">&#8800;</span> <span class="mi">2</span> <span class="bp">&#8594;</span> <span class="bp">&#8707;</span> <span class="n">n</span> <span class="o">:</span> <span class="n">&#8484;</span><span class="o">,</span> <span class="n">n</span> <span class="bp">^</span> <span class="mi">2</span> <span class="bp">=</span> <span class="n">m</span><span class="o">)</span>
+</pre></div>
+</div>
+<p>There are more exercises of this style at the end of the section.</p>
+</section>
+<section id="id18">
+<h3><span class="section-number">5.3.5. </span>Example<a class="headerlink" href="#id18" title="Permalink to this headline">&#61633;</a></h3>
+<p>Let&#8217;s show how the process of pushing negations inwards is useful in regular proofs.  We return to
+the problem from <a class="reference internal" href="04_Proofs_with_Structure_II.html#sq-ne-two"><span class="std std-numref">Example 4.5.4</span></a>.</p>
+<div class="admonition-problem admonition">
+<p class="admonition-title">Problem</p>
+<p>Show that there does not exist a natural number <span class="math notranslate nohighlight">\(n\)</span>, such that <span class="math notranslate nohighlight">\(n^2=2\)</span>.</p>
+</div>
+<p>At the time, we observed that the solution to this problem seemed very similar to that of
+<a class="reference internal" href="02_Proofs_with_Structure.html#sq-ne-two"><span class="std std-numref">Example 2.3.2</span></a>.</p>
+<div class="admonition-problem admonition">
+<p class="admonition-title">Problem</p>
+<p>Let <span class="math notranslate nohighlight">\(n\)</span> be any natural number.  Show that <span class="math notranslate nohighlight">\(n ^ 2 \ne 2\)</span>.</p>
+</div>
+<p>Now we can understand why: the statements of the two problems are
+logically equivalent!   The mathematical ideas in the two solutions are the same, but
+<a class="reference internal" href="02_Proofs_with_Structure.html#sq-ne-two"><span class="std std-numref">Example 2.3.2</span></a>&#8217;s solution is conceptually simpler because it doesn&#8217;t involve a
+contradiction.  We can give a more comprehensible solution to
+<a class="reference internal" href="04_Proofs_with_Structure_II.html#sq-ne-two"><span class="std std-numref">Example 4.5.4</span></a> by re-stating it in the form <a class="reference internal" href="02_Proofs_with_Structure.html#sq-ne-two"><span class="std std-numref">Example 2.3.2</span></a>
+and then writing out <a class="reference internal" href="02_Proofs_with_Structure.html#sq-ne-two"><span class="std std-numref">Example 2.3.2</span></a>&#8217;s solution.</p>
+<div class="admonition-solution admonition">
+<p class="admonition-title">Solution</p>
+<p>It suffices to prove that for any natural number <span class="math notranslate nohighlight">\(n\)</span>, we have <span class="math notranslate nohighlight">\(n ^ 2 \ne 2\)</span>.</p>
+<p>We consider separately the cases <span class="math notranslate nohighlight">\(n \le 1\)</span> and <span class="math notranslate nohighlight">\(2 \le n\)</span>.</p>
+<p><strong>Case 1</strong> (<span class="math notranslate nohighlight">\(n \le 1\)</span>):  It suffices to prove that <span class="math notranslate nohighlight">\(n ^ 2 &lt; 2\)</span>.  Indeed,</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}n ^ 2 &amp; \le 1 ^ 2\\
+&amp;&lt;2.\end{split}\]</div>
+<p><strong>Case 2</strong> (<span class="math notranslate nohighlight">\(2 \le n\)</span>):  It suffices to prove that <span class="math notranslate nohighlight">\(n ^ 2 &gt; 2\)</span>.  Indeed,</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}2 &amp;&lt; 2 ^ 2\\
+&amp; \le n ^ 2.\end{split}\]</div>
+</div>
+<p>Here&#8217;s how this looks in Lean.  I left a bit for you.</p>
+<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">:</span> <span class="bp">&#172;</span> <span class="o">(</span><span class="bp">&#8707;</span> <span class="n">n</span> <span class="o">:</span> <span class="n">&#8469;</span><span class="o">,</span> <span class="n">n</span> <span class="bp">^</span> <span class="mi">2</span> <span class="bp">=</span> <span class="mi">2</span><span class="o">)</span> <span class="o">:=</span> <span class="kd">by</span>
+  <span class="n">push_neg</span>
+  <span class="n">intro</span> <span class="n">n</span>
+  <span class="k">have</span> <span class="n">hn</span> <span class="o">:</span> <span class="n">n</span> <span class="bp">&#8804;</span> <span class="mi">1</span> <span class="bp">&#8744;</span> <span class="mi">2</span> <span class="bp">&#8804;</span> <span class="n">n</span> <span class="o">:=</span> <span class="n">le_or_lt</span> <span class="n">n</span> <span class="mi">1</span>
+  <span class="n">obtain</span> <span class="n">hn</span> <span class="bp">|</span> <span class="n">hn</span> <span class="o">:=</span> <span class="n">hn</span>
+  <span class="bp">&#183;</span> <span class="n">apply</span> <span class="n">ne_of_lt</span>
+    <span class="k">calc</span>
+      <span class="n">n</span> <span class="bp">^</span> <span class="mi">2</span> <span class="bp">&#8804;</span> <span class="mi">1</span> <span class="bp">^</span> <span class="mi">2</span> <span class="o">:=</span> <span class="kd">by</span> <span class="n">rel</span> <span class="o">[</span><span class="n">hn</span><span class="o">]</span>
+      <span class="n">_</span> <span class="bp">&lt;</span> <span class="mi">2</span> <span class="o">:=</span> <span class="kd">by</span> <span class="n">numbers</span>
+  <span class="bp">&#183;</span> <span class="gr">sorry</span>
+</pre></div>
+</div>
+</section>
+<section id="negation-normalize-exercises">
+<span id="id19"></span><h3><span class="section-number">5.3.6. </span>Exercises<a class="headerlink" href="#negation-normalize-exercises" title="Permalink to this headline">&#61633;</a></h3>
+<ol class="arabic">
+<li><p>Show that <span class="math notranslate nohighlight">\(\lnot(\lnot P)\)</span> is logically equivalent to <span class="math notranslate nohighlight">\(P\)</span>.</p>
+<p>You will need to use the law of the excluded middle.</p>
+</li>
+</ol>
+<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">(</span><span class="n">P</span> <span class="o">:</span> <span class="kt">Prop</span><span class="o">)</span> <span class="o">:</span> <span class="bp">&#172;</span> <span class="o">(</span><span class="bp">&#172;</span> <span class="n">P</span><span class="o">)</span> <span class="bp">&#8596;</span> <span class="n">P</span> <span class="o">:=</span> <span class="kd">by</span>
+  <span class="gr">sorry</span>
+</pre></div>
+</div>
+<ol class="arabic" start="2">
+<li><p>Prove that <span class="math notranslate nohighlight">\(\lnot(P \to Q)\)</span> is logically equivalent to <span class="math notranslate nohighlight">\(P \land \lnot Q\)</span>.</p>
+<p>You will need to use the law of the excluded middle.</p>
+</li>
+</ol>
+<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">(</span><span class="n">P</span> <span class="n">Q</span> <span class="o">:</span> <span class="kt">Prop</span><span class="o">)</span> <span class="o">:</span> <span class="bp">&#172;</span> <span class="o">(</span><span class="n">P</span> <span class="bp">&#8594;</span> <span class="n">Q</span><span class="o">)</span> <span class="bp">&#8596;</span> <span class="o">(</span><span class="n">P</span> <span class="bp">&#8743;</span> <span class="bp">&#172;</span> <span class="n">Q</span><span class="o">)</span> <span class="o">:=</span> <span class="kd">by</span>
+  <span class="gr">sorry</span>
+</pre></div>
+</div>
+<ol class="arabic" start="3">
+<li><p>Show that <span class="math notranslate nohighlight">\(\lnot\forall x, P(x)\)</span> is logically equivalent to <span class="math notranslate nohighlight">\(\exists x, \lnot P(x)\)</span>.</p>
+<p>You will need to use the law of the excluded middle.</p>
+</li>
+</ol>
+<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">(</span><span class="n">P</span> <span class="o">:</span> <span class="n">&#945;</span> <span class="bp">&#8594;</span> <span class="kt">Prop</span><span class="o">)</span> <span class="o">:</span> <span class="bp">&#172;</span> <span class="o">(</span><span class="bp">&#8704;</span> <span class="n">x</span><span class="o">,</span> <span class="n">P</span> <span class="n">x</span><span class="o">)</span> <span class="bp">&#8596;</span> <span class="bp">&#8707;</span> <span class="n">x</span><span class="o">,</span> <span class="bp">&#172;</span> <span class="n">P</span> <span class="n">x</span> <span class="o">:=</span> <span class="kd">by</span>
+  <span class="gr">sorry</span>
+</pre></div>
+</div>
+<ol class="arabic simple" start="4">
+<li><p>Show step by step using the rules in <a class="reference internal" href="#negation-rule-table"><span class="std std-numref">Table 5.1</span></a> that
+<span class="math notranslate nohighlight">\(\lnot(\forall a b :\mathbb{Z}, ab=1 \to a = 1 \lor b = 1)\)</span> is logically equivalent to
+<span class="math notranslate nohighlight">\(\exists a b :\mathbb{Z},  ab = 1\land a \ne 1 \land b \ne 1\)</span>.</p></li>
+</ol>
+<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">:</span>
+    <span class="o">(</span><span class="bp">&#172;</span> <span class="bp">&#8704;</span> <span class="n">a</span> <span class="n">b</span> <span class="o">:</span> <span class="n">&#8484;</span><span class="o">,</span> <span class="n">a</span> <span class="bp">*</span> <span class="n">b</span> <span class="bp">=</span> <span class="mi">1</span> <span class="bp">&#8594;</span> <span class="n">a</span> <span class="bp">=</span> <span class="mi">1</span> <span class="bp">&#8744;</span> <span class="n">b</span> <span class="bp">=</span> <span class="mi">1</span><span class="o">)</span> <span class="bp">&#8596;</span> <span class="bp">&#8707;</span> <span class="n">a</span> <span class="n">b</span> <span class="o">:</span> <span class="n">&#8484;</span><span class="o">,</span> <span class="n">a</span> <span class="bp">*</span> <span class="n">b</span> <span class="bp">=</span> <span class="mi">1</span> <span class="bp">&#8743;</span> <span class="n">a</span> <span class="bp">&#8800;</span> <span class="mi">1</span> <span class="bp">&#8743;</span> <span class="n">b</span> <span class="bp">&#8800;</span> <span class="mi">1</span> <span class="o">:=</span>
+  <span class="gr">sorry</span>
+</pre></div>
+</div>
+<ol class="arabic simple" start="5">
+<li><p>Show step by step using the rules in <a class="reference internal" href="#negation-rule-table"><span class="std std-numref">Table 5.1</span></a> that
+<span class="math notranslate nohighlight">\(\lnot(\exists x:\mathbb{R},\forall y:\mathbb{R}, y \le x)\)</span>
+is logically equivalent to
+<span class="math notranslate nohighlight">\(\forall x:\mathbb{R},\exists y:\mathbb{R}, y &gt; x\)</span>.</p></li>
+</ol>
+<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">:</span> <span class="o">(</span><span class="bp">&#172;</span> <span class="bp">&#8707;</span> <span class="n">x</span> <span class="o">:</span> <span class="n">&#8477;</span><span class="o">,</span> <span class="bp">&#8704;</span> <span class="n">y</span> <span class="o">:</span> <span class="n">&#8477;</span><span class="o">,</span> <span class="n">y</span> <span class="bp">&#8804;</span> <span class="n">x</span><span class="o">)</span> <span class="bp">&#8596;</span> <span class="o">(</span><span class="bp">&#8704;</span> <span class="n">x</span> <span class="o">:</span> <span class="n">&#8477;</span><span class="o">,</span> <span class="bp">&#8707;</span> <span class="n">y</span> <span class="o">:</span> <span class="n">&#8477;</span><span class="o">,</span> <span class="n">y</span> <span class="bp">&gt;</span> <span class="n">x</span><span class="o">)</span> <span class="o">:=</span>
+  <span class="gr">sorry</span>
+</pre></div>
+</div>
+<ol class="arabic simple" start="6">
+<li><p>Show step by step using the rules in <a class="reference internal" href="#negation-rule-table"><span class="std std-numref">Table 5.1</span></a> that
+<span class="math notranslate nohighlight">\(\lnot(\exists m:\mathbb{Z},\forall n:\mathbb{Z},m=n+5)\)</span>
+is logically equivalent to
+<span class="math notranslate nohighlight">\(\forall m:\mathbb{Z},\exists n:\mathbb{Z},m\ne n+5\)</span>.</p></li>
+</ol>
+<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">:</span> <span class="bp">&#172;</span> <span class="o">(</span><span class="bp">&#8707;</span> <span class="n">m</span> <span class="o">:</span> <span class="n">&#8484;</span><span class="o">,</span> <span class="bp">&#8704;</span> <span class="n">n</span> <span class="o">:</span> <span class="n">&#8484;</span><span class="o">,</span> <span class="n">m</span> <span class="bp">=</span> <span class="n">n</span> <span class="bp">+</span> <span class="mi">5</span><span class="o">)</span> <span class="bp">&#8596;</span> <span class="bp">&#8704;</span> <span class="n">m</span> <span class="o">:</span> <span class="n">&#8484;</span><span class="o">,</span> <span class="bp">&#8707;</span> <span class="n">n</span> <span class="o">:</span> <span class="n">&#8484;</span><span class="o">,</span> <span class="n">m</span> <span class="bp">&#8800;</span> <span class="n">n</span> <span class="bp">+</span> <span class="mi">5</span> <span class="o">:=</span>
+  <span class="gr">sorry</span>
+</pre></div>
+</div>
+<ol class="arabic simple" start="7">
+<li><p>Work out the following negations in your head, then check your work using the Lean output.</p></li>
+</ol>
+<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="bp">#</span><span class="n">push_neg</span> <span class="bp">&#172;</span><span class="o">(</span><span class="bp">&#8704;</span> <span class="n">n</span> <span class="o">:</span> <span class="n">&#8469;</span><span class="o">,</span> <span class="n">n</span> <span class="bp">&gt;</span> <span class="mi">0</span> <span class="bp">&#8594;</span> <span class="bp">&#8707;</span> <span class="n">k</span> <span class="n">l</span> <span class="o">:</span> <span class="n">&#8469;</span><span class="o">,</span> <span class="n">k</span> <span class="bp">&lt;</span> <span class="n">n</span> <span class="bp">&#8743;</span> <span class="n">l</span> <span class="bp">&lt;</span> <span class="n">n</span> <span class="bp">&#8743;</span> <span class="n">k</span> <span class="bp">&#8800;</span> <span class="n">l</span><span class="o">)</span>
+<span class="bp">#</span><span class="n">push_neg</span> <span class="bp">&#172;</span><span class="o">(</span><span class="bp">&#8704;</span> <span class="n">m</span> <span class="o">:</span> <span class="n">&#8484;</span><span class="o">,</span> <span class="n">m</span> <span class="bp">&#8800;</span> <span class="mi">2</span> <span class="bp">&#8594;</span> <span class="bp">&#8707;</span> <span class="n">n</span> <span class="o">:</span> <span class="n">&#8484;</span><span class="o">,</span> <span class="n">n</span> <span class="bp">^</span> <span class="mi">2</span> <span class="bp">=</span> <span class="n">m</span><span class="o">)</span>
+<span class="bp">#</span><span class="n">push_neg</span> <span class="bp">&#172;</span><span class="o">(</span><span class="bp">&#8707;</span> <span class="n">x</span> <span class="o">:</span> <span class="n">&#8477;</span><span class="o">,</span> <span class="bp">&#8704;</span> <span class="n">y</span> <span class="o">:</span> <span class="n">&#8477;</span><span class="o">,</span> <span class="bp">&#8707;</span> <span class="n">m</span> <span class="o">:</span> <span class="n">&#8484;</span><span class="o">,</span> <span class="n">x</span> <span class="bp">&lt;</span> <span class="n">y</span> <span class="bp">*</span> <span class="n">m</span> <span class="bp">&#8743;</span> <span class="n">y</span> <span class="bp">*</span> <span class="n">m</span> <span class="bp">&lt;</span> <span class="n">m</span><span class="o">)</span>
+<span class="bp">#</span><span class="n">push_neg</span> <span class="bp">&#172;</span><span class="o">(</span><span class="bp">&#8707;</span> <span class="n">x</span> <span class="o">:</span> <span class="n">&#8477;</span><span class="o">,</span> <span class="bp">&#8704;</span> <span class="n">q</span> <span class="o">:</span> <span class="n">&#8477;</span><span class="o">,</span> <span class="n">q</span> <span class="bp">&gt;</span> <span class="n">x</span> <span class="bp">&#8594;</span> <span class="bp">&#8707;</span> <span class="n">m</span> <span class="o">:</span> <span class="n">&#8469;</span><span class="o">,</span> <span class="n">q</span> <span class="bp">^</span> <span class="n">m</span> <span class="bp">&gt;</span> <span class="n">x</span><span class="o">)</span>
+</pre></div>
+</div>
+<ol class="arabic" start="8">
+<li><p>Show that it is not true that for all real numbers <span class="math notranslate nohighlight">\(x\)</span>, we have <span class="math notranslate nohighlight">\(x^2\geq x\)</span>.</p>
+<p>(We solved this already in <a class="reference internal" href="04_Proofs_with_Structure_II.html#contradiction-ex1"><span class="std std-numref">Example 4.5.1</span></a>, but this time, give a proof
+which begins with <code class="docutils literal notranslate"><span class="pre">push_neg</span></code>.)</p>
+</li>
+</ol>
+<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">:</span> <span class="bp">&#172;</span> <span class="o">(</span><span class="bp">&#8704;</span> <span class="n">x</span> <span class="o">:</span> <span class="n">&#8477;</span><span class="o">,</span> <span class="n">x</span> <span class="bp">^</span> <span class="mi">2</span> <span class="bp">&#8805;</span> <span class="n">x</span><span class="o">)</span> <span class="o">:=</span> <span class="kd">by</span>
+  <span class="n">push_neg</span>
+  <span class="gr">sorry</span>
+</pre></div>
+</div>
+<ol class="arabic" start="9">
+<li><p>Let <span class="math notranslate nohighlight">\(p\)</span> and <span class="math notranslate nohighlight">\(k\)</span> be natural numbers, with <span class="math notranslate nohighlight">\(k\ne 1\)</span>, <span class="math notranslate nohighlight">\(k\ne p\)</span>, and
+<span class="math notranslate nohighlight">\(k\mid p\)</span>.  Show that <span class="math notranslate nohighlight">\(p\)</span> is not prime.</p>
+<p>(We solved this already in <a class="reference internal" href="04_Proofs_with_Structure_II.html#not-prime-proof"><span class="std std-numref">Example 4.5.7</span></a>, but this time, give a proof
+which begins with <code class="docutils literal notranslate"><span class="pre">push_neg</span></code>.)</p>
+</li>
+</ol>
+<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">{</span><span class="n">p</span> <span class="o">:</span> <span class="n">&#8469;</span><span class="o">}</span> <span class="o">(</span><span class="n">k</span> <span class="o">:</span> <span class="n">&#8469;</span><span class="o">)</span> <span class="o">(</span><span class="n">hk1</span> <span class="o">:</span> <span class="n">k</span> <span class="bp">&#8800;</span> <span class="mi">1</span><span class="o">)</span> <span class="o">(</span><span class="n">hkp</span> <span class="o">:</span> <span class="n">k</span> <span class="bp">&#8800;</span> <span class="n">p</span><span class="o">)</span> <span class="o">(</span><span class="n">hk</span> <span class="o">:</span> <span class="n">k</span> <span class="bp">&#8739;</span> <span class="n">p</span><span class="o">)</span> <span class="o">:</span> <span class="bp">&#172;</span> <span class="n">Prime</span> <span class="n">p</span> <span class="o">:=</span> <span class="kd">by</span>
+  <span class="n">dsimp</span> <span class="o">[</span><span class="n">Prime</span><span class="o">]</span>
+  <span class="n">push_neg</span>
   <span class="gr">sorry</span>
 </pre></div>
 </div>

@@ -12,7 +12,7 @@ syntax (name := ModRelSyntax) "mod_rel" " [" term,* "] " : tactic
 
 elab_rules : tactic | `(tactic| mod_rel [$t,*]) => do
   liftMetaTactic <|
-    Lean.MVarId.Rel (fun _ => pure none) `mod_rules t.getElems.toList
+    Lean.MVarId.Rel `mod_rules t.getElems.toList
       "cannot prove this by 'substituting' the listed relationships"
 
 macro_rules | `(tactic| rel [$t,*]) => `(tactic| mod_rel [$t,*])
@@ -21,7 +21,7 @@ syntax (name := ModExtraSyntax) "mod_extra" : tactic
 
 elab_rules : tactic | `(tactic| mod_extra) => do
   liftMetaTactic <|
-    Lean.MVarId.Rel (fun _ => pure none) `mod_extra []
+    Lean.MVarId.Rel `mod_extra []
       "the two sides don't differ by a neutral quantity for the relation"
 
 macro_rules | `(tactic| extra) => `(tactic| mod_extra)

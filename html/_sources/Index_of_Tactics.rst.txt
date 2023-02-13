@@ -73,7 +73,12 @@ Proves numeric facts, like :math:`3\cdot 12 < 13 + 25` or :math:`3\cdot 5+1=4\cd
 Takes apart a hypothesis of the form "or" (:math:`\lor`), "and" (:math:`\land`) or "there exists"
 (:math:`\exists`).
 
-.. rubric:: *rel* (first use: :numref:`Section %s <proving_inequalities>`; for congruences: :numref:`Section %s <using_modular>`)
+.. rubric:: push_neg (first use: :numref:`Section %s <negation_normalize>`)
+
+Converts a hypothesis or goal to a logically equivalent form with negations pushed inwards as far
+as possible.
+
+.. rubric:: *rel* (first use: :numref:`Section %s <proving_inequalities>`; for congruences: :numref:`Section %s <using_modular>`; for logical equivalences: :numref:`Section %s <negation_normalize>`)
 
 A "substitution-like" tactic for inequalities, or other relations such as congruences: looks for
 the left-hand side of a specified inequality (or congruence, ...) fact in the goal, and replaces it

@@ -13,6 +13,8 @@ register_tag_attr mod_rules
 
 register_tag_attr mod_extra
 
+register_tag_attr iff_rules
+
 syntax (name := RelSyntax) "rel" " [" term,* "] " : tactic
 syntax (name := ExtraSyntax) "extra" : tactic
 
@@ -21,14 +23,15 @@ open Lean Mathlib Tactic
 def RelConfig : SolveByElim.Config :=
 { transparency := .instances
   -- On applying a lemma or hypothesis successfully, don't backtrack
-  discharge := fun _ => pure none
   failAtMaxDepth := false
   maxDepth := 50 }
 
-def Lean.MVarId.Rel (disch : MVarId → MetaM (Option (List MVarId))) (attr : Name)
-    (add : List Term) (m : MessageData) (g : MVarId) :
+def Lean.MVarId.Rel (attr : Name) (add : List Term) (m : MessageData)
+    (disch : MVarId → MetaM (Option (List MVarId)) := fun _ => pure none)
+    (proc : List MVarId → List MVarId → MetaM (Option (List MVarId)) := fun _ _ => pure none)
+    (g : MVarId) :
     MetaM (List MVarId) := do
-  let cfg : SolveByElim.Config := { RelConfig with discharge := disch }
+  let cfg : SolveByElim.Config := { RelConfig with discharge := disch, proc := proc }
   let [] ← SolveByElim.solveByElim.processSyntax cfg true false add [] #[mkIdent attr] [g]
     | throwError m
   return []

@@ -89,10 +89,10 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#proof-by-contradiction">4.5. Proof by contradiction</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#id33">4.5.1. Example</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#contradiction-ex1">4.5.1. Example</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#id34">4.5.2. Example</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#id35">4.5.3. Example</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id36">4.5.4. Example</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#sq-ne-two">4.5.4. Example</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#even-iff-not-odd">4.5.5. Example</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#id38">4.5.6. Example</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#not-prime-proof">4.5.7. Example</a></li>
@@ -405,9 +405,6 @@ of <span class="math notranslate nohighlight">\(p\)</span> are <span class="math
   <span class="mi">2</span> <span class="bp">&#8804;</span> <span class="n">p</span> <span class="bp">&#8743;</span> <span class="bp">&#8704;</span> <span class="n">m</span> <span class="o">:</span> <span class="n">&#8469;</span><span class="o">,</span> <span class="n">m</span> <span class="bp">&#8739;</span> <span class="n">p</span> <span class="bp">&#8594;</span> <span class="n">m</span> <span class="bp">=</span> <span class="mi">1</span> <span class="bp">&#8744;</span> <span class="n">m</span> <span class="bp">=</span> <span class="n">p</span>
 </pre></div>
 </div>
-<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span>
-</pre></div>
-</div>
 <div class="admonition-problem admonition">
 <p class="admonition-title">Problem</p>
 <p>Show that 2 is prime.</p>
@@ -427,16 +424,16 @@ argument.  It also works for integers, but it doesn&#8217;t work for rational nu
 why?</p>
 <div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">:</span> <span class="n">Prime</span> <span class="mi">2</span> <span class="o">:=</span> <span class="kd">by</span>
   <span class="n">constructor</span>
-  <span class="bp">&#183;</span> <span class="n">numbers</span>
+  <span class="bp">&#183;</span> <span class="n">numbers</span> <span class="c1">-- show `2 &#8804; 2`</span>
   <span class="n">intro</span> <span class="n">m</span> <span class="n">hmp</span>
   <span class="k">have</span> <span class="n">hp</span> <span class="o">:</span> <span class="mi">0</span> <span class="bp">&lt;</span> <span class="mi">2</span> <span class="o">:=</span> <span class="kd">by</span> <span class="n">numbers</span>
   <span class="k">have</span> <span class="n">hmp_le</span> <span class="o">:</span> <span class="n">m</span> <span class="bp">&#8804;</span> <span class="mi">2</span> <span class="o">:=</span> <span class="n">Nat.le_of_dvd</span> <span class="n">hp</span> <span class="n">hmp</span>
   <span class="k">have</span> <span class="n">h1m</span> <span class="o">:</span> <span class="mi">1</span> <span class="bp">&#8804;</span> <span class="n">m</span> <span class="o">:=</span> <span class="n">Nat.pos_of_dvd_of_pos</span> <span class="n">hmp</span> <span class="n">hp</span>
   <span class="n">interval_cases</span> <span class="n">m</span>
   <span class="bp">&#183;</span> <span class="n">left</span>
-    <span class="n">numbers</span>
+    <span class="n">numbers</span> <span class="c1">-- show `1 = 1`</span>
   <span class="bp">&#183;</span> <span class="n">right</span>
-    <span class="n">numbers</span>
+    <span class="n">numbers</span> <span class="c1">-- show `2 = 2`</span>
 </pre></div>
 </div>
 <p>This lemma is available for future use in Lean under the name <code class="docutils literal notranslate"><span class="pre">prime_two</span></code>.</p>
@@ -455,7 +452,7 @@ show that it has a factor which is neither 1 nor <span class="math notranslate n
 </div>
 <p>We will prove this test carefully in <a class="reference internal" href="#not-prime-proof"><span class="std std-numref">Example 4.5.7</span></a>.  For now, feel free to
 use it.  In Lean the lemma name is <code class="docutils literal notranslate"><span class="pre">not_prime</span></code>.</p>
-<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">:</span> <span class="bp">&#172;</span><span class="o">(</span><span class="n">Prime</span> <span class="mi">6</span><span class="o">)</span> <span class="o">:=</span> <span class="kd">by</span>
+<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">:</span> <span class="bp">&#172;</span> <span class="n">Prime</span> <span class="mi">6</span> <span class="o">:=</span> <span class="kd">by</span>
   <span class="n">apply</span> <span class="n">not_prime</span> <span class="mi">2</span>
   <span class="bp">&#183;</span> <span class="n">numbers</span> <span class="c1">-- show `2 &#8800; 1`</span>
   <span class="bp">&#183;</span> <span class="n">numbers</span> <span class="c1">-- show `2 &#8800; 6`</span>
@@ -1395,8 +1392,8 @@ then rule out one of them. (You may find it convenient to deduce a numeric contr
 </section>
 <section id="proof-by-contradiction">
 <span id="contradiction"></span><h2><span class="section-number">4.5. </span>Proof by contradiction<a class="headerlink" href="#proof-by-contradiction" title="Permalink to this headline">&#61633;</a></h2>
-<section id="id33">
-<h3><span class="section-number">4.5.1. </span>Example<a class="headerlink" href="#id33" title="Permalink to this headline">&#61633;</a></h3>
+<section id="contradiction-ex1">
+<span id="id33"></span><h3><span class="section-number">4.5.1. </span>Example<a class="headerlink" href="#contradiction-ex1" title="Permalink to this headline">&#61633;</a></h3>
 <div class="admonition-problem admonition">
 <p class="admonition-title">Problem</p>
 <p>Show that it is not true that for all real numbers <span class="math notranslate nohighlight">\(x\)</span>, we have <span class="math notranslate nohighlight">\(x^2\geq x\)</span>.</p>
@@ -1474,8 +1471,8 @@ possible for both <span class="math notranslate nohighlight">\(x\)</span> and <s
 </pre></div>
 </div>
 </section>
-<section id="id36">
-<h3><span class="section-number">4.5.4. </span>Example<a class="headerlink" href="#id36" title="Permalink to this headline">&#61633;</a></h3>
+<section id="sq-ne-two">
+<span id="id36"></span><h3><span class="section-number">4.5.4. </span>Example<a class="headerlink" href="#sq-ne-two" title="Permalink to this headline">&#61633;</a></h3>
 <div class="admonition-problem admonition">
 <p class="admonition-title">Problem</p>
 <p>Show that there does not exist a natural number <span class="math notranslate nohighlight">\(n\)</span>, such that <span class="math notranslate nohighlight">\(n^2=2\)</span>.</p>
@@ -1603,7 +1600,7 @@ We consider cases according to the residue of <span class="math notranslate nohi
 <span class="math notranslate nohighlight">\(x=1\)</span> or <span class="math notranslate nohighlight">\(x=p\)</span>.  In particular <span class="math notranslate nohighlight">\(k=1\)</span> or <span class="math notranslate nohighlight">\(k=p\)</span>, but either of these
 contradicts a hypothesis.</p>
 </div>
-<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">{</span><span class="n">p</span> <span class="o">:</span> <span class="n">&#8469;</span><span class="o">}</span> <span class="o">(</span><span class="n">k</span> <span class="o">:</span> <span class="n">&#8469;</span><span class="o">)</span> <span class="o">(</span><span class="n">hk1</span> <span class="o">:</span> <span class="n">k</span> <span class="bp">&#8800;</span> <span class="mi">1</span><span class="o">)</span> <span class="o">(</span><span class="n">hkp</span> <span class="o">:</span> <span class="n">k</span> <span class="bp">&#8800;</span> <span class="n">p</span><span class="o">)</span> <span class="o">(</span><span class="n">hk</span> <span class="o">:</span> <span class="n">k</span> <span class="bp">&#8739;</span> <span class="n">p</span><span class="o">)</span> <span class="o">:</span> <span class="bp">&#172;</span><span class="o">(</span><span class="n">Prime</span> <span class="n">p</span><span class="o">)</span> <span class="o">:=</span> <span class="kd">by</span>
+<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">{</span><span class="n">p</span> <span class="o">:</span> <span class="n">&#8469;</span><span class="o">}</span> <span class="o">(</span><span class="n">k</span> <span class="o">:</span> <span class="n">&#8469;</span><span class="o">)</span> <span class="o">(</span><span class="n">hk1</span> <span class="o">:</span> <span class="n">k</span> <span class="bp">&#8800;</span> <span class="mi">1</span><span class="o">)</span> <span class="o">(</span><span class="n">hkp</span> <span class="o">:</span> <span class="n">k</span> <span class="bp">&#8800;</span> <span class="n">p</span><span class="o">)</span> <span class="o">(</span><span class="n">hk</span> <span class="o">:</span> <span class="n">k</span> <span class="bp">&#8739;</span> <span class="n">p</span><span class="o">)</span> <span class="o">:</span> <span class="bp">&#172;</span> <span class="n">Prime</span> <span class="n">p</span> <span class="o">:=</span> <span class="kd">by</span>
   <span class="n">intro</span> <span class="n">h</span>
   <span class="n">obtain</span> <span class="o">&#10216;</span><span class="n">h2</span><span class="o">,</span> <span class="n">hfact</span><span class="o">&#10217;</span> <span class="o">:=</span> <span class="n">h</span>
   <span class="k">have</span> <span class="o">:</span> <span class="n">k</span> <span class="bp">=</span> <span class="mi">1</span> <span class="bp">&#8744;</span> <span class="n">k</span> <span class="bp">=</span> <span class="n">p</span> <span class="o">:=</span> <span class="n">hfact</span> <span class="n">k</span> <span class="n">hk</span>
