@@ -613,11 +613,11 @@ example applying this test:</p>
 <p>And here is the same solution written up in Lean.</p>
 <div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">:</span> <span class="bp">&#172;</span><span class="o">(</span><span class="mi">5</span> <span class="o">:</span> <span class="n">&#8484;</span><span class="o">)</span> <span class="bp">&#8739;</span> <span class="mi">12</span> <span class="o">:=</span> <span class="kd">by</span>
   <span class="n">apply</span> <span class="n">Int.not_dvd_of_exists_lt_and_lt</span>
-  <span class="bp">&#183;</span> <span class="n">numbers</span>
+  <span class="bp">&#183;</span> <span class="n">numbers</span> <span class="c1">-- show `0 &lt; 5`</span>
   <span class="n">take</span> <span class="mi">2</span>
   <span class="n">constructor</span>
-  <span class="bp">&#183;</span> <span class="n">numbers</span>
-  <span class="bp">&#183;</span> <span class="n">numbers</span>
+  <span class="bp">&#183;</span> <span class="n">numbers</span> <span class="c1">-- show `5 * 2 &lt; 12`</span>
+  <span class="bp">&#183;</span> <span class="n">numbers</span> <span class="c1">-- show `12 &lt; 5 * (2 + 1)`</span>
 </pre></div>
 </div>
 </section>
