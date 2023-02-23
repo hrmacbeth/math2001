@@ -15,31 +15,31 @@ notation3 "forall_sufficiently_large "(...)", "r:(scoped P => ∃ C, ∀ x ≥ C
 
 
 /- 2 points -/
-example : ∃ n : ℕ, ∀ m : ℕ, n ≤ m := by
+theorem problem1 : ∃ n : ℕ, ∀ m : ℕ, n ≤ m := by
   sorry
 
 /- 4 points -/
-example : forall_sufficiently_large x : ℝ, x ^ 3 ≥ 7 * x ^ 2 + 12 := by
+theorem problem2 : forall_sufficiently_large x : ℝ, x ^ 3 ≥ 7 * x ^ 2 + 12 := by
   dsimp
   sorry
 
 /- 3 points -/
-example {x : ℝ} : 2 * x - 1 = 11 ↔ x = 6 := by
+theorem problem3 {x : ℝ} : 2 * x - 1 = 11 ↔ x = 6 := by
   sorry
 
 /- 3 points -/
-theorem problem1 {x : ℤ} (hx : Int.Odd x) : Int.Odd (x ^ 3) := by
+theorem problem4 {x : ℤ} (hx : Int.Odd x) : Int.Odd (x ^ 3) := by
   rw [Int.odd_iff_modEq] at *
   sorry
 
 /- 4 points -/
-example : ¬ (∃ a : ℝ, a ^ 2 ≤ 8 ∧ a ^ 3 ≥ 30) := by
+theorem problem5 : ¬ (∃ a : ℝ, a ^ 2 ≤ 8 ∧ a ^ 3 ≥ 30) := by
   sorry
 
 /- 5 points -/
-example (n : ℤ) : ¬(n ^ 2 ≡ 2 [ZMOD 4]) := by
+theorem problem6 (n : ℤ) : ¬(n ^ 2 ≡ 2 [ZMOD 4]) := by
   sorry
 
 /- 4 points -/
-example : Prime 97 := by
+theorem problem7 : Prime 97 := by
   sorry

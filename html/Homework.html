@@ -290,7 +290,7 @@ submit a solution in words, only in Lean.</p>
 least <span class="math notranslate nohighlight">\(n\)</span>.</p></li>
 </ol>
 <div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="c">/-</span><span class="cm"> 2 points -/</span>
-<span class="kd">example</span> <span class="o">:</span> <span class="bp">&#8707;</span> <span class="n">n</span> <span class="o">:</span> <span class="n">&#8469;</span><span class="o">,</span> <span class="bp">&#8704;</span> <span class="n">m</span> <span class="o">:</span> <span class="n">&#8469;</span><span class="o">,</span> <span class="n">n</span> <span class="bp">&#8804;</span> <span class="n">m</span> <span class="o">:=</span> <span class="kd">by</span>
+<span class="kd">theorem</span> <span class="n">problem1</span> <span class="o">:</span> <span class="bp">&#8707;</span> <span class="n">n</span> <span class="o">:</span> <span class="n">&#8469;</span><span class="o">,</span> <span class="bp">&#8704;</span> <span class="n">m</span> <span class="o">:</span> <span class="n">&#8469;</span><span class="o">,</span> <span class="n">n</span> <span class="bp">&#8804;</span> <span class="n">m</span> <span class="o">:=</span> <span class="kd">by</span>
   <span class="gr">sorry</span>
 </pre></div>
 </div>
@@ -299,7 +299,7 @@ least <span class="math notranslate nohighlight">\(n\)</span>.</p></li>
 <span class="math notranslate nohighlight">\(x ^ 3 &#8805; 7 x ^ 2 + 12\)</span>.</p></li>
 </ol>
 <div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="c">/-</span><span class="cm"> 4 points -/</span>
-<span class="kd">example</span> <span class="o">:</span> <span class="n">forall_sufficiently_large</span> <span class="n">x</span> <span class="o">:</span> <span class="n">&#8477;</span><span class="o">,</span> <span class="n">x</span> <span class="bp">^</span> <span class="mi">3</span> <span class="bp">&#8805;</span> <span class="mi">7</span> <span class="bp">*</span> <span class="n">x</span> <span class="bp">^</span> <span class="mi">2</span> <span class="bp">+</span> <span class="mi">12</span> <span class="o">:=</span> <span class="kd">by</span>
+<span class="kd">theorem</span> <span class="n">problem2</span> <span class="o">:</span> <span class="n">forall_sufficiently_large</span> <span class="n">x</span> <span class="o">:</span> <span class="n">&#8477;</span><span class="o">,</span> <span class="n">x</span> <span class="bp">^</span> <span class="mi">3</span> <span class="bp">&#8805;</span> <span class="mi">7</span> <span class="bp">*</span> <span class="n">x</span> <span class="bp">^</span> <span class="mi">2</span> <span class="bp">+</span> <span class="mi">12</span> <span class="o">:=</span> <span class="kd">by</span>
   <span class="n">dsimp</span>
   <span class="gr">sorry</span>
 </pre></div>
@@ -308,7 +308,7 @@ least <span class="math notranslate nohighlight">\(n\)</span>.</p></li>
 <li><p>Let <span class="math notranslate nohighlight">\(x\)</span> be a real number.  Show that <span class="math notranslate nohighlight">\(2x-1=11\)</span> if and only if <span class="math notranslate nohighlight">\(x=6\)</span>.</p></li>
 </ol>
 <div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="c">/-</span><span class="cm"> 3 points -/</span>
-<span class="kd">example</span> <span class="o">{</span><span class="n">x</span> <span class="o">:</span> <span class="n">&#8477;</span><span class="o">}</span> <span class="o">:</span> <span class="mi">2</span> <span class="bp">*</span> <span class="n">x</span> <span class="bp">-</span> <span class="mi">1</span> <span class="bp">=</span> <span class="mi">11</span> <span class="bp">&#8596;</span> <span class="n">x</span> <span class="bp">=</span> <span class="mi">6</span> <span class="o">:=</span> <span class="kd">by</span>
+<span class="kd">theorem</span> <span class="n">problem3</span> <span class="o">{</span><span class="n">x</span> <span class="o">:</span> <span class="n">&#8477;</span><span class="o">}</span> <span class="o">:</span> <span class="mi">2</span> <span class="bp">*</span> <span class="n">x</span> <span class="bp">-</span> <span class="mi">1</span> <span class="bp">=</span> <span class="mi">11</span> <span class="bp">&#8596;</span> <span class="n">x</span> <span class="bp">=</span> <span class="mi">6</span> <span class="o">:=</span> <span class="kd">by</span>
   <span class="gr">sorry</span>
 </pre></div>
 </div>
@@ -320,7 +320,7 @@ indicated in the first line.</p>
 </li>
 </ol>
 <div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="c">/-</span><span class="cm"> 3 points -/</span>
-<span class="kd">theorem</span> <span class="n">problem1</span> <span class="o">{</span><span class="n">x</span> <span class="o">:</span> <span class="n">&#8484;</span><span class="o">}</span> <span class="o">(</span><span class="n">hx</span> <span class="o">:</span> <span class="n">Int.Odd</span> <span class="n">x</span><span class="o">)</span> <span class="o">:</span> <span class="n">Int.Odd</span> <span class="o">(</span><span class="n">x</span> <span class="bp">^</span> <span class="mi">3</span><span class="o">)</span> <span class="o">:=</span> <span class="kd">by</span>
+<span class="kd">theorem</span> <span class="n">problem4</span> <span class="o">{</span><span class="n">x</span> <span class="o">:</span> <span class="n">&#8484;</span><span class="o">}</span> <span class="o">(</span><span class="n">hx</span> <span class="o">:</span> <span class="n">Int.Odd</span> <span class="n">x</span><span class="o">)</span> <span class="o">:</span> <span class="n">Int.Odd</span> <span class="o">(</span><span class="n">x</span> <span class="bp">^</span> <span class="mi">3</span><span class="o">)</span> <span class="o">:=</span> <span class="kd">by</span>
   <span class="n">rw</span> <span class="o">[</span><span class="n">Int.odd_iff_modEq</span><span class="o">]</span> <span class="n">at</span> <span class="bp">*</span>
   <span class="gr">sorry</span>
 </pre></div>
@@ -330,7 +330,7 @@ indicated in the first line.</p>
 <span class="math notranslate nohighlight">\(a^3\geq 30\)</span>.</p></li>
 </ol>
 <div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="c">/-</span><span class="cm"> 4 points -/</span>
-<span class="kd">example</span> <span class="o">:</span> <span class="bp">&#172;</span> <span class="o">(</span><span class="bp">&#8707;</span> <span class="n">a</span> <span class="o">:</span> <span class="n">&#8477;</span><span class="o">,</span> <span class="n">a</span> <span class="bp">^</span> <span class="mi">2</span> <span class="bp">&#8804;</span> <span class="mi">8</span> <span class="bp">&#8743;</span> <span class="n">a</span> <span class="bp">^</span> <span class="mi">3</span> <span class="bp">&#8805;</span> <span class="mi">30</span><span class="o">)</span> <span class="o">:=</span> <span class="kd">by</span>
+<span class="kd">theorem</span> <span class="n">problem5</span> <span class="o">:</span> <span class="bp">&#172;</span> <span class="o">(</span><span class="bp">&#8707;</span> <span class="n">a</span> <span class="o">:</span> <span class="n">&#8477;</span><span class="o">,</span> <span class="n">a</span> <span class="bp">^</span> <span class="mi">2</span> <span class="bp">&#8804;</span> <span class="mi">8</span> <span class="bp">&#8743;</span> <span class="n">a</span> <span class="bp">^</span> <span class="mi">3</span> <span class="bp">&#8805;</span> <span class="mi">30</span><span class="o">)</span> <span class="o">:=</span> <span class="kd">by</span>
   <span class="gr">sorry</span>
 </pre></div>
 </div>
@@ -338,7 +338,7 @@ indicated in the first line.</p>
 <li><p>Let <span class="math notranslate nohighlight">\(n\)</span> be an integer.  Show that <span class="math notranslate nohighlight">\(n^2\not\equiv 2 \mod 4\)</span>.</p></li>
 </ol>
 <div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="c">/-</span><span class="cm"> 5 points -/</span>
-<span class="kd">example</span> <span class="o">(</span><span class="n">n</span> <span class="o">:</span> <span class="n">&#8484;</span><span class="o">)</span> <span class="o">:</span> <span class="bp">&#172;</span><span class="o">(</span><span class="n">n</span> <span class="bp">^</span> <span class="mi">2</span> <span class="bp">&#8801;</span> <span class="mi">2</span> <span class="o">[</span><span class="n">ZMOD</span> <span class="mi">4</span><span class="o">])</span> <span class="o">:=</span> <span class="kd">by</span>
+<span class="kd">theorem</span> <span class="n">problem6</span> <span class="o">(</span><span class="n">n</span> <span class="o">:</span> <span class="n">&#8484;</span><span class="o">)</span> <span class="o">:</span> <span class="bp">&#172;</span><span class="o">(</span><span class="n">n</span> <span class="bp">^</span> <span class="mi">2</span> <span class="bp">&#8801;</span> <span class="mi">2</span> <span class="o">[</span><span class="n">ZMOD</span> <span class="mi">4</span><span class="o">])</span> <span class="o">:=</span> <span class="kd">by</span>
   <span class="gr">sorry</span>
 </pre></div>
 </div>
@@ -349,7 +349,7 @@ including the use of the lemmas <code class="docutils literal notranslate"><span
 </li>
 </ol>
 <div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="c">/-</span><span class="cm"> 4 points -/</span>
-<span class="kd">example</span> <span class="o">:</span> <span class="n">Prime</span> <span class="mi">97</span> <span class="o">:=</span> <span class="kd">by</span>
+<span class="kd">theorem</span> <span class="n">problem7</span> <span class="o">:</span> <span class="n">Prime</span> <span class="mi">97</span> <span class="o">:=</span> <span class="kd">by</span>
   <span class="gr">sorry</span>
 </pre></div>
 </div>
