@@ -1,6 +1,7 @@
 import Math2001.Library.Arithmetic
 import Math2001.Library.Division
-import Math2001.Library.ModEq
+import Math2001.Library.ModEq.Defs
+import Math2001.Library.ModEq.Lemmas
 import Math2001.Library.Parity
 import Math2001.Library.ParityModular
 import Math2001.Library.Prime

@@ -1,10 +1,5 @@
 /- Copyright (c) Heather Macbeth, 2022.  All rights reserved. -/
-import Math2001.Library.Division
-
-/-- Two integers are congruent modulo `n`, if their difference is a multiple of `n`. -/
-def Int.ModEq (n a b : ℤ) : Prop := n ∣ a - b
-
-notation:50 a " ≡ " b " [ZMOD " n "]" => Int.ModEq n a b
+import Math2001.Library.ModEq.Defs
 
 protected theorem Int.ModEq.refl (a : ℤ) : a ≡ a [ZMOD n] := ⟨0, by ring⟩
 

@@ -3,7 +3,7 @@ Copyright (c) 2023 Heather Macbeth. All rights reserved.
 Released under Apache 2.0 license as described in the file LICENSE.
 Authors: Heather Macbeth
 -/
-import Math2001.Library.ModEq
+import Math2001.Library.ModEq.Lemmas
 import Math2001.Tactic.Rel.Basic
 
 open Lean Elab Tactic

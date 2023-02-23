@@ -3,7 +3,7 @@ Copyright (c) 2022 Mario Carneiro. All rights reserved.
 Released under Apache 2.0 license as described in the file LICENSE.
 Authors: Mario Carneiro, Heather Macbeth
 -/
-import Math2001.Library.ModEq
+import Math2001.Library.ModEq.Lemmas
 
 /-! # `mod_cases` tactic
 

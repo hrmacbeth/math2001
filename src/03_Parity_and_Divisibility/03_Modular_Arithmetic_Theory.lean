@@ -5,11 +5,6 @@ import Math2001.Tactic.Numbers
 import Math2001.Tactic.Take
 
 
-def Int.ModEq (n a b : ℤ) : Prop := n ∣ a - b
-
-notation:50 a " ≡ " b " [ZMOD " n "]" => Int.ModEq n a b
-
-
 example : 11 ≡ 3 [ZMOD 4] := by
   take 2
   numbers

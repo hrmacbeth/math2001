@@ -1,4 +1,4 @@
-import Math2001.Library.ModEq
+import Math2001.Library.ModEq.Defs
 import Mathlib.Tactic.NormNum
 import Mathlib.Tactic.Linarith
 
@@ -15,7 +15,8 @@ theorem isInt_ModEq_true : {a b a' b' n : ℤ} → IsInt a a' → IsInt b b' →
       dsimp
       replace hab := of_decide_eq_true hab
       rw [hab]
-      apply Int.ModEq.refl
+      use 0
+      ring
 
 theorem isInt_ModEq_false : {a b a' b' n : ℤ} → IsInt a a' → IsInt b b' → decide (0 < n) = true → 
     decide (a' < n) = true → decide (b' < n) = true → decide (0 ≤ a') = true →

@@ -1,5 +1,5 @@
 import Math2001.Library.Parity
-import Math2001.Library.ModEq
+import Math2001.Library.ModEq.Defs
 
 theorem Int.odd_iff_modEq (n : ℤ) : Odd n ↔ n ≡ 1 [ZMOD 2] := by
   constructor <;> rintro ⟨k, hk⟩ <;> exact ⟨k, by linear_combination hk⟩
