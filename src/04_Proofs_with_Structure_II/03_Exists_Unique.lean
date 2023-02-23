@@ -34,7 +34,8 @@ example {x : ℚ} (hx : ∃! a : ℚ, a ^ 2 = x) : x = 0 := by
   have h2 : a = 0
   · calc
       a = (a - -a) / 2 := by ring
-      _ = 0 := by addarith [h1]  
+      _ = (a - a) / 2 := by rw [h1]
+      _ = 0 := by ring
   calc
     x = a ^ 2 := by rw [ha1]
     _ = 0 ^ 2 := by rw [h2]

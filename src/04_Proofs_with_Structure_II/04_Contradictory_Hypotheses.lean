@@ -13,40 +13,16 @@ attribute [-simp] Nat.not_two_dvd_bit1 two_dvd_bit0
 
 
 example {y : ℝ} (x : ℝ) (h : 0 < x * y) (hx : 0 ≤ x) : 0 < y := by
-  obtain H | H : y ≤ 0 ∨ 0 < y := by apply le_or_lt
-  · have : ¬0 < x * y
+  obtain hneg | hpos : y ≤ 0 ∨ 0 < y := le_or_lt y 0
+  · -- the case `y ≤ 0`
+    have : ¬0 < x * y
     · apply not_lt_of_ge
       calc
         0 = x * 0 := by ring
-        _ ≥ x * y := by rel [H]
+        _ ≥ x * y := by rel [hneg]
     contradiction
-  exact H
-
-
-example {p : ℕ} (hp : 2 ≤ p) (H : ∀ m : ℕ, 1 < m → m < p → ¬m ∣ p) : Prime p := by
-  constructor
-  · apply hp
-  intro m hmp
-  have hp' : 0 < p := by extra
-  have h1m : 1 ≤ m := Nat.pos_of_dvd_of_pos hmp hp'
-  obtain hm | hm_left := eq_or_lt_of_le h1m
-  · left
-    addarith [hm]
-  sorry
-
-example : Prime 5 := by
-  apply prime_test
-  · numbers
-  intro m hm_left hm_right
-  apply Nat.not_dvd_of_exists_lt_and_lt
-  · extra
-  interval_cases m
-  · take 2
-    constructor <;> numbers
-  · take 1
-    constructor <;> numbers
-  · take 1
-    constructor <;> numbers
+  · -- the case `0 < y`
+    exact hpos
 
 
 example {t : ℤ} (h2 : t < 3) (h : t - 1 = 6) : t = 13 := by
@@ -78,10 +54,37 @@ example (n : ℤ) (hn : n ^ 2 + n + 1 ≡ 1 [ZMOD 3]) : n ≡ 0 [ZMOD 3] ∨ n �
       _ ≡ n ^ 2 + n + 1 [ZMOD 3] := by rel [h.symm]
       _ ≡ 1 [ZMOD 3] := hn
     numbers at H -- contradiction!
-    done
   · -- case 3: `n ≡ 2 [ZMOD 3]`
     right
     apply h
+
+
+example {p : ℕ} (hp : 2 ≤ p) (H : ∀ m : ℕ, 1 < m → m < p → ¬m ∣ p) : Prime p := by
+  constructor
+  · apply hp -- show that `2 ≤ p`
+  intro m hmp
+  have hp' : 0 < p := by extra
+  have h1m : 1 ≤ m := Nat.pos_of_dvd_of_pos hmp hp'
+  obtain hm | hm_left : 1 = m ∨ 1 < m := eq_or_lt_of_le h1m
+  · -- the case `m = 1`
+    left
+    addarith [hm]
+  -- the case `1 < m`
+  sorry
+
+example : Prime 5 := by
+  apply prime_test
+  · numbers
+  intro m hm_left hm_right
+  apply Nat.not_dvd_of_exists_lt_and_lt
+  · extra
+  interval_cases m
+  · take 2
+    constructor <;> numbers
+  · take 1
+    constructor <;> numbers
+  · take 1
+    constructor <;> numbers
 
 
 example {a b c : ℕ} (ha : 0 < a) (hb : 0 < b) (hc : 0 < c) (h_pyth : a ^ 2 + b ^ 2 = c ^ 2) :

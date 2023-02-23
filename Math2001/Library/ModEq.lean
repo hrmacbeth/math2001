@@ -66,6 +66,10 @@ protected theorem Int.ModEq.trans (h1 : a ≡ b [ZMOD n]) (h2 : b ≡ c [ZMOD n]
 instance : IsTrans ℤ (Int.ModEq n) where
   trans := @Int.ModEq.trans n
 
+theorem Int.modEq_fac_zero : n * t ≡ 0 [ZMOD n] := ⟨t, by ring⟩
+theorem Int.modEq_fac_zero' : t * n ≡ 0 [ZMOD n] := ⟨t, by ring⟩
+theorem Int.modEq_zero_fac : 0 ≡ n * t [ZMOD n] := ⟨-t, by ring⟩
+theorem Int.modEq_zero_fac' : 0 ≡ t * n [ZMOD n] := ⟨-t, by ring⟩
 theorem Int.modEq_add_fac_self : a + n * t ≡ a [ZMOD n] := ⟨t, by ring⟩
 theorem Int.modEq_add_fac_self' : n * t + a ≡ a [ZMOD n] := ⟨t, by ring⟩
 theorem Int.modEq_add_fac_self'' : a + t * n ≡ a [ZMOD n] := ⟨t, by ring⟩

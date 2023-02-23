@@ -1,5 +1,6 @@
 /- Copyright (c) Heather Macbeth, 2023.  All rights reserved. -/
 import Mathlib.Tactic.IntervalCases
+import Mathlib.Tactic.Linarith
 import Mathlib.Tactic.Positivity
 
 def Prime (p : ℕ) : Prop :=
@@ -16,6 +17,26 @@ theorem prime_test {p : ℕ} (hp : 2 ≤ p) (H : ∀ m : ℕ, 1 < m → m < p �
     exact hm'
   have : ¬m ∣ p := H m hm_left hm_right
   contradiction
+
+lemma better_prime_test {p : ℕ} (hp : 2 ≤ p)  (T : ℕ) (hTp : p < T ^ 2) 
+    (H : ∀ (m : ℕ), 1 < m → m < T → ¬ (m ∣ p)) :
+    Prime p := by
+  apply prime_test hp
+  intro m hm1 hmp
+  obtain hmT | hmT := lt_or_le m T
+  · exact H m hm1 hmT
+  rintro ⟨l, hl⟩
+  apply H l
+  · apply lt_of_mul_lt_mul_left (a := m)
+    linarith
+    positivity
+  · apply lt_of_mul_lt_mul_left (a := T)
+    calc T * l ≤ m * l := mul_le_mul_right' hmT l
+      _ < T ^ 2 := by linarith
+      _ = T * T := by linarith
+    positivity
+  · use m
+    linarith
 
 lemma not_prime_one : ¬ Prime 1 := by
   rintro ⟨h, _⟩

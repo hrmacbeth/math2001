@@ -1,6 +1,5 @@
 /- Copyright (c) Heather Macbeth, 2023.  All rights reserved. -/
 import Mathlib.Data.Real.Basic
-import Mathlib.Algebra.GroupWithZero.Defs
 import Math2001.Library.Parity
 import Math2001.Tactic.Addarith
 import Math2001.Tactic.ModCases
@@ -66,7 +65,7 @@ example {a : ℤ} : a ^ 2 - 5 * a + 5 ≤ -1 ↔ a = 2 ∨ a = 3 := by
 
 example {n : ℤ} (hn : n ^ 2 - 10 * n + 24 = 0) : Even n := by
   have hn2 : n - 4 = 0 ∨ n - 6 = 0
-  · apply NoZeroDivisors.eq_zero_or_eq_zero_of_mul_eq_zero
+  · apply eq_zero_or_eq_zero_of_mul_eq_zero
     calc (n - 4) * (n - 6) = n ^ 2 - 10 * n + 24 := by ring
       _ = 0 := hn
   sorry

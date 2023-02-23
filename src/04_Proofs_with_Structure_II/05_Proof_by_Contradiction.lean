@@ -21,20 +21,20 @@ example : ¬ (∀ x : ℝ, x ^ 2 ≥ x) := by
 example : ¬ 3 ∣ 13 := by
   intro H
   obtain ⟨k, hk⟩ := H
-  obtain h | h : k ≤ 4 ∨ 5 ≤ k := le_or_lt k 4
-  · have :=
+  obtain h4 | h5 : k ≤ 4 ∨ 5 ≤ k := le_or_lt k 4
+  · have h :=
     calc 13 = 3 * k := hk
-      _ ≤ 3 * 4 := by rel [h]
-    numbers at this
+      _ ≤ 3 * 4 := by rel [h4]
+    numbers at h
   · sorry
 
 example {x y : ℝ} (h : x + y = 0) : ¬(x > 0 ∧ y > 0) := by
   intro h
   obtain ⟨hx, hy⟩ := h
-  have :=
+  have H :=
   calc 0 = x + y := by rw [h]
     _ > 0 := by extra
-  numbers at this
+  numbers at H
 
 
 example : ¬ (∃ n : ℕ, n ^ 2 = 2) := by
@@ -46,11 +46,10 @@ theorem Int.even_iff_not_odd (n : ℤ) : Even n ↔ ¬ Odd n := by
     have : Even n ∧ Odd n := ⟨h1, h2⟩
     rw [Int.even_iff_modEq] at h1
     rw [Int.odd_iff_modEq] at h2
-    have :=
+    have h :=
     calc 0 ≡ n [ZMOD 2] := by rel [h1.symm]
       _ ≡ 1 [ZMOD 2] := by rel [h2]
-    numbers at this
-    done
+    numbers at h -- contradiction!
   · intro h
     obtain h1 | h2 := Int.even_or_odd n
     · apply h1
@@ -63,12 +62,11 @@ theorem Int.odd_iff_not_even (n : ℤ) : Odd n ↔ ¬ Even n := by
 example (n : ℕ) : ¬((n:ℤ) ^ 2 ≡ 2 [ZMOD 3]) := by
   intro h
   mod_cases hn : (n:ℤ) % 3
-  · have :=
+  · have h :=
     calc (0:ℤ) = 0 ^ 2 := by numbers
       _ ≡ (n:ℤ) ^ 2 [ZMOD 3] := by rel [hn.symm]
       _ ≡ 2 [ZMOD 3] := by rel [h]
-    numbers at this
-    done
+    numbers at h -- contradiction!
   · sorry
   · sorry
 
@@ -95,11 +93,11 @@ example (a : ℤ) {b : ℤ} (hb : 0 < b)
   · sorry
   sorry
 
-lemma better_prime_test {p : ℕ} (hp : 2 ≤ p)  (T : ℕ) (hTp : p < T ^ 2) 
+example {p : ℕ} (hp : 2 ≤ p)  (T : ℕ) (hTp : p < T ^ 2) 
     (H : ∀ (m : ℕ), 1 < m → m < T → ¬ (m ∣ p)) :
     Prime p := by
   apply prime_test hp
-  intros m hm1 hmp
+  intro m hm1 hmp
   obtain hmT | hmT := lt_or_le m T
   · apply H m hm1 hmT
   intro h_div
@@ -122,7 +120,7 @@ example : Prime 79 := by
   apply better_prime_test (T := 9)
   · numbers
   · numbers
-  intros m hm1 hm2
+  intro m hm1 hm2
   apply Nat.not_dvd_of_exists_lt_and_lt
   · extra
   interval_cases m
@@ -137,7 +135,7 @@ example : Prime 79 := by
   · sorry
   · sorry
 
-example : ¬ (∃ a : ℝ, a ^ 2 ≤ 8 ∧ a ^ 3  ≥ 30) := by
+example : ¬ (∃ a : ℝ, a ^ 2 ≤ 8 ∧ a ^ 3 ≥ 30) := by
   sorry
 
 example {n : ℤ} (hn : n + 3 = 7) : ¬ (Int.Even n ∧ n ^ 2 = 10) := by

@@ -55,6 +55,7 @@
 <li class="toctree-l2"><a class="reference internal" href="#homework-1">Homework 1</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#homework-2">Homework 2</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#homework-3">Homework 3</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#homework-4">Homework 4</a></li>
 </ul>
 </li>
 </ul>
@@ -278,6 +279,77 @@ submit a solution in words, only in Lean.</p>
 </ol>
 <div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="c">/-</span><span class="cm"> 4 points -/</span>
 <span class="kd">theorem</span> <span class="n">problem6</span> <span class="o">{</span><span class="n">a</span> <span class="n">b</span> <span class="o">:</span> <span class="n">&#8469;</span><span class="o">}</span> <span class="o">(</span><span class="n">hab</span> <span class="o">:</span> <span class="n">a</span> <span class="bp">&#8739;</span> <span class="n">b</span><span class="o">)</span> <span class="o">(</span><span class="n">hb</span> <span class="o">:</span> <span class="mi">0</span> <span class="bp">&lt;</span> <span class="n">b</span><span class="o">)</span> <span class="o">:</span> <span class="mi">0</span> <span class="bp">&lt;</span> <span class="n">a</span> <span class="o">:=</span> <span class="kd">by</span>
+  <span class="gr">sorry</span>
+</pre></div>
+</div>
+</section>
+<section id="homework-4">
+<span id="hw4"></span><h2>Homework 4<a class="headerlink" href="#homework-4" title="Permalink to this headline">&#61633;</a></h2>
+<ol class="arabic simple">
+<li><p>Show that there exists a natural number <span class="math notranslate nohighlight">\(n\)</span> such that every natural number <span class="math notranslate nohighlight">\(m\)</span> is at
+least <span class="math notranslate nohighlight">\(n\)</span>.</p></li>
+</ol>
+<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="c">/-</span><span class="cm"> 2 points -/</span>
+<span class="kd">example</span> <span class="o">:</span> <span class="bp">&#8707;</span> <span class="n">n</span> <span class="o">:</span> <span class="n">&#8469;</span><span class="o">,</span> <span class="bp">&#8704;</span> <span class="n">m</span> <span class="o">:</span> <span class="n">&#8469;</span><span class="o">,</span> <span class="n">n</span> <span class="bp">&#8804;</span> <span class="n">m</span> <span class="o">:=</span> <span class="kd">by</span>
+  <span class="gr">sorry</span>
+</pre></div>
+</div>
+<ol class="arabic simple" start="2">
+<li><p>Show that for all sufficiently large real numbers <span class="math notranslate nohighlight">\(x\)</span>,
+<span class="math notranslate nohighlight">\(x ^ 3 &#8805; 7 x ^ 2 + 12\)</span>.</p></li>
+</ol>
+<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="c">/-</span><span class="cm"> 4 points -/</span>
+<span class="kd">example</span> <span class="o">:</span> <span class="n">forall_sufficiently_large</span> <span class="n">x</span> <span class="o">:</span> <span class="n">&#8477;</span><span class="o">,</span> <span class="n">x</span> <span class="bp">^</span> <span class="mi">3</span> <span class="bp">&#8805;</span> <span class="mi">7</span> <span class="bp">*</span> <span class="n">x</span> <span class="bp">^</span> <span class="mi">2</span> <span class="bp">+</span> <span class="mi">12</span> <span class="o">:=</span> <span class="kd">by</span>
+  <span class="n">dsimp</span>
+  <span class="gr">sorry</span>
+</pre></div>
+</div>
+<ol class="arabic simple" start="3">
+<li><p>Let <span class="math notranslate nohighlight">\(x\)</span> be a real number.  Show that <span class="math notranslate nohighlight">\(2x-1=11\)</span> if and only if <span class="math notranslate nohighlight">\(x=6\)</span>.</p></li>
+</ol>
+<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="c">/-</span><span class="cm"> 3 points -/</span>
+<span class="kd">example</span> <span class="o">{</span><span class="n">x</span> <span class="o">:</span> <span class="n">&#8477;</span><span class="o">}</span> <span class="o">:</span> <span class="mi">2</span> <span class="bp">*</span> <span class="n">x</span> <span class="bp">-</span> <span class="mi">1</span> <span class="bp">=</span> <span class="mi">11</span> <span class="bp">&#8596;</span> <span class="n">x</span> <span class="bp">=</span> <span class="mi">6</span> <span class="o">:=</span> <span class="kd">by</span>
+  <span class="gr">sorry</span>
+</pre></div>
+</div>
+<ol class="arabic" start="4">
+<li><p>Let <span class="math notranslate nohighlight">\(x\)</span> be an integer.  Show that if <span class="math notranslate nohighlight">\(x\)</span> is odd then so is <span class="math notranslate nohighlight">\(x^3\)</span>.</p>
+<p>This problem appeared on Homework 3, but this time, re-do it by converting it to a modular
+arithmetic problem and then using the techniques of <a class="reference internal" href="03_Parity_and_Divisibility.html#using-modular"><span class="std std-numref">Section 3.4</span></a>, as
+indicated in the first line.</p>
+</li>
+</ol>
+<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="c">/-</span><span class="cm"> 3 points -/</span>
+<span class="kd">theorem</span> <span class="n">problem1</span> <span class="o">{</span><span class="n">x</span> <span class="o">:</span> <span class="n">&#8484;</span><span class="o">}</span> <span class="o">(</span><span class="n">hx</span> <span class="o">:</span> <span class="n">Int.Odd</span> <span class="n">x</span><span class="o">)</span> <span class="o">:</span> <span class="n">Int.Odd</span> <span class="o">(</span><span class="n">x</span> <span class="bp">^</span> <span class="mi">3</span><span class="o">)</span> <span class="o">:=</span> <span class="kd">by</span>
+  <span class="n">rw</span> <span class="o">[</span><span class="n">Int.odd_iff_modEq</span><span class="o">]</span> <span class="n">at</span> <span class="bp">*</span>
+  <span class="gr">sorry</span>
+</pre></div>
+</div>
+<ol class="arabic simple" start="5">
+<li><p>Show that there does not exist a real number <span class="math notranslate nohighlight">\(a\)</span>, such that <span class="math notranslate nohighlight">\(a^2 \le 8\)</span> and
+<span class="math notranslate nohighlight">\(a^3\geq 30\)</span>.</p></li>
+</ol>
+<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="c">/-</span><span class="cm"> 4 points -/</span>
+<span class="kd">example</span> <span class="o">:</span> <span class="bp">&#172;</span> <span class="o">(</span><span class="bp">&#8707;</span> <span class="n">a</span> <span class="o">:</span> <span class="n">&#8477;</span><span class="o">,</span> <span class="n">a</span> <span class="bp">^</span> <span class="mi">2</span> <span class="bp">&#8804;</span> <span class="mi">8</span> <span class="bp">&#8743;</span> <span class="n">a</span> <span class="bp">^</span> <span class="mi">3</span> <span class="bp">&#8805;</span> <span class="mi">30</span><span class="o">)</span> <span class="o">:=</span> <span class="kd">by</span>
+  <span class="gr">sorry</span>
+</pre></div>
+</div>
+<ol class="arabic simple" start="6">
+<li><p>Let <span class="math notranslate nohighlight">\(n\)</span> be a natural number.  Show that <span class="math notranslate nohighlight">\(n^2\not\equiv 2 \mod 4\)</span>.</p></li>
+</ol>
+<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="c">/-</span><span class="cm"> 5 points -/</span>
+<span class="kd">example</span> <span class="o">(</span><span class="n">n</span> <span class="o">:</span> <span class="n">&#8469;</span><span class="o">)</span> <span class="o">:</span> <span class="bp">&#172;</span><span class="o">((</span><span class="n">n</span><span class="o">:</span><span class="n">&#8484;</span><span class="o">)</span> <span class="bp">^</span> <span class="mi">2</span> <span class="bp">&#8801;</span> <span class="mi">2</span> <span class="o">[</span><span class="n">ZMOD</span> <span class="mi">4</span><span class="o">])</span> <span class="o">:=</span> <span class="kd">by</span>
+  <span class="gr">sorry</span>
+</pre></div>
+</div>
+<ol class="arabic" start="7">
+<li><p>Show that 97 is prime.</p>
+<p>You can follow the model of the proof for 79 in <a class="reference internal" href="04_Proofs_with_Structure_II.html#better-prime-test"><span class="std std-numref">Example 4.5.9</span></a>,
+including the use of the lemmas <code class="docutils literal notranslate"><span class="pre">better_prime_test</span></code> and <code class="docutils literal notranslate"><span class="pre">Nat.not_dvd_of_exists_lt_and_lt</span></code>.</p>
+</li>
+</ol>
+<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="c">/-</span><span class="cm"> 4 points -/</span>
+<span class="kd">example</span> <span class="o">:</span> <span class="n">Prime</span> <span class="mi">97</span> <span class="o">:=</span> <span class="kd">by</span>
   <span class="gr">sorry</span>
 </pre></div>
 </div>
