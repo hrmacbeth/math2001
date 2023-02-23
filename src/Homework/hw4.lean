@@ -37,7 +37,7 @@ example : ¬ (∃ a : ℝ, a ^ 2 ≤ 8 ∧ a ^ 3 ≥ 30) := by
   sorry
 
 /- 5 points -/
-example (n : ℕ) : ¬((n:ℤ) ^ 2 ≡ 2 [ZMOD 4]) := by
+example (n : ℤ) : ¬(n ^ 2 ≡ 2 [ZMOD 4]) := by
   sorry
 
 /- 4 points -/

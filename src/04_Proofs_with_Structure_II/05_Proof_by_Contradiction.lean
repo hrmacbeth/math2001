@@ -59,12 +59,12 @@ theorem Int.even_iff_not_odd (n : ℤ) : Even n ↔ ¬ Odd n := by
 theorem Int.odd_iff_not_even (n : ℤ) : Odd n ↔ ¬ Even n := by
   sorry
 
-example (n : ℕ) : ¬((n:ℤ) ^ 2 ≡ 2 [ZMOD 3]) := by
+example (n : ℤ) : ¬(n ^ 2 ≡ 2 [ZMOD 3]) := by
   intro h
-  mod_cases hn : (n:ℤ) % 3
+  mod_cases hn : n % 3
   · have h :=
     calc (0:ℤ) = 0 ^ 2 := by numbers
-      _ ≡ (n:ℤ) ^ 2 [ZMOD 3] := by rel [hn.symm]
+      _ ≡ n ^ 2 [ZMOD 3] := by rel [hn.symm]
       _ ≡ 2 [ZMOD 3] := by rel [h]
     numbers at h -- contradiction!
   · sorry
@@ -147,7 +147,7 @@ example {x : ℝ} (hx : x ^ 2 < 9) : ¬ (x ≤ -3 ∨ x ≥ 3) := by
 example : ¬ (∃ N : ℕ, ∀ k > N, Nat.Even k) := by
   sorry
 
-example (n : ℕ) : ¬((n:ℤ) ^ 2 ≡ 2 [ZMOD 4]) := by
+example (n : ℤ) : ¬(n ^ 2 ≡ 2 [ZMOD 4]) := by
   sorry
 
 example : ¬ Prime 1 := by
