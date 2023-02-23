@@ -1572,7 +1572,7 @@ but also <span class="math notranslate nohighlight">\(n\equiv 1\mod 2\)</span>. 
 <h3><span class="section-number">4.5.6. </span>Example<a class="headerlink" href="#id38" title="Permalink to this headline">&#61633;</a></h3>
 <div class="admonition-problem admonition">
 <p class="admonition-title">Problem</p>
-<p>Let <span class="math notranslate nohighlight">\(n\)</span> be a natural number.  Show that <span class="math notranslate nohighlight">\(n^2\not\equiv 2 \mod 3\)</span>.</p>
+<p>Let <span class="math notranslate nohighlight">\(n\)</span> be an integer.  Show that <span class="math notranslate nohighlight">\(n^2\not\equiv 2 \mod 3\)</span>.</p>
 </div>
 <div class="admonition-solution admonition">
 <p class="admonition-title">Solution</p>
@@ -1598,12 +1598,12 @@ We consider cases according to the residue of <span class="math notranslate nohi
 &amp;\equiv 2 \mod 3,\end{split}\]</div>
 <p>contradiction.</p>
 </div>
-<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">(</span><span class="n">n</span> <span class="o">:</span> <span class="n">&#8469;</span><span class="o">)</span> <span class="o">:</span> <span class="bp">&#172;</span><span class="o">((</span><span class="n">n</span><span class="o">:</span><span class="n">&#8484;</span><span class="o">)</span> <span class="bp">^</span> <span class="mi">2</span> <span class="bp">&#8801;</span> <span class="mi">2</span> <span class="o">[</span><span class="n">ZMOD</span> <span class="mi">3</span><span class="o">])</span> <span class="o">:=</span> <span class="kd">by</span>
+<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">(</span><span class="n">n</span> <span class="o">:</span> <span class="n">&#8484;</span><span class="o">)</span> <span class="o">:</span> <span class="bp">&#172;</span><span class="o">(</span><span class="n">n</span> <span class="bp">^</span> <span class="mi">2</span> <span class="bp">&#8801;</span> <span class="mi">2</span> <span class="o">[</span><span class="n">ZMOD</span> <span class="mi">3</span><span class="o">])</span> <span class="o">:=</span> <span class="kd">by</span>
   <span class="n">intro</span> <span class="n">h</span>
-  <span class="n">mod_cases</span> <span class="n">hn</span> <span class="o">:</span> <span class="o">(</span><span class="n">n</span><span class="o">:</span><span class="n">&#8484;</span><span class="o">)</span> <span class="bp">%</span> <span class="mi">3</span>
+  <span class="n">mod_cases</span> <span class="n">hn</span> <span class="o">:</span> <span class="n">n</span> <span class="bp">%</span> <span class="mi">3</span>
   <span class="bp">&#183;</span> <span class="k">have</span> <span class="n">h</span> <span class="o">:=</span>
     <span class="k">calc</span> <span class="o">(</span><span class="mi">0</span><span class="o">:</span><span class="n">&#8484;</span><span class="o">)</span> <span class="bp">=</span> <span class="mi">0</span> <span class="bp">^</span> <span class="mi">2</span> <span class="o">:=</span> <span class="kd">by</span> <span class="n">numbers</span>
-      <span class="n">_</span> <span class="bp">&#8801;</span> <span class="o">(</span><span class="n">n</span><span class="o">:</span><span class="n">&#8484;</span><span class="o">)</span> <span class="bp">^</span> <span class="mi">2</span> <span class="o">[</span><span class="n">ZMOD</span> <span class="mi">3</span><span class="o">]</span> <span class="o">:=</span> <span class="kd">by</span> <span class="n">rel</span> <span class="o">[</span><span class="n">hn.symm</span><span class="o">]</span>
+      <span class="n">_</span> <span class="bp">&#8801;</span> <span class="n">n</span> <span class="bp">^</span> <span class="mi">2</span> <span class="o">[</span><span class="n">ZMOD</span> <span class="mi">3</span><span class="o">]</span> <span class="o">:=</span> <span class="kd">by</span> <span class="n">rel</span> <span class="o">[</span><span class="n">hn.symm</span><span class="o">]</span>
       <span class="n">_</span> <span class="bp">&#8801;</span> <span class="mi">2</span> <span class="o">[</span><span class="n">ZMOD</span> <span class="mi">3</span><span class="o">]</span> <span class="o">:=</span> <span class="kd">by</span> <span class="n">rel</span> <span class="o">[</span><span class="n">h</span><span class="o">]</span>
     <span class="n">numbers</span> <span class="n">at</span> <span class="n">h</span> <span class="c1">-- contradiction!</span>
   <span class="bp">&#183;</span> <span class="gr">sorry</span>
@@ -1812,9 +1812,9 @@ greater than <span class="math notranslate nohighlight">\(N\)</span> is even.</p
 </pre></div>
 </div>
 <ol class="arabic simple" start="5">
-<li><p>Let <span class="math notranslate nohighlight">\(n\)</span> be a natural number.  Show that <span class="math notranslate nohighlight">\(n^2\not\equiv 2 \mod 4\)</span>.</p></li>
+<li><p>Let <span class="math notranslate nohighlight">\(n\)</span> be an integer.  Show that <span class="math notranslate nohighlight">\(n^2\not\equiv 2 \mod 4\)</span>.</p></li>
 </ol>
-<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">(</span><span class="n">n</span> <span class="o">:</span> <span class="n">&#8469;</span><span class="o">)</span> <span class="o">:</span> <span class="bp">&#172;</span><span class="o">((</span><span class="n">n</span><span class="o">:</span><span class="n">&#8484;</span><span class="o">)</span> <span class="bp">^</span> <span class="mi">2</span> <span class="bp">&#8801;</span> <span class="mi">2</span> <span class="o">[</span><span class="n">ZMOD</span> <span class="mi">4</span><span class="o">])</span> <span class="o">:=</span> <span class="kd">by</span>
+<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">(</span><span class="n">n</span> <span class="o">:</span> <span class="n">&#8484;</span><span class="o">)</span> <span class="o">:</span> <span class="bp">&#172;</span><span class="o">(</span><span class="n">n</span> <span class="bp">^</span> <span class="mi">2</span> <span class="bp">&#8801;</span> <span class="mi">2</span> <span class="o">[</span><span class="n">ZMOD</span> <span class="mi">4</span><span class="o">])</span> <span class="o">:=</span> <span class="kd">by</span>
   <span class="gr">sorry</span>
 </pre></div>
 </div>
