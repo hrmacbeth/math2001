@@ -104,6 +104,7 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="05_Logic.html">5. Logic</a></li>
+<li class="toctree-l1"><a class="reference internal" href="06_Induction.html">6. Induction</a></li>
 </ul>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="Index_of_Tactics.html">Index of Lean tactics</a></li>
@@ -1542,10 +1543,9 @@ but also <span class="math notranslate nohighlight">\(n\equiv 1\mod 2\)</span>. 
 <p>Now, suppose that <span class="math notranslate nohighlight">\(n\)</span> is not odd.  Since <span class="math notranslate nohighlight">\(n\)</span> has to be either even or odd, it is even.</p>
 </div>
 <p>We record this for future use in Lean problems under the name <code class="docutils literal notranslate"><span class="pre">Int.even_iff_not_odd</span></code>.</p>
-<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">theorem</span> <span class="n">Int.even_iff_not_odd</span> <span class="o">(</span><span class="n">n</span> <span class="o">:</span> <span class="n">&#8484;</span><span class="o">)</span> <span class="o">:</span> <span class="n">Even</span> <span class="n">n</span> <span class="bp">&#8596;</span> <span class="bp">&#172;</span> <span class="n">Odd</span> <span class="n">n</span> <span class="o">:=</span> <span class="kd">by</span>
+<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">(</span><span class="n">n</span> <span class="o">:</span> <span class="n">&#8484;</span><span class="o">)</span> <span class="o">:</span> <span class="n">Int.Even</span> <span class="n">n</span> <span class="bp">&#8596;</span> <span class="bp">&#172;</span> <span class="n">Int.Odd</span> <span class="n">n</span> <span class="o">:=</span> <span class="kd">by</span>
   <span class="n">constructor</span>
   <span class="bp">&#183;</span> <span class="n">intro</span> <span class="n">h1</span> <span class="n">h2</span>
-    <span class="k">have</span> <span class="o">:</span> <span class="n">Even</span> <span class="n">n</span> <span class="bp">&#8743;</span> <span class="n">Odd</span> <span class="n">n</span> <span class="o">:=</span> <span class="o">&#10216;</span><span class="n">h1</span><span class="o">,</span> <span class="n">h2</span><span class="o">&#10217;</span>
     <span class="n">rw</span> <span class="o">[</span><span class="n">Int.even_iff_modEq</span><span class="o">]</span> <span class="n">at</span> <span class="n">h1</span>
     <span class="n">rw</span> <span class="o">[</span><span class="n">Int.odd_iff_modEq</span><span class="o">]</span> <span class="n">at</span> <span class="n">h2</span>
     <span class="k">have</span> <span class="n">h</span> <span class="o">:=</span>
@@ -1563,7 +1563,7 @@ but also <span class="math notranslate nohighlight">\(n\equiv 1\mod 2\)</span>. 
 <p class="admonition-title">Lemma</p>
 <p>Show that an integer <span class="math notranslate nohighlight">\(n\)</span> is odd if and only if it is not even.</p>
 </div>
-<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">theorem</span> <span class="n">Int.odd_iff_not_even</span> <span class="o">(</span><span class="n">n</span> <span class="o">:</span> <span class="n">&#8484;</span><span class="o">)</span> <span class="o">:</span> <span class="n">Odd</span> <span class="n">n</span> <span class="bp">&#8596;</span> <span class="bp">&#172;</span> <span class="n">Even</span> <span class="n">n</span> <span class="o">:=</span> <span class="kd">by</span>
+<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">(</span><span class="n">n</span> <span class="o">:</span> <span class="n">&#8484;</span><span class="o">)</span> <span class="o">:</span> <span class="n">Int.Odd</span> <span class="n">n</span> <span class="bp">&#8596;</span> <span class="bp">&#172;</span> <span class="n">Int.Even</span> <span class="n">n</span> <span class="o">:=</span> <span class="kd">by</span>
   <span class="gr">sorry</span>
 </pre></div>
 </div>

@@ -1,0 +1,7 @@
+.. _induction:
+
+Induction
+=========
+
+.. include:: 06_Induction/01_Induction.inc
+.. include:: 06_Induction/02_Recurrence_Relations.inc

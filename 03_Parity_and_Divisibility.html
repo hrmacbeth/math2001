@@ -78,7 +78,7 @@
 <li class="toctree-l3"><a class="reference internal" href="#id24">3.3.6. Example</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#no-mod-division">3.3.7. Example</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#id26">3.3.8. Example</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id27">3.3.9. Exercise</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#modeq-pow">3.3.9. Exercise</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#id28">3.3.10. Example</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#apply-mod-lemmas-example">3.3.11. Example</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#id30">3.3.12. Exercises</a></li>
@@ -103,6 +103,7 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="04_Proofs_with_Structure_II.html">4. Proofs with structure, II</a></li>
 <li class="toctree-l1"><a class="reference internal" href="05_Logic.html">5. Logic</a></li>
+<li class="toctree-l1"><a class="reference internal" href="06_Induction.html">6. Induction</a></li>
 </ul>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="Index_of_Tactics.html">Index of Lean tactics</a></li>
@@ -413,34 +414,79 @@ name when the definition of &#8220;odd&#8221; comes is unfolded.</p>
 </pre></div>
 </div>
 <ol class="arabic simple" start="4">
+<li><p>Let <span class="math notranslate nohighlight">\(p\)</span> be an odd integer and let <span class="math notranslate nohighlight">\(q\)</span> be an even integer.  Show that
+<span class="math notranslate nohighlight">\(p - q - 4\)</span> is odd.</p></li>
+</ol>
+<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">{</span><span class="n">p</span> <span class="n">q</span> <span class="o">:</span> <span class="n">&#8484;</span><span class="o">}</span> <span class="o">(</span><span class="n">hp</span> <span class="o">:</span> <span class="n">Odd</span> <span class="n">p</span><span class="o">)</span> <span class="o">(</span><span class="n">hq</span> <span class="o">:</span> <span class="n">Even</span> <span class="n">q</span><span class="o">)</span> <span class="o">:</span> <span class="n">Odd</span> <span class="o">(</span><span class="n">p</span> <span class="bp">-</span> <span class="n">q</span> <span class="bp">-</span> <span class="mi">4</span><span class="o">)</span> <span class="o">:=</span> <span class="kd">by</span>
+  <span class="gr">sorry</span>
+</pre></div>
+</div>
+<ol class="arabic simple" start="5">
+<li><p>Let <span class="math notranslate nohighlight">\(a\)</span> be an even integer and let <span class="math notranslate nohighlight">\(b\)</span> be an odd integer.  Show that
+<span class="math notranslate nohighlight">\(3a + b - 3\)</span> is odd.</p></li>
+</ol>
+<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">{</span><span class="n">a</span> <span class="n">b</span> <span class="o">:</span> <span class="n">&#8484;</span><span class="o">}</span> <span class="o">(</span><span class="n">ha</span> <span class="o">:</span> <span class="n">Even</span> <span class="n">a</span><span class="o">)</span> <span class="o">(</span><span class="n">hb</span> <span class="o">:</span> <span class="n">Odd</span> <span class="n">b</span><span class="o">)</span> <span class="o">:</span> <span class="n">Even</span> <span class="o">(</span><span class="mi">3</span> <span class="bp">*</span> <span class="n">a</span> <span class="bp">+</span> <span class="n">b</span> <span class="bp">-</span> <span class="mi">3</span><span class="o">)</span> <span class="o">:=</span> <span class="kd">by</span>
+  <span class="gr">sorry</span>
+</pre></div>
+</div>
+<ol class="arabic simple" start="6">
+<li><p>Prove that if the integers <span class="math notranslate nohighlight">\(r\)</span> and <span class="math notranslate nohighlight">\(s\)</span> are odd, then <span class="math notranslate nohighlight">\(3r-5s\)</span> is even.</p></li>
+</ol>
+<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">{</span><span class="n">r</span> <span class="n">s</span> <span class="o">:</span> <span class="n">&#8484;</span><span class="o">}</span> <span class="o">(</span><span class="n">hr</span> <span class="o">:</span> <span class="n">Odd</span> <span class="n">r</span><span class="o">)</span> <span class="o">(</span><span class="n">hs</span> <span class="o">:</span> <span class="n">Odd</span> <span class="n">s</span><span class="o">)</span> <span class="o">:</span> <span class="n">Even</span> <span class="o">(</span><span class="mi">3</span> <span class="bp">*</span> <span class="n">r</span> <span class="bp">-</span> <span class="mi">5</span> <span class="bp">*</span> <span class="n">s</span><span class="o">)</span> <span class="o">:=</span> <span class="kd">by</span>
+  <span class="gr">sorry</span>
+</pre></div>
+</div>
+<ol class="arabic simple" start="7">
 <li><p>Let <span class="math notranslate nohighlight">\(x\)</span> be an integer.  Show that if <span class="math notranslate nohighlight">\(x\)</span> is odd then so is <span class="math notranslate nohighlight">\(x^3\)</span>.</p></li>
 </ol>
 <div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">{</span><span class="n">x</span> <span class="o">:</span> <span class="n">&#8484;</span><span class="o">}</span> <span class="o">(</span><span class="n">hx</span> <span class="o">:</span> <span class="n">Odd</span> <span class="n">x</span><span class="o">)</span> <span class="o">:</span> <span class="n">Odd</span> <span class="o">(</span><span class="n">x</span> <span class="bp">^</span> <span class="mi">3</span><span class="o">)</span> <span class="o">:=</span> <span class="kd">by</span>
   <span class="gr">sorry</span>
 </pre></div>
 </div>
-<ol class="arabic simple" start="5">
+<ol class="arabic simple" start="8">
+<li><p>Let <span class="math notranslate nohighlight">\(n\)</span> be an odd integer.  Show that <span class="math notranslate nohighlight">\(n^2-3n+2\)</span> is even.</p></li>
+</ol>
+<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">{</span><span class="n">n</span> <span class="o">:</span> <span class="n">&#8484;</span><span class="o">}</span> <span class="o">(</span><span class="n">hn</span> <span class="o">:</span> <span class="n">Odd</span> <span class="n">n</span><span class="o">)</span> <span class="o">:</span> <span class="n">Even</span> <span class="o">(</span><span class="n">n</span> <span class="bp">^</span> <span class="mi">2</span> <span class="bp">-</span> <span class="mi">3</span> <span class="bp">*</span> <span class="n">n</span> <span class="bp">+</span> <span class="mi">2</span><span class="o">)</span> <span class="o">:=</span> <span class="kd">by</span>
+  <span class="gr">sorry</span>
+</pre></div>
+</div>
+<ol class="arabic simple" start="9">
+<li><p>Let <span class="math notranslate nohighlight">\(a\)</span> be an integer and suppose that <span class="math notranslate nohighlight">\(a\)</span> is odd.  Show that <span class="math notranslate nohighlight">\(a^2+2a-4\)</span> is
+odd.</p></li>
+</ol>
+<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">{</span><span class="n">a</span> <span class="o">:</span> <span class="n">&#8484;</span><span class="o">}</span> <span class="o">(</span><span class="n">ha</span> <span class="o">:</span> <span class="n">Odd</span> <span class="n">a</span><span class="o">)</span> <span class="o">:</span> <span class="n">Odd</span> <span class="o">(</span><span class="n">a</span> <span class="bp">^</span> <span class="mi">2</span> <span class="bp">+</span> <span class="mi">2</span> <span class="bp">*</span> <span class="n">a</span> <span class="bp">-</span> <span class="mi">4</span><span class="o">)</span> <span class="o">:=</span> <span class="kd">by</span>
+  <span class="gr">sorry</span>
+</pre></div>
+</div>
+<ol class="arabic simple" start="10">
+<li><p>Let <span class="math notranslate nohighlight">\(p\)</span> be an odd integer.  Show that <span class="math notranslate nohighlight">\(p^2+3p-5\)</span> is even.</p></li>
+</ol>
+<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">{</span><span class="n">p</span> <span class="o">:</span> <span class="n">&#8484;</span><span class="o">}</span> <span class="o">(</span><span class="n">hp</span> <span class="o">:</span> <span class="n">Odd</span> <span class="n">p</span><span class="o">)</span> <span class="o">:</span> <span class="n">Odd</span> <span class="o">(</span><span class="n">p</span> <span class="bp">^</span> <span class="mi">2</span> <span class="bp">+</span> <span class="mi">3</span> <span class="bp">*</span> <span class="n">p</span> <span class="bp">-</span> <span class="mi">5</span><span class="o">)</span> <span class="o">:=</span> <span class="kd">by</span>
+  <span class="gr">sorry</span>
+</pre></div>
+</div>
+<ol class="arabic simple" start="11">
 <li><p>Let <span class="math notranslate nohighlight">\(x\)</span> and <span class="math notranslate nohighlight">\(y\)</span> be odd integers.  Show that <span class="math notranslate nohighlight">\(xy\)</span> is odd.</p></li>
 </ol>
 <div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">{</span><span class="n">x</span> <span class="n">y</span> <span class="o">:</span> <span class="n">&#8484;</span><span class="o">}</span> <span class="o">(</span><span class="n">hx</span> <span class="o">:</span> <span class="n">Odd</span> <span class="n">x</span><span class="o">)</span> <span class="o">(</span><span class="n">hy</span> <span class="o">:</span> <span class="n">Odd</span> <span class="n">y</span><span class="o">)</span> <span class="o">:</span> <span class="n">Odd</span> <span class="o">(</span><span class="n">x</span> <span class="bp">*</span> <span class="n">y</span><span class="o">)</span> <span class="o">:=</span> <span class="kd">by</span>
   <span class="gr">sorry</span>
 </pre></div>
 </div>
-<ol class="arabic simple" start="6">
+<ol class="arabic simple" start="12">
 <li><p>Let <span class="math notranslate nohighlight">\(n\)</span> be an integer.  Show that <span class="math notranslate nohighlight">\(5n^2+3n+7\)</span> is odd.</p></li>
 </ol>
 <div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">(</span><span class="n">n</span> <span class="o">:</span> <span class="n">&#8484;</span><span class="o">)</span> <span class="o">:</span> <span class="n">Odd</span> <span class="o">(</span><span class="mi">5</span> <span class="bp">*</span> <span class="n">n</span> <span class="bp">^</span> <span class="mi">2</span> <span class="bp">+</span> <span class="mi">3</span> <span class="bp">*</span> <span class="n">n</span> <span class="bp">+</span> <span class="mi">7</span><span class="o">)</span> <span class="o">:=</span> <span class="kd">by</span>
   <span class="gr">sorry</span>
 </pre></div>
 </div>
-<ol class="arabic simple" start="7">
+<ol class="arabic simple" start="13">
 <li><p>Let <span class="math notranslate nohighlight">\(n\)</span> be an integer.  Show that there exists an integer <span class="math notranslate nohighlight">\(m\geq n\)</span> which is odd.</p></li>
 </ol>
 <div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">(</span><span class="n">n</span> <span class="o">:</span> <span class="n">&#8484;</span><span class="o">)</span> <span class="o">:</span> <span class="bp">&#8707;</span> <span class="n">m</span> <span class="bp">&#8805;</span> <span class="n">n</span><span class="o">,</span> <span class="n">Odd</span> <span class="n">m</span> <span class="o">:=</span> <span class="kd">by</span>
   <span class="gr">sorry</span>
 </pre></div>
 </div>
-<p>8.  Let <span class="math notranslate nohighlight">\(a\)</span>, <span class="math notranslate nohighlight">\(b\)</span> and <span class="math notranslate nohighlight">\(c\)</span> be integers.  Show that at least one of <span class="math notranslate nohighlight">\(a-b\)</span>,
+<p>14.  Let <span class="math notranslate nohighlight">\(a\)</span>, <span class="math notranslate nohighlight">\(b\)</span> and <span class="math notranslate nohighlight">\(c\)</span> be integers.  Show that at least one of <span class="math notranslate nohighlight">\(a-b\)</span>,
 <span class="math notranslate nohighlight">\(a+c\)</span> or <span class="math notranslate nohighlight">\(b-c\)</span> is even.</p>
 <div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">(</span><span class="n">a</span> <span class="n">b</span> <span class="n">c</span> <span class="o">:</span> <span class="n">&#8484;</span><span class="o">)</span> <span class="o">:</span> <span class="n">Even</span> <span class="o">(</span><span class="n">a</span> <span class="bp">-</span> <span class="n">b</span><span class="o">)</span> <span class="bp">&#8744;</span> <span class="n">Even</span> <span class="o">(</span><span class="n">a</span> <span class="bp">+</span> <span class="n">c</span><span class="o">)</span> <span class="bp">&#8744;</span> <span class="n">Even</span> <span class="o">(</span><span class="n">b</span> <span class="bp">-</span> <span class="n">c</span><span class="o">)</span> <span class="o">:=</span> <span class="kd">by</span>
   <span class="gr">sorry</span>
@@ -695,6 +741,22 @@ example applying this test:</p>
 </pre></div>
 </div>
 <ol class="arabic simple" start="3">
+<li><p>Let <span class="math notranslate nohighlight">\(x\)</span> and <span class="math notranslate nohighlight">\(y\)</span> be integers and suppose that <span class="math notranslate nohighlight">\(x \mid y\)</span>.  Show that
+<span class="math notranslate nohighlight">\(x \mid 3y-4y^2\)</span>.</p></li>
+</ol>
+<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">{</span><span class="n">x</span> <span class="n">y</span> <span class="o">:</span> <span class="n">&#8484;</span><span class="o">}</span> <span class="o">(</span><span class="n">h</span> <span class="o">:</span> <span class="n">x</span> <span class="bp">&#8739;</span> <span class="n">y</span><span class="o">)</span> <span class="o">:</span> <span class="n">x</span> <span class="bp">&#8739;</span> <span class="mi">3</span> <span class="bp">*</span> <span class="n">y</span> <span class="bp">-</span> <span class="mi">4</span> <span class="bp">*</span> <span class="n">y</span> <span class="bp">^</span> <span class="mi">2</span> <span class="o">:=</span> <span class="kd">by</span>
+  <span class="gr">sorry</span>
+</pre></div>
+</div>
+<ol class="arabic simple" start="4">
+<li><p>Let <span class="math notranslate nohighlight">\(m\)</span> and <span class="math notranslate nohighlight">\(n\)</span> be integers and suppose that <span class="math notranslate nohighlight">\(m \mid n\)</span>.  Show that
+<span class="math notranslate nohighlight">\(m \mid 2n^3+n\)</span>.</p></li>
+</ol>
+<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">{</span><span class="n">m</span> <span class="n">n</span> <span class="o">:</span> <span class="n">&#8484;</span><span class="o">}</span> <span class="o">(</span><span class="n">h</span> <span class="o">:</span> <span class="n">m</span> <span class="bp">&#8739;</span> <span class="n">n</span><span class="o">)</span> <span class="o">:</span> <span class="n">m</span> <span class="bp">&#8739;</span> <span class="mi">2</span> <span class="bp">*</span> <span class="n">n</span> <span class="bp">^</span> <span class="mi">3</span> <span class="bp">+</span> <span class="n">n</span> <span class="o">:=</span> <span class="kd">by</span>
+  <span class="gr">sorry</span>
+</pre></div>
+</div>
+<ol class="arabic simple" start="5">
 <li><p>Let <span class="math notranslate nohighlight">\(a\)</span> and <span class="math notranslate nohighlight">\(b\)</span> be integers and suppose that <span class="math notranslate nohighlight">\(a \mid b\)</span>.  Show that
 <span class="math notranslate nohighlight">\(a \mid 3b^3-b^2+5b\)</span>.</p></li>
 </ol>
@@ -702,7 +764,15 @@ example applying this test:</p>
   <span class="gr">sorry</span>
 </pre></div>
 </div>
-<ol class="arabic simple" start="4">
+<ol class="arabic simple" start="6">
+<li><p>Let <span class="math notranslate nohighlight">\(k\)</span>, <span class="math notranslate nohighlight">\(l\)</span> and <span class="math notranslate nohighlight">\(m\)</span> be integers and suppose that <span class="math notranslate nohighlight">\(k\)</span> divides <span class="math notranslate nohighlight">\(l\)</span>
+and <span class="math notranslate nohighlight">\(l^3\)</span> divides <span class="math notranslate nohighlight">\(m\)</span>.  Show that <span class="math notranslate nohighlight">\(k^3\)</span> divides <span class="math notranslate nohighlight">\(m\)</span>.</p></li>
+</ol>
+<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">{</span><span class="n">k</span> <span class="n">l</span> <span class="n">m</span> <span class="o">:</span> <span class="n">&#8484;</span><span class="o">}</span> <span class="o">(</span><span class="n">h1</span> <span class="o">:</span> <span class="n">k</span> <span class="bp">&#8739;</span> <span class="n">l</span><span class="o">)</span> <span class="o">(</span><span class="n">h2</span> <span class="o">:</span> <span class="n">l</span> <span class="bp">^</span> <span class="mi">3</span> <span class="bp">&#8739;</span> <span class="n">m</span><span class="o">)</span> <span class="o">:</span> <span class="n">k</span> <span class="bp">^</span> <span class="mi">3</span> <span class="bp">&#8739;</span> <span class="n">m</span> <span class="o">:=</span> <span class="kd">by</span>
+  <span class="gr">sorry</span>
+</pre></div>
+</div>
+<ol class="arabic simple" start="7">
 <li><p>Let <span class="math notranslate nohighlight">\(a\)</span>, <span class="math notranslate nohighlight">\(b\)</span> and <span class="math notranslate nohighlight">\(c\)</span> be integers and suppose that <span class="math notranslate nohighlight">\(a^2\)</span> divides <span class="math notranslate nohighlight">\(b\)</span>
 and <span class="math notranslate nohighlight">\(b^3\)</span> divides <span class="math notranslate nohighlight">\(c\)</span>.  Show that <span class="math notranslate nohighlight">\(a^6\)</span> divides <span class="math notranslate nohighlight">\(c\)</span>.</p></li>
 </ol>
@@ -710,7 +780,7 @@ and <span class="math notranslate nohighlight">\(b^3\)</span> divides <span clas
   <span class="gr">sorry</span>
 </pre></div>
 </div>
-<ol class="arabic simple" start="5">
+<ol class="arabic simple" start="8">
 <li><p>Show that there exists a natural number <span class="math notranslate nohighlight">\(n&gt;0\)</span>, such that <span class="math notranslate nohighlight">\(9\)</span> is a factor of
 <span class="math notranslate nohighlight">\(2^n-1\)</span>.</p></li>
 </ol>
@@ -718,7 +788,7 @@ and <span class="math notranslate nohighlight">\(b^3\)</span> divides <span clas
   <span class="gr">sorry</span>
 </pre></div>
 </div>
-<ol class="arabic simple" start="6">
+<ol class="arabic simple" start="9">
 <li><p>Show that there exists integers <span class="math notranslate nohighlight">\(a\)</span> and <span class="math notranslate nohighlight">\(b\)</span>, with <span class="math notranslate nohighlight">\(0&lt;b&lt;a\)</span>, such that
 <span class="math notranslate nohighlight">\(a-b \mid a+b\)</span>.</p></li>
 </ol>
@@ -726,7 +796,7 @@ and <span class="math notranslate nohighlight">\(b^3\)</span> divides <span clas
   <span class="gr">sorry</span>
 </pre></div>
 </div>
-<ol class="arabic simple" start="7">
+<ol class="arabic simple" start="10">
 <li><p>(hard) Let <span class="math notranslate nohighlight">\(a\)</span> be a natural number and suppose that <span class="math notranslate nohighlight">\(a^2 \mid a\)</span>.  Show that
 <span class="math notranslate nohighlight">\(a=0\)</span> or <span class="math notranslate nohighlight">\(a=1\)</span>.</p></li>
 </ol>
@@ -920,8 +990,8 @@ Then</p>
 </pre></div>
 </div>
 </section>
-<section id="id27">
-<h3><span class="section-number">3.3.9. </span>Exercise<a class="headerlink" href="#id27" title="Permalink to this headline">&#61633;</a></h3>
+<section id="modeq-pow">
+<span id="id27"></span><h3><span class="section-number">3.3.9. </span>Exercise<a class="headerlink" href="#modeq-pow" title="Permalink to this headline">&#61633;</a></h3>
 <div class="admonition-lemma-cubing-rule-for-modular-arithmetic admonition">
 <p class="admonition-title">Lemma (cubing rule for modular arithmetic)</p>
 <p>Let <span class="math notranslate nohighlight">\(a\)</span>, <span class="math notranslate nohighlight">\(b\)</span> and <span class="math notranslate nohighlight">\(n\)</span> be integers, and suppose that
@@ -932,7 +1002,7 @@ Then</p>
 </pre></div>
 </div>
 <p>In fact the same is true for any power, although we don&#8217;t yet have the tools to prove it.  We&#8217;ll
-come back to this later in the course.</p>
+come back to this later in the course, in <a class="reference internal" href="06_Induction.html#modeq-pow-proof"><span class="std std-numref">Example 6.1.3</span></a>.</p>
 <div class="admonition-lemma-power-rule-for-modular-arithmetic admonition">
 <p class="admonition-title">Lemma (power rule for modular arithmetic)</p>
 <p>Let <span class="math notranslate nohighlight">\(k\)</span> be a natural number and let <span class="math notranslate nohighlight">\(a\)</span>, <span class="math notranslate nohighlight">\(b\)</span> and <span class="math notranslate nohighlight">\(n\)</span> be integers, and
@@ -1036,7 +1106,29 @@ integers, and suppose that <span class="math notranslate nohighlight">\(a\equiv 
 <ol class="arabic" start="5">
 <li><p>Give an alternative solution (i.e., with different numbers) to
 <a class="reference internal" href="#no-mod-division"><span class="std std-numref">Example 3.3.7</span></a>.</p></li>
-<li><p>Let <span class="math notranslate nohighlight">\(k\)</span> be an integer, and suppose that <span class="math notranslate nohighlight">\(k\equiv 3 \mod 5\)</span>.  Then
+<li><p>Let <span class="math notranslate nohighlight">\(a\)</span> and <span class="math notranslate nohighlight">\(b\)</span> be integers, and suppose that <span class="math notranslate nohighlight">\(a \equiv b \mod 5\)</span>.  Show that
+<span class="math notranslate nohighlight">\(2a+3 \equiv 2b+3 \mod 5\)</span>.</p>
+<p>Give two solutions, following the style of the two solutions in
+<a class="reference internal" href="#apply-mod-lemmas-example"><span class="std std-numref">Example 3.3.11</span></a>.</p>
+</li>
+</ol>
+<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">{</span><span class="n">a</span> <span class="n">b</span> <span class="o">:</span> <span class="n">&#8484;</span><span class="o">}</span> <span class="o">(</span><span class="n">h</span> <span class="o">:</span> <span class="n">a</span> <span class="bp">&#8801;</span> <span class="n">b</span> <span class="o">[</span><span class="n">ZMOD</span> <span class="mi">5</span><span class="o">])</span> <span class="o">:</span> <span class="mi">2</span> <span class="bp">*</span> <span class="n">a</span> <span class="bp">+</span> <span class="mi">3</span> <span class="bp">&#8801;</span> <span class="mi">2</span> <span class="bp">*</span> <span class="n">b</span> <span class="bp">+</span> <span class="mi">3</span> <span class="o">[</span><span class="n">ZMOD</span> <span class="mi">5</span><span class="o">]</span> <span class="o">:=</span> <span class="kd">by</span>
+  <span class="gr">sorry</span>
+</pre></div>
+</div>
+<ol class="arabic" start="7">
+<li><p>Let <span class="math notranslate nohighlight">\(m\)</span> and <span class="math notranslate nohighlight">\(n\)</span> be integers, and suppose that <span class="math notranslate nohighlight">\(m \equiv n \mod 4\)</span>.  Show that
+<span class="math notranslate nohighlight">\(3m-1 \equiv 3n-1 \mod 4\)</span>.</p>
+<p>Give two solutions, following the style of the two solutions in
+<a class="reference internal" href="#apply-mod-lemmas-example"><span class="std std-numref">Example 3.3.11</span></a>.</p>
+</li>
+</ol>
+<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">{</span><span class="n">m</span> <span class="n">n</span> <span class="o">:</span> <span class="n">&#8484;</span><span class="o">}</span> <span class="o">(</span><span class="n">h</span> <span class="o">:</span> <span class="n">m</span> <span class="bp">&#8801;</span> <span class="n">n</span> <span class="o">[</span><span class="n">ZMOD</span> <span class="mi">4</span><span class="o">])</span> <span class="o">:</span> <span class="mi">3</span> <span class="bp">*</span> <span class="n">m</span> <span class="bp">-</span> <span class="mi">1</span> <span class="bp">&#8801;</span> <span class="mi">3</span> <span class="bp">*</span> <span class="n">n</span> <span class="bp">-</span> <span class="mi">1</span> <span class="o">[</span><span class="n">ZMOD</span> <span class="mi">4</span><span class="o">]</span> <span class="o">:=</span> <span class="kd">by</span>
+  <span class="gr">sorry</span>
+</pre></div>
+</div>
+<ol class="arabic" start="8">
+<li><p>Let <span class="math notranslate nohighlight">\(k\)</span> be an integer, and suppose that <span class="math notranslate nohighlight">\(k\equiv 3 \mod 5\)</span>.  Show that
 <span class="math notranslate nohighlight">\(4 k + k ^ 3 + 3\equiv 4 \cdot 3 + 3 ^ 3 + 3 \mod 5\)</span>.</p>
 <p>Give two solutions, following the style of the two solutions in
 <a class="reference internal" href="#apply-mod-lemmas-example"><span class="std std-numref">Example 3.3.11</span></a>.</p>
