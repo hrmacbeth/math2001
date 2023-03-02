@@ -676,7 +676,7 @@ A_4&amp;=1+2+3+4\\
 \[\begin{split}A_{k+1}&amp;=A_k+(k+1)\\
 &amp;=\frac{k(k+1)}{2}+(k+1)\\
 &amp;=\frac{k(k+1)+2(k+1)}{2}\\
-&amp;=\frac{(k+1)&#8592;[(k+1)+1&#8735;]}{2}.\end{split}\]</div>
+&amp;=\frac{(k+1)\cdot[(k+1)+1]}{2}.\end{split}\]</div>
 </div>
 <p>Here it is in Lean, written with one fewer step because Lean is better at algebra than humans are.</p>
 <div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">(</span><span class="n">n</span> <span class="o">:</span> <span class="n">&#8469;</span><span class="o">)</span> <span class="o">:</span> <span class="n">A</span> <span class="n">n</span> <span class="bp">=</span> <span class="n">n</span> <span class="bp">*</span> <span class="o">(</span><span class="n">n</span> <span class="bp">+</span> <span class="mi">1</span><span class="o">)</span> <span class="bp">/</span> <span class="mi">2</span> <span class="o">:=</span> <span class="kd">by</span>
