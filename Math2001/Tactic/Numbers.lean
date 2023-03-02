@@ -83,3 +83,12 @@ elab (name := numbers) "numbers" loc:(location ?) : tactic =>
 
 macro (name := normNumCmd) "#numbers" ppSpace e:term : command =>
   `(command| #conv norm_num1 => $e)
+
+open Tactic
+
+@[inherit_doc numbers] syntax (name := numbersConv) "numbers" : conv
+
+/-- Elaborator for `numbers` conv tactic. -/
+@[tactic numbersConv] def elabNormNum1Conv : Tactic := fun _ ↦ withMainContext do
+  let ctx ← getSimpContext mkNullNode true
+  Conv.applySimpResult (← deriveSimp ctx (← instantiateMVars (← Conv.getLhs)) (useSimp := false))

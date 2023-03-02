@@ -16,7 +16,7 @@ def Superpowered (k : ℕ) : Prop := ∀ n : ℕ, Prime (k ^ k ^ n + 1)
 theorem not_superpowered_zero : ¬ Superpowered 0 := by
   intro h
   have one_prime : Prime (0 ^ 0 ^ 0 + 1) := h 0
-  numbers at one_prime -- simplifies that statement to `Prime 1`
+  conv at one_prime => numbers -- simplifies that statement to `Prime 1`
   have : ¬ Prime 1 := not_prime_one
   contradiction
 
@@ -28,7 +28,7 @@ theorem not_superpowered_zero : ¬ Superpowered 0 := by
 
 theorem superpowered_one : Superpowered 1 := by
   intro n
-  ring_nf -- simplifies goal from `Prime (1 ^ 1 ^ n + 1)` to `Prime 2`
+  conv => ring -- simplifies goal from `Prime (1 ^ 1 ^ n + 1)` to `Prime 2`
   apply prime_two
 
 
@@ -48,7 +48,7 @@ theorem not_superpowered_three : ¬ Superpowered 3 := by
   intro h
   dsimp [Superpowered] at h
   have four_prime : Prime (3 ^ 3 ^ 0 + 1) := h 0
-  numbers at four_prime -- simplifies that statement to `Prime 4`
+  conv at four_prime => numbers -- simplifies that statement to `Prime 4`
   have four_not_prime : ¬ Prime 4
   · apply not_prime 2
     · numbers -- show `2 ≠ 1` 

@@ -396,7 +396,8 @@ two Lean commands:</p>
 </section>
 <section id="the-law-of-the-excluded-middle">
 <span id="lem"></span><h2><span class="section-number">5.2. </span>The law of the excluded middle<a class="headerlink" href="#the-law-of-the-excluded-middle" title="Permalink to this headline">&#61633;</a></h2>
-<p>A tradition which <a class="reference external" href="https://en.wikipedia.org/wiki/Perfect_number">goes back to the ancient Greeks</a>
+<p>A tradition which <a class="reference external" href="https://en.wikipedia.org/wiki/Perfect_number">goes back</a> to the
+<a class="reference external" href="https://en.wikipedia.org/wiki/Amicable_numbers">ancient Greeks</a>
 is to give a slightly silly name to a class of numbers, in order to provide shorter theorem
 statements while studying it.  In that vein, I present, just for this section &#8230; the superpowered
 numbers!</p>
@@ -433,11 +434,14 @@ contradiction, since 1 is not prime.</p>
 <div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">theorem</span> <span class="n">not_superpowered_zero</span> <span class="o">:</span> <span class="bp">&#172;</span> <span class="n">Superpowered</span> <span class="mi">0</span> <span class="o">:=</span> <span class="kd">by</span>
   <span class="n">intro</span> <span class="n">h</span>
   <span class="k">have</span> <span class="n">one_prime</span> <span class="o">:</span> <span class="n">Prime</span> <span class="o">(</span><span class="mi">0</span> <span class="bp">^</span> <span class="mi">0</span> <span class="bp">^</span> <span class="mi">0</span> <span class="bp">+</span> <span class="mi">1</span><span class="o">)</span> <span class="o">:=</span> <span class="n">h</span> <span class="mi">0</span>
-  <span class="n">numbers</span> <span class="n">at</span> <span class="n">one_prime</span> <span class="c1">-- simplifies that statement to `Prime 1`</span>
+  <span class="n">conv</span> <span class="n">at</span> <span class="n">one_prime</span> <span class="bp">=&gt;</span> <span class="n">numbers</span> <span class="c1">-- simplifies that statement to `Prime 1`</span>
   <span class="k">have</span> <span class="o">:</span> <span class="bp">&#172;</span> <span class="n">Prime</span> <span class="mi">1</span> <span class="o">:=</span> <span class="n">not_prime_one</span>
   <span class="n">contradiction</span>
 </pre></div>
 </div>
+<p>Don&#8217;t worry too much about the unfamiliar tactic <code class="docutils literal notranslate"><span class="pre">conv</span></code> in the above proof &#8211; we will not
+encounter it outside of this section.  Just compare the goal state before and after the use of the
+tactic and check that you agree intuitively with the transformation which occurred.</p>
 </section>
 <section id="id8">
 <h3><span class="section-number">5.2.2. </span>Example<a class="headerlink" href="#id8" title="Permalink to this headline">&#61633;</a></h3>
@@ -458,7 +462,7 @@ contradiction, since 1 is not prime.</p>
 <p>To write this in Lean, we use the lemma <code class="docutils literal notranslate"><span class="pre">prime_two</span></code>, from <a class="reference internal" href="04_Proofs_with_Structure_II.html#prime-def"><span class="std std-numref">Example 4.1.8</span></a>.</p>
 <div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">theorem</span> <span class="n">superpowered_one</span> <span class="o">:</span> <span class="n">Superpowered</span> <span class="mi">1</span> <span class="o">:=</span> <span class="kd">by</span>
   <span class="n">intro</span> <span class="n">n</span>
-  <span class="n">ring_nf</span> <span class="c1">-- simplifies goal from `Prime (1 ^ 1 ^ n + 1)` to `Prime 2`</span>
+  <span class="n">conv</span> <span class="bp">=&gt;</span> <span class="n">ring</span> <span class="c1">-- simplifies goal from `Prime (1 ^ 1 ^ n + 1)` to `Prime 2`</span>
   <span class="n">apply</span> <span class="n">prime_two</span>
 </pre></div>
 </div>
@@ -502,7 +506,7 @@ factor for it.</p>
   <span class="n">intro</span> <span class="n">h</span>
   <span class="n">dsimp</span> <span class="o">[</span><span class="n">Superpowered</span><span class="o">]</span> <span class="n">at</span> <span class="n">h</span>
   <span class="k">have</span> <span class="n">four_prime</span> <span class="o">:</span> <span class="n">Prime</span> <span class="o">(</span><span class="mi">3</span> <span class="bp">^</span> <span class="mi">3</span> <span class="bp">^</span> <span class="mi">0</span> <span class="bp">+</span> <span class="mi">1</span><span class="o">)</span> <span class="o">:=</span> <span class="n">h</span> <span class="mi">0</span>
-  <span class="n">numbers</span> <span class="n">at</span> <span class="n">four_prime</span> <span class="c1">-- simplifies that statement to `Prime 4`</span>
+  <span class="n">conv</span> <span class="n">at</span> <span class="n">four_prime</span> <span class="bp">=&gt;</span> <span class="n">numbers</span> <span class="c1">-- simplifies that statement to `Prime 4`</span>
   <span class="k">have</span> <span class="n">four_not_prime</span> <span class="o">:</span> <span class="bp">&#172;</span> <span class="n">Prime</span> <span class="mi">4</span>
   <span class="bp">&#183;</span> <span class="n">apply</span> <span class="n">not_prime</span> <span class="mi">2</span>
     <span class="bp">&#183;</span> <span class="n">numbers</span> <span class="c1">-- show `2 &#8800; 1`</span>
