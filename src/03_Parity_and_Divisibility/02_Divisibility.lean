@@ -60,7 +60,16 @@ example (t : ℤ) : t ∣ 0 := by
 example : ¬(3 : ℤ) ∣ -10 := by
   sorry
 
+example {x y : ℤ} (h : x ∣ y) : x ∣ 3 * y - 4 * y ^ 2 := by
+  sorry
+
+example {m n : ℤ} (h : m ∣ n) : m ∣ 2 * n ^ 3 + n := by
+  sorry
+
 example {a b : ℤ} (hab : a ∣ b) : a ∣ 3 * b ^ 3 - b ^ 2 + 5 * b := by
+  sorry
+
+example {k l m : ℤ} (h1 : k ∣ l) (h2 : l ^ 3 ∣ m) : k ^ 3 ∣ m := by
   sorry
 
 example {a b c : ℤ} (hab : a ^ 2 ∣ b) (hbc : b ^ 3 ∣ c) : a ^ 6 ∣ c := by

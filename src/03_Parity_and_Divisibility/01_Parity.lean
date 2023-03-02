@@ -70,7 +70,25 @@ example : Even (26 : ℤ) := by
 example {m n : ℤ} (hm : Odd m) (hn : Even n) : Odd (n + m) := by
   sorry
 
+example {p q : ℤ} (hp : Odd p) (hq : Even q) : Odd (p - q - 4) := by
+  sorry
+
+example {a b : ℤ} (ha : Even a) (hb : Odd b) : Even (3 * a + b - 3) := by
+  sorry
+
+example {r s : ℤ} (hr : Odd r) (hs : Odd s) : Even (3 * r - 5 * s) := by
+  sorry
+
 example {x : ℤ} (hx : Odd x) : Odd (x ^ 3) := by
+  sorry
+
+example {n : ℤ} (hn : Odd n) : Even (n ^ 2 - 3 * n + 2) := by
+  sorry
+
+example {a : ℤ} (ha : Odd a) : Odd (a ^ 2 + 2 * a - 4) := by
+  sorry
+
+example {p : ℤ} (hp : Odd p) : Odd (p ^ 2 + 3 * p - 5) := by
   sorry
 
 example {x y : ℤ} (hx : Odd x) (hy : Odd y) : Odd (x * y) := by

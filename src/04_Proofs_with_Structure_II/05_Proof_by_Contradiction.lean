@@ -40,10 +40,9 @@ example {x y : ℝ} (h : x + y = 0) : ¬(x > 0 ∧ y > 0) := by
 example : ¬ (∃ n : ℕ, n ^ 2 = 2) := by
   sorry
 
-theorem Int.even_iff_not_odd (n : ℤ) : Even n ↔ ¬ Odd n := by
+example (n : ℤ) : Int.Even n ↔ ¬ Int.Odd n := by
   constructor
   · intro h1 h2
-    have : Even n ∧ Odd n := ⟨h1, h2⟩
     rw [Int.even_iff_modEq] at h1
     rw [Int.odd_iff_modEq] at h2
     have h :=
@@ -56,7 +55,7 @@ theorem Int.even_iff_not_odd (n : ℤ) : Even n ↔ ¬ Odd n := by
     · contradiction   
 
 
-theorem Int.odd_iff_not_even (n : ℤ) : Odd n ↔ ¬ Even n := by
+example (n : ℤ) : Int.Odd n ↔ ¬ Int.Even n := by
   sorry
 
 example (n : ℤ) : ¬(n ^ 2 ≡ 2 [ZMOD 3]) := by

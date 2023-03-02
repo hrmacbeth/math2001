@@ -1,0 +1,119 @@
+import Mathlib.Data.Real.Basic
+import Math2001.Library.Parity
+import Math2001.Tactic.Addarith
+import Math2001.Tactic.Induction
+import Math2001.Tactic.Numbers
+import Math2001.Tactic.Rel
+import Math2001.Tactic.Take
+
+set_option linter.unusedVariables false
+
+notation3 "forall_sufficiently_large "(...)", "r:(scoped P => ∃ C, ∀ x ≥ C, P x) => r
+
+
+example (n : ℕ) : 2 ^ n ≥ n + 1 := by
+  simple_induction n with k IH
+  · -- base case
+    numbers
+  · -- inductive step
+    calc 2 ^ (k + 1) = 2 * 2 ^ k := by ring
+      _ ≥ 2 * (k + 1) := by rel [IH]
+      _ = (k + 1 + 1) + k := by ring
+      _ ≥ k + 1 + 1 := by extra
+
+
+example (n : ℕ) : Nat.Even n ∨ Nat.Odd n := by
+  simple_induction n with k IH
+  · -- base case
+    sorry
+  · -- inductive step
+    obtain ⟨x, hx⟩ | ⟨x, hx⟩ := IH
+    · sorry
+    · sorry
+
+example {a b d : ℤ} (h : a ≡ b [ZMOD d]) (n : ℕ) : a ^ n ≡ b ^ n [ZMOD d] := by
+  sorry
+
+example (a : ℝ) {n : ℕ} : a ^ n = 0 → a = 0 := by
+  simple_induction n with k IH
+  · -- base case
+    intro H
+    have h :=
+    calc 1 = a ^ 0 := by ring
+      _ = 0 := by rw [H]
+    numbers at h
+  · -- inductive step
+    intro H
+    have : a ^ k = 0 ∨ a = 0
+    · apply eq_zero_or_eq_zero_of_mul_eq_zero
+      calc a ^ k * a = a ^ (k + 1) := by ring
+        _ = 0 := by rw [H]
+    obtain H1 | H2 := this
+    · apply IH
+      apply H1
+    · apply H2
+
+
+
+example (n : ℕ) : 4 ^ n ≡ 1 [ZMOD 15] ∨ 4 ^ n ≡ 4 [ZMOD 15] := by  
+  simple_induction n with k IH
+  · -- base case
+    left
+    numbers
+  · -- inductive step
+    obtain hk | hk := IH
+    · sorry
+    · left
+      calc (4:ℤ) ^ (k + 1) = 4 * 4 ^ k := by ring
+        _ ≡ 4 * 4 [ZMOD 15] := by rel [hk]
+        _ = 15 * 1 + 1 := by numbers
+        _ ≡ 1 [ZMOD 15] := by extra
+
+
+example {n : ℕ} (hn : 2 ≤ n) : (3:ℤ) ^ n ≥ 2 ^ n + 5 := by
+  induction_from_starting_point n, hn with k hk IH
+  · -- base case
+    numbers
+  · -- inductive step
+    calc (3:ℤ) ^ (k + 1) = 2 * 3 ^ k + 3 ^ k := by ring
+      _ ≥ 2 * (2 ^ k + 5) + 3 ^ k := by rel [IH]
+      _ = 2 ^ (k + 1) + 5 + (5 + 3 ^ k) := by ring
+      _ ≥ 2 ^ (k + 1) + 5 := by extra
+
+
+example : forall_sufficiently_large n : ℕ, 2 ^ n ≥ n ^ 2 := by
+  dsimp
+  take 4
+  intro n hn
+  induction_from_starting_point n, hn with k hk IH
+  · -- base case
+    sorry
+  · -- inductive step
+    sorry
+
+example (n : ℕ) : 3 ^ n ≥ n ^ 2 + n + 1 := by
+  sorry
+
+example {a : ℝ} (ha : -1 ≤ a) (n : ℕ) : (1 + a) ^ n ≥ 1 + n * a := by
+  sorry
+
+example (n : ℕ) : 5 ^ n ≡ 1 [ZMOD 8] ∨ 5 ^ n ≡ 5 [ZMOD 8] := by  
+  sorry
+
+example (n : ℕ) : 6 ^ n ≡ 1 [ZMOD 7] ∨ 6 ^ n ≡ 6 [ZMOD 7] := by  
+  sorry
+
+example (n : ℕ) : 4 ^ n ≡ 1 [ZMOD 7] ∨ 4 ^ n ≡ 2 [ZMOD 7] ∨ 4 ^ n ≡ 4 [ZMOD 7] := by  
+  sorry
+
+example : forall_sufficiently_large n : ℕ, (3:ℤ) ^ n ≥ 2 ^ n + 100 := by
+  dsimp
+  sorry
+
+example : forall_sufficiently_large n : ℕ, 2 ^ n ≥ n ^ 2 + 4 := by
+  dsimp
+  sorry
+
+example : forall_sufficiently_large n : ℕ, 2 ^ n ≥ n ^ 3 := by
+  dsimp
+  sorry

@@ -6,6 +6,7 @@ import Math2001.Library.Parity
 import Math2001.Library.ParityModular
 import Math2001.Library.Prime
 import Math2001.Tactic.Addarith
+import Math2001.Tactic.Induction
 import Math2001.Tactic.ModCases
 import Math2001.Tactic.Numbers
 import Math2001.Tactic.Rel

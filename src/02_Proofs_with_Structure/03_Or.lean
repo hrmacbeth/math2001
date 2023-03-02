@@ -93,18 +93,34 @@ example {n : ℤ} : n ^ 2 ≠ 2 := by
         _ ≤ n ^ 2 := by rel [hn]
 
 
+example {x : ℚ} (h : x = 4 ∨ x = -4) : x ^ 2 + 1 = 17 := by
+  sorry
+
 example {x : ℝ} (h : x = 1 ∨ x = 2) : x ^ 2 - 3 * x + 2 = 0 := by
+  sorry
+
+example {t : ℚ} (h : t = -2 ∨ t = 3) : t ^ 2 - t - 6 = 0 := by
+  sorry
+
+example {x y : ℝ} (h : x = 2 ∨ y = -2) : x * y + 2 * x = 2 * y + 4 := by
+  sorry
+
+example {s t : ℚ} (h : s = 3 - t) : s + t = 3 ∨ s + t = 5 := by
+  sorry
+
+example {a b : ℚ} (h : a + 2 * b < 0) : b < a / 2 ∨ b < - a / 2 := by
+  sorry
+
+example {x y : ℝ} (h : y = 2 * x + 1) : x < y / 2 ∨ x > y / 2 := by
+  sorry
+
+example {x : ℝ} (hx : x ^ 2 + 2 * x - 3 = 0) : x = -3 ∨ x = 1 := by
   sorry
 
 example {n : ℕ} : n ^ 2 ≠ 7 := by
   sorry
 
 example {a : ℝ} (ha : a ^ 3 = 0) : a = 0 := by
-  sorry
-example {s t : ℚ} (h : s = 3 - t) : s + t = 3 ∨ s + t = 5 := by
-  sorry
-
-example {x : ℝ} (hx : x ^ 2 + 2 * x - 3 = 0) : x = -3 ∨ x = 1 := by
   sorry
 
 example {a b c : ℚ} (ha : a ≠ 0) (h : a * b = a * c) : b = c := by
@@ -115,4 +131,7 @@ example {a b c : ℚ} (ha : a ≠ 0) (h : a * b = a * c) : b = c := by
   sorry
 
 example {x y : ℝ} (hxy : x ^ 2 + 5 * y = y ^ 2 + 5 * x) : x = y ∨ x + y = 5 := by
+  sorry
+
+example (n : ℕ) : n ≤ n ^ 2 := by
   sorry
