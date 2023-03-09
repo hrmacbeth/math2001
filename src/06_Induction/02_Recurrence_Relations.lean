@@ -16,8 +16,8 @@ def a (n : ℕ) : ℕ := 2 ^ n
 
 
 def b : ℕ → ℤ
-| 0 => 3
-| n + 1 => b n ^ 2 - 2
+  | 0 => 3
+  | n + 1 => b n ^ 2 - 2
 
 
 #eval b 7 -- infoview displays `316837008400094222150776738483768236006420971486980607`
@@ -38,8 +38,8 @@ example (n : ℕ) : Odd (b n) := by
 
 
 def x : ℕ → ℤ 
-| 0 => 5
-| n + 1 => 2 * x n - 1
+  | 0 => 5
+  | n + 1 => 2 * x n - 1
 
 
 example (n : ℕ) : x n ≡ 1 [ZMOD 4] := by
@@ -61,8 +61,8 @@ example (n : ℕ) : x n = 2 ^ (n + 2) + 1 := by
 
 
 def A : ℕ → ℚ
-| 0 => 0
-| n + 1 => A n + (n + 1)
+  | 0 => 0
+  | n + 1 => A n + (n + 1)
 
 
 example (n : ℕ) : A n = n * (n + 1) / 2 := by
@@ -79,10 +79,20 @@ example (n : ℕ) : A n = n * (n + 1) / 2 := by
 
 
 def factorial : ℕ → ℕ
-| 0 => 1
-| n + 1 => (n + 1) * factorial n
+  | 0 => 1
+  | n + 1 => (n + 1) * factorial n
 
 notation:10000 n "!" => factorial n
+
+-- STUDENTS: ignore this, it is temporary while waiting for a bugfix
+theorem factorial_zero : factorial 0 = 1 := rfl
+theorem factorial_succ (n : ℕ) : factorial (n + 1) = (n + 1) * factorial n := rfl
+
+-- ignore this too
+open Lean Meta in
+#eval modifyEnv (m := MetaM) fun env =>
+  eqnsExt.modifyState env fun s =>
+    { s with map := s.map.insert ``factorial #[``factorial_succ, ``factorial_zero] }
 
 
 example (n : ℕ) : ∀ d, 1 ≤ d → d ≤ n → d ∣ n ! := by
@@ -98,12 +108,16 @@ example (n : ℕ) : ∀ d, 1 ≤ d → d ≤ n → d ∣ n ! := by
     · -- case 2: `d < k + 1`
       sorry
 
-example (n : ℕ) : 2 ^ n ≤ (n + 1)! := by
+example (n : ℕ) : (n + 1)! ≥ 2 ^ n := by
   sorry
 
+
+/-! # Exercises -/
+
+
 def c : ℕ → ℤ
-| 0 => 7
-| n + 1 => 3 * c n - 10
+  | 0 => 7
+  | n + 1 => 3 * c n - 10
 
 example (n : ℕ) : Odd (c n) := by
   sorry
@@ -112,22 +126,22 @@ example (n : ℕ) : c n = 2 * 3 ^ n + 5 := by
   sorry
 
 def y : ℕ → ℕ
-| 0 => 2
-| n + 1 => (y n) ^ 2 
+  | 0 => 2
+  | n + 1 => (y n) ^ 2 
 
 example (n : ℕ) : y n = 2 ^ (2 ^ n) := by
   sorry
 
 def B : ℕ → ℚ
-| 0 => 0
-| n + 1 => B n + (n + 1 : ℚ) ^ 2
+  | 0 => 0
+  | n + 1 => B n + (n + 1 : ℚ) ^ 2
 
 example (n : ℕ) : B n = n * (n + 1) * (2 * n + 1) / 6 := by
   sorry
 
 def S : ℕ → ℚ
-| 0 => 1
-| n + 1 => S n + 1 / 2 ^ (n + 1)
+  | 0 => 1
+  | n + 1 => S n + 1 / 2 ^ (n + 1)
 
 example (n : ℕ) : S n = 2 - 1 / 2 ^ n := by
   sorry

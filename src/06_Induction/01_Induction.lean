@@ -91,6 +91,10 @@ example : forall_sufficiently_large n : ℕ, 2 ^ n ≥ n ^ 2 := by
   · -- inductive step
     sorry
 
+
+/-! # Exercises -/
+
+
 example (n : ℕ) : 3 ^ n ≥ n ^ 2 + n + 1 := by
   sorry
 

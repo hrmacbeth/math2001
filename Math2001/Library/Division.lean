@@ -6,20 +6,16 @@ import Mathlib.Tactic.Linarith
 -- slightly less concrete form of the division algorithm than mathlib's
 theorem Int.existsUnique_quotient_remainder' (a b : ℤ) (h : 0 < b) :
     ∃! r : ℤ, 0 ≤ r ∧ r < b ∧ ∃ q : ℤ, r + b * q = a := by
-  suffices ∃! r : ℤ, ∃ q : ℤ, r + b * q = a ∧ 0 ≤ r ∧ r < b
-    by
+  suffices ∃! r : ℤ, ∃ q : ℤ, r + b * q = a ∧ 0 ≤ r ∧ r < b by
     convert this
-    ext r
     tauto
   simp_rw [← Int.ediv_emod_unique h]
   aesop
 
 theorem Nat.existsUnique_quotient_remainder' (a b : ℕ) (h : 0 < b) :
     ∃! r : ℕ, r < b ∧ ∃ q : ℕ, r + b * q = a := by
-  suffices ∃! r : ℕ, ∃ q : ℕ, r + b * q = a ∧ r < b
-    by
+  suffices ∃! r : ℕ, ∃ q : ℕ, r + b * q = a ∧ r < b by
     convert this
-    ext r
     tauto
   simp_rw [← Nat.div_mod_unique h]
   aesop
@@ -27,7 +23,7 @@ theorem Nat.existsUnique_quotient_remainder' (a b : ℕ) (h : 0 < b) :
 /-- The division algorithm. -/
 theorem Int.existsUnique_quotient_remainder (a b : ℤ) (h : 0 < b) :
     ∃! r : ℤ, 0 ≤ r ∧ r < b ∧ ∃ q : ℤ, a = b * q + r := by
-  convert a.existsUnique_quotient_remainder' b h
+  convert a.existsUnique_quotient_remainder' b h using 1
   funext r
   congr
   funext q
@@ -37,7 +33,7 @@ theorem Int.existsUnique_quotient_remainder (a b : ℤ) (h : 0 < b) :
 /-- The division algorithm. -/
 theorem Nat.existsUnique_quotient_remainder (a b : ℕ) (h : 0 < b) :
     ∃! r : ℕ, r < b ∧ ∃ q : ℕ, a = b * q + r := by
-  convert a.existsUnique_quotient_remainder' b h
+  convert a.existsUnique_quotient_remainder' b h using 1
   funext r
   congr
   funext q

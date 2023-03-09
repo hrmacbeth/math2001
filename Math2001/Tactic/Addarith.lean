@@ -45,3 +45,6 @@ elab_rules : tactic | `(tactic| addarith $[[$args,*]]?) => withMainContext do
       (← ((args.map (TSepArray.getElems)).getD {}).mapM (elabTerm ·.raw none)).toList
       { discharger := addarithDischarger })
   <|> throwError "addarith failed to prove this"
+
+-- while we're at it, this turns off the succeed-with-noise behaviour of `ring_nf` with `ring`
+macro_rules | `(tactic| ring) => `(tactic| ring_nf)

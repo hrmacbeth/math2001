@@ -11,7 +11,7 @@ open Lean Meta Elab Mathlib Tactic
 /-- On applying a lemma or hypothesis successfully, attempt to resolve remaining goals with
 `positivity`, but even if that fails, don't backtrack -/
 def IneqRelDischarge (g : MVarId) : MetaM (Option (List MVarId)) :=
-do withTransparency .reducible (Meta.Positivity.positivity g); pure (some []) <|> pure none
+do Meta.Positivity.positivity g; pure (some []) <|> pure none
 
 syntax (name := IneqRelSyntax) "ineq_rel" " [" term,* "] " : tactic
 

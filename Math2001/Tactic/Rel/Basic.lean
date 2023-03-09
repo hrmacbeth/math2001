@@ -5,15 +5,15 @@ Authors: Heather Macbeth
 -/
 import Mathlib.Tactic.SolveByElim
 
-register_tag_attr ineq_rules
+register_label_attr ineq_rules
 
-register_tag_attr ineq_extra
+register_label_attr ineq_extra
 
-register_tag_attr mod_rules
+register_label_attr mod_rules
 
-register_tag_attr mod_extra
+register_label_attr mod_extra
 
-register_tag_attr iff_rules
+register_label_attr iff_rules
 
 syntax (name := RelSyntax) "rel" " [" term,* "] " : tactic
 syntax (name := ExtraSyntax) "extra" : tactic

@@ -489,8 +489,8 @@ b_3&amp;=b_2{}^2-2\\
 \ldots\end{split}\]</div>
 <p>In Lean, we would define this sequence as</p>
 <div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">def</span> <span class="n">b</span> <span class="o">:</span> <span class="n">&#8469;</span> <span class="bp">&#8594;</span> <span class="n">&#8484;</span>
-<span class="bp">|</span> <span class="mi">0</span> <span class="bp">=&gt;</span> <span class="mi">3</span>
-<span class="bp">|</span> <span class="n">n</span> <span class="bp">+</span> <span class="mi">1</span> <span class="bp">=&gt;</span> <span class="n">b</span> <span class="n">n</span> <span class="bp">^</span> <span class="mi">2</span> <span class="bp">-</span> <span class="mi">2</span>
+  <span class="bp">|</span> <span class="mi">0</span> <span class="bp">=&gt;</span> <span class="mi">3</span>
+  <span class="bp">|</span> <span class="n">n</span> <span class="bp">+</span> <span class="mi">1</span> <span class="bp">=&gt;</span> <span class="n">b</span> <span class="n">n</span> <span class="bp">^</span> <span class="mi">2</span> <span class="bp">-</span> <span class="mi">2</span>
 </pre></div>
 </div>
 <p>and Lean will also calculate any term of the sequence we wish (up to the limits of its computational
@@ -548,8 +548,8 @@ this will work both in text and in Lean.</p>
 </div></blockquote>
 <p>In Lean the definition looks like this:</p>
 <div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">def</span> <span class="n">x</span> <span class="o">:</span> <span class="n">&#8469;</span> <span class="bp">&#8594;</span> <span class="n">&#8484;</span>
-<span class="bp">|</span> <span class="mi">0</span> <span class="bp">=&gt;</span> <span class="mi">5</span>
-<span class="bp">|</span> <span class="n">n</span> <span class="bp">+</span> <span class="mi">1</span> <span class="bp">=&gt;</span> <span class="mi">2</span> <span class="bp">*</span> <span class="n">x</span> <span class="n">n</span> <span class="bp">-</span> <span class="mi">1</span>
+  <span class="bp">|</span> <span class="mi">0</span> <span class="bp">=&gt;</span> <span class="mi">5</span>
+  <span class="bp">|</span> <span class="n">n</span> <span class="bp">+</span> <span class="mi">1</span> <span class="bp">=&gt;</span> <span class="mi">2</span> <span class="bp">*</span> <span class="n">x</span> <span class="n">n</span> <span class="bp">-</span> <span class="mi">1</span>
 </pre></div>
 </div>
 <p>Work out the first few terms of this sequence (or get Lean to do it for you!).  Here is a property
@@ -627,8 +627,8 @@ Then</p>
 \text{for }n\geq 0,\quad A_{n+1} &amp;= A_n + (n + 1).\end{split}\]</div>
 </div></blockquote>
 <div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">def</span> <span class="n">A</span> <span class="o">:</span> <span class="n">&#8469;</span> <span class="bp">&#8594;</span> <span class="n">&#8474;</span>
-<span class="bp">|</span> <span class="mi">0</span> <span class="bp">=&gt;</span> <span class="mi">0</span>
-<span class="bp">|</span> <span class="n">n</span> <span class="bp">+</span> <span class="mi">1</span> <span class="bp">=&gt;</span> <span class="n">A</span> <span class="n">n</span> <span class="bp">+</span> <span class="o">(</span><span class="n">n</span> <span class="bp">+</span> <span class="mi">1</span><span class="o">)</span>
+  <span class="bp">|</span> <span class="mi">0</span> <span class="bp">=&gt;</span> <span class="mi">0</span>
+  <span class="bp">|</span> <span class="n">n</span> <span class="bp">+</span> <span class="mi">1</span> <span class="bp">=&gt;</span> <span class="n">A</span> <span class="n">n</span> <span class="bp">+</span> <span class="o">(</span><span class="n">n</span> <span class="bp">+</span> <span class="mi">1</span><span class="o">)</span>
 </pre></div>
 </div>
 <p>Let&#8217;s work out the first terms of this sequence:</p>
@@ -703,8 +703,8 @@ denoted <span class="math notranslate nohighlight">\(n!\)</span>.</p>
 \text{for }n\geq 0,(n+1)! &amp;= (n + 1) &#11037; n!\end{split}\]</div>
 </div></blockquote>
 <div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">def</span> <span class="n">factorial</span> <span class="o">:</span> <span class="n">&#8469;</span> <span class="bp">&#8594;</span> <span class="n">&#8469;</span>
-<span class="bp">|</span> <span class="mi">0</span> <span class="bp">=&gt;</span> <span class="mi">1</span>
-<span class="bp">|</span> <span class="n">n</span> <span class="bp">+</span> <span class="mi">1</span> <span class="bp">=&gt;</span> <span class="o">(</span><span class="n">n</span> <span class="bp">+</span> <span class="mi">1</span><span class="o">)</span> <span class="bp">*</span> <span class="n">factorial</span> <span class="n">n</span>
+  <span class="bp">|</span> <span class="mi">0</span> <span class="bp">=&gt;</span> <span class="mi">1</span>
+  <span class="bp">|</span> <span class="n">n</span> <span class="bp">+</span> <span class="mi">1</span> <span class="bp">=&gt;</span> <span class="o">(</span><span class="n">n</span> <span class="bp">+</span> <span class="mi">1</span><span class="o">)</span> <span class="bp">*</span> <span class="n">factorial</span> <span class="n">n</span>
 
 <span class="kd">notation</span><span class="o">:</span><span class="mi">10000</span> <span class="n">n</span> <span class="s2">&quot;!&quot;</span> <span class="bp">=&gt;</span> <span class="n">factorial</span> <span class="n">n</span>
 </pre></div>
@@ -736,9 +736,6 @@ denoted <span class="math notranslate nohighlight">\(n!\)</span>.</p>
 &amp;=24\\
 \ldots\end{split}\]</div>
 </div></blockquote>
-<p>We built the previous sequence by adding 1, then 2, then 3, etc.  What if we do the same thing but
-for multiplication?  This gives the so-called <em>factorial</em> function, with &#8220;<span class="math notranslate nohighlight">\(n\)</span> factorial&#8221;
-denoted <span class="math notranslate nohighlight">\(n!\)</span>.</p>
 <div class="admonition-problem admonition">
 <p class="admonition-title">Problem</p>
 <p>Let <span class="math notranslate nohighlight">\(n\)</span> be a natural number.  Show that every natural number <span class="math notranslate nohighlight">\(d\)</span> with
@@ -784,26 +781,26 @@ We then have</p>
 <h3><span class="section-number">6.2.6. </span>Example<a class="headerlink" href="#id13" title="Permalink to this headline">&#61633;</a></h3>
 <div class="admonition-problem admonition">
 <p class="admonition-title">Problem</p>
-<p>Show that for all natural numbers <span class="math notranslate nohighlight">\(n\)</span>, we have <span class="math notranslate nohighlight">\(2^n\le (n+1)!\)</span>.</p>
+<p>Show that for all natural numbers <span class="math notranslate nohighlight">\(n\)</span>, we have <span class="math notranslate nohighlight">\((n+1)!\ge 2^n\)</span>.</p>
 </div>
 <div class="admonition-solution admonition">
 <p class="admonition-title">Solution</p>
 <p>We prove this by induction on <span class="math notranslate nohighlight">\(n\)</span>.</p>
 <p>For the base case,</p>
 <div class="math notranslate nohighlight">
-\[\begin{split}2 ^ 0 &amp;\le (0+1)\cdot 1\\
-&amp;=(0+1)\cdot 0!\\
-&amp;=(0+1)!.\end{split}\]</div>
-<p>For the inductive step, suppose that for some natural number <span class="math notranslate nohighlight">\(k\)</span>, <span class="math notranslate nohighlight">\(2^k\le (k+1)!\)</span>.
+\[\begin{split}(0+1)!&amp;=(0+1)\cdot 0!\\
+&amp;= (0+1)\cdot 1\\
+&amp;\ge 2 ^ 0.\end{split}\]</div>
+<p>For the inductive step, suppose that for some natural number <span class="math notranslate nohighlight">\(k\)</span>, <span class="math notranslate nohighlight">\((k+1)!\ge 2^k\)</span>.
 Then</p>
 <div class="math notranslate nohighlight">
-\[\begin{split}2 ^ {k+1} &amp;= 2\cdot 2^k\\
-&amp;\le k\cdot 2^k+2\cdot 2^k\\
-&amp;=(k+1+1)\cdot 2^k\\
-&amp;&#8804;(k+1+1)\cdot (k+1)!\\
-&amp;=(k+1+1)!.\end{split}\]</div>
+\[\begin{split}(k+1+1)!&amp;=(k+1+1)\cdot (k+1)!\\
+&amp;\ge(k+1+1)\cdot 2^k\\
+&amp;= k\cdot 2^k+2\cdot 2^k\\
+&amp;\ge 2\cdot 2^k\\
+&amp;=2 ^ {k+1}.\end{split}\]</div>
 </div>
-<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">(</span><span class="n">n</span> <span class="o">:</span> <span class="n">&#8469;</span><span class="o">)</span> <span class="o">:</span> <span class="mi">2</span> <span class="bp">^</span> <span class="n">n</span> <span class="bp">&#8804;</span> <span class="o">(</span><span class="n">n</span> <span class="bp">+</span> <span class="mi">1</span><span class="o">)</span><span class="bp">!</span> <span class="o">:=</span> <span class="kd">by</span>
+<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">(</span><span class="n">n</span> <span class="o">:</span> <span class="n">&#8469;</span><span class="o">)</span> <span class="o">:</span> <span class="o">(</span><span class="n">n</span> <span class="bp">+</span> <span class="mi">1</span><span class="o">)</span><span class="bp">!</span> <span class="bp">&#8805;</span> <span class="mi">2</span> <span class="bp">^</span> <span class="n">n</span> <span class="o">:=</span> <span class="kd">by</span>
   <span class="gr">sorry</span>
 </pre></div>
 </div>
@@ -819,8 +816,8 @@ Then</p>
 </li>
 </ol>
 <div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">def</span> <span class="n">c</span> <span class="o">:</span> <span class="n">&#8469;</span> <span class="bp">&#8594;</span> <span class="n">&#8484;</span>
-<span class="bp">|</span> <span class="mi">0</span> <span class="bp">=&gt;</span> <span class="mi">7</span>
-<span class="bp">|</span> <span class="n">n</span> <span class="bp">+</span> <span class="mi">1</span> <span class="bp">=&gt;</span> <span class="mi">3</span> <span class="bp">*</span> <span class="n">c</span> <span class="n">n</span> <span class="bp">-</span> <span class="mi">10</span>
+  <span class="bp">|</span> <span class="mi">0</span> <span class="bp">=&gt;</span> <span class="mi">7</span>
+  <span class="bp">|</span> <span class="n">n</span> <span class="bp">+</span> <span class="mi">1</span> <span class="bp">=&gt;</span> <span class="mi">3</span> <span class="bp">*</span> <span class="n">c</span> <span class="n">n</span> <span class="bp">-</span> <span class="mi">10</span>
 
 <span class="kd">example</span> <span class="o">(</span><span class="n">n</span> <span class="o">:</span> <span class="n">&#8469;</span><span class="o">)</span> <span class="o">:</span> <span class="n">Odd</span> <span class="o">(</span><span class="n">c</span> <span class="n">n</span><span class="o">)</span> <span class="o">:=</span> <span class="kd">by</span>
   <span class="gr">sorry</span>
@@ -843,8 +840,8 @@ Then</p>
 </li>
 </ol>
 <div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">def</span> <span class="n">y</span> <span class="o">:</span> <span class="n">&#8469;</span> <span class="bp">&#8594;</span> <span class="n">&#8469;</span>
-<span class="bp">|</span> <span class="mi">0</span> <span class="bp">=&gt;</span> <span class="mi">2</span>
-<span class="bp">|</span> <span class="n">n</span> <span class="bp">+</span> <span class="mi">1</span> <span class="bp">=&gt;</span> <span class="o">(</span><span class="n">y</span> <span class="n">n</span><span class="o">)</span> <span class="bp">^</span> <span class="mi">2</span>
+  <span class="bp">|</span> <span class="mi">0</span> <span class="bp">=&gt;</span> <span class="mi">2</span>
+  <span class="bp">|</span> <span class="n">n</span> <span class="bp">+</span> <span class="mi">1</span> <span class="bp">=&gt;</span> <span class="o">(</span><span class="n">y</span> <span class="n">n</span><span class="o">)</span> <span class="bp">^</span> <span class="mi">2</span>
 
 <span class="kd">example</span> <span class="o">(</span><span class="n">n</span> <span class="o">:</span> <span class="n">&#8469;</span><span class="o">)</span> <span class="o">:</span> <span class="n">y</span> <span class="n">n</span> <span class="bp">=</span> <span class="mi">2</span> <span class="bp">^</span> <span class="o">(</span><span class="mi">2</span> <span class="bp">^</span> <span class="n">n</span><span class="o">)</span> <span class="o">:=</span> <span class="kd">by</span>
   <span class="gr">sorry</span>
@@ -862,8 +859,8 @@ Show that for all natural numbers <span class="math notranslate nohighlight">\(n
 </li>
 </ol>
 <div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">def</span> <span class="n">B</span> <span class="o">:</span> <span class="n">&#8469;</span> <span class="bp">&#8594;</span> <span class="n">&#8474;</span>
-<span class="bp">|</span> <span class="mi">0</span> <span class="bp">=&gt;</span> <span class="mi">0</span>
-<span class="bp">|</span> <span class="n">n</span> <span class="bp">+</span> <span class="mi">1</span> <span class="bp">=&gt;</span> <span class="n">B</span> <span class="n">n</span> <span class="bp">+</span> <span class="o">(</span><span class="n">n</span> <span class="bp">+</span> <span class="mi">1</span> <span class="o">:</span> <span class="n">&#8474;</span><span class="o">)</span> <span class="bp">^</span> <span class="mi">2</span>
+  <span class="bp">|</span> <span class="mi">0</span> <span class="bp">=&gt;</span> <span class="mi">0</span>
+  <span class="bp">|</span> <span class="n">n</span> <span class="bp">+</span> <span class="mi">1</span> <span class="bp">=&gt;</span> <span class="n">B</span> <span class="n">n</span> <span class="bp">+</span> <span class="o">(</span><span class="n">n</span> <span class="bp">+</span> <span class="mi">1</span> <span class="o">:</span> <span class="n">&#8474;</span><span class="o">)</span> <span class="bp">^</span> <span class="mi">2</span>
 
 <span class="kd">example</span> <span class="o">(</span><span class="n">n</span> <span class="o">:</span> <span class="n">&#8469;</span><span class="o">)</span> <span class="o">:</span> <span class="n">B</span> <span class="n">n</span> <span class="bp">=</span> <span class="n">n</span> <span class="bp">*</span> <span class="o">(</span><span class="n">n</span> <span class="bp">+</span> <span class="mi">1</span><span class="o">)</span> <span class="bp">*</span> <span class="o">(</span><span class="mi">2</span> <span class="bp">*</span> <span class="n">n</span> <span class="bp">+</span> <span class="mi">1</span><span class="o">)</span> <span class="bp">/</span> <span class="mi">6</span> <span class="o">:=</span> <span class="kd">by</span>
   <span class="gr">sorry</span>
@@ -881,8 +878,8 @@ Show that for all natural numbers <span class="math notranslate nohighlight">\(n
 </li>
 </ol>
 <div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">def</span> <span class="n">S</span> <span class="o">:</span> <span class="n">&#8469;</span> <span class="bp">&#8594;</span> <span class="n">&#8474;</span>
-<span class="bp">|</span> <span class="mi">0</span> <span class="bp">=&gt;</span> <span class="mi">1</span>
-<span class="bp">|</span> <span class="n">n</span> <span class="bp">+</span> <span class="mi">1</span> <span class="bp">=&gt;</span> <span class="n">S</span> <span class="n">n</span> <span class="bp">+</span> <span class="mi">1</span> <span class="bp">/</span> <span class="mi">2</span> <span class="bp">^</span> <span class="o">(</span><span class="n">n</span> <span class="bp">+</span> <span class="mi">1</span><span class="o">)</span>
+  <span class="bp">|</span> <span class="mi">0</span> <span class="bp">=&gt;</span> <span class="mi">1</span>
+  <span class="bp">|</span> <span class="n">n</span> <span class="bp">+</span> <span class="mi">1</span> <span class="bp">=&gt;</span> <span class="n">S</span> <span class="n">n</span> <span class="bp">+</span> <span class="mi">1</span> <span class="bp">/</span> <span class="mi">2</span> <span class="bp">^</span> <span class="o">(</span><span class="n">n</span> <span class="bp">+</span> <span class="mi">1</span><span class="o">)</span>
 
 <span class="kd">example</span> <span class="o">(</span><span class="n">n</span> <span class="o">:</span> <span class="n">&#8469;</span><span class="o">)</span> <span class="o">:</span> <span class="n">S</span> <span class="n">n</span> <span class="bp">=</span> <span class="mi">2</span> <span class="bp">-</span> <span class="mi">1</span> <span class="bp">/</span> <span class="mi">2</span> <span class="bp">^</span> <span class="n">n</span> <span class="o">:=</span> <span class="kd">by</span>
   <span class="gr">sorry</span>
