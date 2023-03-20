@@ -8,6 +8,8 @@ import Math2001.Tactic.Take
 
 open Int
 
+set_option linter.unusedVariables false
+
 
 def a : ℕ → ℤ 
   | 0 => 2
@@ -88,7 +90,7 @@ example (n : ℕ) : F (n + 1) ^ 2 - F (n + 1) * F n - F n ^ 2 = - (-1) ^ n := by
   simple_induction n with k IH
   · calc F 1 ^ 2 - F 1 * F 0 - F 0 ^ 2 = 1 ^ 2 - 1 * 1 - 1 ^ 2 := by rw [F, F]
       _ = - (-1) ^ 0 := by numbers
-  · calc F (k + 1 + 1) ^ 2 - F (k + 1 + 1) * F (k + 1) - F (k + 1) ^ 2
+  · calc F (k + 2) ^ 2 - F (k + 2) * F (k + 1) - F (k + 1) ^ 2
         = (F (k + 1) + F k) ^ 2 - (F (k + 1) + F k) * F (k + 1) - F (k + 1) ^ 2 := by rw [F]
       _ = - (F (k + 1) ^ 2 - F (k + 1) * F k - F k ^ 2) := by ring
       _ = - -(-1) ^ k := by rw [IH]
