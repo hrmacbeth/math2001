@@ -72,6 +72,18 @@ def F : ℕ → ℤ
   | n + 2 => F (n + 1) + F n 
 
 
+example (n : ℕ) : F n ≤ 2 ^ n := by
+  two_step_induction n with k IH1 IH2
+  · calc F 0 = 1 := by rw [F]
+      _ ≤ 2 ^ 0 := by numbers
+  · calc F 1 = 1 := by rw [F]
+      _ ≤ 2 ^ 1 := by numbers
+  · calc F (k + 2) = F (k + 1) + F k := by rw [F]
+      _ ≤ 2 ^ (k + 1) + 2 ^ k := by rel [IH1, IH2]
+      _ ≤ 2 ^ (k + 1) + 2 ^ k + 2 ^ k := by extra
+      _ = 2 ^ (k + 2) := by ring
+
+
 example (n : ℕ) : F (n + 1) ^ 2 - F (n + 1) * F n - F n ^ 2 = - (-1) ^ n := by
   simple_induction n with k IH
   · calc F 1 ^ 2 - F 1 * F 0 - F 0 ^ 2 = 1 ^ 2 - 1 * 1 - 1 ^ 2 := by rw [F, F]
@@ -81,6 +93,8 @@ example (n : ℕ) : F (n + 1) ^ 2 - F (n + 1) * F n - F n ^ 2 = - (-1) ^ n := by
       _ = - (F (k + 1) ^ 2 - F (k + 1) * F k - F k ^ 2) := by ring
       _ = - -(-1) ^ k := by rw [IH]
       _ = -(-1) ^ (k + 1) := by ring
+
+/-! # Exercises -/
 
 
 def b : ℕ → ℤ 
