@@ -955,6 +955,33 @@ pattern by induction.</p>
 <p class="admonition-title">Problem</p>
 <p>Prove that for all natural numbers <span class="math notranslate nohighlight">\(n\)</span>, <span class="math notranslate nohighlight">\(a_n=2^n+(-1)^n\)</span>.</p>
 </div>
+<p>In the proof below, notice that there are <em>two</em> base cases and <em>two</em> inductive hypotheses.  Think
+about why.</p>
+<div class="admonition-solution admonition">
+<p class="admonition-title">Solution</p>
+<p>We prove this by induction on <span class="math notranslate nohighlight">\(n\)</span>.</p>
+<p>We have that</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}a_0&amp;=2\\
+&amp;=2^0+(-1)^0\end{split}\]</div>
+<p>and</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}a_1&amp;=1\\
+&amp;=2^1+(-1)^1.\end{split}\]</div>
+<p>Now let <span class="math notranslate nohighlight">\(k\)</span> be a natural number and suppose that <span class="math notranslate nohighlight">\(a_k=2^k+(-1)^k\)</span> and
+<span class="math notranslate nohighlight">\(a_{k+1}=2^{k+1}+(-1)^{k+1}\)</span>.  Then</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}a_{k+2}&amp;=a_{k+1}+2a_k\\
+  &amp;=(2^{k+1}+(-1)^{k+1})+2(2^k+(-1)^k)\\
+  &amp;=(2\cdot 2^{k}-(-1)^{k})+(2\cdot 2^k+2\cdot (-1)^k)\\
+  &amp;=2^2\cdot 2^{k}+(-1)^2\cdot (-1)^{k}\\
+  &amp;=2^{k+2}+(-1)^{k+2}.\end{split}\]</div>
+</div>
+<p>The first two steps (using the recurrence relation and the inductive hypotheses) of the main
+calculation are fairly fixed, but you might have more or fewer lines of endgame depending on your
+facility with exponent rules and mental arithmetic.  Lean can do it all in one line!</p>
+<p>We use the Lean tactic <code class="docutils literal notranslate"><span class="pre">two_step_induction</span></code> for this kind of induction with two base cases and two
+inductive hypotheses.</p>
 <div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">(</span><span class="n">n</span> <span class="o">:</span> <span class="n">&#8469;</span><span class="o">)</span> <span class="o">:</span> <span class="n">a</span> <span class="n">n</span> <span class="bp">=</span> <span class="mi">2</span> <span class="bp">^</span> <span class="n">n</span> <span class="bp">+</span> <span class="o">(</span><span class="bp">-</span><span class="mi">1</span><span class="o">)</span> <span class="bp">^</span> <span class="n">n</span> <span class="o">:=</span> <span class="kd">by</span>
   <span class="n">two_step_induction</span> <span class="n">n</span> <span class="k">with</span> <span class="n">k</span> <span class="n">IH1</span> <span class="n">IH2</span>
   <span class="bp">.</span> <span class="k">calc</span> <span class="n">a</span> <span class="mi">0</span> <span class="bp">=</span> <span class="mi">2</span> <span class="o">:=</span> <span class="kd">by</span> <span class="n">rw</span> <span class="o">[</span><span class="n">a</span><span class="o">]</span>
@@ -976,6 +1003,42 @@ pattern by induction.</p>
 <p>Prove that for all natural numbers <span class="math notranslate nohighlight">\(m\geq 1\)</span>, <span class="math notranslate nohighlight">\(a_m\)</span> is congruent to either 1 or 5
 modulo 6.</p>
 </div>
+<div class="admonition-solution admonition">
+<p class="admonition-title">Solution</p>
+<p>We will prove a more precise result than stated, namely that for all natural numbers
+<span class="math notranslate nohighlight">\(n\geq 1\)</span>, either</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(a_n\equiv 1\mod 6\)</span> and <span class="math notranslate nohighlight">\(a_{n+1}\equiv 5\mod 6\)</span>, or</p></li>
+<li><p><span class="math notranslate nohighlight">\(a_n\equiv 5\mod 6\)</span> and <span class="math notranslate nohighlight">\(a_{n+1}\equiv 1\mod 6\)</span>.</p></li>
+</ul>
+<p>We prove this by induction on <span class="math notranslate nohighlight">\(n\)</span>.</p>
+<p>For the base case, <span class="math notranslate nohighlight">\(n=1\)</span>, notice that <span class="math notranslate nohighlight">\(a_1=5\)</span> and</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}a_2&amp;=7\\
+&amp;=6\cdot 1+1\\
+&amp;\equiv 1\mod 6.\end{split}\]</div>
+<p>For the inductive step, let <span class="math notranslate nohighlight">\(k\)</span> be a natural number and suppose that either</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(a_k\equiv 1\mod 6\)</span> and <span class="math notranslate nohighlight">\(a_{k+1}\equiv 5\mod 6\)</span>, or</p></li>
+<li><p><span class="math notranslate nohighlight">\(a_k\equiv 5\mod 6\)</span> and <span class="math notranslate nohighlight">\(a_{k+1}\equiv 1\mod 6\)</span>.</p></li>
+</ul>
+<p><strong>Case 1</strong> (<span class="math notranslate nohighlight">\(a_k\equiv 1\mod 6\)</span> and <span class="math notranslate nohighlight">\(a_{k+1}\equiv 5\mod 6\)</span>): Then</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}a_{k+2}&amp;=a_{k+1}+2a_k\\
+&amp;\equiv 5+2\cdot 1\mod 6\\
+&amp;=6\cdot 1+1\\
+&amp;\equiv 1\mod 6.\end{split}\]</div>
+<p><strong>Case 2</strong> (<span class="math notranslate nohighlight">\(a_k\equiv 5\mod 6\)</span> and <span class="math notranslate nohighlight">\(a_{k+1}\equiv 1\mod 6\)</span>): Then</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}a_{k+2}&amp;=a_{k+1}+2a_k\\
+&amp;\equiv 1+2\cdot 5\mod 6\\
+&amp;=6\cdot 1+5\\
+&amp;\equiv 5\mod 6.\end{split}\]</div>
+</div>
+<p>It may not be clear to you exactly why these calculations are what&#8217;s needed to solve the problem.
+There is also quite a bit of low-level logical manipulation happening, without being called out
+directly in the text.  The Lean proof below may make some of these logical manipulations more
+apparent to you.</p>
 <div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">{</span><span class="n">m</span> <span class="o">:</span> <span class="n">&#8469;</span><span class="o">}</span> <span class="o">(</span><span class="n">hm</span> <span class="o">:</span> <span class="mi">1</span> <span class="bp">&#8804;</span> <span class="n">m</span><span class="o">)</span> <span class="o">:</span> <span class="n">a</span> <span class="n">m</span> <span class="bp">&#8801;</span> <span class="mi">1</span> <span class="o">[</span><span class="n">ZMOD</span> <span class="mi">6</span><span class="o">]</span> <span class="bp">&#8744;</span> <span class="n">a</span> <span class="n">m</span> <span class="bp">&#8801;</span> <span class="mi">5</span> <span class="o">[</span><span class="n">ZMOD</span> <span class="mi">6</span><span class="o">]</span> <span class="o">:=</span> <span class="kd">by</span>
   <span class="k">have</span> <span class="n">H</span> <span class="o">:</span> <span class="bp">&#8704;</span> <span class="n">n</span> <span class="o">:</span> <span class="n">&#8469;</span><span class="o">,</span> <span class="mi">1</span> <span class="bp">&#8804;</span> <span class="n">n</span> <span class="bp">&#8594;</span>
       <span class="o">(</span><span class="n">a</span> <span class="n">n</span> <span class="bp">&#8801;</span> <span class="mi">1</span> <span class="o">[</span><span class="n">ZMOD</span> <span class="mi">6</span><span class="o">]</span> <span class="bp">&#8743;</span> <span class="n">a</span> <span class="o">(</span><span class="n">n</span> <span class="bp">+</span> <span class="mi">1</span><span class="o">)</span> <span class="bp">&#8801;</span> <span class="mi">5</span> <span class="o">[</span><span class="n">ZMOD</span> <span class="mi">6</span><span class="o">])</span>
@@ -1029,8 +1092,28 @@ F_1&amp;=1\\
 <p>Work out the first 10 terms, on paper or with Lean&#8217;s help.</p>
 <div class="admonition-problem admonition">
 <p class="admonition-title">Problem</p>
-<p>Show that the Fibonacci sequence <span class="math notranslate nohighlight">\(F_n\)</span> satisfies, for all natural numbers <span class="math notranslate nohighlight">\(n\)</span>,
+<p>Show that the Fibonacci sequence <span class="math notranslate nohighlight">\((F_n)\)</span> satisfies: for all natural numbers <span class="math notranslate nohighlight">\(n\)</span>,
 <span class="math notranslate nohighlight">\(F_n \le 2^n\)</span>.</p>
+</div>
+<div class="admonition-solution admonition">
+<p class="admonition-title">Solution</p>
+<p>We prove this by induction on <span class="math notranslate nohighlight">\(n\)</span>.</p>
+<p>For <span class="math notranslate nohighlight">\(n=0\)</span>, we have that</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}F_0&amp;=1\\
+&amp;\le 2^0.\end{split}\]</div>
+<p>For <span class="math notranslate nohighlight">\(n=1\)</span>, we have that</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}F_1&amp;=1\\
+&amp;\le 2^1.\end{split}\]</div>
+<p>Let <span class="math notranslate nohighlight">\(k\)</span> be a natural number and suppose that <span class="math notranslate nohighlight">\(F_k\le 2^k\)</span> and
+<span class="math notranslate nohighlight">\(F_{k+1}\le 2^{k+1}\)</span>.  Then</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}F_{k+2}&amp;=F_{k+1}+F_k\\
+&amp;\le 2^{k+1}+2^k\\
+&amp;\le 2^{k+1}+2^k+2^k\\
+&amp;= 2^{k+1}+2^{k+1}\\
+&amp;= 2^{k+2}.\end{split}\]</div>
 </div>
 <div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">(</span><span class="n">n</span> <span class="o">:</span> <span class="n">&#8469;</span><span class="o">)</span> <span class="o">:</span> <span class="n">F</span> <span class="n">n</span> <span class="bp">&#8804;</span> <span class="mi">2</span> <span class="bp">^</span> <span class="n">n</span> <span class="o">:=</span> <span class="kd">by</span>
   <span class="n">two_step_induction</span> <span class="n">n</span> <span class="k">with</span> <span class="n">k</span> <span class="n">IH1</span> <span class="n">IH2</span>
@@ -1049,15 +1132,30 @@ F_1&amp;=1\\
 <h3><span class="section-number">6.3.4. </span>Example<a class="headerlink" href="#id19" title="Permalink to this headline">&#61633;</a></h3>
 <div class="admonition-problem admonition">
 <p class="admonition-title">Problem</p>
-<p>Show that the Fibonacci sequence <span class="math notranslate nohighlight">\(F_n\)</span> satisfies, for all natural numbers <span class="math notranslate nohighlight">\(n\)</span>,</p>
+<p>Show that the Fibonacci sequence <span class="math notranslate nohighlight">\((F_n)\)</span> satisfies: for all natural numbers <span class="math notranslate nohighlight">\(n\)</span>,</p>
 <div class="math notranslate nohighlight">
-\[F_{n+1}^2-F_{n+1}F_n-F_n^2=(-1)^n.\]</div>
+\[F_{n+1}^2-F_{n+1}F_n-F_n^2=-(-1)^n.\]</div>
+</div>
+<div class="admonition-solution admonition">
+<p class="admonition-title">Solution</p>
+<p>We prove this by induction on <span class="math notranslate nohighlight">\(n\)</span>.  First,</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}F_1^2-F_1F_0-F_0^2&amp;=1^2-1\cdot 1-1^2\\
+&amp;=-(-1)^0.\end{split}\]</div>
+<p>Now, let <span class="math notranslate nohighlight">\(k\)</span> be a natural number and suppose that
+<span class="math notranslate nohighlight">\(F_{k+1}^2-F_{k+1}F_k-F_k^2=-(-1)^k\)</span>. Then</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}F_{k+2}^2-F_{k+2}F_{k+1}-F_{k+1}^2
+&amp;=(F_{k+1}+F_k)^2-(F_{k+1}+F_k)F_{k+1}-F_{k+1}^2\\
+&amp;=-(F_{k+1}^2-F_{k+1}F_k-F_k^2)\\
+&amp;=-(-(-1)^k)\\
+&amp;=-(-1)^{k+1}.\end{split}\]</div>
 </div>
 <div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">(</span><span class="n">n</span> <span class="o">:</span> <span class="n">&#8469;</span><span class="o">)</span> <span class="o">:</span> <span class="n">F</span> <span class="o">(</span><span class="n">n</span> <span class="bp">+</span> <span class="mi">1</span><span class="o">)</span> <span class="bp">^</span> <span class="mi">2</span> <span class="bp">-</span> <span class="n">F</span> <span class="o">(</span><span class="n">n</span> <span class="bp">+</span> <span class="mi">1</span><span class="o">)</span> <span class="bp">*</span> <span class="n">F</span> <span class="n">n</span> <span class="bp">-</span> <span class="n">F</span> <span class="n">n</span> <span class="bp">^</span> <span class="mi">2</span> <span class="bp">=</span> <span class="bp">-</span> <span class="o">(</span><span class="bp">-</span><span class="mi">1</span><span class="o">)</span> <span class="bp">^</span> <span class="n">n</span> <span class="o">:=</span> <span class="kd">by</span>
   <span class="n">simple_induction</span> <span class="n">n</span> <span class="k">with</span> <span class="n">k</span> <span class="n">IH</span>
   <span class="bp">&#183;</span> <span class="k">calc</span> <span class="n">F</span> <span class="mi">1</span> <span class="bp">^</span> <span class="mi">2</span> <span class="bp">-</span> <span class="n">F</span> <span class="mi">1</span> <span class="bp">*</span> <span class="n">F</span> <span class="mi">0</span> <span class="bp">-</span> <span class="n">F</span> <span class="mi">0</span> <span class="bp">^</span> <span class="mi">2</span> <span class="bp">=</span> <span class="mi">1</span> <span class="bp">^</span> <span class="mi">2</span> <span class="bp">-</span> <span class="mi">1</span> <span class="bp">*</span> <span class="mi">1</span> <span class="bp">-</span> <span class="mi">1</span> <span class="bp">^</span> <span class="mi">2</span> <span class="o">:=</span> <span class="kd">by</span> <span class="n">rw</span> <span class="o">[</span><span class="n">F</span><span class="o">,</span> <span class="n">F</span><span class="o">]</span>
       <span class="n">_</span> <span class="bp">=</span> <span class="bp">-</span> <span class="o">(</span><span class="bp">-</span><span class="mi">1</span><span class="o">)</span> <span class="bp">^</span> <span class="mi">0</span> <span class="o">:=</span> <span class="kd">by</span> <span class="n">numbers</span>
-  <span class="bp">&#183;</span> <span class="k">calc</span> <span class="n">F</span> <span class="o">(</span><span class="n">k</span> <span class="bp">+</span> <span class="mi">1</span> <span class="bp">+</span> <span class="mi">1</span><span class="o">)</span> <span class="bp">^</span> <span class="mi">2</span> <span class="bp">-</span> <span class="n">F</span> <span class="o">(</span><span class="n">k</span> <span class="bp">+</span> <span class="mi">1</span> <span class="bp">+</span> <span class="mi">1</span><span class="o">)</span> <span class="bp">*</span> <span class="n">F</span> <span class="o">(</span><span class="n">k</span> <span class="bp">+</span> <span class="mi">1</span><span class="o">)</span> <span class="bp">-</span> <span class="n">F</span> <span class="o">(</span><span class="n">k</span> <span class="bp">+</span> <span class="mi">1</span><span class="o">)</span> <span class="bp">^</span> <span class="mi">2</span>
+  <span class="bp">&#183;</span> <span class="k">calc</span> <span class="n">F</span> <span class="o">(</span><span class="n">k</span> <span class="bp">+</span> <span class="mi">2</span><span class="o">)</span> <span class="bp">^</span> <span class="mi">2</span> <span class="bp">-</span> <span class="n">F</span> <span class="o">(</span><span class="n">k</span> <span class="bp">+</span> <span class="mi">2</span><span class="o">)</span> <span class="bp">*</span> <span class="n">F</span> <span class="o">(</span><span class="n">k</span> <span class="bp">+</span> <span class="mi">1</span><span class="o">)</span> <span class="bp">-</span> <span class="n">F</span> <span class="o">(</span><span class="n">k</span> <span class="bp">+</span> <span class="mi">1</span><span class="o">)</span> <span class="bp">^</span> <span class="mi">2</span>
         <span class="bp">=</span> <span class="o">(</span><span class="n">F</span> <span class="o">(</span><span class="n">k</span> <span class="bp">+</span> <span class="mi">1</span><span class="o">)</span> <span class="bp">+</span> <span class="n">F</span> <span class="n">k</span><span class="o">)</span> <span class="bp">^</span> <span class="mi">2</span> <span class="bp">-</span> <span class="o">(</span><span class="n">F</span> <span class="o">(</span><span class="n">k</span> <span class="bp">+</span> <span class="mi">1</span><span class="o">)</span> <span class="bp">+</span> <span class="n">F</span> <span class="n">k</span><span class="o">)</span> <span class="bp">*</span> <span class="n">F</span> <span class="o">(</span><span class="n">k</span> <span class="bp">+</span> <span class="mi">1</span><span class="o">)</span> <span class="bp">-</span> <span class="n">F</span> <span class="o">(</span><span class="n">k</span> <span class="bp">+</span> <span class="mi">1</span><span class="o">)</span> <span class="bp">^</span> <span class="mi">2</span> <span class="o">:=</span> <span class="kd">by</span> <span class="n">rw</span> <span class="o">[</span><span class="n">F</span><span class="o">]</span>
       <span class="n">_</span> <span class="bp">=</span> <span class="bp">-</span> <span class="o">(</span><span class="n">F</span> <span class="o">(</span><span class="n">k</span> <span class="bp">+</span> <span class="mi">1</span><span class="o">)</span> <span class="bp">^</span> <span class="mi">2</span> <span class="bp">-</span> <span class="n">F</span> <span class="o">(</span><span class="n">k</span> <span class="bp">+</span> <span class="mi">1</span><span class="o">)</span> <span class="bp">*</span> <span class="n">F</span> <span class="n">k</span> <span class="bp">-</span> <span class="n">F</span> <span class="n">k</span> <span class="bp">^</span> <span class="mi">2</span><span class="o">)</span> <span class="o">:=</span> <span class="kd">by</span> <span class="n">ring</span>
       <span class="n">_</span> <span class="bp">=</span> <span class="bp">-</span> <span class="bp">-</span><span class="o">(</span><span class="bp">-</span><span class="mi">1</span><span class="o">)</span> <span class="bp">^</span> <span class="n">k</span> <span class="o">:=</span> <span class="kd">by</span> <span class="n">rw</span> <span class="o">[</span><span class="n">IH</span><span class="o">]</span>
