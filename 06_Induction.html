@@ -72,7 +72,8 @@
 <li class="toctree-l3"><a class="reference internal" href="#id16">6.3.1. Example</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#id17">6.3.2. Example</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#id18">6.3.3. Example</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id19">6.3.4. Exercises</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id19">6.3.4. Example</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id20">6.3.5. Exercises</a></li>
 </ul>
 </li>
 </ul>
@@ -972,7 +973,8 @@ pattern by induction.</p>
 <h3><span class="section-number">6.3.2. </span>Example<a class="headerlink" href="#id17" title="Permalink to this headline">&#61633;</a></h3>
 <div class="admonition-problem admonition">
 <p class="admonition-title">Problem</p>
-<p>Prove that for all natural numbers <span class="math notranslate nohighlight">\(n\)</span>, <span class="math notranslate nohighlight">\(a_n\)</span> is congruent to either 1 or 5 modulo 6.</p>
+<p>Prove that for all natural numbers <span class="math notranslate nohighlight">\(m\geq 1\)</span>, <span class="math notranslate nohighlight">\(a_m\)</span> is congruent to either 1 or 5
+modulo 6.</p>
 </div>
 <div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">{</span><span class="n">m</span> <span class="o">:</span> <span class="n">&#8469;</span><span class="o">}</span> <span class="o">(</span><span class="n">hm</span> <span class="o">:</span> <span class="mi">1</span> <span class="bp">&#8804;</span> <span class="n">m</span><span class="o">)</span> <span class="o">:</span> <span class="n">a</span> <span class="n">m</span> <span class="bp">&#8801;</span> <span class="mi">1</span> <span class="o">[</span><span class="n">ZMOD</span> <span class="mi">6</span><span class="o">]</span> <span class="bp">&#8744;</span> <span class="n">a</span> <span class="n">m</span> <span class="bp">&#8801;</span> <span class="mi">5</span> <span class="o">[</span><span class="n">ZMOD</span> <span class="mi">6</span><span class="o">]</span> <span class="o">:=</span> <span class="kd">by</span>
   <span class="k">have</span> <span class="n">H</span> <span class="o">:</span> <span class="bp">&#8704;</span> <span class="n">n</span> <span class="o">:</span> <span class="n">&#8469;</span><span class="o">,</span> <span class="mi">1</span> <span class="bp">&#8804;</span> <span class="n">n</span> <span class="bp">&#8594;</span>
@@ -1027,6 +1029,26 @@ F_1&amp;=1\\
 <p>Work out the first 10 terms, on paper or with Lean&#8217;s help.</p>
 <div class="admonition-problem admonition">
 <p class="admonition-title">Problem</p>
+<p>Show that the Fibonacci sequence <span class="math notranslate nohighlight">\(F_n\)</span> satisfies, for all natural numbers <span class="math notranslate nohighlight">\(n\)</span>,
+<span class="math notranslate nohighlight">\(F_n \le 2^n\)</span>.</p>
+</div>
+<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">(</span><span class="n">n</span> <span class="o">:</span> <span class="n">&#8469;</span><span class="o">)</span> <span class="o">:</span> <span class="n">F</span> <span class="n">n</span> <span class="bp">&#8804;</span> <span class="mi">2</span> <span class="bp">^</span> <span class="n">n</span> <span class="o">:=</span> <span class="kd">by</span>
+  <span class="n">two_step_induction</span> <span class="n">n</span> <span class="k">with</span> <span class="n">k</span> <span class="n">IH1</span> <span class="n">IH2</span>
+  <span class="bp">&#183;</span> <span class="k">calc</span> <span class="n">F</span> <span class="mi">0</span> <span class="bp">=</span> <span class="mi">1</span> <span class="o">:=</span> <span class="kd">by</span> <span class="n">rw</span> <span class="o">[</span><span class="n">F</span><span class="o">]</span>
+      <span class="n">_</span> <span class="bp">&#8804;</span> <span class="mi">2</span> <span class="bp">^</span> <span class="mi">0</span> <span class="o">:=</span> <span class="kd">by</span> <span class="n">numbers</span>
+  <span class="bp">&#183;</span> <span class="k">calc</span> <span class="n">F</span> <span class="mi">1</span> <span class="bp">=</span> <span class="mi">1</span> <span class="o">:=</span> <span class="kd">by</span> <span class="n">rw</span> <span class="o">[</span><span class="n">F</span><span class="o">]</span>
+      <span class="n">_</span> <span class="bp">&#8804;</span> <span class="mi">2</span> <span class="bp">^</span> <span class="mi">1</span> <span class="o">:=</span> <span class="kd">by</span> <span class="n">numbers</span>
+  <span class="bp">&#183;</span> <span class="k">calc</span> <span class="n">F</span> <span class="o">(</span><span class="n">k</span> <span class="bp">+</span> <span class="mi">2</span><span class="o">)</span> <span class="bp">=</span> <span class="n">F</span> <span class="o">(</span><span class="n">k</span> <span class="bp">+</span> <span class="mi">1</span><span class="o">)</span> <span class="bp">+</span> <span class="n">F</span> <span class="n">k</span> <span class="o">:=</span> <span class="kd">by</span> <span class="n">rw</span> <span class="o">[</span><span class="n">F</span><span class="o">]</span>
+      <span class="n">_</span> <span class="bp">&#8804;</span> <span class="mi">2</span> <span class="bp">^</span> <span class="o">(</span><span class="n">k</span> <span class="bp">+</span> <span class="mi">1</span><span class="o">)</span> <span class="bp">+</span> <span class="mi">2</span> <span class="bp">^</span> <span class="n">k</span> <span class="o">:=</span> <span class="kd">by</span> <span class="n">rel</span> <span class="o">[</span><span class="n">IH1</span><span class="o">,</span> <span class="n">IH2</span><span class="o">]</span>
+      <span class="n">_</span> <span class="bp">&#8804;</span> <span class="mi">2</span> <span class="bp">^</span> <span class="o">(</span><span class="n">k</span> <span class="bp">+</span> <span class="mi">1</span><span class="o">)</span> <span class="bp">+</span> <span class="mi">2</span> <span class="bp">^</span> <span class="n">k</span> <span class="bp">+</span> <span class="mi">2</span> <span class="bp">^</span> <span class="n">k</span> <span class="o">:=</span> <span class="kd">by</span> <span class="n">extra</span>
+      <span class="n">_</span> <span class="bp">=</span> <span class="mi">2</span> <span class="bp">^</span> <span class="o">(</span><span class="n">k</span> <span class="bp">+</span> <span class="mi">2</span><span class="o">)</span> <span class="o">:=</span> <span class="kd">by</span> <span class="n">ring</span>
+</pre></div>
+</div>
+</section>
+<section id="id19">
+<h3><span class="section-number">6.3.4. </span>Example<a class="headerlink" href="#id19" title="Permalink to this headline">&#61633;</a></h3>
+<div class="admonition-problem admonition">
+<p class="admonition-title">Problem</p>
 <p>Show that the Fibonacci sequence <span class="math notranslate nohighlight">\(F_n\)</span> satisfies, for all natural numbers <span class="math notranslate nohighlight">\(n\)</span>,</p>
 <div class="math notranslate nohighlight">
 \[F_{n+1}^2-F_{n+1}F_n-F_n^2=(-1)^n.\]</div>
@@ -1043,10 +1065,10 @@ F_1&amp;=1\\
 </pre></div>
 </div>
 </section>
-<section id="id19">
-<h3><span class="section-number">6.3.4. </span>Exercises<a class="headerlink" href="#id19" title="Permalink to this headline">&#61633;</a></h3>
+<section id="id20">
+<h3><span class="section-number">6.3.5. </span>Exercises<a class="headerlink" href="#id20" title="Permalink to this headline">&#61633;</a></h3>
 <ol class="arabic">
-<li><p>Consider the sequence <span class="math notranslate nohighlight">\(\{b_n\}\)</span> defined recursively by,</p>
+<li><p>Consider the sequence <span class="math notranslate nohighlight">\((b_n)\)</span> defined recursively by,</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}b_0&amp;=2\\
 b_1&amp;=5\\
