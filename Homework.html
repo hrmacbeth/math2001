@@ -372,6 +372,9 @@ including the use of the lemmas <code class="docutils literal notranslate"><span
 <ol class="arabic" start="2">
 <li><p>Show that <span class="math notranslate nohighlight">\(\lnot\forall x, P(x)\)</span> is logically equivalent to <span class="math notranslate nohighlight">\(\exists x, \lnot P(x)\)</span>.</p>
 <p>You will need to use the law of the excluded middle (the tactic <code class="docutils literal notranslate"><span class="pre">by_cases</span></code>).</p>
+<p>Note: this is one of the facts from <a class="reference internal" href="05_Logic.html#negation-rule-table"><span class="std std-numref">Table 5.1</span></a> which form the
+theoretical underpinning for negation-normalization (the tactic <code class="docutils literal notranslate"><span class="pre">push_neg</span></code>).  So <em>don&#8217;t</em> use
+the tactic <code class="docutils literal notranslate"><span class="pre">push_neg</span></code> in this problem!</p>
 <p>Write this problem only in Lean, not on paper.</p>
 </li>
 </ol>
