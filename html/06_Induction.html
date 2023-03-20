@@ -68,6 +68,13 @@
 <li class="toctree-l3"><a class="reference internal" href="#id14">6.2.7. Exercises</a></li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="#two-step-induction">6.3. Two-step induction</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id16">6.3.1. Example</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id17">6.3.2. Example</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id18">6.3.3. Example</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id19">6.3.4. Exercises</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -897,6 +904,162 @@ Show that for all natural numbers <span class="math notranslate nohighlight">\(n
 (see <a class="reference internal" href="#induction-starting-point"><span class="std std-numref">Example 6.1.6</span></a>).</p></li>
 </ol>
 <div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">{</span><span class="n">n</span> <span class="o">:</span> <span class="n">&#8469;</span><span class="o">}</span> <span class="o">(</span><span class="n">hn</span> <span class="o">:</span> <span class="mi">2</span> <span class="bp">&#8804;</span> <span class="n">n</span><span class="o">)</span> <span class="o">:</span> <span class="n">Nat.Even</span> <span class="o">(</span><span class="n">n</span> <span class="bp">!</span><span class="o">)</span> <span class="o">:=</span> <span class="kd">by</span>
+  <span class="gr">sorry</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="two-step-induction">
+<span id="id15"></span><h2><span class="section-number">6.3. </span>Two-step induction<a class="headerlink" href="#two-step-induction" title="Permalink to this headline">&#61633;</a></h2>
+<section id="id16">
+<h3><span class="section-number">6.3.1. </span>Example<a class="headerlink" href="#id16" title="Permalink to this headline">&#61633;</a></h3>
+<p>In the last section we studied recursively defined sequences in which each term is constructed from
+the previous term.  But it is also possible to define a sequence recursively with reliance on several
+previous terms.</p>
+<p>For example, here is a sequence defined recursively in terms of the two previous terms.</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}a_0&amp;=2\\
+a_1&amp;=1\\
+\text{for }n\geq 0,\quad a_{n+2}&amp;=a_{n+1}+2a_n.\end{split}\]</div>
+<p>Notice that since the recurrence relation depends on two previous terms, we need to give two
+concrete values of the sequence (<span class="math notranslate nohighlight">\(a_0=2\)</span> and <span class="math notranslate nohighlight">\(a_1=1\)</span>) to start with.</p>
+<p>The first few terms of this sequence are</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}a_0&amp;=2\\
+a_1&amp;=1\\
+a_2&amp;=a_1+2a_0\\
+&amp;=1+2\cdot 2\\
+&amp;=5\\
+a_3&amp;=a_2+2a_1\\
+&amp;=5+2\cdot 1\\
+&amp;=7\\
+a_4&amp;=a_3+2a_2\\
+&amp;=7+2\cdot 5\\
+&amp;=17\end{split}\]</div>
+<p>In Lean, we would define this sequence as</p>
+<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">def</span> <span class="n">a</span> <span class="o">:</span> <span class="n">&#8469;</span> <span class="bp">&#8594;</span> <span class="n">&#8484;</span>
+  <span class="bp">|</span> <span class="mi">0</span> <span class="bp">=&gt;</span> <span class="mi">2</span>
+  <span class="bp">|</span> <span class="mi">1</span> <span class="bp">=&gt;</span> <span class="mi">1</span>
+  <span class="bp">|</span> <span class="n">n</span> <span class="bp">+</span> <span class="mi">2</span> <span class="bp">=&gt;</span> <span class="n">a</span> <span class="o">(</span><span class="n">n</span> <span class="bp">+</span> <span class="mi">1</span><span class="o">)</span> <span class="bp">+</span> <span class="mi">2</span> <span class="bp">*</span> <span class="n">a</span> <span class="n">n</span>
+</pre></div>
+</div>
+<p>and, as in the previous section, Lean will calculate for us any term of the sequence</p>
+<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="k">#eval</span> <span class="n">a</span> <span class="mi">5</span> <span class="c1">-- infoview displays `31`</span>
+</pre></div>
+</div>
+<p>Compute several more terms of the sequence, either on paper or with Lean&#8217;s help.  You will start to
+see a pattern: every term of the sequence differs by one from a power of two.  We can prove this
+pattern by induction.</p>
+<div class="admonition-problem admonition">
+<p class="admonition-title">Problem</p>
+<p>Prove that for all <span class="math notranslate nohighlight">\(n\in\mathbb{N}\)</span>, <span class="math notranslate nohighlight">\(a_n=2^n+(-1)^n\)</span>.</p>
+</div>
+<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">(</span><span class="n">n</span> <span class="o">:</span> <span class="n">&#8469;</span><span class="o">)</span> <span class="o">:</span> <span class="n">a</span> <span class="n">n</span> <span class="bp">=</span> <span class="mi">2</span> <span class="bp">^</span> <span class="n">n</span> <span class="bp">+</span> <span class="o">(</span><span class="bp">-</span><span class="mi">1</span><span class="o">)</span> <span class="bp">^</span> <span class="n">n</span> <span class="o">:=</span> <span class="kd">by</span>
+  <span class="n">two_step_induction</span> <span class="n">n</span> <span class="k">with</span> <span class="n">k</span> <span class="n">IH1</span> <span class="n">IH2</span>
+  <span class="bp">.</span> <span class="k">calc</span> <span class="n">a</span> <span class="mi">0</span> <span class="bp">=</span> <span class="mi">2</span> <span class="o">:=</span> <span class="kd">by</span> <span class="n">rw</span> <span class="o">[</span><span class="n">a</span><span class="o">]</span>
+      <span class="n">_</span> <span class="bp">=</span> <span class="mi">2</span> <span class="bp">^</span> <span class="mi">0</span> <span class="bp">+</span> <span class="o">(</span><span class="bp">-</span><span class="mi">1</span><span class="o">)</span> <span class="bp">^</span> <span class="mi">0</span> <span class="o">:=</span> <span class="kd">by</span> <span class="n">numbers</span>
+  <span class="bp">.</span> <span class="k">calc</span> <span class="n">a</span> <span class="mi">1</span> <span class="bp">=</span> <span class="mi">1</span> <span class="o">:=</span> <span class="kd">by</span> <span class="n">rw</span> <span class="o">[</span><span class="n">a</span><span class="o">]</span>
+      <span class="n">_</span> <span class="bp">=</span> <span class="mi">2</span> <span class="bp">^</span> <span class="mi">1</span> <span class="bp">+</span> <span class="o">(</span><span class="bp">-</span><span class="mi">1</span><span class="o">)</span> <span class="bp">^</span> <span class="mi">1</span> <span class="o">:=</span> <span class="kd">by</span> <span class="n">numbers</span>
+  <span class="k">calc</span>
+    <span class="n">a</span> <span class="o">(</span><span class="n">k</span> <span class="bp">+</span> <span class="mi">2</span><span class="o">)</span>
+      <span class="bp">=</span> <span class="n">a</span> <span class="o">(</span><span class="n">k</span> <span class="bp">+</span> <span class="mi">1</span><span class="o">)</span> <span class="bp">+</span> <span class="mi">2</span> <span class="bp">*</span> <span class="n">a</span> <span class="n">k</span> <span class="o">:=</span> <span class="kd">by</span> <span class="n">rw</span> <span class="o">[</span><span class="n">a</span><span class="o">]</span>
+    <span class="n">_</span> <span class="bp">=</span> <span class="o">(</span><span class="mi">2</span> <span class="bp">^</span> <span class="o">(</span><span class="n">k</span> <span class="bp">+</span> <span class="mi">1</span><span class="o">)</span> <span class="bp">+</span> <span class="o">(</span><span class="bp">-</span><span class="mi">1</span><span class="o">)</span> <span class="bp">^</span> <span class="o">(</span><span class="n">k</span> <span class="bp">+</span> <span class="mi">1</span><span class="o">))</span> <span class="bp">+</span> <span class="mi">2</span> <span class="bp">*</span> <span class="o">(</span><span class="mi">2</span> <span class="bp">^</span> <span class="n">k</span> <span class="bp">+</span> <span class="o">(</span><span class="bp">-</span><span class="mi">1</span><span class="o">)</span> <span class="bp">^</span> <span class="n">k</span><span class="o">)</span> <span class="o">:=</span> <span class="kd">by</span> <span class="n">rw</span> <span class="o">[</span><span class="n">IH1</span><span class="o">,</span> <span class="n">IH2</span><span class="o">]</span>
+    <span class="n">_</span> <span class="bp">=</span> <span class="o">(</span><span class="mi">2</span> <span class="o">:</span> <span class="n">&#8484;</span><span class="o">)</span> <span class="bp">^</span> <span class="o">(</span><span class="n">k</span> <span class="bp">+</span> <span class="mi">2</span><span class="o">)</span> <span class="bp">+</span> <span class="o">(</span><span class="bp">-</span><span class="mi">1</span><span class="o">)</span> <span class="bp">^</span> <span class="o">(</span><span class="n">k</span> <span class="bp">+</span> <span class="mi">2</span><span class="o">)</span> <span class="o">:=</span> <span class="kd">by</span> <span class="n">ring</span>
+</pre></div>
+</div>
+</section>
+<section id="id17">
+<h3><span class="section-number">6.3.2. </span>Example<a class="headerlink" href="#id17" title="Permalink to this headline">&#61633;</a></h3>
+<div class="admonition-problem admonition">
+<p class="admonition-title">Problem</p>
+<p>Prove that for all <span class="math notranslate nohighlight">\(n\in\mathbb{N}\)</span>, <span class="math notranslate nohighlight">\(a_n\)</span> is congruent to either 1 or 5 modulo 6.</p>
+</div>
+<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">{</span><span class="n">m</span> <span class="o">:</span> <span class="n">&#8469;</span><span class="o">}</span> <span class="o">(</span><span class="n">hm</span> <span class="o">:</span> <span class="mi">1</span> <span class="bp">&#8804;</span> <span class="n">m</span><span class="o">)</span> <span class="o">:</span> <span class="n">a</span> <span class="n">m</span> <span class="bp">&#8801;</span> <span class="mi">1</span> <span class="o">[</span><span class="n">ZMOD</span> <span class="mi">6</span><span class="o">]</span> <span class="bp">&#8744;</span> <span class="n">a</span> <span class="n">m</span> <span class="bp">&#8801;</span> <span class="mi">5</span> <span class="o">[</span><span class="n">ZMOD</span> <span class="mi">6</span><span class="o">]</span> <span class="o">:=</span> <span class="kd">by</span>
+  <span class="k">have</span> <span class="n">H</span> <span class="o">:</span> <span class="bp">&#8704;</span> <span class="n">n</span> <span class="o">:</span> <span class="n">&#8469;</span><span class="o">,</span> <span class="mi">1</span> <span class="bp">&#8804;</span> <span class="n">n</span> <span class="bp">&#8594;</span>
+      <span class="o">(</span><span class="n">a</span> <span class="n">n</span> <span class="bp">&#8801;</span> <span class="mi">1</span> <span class="o">[</span><span class="n">ZMOD</span> <span class="mi">6</span><span class="o">]</span> <span class="bp">&#8743;</span> <span class="n">a</span> <span class="o">(</span><span class="n">n</span> <span class="bp">+</span> <span class="mi">1</span><span class="o">)</span> <span class="bp">&#8801;</span> <span class="mi">5</span> <span class="o">[</span><span class="n">ZMOD</span> <span class="mi">6</span><span class="o">])</span>
+    <span class="bp">&#8744;</span> <span class="o">(</span><span class="n">a</span> <span class="n">n</span> <span class="bp">&#8801;</span> <span class="mi">5</span> <span class="o">[</span><span class="n">ZMOD</span> <span class="mi">6</span><span class="o">]</span> <span class="bp">&#8743;</span> <span class="n">a</span> <span class="o">(</span><span class="n">n</span> <span class="bp">+</span> <span class="mi">1</span><span class="o">)</span> <span class="bp">&#8801;</span> <span class="mi">1</span> <span class="o">[</span><span class="n">ZMOD</span> <span class="mi">6</span><span class="o">])</span>
+  <span class="bp">&#183;</span> <span class="n">intro</span> <span class="n">n</span> <span class="n">hn</span>
+    <span class="n">induction_from_starting_point</span> <span class="n">n</span><span class="o">,</span> <span class="n">hn</span> <span class="k">with</span> <span class="n">k</span> <span class="n">hk</span> <span class="n">IH</span>
+    <span class="bp">&#183;</span> <span class="n">left</span>
+      <span class="n">constructor</span>
+      <span class="k">calc</span> <span class="n">a</span> <span class="mi">1</span> <span class="bp">=</span> <span class="mi">1</span> <span class="o">:=</span> <span class="kd">by</span> <span class="n">rw</span> <span class="o">[</span><span class="n">a</span><span class="o">]</span>
+        <span class="n">_</span> <span class="bp">&#8801;</span> <span class="mi">1</span> <span class="o">[</span><span class="n">ZMOD</span> <span class="mi">6</span><span class="o">]</span> <span class="o">:=</span> <span class="kd">by</span> <span class="n">extra</span>
+      <span class="k">calc</span> <span class="n">a</span> <span class="o">(</span><span class="mi">1</span> <span class="bp">+</span> <span class="mi">1</span><span class="o">)</span> <span class="bp">=</span> <span class="mi">1</span> <span class="bp">+</span> <span class="mi">2</span> <span class="bp">*</span> <span class="mi">2</span> <span class="o">:=</span> <span class="kd">by</span> <span class="n">rw</span> <span class="o">[</span><span class="n">a</span><span class="o">,</span> <span class="n">a</span><span class="o">,</span> <span class="n">a</span><span class="o">]</span>
+        <span class="n">_</span> <span class="bp">=</span> <span class="mi">5</span> <span class="o">:=</span> <span class="kd">by</span> <span class="n">numbers</span>
+        <span class="n">_</span> <span class="bp">&#8801;</span> <span class="mi">5</span> <span class="o">[</span><span class="n">ZMOD</span> <span class="mi">6</span><span class="o">]</span> <span class="o">:=</span> <span class="kd">by</span> <span class="n">extra</span>
+    <span class="bp">&#183;</span> <span class="n">obtain</span> <span class="o">&#10216;</span><span class="n">IH1</span><span class="o">,</span> <span class="n">IH2</span><span class="o">&#10217;</span> <span class="bp">|</span> <span class="o">&#10216;</span><span class="n">IH1</span><span class="o">,</span> <span class="n">IH2</span><span class="o">&#10217;</span> <span class="o">:=</span> <span class="n">IH</span>
+      <span class="bp">&#183;</span> <span class="n">right</span>
+        <span class="n">constructor</span>
+        <span class="bp">&#183;</span> <span class="n">apply</span> <span class="n">IH2</span>
+        <span class="k">calc</span> <span class="n">a</span> <span class="o">(</span><span class="n">k</span> <span class="bp">+</span> <span class="mi">1</span> <span class="bp">+</span> <span class="mi">1</span><span class="o">)</span> <span class="bp">=</span> <span class="n">a</span> <span class="o">(</span><span class="n">k</span> <span class="bp">+</span> <span class="mi">1</span><span class="o">)</span> <span class="bp">+</span> <span class="mi">2</span> <span class="bp">*</span> <span class="n">a</span> <span class="n">k</span> <span class="o">:=</span> <span class="kd">by</span> <span class="n">rw</span> <span class="o">[</span><span class="n">a</span><span class="o">]</span>
+          <span class="n">_</span> <span class="bp">&#8801;</span> <span class="mi">5</span> <span class="bp">+</span> <span class="mi">2</span> <span class="bp">*</span> <span class="mi">1</span> <span class="o">[</span><span class="n">ZMOD</span> <span class="mi">6</span><span class="o">]</span> <span class="o">:=</span> <span class="kd">by</span> <span class="n">rel</span> <span class="o">[</span><span class="n">IH1</span><span class="o">,</span> <span class="n">IH2</span><span class="o">]</span>
+          <span class="n">_</span> <span class="bp">=</span> <span class="mi">6</span> <span class="bp">*</span> <span class="mi">1</span> <span class="bp">+</span> <span class="mi">1</span> <span class="o">:=</span> <span class="kd">by</span> <span class="n">numbers</span>
+          <span class="n">_</span> <span class="bp">&#8801;</span> <span class="mi">1</span> <span class="o">[</span><span class="n">ZMOD</span> <span class="mi">6</span><span class="o">]</span> <span class="o">:=</span> <span class="kd">by</span> <span class="n">extra</span>
+      <span class="bp">&#183;</span> <span class="n">left</span>
+        <span class="n">constructor</span>
+        <span class="bp">&#183;</span> <span class="n">apply</span> <span class="n">IH2</span>
+        <span class="k">calc</span> <span class="n">a</span> <span class="o">(</span><span class="n">k</span> <span class="bp">+</span> <span class="mi">1</span> <span class="bp">+</span> <span class="mi">1</span><span class="o">)</span> <span class="bp">=</span> <span class="n">a</span> <span class="o">(</span><span class="n">k</span> <span class="bp">+</span> <span class="mi">1</span><span class="o">)</span> <span class="bp">+</span> <span class="mi">2</span> <span class="bp">*</span> <span class="n">a</span> <span class="n">k</span> <span class="o">:=</span> <span class="kd">by</span> <span class="n">rw</span> <span class="o">[</span><span class="n">a</span><span class="o">]</span>
+          <span class="n">_</span> <span class="bp">&#8801;</span> <span class="mi">1</span> <span class="bp">+</span> <span class="mi">2</span> <span class="bp">*</span> <span class="mi">5</span> <span class="o">[</span><span class="n">ZMOD</span> <span class="mi">6</span><span class="o">]</span> <span class="o">:=</span> <span class="kd">by</span> <span class="n">rel</span> <span class="o">[</span><span class="n">IH1</span><span class="o">,</span> <span class="n">IH2</span><span class="o">]</span>
+          <span class="n">_</span> <span class="bp">=</span> <span class="mi">6</span> <span class="bp">*</span> <span class="mi">1</span> <span class="bp">+</span> <span class="mi">5</span> <span class="o">:=</span> <span class="kd">by</span> <span class="n">numbers</span>
+          <span class="n">_</span> <span class="bp">&#8801;</span> <span class="mi">5</span> <span class="o">[</span><span class="n">ZMOD</span> <span class="mi">6</span><span class="o">]</span> <span class="o">:=</span> <span class="kd">by</span> <span class="n">extra</span>
+  <span class="n">obtain</span> <span class="o">&#10216;</span><span class="n">H1</span><span class="o">,</span> <span class="n">H2</span><span class="o">&#10217;</span> <span class="bp">|</span> <span class="o">&#10216;</span><span class="n">H1</span><span class="o">,</span> <span class="n">H2</span><span class="o">&#10217;</span> <span class="o">:=</span> <span class="n">H</span> <span class="n">m</span> <span class="n">hm</span>
+  <span class="bp">&#183;</span> <span class="n">left</span>
+    <span class="n">apply</span> <span class="n">H1</span>
+  <span class="bp">&#183;</span> <span class="n">right</span>
+    <span class="n">apply</span> <span class="n">H1</span>
+</pre></div>
+</div>
+</section>
+<section id="id18">
+<h3><span class="section-number">6.3.3. </span>Example<a class="headerlink" href="#id18" title="Permalink to this headline">&#61633;</a></h3>
+<p>The most famous example of a sequence defined recursively in terms of its two previous values is the
+<em>Fibonacci sequence</em>: each term is the sum of the two previous.</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}a_0&amp;=2\\
+a_1&amp;=1\\
+\text{for }n\geq 0,\quad a_{n+2}&amp;=a_{n+1}+a_n.\end{split}\]</div>
+<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">def</span> <span class="n">F</span> <span class="o">:</span> <span class="n">&#8469;</span> <span class="bp">&#8594;</span> <span class="n">&#8484;</span>
+  <span class="bp">|</span> <span class="mi">0</span> <span class="bp">=&gt;</span> <span class="mi">1</span>
+  <span class="bp">|</span> <span class="mi">1</span> <span class="bp">=&gt;</span> <span class="mi">1</span>
+  <span class="bp">|</span> <span class="n">n</span> <span class="bp">+</span> <span class="mi">2</span> <span class="bp">=&gt;</span> <span class="n">F</span> <span class="o">(</span><span class="n">n</span> <span class="bp">+</span> <span class="mi">1</span><span class="o">)</span> <span class="bp">+</span> <span class="n">F</span> <span class="n">n</span>
+</pre></div>
+</div>
+<p>Work out the first 10 terms, on paper or with Lean&#8217;s help.</p>
+<div class="admonition-problem admonition">
+<p class="admonition-title">Problem</p>
+<p>Show that the Fibonacci sequence <span class="math notranslate nohighlight">\(F_n\)</span> satisfies, for all natural numbers <span class="math notranslate nohighlight">\(n\)</span>,</p>
+<div class="math notranslate nohighlight">
+\[F_{n+1}^2-F_{n+1}F_n-F_n^2=(-1)^n.\]</div>
+</div>
+<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">(</span><span class="n">n</span> <span class="o">:</span> <span class="n">&#8469;</span><span class="o">)</span> <span class="o">:</span> <span class="n">F</span> <span class="o">(</span><span class="n">n</span> <span class="bp">+</span> <span class="mi">1</span><span class="o">)</span> <span class="bp">^</span> <span class="mi">2</span> <span class="bp">-</span> <span class="n">F</span> <span class="o">(</span><span class="n">n</span> <span class="bp">+</span> <span class="mi">1</span><span class="o">)</span> <span class="bp">*</span> <span class="n">F</span> <span class="n">n</span> <span class="bp">-</span> <span class="n">F</span> <span class="n">n</span> <span class="bp">^</span> <span class="mi">2</span> <span class="bp">=</span> <span class="bp">-</span> <span class="o">(</span><span class="bp">-</span><span class="mi">1</span><span class="o">)</span> <span class="bp">^</span> <span class="n">n</span> <span class="o">:=</span> <span class="kd">by</span>
+  <span class="n">simple_induction</span> <span class="n">n</span> <span class="k">with</span> <span class="n">k</span> <span class="n">IH</span>
+  <span class="bp">&#183;</span> <span class="k">calc</span> <span class="n">F</span> <span class="mi">1</span> <span class="bp">^</span> <span class="mi">2</span> <span class="bp">-</span> <span class="n">F</span> <span class="mi">1</span> <span class="bp">*</span> <span class="n">F</span> <span class="mi">0</span> <span class="bp">-</span> <span class="n">F</span> <span class="mi">0</span> <span class="bp">^</span> <span class="mi">2</span> <span class="bp">=</span> <span class="mi">1</span> <span class="bp">^</span> <span class="mi">2</span> <span class="bp">-</span> <span class="mi">1</span> <span class="bp">*</span> <span class="mi">1</span> <span class="bp">-</span> <span class="mi">1</span> <span class="bp">^</span> <span class="mi">2</span> <span class="o">:=</span> <span class="kd">by</span> <span class="n">rw</span> <span class="o">[</span><span class="n">F</span><span class="o">,</span> <span class="n">F</span><span class="o">]</span>
+      <span class="n">_</span> <span class="bp">=</span> <span class="bp">-</span> <span class="o">(</span><span class="bp">-</span><span class="mi">1</span><span class="o">)</span> <span class="bp">^</span> <span class="mi">0</span> <span class="o">:=</span> <span class="kd">by</span> <span class="n">numbers</span>
+  <span class="bp">&#183;</span> <span class="k">calc</span> <span class="n">F</span> <span class="o">(</span><span class="n">k</span> <span class="bp">+</span> <span class="mi">1</span> <span class="bp">+</span> <span class="mi">1</span><span class="o">)</span> <span class="bp">^</span> <span class="mi">2</span> <span class="bp">-</span> <span class="n">F</span> <span class="o">(</span><span class="n">k</span> <span class="bp">+</span> <span class="mi">1</span> <span class="bp">+</span> <span class="mi">1</span><span class="o">)</span> <span class="bp">*</span> <span class="n">F</span> <span class="o">(</span><span class="n">k</span> <span class="bp">+</span> <span class="mi">1</span><span class="o">)</span> <span class="bp">-</span> <span class="n">F</span> <span class="o">(</span><span class="n">k</span> <span class="bp">+</span> <span class="mi">1</span><span class="o">)</span> <span class="bp">^</span> <span class="mi">2</span>
+        <span class="bp">=</span> <span class="o">(</span><span class="n">F</span> <span class="o">(</span><span class="n">k</span> <span class="bp">+</span> <span class="mi">1</span><span class="o">)</span> <span class="bp">+</span> <span class="n">F</span> <span class="n">k</span><span class="o">)</span> <span class="bp">^</span> <span class="mi">2</span> <span class="bp">-</span> <span class="o">(</span><span class="n">F</span> <span class="o">(</span><span class="n">k</span> <span class="bp">+</span> <span class="mi">1</span><span class="o">)</span> <span class="bp">+</span> <span class="n">F</span> <span class="n">k</span><span class="o">)</span> <span class="bp">*</span> <span class="n">F</span> <span class="o">(</span><span class="n">k</span> <span class="bp">+</span> <span class="mi">1</span><span class="o">)</span> <span class="bp">-</span> <span class="n">F</span> <span class="o">(</span><span class="n">k</span> <span class="bp">+</span> <span class="mi">1</span><span class="o">)</span> <span class="bp">^</span> <span class="mi">2</span> <span class="o">:=</span> <span class="kd">by</span> <span class="n">rw</span> <span class="o">[</span><span class="n">F</span><span class="o">]</span>
+      <span class="n">_</span> <span class="bp">=</span> <span class="bp">-</span> <span class="o">(</span><span class="n">F</span> <span class="o">(</span><span class="n">k</span> <span class="bp">+</span> <span class="mi">1</span><span class="o">)</span> <span class="bp">^</span> <span class="mi">2</span> <span class="bp">-</span> <span class="n">F</span> <span class="o">(</span><span class="n">k</span> <span class="bp">+</span> <span class="mi">1</span><span class="o">)</span> <span class="bp">*</span> <span class="n">F</span> <span class="n">k</span> <span class="bp">-</span> <span class="n">F</span> <span class="n">k</span> <span class="bp">^</span> <span class="mi">2</span><span class="o">)</span> <span class="o">:=</span> <span class="kd">by</span> <span class="n">ring</span>
+      <span class="n">_</span> <span class="bp">=</span> <span class="bp">-</span> <span class="bp">-</span><span class="o">(</span><span class="bp">-</span><span class="mi">1</span><span class="o">)</span> <span class="bp">^</span> <span class="n">k</span> <span class="o">:=</span> <span class="kd">by</span> <span class="n">rw</span> <span class="o">[</span><span class="n">IH</span><span class="o">]</span>
+      <span class="n">_</span> <span class="bp">=</span> <span class="bp">-</span><span class="o">(</span><span class="bp">-</span><span class="mi">1</span><span class="o">)</span> <span class="bp">^</span> <span class="o">(</span><span class="n">k</span> <span class="bp">+</span> <span class="mi">1</span><span class="o">)</span> <span class="o">:=</span> <span class="kd">by</span> <span class="n">ring</span>
+</pre></div>
+</div>
+</section>
+<section id="id19">
+<h3><span class="section-number">6.3.4. </span>Exercises<a class="headerlink" href="#id19" title="Permalink to this headline">&#61633;</a></h3>
+<ol class="arabic">
+<li><p>Consider the sequence <span class="math notranslate nohighlight">\(\{b_n\}\)</span> defined recursively by,</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}b_0&amp;=2\\
+b_1&amp;=5\\
+\text{for }n\geq 0,\quad b_{n+2}&amp;=5b_{n+1}-6b_n.\end{split}\]</div>
+<p>Prove that for all <span class="math notranslate nohighlight">\(n\in\mathbb{N}\)</span>, <span class="math notranslate nohighlight">\(b_n=3^n - 2 ^ n\)</span>.</p>
+</li>
+</ol>
+<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">def</span> <span class="n">b</span> <span class="o">:</span> <span class="n">&#8469;</span> <span class="bp">&#8594;</span> <span class="n">&#8484;</span>
+  <span class="bp">|</span> <span class="mi">0</span> <span class="bp">=&gt;</span> <span class="mi">0</span>
+  <span class="bp">|</span> <span class="mi">1</span> <span class="bp">=&gt;</span> <span class="mi">1</span>
+  <span class="bp">|</span> <span class="n">n</span> <span class="bp">+</span> <span class="mi">2</span> <span class="bp">=&gt;</span> <span class="mi">5</span> <span class="bp">*</span> <span class="n">b</span> <span class="o">(</span><span class="n">n</span> <span class="bp">+</span> <span class="mi">1</span><span class="o">)</span> <span class="bp">-</span> <span class="mi">6</span> <span class="bp">*</span> <span class="n">b</span> <span class="n">n</span>
+
+<span class="kd">example</span> <span class="o">(</span><span class="n">n</span> <span class="o">:</span> <span class="n">&#8469;</span><span class="o">)</span> <span class="o">:</span> <span class="n">b</span> <span class="n">n</span> <span class="bp">=</span> <span class="mi">3</span> <span class="bp">^</span> <span class="n">n</span> <span class="bp">-</span> <span class="mi">2</span> <span class="bp">^</span> <span class="n">n</span> <span class="o">:=</span> <span class="kd">by</span>
   <span class="gr">sorry</span>
 </pre></div>
 </div>

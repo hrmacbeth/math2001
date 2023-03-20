@@ -5,3 +5,4 @@ Induction
 
 .. include:: 06_Induction/01_Induction.inc
 .. include:: 06_Induction/02_Recurrence_Relations.inc
+.. include:: 06_Induction/03_Two_Step_Induction.inc
