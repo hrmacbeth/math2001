@@ -1,13 +1,14 @@
+/- Copyright (c) Heather Macbeth, 2023.  All rights reserved. -/
 import Math2001.Library.Parity
 import Math2001.Tactic.Addarith
 import Math2001.Tactic.Induction
-import Math2001.Tactic.ModCases
 import Math2001.Tactic.Numbers
 import Math2001.Tactic.Rel
 import Math2001.Tactic.Take
 
 open Int
 
+notation3 "forall_sufficiently_large "(...)", "r:(scoped P => ∃ C, ∀ x ≥ C, P x) => r
 set_option linter.unusedVariables false
 
 
@@ -105,4 +106,56 @@ def b : ℕ → ℤ
   | n + 2 => 5 * b (n + 1) - 6 * b n 
 
 example (n : ℕ) : b n = 3 ^ n - 2 ^ n := by 
+  sorry
+
+def c : ℕ → ℤ
+  | 0 => 3
+  | 1 => 2
+  | n + 2 => 4 * c n
+
+example (n : ℕ) : c n = 2 * 2 ^ n + (-2) ^ n := by
+  sorry
+
+def t : ℕ → ℤ
+  | 0 => 5
+  | 1 => 7
+  | n + 2 => 2 * t (n + 1) - t n 
+
+example (n : ℕ) : t n = 2 * n + 5 := by
+  sorry
+
+def q : ℕ → ℤ
+  | 0 => 1
+  | 1 => 2
+  | n + 2 => 2 * q (n + 1) - q n + 6 * n + 6
+
+example (n : ℕ) : q n = (n:ℤ) ^ 3 + 1 := by
+  sorry
+
+def s : ℕ → ℤ
+  | 0 => 2
+  | 1 => 3
+  | n + 2 => 2 * s (n + 1) + 3 * s n 
+
+example (m : ℕ) : s m ≡ 2 [ZMOD 5] ∨ s m ≡ 3 [ZMOD 5] := by
+  sorry
+  
+def p : ℕ → ℤ
+  | 0 => 2
+  | 1 => 3
+  | n + 2 => 6 * p (n + 1) - p n 
+
+example (m : ℕ) : p m ≡ 2 [ZMOD 7] ∨ p m ≡ 3 [ZMOD 7] := by
+  sorry
+
+def r : ℕ → ℤ 
+  | 0 => 2
+  | 1 => 0
+  | n + 2 => 2 * r (n + 1) + r n 
+
+example : forall_sufficiently_large n : ℕ, r n ≥ 2 ^ n := by
+  sorry
+  
+example : forall_sufficiently_large n : ℕ,
+    (0.4:ℚ) * 1.6 ^ n < F n ∧ F n < (0.5:ℚ) * 1.7 ^ n := by
   sorry

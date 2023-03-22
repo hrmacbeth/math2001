@@ -1,4 +1,4 @@
-import Mathlib.Data.Real.Basic
+/- Copyright (c) Heather Macbeth, 2023.  All rights reserved. -/
 import Math2001.Library.Parity
 import Math2001.Tactic.Addarith
 import Math2001.Tactic.Induction
@@ -7,6 +7,7 @@ import Math2001.Tactic.Rel
 import Math2001.Tactic.Take
 
 set_option linter.unusedVariables false
+open Int
 
 
 def a (n : ℕ) : ℕ := 2 ^ n
@@ -150,4 +151,7 @@ example (n : ℕ) : 0 < n ! := by
   sorry
 
 example {n : ℕ} (hn : 2 ≤ n) : Nat.Even (n !) := by
+  sorry
+
+example (n : ℕ) : (n + 1) ! ≤ (n + 1) ^ n := by
   sorry

@@ -64,7 +64,7 @@
 <li class="toctree-l3"><a class="reference internal" href="#id10">6.2.3. Example</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#id11">6.2.4. Example</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#id12">6.2.5. Example</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id13">6.2.6. Example</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#factorial-lower-bound">6.2.6. Example</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#id14">6.2.7. Exercises</a></li>
 </ul>
 </li>
@@ -785,8 +785,8 @@ We then have</p>
 </pre></div>
 </div>
 </section>
-<section id="id13">
-<h3><span class="section-number">6.2.6. </span>Example<a class="headerlink" href="#id13" title="Permalink to this headline">&#61633;</a></h3>
+<section id="factorial-lower-bound">
+<span id="id13"></span><h3><span class="section-number">6.2.6. </span>Example<a class="headerlink" href="#factorial-lower-bound" title="Permalink to this headline">&#61633;</a></h3>
 <div class="admonition-problem admonition">
 <p class="admonition-title">Problem</p>
 <p>Show that for all natural numbers <span class="math notranslate nohighlight">\(n\)</span>, we have <span class="math notranslate nohighlight">\((n+1)!\ge 2^n\)</span>.</p>
@@ -905,6 +905,15 @@ Show that for all natural numbers <span class="math notranslate nohighlight">\(n
 (see <a class="reference internal" href="#induction-starting-point"><span class="std std-numref">Example 6.1.6</span></a>).</p></li>
 </ol>
 <div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">{</span><span class="n">n</span> <span class="o">:</span> <span class="n">&#8469;</span><span class="o">}</span> <span class="o">(</span><span class="n">hn</span> <span class="o">:</span> <span class="mi">2</span> <span class="bp">&#8804;</span> <span class="n">n</span><span class="o">)</span> <span class="o">:</span> <span class="n">Nat.Even</span> <span class="o">(</span><span class="n">n</span> <span class="bp">!</span><span class="o">)</span> <span class="o">:=</span> <span class="kd">by</span>
+  <span class="gr">sorry</span>
+</pre></div>
+</div>
+<ol class="arabic" start="8">
+<li><p>Show that for all natural numbers <span class="math notranslate nohighlight">\(n\)</span>, <span class="math notranslate nohighlight">\((n+1)!\le (n+1)^n\)</span>.</p>
+<p>(Compare with <a class="reference internal" href="#factorial-lower-bound"><span class="std std-numref">Example 6.2.6</span></a>.)</p>
+</li>
+</ol>
+<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">(</span><span class="n">n</span> <span class="o">:</span> <span class="n">&#8469;</span><span class="o">)</span> <span class="o">:</span> <span class="o">(</span><span class="n">n</span> <span class="bp">+</span> <span class="mi">1</span><span class="o">)</span> <span class="bp">!</span> <span class="bp">&#8804;</span> <span class="o">(</span><span class="n">n</span> <span class="bp">+</span> <span class="mi">1</span><span class="o">)</span> <span class="bp">^</span> <span class="n">n</span> <span class="o">:=</span> <span class="kd">by</span>
   <span class="gr">sorry</span>
 </pre></div>
 </div>
@@ -1168,8 +1177,8 @@ F_1&amp;=1\\
 <ol class="arabic">
 <li><p>Consider the sequence <span class="math notranslate nohighlight">\((b_n)\)</span> defined recursively by,</p>
 <div class="math notranslate nohighlight">
-\[\begin{split}b_0&amp;=2\\
-b_1&amp;=5\\
+\[\begin{split}b_0&amp;=0\\
+b_1&amp;=1\\
 \text{for }n:\mathbb{N},\quad b_{n+2}&amp;=5b_{n+1}-6b_n.\end{split}\]</div>
 <p>Prove that for all <span class="math notranslate nohighlight">\(n\in\mathbb{N}\)</span>, <span class="math notranslate nohighlight">\(b_n=3^n - 2 ^ n\)</span>.</p>
 </li>
@@ -1180,6 +1189,131 @@ b_1&amp;=5\\
   <span class="bp">|</span> <span class="n">n</span> <span class="bp">+</span> <span class="mi">2</span> <span class="bp">=&gt;</span> <span class="mi">5</span> <span class="bp">*</span> <span class="n">b</span> <span class="o">(</span><span class="n">n</span> <span class="bp">+</span> <span class="mi">1</span><span class="o">)</span> <span class="bp">-</span> <span class="mi">6</span> <span class="bp">*</span> <span class="n">b</span> <span class="n">n</span>
 
 <span class="kd">example</span> <span class="o">(</span><span class="n">n</span> <span class="o">:</span> <span class="n">&#8469;</span><span class="o">)</span> <span class="o">:</span> <span class="n">b</span> <span class="n">n</span> <span class="bp">=</span> <span class="mi">3</span> <span class="bp">^</span> <span class="n">n</span> <span class="bp">-</span> <span class="mi">2</span> <span class="bp">^</span> <span class="n">n</span> <span class="o">:=</span> <span class="kd">by</span>
+  <span class="gr">sorry</span>
+</pre></div>
+</div>
+<ol class="arabic" start="2">
+<li><p>Consider the sequence <span class="math notranslate nohighlight">\((c_n)\)</span> defined recursively by,</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}c_0&amp;=3\\
+c_1&amp;=2\\
+\text{for }n:\mathbb{N},\quad c_{n+2}&amp;=4c_n.\end{split}\]</div>
+<p>Prove that for all natural numbers <span class="math notranslate nohighlight">\(n\)</span>, <span class="math notranslate nohighlight">\(c_n=2\cdot 2^n+(-2)^n\)</span>.</p>
+</li>
+</ol>
+<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">def</span> <span class="n">c</span> <span class="o">:</span> <span class="n">&#8469;</span> <span class="bp">&#8594;</span> <span class="n">&#8484;</span>
+  <span class="bp">|</span> <span class="mi">0</span> <span class="bp">=&gt;</span> <span class="mi">3</span>
+  <span class="bp">|</span> <span class="mi">1</span> <span class="bp">=&gt;</span> <span class="mi">2</span>
+  <span class="bp">|</span> <span class="n">n</span> <span class="bp">+</span> <span class="mi">2</span> <span class="bp">=&gt;</span> <span class="mi">4</span> <span class="bp">*</span> <span class="n">c</span> <span class="n">n</span>
+
+<span class="kd">example</span> <span class="o">(</span><span class="n">n</span> <span class="o">:</span> <span class="n">&#8469;</span><span class="o">)</span> <span class="o">:</span> <span class="n">c</span> <span class="n">n</span> <span class="bp">=</span> <span class="mi">2</span> <span class="bp">*</span> <span class="mi">2</span> <span class="bp">^</span> <span class="n">n</span> <span class="bp">+</span> <span class="o">(</span><span class="bp">-</span><span class="mi">2</span><span class="o">)</span> <span class="bp">^</span> <span class="n">n</span> <span class="o">:=</span> <span class="kd">by</span>
+  <span class="gr">sorry</span>
+</pre></div>
+</div>
+<ol class="arabic" start="3">
+<li><p>Consider the sequence <span class="math notranslate nohighlight">\((t_n)\)</span> defined recursively by,</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}t_0&amp;=5\\
+t_1&amp;=7\\
+\text{for }n:\mathbb{N},\quad t_{n+2}&amp;=2t_{n+1}-t_n.\end{split}\]</div>
+<p>Prove that for all natural numbers <span class="math notranslate nohighlight">\(n\)</span>, <span class="math notranslate nohighlight">\(t_n=2n+5\)</span>.</p>
+</li>
+</ol>
+<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">def</span> <span class="n">t</span> <span class="o">:</span> <span class="n">&#8469;</span> <span class="bp">&#8594;</span> <span class="n">&#8484;</span>
+  <span class="bp">|</span> <span class="mi">0</span> <span class="bp">=&gt;</span> <span class="mi">5</span>
+  <span class="bp">|</span> <span class="mi">1</span> <span class="bp">=&gt;</span> <span class="mi">7</span>
+  <span class="bp">|</span> <span class="n">n</span> <span class="bp">+</span> <span class="mi">2</span> <span class="bp">=&gt;</span> <span class="mi">2</span> <span class="bp">*</span> <span class="n">t</span> <span class="o">(</span><span class="n">n</span> <span class="bp">+</span> <span class="mi">1</span><span class="o">)</span> <span class="bp">-</span> <span class="n">t</span> <span class="n">n</span>
+
+<span class="kd">example</span> <span class="o">(</span><span class="n">n</span> <span class="o">:</span> <span class="n">&#8469;</span><span class="o">)</span> <span class="o">:</span> <span class="n">t</span> <span class="n">n</span> <span class="bp">=</span> <span class="mi">2</span> <span class="bp">*</span> <span class="n">n</span> <span class="bp">+</span> <span class="mi">5</span> <span class="o">:=</span> <span class="kd">by</span>
+  <span class="gr">sorry</span>
+</pre></div>
+</div>
+<ol class="arabic" start="4">
+<li><p>Consider the sequence <span class="math notranslate nohighlight">\((q_n)\)</span> defined recursively by,</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}q_0&amp;=1\\
+q_1&amp;=2\\
+\text{for }n:\mathbb{N},\quad q_{n+2}&amp;=2q_{n+1}-q_n+6n + 6.\end{split}\]</div>
+<p>Prove that for all natural numbers <span class="math notranslate nohighlight">\(n\)</span>, <span class="math notranslate nohighlight">\(q_n=n^3+1\)</span>.</p>
+</li>
+</ol>
+<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">def</span> <span class="n">q</span> <span class="o">:</span> <span class="n">&#8469;</span> <span class="bp">&#8594;</span> <span class="n">&#8484;</span>
+  <span class="bp">|</span> <span class="mi">0</span> <span class="bp">=&gt;</span> <span class="mi">1</span>
+  <span class="bp">|</span> <span class="mi">1</span> <span class="bp">=&gt;</span> <span class="mi">2</span>
+  <span class="bp">|</span> <span class="n">n</span> <span class="bp">+</span> <span class="mi">2</span> <span class="bp">=&gt;</span> <span class="mi">2</span> <span class="bp">*</span> <span class="n">q</span> <span class="o">(</span><span class="n">n</span> <span class="bp">+</span> <span class="mi">1</span><span class="o">)</span> <span class="bp">-</span> <span class="n">q</span> <span class="n">n</span> <span class="bp">+</span> <span class="mi">6</span> <span class="bp">*</span> <span class="n">n</span> <span class="bp">+</span> <span class="mi">6</span>
+
+<span class="kd">example</span> <span class="o">(</span><span class="n">n</span> <span class="o">:</span> <span class="n">&#8469;</span><span class="o">)</span> <span class="o">:</span> <span class="n">q</span> <span class="n">n</span> <span class="bp">=</span> <span class="o">(</span><span class="n">n</span><span class="o">:</span><span class="n">&#8484;</span><span class="o">)</span> <span class="bp">^</span> <span class="mi">3</span> <span class="bp">+</span> <span class="mi">1</span> <span class="o">:=</span> <span class="kd">by</span>
+  <span class="gr">sorry</span>
+</pre></div>
+</div>
+<ol class="arabic" start="5">
+<li><p>Consider the sequence <span class="math notranslate nohighlight">\((s_n)\)</span> defined recursively by,</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}s_0&amp;=2\\
+s_1&amp;=3\\
+\text{for }n:\mathbb{N},\quad s_{n+2}&amp;=2s_{n+1}+3s_n.\end{split}\]</div>
+<p>Prove that for all natural numbers <span class="math notranslate nohighlight">\(m\)</span>, <span class="math notranslate nohighlight">\(s_m\)</span> is congruent to either 2 or 3
+modulo 5.</p>
+</li>
+</ol>
+<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">def</span> <span class="n">s</span> <span class="o">:</span> <span class="n">&#8469;</span> <span class="bp">&#8594;</span> <span class="n">&#8484;</span>
+  <span class="bp">|</span> <span class="mi">0</span> <span class="bp">=&gt;</span> <span class="mi">2</span>
+  <span class="bp">|</span> <span class="mi">1</span> <span class="bp">=&gt;</span> <span class="mi">3</span>
+  <span class="bp">|</span> <span class="n">n</span> <span class="bp">+</span> <span class="mi">2</span> <span class="bp">=&gt;</span> <span class="mi">2</span> <span class="bp">*</span> <span class="n">s</span> <span class="o">(</span><span class="n">n</span> <span class="bp">+</span> <span class="mi">1</span><span class="o">)</span> <span class="bp">+</span> <span class="mi">3</span> <span class="bp">*</span> <span class="n">s</span> <span class="n">n</span>
+
+<span class="kd">example</span> <span class="o">(</span><span class="n">m</span> <span class="o">:</span> <span class="n">&#8469;</span><span class="o">)</span> <span class="o">:</span> <span class="n">s</span> <span class="n">m</span> <span class="bp">&#8801;</span> <span class="mi">2</span> <span class="o">[</span><span class="n">ZMOD</span> <span class="mi">5</span><span class="o">]</span> <span class="bp">&#8744;</span> <span class="n">s</span> <span class="n">m</span> <span class="bp">&#8801;</span> <span class="mi">3</span> <span class="o">[</span><span class="n">ZMOD</span> <span class="mi">5</span><span class="o">]</span> <span class="o">:=</span> <span class="kd">by</span>
+  <span class="gr">sorry</span>
+</pre></div>
+</div>
+<ol class="arabic" start="6">
+<li><p>Consider the sequence <span class="math notranslate nohighlight">\((p_n)\)</span> defined recursively by,</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}p_0&amp;=2\\
+p_1&amp;=3\\
+\text{for }n:\mathbb{N},\quad p_{n+2}&amp;=6p_{n+1}-p_n.\end{split}\]</div>
+<p>Prove that for all natural numbers <span class="math notranslate nohighlight">\(m\geq 1\)</span>, <span class="math notranslate nohighlight">\(p_m\)</span> is congruent to either 2 or 3
+modulo 7.</p>
+</li>
+</ol>
+<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">def</span> <span class="n">p</span> <span class="o">:</span> <span class="n">&#8469;</span> <span class="bp">&#8594;</span> <span class="n">&#8484;</span>
+  <span class="bp">|</span> <span class="mi">0</span> <span class="bp">=&gt;</span> <span class="mi">2</span>
+  <span class="bp">|</span> <span class="mi">1</span> <span class="bp">=&gt;</span> <span class="mi">3</span>
+  <span class="bp">|</span> <span class="n">n</span> <span class="bp">+</span> <span class="mi">2</span> <span class="bp">=&gt;</span> <span class="mi">6</span> <span class="bp">*</span> <span class="n">p</span> <span class="o">(</span><span class="n">n</span> <span class="bp">+</span> <span class="mi">1</span><span class="o">)</span> <span class="bp">-</span> <span class="n">p</span> <span class="n">n</span>
+
+<span class="kd">example</span> <span class="o">(</span><span class="n">m</span> <span class="o">:</span> <span class="n">&#8469;</span><span class="o">)</span> <span class="o">:</span> <span class="n">p</span> <span class="n">m</span> <span class="bp">&#8801;</span> <span class="mi">2</span> <span class="o">[</span><span class="n">ZMOD</span> <span class="mi">7</span><span class="o">]</span> <span class="bp">&#8744;</span> <span class="n">p</span> <span class="n">m</span> <span class="bp">&#8801;</span> <span class="mi">3</span> <span class="o">[</span><span class="n">ZMOD</span> <span class="mi">7</span><span class="o">]</span> <span class="o">:=</span> <span class="kd">by</span>
+  <span class="gr">sorry</span>
+</pre></div>
+</div>
+<ol class="arabic" start="7">
+<li><p>Consider the sequence <span class="math notranslate nohighlight">\((r_n)\)</span> defined recursively by,</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}r_0&amp;=2\\
+r_1&amp;=0\\
+\text{for }n:\mathbb{N},\quad r_{n+2}&amp;=2r_{n+1}+r_n.\end{split}\]</div>
+<p>Prove that for all sufficiently large natural numbers <span class="math notranslate nohighlight">\(n\)</span>, it is true that
+<span class="math notranslate nohighlight">\(r_n\geq 2^n\)</span>.</p>
+<p>There is a Lean tactic <code class="docutils literal notranslate"><span class="pre">two_step_induction_from_starting_point</span></code> which you can use for this &#8211;
+you can probably guess the idea.</p>
+</li>
+</ol>
+<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">def</span> <span class="n">r</span> <span class="o">:</span> <span class="n">&#8469;</span> <span class="bp">&#8594;</span> <span class="n">&#8484;</span>
+  <span class="bp">|</span> <span class="mi">0</span> <span class="bp">=&gt;</span> <span class="mi">2</span>
+  <span class="bp">|</span> <span class="mi">1</span> <span class="bp">=&gt;</span> <span class="mi">0</span>
+  <span class="bp">|</span> <span class="n">n</span> <span class="bp">+</span> <span class="mi">2</span> <span class="bp">=&gt;</span> <span class="mi">2</span> <span class="bp">*</span> <span class="n">r</span> <span class="o">(</span><span class="n">n</span> <span class="bp">+</span> <span class="mi">1</span><span class="o">)</span> <span class="bp">+</span> <span class="n">r</span> <span class="n">n</span>
+
+<span class="kd">example</span> <span class="o">:</span> <span class="n">forall_sufficiently_large</span> <span class="n">n</span> <span class="o">:</span> <span class="n">&#8469;</span><span class="o">,</span> <span class="n">r</span> <span class="n">n</span> <span class="bp">&#8805;</span> <span class="mi">2</span> <span class="bp">^</span> <span class="n">n</span> <span class="o">:=</span> <span class="kd">by</span>
+  <span class="gr">sorry</span>
+</pre></div>
+</div>
+<ol class="arabic" start="8">
+<li><p>Show that the Fibonacci sequence <span class="math notranslate nohighlight">\((F_n)\)</span> satisfies: for all sufficiently large natural
+numbers <span class="math notranslate nohighlight">\(n\)</span>, <span class="math notranslate nohighlight">\(0.4 \cdot 1.6^n &lt; F_n &lt; 0.5 \cdot 1.7^n\)</span>.</p>
+<p>There is a Lean tactic <code class="docutils literal notranslate"><span class="pre">two_step_induction_from_starting_point</span></code> which you can use for this &#8211;
+you can probably guess the idea.</p>
+</li>
+</ol>
+<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">:</span> <span class="n">forall_sufficiently_large</span> <span class="n">n</span> <span class="o">:</span> <span class="n">&#8469;</span><span class="o">,</span>
+    <span class="o">(</span><span class="mi">0</span><span class="bp">.</span><span class="mi">4</span><span class="o">:</span><span class="n">&#8474;</span><span class="o">)</span> <span class="bp">*</span> <span class="mi">1</span><span class="bp">.</span><span class="mi">6</span> <span class="bp">^</span> <span class="n">n</span> <span class="bp">&lt;</span> <span class="n">F</span> <span class="n">n</span> <span class="bp">&#8743;</span> <span class="n">F</span> <span class="n">n</span> <span class="bp">&lt;</span> <span class="o">(</span><span class="mi">0</span><span class="bp">.</span><span class="mi">5</span><span class="o">:</span><span class="n">&#8474;</span><span class="o">)</span> <span class="bp">*</span> <span class="mi">1</span><span class="bp">.</span><span class="mi">7</span> <span class="bp">^</span> <span class="n">n</span> <span class="o">:=</span> <span class="kd">by</span>
   <span class="gr">sorry</span>
 </pre></div>
 </div>

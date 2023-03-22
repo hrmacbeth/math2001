@@ -1,3 +1,4 @@
+/- Copyright (c) Heather Macbeth, 2023.  All rights reserved. -/
 import Mathlib.Tactic.LeftRight
 import Mathlib.Tactic.Have
 import Math2001.Tactic.Take

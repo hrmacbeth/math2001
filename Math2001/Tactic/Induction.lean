@@ -33,6 +33,23 @@ def Nat.two_step_induction' {P : ℕ → Sort u} (base_case_0 : P 0) (base_case_
   Nat.two_step_induction base_case_0 base_case_1 inductive_step a
 
 @[elab_as_elim]
+def Nat.two_step_le_induction {s : ℕ} {P : ∀ (n : ℕ), s ≤ n → Sort u} 
+    (base_case_0 : P s (le_refl s)) (base_case_1 : P (s + 1) (Nat.le_succ s))
+    (inductive_step : ∀ (k : ℕ) (hk : s ≤ k), (IH0 : P k hk) → (IH1 : P (k + 1) (le_step hk))
+        → P (k + 1 + 1) (le_step (le_step hk)))
+      (a : ℕ) (ha : s ≤ a) :
+    P a ha := by
+  have key : ∀ m : ℕ, P (s + m) (Nat.le_add_right _ _)
+  · intro m
+    induction' m using Nat.two_step_induction' with k IH1 IH2
+    · exact base_case_0
+    · exact base_case_1 
+    · exact inductive_step _ _ IH1 IH2
+  convert key (a - s)
+  rw [add_comm, ← Nat.eq_add_of_sub_eq ha]
+  rfl
+
+@[elab_as_elim]
 theorem Int.induction_on' {p : ℤ → Prop} (base_case : p 0)
     (forward_inductive_step : ∀ (i : ℤ) (hi : 0 ≤ i) (IH : p i),  p (i + 1))
     (backward_inductive_step : ∀ (i : ℤ) (hi : i ≤ 0) (IH : p i), p (i - 1)) (i : ℤ) :
@@ -100,7 +117,17 @@ syntax (name := TwoStepInductionSyntax) "two_step_induction " (casesTarget,+) ("
 macro_rules
 | `(tactic| two_step_induction $tgts,* $[with $withArg*]?) =>
     `(tactic| induction' $tgts,* using Nat.two_step_induction' $[with $withArg*]? <;>
-      push_cast (config := { decide := false }))
+      push_cast (config := { decide := false }) at *)
+      -- FIXME specialize the `push_cast` to induction hypothesis and goal
+
+open private getElimNameInfo generalizeTargets generalizeVars in evalInduction in
+syntax (name := TwoStepStartingPointInductionSyntax) "two_step_induction_from_starting_point " (casesTarget,+) (" with " (colGt binderIdent)+)? : tactic
+
+macro_rules
+| `(tactic| two_step_induction_from_starting_point $tgts,* $[with $withArg*]?) =>
+    `(tactic| induction' $tgts,* using Nat.two_step_le_induction $[with $withArg*]?)
+      -- push_cast (config := { decide := false }) at *)
+      -- Hack: only used twice, in cases where `push_cast` causes problems, so omit that step
 
 open private getElimNameInfo generalizeTargets generalizeVars in evalInduction in
 syntax (name := IntInductionSyntax) "integer_induction " (casesTarget,+) (" with " (colGt binderIdent)+)? : tactic
