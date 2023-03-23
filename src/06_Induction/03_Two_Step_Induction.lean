@@ -97,6 +97,45 @@ example (n : ℕ) : F (n + 1) ^ 2 - F (n + 1) * F n - F n ^ 2 = - (-1) ^ n := by
       _ = - -(-1) ^ k := by rw [IH]
       _ = -(-1) ^ (k + 1) := by ring
 
+
+def d : ℕ → ℤ
+  | 0 => 3
+  | 1 => 1
+  | k + 2 => 3 * d (k + 1) + 5 * d k
+
+
+#eval d 2 -- infoview displays `18`
+#eval d 3 -- infoview displays `59`
+#eval d 4 -- infoview displays `267`
+#eval d 5 -- infoview displays `1096`
+#eval d 6 -- infoview displays `4623`
+#eval d 7 -- infoview displays `19349`
+
+
+#eval 4 ^ 2 -- infoview displays `16`
+#eval 4 ^ 3 -- infoview displays `64`
+#eval 4 ^ 4 -- infoview displays `256`
+#eval 4 ^ 5 -- infoview displays `1024`
+#eval 4 ^ 6 -- infoview displays `4096`
+#eval 4 ^ 7 -- infoview displays `16384`
+
+
+example : forall_sufficiently_large n : ℕ, d n ≥ 4 ^ n := by
+  dsimp
+  take 4
+  intro n hn
+  two_step_induction_from_starting_point n, hn with k hk IH1 IH2
+  · calc d 4 = 267 := by rfl
+      _ ≥ 4 ^ 4 := by numbers
+  · calc d 5 = 1096 := by rfl
+      _ ≥ 4 ^ 5 := by numbers
+  have H : (17:ℤ) ≥ 16 := by numbers
+  calc d (k + 2) = 3 * d (k + 1) + 5 * d k := by rw [d]
+    _ ≥ 3 * 4 ^ (k + 1) + 5 * 4 ^ k := by rel [IH1, IH2]
+    _ = 17 * 4 ^ k := by ring
+    _ ≥ 16 * 4 ^ k := by rel [H] 
+    _ = 4 ^ (k + 2) := by ring
+
 /-! # Exercises -/
 
 

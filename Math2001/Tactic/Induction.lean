@@ -3,11 +3,9 @@ Copyright (c) 2023 Heather Macbeth. All rights reserved.
 Released under Apache 2.0 license as described in the file LICENSE.
 Authors: Heather Macbeth
 -/
-import Mathlib.Data.Nat.Basic
-import Mathlib.Data.Int.Basic
-import Mathlib.Tactic.NormCast
-import Mathlib.Tactic.Cases
-import Mathlib.Tactic.Have
+import Mathlib.Tactic.SolveByElim
+import Mathlib.Tactic.Linarith
+import Std.Tactic.RCases
 
 /-! # Specialized induction tactics
 
@@ -15,11 +13,6 @@ This file introduces macros for several standard induction principles, in forms 
 arithmetic proofs (`Nat.zero` and `Nat.succ` are renamed to `0` and `n + 1`, and `push_cast` is
 called pre-emptively on all goals).
 -/
-
-@[eliminator] protected def Nat.recAux.{u} {motive : ℕ → Sort u} (base_case : motive 0)
-    (inductive_step : (k : ℕ) → (IH : motive k) → motive (k+1)) : (t : ℕ) → motive t
-| 0 => base_case
-| k+1 => inductive_step k (Nat.recAux base_case inductive_step k)
 
 @[elab_as_elim]
 theorem Nat.induction {P : ℕ → Prop} (base_case : P 0)
@@ -49,50 +42,6 @@ def Nat.two_step_le_induction {s : ℕ} {P : ∀ (n : ℕ), s ≤ n → Sort u}
   rw [add_comm, ← Nat.eq_add_of_sub_eq ha]
   rfl
 
-@[elab_as_elim]
-theorem Int.induction_on' {p : ℤ → Prop} (base_case : p 0)
-    (forward_inductive_step : ∀ (i : ℤ) (hi : 0 ≤ i) (IH : p i),  p (i + 1))
-    (backward_inductive_step : ∀ (i : ℤ) (hi : i ≤ 0) (IH : p i), p (i - 1)) (i : ℤ) :
-    p i := by
-  refine Int.induction_on i base_case (fun i hi ↦ ?_) (fun i hi ↦ ?_)
-  · exact forward_inductive_step _ (Int.ofNat_nonneg i) hi
-  · exact backward_inductive_step _ (Int.neg_le_of_neg_le (Int.ofNat_nonneg i)) hi
-
-@[elab_as_elim]
-theorem Nat.strong_induction_succ {p : (n : ℕ) → Sort _} (base_case : p 0) 
-    (inductive_step : ∀ (k : ℕ), (∀ (m : ℕ), m ≤ k → p m) → p (k + 1)) :
-    ∀ n : ℕ, p n
-  | 0 => base_case
-  | k + 1 => by
-      induction' k using Nat.strong_rec_on with l IH
-      apply inductive_step
-      intro m hm
-      match m with
-      | 0 => apply base_case
-      | t + 1 => apply IH _ hm
-
-@[elab_as_elim]
-theorem Nat.strong_le_induction {s : ℕ} {p : (n : ℕ) → s ≤ n → Prop} 
-    (inductive_step : ∀ (k : ℕ) (hk : s ≤ k), (∀ (m : ℕ) (hm : s ≤ m), m < k → p m hm) → p k hk)
-    (n : ℕ) (hn : s ≤ n) : p n hn := by
-  let P : ℕ → Prop := fun (n : ℕ) ↦ ∀ (k : ℕ) (hk : s ≤ k), k ≤ n → p k hk
-  have h : ∀ (m : ℕ), s ≤ m → P m
-  · refine Nat.le_induction ?_ ?_
-    · show ∀ (k : ℕ) (hk : s ≤ k), k ≤ s → p k hk
-      intro k hk hk'
-      apply inductive_step
-      intro m hm hm'
-      have := not_lt_of_le <| hk'.trans hm
-      contradiction
-    intro k _ IH m hm hm'
-    apply inductive_step
-    intro l hl hl'
-    apply IH
-    apply le_of_lt_succ
-    exact lt_of_lt_of_le hl' hm'
-  apply h n hn
-  apply le_refl
-
 open Lean Parser Category Elab Tactic
 
 open private getElimNameInfo generalizeTargets generalizeVars in evalInduction in
@@ -118,7 +67,6 @@ macro_rules
 | `(tactic| two_step_induction $tgts,* $[with $withArg*]?) =>
     `(tactic| induction' $tgts,* using Nat.two_step_induction' $[with $withArg*]? <;>
       push_cast (config := { decide := false }) at *)
-      -- FIXME specialize the `push_cast` to induction hypothesis and goal
 
 open private getElimNameInfo generalizeTargets generalizeVars in evalInduction in
 syntax (name := TwoStepStartingPointInductionSyntax) "two_step_induction_from_starting_point " (casesTarget,+) (" with " (colGt binderIdent)+)? : tactic
@@ -129,34 +77,72 @@ macro_rules
       -- push_cast (config := { decide := false }) at *)
       -- Hack: only used twice, in cases where `push_cast` causes problems, so omit that step
 
-open private getElimNameInfo generalizeTargets generalizeVars in evalInduction in
-syntax (name := IntInductionSyntax) "integer_induction " (casesTarget,+) (" with " (colGt binderIdent)+)? : tactic
+
+/-! # Additions to `decreasing_tactic` for well-founded recursion -/
+
+@[default_instance] instance : SizeOf ℤ := ⟨Int.natAbs⟩
+
+@[zify_simps] theorem cast_sizeOf (n : ℤ) : (sizeOf n : ℤ) = |n| := n.coe_natAbs
+
+theorem Int.sizeOf_lt_sizeOf_iff (m n : ℤ) : sizeOf n < sizeOf m ↔ |n| < |m| := by zify
+
+theorem abs_lt_abs_iff {α : Type _} [LinearOrderedAddCommGroup α] (a b : α) :
+    |a| < |b| ↔ (-b < a ∧ a < b) ∨ (b < a ∧ a < -b) := by
+  simp only [abs, Sup.sup]
+  rw [lt_max_iff, max_lt_iff, max_lt_iff]
+  apply or_congr
+  · rw [and_comm, neg_lt]
+  · rw [and_comm, neg_lt_neg_iff]
+
+theorem lem1 (a : ℤ) {b : ℤ} (hb : 0 < b) : abs a < abs b ↔ -b < a ∧ a < b := by
+  rw [abs_lt_abs_iff]
+  constructor
+  · intro h
+    obtain ⟨h1, h2⟩ | ⟨h1, h2⟩ := h
+    constructor <;> linarith
+    constructor <;> linarith
+  · intro h
+    obtain ⟨h1, h2⟩ := h
+    left
+    constructor <;> linarith
+
+theorem lem2 (a : ℤ) {b : ℤ} (hb : b < 0) : abs a < abs b ↔ b < a ∧ a < -b := by 
+  rw [abs_lt_abs_iff]
+  constructor
+  · intro h
+    obtain ⟨h1, h2⟩ | ⟨h1, h2⟩ := h
+    constructor <;> linarith
+    constructor <;> linarith
+  · intro h
+    obtain ⟨h1, h2⟩ := h
+    right
+    constructor <;> linarith
+
+open Lean Meta Elab Mathlib Tactic SolveByElim
+
+register_label_attr decreasing
+
+syntax "apply_decreasing_rules" : tactic
+
+elab_rules : tactic |
+    `(tactic| apply_decreasing_rules)  => do
+  let cfg := { Config.noBackTracking with failAtMaxDepth := false }
+  liftMetaTactic fun g => solveByElim.processSyntax cfg false false [] [] #[mkIdent `decreasing] [g]
 
 macro_rules
-| `(tactic| integer_induction $tgts,* $[with $withArg*]?) =>
-    `(tactic| induction' $tgts,* using Int.induction_on' $[with $withArg*]? <;>
-      push_cast (config := { decide := false }))
-
-open private getElimNameInfo generalizeTargets generalizeVars in evalInduction in
-syntax (name := StrongInductionSyntax) "strong_induction " (casesTarget,+) (" with " (colGt binderIdent)+)? : tactic
-
-macro_rules
-| `(tactic| strong_induction $tgts,* $[with $withArg*]?) =>
-    `(tactic| induction' $tgts,* using Nat.strong_induction_on $[with $withArg*]? <;>
-      push_cast (config := { decide := false }))
-
-open private getElimNameInfo generalizeTargets generalizeVars in evalInduction in
-syntax (name := StrongInductionOneSyntax) "strong_induction_from_one " (casesTarget,+) (" with " (colGt binderIdent)+)? : tactic
+| `(tactic| decreasing_tactic) =>
+  `(tactic| simp_wf ;
+      simp [Int.sizeOf_lt_sizeOf_iff] ;
+      (try rw [lem1 _ (by assumption)]) ;
+      (try rw [lem2 _ (by assumption)]) ;
+      (try constructor) <;>
+      apply_decreasing_rules)
 
 macro_rules
-| `(tactic| strong_induction_from_one $tgts,* $[with $withArg*]?) =>
-    `(tactic| induction' $tgts,* using Nat.strong_induction_succ $[with $withArg*]? <;>
-      push_cast (config := { decide := false }))
+| `(tactic| decreasing_tactic) =>
+  `(tactic| simp_wf ;
+      simp only [Int.sizeOf_lt_sizeOf_iff, ←sq_lt_sq,  Nat.succ_eq_add_one] ;
+      nlinarith)
 
-open private getElimNameInfo generalizeTargets generalizeVars in evalInduction in
-syntax (name := StartingPointStrongInductionSyntax) "strong_induction_from_starting_point " (casesTarget,+) (" with " (colGt binderIdent)+)? : tactic
-
-macro_rules
-| `(tactic| strong_induction_from_starting_point $tgts,* $[with $withArg*]?) =>
-    `(tactic| induction' $tgts,* using Nat.strong_le_induction $[with $withArg*]? <;>
-      push_cast (config := { decide := false }))
+theorem Int.fmod_nonneg' (a : ℤ) (hb : 0 < b) : 0 ≤ Int.fmod a b := 
+  Int.fmod_eq_emod _ hb.le ▸ emod_nonneg _ hb.ne'
