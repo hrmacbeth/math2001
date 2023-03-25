@@ -2,25 +2,35 @@
 import Math2001.Library.Prime
 import Math2001.Tactic.Addarith
 import Math2001.Tactic.Induction
+import Math2001.Tactic.Numbers
+import Math2001.Tactic.Rel
 import Math2001.Tactic.Take
-import Mathlib.Tactic.LibrarySearch
 
 set_option linter.unusedVariables false
 
 
-attribute [decreasing] Int.neg_pos_of_neg Int.fmod_lt_of_pos 
-
-@[decreasing] theorem lower_bound_fmod (a b : ℤ) (h1 : 0 < b) : -b < Int.fmod a b := by
+@[decreasing] theorem lower_bound_fmod1 (a b : ℤ) (h1 : 0 < b) : -b < Int.fmod a b := by
   have H : 0 ≤ Int.fmod a b 
   · apply Int.fmod_nonneg'
     apply h1
   calc -b < 0 := by addarith [h1]
     _ ≤ _ := H
 
-@[decreasing] theorem upper_bound_fmod (a b : ℤ) (h1 : b < 0) : b < Int.fmod a (-b) := by
+@[decreasing] theorem lower_bound_fmod2 (a b : ℤ) (h1 : b < 0) : b < Int.fmod a (-b) := by
+  have H : 0 ≤ Int.fmod a (-b) 
+  · apply Int.fmod_nonneg'
+    addarith [h1]
   have h2 : 0 < -b := by addarith [h1]
-  calc b = - - b := by ring
-    _ < Int.fmod a (-b) := lower_bound_fmod a (-b) h2
+  calc b < 0 := h1
+    _ ≤ Int.fmod a (-b) := H
+
+@[decreasing] theorem upper_bound_fmod2 (a b : ℤ) (h1 : b < 0) : Int.fmod a (-b) < -b := by
+  apply Int.fmod_lt_of_pos
+  addarith [h1]
+
+@[decreasing] theorem upper_bound_fmod1 (a b : ℤ) (h1 : 0 < b) : Int.fmod a b < b := by
+  apply Int.fmod_lt_of_pos
+  apply h1
 
 def gcd (a b : ℤ) : ℤ :=
   if 0 < b then
@@ -33,28 +43,39 @@ def gcd (a b : ℤ) : ℤ :=
     -a
 termination_by _ a b => b
 
+
+#eval gcd (-21) 15 -- infoview displays `3`
+
+
 theorem gcd_nonneg (a b : ℤ) : 0 ≤ gcd a b := by
   rw [gcd]
   split_ifs with h1 h2 ha <;> push_neg at *
-  · apply gcd_nonneg
-  · apply gcd_nonneg
-  · apply ha
-  · addarith [ha]
+  · -- case `0 < b`
+    apply gcd_nonneg
+  · -- case `b < 0`
+    apply gcd_nonneg
+  · -- case `b = 0`, `0 ≤ a`
+    apply ha
+  · -- case `b = 0`, `a < 0`
+    addarith [ha]
 termination_by _ a b => b
 
-#eval gcd 24 15
 
 mutual
 theorem gcd_dvd_right (a b : ℤ) : gcd a b ∣ b := by
   rw [gcd]
   split_ifs with h1 h2 <;> push_neg at *
-  · exact gcd_dvd_left b (Int.fmod a b) --sorry
-  · exact gcd_dvd_left b (Int.fmod a (-b))
-  · have hb : b = 0 := le_antisymm h1 h2
+  · -- case `0 < b`
+    exact gcd_dvd_left b (Int.fmod a b)
+  · -- case `b < 0`
+    exact gcd_dvd_left b (Int.fmod a (-b))
+  · -- case `b = 0`, `0 ≤ a`
+    have hb : b = 0 := le_antisymm h1 h2
     take 0
     calc b = 0 := hb
       _ = a * 0 := by ring
-  · have hb : b = 0 := le_antisymm h1 h2
+  · -- case `b = 0`, `a < 0`
+    have hb : b = 0 := le_antisymm h1 h2
     take 0
     calc b = 0 := hb
       _ = -a * 0 := by ring
@@ -62,7 +83,8 @@ theorem gcd_dvd_right (a b : ℤ) : gcd a b ∣ b := by
 theorem gcd_dvd_left (a b : ℤ) : gcd a b ∣ a := by
   rw [gcd]
   split_ifs with h1 h2 <;> push_neg at *
-  · have IH1 := gcd_dvd_left b (Int.fmod a b)
+  · -- case `0 < b`
+    have IH1 := gcd_dvd_left b (Int.fmod a b)
     have IH2 := gcd_dvd_right b (Int.fmod a b)
     obtain ⟨k, hk⟩ := IH1
     obtain ⟨l, hl⟩ := IH2
@@ -71,9 +93,10 @@ theorem gcd_dvd_left (a b : ℤ) : gcd a b ∣ a := by
     set r := Int.fmod a b
     take k * q + l
     calc a = r + b * q := by rw [H]
-      _ = gcd b r * l + (gcd b r * k) * q := by rw [← hk, ← hl] -- EXPLAIN
+      _ = gcd b r * l + (gcd b r * k) * q := by rw [← hk, ← hl]
       _ = gcd b r * (k * q + l) := by ring
-  · have IH1 := gcd_dvd_left b (Int.fmod a (-b))
+  · -- case `b < 0`
+    have IH1 := gcd_dvd_left b (Int.fmod a (-b))
     have IH2 := gcd_dvd_right b (Int.fmod a (-b))
     obtain ⟨k, hk⟩ := IH1
     obtain ⟨l, hl⟩ := IH2
@@ -82,11 +105,13 @@ theorem gcd_dvd_left (a b : ℤ) : gcd a b ∣ a := by
     set r := Int.fmod a (-b)
     take -k * q + l
     calc a = r + (-b) * q := by rw [H]
-      _ = gcd b r * l + (- (gcd b r * k)) * q := by rw [← hk, ← hl] -- EXPLAIN
+      _ = gcd b r * l + (- (gcd b r * k)) * q := by rw [← hk, ← hl]
       _ = gcd b r * (-k * q + l) := by ring
-  · take 1
+  · -- case `b = 0`, `0 ≤ a`
+    take 1
     ring
-  · take -1
+  · -- case `b = 0`, `a < 0`
+    take -1
     ring
 end
 termination_by gcd_dvd_right a b => b ; gcd_dvd_left a b => b
@@ -150,3 +175,31 @@ theorem bezout (a b : ℤ) : ∃ x y : ℤ, x * a + y * b = gcd a b := by
   take L a b, R a b
   apply L_mul_add_R_mul
 
+
+/-! # Exercises -/
+
+
+@[decreasing] theorem Q_bound {n : ℕ} (h0 : n ≠ 0) (h2 : Nat.mod n 2 = 0) :
+    Nat.div n 2 < n := by
+  have H : 2 * (Nat.div n 2) + Nat.mod n 2 = n := Nat.div_add_mod n 2
+  apply lt_of_mul_lt_mul_left (a := 2)
+  calc 2 * Nat.div n 2 = 2 * Nat.div n 2 + 0 := by ring
+    _ = 2 * Nat.div n 2 + Nat.mod n 2 := by rw [h2]
+    _ = n := H
+    _ < n + n := by extra
+    _ = 2 * n := by ring
+  numbers
+
+def Q (n : ℕ) : ℕ :=
+  if n = 0 then
+    0
+  else if Nat.mod n 2 = 0 then
+    Q (Nat.div n 2)
+  else
+    n
+
+theorem Q_div (n : ℕ) : Q n ∣ n := by
+  sorry
+
+theorem gcd_maximal {d a b : ℤ} (ha : d ∣ a) (hb : d ∣ b) : d ∣ gcd a b := by
+  sorry

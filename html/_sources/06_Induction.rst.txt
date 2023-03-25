@@ -9,3 +9,4 @@ Induction
 .. include:: 06_Induction/04_Strong_Induction.inc
 .. include:: 06_Induction/05_Pascal.inc
 .. include:: 06_Induction/06_Division_Algorithm.inc
+.. include:: 06_Induction/07_Euclidean_Algorithm.inc

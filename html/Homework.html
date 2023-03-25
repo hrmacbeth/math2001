@@ -58,6 +58,7 @@
 <li class="toctree-l2"><a class="reference internal" href="#homework-3">Homework 3</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#homework-4">Homework 4</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#homework-5">Homework 5</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#homework-6">Homework 6</a></li>
 </ul>
 </li>
 </ul>
@@ -435,6 +436,122 @@ solution is more intuitive.</p>
   <span class="gr">sorry</span>
 </pre></div>
 </div>
+</section>
+<section id="homework-6">
+<span id="hw6"></span><h2>Homework 6<a class="headerlink" href="#homework-6" title="Permalink to this headline">&#61633;</a></h2>
+<ol class="arabic">
+<li><p>Consider the sequence <span class="math notranslate nohighlight">\((B_n)\)</span> defined recursively by,</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}B_0&amp;=0 \\
+\text{for }n:\mathbb{N},\quad B_{n+1} &amp;= B_n+(n+1)^2.\end{split}\]</div>
+<p>Thus <span class="math notranslate nohighlight">\(B_n\)</span> represents the sum <span class="math notranslate nohighlight">\(1^2+2^2+3^2+\cdots+n^2\)</span>.
+Show that for all natural numbers <span class="math notranslate nohighlight">\(n\)</span>,</p>
+<div class="math notranslate nohighlight">
+\[B_n=\frac{n(n+1)(2n+1)}{6}.\]</div>
+</li>
+</ol>
+<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">def</span> <span class="n">B</span> <span class="o">:</span> <span class="n">&#8469;</span> <span class="bp">&#8594;</span> <span class="n">&#8474;</span>
+  <span class="bp">|</span> <span class="mi">0</span> <span class="bp">=&gt;</span> <span class="mi">0</span>
+  <span class="bp">|</span> <span class="n">n</span> <span class="bp">+</span> <span class="mi">1</span> <span class="bp">=&gt;</span> <span class="n">B</span> <span class="n">n</span> <span class="bp">+</span> <span class="o">(</span><span class="n">n</span> <span class="bp">+</span> <span class="mi">1</span> <span class="o">:</span> <span class="n">&#8474;</span><span class="o">)</span> <span class="bp">^</span> <span class="mi">2</span>
+
+<span class="c">/-</span><span class="cm"> 4 points -/</span>
+<span class="kd">example</span> <span class="o">(</span><span class="n">n</span> <span class="o">:</span> <span class="n">&#8469;</span><span class="o">)</span> <span class="o">:</span> <span class="n">B</span> <span class="n">n</span> <span class="bp">=</span> <span class="n">n</span> <span class="bp">*</span> <span class="o">(</span><span class="n">n</span> <span class="bp">+</span> <span class="mi">1</span><span class="o">)</span> <span class="bp">*</span> <span class="o">(</span><span class="mi">2</span> <span class="bp">*</span> <span class="n">n</span> <span class="bp">+</span> <span class="mi">1</span><span class="o">)</span> <span class="bp">/</span> <span class="mi">6</span> <span class="o">:=</span> <span class="kd">by</span>
+  <span class="gr">sorry</span>
+</pre></div>
+</div>
+<ol class="arabic" start="2">
+<li><p>Consider the sequence <span class="math notranslate nohighlight">\((b_n)\)</span> defined recursively by,</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}b_0&amp;=0\\
+b_1&amp;=1\\
+\text{for }n:\mathbb{N},\quad b_{n+2}&amp;=5b_{n+1}-6b_n.\end{split}\]</div>
+<p>Prove that for all natural numbers <span class="math notranslate nohighlight">\(n\)</span>, <span class="math notranslate nohighlight">\(b_n=3^n - 2 ^ n\)</span>.</p>
+</li>
+</ol>
+<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">def</span> <span class="n">b</span> <span class="o">:</span> <span class="n">&#8469;</span> <span class="bp">&#8594;</span> <span class="n">&#8484;</span>
+  <span class="bp">|</span> <span class="mi">0</span> <span class="bp">=&gt;</span> <span class="mi">0</span>
+  <span class="bp">|</span> <span class="mi">1</span> <span class="bp">=&gt;</span> <span class="mi">1</span>
+  <span class="bp">|</span> <span class="n">n</span> <span class="bp">+</span> <span class="mi">2</span> <span class="bp">=&gt;</span> <span class="mi">5</span> <span class="bp">*</span> <span class="n">b</span> <span class="o">(</span><span class="n">n</span> <span class="bp">+</span> <span class="mi">1</span><span class="o">)</span> <span class="bp">-</span> <span class="mi">6</span> <span class="bp">*</span> <span class="n">b</span> <span class="n">n</span>
+
+<span class="c">/-</span><span class="cm"> 4 points -/</span>
+<span class="kd">example</span> <span class="o">(</span><span class="n">n</span> <span class="o">:</span> <span class="n">&#8469;</span><span class="o">)</span> <span class="o">:</span> <span class="n">b</span> <span class="n">n</span> <span class="bp">=</span> <span class="mi">3</span> <span class="bp">^</span> <span class="n">n</span> <span class="bp">-</span> <span class="mi">2</span> <span class="bp">^</span> <span class="n">n</span> <span class="o">:=</span> <span class="kd">by</span>
+  <span class="gr">sorry</span>
+</pre></div>
+</div>
+<ol class="arabic" start="3">
+<li><p>Consider the sequence <span class="math notranslate nohighlight">\((s_n)\)</span> defined recursively by,</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}s_0&amp;=2\\
+s_1&amp;=3\\
+\text{for }n:\mathbb{N},\quad s_{n+2}&amp;=2s_{n+1}+3s_n.\end{split}\]</div>
+<p>Prove that for all natural numbers <span class="math notranslate nohighlight">\(m\)</span>, <span class="math notranslate nohighlight">\(s_m\)</span> is congruent to either 2 or 3
+modulo 5.</p>
+</li>
+</ol>
+<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">def</span> <span class="n">s</span> <span class="o">:</span> <span class="n">&#8469;</span> <span class="bp">&#8594;</span> <span class="n">&#8484;</span>
+  <span class="bp">|</span> <span class="mi">0</span> <span class="bp">=&gt;</span> <span class="mi">2</span>
+  <span class="bp">|</span> <span class="mi">1</span> <span class="bp">=&gt;</span> <span class="mi">3</span>
+  <span class="bp">|</span> <span class="n">n</span> <span class="bp">+</span> <span class="mi">2</span> <span class="bp">=&gt;</span> <span class="mi">2</span> <span class="bp">*</span> <span class="n">s</span> <span class="o">(</span><span class="n">n</span> <span class="bp">+</span> <span class="mi">1</span><span class="o">)</span> <span class="bp">+</span> <span class="mi">3</span> <span class="bp">*</span> <span class="n">s</span> <span class="n">n</span>
+
+<span class="c">/-</span><span class="cm"> 5 points -/</span>
+<span class="kd">example</span> <span class="o">(</span><span class="n">m</span> <span class="o">:</span> <span class="n">&#8469;</span><span class="o">)</span> <span class="o">:</span> <span class="n">s</span> <span class="n">m</span> <span class="bp">&#8801;</span> <span class="mi">2</span> <span class="o">[</span><span class="n">ZMOD</span> <span class="mi">5</span><span class="o">]</span> <span class="bp">&#8744;</span> <span class="n">s</span> <span class="n">m</span> <span class="bp">&#8801;</span> <span class="mi">3</span> <span class="o">[</span><span class="n">ZMOD</span> <span class="mi">5</span><span class="o">]</span> <span class="o">:=</span> <span class="kd">by</span>
+  <span class="gr">sorry</span>
+</pre></div>
+</div>
+<ol class="arabic" start="4">
+<li><p>Consider the sequence <span class="math notranslate nohighlight">\((r_n)\)</span> defined recursively by,</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}r_0&amp;=2\\
+r_1&amp;=0\\
+\text{for }n:\mathbb{N},\quad r_{n+2}&amp;=2r_{n+1}+r_n.\end{split}\]</div>
+<p>Prove that for all sufficiently large natural numbers <span class="math notranslate nohighlight">\(n\)</span>, it is true that
+<span class="math notranslate nohighlight">\(r_n\geq 2^n\)</span>.</p>
+</li>
+</ol>
+<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">def</span> <span class="n">r</span> <span class="o">:</span> <span class="n">&#8469;</span> <span class="bp">&#8594;</span> <span class="n">&#8484;</span>
+  <span class="bp">|</span> <span class="mi">0</span> <span class="bp">=&gt;</span> <span class="mi">2</span>
+  <span class="bp">|</span> <span class="mi">1</span> <span class="bp">=&gt;</span> <span class="mi">0</span>
+  <span class="bp">|</span> <span class="n">n</span> <span class="bp">+</span> <span class="mi">2</span> <span class="bp">=&gt;</span> <span class="mi">2</span> <span class="bp">*</span> <span class="n">r</span> <span class="o">(</span><span class="n">n</span> <span class="bp">+</span> <span class="mi">1</span><span class="o">)</span> <span class="bp">+</span> <span class="n">r</span> <span class="n">n</span>
+
+<span class="c">/-</span><span class="cm"> 4 points -/</span>
+<span class="kd">example</span> <span class="o">:</span> <span class="n">forall_sufficiently_large</span> <span class="n">n</span> <span class="o">:</span> <span class="n">&#8469;</span><span class="o">,</span> <span class="n">r</span> <span class="n">n</span> <span class="bp">&#8805;</span> <span class="mi">2</span> <span class="bp">^</span> <span class="n">n</span> <span class="o">:=</span> <span class="kd">by</span>
+  <span class="gr">sorry</span>
+</pre></div>
+</div>
+<ol class="arabic" start="5">
+<li><p>Consider the function <span class="math notranslate nohighlight">\(T\)</span> defined recursively on the integers by,</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}T(n)=
+\begin{cases}
+T(1-n)+2n-1,&amp;0&lt;n\\
+T(-n),&amp;n&lt;0\\
+0&amp;n=0.
+\end{cases}\end{split}\]</div>
+<p>This recursive definition is well-founded, since its self-references are strictly decreasing in
+<span class="math notranslate nohighlight">\(|3n-1|\)</span>.</p>
+<p>Prove that for all integers <span class="math notranslate nohighlight">\(n\)</span>, <span class="math notranslate nohighlight">\(T(n)=n^2\)</span>.</p>
+</li>
+</ol>
+<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">def</span> <span class="n">T</span> <span class="o">(</span><span class="n">n</span> <span class="o">:</span> <span class="n">&#8484;</span><span class="o">)</span> <span class="o">:</span> <span class="n">&#8484;</span> <span class="o">:=</span>
+  <span class="k">if</span> <span class="mi">0</span> <span class="bp">&lt;</span> <span class="n">n</span> <span class="k">then</span>
+    <span class="n">T</span> <span class="o">(</span><span class="mi">1</span> <span class="bp">-</span> <span class="n">n</span><span class="o">)</span> <span class="bp">+</span> <span class="mi">2</span> <span class="bp">*</span> <span class="n">n</span> <span class="bp">-</span> <span class="mi">1</span>
+  <span class="k">else</span> <span class="k">if</span> <span class="n">n</span> <span class="bp">&lt;</span> <span class="mi">0</span> <span class="k">then</span>
+    <span class="n">T</span> <span class="o">(</span><span class="bp">-</span><span class="n">n</span><span class="o">)</span>
+  <span class="k">else</span>
+    <span class="mi">0</span>
+<span class="n">termination_by</span> <span class="n">T</span> <span class="n">n</span> <span class="bp">=&gt;</span> <span class="mi">3</span> <span class="bp">*</span> <span class="n">n</span> <span class="bp">-</span> <span class="mi">1</span>
+
+<span class="c">/-</span><span class="cm"> 4 points -/</span>
+<span class="kd">theorem</span> <span class="n">T_eq</span> <span class="o">(</span><span class="n">n</span> <span class="o">:</span> <span class="n">&#8484;</span><span class="o">)</span> <span class="o">:</span> <span class="n">T</span> <span class="n">n</span> <span class="bp">=</span> <span class="n">n</span> <span class="bp">^</span> <span class="mi">2</span> <span class="o">:=</span> <span class="kd">by</span>
+  <span class="gr">sorry</span>
+</pre></div>
+</div>
+<ol class="arabic" start="6">
+<li><p>Compute <span class="math notranslate nohighlight">\(\operatorname{gcd}(-15,25)\)</span> and <span class="math notranslate nohighlight">\(\operatorname{gcd}(15,25)\)</span>, showing your
+work.</p>
+<p>Write this solution only on paper, not in Lean (but you are free to check your work using Lean).</p>
+</li>
+</ol>
 </section>
 </section>
 
