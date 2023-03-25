@@ -78,10 +78,14 @@ termination_by _ n d hd => 2 * n - d
 theorem mod_lt (n : ℤ) {d : ℤ} (hd : 0 < d) : mod n d < d := by
   rw [mod]
   split_ifs with h1 h2 h3 <;> push_neg at *
-  · exact mod_lt (n + d) hd
-  · exact mod_lt (n - d) hd
-  · exact hd
-  · have h4 : n - d ≤ 0
+  · -- case `n * d < 0`
+    exact mod_lt (n + d) hd
+  · -- case `0 < d * (n - d)`
+    exact mod_lt (n - d) hd
+  · -- case `n = d`
+    exact hd
+  · -- last case
+    have h4 : n - d ≤ 0
     · apply nonpos_of_mul_nonpos_right (a := d)
       apply h2
       apply hd
@@ -89,7 +93,6 @@ theorem mod_lt (n : ℤ) {d : ℤ} (hd : 0 < d) : mod n d < d := by
     · addarith [h4]
     · apply h3
 termination_by _ n d hd => 2 * n - d
-
 
 
 

@@ -1,6 +1,8 @@
 /- Copyright (c) Heather Macbeth, 2023.  All rights reserved. -/
+import Math2001.Library.Parity
 import Math2001.Library.Prime
 import Math2001.Tactic.Addarith
+import Math2001.Tactic.Induction
 import Math2001.Tactic.Numbers
 import Math2001.Tactic.Rel
 import Math2001.Tactic.Take
@@ -52,6 +54,8 @@ example : forall_sufficiently_large n : ℕ, d n ≥ 4 ^ n := by
   apply d_bound
 
 
+namespace Nat
+
 theorem exists_prime_factor {n : ℕ} (hn2 : 2 ≤ n) : ∃ p : ℕ, Prime p ∧ p ∣ n := by
   by_cases hn : Prime n 
   . -- case 1: `n` is prime
@@ -72,30 +76,8 @@ theorem exists_prime_factor {n : ℕ} (hn2 : 2 ≤ n) : ∃ p : ℕ, Prime p ∧
         _ = (p * y) * x := by rw [hy]
         _ = p * (x * y) := by ring
 
+/-! # Exercises -/
 
-example (N : ℕ) : ∃ p ≥ N, Prime p := by
-  have hN0 : 0 < N ! := by apply factorial_pos
-  have hN2 : 2 ≤ N ! + 1 := by addarith [hN0] 
-  obtain ⟨p, hp, hpN⟩ : ∃ p : ℕ, Prime p ∧ p ∣ N ! + 1 := exists_prime_factor hN2
-  take p
-  constructor
-  · obtain h_le | h_ge : N ≤ p ∨ p < N := le_or_lt N p
-    · apply h_le
-    have hp2 : 2 ≤ p
-    · obtain ⟨hp', hp''⟩ := hp
-      apply hp'
-    have hp_pos : 0 < p := by extra
-    have h_dvd : p ∣ (N !)
-    · apply dvd_factorial hp_pos
-      addarith [h_ge]
-    obtain ⟨k, hk⟩ := h_dvd
-    have : ¬ p ∣ (N ! + 1)
-    · apply Nat.not_dvd_of_exists_lt_and_lt (N ! + 1) hp_pos
-      take k
-      constructor
-      · addarith [hk]
-      calc N ! + 1 = p * k + 1 := by addarith [hk]
-        _ < p * k + p := by addarith [hp2]
-        _ = p * (k + 1) := by ring
-    contradiction
-  · apply hp 
+
+theorem extract_pow_two (n : ℕ) (hn : 0 < n) : ∃ a x, Odd x ∧ n = 2 ^ a * x := by
+  sorry

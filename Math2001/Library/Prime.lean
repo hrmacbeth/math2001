@@ -1,6 +1,7 @@
 /- Copyright (c) Heather Macbeth, 2023.  All rights reserved. -/
 import Mathlib.Tactic.IntervalCases
 import Mathlib.Tactic.Linarith
+import Mathlib.Tactic.LinearCombination
 import Mathlib.Tactic.Positivity
 
 def Prime (p : ℕ) : Prop :=
@@ -59,3 +60,13 @@ theorem exists_factor_of_not_prime {p : ℕ} (hp : ¬ Prime p) (hp2 : 2 ≤ p) :
   have H : ¬ _ := hp ∘ prime_test hp2
   push_neg at H
   exact H
+
+theorem exists_prime_factor {n : ℕ} (hn2 : 2 ≤ n) : ∃ p : ℕ, Prime p ∧ p ∣ n := by
+  by_cases hn : Prime n 
+  . refine ⟨n, hn, 1, ?_⟩
+    ring
+  . obtain ⟨m, hmn, _, ⟨x, hx⟩⟩ := exists_factor_of_not_prime hn hn2
+    obtain ⟨p, hp, y, hy⟩ := exists_prime_factor hmn
+    refine ⟨p, hp, x * y, ?_⟩
+    zify at *
+    linear_combination hx + x * hy

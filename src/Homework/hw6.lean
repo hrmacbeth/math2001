@@ -1,6 +1,5 @@
 /- Copyright (c) Heather Macbeth, 2023.  All rights reserved. -/
 import Mathlib.Mathport.Notation
-import Math2001.Library.Prime
 import Math2001.Tactic.Addarith
 import Math2001.Tactic.Induction
 import Math2001.Tactic.Numbers
