@@ -20,7 +20,7 @@ def B : ℕ → ℚ
   | n + 1 => B n + (n + 1 : ℚ) ^ 2
 
 /- 4 points -/
-example (n : ℕ) : B n = n * (n + 1) * (2 * n + 1) / 6 := by
+theorem problem1 (n : ℕ) : B n = n * (n + 1) * (2 * n + 1) / 6 := by
   sorry
 
 def b : ℕ → ℤ 
@@ -29,7 +29,7 @@ def b : ℕ → ℤ
   | n + 2 => 5 * b (n + 1) - 6 * b n 
 
 /- 4 points -/
-example (n : ℕ) : b n = 3 ^ n - 2 ^ n := by 
+theorem problem2 (n : ℕ) : b n = 3 ^ n - 2 ^ n := by 
   sorry
 
 def s : ℕ → ℤ
@@ -38,7 +38,7 @@ def s : ℕ → ℤ
   | n + 2 => 2 * s (n + 1) + 3 * s n 
 
 /- 5 points -/
-example (m : ℕ) : s m ≡ 2 [ZMOD 5] ∨ s m ≡ 3 [ZMOD 5] := by
+theorem problem3 (m : ℕ) : s m ≡ 2 [ZMOD 5] ∨ s m ≡ 3 [ZMOD 5] := by
   sorry
 
 def r : ℕ → ℤ 
@@ -47,7 +47,7 @@ def r : ℕ → ℤ
   | n + 2 => 2 * r (n + 1) + r n 
 
 /- 4 points -/
-example : forall_sufficiently_large n : ℕ, r n ≥ 2 ^ n := by
+theorem problem4 : forall_sufficiently_large n : ℕ, r n ≥ 2 ^ n := by
   sorry
 
 def T (n : ℤ) : ℤ :=
@@ -60,5 +60,5 @@ def T (n : ℤ) : ℤ :=
 termination_by T n => 3 * n - 1
 
 /- 4 points -/
-theorem T_eq (n : ℤ) : T n = n ^ 2 := by    
+theorem problem5 (n : ℤ) : T n = n ^ 2 := by    
   sorry

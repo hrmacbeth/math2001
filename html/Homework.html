@@ -455,7 +455,7 @@ Show that for all natural numbers <span class="math notranslate nohighlight">\(n
   <span class="bp">|</span> <span class="n">n</span> <span class="bp">+</span> <span class="mi">1</span> <span class="bp">=&gt;</span> <span class="n">B</span> <span class="n">n</span> <span class="bp">+</span> <span class="o">(</span><span class="n">n</span> <span class="bp">+</span> <span class="mi">1</span> <span class="o">:</span> <span class="n">&#8474;</span><span class="o">)</span> <span class="bp">^</span> <span class="mi">2</span>
 
 <span class="c">/-</span><span class="cm"> 4 points -/</span>
-<span class="kd">example</span> <span class="o">(</span><span class="n">n</span> <span class="o">:</span> <span class="n">&#8469;</span><span class="o">)</span> <span class="o">:</span> <span class="n">B</span> <span class="n">n</span> <span class="bp">=</span> <span class="n">n</span> <span class="bp">*</span> <span class="o">(</span><span class="n">n</span> <span class="bp">+</span> <span class="mi">1</span><span class="o">)</span> <span class="bp">*</span> <span class="o">(</span><span class="mi">2</span> <span class="bp">*</span> <span class="n">n</span> <span class="bp">+</span> <span class="mi">1</span><span class="o">)</span> <span class="bp">/</span> <span class="mi">6</span> <span class="o">:=</span> <span class="kd">by</span>
+<span class="kd">theorem</span> <span class="n">problem1</span> <span class="o">(</span><span class="n">n</span> <span class="o">:</span> <span class="n">&#8469;</span><span class="o">)</span> <span class="o">:</span> <span class="n">B</span> <span class="n">n</span> <span class="bp">=</span> <span class="n">n</span> <span class="bp">*</span> <span class="o">(</span><span class="n">n</span> <span class="bp">+</span> <span class="mi">1</span><span class="o">)</span> <span class="bp">*</span> <span class="o">(</span><span class="mi">2</span> <span class="bp">*</span> <span class="n">n</span> <span class="bp">+</span> <span class="mi">1</span><span class="o">)</span> <span class="bp">/</span> <span class="mi">6</span> <span class="o">:=</span> <span class="kd">by</span>
   <span class="gr">sorry</span>
 </pre></div>
 </div>
@@ -474,7 +474,7 @@ b_1&amp;=1\\
   <span class="bp">|</span> <span class="n">n</span> <span class="bp">+</span> <span class="mi">2</span> <span class="bp">=&gt;</span> <span class="mi">5</span> <span class="bp">*</span> <span class="n">b</span> <span class="o">(</span><span class="n">n</span> <span class="bp">+</span> <span class="mi">1</span><span class="o">)</span> <span class="bp">-</span> <span class="mi">6</span> <span class="bp">*</span> <span class="n">b</span> <span class="n">n</span>
 
 <span class="c">/-</span><span class="cm"> 4 points -/</span>
-<span class="kd">example</span> <span class="o">(</span><span class="n">n</span> <span class="o">:</span> <span class="n">&#8469;</span><span class="o">)</span> <span class="o">:</span> <span class="n">b</span> <span class="n">n</span> <span class="bp">=</span> <span class="mi">3</span> <span class="bp">^</span> <span class="n">n</span> <span class="bp">-</span> <span class="mi">2</span> <span class="bp">^</span> <span class="n">n</span> <span class="o">:=</span> <span class="kd">by</span>
+<span class="kd">theorem</span> <span class="n">problem2</span> <span class="o">(</span><span class="n">n</span> <span class="o">:</span> <span class="n">&#8469;</span><span class="o">)</span> <span class="o">:</span> <span class="n">b</span> <span class="n">n</span> <span class="bp">=</span> <span class="mi">3</span> <span class="bp">^</span> <span class="n">n</span> <span class="bp">-</span> <span class="mi">2</span> <span class="bp">^</span> <span class="n">n</span> <span class="o">:=</span> <span class="kd">by</span>
   <span class="gr">sorry</span>
 </pre></div>
 </div>
@@ -494,7 +494,7 @@ modulo 5.</p>
   <span class="bp">|</span> <span class="n">n</span> <span class="bp">+</span> <span class="mi">2</span> <span class="bp">=&gt;</span> <span class="mi">2</span> <span class="bp">*</span> <span class="n">s</span> <span class="o">(</span><span class="n">n</span> <span class="bp">+</span> <span class="mi">1</span><span class="o">)</span> <span class="bp">+</span> <span class="mi">3</span> <span class="bp">*</span> <span class="n">s</span> <span class="n">n</span>
 
 <span class="c">/-</span><span class="cm"> 5 points -/</span>
-<span class="kd">example</span> <span class="o">(</span><span class="n">m</span> <span class="o">:</span> <span class="n">&#8469;</span><span class="o">)</span> <span class="o">:</span> <span class="n">s</span> <span class="n">m</span> <span class="bp">&#8801;</span> <span class="mi">2</span> <span class="o">[</span><span class="n">ZMOD</span> <span class="mi">5</span><span class="o">]</span> <span class="bp">&#8744;</span> <span class="n">s</span> <span class="n">m</span> <span class="bp">&#8801;</span> <span class="mi">3</span> <span class="o">[</span><span class="n">ZMOD</span> <span class="mi">5</span><span class="o">]</span> <span class="o">:=</span> <span class="kd">by</span>
+<span class="kd">theorem</span> <span class="n">problem3</span> <span class="o">(</span><span class="n">m</span> <span class="o">:</span> <span class="n">&#8469;</span><span class="o">)</span> <span class="o">:</span> <span class="n">s</span> <span class="n">m</span> <span class="bp">&#8801;</span> <span class="mi">2</span> <span class="o">[</span><span class="n">ZMOD</span> <span class="mi">5</span><span class="o">]</span> <span class="bp">&#8744;</span> <span class="n">s</span> <span class="n">m</span> <span class="bp">&#8801;</span> <span class="mi">3</span> <span class="o">[</span><span class="n">ZMOD</span> <span class="mi">5</span><span class="o">]</span> <span class="o">:=</span> <span class="kd">by</span>
   <span class="gr">sorry</span>
 </pre></div>
 </div>
@@ -514,7 +514,7 @@ r_1&amp;=0\\
   <span class="bp">|</span> <span class="n">n</span> <span class="bp">+</span> <span class="mi">2</span> <span class="bp">=&gt;</span> <span class="mi">2</span> <span class="bp">*</span> <span class="n">r</span> <span class="o">(</span><span class="n">n</span> <span class="bp">+</span> <span class="mi">1</span><span class="o">)</span> <span class="bp">+</span> <span class="n">r</span> <span class="n">n</span>
 
 <span class="c">/-</span><span class="cm"> 4 points -/</span>
-<span class="kd">example</span> <span class="o">:</span> <span class="n">forall_sufficiently_large</span> <span class="n">n</span> <span class="o">:</span> <span class="n">&#8469;</span><span class="o">,</span> <span class="n">r</span> <span class="n">n</span> <span class="bp">&#8805;</span> <span class="mi">2</span> <span class="bp">^</span> <span class="n">n</span> <span class="o">:=</span> <span class="kd">by</span>
+<span class="kd">theorem</span> <span class="n">problem4</span> <span class="o">:</span> <span class="n">forall_sufficiently_large</span> <span class="n">n</span> <span class="o">:</span> <span class="n">&#8469;</span><span class="o">,</span> <span class="n">r</span> <span class="n">n</span> <span class="bp">&#8805;</span> <span class="mi">2</span> <span class="bp">^</span> <span class="n">n</span> <span class="o">:=</span> <span class="kd">by</span>
   <span class="gr">sorry</span>
 </pre></div>
 </div>
@@ -542,7 +542,7 @@ T(-n),&amp;n&lt;0\\
 <span class="n">termination_by</span> <span class="n">T</span> <span class="n">n</span> <span class="bp">=&gt;</span> <span class="mi">3</span> <span class="bp">*</span> <span class="n">n</span> <span class="bp">-</span> <span class="mi">1</span>
 
 <span class="c">/-</span><span class="cm"> 4 points -/</span>
-<span class="kd">theorem</span> <span class="n">T_eq</span> <span class="o">(</span><span class="n">n</span> <span class="o">:</span> <span class="n">&#8484;</span><span class="o">)</span> <span class="o">:</span> <span class="n">T</span> <span class="n">n</span> <span class="bp">=</span> <span class="n">n</span> <span class="bp">^</span> <span class="mi">2</span> <span class="o">:=</span> <span class="kd">by</span>
+<span class="kd">theorem</span> <span class="n">problem5</span> <span class="o">(</span><span class="n">n</span> <span class="o">:</span> <span class="n">&#8484;</span><span class="o">)</span> <span class="o">:</span> <span class="n">T</span> <span class="n">n</span> <span class="bp">=</span> <span class="n">n</span> <span class="bp">^</span> <span class="mi">2</span> <span class="o">:=</span> <span class="kd">by</span>
   <span class="gr">sorry</span>
 </pre></div>
 </div>
