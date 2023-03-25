@@ -80,30 +80,30 @@
 <li class="toctree-l2"><a class="reference internal" href="#strong-induction">6.4. Strong induction</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#id23">6.4.1. Example</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#exists-prime-factor">6.4.2. Example</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#infinitely-many-primes">6.4.3. Infinitely many primes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id25">6.4.3. Exercises</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#pascal-s-triangle">6.5. Pascal&#8217;s triangle</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#definition">6.5.1. Definition</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id25">6.5.2. Example</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id26">6.5.3. Example</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id27">6.5.4. Exercises</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id26">6.5.2. Example</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id27">6.5.3. Example</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id28">6.5.4. Exercises</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#the-division-algorithm">6.6. The Division Algorithm</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#id28">6.6.1. Definition</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id29">6.6.1. Definition</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#div-add-mod">6.6.2. Example</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#mod-nonneg">6.6.3. Example</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#mod-lt">6.6.4. Example</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#weak-division-algorithm">6.6.5. Example</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id33">6.6.6. Exercises</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id34">6.6.6. Exercises</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#the-euclidean-algorithm">6.7. The Euclidean algorithm</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#id34">6.7.1. Definition</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id35">6.7.2. Example</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#euclidean-algorithm-def">6.7.1. Definition</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id36">6.7.2. Example</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#common-divisor">6.7.3. Example</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id37">6.7.4. Exercises</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id38">6.7.4. Exercises</a></li>
 </ul>
 </li>
 </ul>
@@ -1577,66 +1577,14 @@ valid.</p>
 </pre></div>
 </div>
 </section>
-<section id="infinitely-many-primes">
-<h3><span class="section-number">6.4.3. </span>Infinitely many primes<a class="headerlink" href="#infinitely-many-primes" title="Permalink to this headline">&#61633;</a></h3>
-<div class="admonition-theorem admonition">
-<p class="admonition-title">Theorem</p>
-<p>There are infinitely many prime numbers.</p>
-</div>
-<p>This is a <a class="reference external" href="https://en.wikipedia.org/wiki/Euclid%27s_theorem">famous theorem</a>, with the first known
-proof written in Euclid&#8217;s <em>Elements</em> in about 300 BC.  The proof of the theorem doesn&#8217;t require
-strong induction.  We just include it here because this is the point at which we have all the
-ingredients available to prove it.</p>
-<div class="admonition-proof admonition">
-<p class="admonition-title">Proof</p>
-<p>We show that for a given natural number <span class="math notranslate nohighlight">\(N\)</span>, there exists a prime number <span class="math notranslate nohighlight">\(p \geq N\)</span>.</p>
-<p>Consider <span class="math notranslate nohighlight">\(N!\)</span>, the factorial of <span class="math notranslate nohighlight">\(N\)</span>.  By one of the exercises to
-<a class="reference internal" href="#recurrences"><span class="std std-numref">Section 6.2</span></a>, <span class="math notranslate nohighlight">\(0&lt;N!\)</span>, so <span class="math notranslate nohighlight">\(2 \le N! + 1\)</span>. Therefore, by
-<a class="reference internal" href="#exists-prime-factor"><span class="std std-numref">Example 6.4.2</span></a>, there exists a prime number <span class="math notranslate nohighlight">\(p\)</span> which is a
-factor of <span class="math notranslate nohighlight">\(N! + 1\)</span>. We will show that <span class="math notranslate nohighlight">\(p \geq N\)</span>.</p>
-<p>If not, <span class="math notranslate nohighlight">\(p &lt; N\)</span>.  In this case we will show that <span class="math notranslate nohighlight">\(p\)</span> is not a factor of
-<span class="math notranslate nohighlight">\(N! + 1\)</span>, which contradicts a hypothesis and rules out this case.</p>
-<p>Indeed, since <span class="math notranslate nohighlight">\(p &lt; N\)</span>, by <a class="reference internal" href="#factorial"><span class="std std-numref">Example 6.2.5</span></a>, <span class="math notranslate nohighlight">\(p\)</span> is a factor of
-<span class="math notranslate nohighlight">\(N!\)</span>.  Let <span class="math notranslate nohighlight">\(k\)</span> be a natural number such that <span class="math notranslate nohighlight">\(N!=pk\)</span>.  We observe that
-<span class="math notranslate nohighlight">\(N! + 1\)</span> lies between the consecutive multiples <span class="math notranslate nohighlight">\(pk\)</span> and <span class="math notranslate nohighlight">\(p(k+1)\)</span> of <span class="math notranslate nohighlight">\(p\)</span>,
-since</p>
-<div class="math notranslate nohighlight">
-\[\begin{split}N!+1&amp;=pk+1\\
-&amp;&lt;pk+p\\
-&amp;=p(k+1).\end{split}\]</div>
-<p>By <a class="reference internal" href="04_Proofs_with_Structure_II.html#not-divisible-proof"><span class="std std-numref">Example 4.5.8</span></a>, this shows that <span class="math notranslate nohighlight">\(p\)</span> is not a factor of
-<span class="math notranslate nohighlight">\(N! + 1\)</span>, as required.</p>
-</div>
-<p>In Lean, the exercise to <a class="reference internal" href="#recurrences"><span class="std std-numref">Section 6.2</span></a> has the name <code class="docutils literal notranslate"><span class="pre">factorial_pos</span></code>,
-<a class="reference internal" href="#exists-prime-factor"><span class="std std-numref">Example 6.4.2</span></a> has the name <code class="docutils literal notranslate"><span class="pre">exists_prime_factor</span></code>,
-<a class="reference internal" href="#factorial"><span class="std std-numref">Example 6.2.5</span></a> has the name <code class="docutils literal notranslate"><span class="pre">dvd_factorial</span></code>, and
-<a class="reference internal" href="04_Proofs_with_Structure_II.html#not-divisible-proof"><span class="std std-numref">Example 4.5.8</span></a> has the name <code class="docutils literal notranslate"><span class="pre">Nat.not_dvd_of_exists_lt_and_lt</span></code>.</p>
-<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">(</span><span class="n">N</span> <span class="o">:</span> <span class="n">&#8469;</span><span class="o">)</span> <span class="o">:</span> <span class="bp">&#8707;</span> <span class="n">p</span> <span class="bp">&#8805;</span> <span class="n">N</span><span class="o">,</span> <span class="n">Prime</span> <span class="n">p</span> <span class="o">:=</span> <span class="kd">by</span>
-  <span class="k">have</span> <span class="n">hN0</span> <span class="o">:</span> <span class="mi">0</span> <span class="bp">&lt;</span> <span class="n">N</span> <span class="bp">!</span> <span class="o">:=</span> <span class="kd">by</span> <span class="n">apply</span> <span class="n">factorial_pos</span>
-  <span class="k">have</span> <span class="n">hN2</span> <span class="o">:</span> <span class="mi">2</span> <span class="bp">&#8804;</span> <span class="n">N</span> <span class="bp">!</span> <span class="bp">+</span> <span class="mi">1</span> <span class="o">:=</span> <span class="kd">by</span> <span class="n">addarith</span> <span class="o">[</span><span class="n">hN0</span><span class="o">]</span>
-  <span class="n">obtain</span> <span class="o">&#10216;</span><span class="n">p</span><span class="o">,</span> <span class="n">hp</span><span class="o">,</span> <span class="n">hpN</span><span class="o">&#10217;</span> <span class="o">:</span> <span class="bp">&#8707;</span> <span class="n">p</span> <span class="o">:</span> <span class="n">&#8469;</span><span class="o">,</span> <span class="n">Prime</span> <span class="n">p</span> <span class="bp">&#8743;</span> <span class="n">p</span> <span class="bp">&#8739;</span> <span class="n">N</span> <span class="bp">!</span> <span class="bp">+</span> <span class="mi">1</span> <span class="o">:=</span> <span class="n">exists_prime_factor</span> <span class="n">hN2</span>
-  <span class="n">take</span> <span class="n">p</span>
-  <span class="n">constructor</span>
-  <span class="bp">&#183;</span> <span class="n">obtain</span> <span class="n">h_le</span> <span class="bp">|</span> <span class="n">h_ge</span> <span class="o">:</span> <span class="n">N</span> <span class="bp">&#8804;</span> <span class="n">p</span> <span class="bp">&#8744;</span> <span class="n">p</span> <span class="bp">&lt;</span> <span class="n">N</span> <span class="o">:=</span> <span class="n">le_or_lt</span> <span class="n">N</span> <span class="n">p</span>
-    <span class="bp">&#183;</span> <span class="n">apply</span> <span class="n">h_le</span>
-    <span class="k">have</span> <span class="n">hp2</span> <span class="o">:</span> <span class="mi">2</span> <span class="bp">&#8804;</span> <span class="n">p</span>
-    <span class="bp">&#183;</span> <span class="n">obtain</span> <span class="o">&#10216;</span><span class="n">hp&#39;</span><span class="o">,</span> <span class="n">hp&#39;&#39;</span><span class="o">&#10217;</span> <span class="o">:=</span> <span class="n">hp</span>
-      <span class="n">apply</span> <span class="n">hp&#39;</span>
-    <span class="k">have</span> <span class="n">hp_pos</span> <span class="o">:</span> <span class="mi">0</span> <span class="bp">&lt;</span> <span class="n">p</span> <span class="o">:=</span> <span class="kd">by</span> <span class="n">extra</span>
-    <span class="k">have</span> <span class="n">h_dvd</span> <span class="o">:</span> <span class="n">p</span> <span class="bp">&#8739;</span> <span class="o">(</span><span class="n">N</span> <span class="bp">!</span><span class="o">)</span>
-    <span class="bp">&#183;</span> <span class="n">apply</span> <span class="n">dvd_factorial</span> <span class="n">hp_pos</span>
-      <span class="n">addarith</span> <span class="o">[</span><span class="n">h_ge</span><span class="o">]</span>
-    <span class="n">obtain</span> <span class="o">&#10216;</span><span class="n">k</span><span class="o">,</span> <span class="n">hk</span><span class="o">&#10217;</span> <span class="o">:=</span> <span class="n">h_dvd</span>
-    <span class="k">have</span> <span class="o">:</span> <span class="bp">&#172;</span> <span class="n">p</span> <span class="bp">&#8739;</span> <span class="o">(</span><span class="n">N</span> <span class="bp">!</span> <span class="bp">+</span> <span class="mi">1</span><span class="o">)</span>
-    <span class="bp">&#183;</span> <span class="n">apply</span> <span class="n">Nat.not_dvd_of_exists_lt_and_lt</span> <span class="o">(</span><span class="n">N</span> <span class="bp">!</span> <span class="bp">+</span> <span class="mi">1</span><span class="o">)</span> <span class="n">hp_pos</span>
-      <span class="n">take</span> <span class="n">k</span>
-      <span class="n">constructor</span>
-      <span class="bp">&#183;</span> <span class="n">addarith</span> <span class="o">[</span><span class="n">hk</span><span class="o">]</span>
-      <span class="k">calc</span> <span class="n">N</span> <span class="bp">!</span> <span class="bp">+</span> <span class="mi">1</span> <span class="bp">=</span> <span class="n">p</span> <span class="bp">*</span> <span class="n">k</span> <span class="bp">+</span> <span class="mi">1</span> <span class="o">:=</span> <span class="kd">by</span> <span class="n">addarith</span> <span class="o">[</span><span class="n">hk</span><span class="o">]</span>
-        <span class="n">_</span> <span class="bp">&lt;</span> <span class="n">p</span> <span class="bp">*</span> <span class="n">k</span> <span class="bp">+</span> <span class="n">p</span> <span class="o">:=</span> <span class="kd">by</span> <span class="n">addarith</span> <span class="o">[</span><span class="n">hp2</span><span class="o">]</span>
-        <span class="n">_</span> <span class="bp">=</span> <span class="n">p</span> <span class="bp">*</span> <span class="o">(</span><span class="n">k</span> <span class="bp">+</span> <span class="mi">1</span><span class="o">)</span> <span class="o">:=</span> <span class="kd">by</span> <span class="n">ring</span>
-    <span class="n">contradiction</span>
-  <span class="bp">&#183;</span> <span class="n">apply</span> <span class="n">hp</span>
+<section id="id25">
+<h3><span class="section-number">6.4.3. </span>Exercises<a class="headerlink" href="#id25" title="Permalink to this headline">&#61633;</a></h3>
+<ol class="arabic simple">
+<li><p>Show that for all natural numbers <span class="math notranslate nohighlight">\(n&gt;0\)</span>, there exist natural numbers <span class="math notranslate nohighlight">\(a\)</span> and
+<span class="math notranslate nohighlight">\(x\)</span>, with <span class="math notranslate nohighlight">\(x\)</span> odd, such that <span class="math notranslate nohighlight">\(n=2^ax\)</span>.</p></li>
+</ol>
+<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">theorem</span> <span class="n">extract_pow_two</span> <span class="o">(</span><span class="n">n</span> <span class="o">:</span> <span class="n">&#8469;</span><span class="o">)</span> <span class="o">(</span><span class="n">hn</span> <span class="o">:</span> <span class="mi">0</span> <span class="bp">&lt;</span> <span class="n">n</span><span class="o">)</span> <span class="o">:</span> <span class="bp">&#8707;</span> <span class="n">a</span> <span class="n">x</span><span class="o">,</span> <span class="n">Odd</span> <span class="n">x</span> <span class="bp">&#8743;</span> <span class="n">n</span> <span class="bp">=</span> <span class="mi">2</span> <span class="bp">^</span> <span class="n">a</span> <span class="bp">*</span> <span class="n">x</span> <span class="o">:=</span> <span class="kd">by</span>
+  <span class="gr">sorry</span>
 </pre></div>
 </div>
 </section>
@@ -1669,8 +1617,8 @@ work using Lean.  For example,</p>
 </pre></div>
 </div>
 </section>
-<section id="id25">
-<h3><span class="section-number">6.5.2. </span>Example<a class="headerlink" href="#id25" title="Permalink to this headline">&#61633;</a></h3>
+<section id="id26">
+<h3><span class="section-number">6.5.2. </span>Example<a class="headerlink" href="#id26" title="Permalink to this headline">&#61633;</a></h3>
 <div class="admonition-theorem admonition">
 <p class="admonition-title">Theorem</p>
 <p>For all natural numbers <span class="math notranslate nohighlight">\(a\)</span> and <span class="math notranslate nohighlight">\(b\)</span>, <span class="math notranslate nohighlight">\(P_{a,b} \le (a+b)!\)</span>.</p>
@@ -1697,8 +1645,8 @@ work using Lean.  For example,</p>
 </pre></div>
 </div>
 </section>
-<section id="id26">
-<h3><span class="section-number">6.5.3. </span>Example<a class="headerlink" href="#id26" title="Permalink to this headline">&#61633;</a></h3>
+<section id="id27">
+<h3><span class="section-number">6.5.3. </span>Example<a class="headerlink" href="#id27" title="Permalink to this headline">&#61633;</a></h3>
 <div class="admonition-theorem admonition">
 <p class="admonition-title">Theorem</p>
 <p>For all natural numbers <span class="math notranslate nohighlight">\(a\)</span> and <span class="math notranslate nohighlight">\(b\)</span>, <span class="math notranslate nohighlight">\(P_{a,b} a!b!= (a+b)!\)</span>.</p>
@@ -1735,8 +1683,8 @@ work using Lean.  For example,</p>
 </pre></div>
 </div>
 </section>
-<section id="id27">
-<h3><span class="section-number">6.5.4. </span>Exercises<a class="headerlink" href="#id27" title="Permalink to this headline">&#61633;</a></h3>
+<section id="id28">
+<h3><span class="section-number">6.5.4. </span>Exercises<a class="headerlink" href="#id28" title="Permalink to this headline">&#61633;</a></h3>
 <ol class="arabic simple">
 <li><p>Prove using simple induction that for all natural numbers <span class="math notranslate nohighlight">\(a\)</span>, <span class="math notranslate nohighlight">\(P_{a,1} =a+1\)</span>.</p></li>
 </ol>
@@ -1748,8 +1696,8 @@ work using Lean.  For example,</p>
 </section>
 <section id="the-division-algorithm">
 <span id="constructive-division-algorithm"></span><h2><span class="section-number">6.6. </span>The Division Algorithm<a class="headerlink" href="#the-division-algorithm" title="Permalink to this headline">&#61633;</a></h2>
-<section id="id28">
-<h3><span class="section-number">6.6.1. </span>Definition<a class="headerlink" href="#id28" title="Permalink to this headline">&#61633;</a></h3>
+<section id="id29">
+<h3><span class="section-number">6.6.1. </span>Definition<a class="headerlink" href="#id29" title="Permalink to this headline">&#61633;</a></h3>
 <p>Consider the functions <span class="math notranslate nohighlight">\(\operatorname{mod}\)</span> and <span class="math notranslate nohighlight">\(\operatorname{div}\)</span> defined recursively
 on the integers by,</p>
 <div class="math notranslate nohighlight">
@@ -1827,7 +1775,7 @@ expressed using the syntax <code class="docutils literal notranslate"><span clas
 Now let&#8217;s make that rigorous.</p>
 </section>
 <section id="div-add-mod">
-<span id="id29"></span><h3><span class="section-number">6.6.2. </span>Example<a class="headerlink" href="#div-add-mod" title="Permalink to this headline">&#61633;</a></h3>
+<span id="id30"></span><h3><span class="section-number">6.6.2. </span>Example<a class="headerlink" href="#div-add-mod" title="Permalink to this headline">&#61633;</a></h3>
 <div class="admonition-theorem admonition">
 <p class="admonition-title">Theorem</p>
 <p>For any integers <span class="math notranslate nohighlight">\(n\)</span> and <span class="math notranslate nohighlight">\(d\)</span>, we have that
@@ -1838,7 +1786,7 @@ Now let&#8217;s make that rigorous.</p>
 <p>We prove this by strong induction relative to the expression <span class="math notranslate nohighlight">\(2n - d\)</span>.  Suppose that for all
 integers <span class="math notranslate nohighlight">\(m\)</span> and <span class="math notranslate nohighlight">\(c\)</span> with <span class="math notranslate nohighlight">\(|2m - c|&lt;|2n-d|\)</span>, it is true that
 <span class="math notranslate nohighlight">\(d \cdot \operatorname{div}(n, d) + \operatorname{mod}(n, d) = n\)</span>.</p>
-<p>If <span class="math notranslate nohighlight">\(nd&lt;0\)</span>, then by the inductive hypothesis</p>
+<p><strong>Case 1</strong> (<span class="math notranslate nohighlight">\(nd&lt;0\)</span>): Then by the inductive hypothesis</p>
 <div class="math notranslate nohighlight">
 \[d \cdot \operatorname{div}(n+d, d) + \operatorname{mod}(n+d, d) = n+d,\]</div>
 <p>so</p>
@@ -1848,7 +1796,7 @@ integers <span class="math notranslate nohighlight">\(m\)</span> and <span class
 &amp;=(d \cdot \operatorname{div}(n+d, d) + \operatorname{mod}(n+d, d))-d\\
 &amp;=(n+d)-d\\
 &amp;=n.\end{split}\]</div>
-<p>If <span class="math notranslate nohighlight">\(0&lt;d(n-d)\)</span>, then by the inductive hypothesis</p>
+<p><strong>Case 2</strong> (<span class="math notranslate nohighlight">\(0&lt;d(n-d)\)</span>): Then by the inductive hypothesis</p>
 <div class="math notranslate nohighlight">
 \[d \cdot \operatorname{div}(n-d, d) + \operatorname{mod}(n-d, d) = n-d,\]</div>
 <p>so</p>
@@ -1858,13 +1806,13 @@ integers <span class="math notranslate nohighlight">\(m\)</span> and <span class
 &amp;=(d \cdot \operatorname{div}(n-d, d) + \operatorname{mod}(n-d, d))+d\\
 &amp;=(n-d)+d\\
 &amp;=n.\end{split}\]</div>
-<p>If <span class="math notranslate nohighlight">\(n=d\)</span>, then</p>
+<p><strong>Case 3</strong> (<span class="math notranslate nohighlight">\(n=d\)</span>): Then</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}d \cdot \operatorname{div}(n, d) + \operatorname{mod}(n, d)
 &amp;=d\cdot 1+0\\
 &amp;=d\\
 &amp;=n.\end{split}\]</div>
-<p>In the remaining case,</p>
+<p><strong>Case 4</strong>: In this case,</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}d \cdot \operatorname{div}(n, d) + \operatorname{mod}(n, d)
 &amp;=d\cdot 0+n\\
@@ -1894,7 +1842,7 @@ integers <span class="math notranslate nohighlight">\(m\)</span> and <span class
 </div>
 </section>
 <section id="mod-nonneg">
-<span id="id30"></span><h3><span class="section-number">6.6.3. </span>Example<a class="headerlink" href="#mod-nonneg" title="Permalink to this headline">&#61633;</a></h3>
+<span id="id31"></span><h3><span class="section-number">6.6.3. </span>Example<a class="headerlink" href="#mod-nonneg" title="Permalink to this headline">&#61633;</a></h3>
 <div class="admonition-theorem admonition">
 <p class="admonition-title">Theorem</p>
 <p>For any integers <span class="math notranslate nohighlight">\(n\)</span> and <span class="math notranslate nohighlight">\(d\)</span>, with <span class="math notranslate nohighlight">\(d\)</span> positive, we have that
@@ -1903,15 +1851,15 @@ integers <span class="math notranslate nohighlight">\(m\)</span> and <span class
 <div class="admonition-proof admonition">
 <p class="admonition-title">Proof</p>
 <p>We prove this by strong induction relative to the expression <span class="math notranslate nohighlight">\(2n - d\)</span>.  Suppose that for all
-integers <span class="math notranslate nohighlight">\(m\)</span> and <span class="math notranslate nohighlight">\(c\)</span> with <span class="math notranslate nohighlight">\(|2m - c|&lt;|2n-d|\)</span>, it is true that
-<span class="math notranslate nohighlight">\(\operatorname{mod}(m, c)\)</span> is nonnegative.</p>
-<p>If <span class="math notranslate nohighlight">\(nd&lt;0\)</span>, then by the inductive hypothesis
+integers <span class="math notranslate nohighlight">\(m\)</span> and <span class="math notranslate nohighlight">\(c\)</span> with <span class="math notranslate nohighlight">\(c\)</span> positive and <span class="math notranslate nohighlight">\(|2m - c|&lt;|2n-d|\)</span>, it is true
+that <span class="math notranslate nohighlight">\(\operatorname{mod}(m, c)\)</span> is nonnegative.</p>
+<p><strong>Case 1</strong> (<span class="math notranslate nohighlight">\(nd&lt;0\)</span>): Then by the inductive hypothesis
 <span class="math notranslate nohighlight">\(\operatorname{mod}(n, d)=\operatorname{mod}(n + d, d)\geq 0\)</span>.</p>
-<p>If <span class="math notranslate nohighlight">\(0&lt;d(n-d)\)</span>, then by the inductive hypothesis
+<p><strong>Case 2</strong> (<span class="math notranslate nohighlight">\(0&lt;d(n-d)\)</span>): Then by the inductive hypothesis
 <span class="math notranslate nohighlight">\(\operatorname{mod}(n, d)=\operatorname{mod}(n - d, d)\geq 0\)</span>.</p>
-<p>If <span class="math notranslate nohighlight">\(n=d\)</span>, then <span class="math notranslate nohighlight">\(\operatorname{mod}(n, d)= 0\)</span>, so
+<p><strong>Case 3</strong> (<span class="math notranslate nohighlight">\(n=d\)</span>): Then <span class="math notranslate nohighlight">\(\operatorname{mod}(n, d)= 0\)</span>, so
 <span class="math notranslate nohighlight">\(\operatorname{mod}(n, d)\geq 0\)</span>.</p>
-<p>The remaining case is when <span class="math notranslate nohighlight">\(0\le nd\le d^2\)</span> and <span class="math notranslate nohighlight">\(n\ne d\)</span>.  In this case, since
+<p><strong>Case 4</strong> (<span class="math notranslate nohighlight">\(0\le nd\le d^2\)</span> and <span class="math notranslate nohighlight">\(n\ne d\)</span>): Then since
 <span class="math notranslate nohighlight">\(0\le nd\)</span> and by hypothesis <span class="math notranslate nohighlight">\(0&lt;d\)</span>, we have that
 <span class="math notranslate nohighlight">\(\operatorname{mod}(n, d)=n\geq 0\)</span>.</p>
 </div>
@@ -1933,20 +1881,37 @@ integers <span class="math notranslate nohighlight">\(m\)</span> and <span class
 </div>
 </section>
 <section id="mod-lt">
-<span id="id31"></span><h3><span class="section-number">6.6.4. </span>Example<a class="headerlink" href="#mod-lt" title="Permalink to this headline">&#61633;</a></h3>
+<span id="id32"></span><h3><span class="section-number">6.6.4. </span>Example<a class="headerlink" href="#mod-lt" title="Permalink to this headline">&#61633;</a></h3>
 <div class="admonition-theorem admonition">
 <p class="admonition-title">Theorem</p>
 <p>For any integers <span class="math notranslate nohighlight">\(n\)</span> and <span class="math notranslate nohighlight">\(d\)</span>, with <span class="math notranslate nohighlight">\(d\)</span> positive, we have that
 <span class="math notranslate nohighlight">\(\operatorname{mod}(n, d)&lt;d\)</span>.</p>
 </div>
-<p>We prove this by strong induction.</p>
+<div class="admonition-proof admonition">
+<p class="admonition-title">Proof</p>
+<p>We prove this by strong induction relative to the expression <span class="math notranslate nohighlight">\(2n - d\)</span>.  Suppose that for all
+integers <span class="math notranslate nohighlight">\(m\)</span> and <span class="math notranslate nohighlight">\(c\)</span> with <span class="math notranslate nohighlight">\(c\)</span> positive and <span class="math notranslate nohighlight">\(|2m - c|&lt;|2n-d|\)</span>, it is true
+that <span class="math notranslate nohighlight">\(\operatorname{mod}(m, c)&lt;c\)</span>.</p>
+<p><strong>Case 1</strong> (<span class="math notranslate nohighlight">\(nd&lt;0\)</span>): Then by the inductive hypothesis
+<span class="math notranslate nohighlight">\(\operatorname{mod}(n, d)=\operatorname{mod}(n + d, d)&lt;d\)</span>.</p>
+<p><strong>Case 2</strong> (<span class="math notranslate nohighlight">\(0&lt;d(n-d)\)</span>): Then by the inductive hypothesis
+<span class="math notranslate nohighlight">\(\operatorname{mod}(n, d)=\operatorname{mod}(n - d, d)&lt;d\)</span>.</p>
+<p><strong>Case 3</strong> (<span class="math notranslate nohighlight">\(n=d\)</span>): Then <span class="math notranslate nohighlight">\(\operatorname{mod}(n, d)= 0&lt;d\)</span> by hypothesis.</p>
+<p><strong>Case 4</strong> (<span class="math notranslate nohighlight">\(0\le nd\le d^2\)</span> and <span class="math notranslate nohighlight">\(n\ne d\)</span>): We have that <span class="math notranslate nohighlight">\(n-d\le 0\)</span>, since
+<span class="math notranslate nohighlight">\(d(n-d)\le 0\)</span> and by hypothesis <span class="math notranslate nohighlight">\(0&lt;d\)</span>. Therefore <span class="math notranslate nohighlight">\(n\le d\)</span>. Also, by hypothesis,
+<span class="math notranslate nohighlight">\(n\ne d\)</span>.  Combining these, we have that <span class="math notranslate nohighlight">\(n&lt; d\)</span>.</p>
+</div>
 <div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">theorem</span> <span class="n">mod_lt</span> <span class="o">(</span><span class="n">n</span> <span class="o">:</span> <span class="n">&#8484;</span><span class="o">)</span> <span class="o">{</span><span class="n">d</span> <span class="o">:</span> <span class="n">&#8484;</span><span class="o">}</span> <span class="o">(</span><span class="n">hd</span> <span class="o">:</span> <span class="mi">0</span> <span class="bp">&lt;</span> <span class="n">d</span><span class="o">)</span> <span class="o">:</span> <span class="n">mod</span> <span class="n">n</span> <span class="n">d</span> <span class="bp">&lt;</span> <span class="n">d</span> <span class="o">:=</span> <span class="kd">by</span>
   <span class="n">rw</span> <span class="o">[</span><span class="n">mod</span><span class="o">]</span>
   <span class="n">split_ifs</span> <span class="k">with</span> <span class="n">h1</span> <span class="n">h2</span> <span class="n">h3</span> <span class="bp">&lt;;&gt;</span> <span class="n">push_neg</span> <span class="n">at</span> <span class="bp">*</span>
-  <span class="bp">&#183;</span> <span class="n">exact</span> <span class="n">mod_lt</span> <span class="o">(</span><span class="n">n</span> <span class="bp">+</span> <span class="n">d</span><span class="o">)</span> <span class="n">hd</span>
-  <span class="bp">&#183;</span> <span class="n">exact</span> <span class="n">mod_lt</span> <span class="o">(</span><span class="n">n</span> <span class="bp">-</span> <span class="n">d</span><span class="o">)</span> <span class="n">hd</span>
-  <span class="bp">&#183;</span> <span class="n">exact</span> <span class="n">hd</span>
-  <span class="bp">&#183;</span> <span class="k">have</span> <span class="n">h4</span> <span class="o">:</span> <span class="n">n</span> <span class="bp">-</span> <span class="n">d</span> <span class="bp">&#8804;</span> <span class="mi">0</span>
+  <span class="bp">&#183;</span> <span class="c1">-- case `n * d &lt; 0`</span>
+    <span class="n">exact</span> <span class="n">mod_lt</span> <span class="o">(</span><span class="n">n</span> <span class="bp">+</span> <span class="n">d</span><span class="o">)</span> <span class="n">hd</span>
+  <span class="bp">&#183;</span> <span class="c1">-- case `0 &lt; d * (n - d)`</span>
+    <span class="n">exact</span> <span class="n">mod_lt</span> <span class="o">(</span><span class="n">n</span> <span class="bp">-</span> <span class="n">d</span><span class="o">)</span> <span class="n">hd</span>
+  <span class="bp">&#183;</span> <span class="c1">-- case `n = d`</span>
+    <span class="n">exact</span> <span class="n">hd</span>
+  <span class="bp">&#183;</span> <span class="c1">-- last case</span>
+    <span class="k">have</span> <span class="n">h4</span> <span class="o">:</span> <span class="n">n</span> <span class="bp">-</span> <span class="n">d</span> <span class="bp">&#8804;</span> <span class="mi">0</span>
     <span class="bp">&#183;</span> <span class="n">apply</span> <span class="n">nonpos_of_mul_nonpos_right</span> <span class="o">(</span><span class="n">a</span> <span class="o">:=</span> <span class="n">d</span><span class="o">)</span>
       <span class="n">apply</span> <span class="n">h2</span>
       <span class="n">apply</span> <span class="n">hd</span>
@@ -1958,7 +1923,7 @@ integers <span class="math notranslate nohighlight">\(m\)</span> and <span class
 </div>
 </section>
 <section id="weak-division-algorithm">
-<span id="id32"></span><h3><span class="section-number">6.6.5. </span>Example<a class="headerlink" href="#weak-division-algorithm" title="Permalink to this headline">&#61633;</a></h3>
+<span id="id33"></span><h3><span class="section-number">6.6.5. </span>Example<a class="headerlink" href="#weak-division-algorithm" title="Permalink to this headline">&#61633;</a></h3>
 <p>Putting this all together, we can prove the following theorem.  This theorem justifies the tactic
 <code class="docutils literal notranslate"><span class="pre">mod_cases</span></code>, which we have been using since <a class="reference internal" href="03_Parity_and_Divisibility.html#first-mod-cases"><span class="std std-numref">Example 3.4.4</span></a>: we can list out
 just finitely many possibilities for an integer <span class="math notranslate nohighlight">\(a\)</span>, considered modulo a positive integer
@@ -1967,6 +1932,20 @@ just finitely many possibilities for an integer <span class="math notranslate no
 <p class="admonition-title">Theorem</p>
 <p>Let <span class="math notranslate nohighlight">\(a\)</span> and <span class="math notranslate nohighlight">\(b\)</span> be integers, with <span class="math notranslate nohighlight">\(b\)</span> positive.   There exists an
 integer <span class="math notranslate nohighlight">\(r\)</span>, with <span class="math notranslate nohighlight">\(0 \le r &lt; b\)</span>, such that <span class="math notranslate nohighlight">\(a \equiv r\mod b\)</span>.</p>
+</div>
+<div class="admonition-proof admonition">
+<p class="admonition-title">Proof</p>
+<p>We will show that the integer <span class="math notranslate nohighlight">\(\operatorname{mod}(a,b)\)</span> has this property.  Indeed, by
+<a class="reference internal" href="#mod-nonneg"><span class="std std-numref">Example 6.6.3</span></a> and <a class="reference internal" href="#mod-lt"><span class="std std-numref">Example 6.6.4</span></a>,
+<span class="math notranslate nohighlight">\(0 \le \operatorname{mod}(a,b) &lt; b\)</span>, and by <a class="reference internal" href="#div-add-mod"><span class="std std-numref">Example 6.6.2</span></a>,</p>
+<div class="math notranslate nohighlight">
+\[b \cdot \operatorname{div}(a, b) + \operatorname{mod}(a, b) = a,\]</div>
+<p>so</p>
+<div class="math notranslate nohighlight">
+\[a-\operatorname{mod}(a, b)=b \cdot \operatorname{div}(a, b),\]</div>
+<p>so</p>
+<div class="math notranslate nohighlight">
+\[a \equiv \operatorname{mod}(a, b)\mod b.\]</div>
 </div>
 <div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">(</span><span class="n">a</span> <span class="n">b</span> <span class="o">:</span> <span class="n">&#8484;</span><span class="o">)</span> <span class="o">(</span><span class="n">h</span> <span class="o">:</span> <span class="mi">0</span> <span class="bp">&lt;</span> <span class="n">b</span><span class="o">)</span> <span class="o">:</span> <span class="bp">&#8707;</span> <span class="n">r</span> <span class="o">:</span> <span class="n">&#8484;</span><span class="o">,</span> <span class="mi">0</span> <span class="bp">&#8804;</span> <span class="n">r</span> <span class="bp">&#8743;</span> <span class="n">r</span> <span class="bp">&lt;</span> <span class="n">b</span> <span class="bp">&#8743;</span> <span class="n">a</span> <span class="bp">&#8801;</span> <span class="n">r</span> <span class="o">[</span><span class="n">ZMOD</span> <span class="n">b</span><span class="o">]</span> <span class="o">:=</span> <span class="kd">by</span>
   <span class="n">take</span> <span class="n">mod</span> <span class="n">a</span> <span class="n">b</span>
@@ -1980,8 +1959,8 @@ integer <span class="math notranslate nohighlight">\(r\)</span>, with <span clas
 </pre></div>
 </div>
 </section>
-<section id="id33">
-<h3><span class="section-number">6.6.6. </span>Exercises<a class="headerlink" href="#id33" title="Permalink to this headline">&#61633;</a></h3>
+<section id="id34">
+<h3><span class="section-number">6.6.6. </span>Exercises<a class="headerlink" href="#id34" title="Permalink to this headline">&#61633;</a></h3>
 <ol class="arabic">
 <li><p>Consider the function <span class="math notranslate nohighlight">\(T\)</span> defined recursively on the integers by,</p>
 <div class="math notranslate nohighlight">
@@ -2042,8 +2021,8 @@ be integers, both in the range <span class="math notranslate nohighlight">\(0 \l
 </section>
 <section id="the-euclidean-algorithm">
 <span id="euclidean-algorithm"></span><h2><span class="section-number">6.7. </span>The Euclidean algorithm<a class="headerlink" href="#the-euclidean-algorithm" title="Permalink to this headline">&#61633;</a></h2>
-<section id="id34">
-<h3><span class="section-number">6.7.1. </span>Definition<a class="headerlink" href="#id34" title="Permalink to this headline">&#61633;</a></h3>
+<section id="euclidean-algorithm-def">
+<span id="id35"></span><h3><span class="section-number">6.7.1. </span>Definition<a class="headerlink" href="#euclidean-algorithm-def" title="Permalink to this headline">&#61633;</a></h3>
 <div class="admonition-definition admonition">
 <p class="admonition-title">Definition</p>
 <p>The function <span class="math notranslate nohighlight">\(\operatorname{gcd}\)</span>  of two integers is defined recursively as follows:</p>
@@ -2166,8 +2145,8 @@ well-foundedness.  Check that if they are omitted then the definition gives an e
 </pre></div>
 </div>
 </section>
-<section id="id35">
-<h3><span class="section-number">6.7.2. </span>Example<a class="headerlink" href="#id35" title="Permalink to this headline">&#61633;</a></h3>
+<section id="id36">
+<h3><span class="section-number">6.7.2. </span>Example<a class="headerlink" href="#id36" title="Permalink to this headline">&#61633;</a></h3>
 <p>Every fact about <span class="math notranslate nohighlight">\(\operatorname{gcd}\)</span> will be proved by strong induction, using the same
 well-foundedness justification.</p>
 <div class="admonition-proposition admonition">
@@ -2180,12 +2159,15 @@ nonnegative.</p>
 <p>We prove this by strong induction on <span class="math notranslate nohighlight">\(b\)</span>.   Suppose that for all
 integers <span class="math notranslate nohighlight">\(x\)</span> and <span class="math notranslate nohighlight">\(y\)</span> with <span class="math notranslate nohighlight">\(|y|&lt;|b|\)</span>, it is true that
 <span class="math notranslate nohighlight">\(0 \le  \operatorname{gcd}(x, y)\)</span>.</p>
-<p>If <span class="math notranslate nohighlight">\(0&lt;b\)</span>, then <span class="math notranslate nohighlight">\(\operatorname{gcd}(a,b)\)</span> is equal to
-<span class="math notranslate nohighlight">\(\operatorname{gcd}(b,\mod(a,b))\)</span> which by the inductive hypothesis is nonnegative.</p>
-<p>If <span class="math notranslate nohighlight">\(b&lt;0\)</span>, then <span class="math notranslate nohighlight">\(\operatorname{gcd}(a,b)\)</span> is equal to
-<span class="math notranslate nohighlight">\(\operatorname{gcd}(b,\mod(a,-b))\)</span> which by the inductive hypothesis is nonnegative.</p>
-<p>In the case <span class="math notranslate nohighlight">\(b=0\)</span>, <span class="math notranslate nohighlight">\(0\le a\)</span>, we have that <span class="math notranslate nohighlight">\(\operatorname{gcd}(a,b)=a\geq 0\)</span>.</p>
-<p>In the case <span class="math notranslate nohighlight">\(b=0\)</span>, <span class="math notranslate nohighlight">\(a&lt;0\)</span>, we have that <span class="math notranslate nohighlight">\(\operatorname{gcd}(a,b)=-a\geq 0\)</span>.</p>
+<p><strong>Case 1</strong> (<span class="math notranslate nohighlight">\(0&lt;b\)</span>): Then <span class="math notranslate nohighlight">\(\operatorname{gcd}(a,b)\)</span> is equal to
+<span class="math notranslate nohighlight">\(\operatorname{gcd}(b,\operatorname{mod}(a,b))\)</span> which by the inductive hypothesis is
+nonnegative.</p>
+<p><strong>Case 2</strong> (<span class="math notranslate nohighlight">\(b&lt;0\)</span>): Then <span class="math notranslate nohighlight">\(\operatorname{gcd}(a,b)\)</span> is equal to
+<span class="math notranslate nohighlight">\(\operatorname{gcd}(b,\operatorname{mod}(a,-b))\)</span> which by the inductive hypothesis is
+nonnegative.</p>
+<p><strong>Case 3</strong> (<span class="math notranslate nohighlight">\(b=0\)</span>, <span class="math notranslate nohighlight">\(0\le a\)</span>): Then we have that
+<span class="math notranslate nohighlight">\(\operatorname{gcd}(a,b)=a\geq 0\)</span>.</p>
+<p><strong>Case 4</strong> (<span class="math notranslate nohighlight">\(b=0\)</span>, <span class="math notranslate nohighlight">\(a&lt;0\)</span>): Then we have that <span class="math notranslate nohighlight">\(\operatorname{gcd}(a,b)=-a\geq 0\)</span>.</p>
 </div>
 <div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">theorem</span> <span class="n">gcd_nonneg</span> <span class="o">(</span><span class="n">a</span> <span class="n">b</span> <span class="o">:</span> <span class="n">&#8484;</span><span class="o">)</span> <span class="o">:</span> <span class="mi">0</span> <span class="bp">&#8804;</span> <span class="n">gcd</span> <span class="n">a</span> <span class="n">b</span> <span class="o">:=</span> <span class="kd">by</span>
   <span class="n">rw</span> <span class="o">[</span><span class="n">gcd</span><span class="o">]</span>
@@ -2203,7 +2185,7 @@ integers <span class="math notranslate nohighlight">\(x\)</span> and <span class
 </div>
 </section>
 <section id="common-divisor">
-<span id="id36"></span><h3><span class="section-number">6.7.3. </span>Example<a class="headerlink" href="#common-divisor" title="Permalink to this headline">&#61633;</a></h3>
+<span id="id37"></span><h3><span class="section-number">6.7.3. </span>Example<a class="headerlink" href="#common-divisor" title="Permalink to this headline">&#61633;</a></h3>
 <div class="admonition-proposition admonition">
 <p class="admonition-title">Proposition</p>
 <p>For all integers <span class="math notranslate nohighlight">\(a\)</span> and <span class="math notranslate nohighlight">\(b\)</span>, the integer <span class="math notranslate nohighlight">\(\operatorname{gcd}(a,b)\)</span> is a factor
@@ -2269,8 +2251,8 @@ prove later (see the exercises) that in fact it is the <em>greatest common divis
 </pre></div>
 </div>
 </section>
-<section id="id37">
-<h3><span class="section-number">6.7.4. </span>Exercises<a class="headerlink" href="#id37" title="Permalink to this headline">&#61633;</a></h3>
+<section id="id38">
+<h3><span class="section-number">6.7.4. </span>Exercises<a class="headerlink" href="#id38" title="Permalink to this headline">&#61633;</a></h3>
 <ol class="arabic">
 <li><p>Consider the function <span class="math notranslate nohighlight">\(Q\)</span> defined recursively on the natural numbers by,</p>
 <div class="math notranslate nohighlight">
