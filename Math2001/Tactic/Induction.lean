@@ -143,5 +143,5 @@ macro_rules
       simp only [Int.sizeOf_lt_sizeOf_iff, ←sq_lt_sq,  Nat.succ_eq_add_one] ;
       nlinarith)
 
-theorem Int.fmod_nonneg' (a : ℤ) (hb : 0 < b) : 0 ≤ Int.fmod a b := 
+theorem Int.fmod_nonneg_of_pos (a : ℤ) (hb : 0 < b) : 0 ≤ Int.fmod a b := 
   Int.fmod_eq_emod _ hb.le ▸ emod_nonneg _ hb.ne'

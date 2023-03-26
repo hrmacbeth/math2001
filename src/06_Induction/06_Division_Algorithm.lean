@@ -36,22 +36,22 @@ termination_by _ n d => 2 * n - d
 #eval fdiv 11 4 -- infoview displays `2`
 
 
-theorem fdiv_add_fmod (n d : ℤ) : d * fdiv n d + fmod n d = n := by
+theorem fmod_add_fdiv (n d : ℤ) : fmod n d + d * fdiv n d = n := by
   rw [fdiv, fmod]
   split_ifs with h1 h2 h3 <;> push_neg at *
   · -- case `n * d < 0`
-    have IH := fdiv_add_fmod (n + d) d
-    calc d * (fdiv (n + d) d - 1) + fmod (n + d) d
-        = (d * fdiv (n + d) d + fmod (n + d) d) - d := by ring
+    have IH := fmod_add_fdiv (n + d) d
+    calc fmod (n + d) d + d * (fdiv (n + d) d - 1)
+        = (fmod (n + d) d + d * fdiv (n + d) d) - d := by ring
       _ = (n + d) - d := by rw [IH]
       _ = n := by ring
   · -- case `0 < d * (n - d)`
-    have IH := fdiv_add_fmod (n - d) d
-    calc d * (fdiv (n - d) d + 1) + fmod (n - d) d
-        = (d * fdiv (n - d) d + fmod (n - d) d) + d := by ring
+    have IH := fmod_add_fdiv (n - d) d
+    calc fmod (n - d) d + d * (fdiv (n - d) d + 1)
+        = (fmod (n - d) d + d * fdiv (n - d) d) + d := by ring
         _ = n := by addarith [IH]
   · -- case `n = d`
-    calc d * 1 + 0 = d := by ring
+    calc 0 + d * 1 = d := by ring
       _ = n := by rw [h3]
   · -- last case
     ring
@@ -59,13 +59,13 @@ termination_by _ n d => 2 * n - d
 
 
 
-theorem fmod_nonneg (n : ℤ) {d : ℤ} (hd : 0 < d) : 0 ≤ fmod n d := by
+theorem fmod_nonneg_of_pos (n : ℤ) {d : ℤ} (hd : 0 < d) : 0 ≤ fmod n d := by
   rw [fmod]
   split_ifs with h1 h2 h3 <;> push_neg at *
   · -- case `n * d < 0`
-    exact fmod_nonneg (n + d) hd
+    exact fmod_nonneg_of_pos (n + d) hd
   · -- case `0 < d * (n - d)`
-    exact fmod_nonneg (n - d) hd
+    exact fmod_nonneg_of_pos (n - d) hd
   · -- case `n = d`
     extra
   · -- last case
@@ -75,13 +75,13 @@ theorem fmod_nonneg (n : ℤ) {d : ℤ} (hd : 0 < d) : 0 ≤ fmod n d := by
 termination_by _ n d hd => 2 * n - d
 
 
-theorem fmod_lt (n : ℤ) {d : ℤ} (hd : 0 < d) : fmod n d < d := by
+theorem fmod_lt_of_pos (n : ℤ) {d : ℤ} (hd : 0 < d) : fmod n d < d := by
   rw [fmod]
   split_ifs with h1 h2 h3 <;> push_neg at *
   · -- case `n * d < 0`
-    exact fmod_lt (n + d) hd
+    exact fmod_lt_of_pos (n + d) hd
   · -- case `0 < d * (n - d)`
-    exact fmod_lt (n - d) hd
+    exact fmod_lt_of_pos (n - d) hd
   · -- case `n = d`
     exact hd
   · -- last case
@@ -99,11 +99,11 @@ termination_by _ n d hd => 2 * n - d
 example (a b : ℤ) (h : 0 < b) : ∃ r : ℤ, 0 ≤ r ∧ r < b ∧ a ≡ r [ZMOD b] := by
   take fmod a b
   constructor
-  · apply fmod_nonneg a h
+  · apply fmod_nonneg_of_pos a h
   constructor
-  · apply fmod_lt a h
+  · apply fmod_lt_of_pos a h
   · take fdiv a b
-    have Hab : b * fdiv a b + fmod a b = a := fdiv_add_fmod a b
+    have Hab : fmod a b + b * fdiv a b = a := fmod_add_fdiv a b
     addarith [Hab]
 
 /-! # Exercises -/
