@@ -91,7 +91,7 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#the-division-algorithm">6.6. The Division Algorithm</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#id29">6.6.1. Definition</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#constructive-division-algorithm-def">6.6.1. Definition</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#div-add-mod">6.6.2. Example</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#mod-nonneg">6.6.3. Example</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#mod-lt">6.6.4. Example</a></li>
@@ -1592,7 +1592,7 @@ valid.</p>
 <section id="pascal-s-triangle">
 <span id="pascal"></span><h2><span class="section-number">6.5. </span>Pascal&#8217;s triangle<a class="headerlink" href="#pascal-s-triangle" title="Permalink to this headline">&#61633;</a></h2>
 <section id="definition">
-<h3><span class="section-number">6.5.1. </span>Definition<a class="headerlink" href="#definition" title="Permalink to this headline">&#61633;</a></h3>
+<span id="pascal-def"></span><h3><span class="section-number">6.5.1. </span>Definition<a class="headerlink" href="#definition" title="Permalink to this headline">&#61633;</a></h3>
 <p>Consider the family of natural numbers <span class="math notranslate nohighlight">\((P_{a,b})\)</span> defined recursively by,</p>
 <blockquote>
 <div><div class="math notranslate nohighlight">
@@ -1696,8 +1696,8 @@ work using Lean.  For example,</p>
 </section>
 <section id="the-division-algorithm">
 <span id="constructive-division-algorithm"></span><h2><span class="section-number">6.6. </span>The Division Algorithm<a class="headerlink" href="#the-division-algorithm" title="Permalink to this headline">&#61633;</a></h2>
-<section id="id29">
-<h3><span class="section-number">6.6.1. </span>Definition<a class="headerlink" href="#id29" title="Permalink to this headline">&#61633;</a></h3>
+<section id="constructive-division-algorithm-def">
+<span id="id29"></span><h3><span class="section-number">6.6.1. </span>Definition<a class="headerlink" href="#constructive-division-algorithm-def" title="Permalink to this headline">&#61633;</a></h3>
 <p>Consider the functions <span class="math notranslate nohighlight">\(\operatorname{mod}\)</span> and <span class="math notranslate nohighlight">\(\operatorname{div}\)</span> defined recursively
 on the integers by,</p>
 <div class="math notranslate nohighlight">
@@ -1741,7 +1741,7 @@ prove it automatically.  As a sanity check,</p>
 2 \cdot 7 - 4 = 10\\
 2 \cdot 3 - 4 = 2\end{split}\]</div>
 <p>which decreases strictly.) Here is how this looks in Lean, with the well-foundedness explanation
-expressed using the syntax <code class="docutils literal notranslate"><span class="pre">termination_by</span></code>, as in <a class="reference internal" href="#pascal"><span class="std std-numref">Section 6.5</span></a>.</p>
+expressed using the syntax <code class="docutils literal notranslate"><span class="pre">termination_by</span></code>, as in <a class="reference internal" href="#pascal-def"><span class="std std-numref">Definition 6.5.1</span></a>.</p>
 <div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">def</span> <span class="n">fmod</span> <span class="o">(</span><span class="n">n</span> <span class="n">d</span> <span class="o">:</span> <span class="n">&#8484;</span><span class="o">)</span> <span class="o">:</span> <span class="n">&#8484;</span> <span class="o">:=</span>
   <span class="k">if</span> <span class="n">n</span> <span class="bp">*</span> <span class="n">d</span> <span class="bp">&lt;</span> <span class="mi">0</span> <span class="k">then</span>
     <span class="n">fmod</span> <span class="o">(</span><span class="n">n</span> <span class="bp">+</span> <span class="n">d</span><span class="o">)</span> <span class="n">d</span>
@@ -2045,7 +2045,10 @@ be integers, both in the range <span class="math notranslate nohighlight">\(0 \l
 \operatorname{mod}(9,6)&amp;=3&amp;&amp;\qquad&amp;&amp;=\operatorname{gcd}(6,3)\\
 \operatorname{mod}(6,3)&amp;=0&amp;&amp;\qquad&amp;&amp;=\operatorname{gcd}(3,0)\\
 &amp;&amp;&amp;\qquad&amp;&amp;=3.\end{split}\]</div>
-<p>As in <a class="reference internal" href="#pascal"><span class="std std-numref">Section 6.5</span></a> and <a class="reference internal" href="#constructive-division-algorithm"><span class="std std-numref">Section 6.6</span></a>, we
+<p>(Remember that <span class="math notranslate nohighlight">\(\operatorname{mod}(a,b)\)</span> is the &#8220;remainder&#8221; function, defined in
+<a class="reference internal" href="#constructive-division-algorithm-def"><span class="std std-numref">Definition 6.6.1</span></a>.)</p>
+<p>As in <a class="reference internal" href="#pascal-def"><span class="std std-numref">Definition 6.5.1</span></a> and
+<a class="reference internal" href="#constructive-division-algorithm-def"><span class="std std-numref">Definition 6.6.1</span></a>, we
 need to justify that this recursive definition is <em>well-founded</em>, that is that the process always
 terminates.  And as in those sections, we do this by providing an expression which becomes strictly
 smaller in absolute value as the process goes on.  Here that expression is <span class="math notranslate nohighlight">\(b\)</span>, the second of
@@ -2140,7 +2143,7 @@ well-foundedness.  Check that if they are omitted then the definition gives an e
 </pre></div>
 </div>
 <p>Sanity check:  does the Lean definition agree with our calculation above for
-<span class="math notranslate nohighlight">\(\operatorname{mod}(-21,15)\)</span>?</p>
+<span class="math notranslate nohighlight">\(\operatorname{gcd}(-21,15)\)</span>?</p>
 <div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="k">#eval</span> <span class="n">gcd</span> <span class="o">(</span><span class="bp">-</span><span class="mi">21</span><span class="o">)</span> <span class="mi">15</span> <span class="c1">-- infoview displays `3`</span>
 </pre></div>
 </div>
