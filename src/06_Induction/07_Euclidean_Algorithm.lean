@@ -64,6 +64,40 @@ theorem gcd_nonneg (a b : ℤ) : 0 ≤ gcd a b := by
 termination_by _ a b => b
 
 
+theorem gcd_dvd (a b : ℤ) : gcd a b ∣ b ∧ gcd a b ∣ a := by
+  rw [gcd]
+  split_ifs with h1 h2 <;> push_neg at *
+  · -- case `0 < b`
+    have IH : _ ∧ _ := gcd_dvd b (fmod a b) -- inductive hypothesis
+    obtain ⟨IH_right, IH_left⟩ := IH
+    constructor
+    · -- prove that `gcd a b ∣ b`
+      sorry 
+    · -- prove that `gcd a b ∣ a`
+      sorry
+  · -- case `b < 0`
+    have IH : _ ∧ _ := gcd_dvd b (fmod a (-b)) -- inductive hypothesis
+    obtain ⟨IH_right, IH_left⟩ := IH
+    constructor
+    · -- prove that `gcd a b ∣ b`
+      sorry 
+    · -- prove that `gcd a b ∣ a`
+      sorry
+  · -- case `b = 0`, `0 ≤ a`
+    constructor
+    · -- prove that `gcd a b ∣ b`
+      sorry 
+    · -- prove that `gcd a b ∣ a`
+      sorry
+  · -- case `b = 0`, `a < 0`
+    constructor
+    · -- prove that `gcd a b ∣ b`
+      sorry 
+    · -- prove that `gcd a b ∣ a`
+      sorry
+termination_by gcd_dvd a b => b
+
+
 mutual
 theorem gcd_dvd_right (a b : ℤ) : gcd a b ∣ b := by
   rw [gcd]
@@ -94,10 +128,10 @@ theorem gcd_dvd_left (a b : ℤ) : gcd a b ∣ a := by
     have H : fmod a b + b * fdiv a b = a := fmod_add_fdiv a b
     set q := fdiv a b
     set r := fmod a b
-    take k * q + l
+    take l + k * q
     calc a = r + b * q := by rw [H]
       _ = gcd b r * l + (gcd b r * k) * q := by rw [← hk, ← hl]
-      _ = gcd b r * (k * q + l) := by ring
+      _ = gcd b r * (l + k * q) := by ring
   · -- case `b < 0`
     have IH1 := gcd_dvd_left b (fmod a (-b)) -- inductive hypothesis
     have IH2 := gcd_dvd_right b (fmod a (-b)) -- inductive hypothesis
@@ -106,16 +140,17 @@ theorem gcd_dvd_left (a b : ℤ) : gcd a b ∣ a := by
     have H := fmod_add_fdiv a (-b)
     set q := fdiv a (-b)
     set r := fmod a (-b)
-    take -k * q + l
+    take l - k * q
     calc a = r + (-b) * q := by rw [H]
       _ = gcd b r * l + (- (gcd b r * k)) * q := by rw [← hk, ← hl]
-      _ = gcd b r * (-k * q + l) := by ring
+      _ = gcd b r * (l - k * q) := by ring
   · -- case `b = 0`, `0 ≤ a`
     take 1
     ring
   · -- case `b = 0`, `a < 0`
     take -1
     ring
+
 end
 termination_by gcd_dvd_right a b => b ; gcd_dvd_left a b => b
 
@@ -177,7 +212,6 @@ open bezout
 theorem bezout (a b : ℤ) : ∃ x y : ℤ, x * a + y * b = gcd a b := by
   take L a b, R a b
   apply L_mul_add_R_mul
-
 
 /-! # Exercises -/
 

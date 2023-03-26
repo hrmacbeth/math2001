@@ -95,7 +95,6 @@ theorem fmod_lt_of_pos (n : ℤ) {d : ℤ} (hd : 0 < d) : fmod n d < d := by
 termination_by _ n d hd => 2 * n - d
 
 
-
 example (a b : ℤ) (h : 0 < b) : ∃ r : ℤ, 0 ≤ r ∧ r < b ∧ a ≡ r [ZMOD b] := by
   take fmod a b
   constructor
@@ -108,6 +107,9 @@ example (a b : ℤ) (h : 0 < b) : ∃ r : ℤ, 0 ≤ r ∧ r < b ∧ a ≡ r [ZM
 
 /-! # Exercises -/
 
+
+theorem lt_fmod_of_neg (n : ℤ) {d : ℤ} (hd : d < 0) : d < fmod n d := by
+  sorry
 
 def T (n : ℤ) : ℤ :=
   if 0 < n then

@@ -92,7 +92,7 @@
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#the-division-algorithm">6.6. The Division Algorithm</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#constructive-division-algorithm-def">6.6.1. Definition</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#div-add-mod">6.6.2. Example</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#mod-add-div">6.6.2. Example</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#mod-nonneg">6.6.3. Example</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#mod-lt">6.6.4. Example</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#weak-division-algorithm">6.6.5. Example</a></li>
@@ -1689,6 +1689,18 @@ work using Lean.  For example,</p>
 <section id="id28">
 <h3><span class="section-number">6.5.4. </span>Exercises<a class="headerlink" href="#id28" title="Permalink to this headline">&#61633;</a></h3>
 <ol class="arabic simple">
+<li><p>Prove that for all natural numbers <span class="math notranslate nohighlight">\(a\)</span> and <span class="math notranslate nohighlight">\(b\)</span>, <span class="math notranslate nohighlight">\(P_{a,b} =P_{b,a}\)</span>.</p></li>
+</ol>
+<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">theorem</span> <span class="n">pascal_symm</span> <span class="o">(</span><span class="n">m</span> <span class="n">n</span> <span class="o">:</span> <span class="n">&#8469;</span><span class="o">)</span> <span class="o">:</span> <span class="n">pascal</span> <span class="n">m</span> <span class="n">n</span> <span class="bp">=</span> <span class="n">pascal</span> <span class="n">n</span> <span class="n">m</span> <span class="o">:=</span> <span class="kd">by</span>
+  <span class="k">match</span> <span class="n">m</span><span class="o">,</span> <span class="n">n</span> <span class="k">with</span>
+  <span class="bp">|</span> <span class="mi">0</span><span class="o">,</span> <span class="mi">0</span> <span class="bp">=&gt;</span> <span class="gr">sorry</span>
+  <span class="bp">|</span> <span class="n">a</span> <span class="bp">+</span> <span class="mi">1</span><span class="o">,</span> <span class="mi">0</span> <span class="bp">=&gt;</span> <span class="gr">sorry</span>
+  <span class="bp">|</span> <span class="mi">0</span><span class="o">,</span> <span class="n">b</span> <span class="bp">+</span> <span class="mi">1</span> <span class="bp">=&gt;</span> <span class="gr">sorry</span>
+  <span class="bp">|</span> <span class="n">a</span> <span class="bp">+</span> <span class="mi">1</span><span class="o">,</span> <span class="n">b</span> <span class="bp">+</span> <span class="mi">1</span> <span class="bp">=&gt;</span> <span class="gr">sorry</span>
+<span class="n">termination_by</span> <span class="n">_</span> <span class="n">a</span> <span class="n">b</span> <span class="bp">=&gt;</span> <span class="n">a</span> <span class="bp">+</span> <span class="n">b</span>
+</pre></div>
+</div>
+<ol class="arabic simple" start="2">
 <li><p>Prove using simple induction that for all natural numbers <span class="math notranslate nohighlight">\(a\)</span>, <span class="math notranslate nohighlight">\(P_{a,1} =a+1\)</span>.</p></li>
 </ol>
 <div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">(</span><span class="n">a</span> <span class="o">:</span> <span class="n">&#8469;</span><span class="o">)</span> <span class="o">:</span> <span class="n">pascal</span> <span class="n">a</span> <span class="mi">1</span> <span class="bp">=</span> <span class="n">a</span> <span class="bp">+</span> <span class="mi">1</span> <span class="o">:=</span> <span class="kd">by</span>
@@ -1777,8 +1789,8 @@ expressed using the syntax <code class="docutils literal notranslate"><span clas
 <span class="math notranslate nohighlight">\(\operatorname{div}\)</span> and <span class="math notranslate nohighlight">\(\operatorname{mod}\)</span> are producing &#8220;quotient&#8221; and &#8220;remainder&#8221;.
 Now let&#8217;s make that rigorous.</p>
 </section>
-<section id="div-add-mod">
-<span id="id30"></span><h3><span class="section-number">6.6.2. </span>Example<a class="headerlink" href="#div-add-mod" title="Permalink to this headline">&#61633;</a></h3>
+<section id="mod-add-div">
+<span id="id30"></span><h3><span class="section-number">6.6.2. </span>Example<a class="headerlink" href="#mod-add-div" title="Permalink to this headline">&#61633;</a></h3>
 <div class="admonition-theorem admonition">
 <p class="admonition-title">Theorem</p>
 <p>For any integers <span class="math notranslate nohighlight">\(n\)</span> and <span class="math notranslate nohighlight">\(d\)</span>, we have that
@@ -1940,7 +1952,7 @@ integer <span class="math notranslate nohighlight">\(r\)</span>, with <span clas
 <p class="admonition-title">Proof</p>
 <p>We will show that the integer <span class="math notranslate nohighlight">\(\operatorname{mod}(a,b)\)</span> has this property.  Indeed, by
 <a class="reference internal" href="#mod-nonneg"><span class="std std-numref">Example 6.6.3</span></a> and <a class="reference internal" href="#mod-lt"><span class="std std-numref">Example 6.6.4</span></a>,
-<span class="math notranslate nohighlight">\(0 \le \operatorname{mod}(a,b) &lt; b\)</span>, and by <a class="reference internal" href="#div-add-mod"><span class="std std-numref">Example 6.6.2</span></a>,</p>
+<span class="math notranslate nohighlight">\(0 \le \operatorname{mod}(a,b) &lt; b\)</span>, and by <a class="reference internal" href="#mod-add-div"><span class="std std-numref">Example 6.6.2</span></a>,</p>
 <div class="math notranslate nohighlight">
 \[\operatorname{mod}(a, b) + b \cdot \operatorname{div}(a, b) = a,\]</div>
 <p>so</p>
@@ -1964,7 +1976,16 @@ integer <span class="math notranslate nohighlight">\(r\)</span>, with <span clas
 </section>
 <section id="id34">
 <h3><span class="section-number">6.6.6. </span>Exercises<a class="headerlink" href="#id34" title="Permalink to this headline">&#61633;</a></h3>
-<ol class="arabic">
+<ol class="arabic simple">
+<li><p>Prove the analogue of  <a class="reference internal" href="#mod-lt"><span class="std std-numref">Example 6.6.4</span></a> for <span class="math notranslate nohighlight">\(d\)</span> negative:
+For any integers <span class="math notranslate nohighlight">\(n\)</span> and <span class="math notranslate nohighlight">\(d\)</span>, with <span class="math notranslate nohighlight">\(d\)</span> negative, we have that
+<span class="math notranslate nohighlight">\(d&lt;\operatorname{mod}(n, d)\)</span>.</p></li>
+</ol>
+<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">theorem</span> <span class="n">lt_fmod_of_neg</span> <span class="o">(</span><span class="n">n</span> <span class="o">:</span> <span class="n">&#8484;</span><span class="o">)</span> <span class="o">{</span><span class="n">d</span> <span class="o">:</span> <span class="n">&#8484;</span><span class="o">}</span> <span class="o">(</span><span class="n">hd</span> <span class="o">:</span> <span class="n">d</span> <span class="bp">&lt;</span> <span class="mi">0</span><span class="o">)</span> <span class="o">:</span> <span class="n">d</span> <span class="bp">&lt;</span> <span class="n">fmod</span> <span class="n">n</span> <span class="n">d</span> <span class="o">:=</span> <span class="kd">by</span>
+  <span class="gr">sorry</span>
+</pre></div>
+</div>
+<ol class="arabic" start="2">
 <li><p>Consider the function <span class="math notranslate nohighlight">\(T\)</span> defined recursively on the integers by,</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}T(n)=
@@ -1991,7 +2012,7 @@ T(-n),&amp;n&lt;0\\
   <span class="gr">sorry</span>
 </pre></div>
 </div>
-<ol class="arabic" start="2">
+<ol class="arabic" start="3">
 <li><p>Let <span class="math notranslate nohighlight">\(a\)</span> and <span class="math notranslate nohighlight">\(b\)</span> be integers, with <span class="math notranslate nohighlight">\(b\)</span> positive.  Prove that there exists a
 unique integer <span class="math notranslate nohighlight">\(r\)</span>, such that <span class="math notranslate nohighlight">\(a\equiv r\mod b\)</span>.</p>
 <p>This theorem is an upgrade to <a class="reference internal" href="#weak-division-algorithm"><span class="std std-numref">Example 6.6.5</span></a>, stating uniqueness
@@ -2149,8 +2170,8 @@ well-foundedness justification.</p>
 <p>For all integers <span class="math notranslate nohighlight">\(a\)</span> and <span class="math notranslate nohighlight">\(b\)</span>, the integer <span class="math notranslate nohighlight">\(\operatorname{gcd}(a,b)\)</span> is
 nonnegative.</p>
 </div>
-<div class="admonition-proposition admonition">
-<p class="admonition-title">Proposition</p>
+<div class="admonition-proof admonition">
+<p class="admonition-title">Proof</p>
 <p>We prove this by strong induction on <span class="math notranslate nohighlight">\(b\)</span>.   Suppose that for all
 integers <span class="math notranslate nohighlight">\(x\)</span> and <span class="math notranslate nohighlight">\(y\)</span> with <span class="math notranslate nohighlight">\(|y|&lt;|b|\)</span>, it is true that
 <span class="math notranslate nohighlight">\(0 \le  \operatorname{gcd}(x, y)\)</span>.</p>
@@ -2189,6 +2210,139 @@ of both <span class="math notranslate nohighlight">\(a\)</span> and <span class=
 <p>That is, <span class="math notranslate nohighlight">\(\operatorname{gcd}(a,b)\)</span> is a <em>common divisor</em> of <span class="math notranslate nohighlight">\(a\)</span> and <span class="math notranslate nohighlight">\(b\)</span>.  We will
 prove later (see the exercises) that in fact it is the <em>greatest common divisor</em> of <span class="math notranslate nohighlight">\(a\)</span> and
 <span class="math notranslate nohighlight">\(b\)</span>, hence the acronym GCD.</p>
+<div class="admonition-proof admonition">
+<p class="admonition-title">Proof</p>
+<p>We prove this by strong induction on <span class="math notranslate nohighlight">\(b\)</span>.   Suppose that for all
+integers <span class="math notranslate nohighlight">\(x\)</span> and <span class="math notranslate nohighlight">\(y\)</span> with <span class="math notranslate nohighlight">\(|y|&lt;|b|\)</span>, it is true that
+<span class="math notranslate nohighlight">\(0 \le  \operatorname{gcd}(x, y)\)</span>.</p>
+<p><strong>Case 1</strong> (<span class="math notranslate nohighlight">\(0&lt;b\)</span>): Let <span class="math notranslate nohighlight">\(q=\operatorname{div}(a,b)\)</span> and let
+<span class="math notranslate nohighlight">\(r=\operatorname{mod}(a,b)\)</span>, so that <span class="math notranslate nohighlight">\(a=r+bq\)</span> (by <a class="reference internal" href="#mod-add-div"><span class="std std-numref">Example 6.6.2</span></a>).</p>
+<p>Then by the recursive definition <span class="math notranslate nohighlight">\(\operatorname{gcd}(a,b)\)</span> is equal to
+<span class="math notranslate nohighlight">\(\operatorname{gcd}(b,r)\)</span>, and by the inductive hypothesis this
+divides both <span class="math notranslate nohighlight">\(b\)</span> and <span class="math notranslate nohighlight">\(r\)</span>.  We need to show it divides <span class="math notranslate nohighlight">\(b\)</span>
+(which is immediate) and <span class="math notranslate nohighlight">\(a\)</span>, which we now turn to.</p>
+<p>Since <span class="math notranslate nohighlight">\(\operatorname{gcd}(a,b)\mid b\)</span>, there exists an integer <span class="math notranslate nohighlight">\(k\)</span> such that
+<span class="math notranslate nohighlight">\(b = \operatorname{gcd}(a,b)k\)</span>, and since <span class="math notranslate nohighlight">\(\operatorname{gcd}(a,b)\mid r\)</span>,
+there exists an integer <span class="math notranslate nohighlight">\(l\)</span> such that <span class="math notranslate nohighlight">\(r = \operatorname{gcd}(a,b)l\)</span>.  We now have</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}a&amp;=r+bq\\
+&amp;=\operatorname{gcd}(a,b)l+(\operatorname{gcd}(a,b)k)q\\
+&amp;=\operatorname{gcd}(a,b)\cdot (l+kq),\end{split}\]</div>
+<p>so <span class="math notranslate nohighlight">\(\operatorname{gcd}(a,b)\mid a\)</span>.</p>
+<p><strong>Case 2</strong> (<span class="math notranslate nohighlight">\(b&lt;0\)</span>): Let <span class="math notranslate nohighlight">\(q=\operatorname{div}(a,-b)\)</span> and let
+<span class="math notranslate nohighlight">\(r=\operatorname{mod}(a,-b)\)</span>, so that <span class="math notranslate nohighlight">\(a=r+(-b)q\)</span> (by
+<a class="reference internal" href="#mod-add-div"><span class="std std-numref">Example 6.6.2</span></a>).</p>
+<p>Then by the recursive definition <span class="math notranslate nohighlight">\(\operatorname{gcd}(a,b)\)</span> is equal to
+<span class="math notranslate nohighlight">\(\operatorname{gcd}(b,r)\)</span>, and by the inductive hypothesis this
+divides both <span class="math notranslate nohighlight">\(b\)</span> and <span class="math notranslate nohighlight">\(r\)</span>.  We need to show it divides <span class="math notranslate nohighlight">\(b\)</span>
+(which is immediate) and <span class="math notranslate nohighlight">\(a\)</span>, which we now turn to.</p>
+<p>Since <span class="math notranslate nohighlight">\(\operatorname{gcd}(a,b)\mid b\)</span>, there exists an integer <span class="math notranslate nohighlight">\(k\)</span> such that
+<span class="math notranslate nohighlight">\(b = \operatorname{gcd}(a,b)k\)</span>, and since <span class="math notranslate nohighlight">\(\operatorname{gcd}(a,b)\mid r\)</span>,
+there exists an integer <span class="math notranslate nohighlight">\(l\)</span> such that <span class="math notranslate nohighlight">\(r = \operatorname{gcd}(a,b)l\)</span>.  We now have</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}a&amp;=r+(-b)q\\
+&amp;=\operatorname{gcd}(a,b)l+(-\operatorname{gcd}(a,b)k)q\\
+&amp;=\operatorname{gcd}(a,b)\cdot (l-kq),\end{split}\]</div>
+<p>so <span class="math notranslate nohighlight">\(\operatorname{gcd}(a,b)\mid a\)</span>.</p>
+<p><strong>Case 3</strong> (<span class="math notranslate nohighlight">\(b=0\)</span>, <span class="math notranslate nohighlight">\(0\le a\)</span>): Then we have that
+<span class="math notranslate nohighlight">\(\operatorname{gcd}(a,b)=a\)</span>, which is a factor of <span class="math notranslate nohighlight">\(a\)</span> since <span class="math notranslate nohighlight">\(a\cdot 1=a\)</span> and
+<span class="math notranslate nohighlight">\(b\)</span> since</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}b &amp;= 0\\
+&amp;=0\cdot a.\end{split}\]</div>
+<p><strong>Case 4</strong> (<span class="math notranslate nohighlight">\(b=0\)</span>, <span class="math notranslate nohighlight">\(a&lt;0\)</span>): Then we have that <span class="math notranslate nohighlight">\(\operatorname{gcd}(a,b)=-a\)</span>, which
+is a factor of <span class="math notranslate nohighlight">\(a\)</span> since <span class="math notranslate nohighlight">\(-a\cdot -1=a\)</span> and <span class="math notranslate nohighlight">\(b\)</span> since</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}b &amp;= 0\\
+&amp;=0\cdot -a.\end{split}\]</div>
+</div>
+<p>It would be possible to set up this proof in Lean with the structure of an &#8220;and&#8221; goal, like this:
+(The <code class="docutils literal notranslate"><span class="pre">_</span></code> are placeholders just to show the basic structure.)</p>
+<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">theorem</span> <span class="n">gcd_dvd</span> <span class="o">(</span><span class="n">a</span> <span class="n">b</span> <span class="o">:</span> <span class="n">&#8484;</span><span class="o">)</span> <span class="o">:</span> <span class="n">gcd</span> <span class="n">a</span> <span class="n">b</span> <span class="bp">&#8739;</span> <span class="n">b</span> <span class="bp">&#8743;</span> <span class="n">gcd</span> <span class="n">a</span> <span class="n">b</span> <span class="bp">&#8739;</span> <span class="n">a</span> <span class="o">:=</span> <span class="kd">by</span>
+  <span class="n">rw</span> <span class="o">[</span><span class="n">gcd</span><span class="o">]</span>
+  <span class="n">split_ifs</span> <span class="k">with</span> <span class="n">h1</span> <span class="n">h2</span> <span class="bp">&lt;;&gt;</span> <span class="n">push_neg</span> <span class="n">at</span> <span class="bp">*</span>
+  <span class="bp">&#183;</span> <span class="c1">-- case `0 &lt; b`</span>
+    <span class="k">have</span> <span class="n">IH</span> <span class="o">:</span> <span class="n">_</span> <span class="bp">&#8743;</span> <span class="n">_</span> <span class="o">:=</span> <span class="n">gcd_dvd</span> <span class="n">b</span> <span class="o">(</span><span class="n">fmod</span> <span class="n">a</span> <span class="n">b</span><span class="o">)</span> <span class="c1">-- inductive hypothesis</span>
+    <span class="n">obtain</span> <span class="o">&#10216;</span><span class="n">IH_right</span><span class="o">,</span> <span class="n">IH_left</span><span class="o">&#10217;</span> <span class="o">:=</span> <span class="n">IH</span>
+    <span class="n">constructor</span>
+    <span class="bp">&#183;</span> <span class="c1">-- prove that `gcd a b &#8739; b`</span>
+      <span class="gr">sorry</span>
+    <span class="bp">&#183;</span> <span class="c1">-- prove that `gcd a b &#8739; a`</span>
+      <span class="gr">sorry</span>
+  <span class="bp">&#183;</span> <span class="c1">-- case `b &lt; 0`</span>
+    <span class="k">have</span> <span class="n">IH</span> <span class="o">:</span> <span class="n">_</span> <span class="bp">&#8743;</span> <span class="n">_</span> <span class="o">:=</span> <span class="n">gcd_dvd</span> <span class="n">b</span> <span class="o">(</span><span class="n">fmod</span> <span class="n">a</span> <span class="o">(</span><span class="bp">-</span><span class="n">b</span><span class="o">))</span> <span class="c1">-- inductive hypothesis</span>
+    <span class="n">obtain</span> <span class="o">&#10216;</span><span class="n">IH_right</span><span class="o">,</span> <span class="n">IH_left</span><span class="o">&#10217;</span> <span class="o">:=</span> <span class="n">IH</span>
+    <span class="n">constructor</span>
+    <span class="bp">&#183;</span> <span class="c1">-- prove that `gcd a b &#8739; b`</span>
+      <span class="gr">sorry</span>
+    <span class="bp">&#183;</span> <span class="c1">-- prove that `gcd a b &#8739; a`</span>
+      <span class="gr">sorry</span>
+  <span class="bp">&#183;</span> <span class="c1">-- case `b = 0`, `0 &#8804; a`</span>
+    <span class="n">constructor</span>
+    <span class="bp">&#183;</span> <span class="c1">-- prove that `gcd a b &#8739; b`</span>
+      <span class="gr">sorry</span>
+    <span class="bp">&#183;</span> <span class="c1">-- prove that `gcd a b &#8739; a`</span>
+      <span class="gr">sorry</span>
+  <span class="bp">&#183;</span> <span class="c1">-- case `b = 0`, `a &lt; 0`</span>
+    <span class="n">constructor</span>
+    <span class="bp">&#183;</span> <span class="c1">-- prove that `gcd a b &#8739; b`</span>
+      <span class="gr">sorry</span>
+    <span class="bp">&#183;</span> <span class="c1">-- prove that `gcd a b &#8739; a`</span>
+      <span class="gr">sorry</span>
+<span class="n">termination_by</span> <span class="n">gcd_dvd</span> <span class="n">a</span> <span class="n">b</span> <span class="bp">=&gt;</span> <span class="n">b</span>
+</pre></div>
+</div>
+<p>But the constant switching between the <span class="math notranslate nohighlight">\(\operatorname{gcd}(a,b)\mid b\)</span> task and the
+<span class="math notranslate nohighlight">\(\operatorname{gcd}(a,b)\mid a\)</span> task is a little hard to keep track of.  A more elegant setup
+features two separate lemmas, one to show <span class="math notranslate nohighlight">\(\operatorname{gcd}(a,b)\mid b\)</span> and one to show
+<span class="math notranslate nohighlight">\(\operatorname{gcd}(a,b)\mid a\)</span>, with the following structure:</p>
+<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">theorem</span> <span class="n">gcd_dvd_right</span> <span class="o">(</span><span class="n">a</span> <span class="n">b</span> <span class="o">:</span> <span class="n">&#8484;</span><span class="o">)</span> <span class="o">:</span> <span class="n">gcd</span> <span class="n">a</span> <span class="n">b</span> <span class="bp">&#8739;</span> <span class="n">b</span> <span class="o">:=</span> <span class="kd">by</span>
+  <span class="n">rw</span> <span class="o">[</span><span class="n">gcd</span><span class="o">]</span>
+  <span class="n">split_ifs</span> <span class="k">with</span> <span class="n">h1</span> <span class="n">h2</span> <span class="bp">&lt;;&gt;</span> <span class="n">push_neg</span> <span class="n">at</span> <span class="bp">*</span>
+  <span class="bp">&#183;</span> <span class="c1">-- case `0 &lt; b`</span>
+    <span class="k">have</span> <span class="n">IH</span> <span class="o">:=</span> <span class="n">gcd_dvd_left</span> <span class="n">b</span> <span class="o">(</span><span class="n">fmod</span> <span class="n">a</span> <span class="n">b</span><span class="o">)</span> <span class="c1">-- inductive hypothesis</span>
+  <span class="bp">&#183;</span> <span class="c1">-- case `b &lt; 0`</span>
+    <span class="k">have</span> <span class="n">IH</span> <span class="o">:=</span> <span class="n">gcd_dvd_left</span> <span class="n">b</span> <span class="o">(</span><span class="n">fmod</span> <span class="n">a</span> <span class="o">(</span><span class="bp">-</span><span class="n">b</span><span class="o">))</span> <span class="c1">-- inductive hypothesis</span>
+  <span class="bp">&#183;</span> <span class="c1">-- case `b = 0`, `0 &#8804; a`</span>
+    <span class="gr">sorry</span>
+  <span class="bp">&#183;</span> <span class="c1">-- case `b = 0`, `a &lt; 0`</span>
+    <span class="gr">sorry</span>
+
+<span class="kd">theorem</span> <span class="n">gcd_dvd_left</span> <span class="o">(</span><span class="n">a</span> <span class="n">b</span> <span class="o">:</span> <span class="n">&#8484;</span><span class="o">)</span> <span class="o">:</span> <span class="n">gcd</span> <span class="n">a</span> <span class="n">b</span> <span class="bp">&#8739;</span> <span class="n">a</span> <span class="o">:=</span> <span class="kd">by</span>
+  <span class="n">rw</span> <span class="o">[</span><span class="n">gcd</span><span class="o">]</span>
+  <span class="n">split_ifs</span> <span class="k">with</span> <span class="n">h1</span> <span class="n">h2</span> <span class="bp">&lt;;&gt;</span> <span class="n">push_neg</span> <span class="n">at</span> <span class="bp">*</span>
+  <span class="bp">&#183;</span> <span class="c1">-- case `0 &lt; b`</span>
+    <span class="k">have</span> <span class="n">IH1</span> <span class="o">:=</span> <span class="n">gcd_dvd_left</span> <span class="n">b</span> <span class="o">(</span><span class="n">fmod</span> <span class="n">a</span> <span class="n">b</span><span class="o">)</span> <span class="c1">-- inductive hypothesis</span>
+    <span class="k">have</span> <span class="n">IH2</span> <span class="o">:=</span> <span class="n">gcd_dvd_right</span> <span class="n">b</span> <span class="o">(</span><span class="n">fmod</span> <span class="n">a</span> <span class="n">b</span><span class="o">)</span> <span class="c1">-- inductive hypothesis</span>
+    <span class="gr">sorry</span>
+  <span class="bp">&#183;</span> <span class="c1">-- case `b &lt; 0`</span>
+    <span class="k">have</span> <span class="n">IH1</span> <span class="o">:=</span> <span class="n">gcd_dvd_left</span> <span class="n">b</span> <span class="o">(</span><span class="n">fmod</span> <span class="n">a</span> <span class="o">(</span><span class="bp">-</span><span class="n">b</span><span class="o">))</span> <span class="c1">-- inductive hypothesis</span>
+    <span class="k">have</span> <span class="n">IH2</span> <span class="o">:=</span> <span class="n">gcd_dvd_right</span> <span class="n">b</span> <span class="o">(</span><span class="n">fmod</span> <span class="n">a</span> <span class="o">(</span><span class="bp">-</span><span class="n">b</span><span class="o">))</span> <span class="c1">-- inductive hypothesis</span>
+    <span class="gr">sorry</span>
+  <span class="bp">&#183;</span> <span class="c1">-- case `b = 0`, `0 &#8804; a`</span>
+    <span class="gr">sorry</span>
+  <span class="bp">&#183;</span> <span class="c1">-- case `b = 0`, `a &lt; 0`</span>
+    <span class="gr">sorry</span>
+</pre></div>
+</div>
+<p>But now the strong induction structure is complicated: the proof of <code class="docutils literal notranslate"><span class="pre">gcd_dvd_right</span></code> depends on
+<code class="docutils literal notranslate"><span class="pre">gcd_dvd_left</span></code> for smaller values of <code class="docutils literal notranslate"><span class="pre">a</span></code> and <code class="docutils literal notranslate"><span class="pre">b</span></code>, and the proof of <code class="docutils literal notranslate"><span class="pre">gcd_dvd_left</span></code> depends on
+<code class="docutils literal notranslate"><span class="pre">gcd_dvd_right</span></code> for smaller values of <code class="docutils literal notranslate"><span class="pre">a</span></code> and <code class="docutils literal notranslate"><span class="pre">b</span></code>.  This is called a <em>mutual induction</em> and it
+has a special syntax in Lean: the two theorems are enclosed in a <code class="docutils literal notranslate"><span class="pre">mutual</span></code> block, with a joint
+termination explanation at the end, like this:</p>
+<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">mutual</span>
+
+<span class="kd">theorem</span> <span class="n">gcd_dvd_right</span> <span class="o">(</span><span class="n">a</span> <span class="n">b</span> <span class="o">:</span> <span class="n">&#8484;</span><span class="o">)</span> <span class="o">:</span> <span class="n">gcd</span> <span class="n">a</span> <span class="n">b</span> <span class="bp">&#8739;</span> <span class="n">b</span> <span class="o">:=</span> <span class="kd">by</span>
+  <span class="bp">...</span>
+
+<span class="kd">theorem</span> <span class="n">gcd_dvd_left</span> <span class="o">(</span><span class="n">a</span> <span class="n">b</span> <span class="o">:</span> <span class="n">&#8484;</span><span class="o">)</span> <span class="o">:</span> <span class="n">gcd</span> <span class="n">a</span> <span class="n">b</span> <span class="bp">&#8739;</span> <span class="n">a</span> <span class="o">:=</span> <span class="kd">by</span>
+  <span class="bp">...</span>
+
+<span class="kd">end</span>
+<span class="n">termination_by</span> <span class="n">gcd_dvd_right</span> <span class="n">a</span> <span class="n">b</span> <span class="bp">=&gt;</span> <span class="n">b</span> <span class="bp">;</span> <span class="n">gcd_dvd_left</span> <span class="n">a</span> <span class="n">b</span> <span class="bp">=&gt;</span> <span class="n">b</span>
+</pre></div>
+</div>
+<p>Here is the full proof in Lean.</p>
 <div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">mutual</span>
 <span class="kd">theorem</span> <span class="n">gcd_dvd_right</span> <span class="o">(</span><span class="n">a</span> <span class="n">b</span> <span class="o">:</span> <span class="n">&#8484;</span><span class="o">)</span> <span class="o">:</span> <span class="n">gcd</span> <span class="n">a</span> <span class="n">b</span> <span class="bp">&#8739;</span> <span class="n">b</span> <span class="o">:=</span> <span class="kd">by</span>
   <span class="n">rw</span> <span class="o">[</span><span class="n">gcd</span><span class="o">]</span>
@@ -2219,10 +2373,10 @@ prove later (see the exercises) that in fact it is the <em>greatest common divis
     <span class="k">have</span> <span class="n">H</span> <span class="o">:</span> <span class="n">fmod</span> <span class="n">a</span> <span class="n">b</span> <span class="bp">+</span> <span class="n">b</span> <span class="bp">*</span> <span class="n">fdiv</span> <span class="n">a</span> <span class="n">b</span> <span class="bp">=</span> <span class="n">a</span> <span class="o">:=</span> <span class="n">fmod_add_fdiv</span> <span class="n">a</span> <span class="n">b</span>
     <span class="n">set</span> <span class="n">q</span> <span class="o">:=</span> <span class="n">fdiv</span> <span class="n">a</span> <span class="n">b</span>
     <span class="n">set</span> <span class="n">r</span> <span class="o">:=</span> <span class="n">fmod</span> <span class="n">a</span> <span class="n">b</span>
-    <span class="n">take</span> <span class="n">k</span> <span class="bp">*</span> <span class="n">q</span> <span class="bp">+</span> <span class="n">l</span>
+    <span class="n">take</span> <span class="n">l</span> <span class="bp">+</span> <span class="n">k</span> <span class="bp">*</span> <span class="n">q</span>
     <span class="k">calc</span> <span class="n">a</span> <span class="bp">=</span> <span class="n">r</span> <span class="bp">+</span> <span class="n">b</span> <span class="bp">*</span> <span class="n">q</span> <span class="o">:=</span> <span class="kd">by</span> <span class="n">rw</span> <span class="o">[</span><span class="n">H</span><span class="o">]</span>
       <span class="n">_</span> <span class="bp">=</span> <span class="n">gcd</span> <span class="n">b</span> <span class="n">r</span> <span class="bp">*</span> <span class="n">l</span> <span class="bp">+</span> <span class="o">(</span><span class="n">gcd</span> <span class="n">b</span> <span class="n">r</span> <span class="bp">*</span> <span class="n">k</span><span class="o">)</span> <span class="bp">*</span> <span class="n">q</span> <span class="o">:=</span> <span class="kd">by</span> <span class="n">rw</span> <span class="o">[</span><span class="bp">&#8592;</span> <span class="n">hk</span><span class="o">,</span> <span class="bp">&#8592;</span> <span class="n">hl</span><span class="o">]</span>
-      <span class="n">_</span> <span class="bp">=</span> <span class="n">gcd</span> <span class="n">b</span> <span class="n">r</span> <span class="bp">*</span> <span class="o">(</span><span class="n">k</span> <span class="bp">*</span> <span class="n">q</span> <span class="bp">+</span> <span class="n">l</span><span class="o">)</span> <span class="o">:=</span> <span class="kd">by</span> <span class="n">ring</span>
+      <span class="n">_</span> <span class="bp">=</span> <span class="n">gcd</span> <span class="n">b</span> <span class="n">r</span> <span class="bp">*</span> <span class="o">(</span><span class="n">l</span> <span class="bp">+</span> <span class="n">k</span> <span class="bp">*</span> <span class="n">q</span><span class="o">)</span> <span class="o">:=</span> <span class="kd">by</span> <span class="n">ring</span>
   <span class="bp">&#183;</span> <span class="c1">-- case `b &lt; 0`</span>
     <span class="k">have</span> <span class="n">IH1</span> <span class="o">:=</span> <span class="n">gcd_dvd_left</span> <span class="n">b</span> <span class="o">(</span><span class="n">fmod</span> <span class="n">a</span> <span class="o">(</span><span class="bp">-</span><span class="n">b</span><span class="o">))</span> <span class="c1">-- inductive hypothesis</span>
     <span class="k">have</span> <span class="n">IH2</span> <span class="o">:=</span> <span class="n">gcd_dvd_right</span> <span class="n">b</span> <span class="o">(</span><span class="n">fmod</span> <span class="n">a</span> <span class="o">(</span><span class="bp">-</span><span class="n">b</span><span class="o">))</span> <span class="c1">-- inductive hypothesis</span>
@@ -2231,16 +2385,17 @@ prove later (see the exercises) that in fact it is the <em>greatest common divis
     <span class="k">have</span> <span class="n">H</span> <span class="o">:=</span> <span class="n">fmod_add_fdiv</span> <span class="n">a</span> <span class="o">(</span><span class="bp">-</span><span class="n">b</span><span class="o">)</span>
     <span class="n">set</span> <span class="n">q</span> <span class="o">:=</span> <span class="n">fdiv</span> <span class="n">a</span> <span class="o">(</span><span class="bp">-</span><span class="n">b</span><span class="o">)</span>
     <span class="n">set</span> <span class="n">r</span> <span class="o">:=</span> <span class="n">fmod</span> <span class="n">a</span> <span class="o">(</span><span class="bp">-</span><span class="n">b</span><span class="o">)</span>
-    <span class="n">take</span> <span class="bp">-</span><span class="n">k</span> <span class="bp">*</span> <span class="n">q</span> <span class="bp">+</span> <span class="n">l</span>
+    <span class="n">take</span> <span class="n">l</span> <span class="bp">-</span> <span class="n">k</span> <span class="bp">*</span> <span class="n">q</span>
     <span class="k">calc</span> <span class="n">a</span> <span class="bp">=</span> <span class="n">r</span> <span class="bp">+</span> <span class="o">(</span><span class="bp">-</span><span class="n">b</span><span class="o">)</span> <span class="bp">*</span> <span class="n">q</span> <span class="o">:=</span> <span class="kd">by</span> <span class="n">rw</span> <span class="o">[</span><span class="n">H</span><span class="o">]</span>
       <span class="n">_</span> <span class="bp">=</span> <span class="n">gcd</span> <span class="n">b</span> <span class="n">r</span> <span class="bp">*</span> <span class="n">l</span> <span class="bp">+</span> <span class="o">(</span><span class="bp">-</span> <span class="o">(</span><span class="n">gcd</span> <span class="n">b</span> <span class="n">r</span> <span class="bp">*</span> <span class="n">k</span><span class="o">))</span> <span class="bp">*</span> <span class="n">q</span> <span class="o">:=</span> <span class="kd">by</span> <span class="n">rw</span> <span class="o">[</span><span class="bp">&#8592;</span> <span class="n">hk</span><span class="o">,</span> <span class="bp">&#8592;</span> <span class="n">hl</span><span class="o">]</span>
-      <span class="n">_</span> <span class="bp">=</span> <span class="n">gcd</span> <span class="n">b</span> <span class="n">r</span> <span class="bp">*</span> <span class="o">(</span><span class="bp">-</span><span class="n">k</span> <span class="bp">*</span> <span class="n">q</span> <span class="bp">+</span> <span class="n">l</span><span class="o">)</span> <span class="o">:=</span> <span class="kd">by</span> <span class="n">ring</span>
+      <span class="n">_</span> <span class="bp">=</span> <span class="n">gcd</span> <span class="n">b</span> <span class="n">r</span> <span class="bp">*</span> <span class="o">(</span><span class="n">l</span> <span class="bp">-</span> <span class="n">k</span> <span class="bp">*</span> <span class="n">q</span><span class="o">)</span> <span class="o">:=</span> <span class="kd">by</span> <span class="n">ring</span>
   <span class="bp">&#183;</span> <span class="c1">-- case `b = 0`, `0 &#8804; a`</span>
     <span class="n">take</span> <span class="mi">1</span>
     <span class="n">ring</span>
   <span class="bp">&#183;</span> <span class="c1">-- case `b = 0`, `a &lt; 0`</span>
     <span class="n">take</span> <span class="bp">-</span><span class="mi">1</span>
     <span class="n">ring</span>
+
 <span class="kd">end</span>
 <span class="n">termination_by</span> <span class="n">gcd_dvd_right</span> <span class="n">a</span> <span class="n">b</span> <span class="bp">=&gt;</span> <span class="n">b</span> <span class="bp">;</span> <span class="n">gcd_dvd_left</span> <span class="n">a</span> <span class="n">b</span> <span class="bp">=&gt;</span> <span class="n">b</span>
 </pre></div>
@@ -2264,7 +2419,7 @@ omit the text proof but see below for a Lean proof).</p>
 numbers satisfy the same property</p>
 <div class="math notranslate nohighlight">
 \[n = 2 \operatorname{div}(n, 2) + \operatorname{mod}(n, 2)\]</div>
-<p>as recorded in <a class="reference internal" href="#div-add-mod"><span class="std std-numref">Example 6.6.2</span></a> for integers; in Lean this
+<p>as recorded in <a class="reference internal" href="#mod-add-div"><span class="std std-numref">Example 6.6.2</span></a> for integers; in Lean this
 is the theorem <code class="docutils literal notranslate"><span class="pre">Nat.div_add_mod</span></code>.</p>
 </li>
 </ol>

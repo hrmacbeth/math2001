@@ -76,5 +76,14 @@ termination_by _ a b => a + b
 /-! # Exercises -/
 
 
+theorem pascal_symm (m n : ℕ) : pascal m n = pascal n m := by
+  match m, n with
+  | 0, 0 => sorry
+  | a + 1, 0 => sorry
+  | 0, b + 1 => sorry
+  | a + 1, b + 1 => sorry
+termination_by _ a b => a + b
+
+
 example (a : ℕ) : pascal a 1 = a + 1 := by
   sorry
