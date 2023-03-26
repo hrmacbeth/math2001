@@ -9,22 +9,22 @@ import Math2001.Tactic.Take
 set_option linter.unusedVariables false
 
 
-def mod (n d : ℤ) : ℤ :=
+def fmod (n d : ℤ) : ℤ :=
   if n * d < 0 then
-    mod (n + d) d
+    fmod (n + d) d
   else if h2 : 0 < d * (n - d) then
-    mod (n - d) d
+    fmod (n - d) d
   else if h3 : n = d then
     0
   else
     n
 termination_by _ n d => 2 * n - d
 
-def div (n d : ℤ) : ℤ :=
+def fdiv (n d : ℤ) : ℤ :=
   if n * d < 0 then
-    div (n + d) d - 1
+    fdiv (n + d) d - 1
   else if 0 < d * (n - d) then
-    div (n - d) d + 1
+    fdiv (n - d) d + 1
   else if h3 : n = d then
     1
   else
@@ -32,23 +32,23 @@ def div (n d : ℤ) : ℤ :=
 termination_by _ n d => 2 * n - d
 
 
-#eval mod 11 4 -- infoview displays `3`
-#eval div 11 4 -- infoview displays `2`
+#eval fmod 11 4 -- infoview displays `3`
+#eval fdiv 11 4 -- infoview displays `2`
 
 
-theorem div_add_mod (n d : ℤ) : d * div n d + mod n d = n := by
-  rw [div, mod]
+theorem fdiv_add_fmod (n d : ℤ) : d * fdiv n d + fmod n d = n := by
+  rw [fdiv, fmod]
   split_ifs with h1 h2 h3 <;> push_neg at *
   · -- case `n * d < 0`
-    have IH := div_add_mod (n + d) d
-    calc d * (div (n + d) d - 1) + mod (n + d) d
-        = (d * div (n + d) d + mod (n + d) d) - d := by ring
+    have IH := fdiv_add_fmod (n + d) d
+    calc d * (fdiv (n + d) d - 1) + fmod (n + d) d
+        = (d * fdiv (n + d) d + fmod (n + d) d) - d := by ring
       _ = (n + d) - d := by rw [IH]
       _ = n := by ring
   · -- case `0 < d * (n - d)`
-    have IH := div_add_mod (n - d) d
-    calc d * (div (n - d) d + 1) + mod (n - d) d
-        = (d * div (n - d) d + mod (n - d) d) + d := by ring
+    have IH := fdiv_add_fmod (n - d) d
+    calc d * (fdiv (n - d) d + 1) + fmod (n - d) d
+        = (d * fdiv (n - d) d + fmod (n - d) d) + d := by ring
         _ = n := by addarith [IH]
   · -- case `n = d`
     calc d * 1 + 0 = d := by ring
@@ -59,13 +59,13 @@ termination_by _ n d => 2 * n - d
 
 
 
-theorem mod_nonneg (n : ℤ) {d : ℤ} (hd : 0 < d) : 0 ≤ mod n d := by
-  rw [mod]
+theorem fmod_nonneg (n : ℤ) {d : ℤ} (hd : 0 < d) : 0 ≤ fmod n d := by
+  rw [fmod]
   split_ifs with h1 h2 h3 <;> push_neg at *
   · -- case `n * d < 0`
-    exact mod_nonneg (n + d) hd
+    exact fmod_nonneg (n + d) hd
   · -- case `0 < d * (n - d)`
-    exact mod_nonneg (n - d) hd
+    exact fmod_nonneg (n - d) hd
   · -- case `n = d`
     extra
   · -- last case
@@ -75,13 +75,13 @@ theorem mod_nonneg (n : ℤ) {d : ℤ} (hd : 0 < d) : 0 ≤ mod n d := by
 termination_by _ n d hd => 2 * n - d
 
 
-theorem mod_lt (n : ℤ) {d : ℤ} (hd : 0 < d) : mod n d < d := by
-  rw [mod]
+theorem fmod_lt (n : ℤ) {d : ℤ} (hd : 0 < d) : fmod n d < d := by
+  rw [fmod]
   split_ifs with h1 h2 h3 <;> push_neg at *
   · -- case `n * d < 0`
-    exact mod_lt (n + d) hd
+    exact fmod_lt (n + d) hd
   · -- case `0 < d * (n - d)`
-    exact mod_lt (n - d) hd
+    exact fmod_lt (n - d) hd
   · -- case `n = d`
     exact hd
   · -- last case
@@ -97,13 +97,13 @@ termination_by _ n d hd => 2 * n - d
 
 
 example (a b : ℤ) (h : 0 < b) : ∃ r : ℤ, 0 ≤ r ∧ r < b ∧ a ≡ r [ZMOD b] := by
-  take mod a b
+  take fmod a b
   constructor
-  · apply mod_nonneg a h
+  · apply fmod_nonneg a h
   constructor
-  · apply mod_lt a h
-  · take div a b
-    have Hab : b * div a b + mod a b = a := div_add_mod a b
+  · apply fmod_lt a h
+  · take fdiv a b
+    have Hab : b * fdiv a b + fmod a b = a := fdiv_add_fmod a b
     addarith [Hab]
 
 /-! # Exercises -/
