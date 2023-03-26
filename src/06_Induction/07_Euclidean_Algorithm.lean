@@ -69,9 +69,9 @@ theorem gcd_dvd_right (a b : ℤ) : gcd a b ∣ b := by
   rw [gcd]
   split_ifs with h1 h2 <;> push_neg at *
   · -- case `0 < b`
-    exact gcd_dvd_left b (fmod a b)
+    exact gcd_dvd_left b (fmod a b) -- inductive hypothesis
   · -- case `b < 0`
-    exact gcd_dvd_left b (fmod a (-b))
+    exact gcd_dvd_left b (fmod a (-b)) -- inductive hypothesis
   · -- case `b = 0`, `0 ≤ a`
     have hb : b = 0 := le_antisymm h1 h2
     take 0
@@ -87,8 +87,8 @@ theorem gcd_dvd_left (a b : ℤ) : gcd a b ∣ a := by
   rw [gcd]
   split_ifs with h1 h2 <;> push_neg at *
   · -- case `0 < b`
-    have IH1 := gcd_dvd_left b (fmod a b)
-    have IH2 := gcd_dvd_right b (fmod a b)
+    have IH1 := gcd_dvd_left b (fmod a b) -- inductive hypothesis
+    have IH2 := gcd_dvd_right b (fmod a b) -- inductive hypothesis
     obtain ⟨k, hk⟩ := IH1
     obtain ⟨l, hl⟩ := IH2
     have H : fmod a b + b * fdiv a b = a := fmod_add_fdiv a b
@@ -99,8 +99,8 @@ theorem gcd_dvd_left (a b : ℤ) : gcd a b ∣ a := by
       _ = gcd b r * l + (gcd b r * k) * q := by rw [← hk, ← hl]
       _ = gcd b r * (k * q + l) := by ring
   · -- case `b < 0`
-    have IH1 := gcd_dvd_left b (fmod a (-b))
-    have IH2 := gcd_dvd_right b (fmod a (-b))
+    have IH1 := gcd_dvd_left b (fmod a (-b)) -- inductive hypothesis
+    have IH2 := gcd_dvd_right b (fmod a (-b)) -- inductive hypothesis
     obtain ⟨k, hk⟩ := IH1
     obtain ⟨l, hl⟩ := IH2
     have H := fmod_add_fdiv a (-b)
@@ -150,7 +150,7 @@ termination_by L a b => b ; R a b => b
 theorem L_mul_add_R_mul (a b : ℤ) : L a b * a + R a b * b = gcd a b := by
   rw [R, L, gcd]
   split_ifs with h1 h2 <;> push_neg at *
-  · have := L_mul_add_R_mul b (fmod a b)
+  · have := L_mul_add_R_mul b (fmod a b) -- inductive hypothesis
     have H : fmod a b + b * fdiv a b = a := fmod_add_fdiv a b
     set q := fdiv a b
     set r := fmod a b
@@ -158,7 +158,7 @@ theorem L_mul_add_R_mul (a b : ℤ) : L a b * a + R a b * b = gcd a b := by
         = R b r * (r + b * q) + (L b r - q * R b r) * b:= by rw [H]
       _ = L b r * b + R b r * r := by ring
       _ = gcd b r := this
-  · have := L_mul_add_R_mul b (fmod a (-b))
+  · have := L_mul_add_R_mul b (fmod a (-b)) -- inductive hypothesis
     have H : fmod a (-b) + (-b) * fdiv a (-b) = a := fmod_add_fdiv a (-b)
     set q := fdiv a (-b)
     set r := fmod a (-b)

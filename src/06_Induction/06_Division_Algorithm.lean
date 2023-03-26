@@ -40,13 +40,13 @@ theorem fmod_add_fdiv (n d : ℤ) : fmod n d + d * fdiv n d = n := by
   rw [fdiv, fmod]
   split_ifs with h1 h2 h3 <;> push_neg at *
   · -- case `n * d < 0`
-    have IH := fmod_add_fdiv (n + d) d
+    have IH := fmod_add_fdiv (n + d) d -- inductive hypothesis
     calc fmod (n + d) d + d * (fdiv (n + d) d - 1)
         = (fmod (n + d) d + d * fdiv (n + d) d) - d := by ring
       _ = (n + d) - d := by rw [IH]
       _ = n := by ring
   · -- case `0 < d * (n - d)`
-    have IH := fmod_add_fdiv (n - d) d
+    have IH := fmod_add_fdiv (n - d) d -- inductive hypothesis
     calc fmod (n - d) d + d * (fdiv (n - d) d + 1)
         = (fmod (n - d) d + d * fdiv (n - d) d) + d := by ring
         _ = n := by addarith [IH]
@@ -63,9 +63,9 @@ theorem fmod_nonneg_of_pos (n : ℤ) {d : ℤ} (hd : 0 < d) : 0 ≤ fmod n d := 
   rw [fmod]
   split_ifs with h1 h2 h3 <;> push_neg at *
   · -- case `n * d < 0`
-    exact fmod_nonneg_of_pos (n + d) hd
+    exact fmod_nonneg_of_pos (n + d) hd -- inductive hypothesis
   · -- case `0 < d * (n - d)`
-    exact fmod_nonneg_of_pos (n - d) hd
+    exact fmod_nonneg_of_pos (n - d) hd -- inductive hypothesis
   · -- case `n = d`
     extra
   · -- last case
@@ -79,9 +79,9 @@ theorem fmod_lt_of_pos (n : ℤ) {d : ℤ} (hd : 0 < d) : fmod n d < d := by
   rw [fmod]
   split_ifs with h1 h2 h3 <;> push_neg at *
   · -- case `n * d < 0`
-    exact fmod_lt_of_pos (n + d) hd
+    exact fmod_lt_of_pos (n + d) hd -- inductive hypothesis
   · -- case `0 < d * (n - d)`
-    exact fmod_lt_of_pos (n - d) hd
+    exact fmod_lt_of_pos (n - d) hd -- inductive hypothesis
   · -- case `n = d`
     exact hd
   · -- last case

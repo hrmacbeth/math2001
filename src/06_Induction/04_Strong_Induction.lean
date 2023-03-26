@@ -66,7 +66,7 @@ theorem exists_prime_factor {n : ℕ} (hn2 : 2 ≤ n) : ∃ p : ℕ, Prime p ∧
       ring
   . -- case 2: `n` is not prime
     obtain ⟨m, hmn, _, ⟨x, hx⟩⟩ := exists_factor_of_not_prime hn hn2
-    have IH : ∃ p, Prime p ∧ p ∣ m := exists_prime_factor hmn -- inductive step
+    have IH : ∃ p, Prime p ∧ p ∣ m := exists_prime_factor hmn -- inductive hypothesis
     obtain ⟨p, hp, y, hy⟩ := IH
     take p
     constructor

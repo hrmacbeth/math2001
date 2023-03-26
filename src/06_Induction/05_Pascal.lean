@@ -33,8 +33,8 @@ theorem pascal_le (a b : ℕ) : pascal a b ≤ (a + b)! := by
       calc pascal 0 (b + 1) = 1 := by rw [pascal]
         _ ≤ (0 + (b + 1))! := by apply factorial_pos
   | a + 1, b + 1 =>
-      have IH1 := pascal_le (a + 1) b
-      have IH2 := pascal_le a (b + 1)
+      have IH1 := pascal_le (a + 1) b -- inductive hypothesis
+      have IH2 := pascal_le a (b + 1) -- inductive hypothesis
       calc pascal (a + 1) (b + 1) = pascal (a + 1) b + pascal a (b + 1) := by rw [pascal]
         _ ≤ (a + 1 + b) ! + (a + (b + 1)) ! := by rel [IH1, IH2]
         _ ≤ (a + b) * (a + b + 1) ! + (a + 1 + b) ! + (a + (b + 1)) !  := by extra
@@ -55,8 +55,8 @@ theorem pascal_eq (a b : ℕ) : pascal a b * a ! * b ! = (a + b)! := by
       _ = 1 * 1 * (b + 1)! := by rw [factorial, factorial]
       _ = (0 + (b + 1))! := by ring
   | a + 1, b + 1 =>
-    have IH1 := pascal_eq (a + 1) b
-    have IH2 := pascal_eq a (b + 1)
+    have IH1 := pascal_eq (a + 1) b -- inductive hypothesis
+    have IH2 := pascal_eq a (b + 1) -- inductive hypothesis
     calc
       pascal (a + 1) (b + 1) * (a + 1)! * (b + 1)! 
         = (pascal (a + 1) b + pascal a (b + 1)) * (a + 1)! * (b + 1)! := by rw [pascal]
