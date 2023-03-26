@@ -92,9 +92,9 @@
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#the-division-algorithm">6.6. The Division Algorithm</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#id29">6.6.1. Definition</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#div-add-fmod">6.6.2. Example</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#fmod-nonneg">6.6.3. Example</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#fmod-lt">6.6.4. Example</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#div-add-mod">6.6.2. Example</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#mod-nonneg">6.6.3. Example</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#mod-lt">6.6.4. Example</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#weak-division-algorithm">6.6.5. Example</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#id34">6.6.6. Exercises</a></li>
 </ul>
@@ -1698,42 +1698,42 @@ work using Lean.  For example,</p>
 <span id="constructive-division-algorithm"></span><h2><span class="section-number">6.6. </span>The Division Algorithm<a class="headerlink" href="#the-division-algorithm" title="Permalink to this headline">&#61633;</a></h2>
 <section id="id29">
 <h3><span class="section-number">6.6.1. </span>Definition<a class="headerlink" href="#id29" title="Permalink to this headline">&#61633;</a></h3>
-<p>Consider the functions <span class="math notranslate nohighlight">\(\operatorname{fmod}\)</span> and <span class="math notranslate nohighlight">\(\operatorname{fdiv}\)</span> defined recursively
+<p>Consider the functions <span class="math notranslate nohighlight">\(\operatorname{mod}\)</span> and <span class="math notranslate nohighlight">\(\operatorname{div}\)</span> defined recursively
 on the integers by,</p>
 <div class="math notranslate nohighlight">
-\[\begin{split}\operatorname{fmod}(n, d)&amp;=
+\[\begin{split}\operatorname{mod}(n, d)&amp;=
 \begin{cases}
-\operatorname{fmod}(n + d, d),&amp;nd&lt;0\\
-\operatorname{fmod}(n - d, d),&amp;0&lt;d(n-d)\\
+\operatorname{mod}(n + d, d),&amp;nd&lt;0\\
+\operatorname{mod}(n - d, d),&amp;0&lt;d(n-d)\\
 0,&amp;n=d\\
 n,&amp;0\le nd\le d^2\text{ and }n\ne d
 \end{cases}\\
-\operatorname{fdiv}(n, d)&amp;=
+\operatorname{div}(n, d)&amp;=
 \begin{cases}
-\operatorname{fdiv}(n + d, d)-1,&amp;nd&lt;0\\
-\operatorname{fdiv}(n - d, d)+1,&amp;0&lt;d(n-d)\\
+\operatorname{div}(n + d, d)-1,&amp;nd&lt;0\\
+\operatorname{div}(n - d, d)+1,&amp;0&lt;d(n-d)\\
 1,&amp;n=d\\
 0,&amp;0\le nd\le d^2\text{ and }n\ne d
 \end{cases}\end{split}\]</div>
-<p>The idea will be that <span class="math notranslate nohighlight">\(\operatorname{fdiv}\)</span> computes the quotient of <span class="math notranslate nohighlight">\(n\)</span> by <span class="math notranslate nohighlight">\(d\)</span>
+<p>The idea will be that <span class="math notranslate nohighlight">\(\operatorname{div}\)</span> computes the quotient of <span class="math notranslate nohighlight">\(n\)</span> by <span class="math notranslate nohighlight">\(d\)</span>
 (in the elementary-school sense where we produce an integer rather than continuing into decimal
-places), and <span class="math notranslate nohighlight">\(\operatorname{fmod}\)</span> computes the remainder of <span class="math notranslate nohighlight">\(n\)</span> on division by
+places), and <span class="math notranslate nohighlight">\(\operatorname{mod}\)</span> computes the remainder of <span class="math notranslate nohighlight">\(n\)</span> on division by
 <span class="math notranslate nohighlight">\(d\)</span>.   For example,</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}&amp;&amp;&amp;\qquad&amp;&amp;
-  \operatorname{fmod}(11,4)&amp;&amp;\qquad&amp;&amp;
-  \operatorname{fdiv}(11,4)\\
+  \operatorname{mod}(11,4)&amp;&amp;\qquad&amp;&amp;
+  \operatorname{div}(11,4)\\
 0&amp;&lt;4(11-4)&amp;&amp;\qquad&amp;&amp;
-  =\operatorname{fmod}(7,4)&amp;&amp;\qquad&amp;&amp;
-  =\operatorname{fdiv}(7,4)+1\\
+  =\operatorname{mod}(7,4)&amp;&amp;\qquad&amp;&amp;
+  =\operatorname{div}(7,4)+1\\
 0&amp;&lt;4(7-4)&amp;&amp;\qquad&amp;
-  &amp;=\operatorname{fmod}(3,4)&amp;&amp;\qquad&amp;
-  &amp;=(\operatorname{fdiv}(3,4)+1)+1\\
+  &amp;=\operatorname{mod}(3,4)&amp;&amp;\qquad&amp;
+  &amp;=(\operatorname{div}(3,4)+1)+1\\
 0\le 4\cdot 3\le 4^2,4&amp;\ne 3&amp;&amp;\qquad&amp;
 &amp;=3&amp;&amp;\qquad&amp;&amp;=(0+1)+1\\
 &amp;&amp;&amp;&amp;&amp;&amp;&amp;&amp;&amp;=2.\end{split}\]</div>
 <p>These definitions are <em>well-founded</em> because each step of the definition depends only on previous
-terms <span class="math notranslate nohighlight">\(\operatorname{fmod}(n, d)\)</span>, <span class="math notranslate nohighlight">\(\operatorname{fdiv}(n, d)\)</span> for which the expression
+terms <span class="math notranslate nohighlight">\(\operatorname{mod}(n, d)\)</span>, <span class="math notranslate nohighlight">\(\operatorname{div}(n, d)\)</span> for which the expression
 <span class="math notranslate nohighlight">\(2n - d\)</span> is strictly smaller in absolute value.  (This is not very obvious, although Lean can
 prove it automatically.  As a sanity check,</p>
 <div class="math notranslate nohighlight">
@@ -1771,69 +1771,69 @@ expressed using the syntax <code class="docutils literal notranslate"><span clas
 </pre></div>
 </div>
 <p>Compute a few examples yourself (checking your work with Lean) and see if you believe that
-<span class="math notranslate nohighlight">\(\operatorname{fdiv}\)</span> and <span class="math notranslate nohighlight">\(\operatorname{fmod}\)</span> are producing &#8220;quotient&#8221; and &#8220;remainder&#8221;.
+<span class="math notranslate nohighlight">\(\operatorname{div}\)</span> and <span class="math notranslate nohighlight">\(\operatorname{mod}\)</span> are producing &#8220;quotient&#8221; and &#8220;remainder&#8221;.
 Now let&#8217;s make that rigorous.</p>
 </section>
-<section id="div-add-fmod">
-<span id="id30"></span><h3><span class="section-number">6.6.2. </span>Example<a class="headerlink" href="#div-add-fmod" title="Permalink to this headline">&#61633;</a></h3>
+<section id="div-add-mod">
+<span id="id30"></span><h3><span class="section-number">6.6.2. </span>Example<a class="headerlink" href="#div-add-mod" title="Permalink to this headline">&#61633;</a></h3>
 <div class="admonition-theorem admonition">
 <p class="admonition-title">Theorem</p>
 <p>For any integers <span class="math notranslate nohighlight">\(n\)</span> and <span class="math notranslate nohighlight">\(d\)</span>, we have that
-<span class="math notranslate nohighlight">\(d \cdot \operatorname{fdiv}(n, d) + \operatorname{fmod}(n, d) = n\)</span>.</p>
+<span class="math notranslate nohighlight">\(\operatorname{mod}(n, d) + d \cdot \operatorname{div}(n, d) = n\)</span>.</p>
 </div>
 <div class="admonition-proof admonition">
 <p class="admonition-title">Proof</p>
 <p>We prove this by strong induction relative to the expression <span class="math notranslate nohighlight">\(2n - d\)</span>.  Suppose that for all
 integers <span class="math notranslate nohighlight">\(m\)</span> and <span class="math notranslate nohighlight">\(c\)</span> with <span class="math notranslate nohighlight">\(|2m - c|&lt;|2n-d|\)</span>, it is true that
-<span class="math notranslate nohighlight">\(d \cdot \operatorname{fdiv}(n, d) + \operatorname{fmod}(n, d) = n\)</span>.</p>
+<span class="math notranslate nohighlight">\(\operatorname{mod}(n, d) + d \cdot \operatorname{div}(n, d) = n\)</span>.</p>
 <p><strong>Case 1</strong> (<span class="math notranslate nohighlight">\(nd&lt;0\)</span>): Then by the inductive hypothesis</p>
 <div class="math notranslate nohighlight">
-\[d \cdot \operatorname{fdiv}(n+d, d) + \operatorname{fmod}(n+d, d) = n+d,\]</div>
+\[\operatorname{mod}(n+d, d) + d \cdot \operatorname{div}(n+d, d) = n+d,\]</div>
 <p>so</p>
 <div class="math notranslate nohighlight">
-\[\begin{split}d \cdot \operatorname{fdiv}(n, d) + \operatorname{fmod}(n, d)
-&amp;=d \cdot (\operatorname{fdiv}(n+d, d) -1)+ \operatorname{fmod}(n+d, d)\\
-&amp;=(d \cdot \operatorname{fdiv}(n+d, d) + \operatorname{fmod}(n+d, d))-d\\
+\[\begin{split}\operatorname{mod}(n, d) + d \cdot \operatorname{div}(n, d)
+&amp;=\operatorname{mod}(n+d, d) + d \cdot (\operatorname{div}(n+d, d) -1)\\
+&amp;=(\operatorname{mod}(n+d, d) + d \cdot \operatorname{div}(n+d, d))-d\\
 &amp;=(n+d)-d\\
 &amp;=n.\end{split}\]</div>
 <p><strong>Case 2</strong> (<span class="math notranslate nohighlight">\(0&lt;d(n-d)\)</span>): Then by the inductive hypothesis</p>
 <div class="math notranslate nohighlight">
-\[d \cdot \operatorname{fdiv}(n-d, d) + \operatorname{fmod}(n-d, d) = n-d,\]</div>
+\[\operatorname{mod}(n-d, d) + d \cdot \operatorname{div}(n-d, d) = n-d,\]</div>
 <p>so</p>
 <div class="math notranslate nohighlight">
-\[\begin{split}d \cdot \operatorname{fdiv}(n, d) + \operatorname{fmod}(n, d)
-&amp;=d \cdot (\operatorname{fdiv}(n-d, d) +1)+ \operatorname{fmod}(n-d, d)\\
-&amp;=(d \cdot \operatorname{fdiv}(n-d, d) + \operatorname{fmod}(n-d, d))+d\\
+\[\begin{split}\operatorname{mod}(n, d) + d \cdot \operatorname{div}(n, d)
+&amp;=\operatorname{mod}(n-d, d) + d \cdot (\operatorname{div}(n-d, d) +1)\\
+&amp;=(\operatorname{mod}(n-d, d) + d \cdot \operatorname{div}(n-d, d))+d\\
 &amp;=(n-d)+d\\
 &amp;=n.\end{split}\]</div>
 <p><strong>Case 3</strong> (<span class="math notranslate nohighlight">\(n=d\)</span>): Then</p>
 <div class="math notranslate nohighlight">
-\[\begin{split}d \cdot \operatorname{fdiv}(n, d) + \operatorname{fmod}(n, d)
-&amp;=d\cdot 1+0\\
+\[\begin{split}\operatorname{mod}(n, d) + d \cdot \operatorname{div}(n, d)
+&amp;=0 + d\cdot 1\\
 &amp;=d\\
 &amp;=n.\end{split}\]</div>
 <p><strong>Case 4</strong>: In this case,</p>
 <div class="math notranslate nohighlight">
-\[\begin{split}d \cdot \operatorname{fdiv}(n, d) + \operatorname{fmod}(n, d)
-&amp;=d\cdot 0+n\\
+\[\begin{split}\operatorname{mod}(n, d) + d \cdot \operatorname{div}(n, d)
+&amp;=n + d\cdot 0\\
 &amp;=n.\end{split}\]</div>
 </div>
-<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">theorem</span> <span class="n">fdiv_add_fmod</span> <span class="o">(</span><span class="n">n</span> <span class="n">d</span> <span class="o">:</span> <span class="n">&#8484;</span><span class="o">)</span> <span class="o">:</span> <span class="n">d</span> <span class="bp">*</span> <span class="n">fdiv</span> <span class="n">n</span> <span class="n">d</span> <span class="bp">+</span> <span class="n">fmod</span> <span class="n">n</span> <span class="n">d</span> <span class="bp">=</span> <span class="n">n</span> <span class="o">:=</span> <span class="kd">by</span>
+<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">theorem</span> <span class="n">fmod_add_fdiv</span> <span class="o">(</span><span class="n">n</span> <span class="n">d</span> <span class="o">:</span> <span class="n">&#8484;</span><span class="o">)</span> <span class="o">:</span> <span class="n">fmod</span> <span class="n">n</span> <span class="n">d</span> <span class="bp">+</span> <span class="n">d</span> <span class="bp">*</span> <span class="n">fdiv</span> <span class="n">n</span> <span class="n">d</span> <span class="bp">=</span> <span class="n">n</span> <span class="o">:=</span> <span class="kd">by</span>
   <span class="n">rw</span> <span class="o">[</span><span class="n">fdiv</span><span class="o">,</span> <span class="n">fmod</span><span class="o">]</span>
   <span class="n">split_ifs</span> <span class="k">with</span> <span class="n">h1</span> <span class="n">h2</span> <span class="n">h3</span> <span class="bp">&lt;;&gt;</span> <span class="n">push_neg</span> <span class="n">at</span> <span class="bp">*</span>
   <span class="bp">&#183;</span> <span class="c1">-- case `n * d &lt; 0`</span>
-    <span class="k">have</span> <span class="n">IH</span> <span class="o">:=</span> <span class="n">fdiv_add_fmod</span> <span class="o">(</span><span class="n">n</span> <span class="bp">+</span> <span class="n">d</span><span class="o">)</span> <span class="n">d</span>
-    <span class="k">calc</span> <span class="n">d</span> <span class="bp">*</span> <span class="o">(</span><span class="n">fdiv</span> <span class="o">(</span><span class="n">n</span> <span class="bp">+</span> <span class="n">d</span><span class="o">)</span> <span class="n">d</span> <span class="bp">-</span> <span class="mi">1</span><span class="o">)</span> <span class="bp">+</span> <span class="n">fmod</span> <span class="o">(</span><span class="n">n</span> <span class="bp">+</span> <span class="n">d</span><span class="o">)</span> <span class="n">d</span>
-        <span class="bp">=</span> <span class="o">(</span><span class="n">d</span> <span class="bp">*</span> <span class="n">fdiv</span> <span class="o">(</span><span class="n">n</span> <span class="bp">+</span> <span class="n">d</span><span class="o">)</span> <span class="n">d</span> <span class="bp">+</span> <span class="n">fmod</span> <span class="o">(</span><span class="n">n</span> <span class="bp">+</span> <span class="n">d</span><span class="o">)</span> <span class="n">d</span><span class="o">)</span> <span class="bp">-</span> <span class="n">d</span> <span class="o">:=</span> <span class="kd">by</span> <span class="n">ring</span>
+    <span class="k">have</span> <span class="n">IH</span> <span class="o">:=</span> <span class="n">fmod_add_fdiv</span> <span class="o">(</span><span class="n">n</span> <span class="bp">+</span> <span class="n">d</span><span class="o">)</span> <span class="n">d</span>
+    <span class="k">calc</span> <span class="n">fmod</span> <span class="o">(</span><span class="n">n</span> <span class="bp">+</span> <span class="n">d</span><span class="o">)</span> <span class="n">d</span> <span class="bp">+</span> <span class="n">d</span> <span class="bp">*</span> <span class="o">(</span><span class="n">fdiv</span> <span class="o">(</span><span class="n">n</span> <span class="bp">+</span> <span class="n">d</span><span class="o">)</span> <span class="n">d</span> <span class="bp">-</span> <span class="mi">1</span><span class="o">)</span>
+        <span class="bp">=</span> <span class="o">(</span><span class="n">fmod</span> <span class="o">(</span><span class="n">n</span> <span class="bp">+</span> <span class="n">d</span><span class="o">)</span> <span class="n">d</span> <span class="bp">+</span> <span class="n">d</span> <span class="bp">*</span> <span class="n">fdiv</span> <span class="o">(</span><span class="n">n</span> <span class="bp">+</span> <span class="n">d</span><span class="o">)</span> <span class="n">d</span><span class="o">)</span> <span class="bp">-</span> <span class="n">d</span> <span class="o">:=</span> <span class="kd">by</span> <span class="n">ring</span>
       <span class="n">_</span> <span class="bp">=</span> <span class="o">(</span><span class="n">n</span> <span class="bp">+</span> <span class="n">d</span><span class="o">)</span> <span class="bp">-</span> <span class="n">d</span> <span class="o">:=</span> <span class="kd">by</span> <span class="n">rw</span> <span class="o">[</span><span class="n">IH</span><span class="o">]</span>
       <span class="n">_</span> <span class="bp">=</span> <span class="n">n</span> <span class="o">:=</span> <span class="kd">by</span> <span class="n">ring</span>
   <span class="bp">&#183;</span> <span class="c1">-- case `0 &lt; d * (n - d)`</span>
-    <span class="k">have</span> <span class="n">IH</span> <span class="o">:=</span> <span class="n">fdiv_add_fmod</span> <span class="o">(</span><span class="n">n</span> <span class="bp">-</span> <span class="n">d</span><span class="o">)</span> <span class="n">d</span>
-    <span class="k">calc</span> <span class="n">d</span> <span class="bp">*</span> <span class="o">(</span><span class="n">fdiv</span> <span class="o">(</span><span class="n">n</span> <span class="bp">-</span> <span class="n">d</span><span class="o">)</span> <span class="n">d</span> <span class="bp">+</span> <span class="mi">1</span><span class="o">)</span> <span class="bp">+</span> <span class="n">fmod</span> <span class="o">(</span><span class="n">n</span> <span class="bp">-</span> <span class="n">d</span><span class="o">)</span> <span class="n">d</span>
-        <span class="bp">=</span> <span class="o">(</span><span class="n">d</span> <span class="bp">*</span> <span class="n">fdiv</span> <span class="o">(</span><span class="n">n</span> <span class="bp">-</span> <span class="n">d</span><span class="o">)</span> <span class="n">d</span> <span class="bp">+</span> <span class="n">fmod</span> <span class="o">(</span><span class="n">n</span> <span class="bp">-</span> <span class="n">d</span><span class="o">)</span> <span class="n">d</span><span class="o">)</span> <span class="bp">+</span> <span class="n">d</span> <span class="o">:=</span> <span class="kd">by</span> <span class="n">ring</span>
+    <span class="k">have</span> <span class="n">IH</span> <span class="o">:=</span> <span class="n">fmod_add_fdiv</span> <span class="o">(</span><span class="n">n</span> <span class="bp">-</span> <span class="n">d</span><span class="o">)</span> <span class="n">d</span>
+    <span class="k">calc</span> <span class="n">fmod</span> <span class="o">(</span><span class="n">n</span> <span class="bp">-</span> <span class="n">d</span><span class="o">)</span> <span class="n">d</span> <span class="bp">+</span> <span class="n">d</span> <span class="bp">*</span> <span class="o">(</span><span class="n">fdiv</span> <span class="o">(</span><span class="n">n</span> <span class="bp">-</span> <span class="n">d</span><span class="o">)</span> <span class="n">d</span> <span class="bp">+</span> <span class="mi">1</span><span class="o">)</span>
+        <span class="bp">=</span> <span class="o">(</span><span class="n">fmod</span> <span class="o">(</span><span class="n">n</span> <span class="bp">-</span> <span class="n">d</span><span class="o">)</span> <span class="n">d</span> <span class="bp">+</span> <span class="n">d</span> <span class="bp">*</span> <span class="n">fdiv</span> <span class="o">(</span><span class="n">n</span> <span class="bp">-</span> <span class="n">d</span><span class="o">)</span> <span class="n">d</span><span class="o">)</span> <span class="bp">+</span> <span class="n">d</span> <span class="o">:=</span> <span class="kd">by</span> <span class="n">ring</span>
         <span class="n">_</span> <span class="bp">=</span> <span class="n">n</span> <span class="o">:=</span> <span class="kd">by</span> <span class="n">addarith</span> <span class="o">[</span><span class="n">IH</span><span class="o">]</span>
   <span class="bp">&#183;</span> <span class="c1">-- case `n = d`</span>
-    <span class="k">calc</span> <span class="n">d</span> <span class="bp">*</span> <span class="mi">1</span> <span class="bp">+</span> <span class="mi">0</span> <span class="bp">=</span> <span class="n">d</span> <span class="o">:=</span> <span class="kd">by</span> <span class="n">ring</span>
+    <span class="k">calc</span> <span class="mi">0</span> <span class="bp">+</span> <span class="n">d</span> <span class="bp">*</span> <span class="mi">1</span> <span class="bp">=</span> <span class="n">d</span> <span class="o">:=</span> <span class="kd">by</span> <span class="n">ring</span>
       <span class="n">_</span> <span class="bp">=</span> <span class="n">n</span> <span class="o">:=</span> <span class="kd">by</span> <span class="n">rw</span> <span class="o">[</span><span class="n">h3</span><span class="o">]</span>
   <span class="bp">&#183;</span> <span class="c1">-- last case</span>
     <span class="n">ring</span>
@@ -1841,35 +1841,35 @@ integers <span class="math notranslate nohighlight">\(m\)</span> and <span class
 </pre></div>
 </div>
 </section>
-<section id="fmod-nonneg">
-<span id="id31"></span><h3><span class="section-number">6.6.3. </span>Example<a class="headerlink" href="#fmod-nonneg" title="Permalink to this headline">&#61633;</a></h3>
+<section id="mod-nonneg">
+<span id="id31"></span><h3><span class="section-number">6.6.3. </span>Example<a class="headerlink" href="#mod-nonneg" title="Permalink to this headline">&#61633;</a></h3>
 <div class="admonition-theorem admonition">
 <p class="admonition-title">Theorem</p>
 <p>For any integers <span class="math notranslate nohighlight">\(n\)</span> and <span class="math notranslate nohighlight">\(d\)</span>, with <span class="math notranslate nohighlight">\(d\)</span> positive, we have that
-<span class="math notranslate nohighlight">\(\operatorname{fmod}(n, d)\)</span> is nonnegative.</p>
+<span class="math notranslate nohighlight">\(\operatorname{mod}(n, d)\)</span> is nonnegative.</p>
 </div>
 <div class="admonition-proof admonition">
 <p class="admonition-title">Proof</p>
 <p>We prove this by strong induction relative to the expression <span class="math notranslate nohighlight">\(2n - d\)</span>.  Suppose that for all
 integers <span class="math notranslate nohighlight">\(m\)</span> and <span class="math notranslate nohighlight">\(c\)</span> with <span class="math notranslate nohighlight">\(c\)</span> positive and <span class="math notranslate nohighlight">\(|2m - c|&lt;|2n-d|\)</span>, it is true
-that <span class="math notranslate nohighlight">\(\operatorname{fmod}(m, c)\)</span> is nonnegative.</p>
+that <span class="math notranslate nohighlight">\(\operatorname{mod}(m, c)\)</span> is nonnegative.</p>
 <p><strong>Case 1</strong> (<span class="math notranslate nohighlight">\(nd&lt;0\)</span>): Then by the inductive hypothesis
-<span class="math notranslate nohighlight">\(\operatorname{fmod}(n, d)=\operatorname{fmod}(n + d, d)\geq 0\)</span>.</p>
+<span class="math notranslate nohighlight">\(\operatorname{mod}(n, d)=\operatorname{mod}(n + d, d)\geq 0\)</span>.</p>
 <p><strong>Case 2</strong> (<span class="math notranslate nohighlight">\(0&lt;d(n-d)\)</span>): Then by the inductive hypothesis
-<span class="math notranslate nohighlight">\(\operatorname{fmod}(n, d)=\operatorname{fmod}(n - d, d)\geq 0\)</span>.</p>
-<p><strong>Case 3</strong> (<span class="math notranslate nohighlight">\(n=d\)</span>): Then <span class="math notranslate nohighlight">\(\operatorname{fmod}(n, d)= 0\)</span>, so
-<span class="math notranslate nohighlight">\(\operatorname{fmod}(n, d)\geq 0\)</span>.</p>
+<span class="math notranslate nohighlight">\(\operatorname{mod}(n, d)=\operatorname{mod}(n - d, d)\geq 0\)</span>.</p>
+<p><strong>Case 3</strong> (<span class="math notranslate nohighlight">\(n=d\)</span>): Then <span class="math notranslate nohighlight">\(\operatorname{mod}(n, d)= 0\)</span>, so
+<span class="math notranslate nohighlight">\(\operatorname{mod}(n, d)\geq 0\)</span>.</p>
 <p><strong>Case 4</strong> (<span class="math notranslate nohighlight">\(0\le nd\le d^2\)</span> and <span class="math notranslate nohighlight">\(n\ne d\)</span>): Then since
 <span class="math notranslate nohighlight">\(0\le nd\)</span> and by hypothesis <span class="math notranslate nohighlight">\(0&lt;d\)</span>, we have that
-<span class="math notranslate nohighlight">\(\operatorname{fmod}(n, d)=n\geq 0\)</span>.</p>
+<span class="math notranslate nohighlight">\(\operatorname{mod}(n, d)=n\geq 0\)</span>.</p>
 </div>
-<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">theorem</span> <span class="n">fmod_nonneg</span> <span class="o">(</span><span class="n">n</span> <span class="o">:</span> <span class="n">&#8484;</span><span class="o">)</span> <span class="o">{</span><span class="n">d</span> <span class="o">:</span> <span class="n">&#8484;</span><span class="o">}</span> <span class="o">(</span><span class="n">hd</span> <span class="o">:</span> <span class="mi">0</span> <span class="bp">&lt;</span> <span class="n">d</span><span class="o">)</span> <span class="o">:</span> <span class="mi">0</span> <span class="bp">&#8804;</span> <span class="n">fmod</span> <span class="n">n</span> <span class="n">d</span> <span class="o">:=</span> <span class="kd">by</span>
+<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">theorem</span> <span class="n">fmod_nonneg_of_pos</span> <span class="o">(</span><span class="n">n</span> <span class="o">:</span> <span class="n">&#8484;</span><span class="o">)</span> <span class="o">{</span><span class="n">d</span> <span class="o">:</span> <span class="n">&#8484;</span><span class="o">}</span> <span class="o">(</span><span class="n">hd</span> <span class="o">:</span> <span class="mi">0</span> <span class="bp">&lt;</span> <span class="n">d</span><span class="o">)</span> <span class="o">:</span> <span class="mi">0</span> <span class="bp">&#8804;</span> <span class="n">fmod</span> <span class="n">n</span> <span class="n">d</span> <span class="o">:=</span> <span class="kd">by</span>
   <span class="n">rw</span> <span class="o">[</span><span class="n">fmod</span><span class="o">]</span>
   <span class="n">split_ifs</span> <span class="k">with</span> <span class="n">h1</span> <span class="n">h2</span> <span class="n">h3</span> <span class="bp">&lt;;&gt;</span> <span class="n">push_neg</span> <span class="n">at</span> <span class="bp">*</span>
   <span class="bp">&#183;</span> <span class="c1">-- case `n * d &lt; 0`</span>
-    <span class="n">exact</span> <span class="n">fmod_nonneg</span> <span class="o">(</span><span class="n">n</span> <span class="bp">+</span> <span class="n">d</span><span class="o">)</span> <span class="n">hd</span>
+    <span class="n">exact</span> <span class="n">fmod_nonneg_of_pos</span> <span class="o">(</span><span class="n">n</span> <span class="bp">+</span> <span class="n">d</span><span class="o">)</span> <span class="n">hd</span>
   <span class="bp">&#183;</span> <span class="c1">-- case `0 &lt; d * (n - d)`</span>
-    <span class="n">exact</span> <span class="n">fmod_nonneg</span> <span class="o">(</span><span class="n">n</span> <span class="bp">-</span> <span class="n">d</span><span class="o">)</span> <span class="n">hd</span>
+    <span class="n">exact</span> <span class="n">fmod_nonneg_of_pos</span> <span class="o">(</span><span class="n">n</span> <span class="bp">-</span> <span class="n">d</span><span class="o">)</span> <span class="n">hd</span>
   <span class="bp">&#183;</span> <span class="c1">-- case `n = d`</span>
     <span class="n">extra</span>
   <span class="bp">&#183;</span> <span class="c1">-- last case</span>
@@ -1880,34 +1880,34 @@ that <span class="math notranslate nohighlight">\(\operatorname{fmod}(m, c)\)</s
 </pre></div>
 </div>
 </section>
-<section id="fmod-lt">
-<span id="id32"></span><h3><span class="section-number">6.6.4. </span>Example<a class="headerlink" href="#fmod-lt" title="Permalink to this headline">&#61633;</a></h3>
+<section id="mod-lt">
+<span id="id32"></span><h3><span class="section-number">6.6.4. </span>Example<a class="headerlink" href="#mod-lt" title="Permalink to this headline">&#61633;</a></h3>
 <div class="admonition-theorem admonition">
 <p class="admonition-title">Theorem</p>
 <p>For any integers <span class="math notranslate nohighlight">\(n\)</span> and <span class="math notranslate nohighlight">\(d\)</span>, with <span class="math notranslate nohighlight">\(d\)</span> positive, we have that
-<span class="math notranslate nohighlight">\(\operatorname{fmod}(n, d)&lt;d\)</span>.</p>
+<span class="math notranslate nohighlight">\(\operatorname{mod}(n, d)&lt;d\)</span>.</p>
 </div>
 <div class="admonition-proof admonition">
 <p class="admonition-title">Proof</p>
 <p>We prove this by strong induction relative to the expression <span class="math notranslate nohighlight">\(2n - d\)</span>.  Suppose that for all
 integers <span class="math notranslate nohighlight">\(m\)</span> and <span class="math notranslate nohighlight">\(c\)</span> with <span class="math notranslate nohighlight">\(c\)</span> positive and <span class="math notranslate nohighlight">\(|2m - c|&lt;|2n-d|\)</span>, it is true
-that <span class="math notranslate nohighlight">\(\operatorname{fmod}(m, c)&lt;c\)</span>.</p>
+that <span class="math notranslate nohighlight">\(\operatorname{mod}(m, c)&lt;c\)</span>.</p>
 <p><strong>Case 1</strong> (<span class="math notranslate nohighlight">\(nd&lt;0\)</span>): Then by the inductive hypothesis
-<span class="math notranslate nohighlight">\(\operatorname{fmod}(n, d)=\operatorname{fmod}(n + d, d)&lt;d\)</span>.</p>
+<span class="math notranslate nohighlight">\(\operatorname{mod}(n, d)=\operatorname{mod}(n + d, d)&lt;d\)</span>.</p>
 <p><strong>Case 2</strong> (<span class="math notranslate nohighlight">\(0&lt;d(n-d)\)</span>): Then by the inductive hypothesis
-<span class="math notranslate nohighlight">\(\operatorname{fmod}(n, d)=\operatorname{fmod}(n - d, d)&lt;d\)</span>.</p>
-<p><strong>Case 3</strong> (<span class="math notranslate nohighlight">\(n=d\)</span>): Then <span class="math notranslate nohighlight">\(\operatorname{fmod}(n, d)= 0&lt;d\)</span> by hypothesis.</p>
+<span class="math notranslate nohighlight">\(\operatorname{mod}(n, d)=\operatorname{mod}(n - d, d)&lt;d\)</span>.</p>
+<p><strong>Case 3</strong> (<span class="math notranslate nohighlight">\(n=d\)</span>): Then <span class="math notranslate nohighlight">\(\operatorname{mod}(n, d)= 0&lt;d\)</span> by hypothesis.</p>
 <p><strong>Case 4</strong> (<span class="math notranslate nohighlight">\(0\le nd\le d^2\)</span> and <span class="math notranslate nohighlight">\(n\ne d\)</span>): We have that <span class="math notranslate nohighlight">\(n-d\le 0\)</span>, since
 <span class="math notranslate nohighlight">\(d(n-d)\le 0\)</span> and by hypothesis <span class="math notranslate nohighlight">\(0&lt;d\)</span>. Therefore <span class="math notranslate nohighlight">\(n\le d\)</span>. Also, by hypothesis,
 <span class="math notranslate nohighlight">\(n\ne d\)</span>.  Combining these, we have that <span class="math notranslate nohighlight">\(n&lt; d\)</span>.</p>
 </div>
-<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">theorem</span> <span class="n">fmod_lt</span> <span class="o">(</span><span class="n">n</span> <span class="o">:</span> <span class="n">&#8484;</span><span class="o">)</span> <span class="o">{</span><span class="n">d</span> <span class="o">:</span> <span class="n">&#8484;</span><span class="o">}</span> <span class="o">(</span><span class="n">hd</span> <span class="o">:</span> <span class="mi">0</span> <span class="bp">&lt;</span> <span class="n">d</span><span class="o">)</span> <span class="o">:</span> <span class="n">fmod</span> <span class="n">n</span> <span class="n">d</span> <span class="bp">&lt;</span> <span class="n">d</span> <span class="o">:=</span> <span class="kd">by</span>
+<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">theorem</span> <span class="n">fmod_lt_of_pos</span> <span class="o">(</span><span class="n">n</span> <span class="o">:</span> <span class="n">&#8484;</span><span class="o">)</span> <span class="o">{</span><span class="n">d</span> <span class="o">:</span> <span class="n">&#8484;</span><span class="o">}</span> <span class="o">(</span><span class="n">hd</span> <span class="o">:</span> <span class="mi">0</span> <span class="bp">&lt;</span> <span class="n">d</span><span class="o">)</span> <span class="o">:</span> <span class="n">fmod</span> <span class="n">n</span> <span class="n">d</span> <span class="bp">&lt;</span> <span class="n">d</span> <span class="o">:=</span> <span class="kd">by</span>
   <span class="n">rw</span> <span class="o">[</span><span class="n">fmod</span><span class="o">]</span>
   <span class="n">split_ifs</span> <span class="k">with</span> <span class="n">h1</span> <span class="n">h2</span> <span class="n">h3</span> <span class="bp">&lt;;&gt;</span> <span class="n">push_neg</span> <span class="n">at</span> <span class="bp">*</span>
   <span class="bp">&#183;</span> <span class="c1">-- case `n * d &lt; 0`</span>
-    <span class="n">exact</span> <span class="n">fmod_lt</span> <span class="o">(</span><span class="n">n</span> <span class="bp">+</span> <span class="n">d</span><span class="o">)</span> <span class="n">hd</span>
+    <span class="n">exact</span> <span class="n">fmod_lt_of_pos</span> <span class="o">(</span><span class="n">n</span> <span class="bp">+</span> <span class="n">d</span><span class="o">)</span> <span class="n">hd</span>
   <span class="bp">&#183;</span> <span class="c1">-- case `0 &lt; d * (n - d)`</span>
-    <span class="n">exact</span> <span class="n">fmod_lt</span> <span class="o">(</span><span class="n">n</span> <span class="bp">-</span> <span class="n">d</span><span class="o">)</span> <span class="n">hd</span>
+    <span class="n">exact</span> <span class="n">fmod_lt_of_pos</span> <span class="o">(</span><span class="n">n</span> <span class="bp">-</span> <span class="n">d</span><span class="o">)</span> <span class="n">hd</span>
   <span class="bp">&#183;</span> <span class="c1">-- case `n = d`</span>
     <span class="n">exact</span> <span class="n">hd</span>
   <span class="bp">&#183;</span> <span class="c1">-- last case</span>
@@ -1935,26 +1935,26 @@ integer <span class="math notranslate nohighlight">\(r\)</span>, with <span clas
 </div>
 <div class="admonition-proof admonition">
 <p class="admonition-title">Proof</p>
-<p>We will show that the integer <span class="math notranslate nohighlight">\(\operatorname{fmod}(a,b)\)</span> has this property.  Indeed, by
-<a class="reference internal" href="#fmod-nonneg"><span class="std std-numref">Example 6.6.3</span></a> and <a class="reference internal" href="#fmod-lt"><span class="std std-numref">Example 6.6.4</span></a>,
-<span class="math notranslate nohighlight">\(0 \le \operatorname{fmod}(a,b) &lt; b\)</span>, and by <a class="reference internal" href="#div-add-fmod"><span class="std std-numref">Example 6.6.2</span></a>,</p>
+<p>We will show that the integer <span class="math notranslate nohighlight">\(\operatorname{mod}(a,b)\)</span> has this property.  Indeed, by
+<a class="reference internal" href="#mod-nonneg"><span class="std std-numref">Example 6.6.3</span></a> and <a class="reference internal" href="#mod-lt"><span class="std std-numref">Example 6.6.4</span></a>,
+<span class="math notranslate nohighlight">\(0 \le \operatorname{mod}(a,b) &lt; b\)</span>, and by <a class="reference internal" href="#div-add-mod"><span class="std std-numref">Example 6.6.2</span></a>,</p>
 <div class="math notranslate nohighlight">
-\[b \cdot \operatorname{fdiv}(a, b) + \operatorname{fmod}(a, b) = a,\]</div>
+\[\operatorname{mod}(a, b) + b \cdot \operatorname{div}(a, b) = a,\]</div>
 <p>so</p>
 <div class="math notranslate nohighlight">
-\[a-\operatorname{fmod}(a, b)=b \cdot \operatorname{fdiv}(a, b),\]</div>
+\[a-\operatorname{mod}(a, b)=b \cdot \operatorname{div}(a, b),\]</div>
 <p>so</p>
 <div class="math notranslate nohighlight">
-\[a \equiv \operatorname{fmod}(a, b)\mod b.\]</div>
+\[a \equiv \operatorname{mod}(a, b)\mod b.\]</div>
 </div>
 <div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">(</span><span class="n">a</span> <span class="n">b</span> <span class="o">:</span> <span class="n">&#8484;</span><span class="o">)</span> <span class="o">(</span><span class="n">h</span> <span class="o">:</span> <span class="mi">0</span> <span class="bp">&lt;</span> <span class="n">b</span><span class="o">)</span> <span class="o">:</span> <span class="bp">&#8707;</span> <span class="n">r</span> <span class="o">:</span> <span class="n">&#8484;</span><span class="o">,</span> <span class="mi">0</span> <span class="bp">&#8804;</span> <span class="n">r</span> <span class="bp">&#8743;</span> <span class="n">r</span> <span class="bp">&lt;</span> <span class="n">b</span> <span class="bp">&#8743;</span> <span class="n">a</span> <span class="bp">&#8801;</span> <span class="n">r</span> <span class="o">[</span><span class="n">ZMOD</span> <span class="n">b</span><span class="o">]</span> <span class="o">:=</span> <span class="kd">by</span>
   <span class="n">take</span> <span class="n">fmod</span> <span class="n">a</span> <span class="n">b</span>
   <span class="n">constructor</span>
-  <span class="bp">&#183;</span> <span class="n">apply</span> <span class="n">fmod_nonneg</span> <span class="n">a</span> <span class="n">h</span>
+  <span class="bp">&#183;</span> <span class="n">apply</span> <span class="n">fmod_nonneg_of_pos</span> <span class="n">a</span> <span class="n">h</span>
   <span class="n">constructor</span>
-  <span class="bp">&#183;</span> <span class="n">apply</span> <span class="n">fmod_lt</span> <span class="n">a</span> <span class="n">h</span>
+  <span class="bp">&#183;</span> <span class="n">apply</span> <span class="n">fmod_lt_of_pos</span> <span class="n">a</span> <span class="n">h</span>
   <span class="bp">&#183;</span> <span class="n">take</span> <span class="n">fdiv</span> <span class="n">a</span> <span class="n">b</span>
-    <span class="k">have</span> <span class="n">Hab</span> <span class="o">:</span> <span class="n">b</span> <span class="bp">*</span> <span class="n">fdiv</span> <span class="n">a</span> <span class="n">b</span> <span class="bp">+</span> <span class="n">fmod</span> <span class="n">a</span> <span class="n">b</span> <span class="bp">=</span> <span class="n">a</span> <span class="o">:=</span> <span class="n">fdiv_add_fmod</span> <span class="n">a</span> <span class="n">b</span>
+    <span class="k">have</span> <span class="n">Hab</span> <span class="o">:</span> <span class="n">fmod</span> <span class="n">a</span> <span class="n">b</span> <span class="bp">+</span> <span class="n">b</span> <span class="bp">*</span> <span class="n">fdiv</span> <span class="n">a</span> <span class="n">b</span> <span class="bp">=</span> <span class="n">a</span> <span class="o">:=</span> <span class="n">fmod_add_fdiv</span> <span class="n">a</span> <span class="n">b</span>
     <span class="n">addarith</span> <span class="o">[</span><span class="n">Hab</span><span class="o">]</span>
 </pre></div>
 </div>
@@ -2056,9 +2056,9 @@ clause <code class="docutils literal notranslate"><span class="pre">termination_
 well-foundedness.</p>
 <div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">def</span> <span class="n">gcd</span> <span class="o">(</span><span class="n">a</span> <span class="n">b</span> <span class="o">:</span> <span class="n">&#8484;</span><span class="o">)</span> <span class="o">:</span> <span class="n">&#8484;</span> <span class="o">:=</span>
   <span class="k">if</span> <span class="mi">0</span> <span class="bp">&lt;</span> <span class="n">b</span> <span class="k">then</span>
-    <span class="n">gcd</span> <span class="n">b</span> <span class="o">(</span><span class="n">Int.fmod</span> <span class="n">a</span> <span class="n">b</span><span class="o">)</span>
+    <span class="n">gcd</span> <span class="n">b</span> <span class="o">(</span><span class="n">fmod</span> <span class="n">a</span> <span class="n">b</span><span class="o">)</span>
   <span class="k">else</span> <span class="k">if</span> <span class="n">b</span> <span class="bp">&lt;</span> <span class="mi">0</span> <span class="k">then</span>
-    <span class="n">gcd</span> <span class="n">b</span> <span class="o">(</span><span class="n">Int.fmod</span> <span class="n">a</span> <span class="o">(</span><span class="bp">-</span><span class="n">b</span><span class="o">))</span>
+    <span class="n">gcd</span> <span class="n">b</span> <span class="o">(</span><span class="n">fmod</span> <span class="n">a</span> <span class="o">(</span><span class="bp">-</span><span class="n">b</span><span class="o">))</span>
   <span class="k">else</span> <span class="k">if</span> <span class="mi">0</span> <span class="bp">&#8804;</span> <span class="n">a</span> <span class="k">then</span>
     <span class="n">a</span>
   <span class="k">else</span>
@@ -2079,7 +2079,7 @@ explicit proof.</p>
 <p>There are two things to check:</p>
 <ol class="arabic">
 <li><p><strong>If</strong> <span class="math notranslate nohighlight">\(0&lt;b\)</span> <strong>then</strong> <span class="math notranslate nohighlight">\(-b&lt;\operatorname{mod}(a,b)&lt;b\)</span>:
-By <code class="xref std std-numref docutils literal notranslate"><span class="pre">Example</span> <span class="pre">%s</span></code> and <code class="xref std std-numref docutils literal notranslate"><span class="pre">Example</span> <span class="pre">%s</span></code>,
+By <a class="reference internal" href="#mod-nonneg"><span class="std std-numref">Example 6.6.3</span></a> and <a class="reference internal" href="#mod-lt"><span class="std std-numref">Example 6.6.4</span></a>,
 <span class="math notranslate nohighlight">\(0\le \operatorname{mod}(a,b)&lt;b\)</span>, which establishes the upper bound immediately and the
 lower bound since</p>
 <blockquote>
@@ -2090,7 +2090,7 @@ lower bound since</p>
 </li>
 <li><p><strong>If</strong> <span class="math notranslate nohighlight">\(b&lt;0\)</span> <strong>then</strong> <span class="math notranslate nohighlight">\(b&lt;\operatorname{mod}(a,-b)&lt;-b\)</span>:
 We have that <span class="math notranslate nohighlight">\(0&lt;-b\)</span>,
-so by <code class="xref std std-numref docutils literal notranslate"><span class="pre">Example</span> <span class="pre">%s</span></code> and <code class="xref std std-numref docutils literal notranslate"><span class="pre">Example</span> <span class="pre">%s</span></code>,
+so by <a class="reference internal" href="#mod-nonneg"><span class="std std-numref">Example 6.6.3</span></a> and <a class="reference internal" href="#mod-lt"><span class="std std-numref">Example 6.6.4</span></a>,
 <span class="math notranslate nohighlight">\(0\le \operatorname{mod}(a,-b)&lt;-b\)</span>, which establishes the upper bound immediately and
 the lower bound since</p>
 <blockquote>
@@ -2104,34 +2104,34 @@ the lower bound since</p>
 <p>In Lean, we state and prove these facts separately, tagging them with the attribute
 <code class="docutils literal notranslate"><span class="pre">&#64;[decreasing]</span></code>, which lets the subsequent definition <code class="docutils literal notranslate"><span class="pre">gcd</span></code> call on them for the
 well-foundedness.  Check that if they are omitted then the definition gives an error.</p>
-<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">@[decreasing]</span> <span class="kd">theorem</span> <span class="n">lower_bound_fmod1</span> <span class="o">(</span><span class="n">a</span> <span class="n">b</span> <span class="o">:</span> <span class="n">&#8484;</span><span class="o">)</span> <span class="o">(</span><span class="n">h1</span> <span class="o">:</span> <span class="mi">0</span> <span class="bp">&lt;</span> <span class="n">b</span><span class="o">)</span> <span class="o">:</span> <span class="bp">-</span><span class="n">b</span> <span class="bp">&lt;</span> <span class="n">Int.fmod</span> <span class="n">a</span> <span class="n">b</span> <span class="o">:=</span> <span class="kd">by</span>
-  <span class="k">have</span> <span class="n">H</span> <span class="o">:</span> <span class="mi">0</span> <span class="bp">&#8804;</span> <span class="n">Int.fmod</span> <span class="n">a</span> <span class="n">b</span>
-  <span class="bp">&#183;</span> <span class="n">apply</span> <span class="n">Int.fmod_nonneg&#39;</span>
+<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">@[decreasing]</span> <span class="kd">theorem</span> <span class="n">lower_bound_fmod1</span> <span class="o">(</span><span class="n">a</span> <span class="n">b</span> <span class="o">:</span> <span class="n">&#8484;</span><span class="o">)</span> <span class="o">(</span><span class="n">h1</span> <span class="o">:</span> <span class="mi">0</span> <span class="bp">&lt;</span> <span class="n">b</span><span class="o">)</span> <span class="o">:</span> <span class="bp">-</span><span class="n">b</span> <span class="bp">&lt;</span> <span class="n">fmod</span> <span class="n">a</span> <span class="n">b</span> <span class="o">:=</span> <span class="kd">by</span>
+  <span class="k">have</span> <span class="n">H</span> <span class="o">:</span> <span class="mi">0</span> <span class="bp">&#8804;</span> <span class="n">fmod</span> <span class="n">a</span> <span class="n">b</span>
+  <span class="bp">&#183;</span> <span class="n">apply</span> <span class="n">fmod_nonneg_of_pos</span>
     <span class="n">apply</span> <span class="n">h1</span>
   <span class="k">calc</span> <span class="bp">-</span><span class="n">b</span> <span class="bp">&lt;</span> <span class="mi">0</span> <span class="o">:=</span> <span class="kd">by</span> <span class="n">addarith</span> <span class="o">[</span><span class="n">h1</span><span class="o">]</span>
     <span class="n">_</span> <span class="bp">&#8804;</span> <span class="n">_</span> <span class="o">:=</span> <span class="n">H</span>
 
-<span class="kd">@[decreasing]</span> <span class="kd">theorem</span> <span class="n">lower_bound_fmod2</span> <span class="o">(</span><span class="n">a</span> <span class="n">b</span> <span class="o">:</span> <span class="n">&#8484;</span><span class="o">)</span> <span class="o">(</span><span class="n">h1</span> <span class="o">:</span> <span class="n">b</span> <span class="bp">&lt;</span> <span class="mi">0</span><span class="o">)</span> <span class="o">:</span> <span class="n">b</span> <span class="bp">&lt;</span> <span class="n">Int.fmod</span> <span class="n">a</span> <span class="o">(</span><span class="bp">-</span><span class="n">b</span><span class="o">)</span> <span class="o">:=</span> <span class="kd">by</span>
-  <span class="k">have</span> <span class="n">H</span> <span class="o">:</span> <span class="mi">0</span> <span class="bp">&#8804;</span> <span class="n">Int.fmod</span> <span class="n">a</span> <span class="o">(</span><span class="bp">-</span><span class="n">b</span><span class="o">)</span>
-  <span class="bp">&#183;</span> <span class="n">apply</span> <span class="n">Int.fmod_nonneg&#39;</span>
+<span class="kd">@[decreasing]</span> <span class="kd">theorem</span> <span class="n">lower_bound_fmod2</span> <span class="o">(</span><span class="n">a</span> <span class="n">b</span> <span class="o">:</span> <span class="n">&#8484;</span><span class="o">)</span> <span class="o">(</span><span class="n">h1</span> <span class="o">:</span> <span class="n">b</span> <span class="bp">&lt;</span> <span class="mi">0</span><span class="o">)</span> <span class="o">:</span> <span class="n">b</span> <span class="bp">&lt;</span> <span class="n">fmod</span> <span class="n">a</span> <span class="o">(</span><span class="bp">-</span><span class="n">b</span><span class="o">)</span> <span class="o">:=</span> <span class="kd">by</span>
+  <span class="k">have</span> <span class="n">H</span> <span class="o">:</span> <span class="mi">0</span> <span class="bp">&#8804;</span> <span class="n">fmod</span> <span class="n">a</span> <span class="o">(</span><span class="bp">-</span><span class="n">b</span><span class="o">)</span>
+  <span class="bp">&#183;</span> <span class="n">apply</span> <span class="n">fmod_nonneg_of_pos</span>
     <span class="n">addarith</span> <span class="o">[</span><span class="n">h1</span><span class="o">]</span>
   <span class="k">have</span> <span class="n">h2</span> <span class="o">:</span> <span class="mi">0</span> <span class="bp">&lt;</span> <span class="bp">-</span><span class="n">b</span> <span class="o">:=</span> <span class="kd">by</span> <span class="n">addarith</span> <span class="o">[</span><span class="n">h1</span><span class="o">]</span>
   <span class="k">calc</span> <span class="n">b</span> <span class="bp">&lt;</span> <span class="mi">0</span> <span class="o">:=</span> <span class="n">h1</span>
-    <span class="n">_</span> <span class="bp">&#8804;</span> <span class="n">Int.fmod</span> <span class="n">a</span> <span class="o">(</span><span class="bp">-</span><span class="n">b</span><span class="o">)</span> <span class="o">:=</span> <span class="n">H</span>
+    <span class="n">_</span> <span class="bp">&#8804;</span> <span class="n">fmod</span> <span class="n">a</span> <span class="o">(</span><span class="bp">-</span><span class="n">b</span><span class="o">)</span> <span class="o">:=</span> <span class="n">H</span>
 
-<span class="kd">@[decreasing]</span> <span class="kd">theorem</span> <span class="n">upper_bound_fmod2</span> <span class="o">(</span><span class="n">a</span> <span class="n">b</span> <span class="o">:</span> <span class="n">&#8484;</span><span class="o">)</span> <span class="o">(</span><span class="n">h1</span> <span class="o">:</span> <span class="n">b</span> <span class="bp">&lt;</span> <span class="mi">0</span><span class="o">)</span> <span class="o">:</span> <span class="n">Int.fmod</span> <span class="n">a</span> <span class="o">(</span><span class="bp">-</span><span class="n">b</span><span class="o">)</span> <span class="bp">&lt;</span> <span class="bp">-</span><span class="n">b</span> <span class="o">:=</span> <span class="kd">by</span>
-  <span class="n">apply</span> <span class="n">Int.fmod_lt_of_pos</span>
+<span class="kd">@[decreasing]</span> <span class="kd">theorem</span> <span class="n">upper_bound_fmod2</span> <span class="o">(</span><span class="n">a</span> <span class="n">b</span> <span class="o">:</span> <span class="n">&#8484;</span><span class="o">)</span> <span class="o">(</span><span class="n">h1</span> <span class="o">:</span> <span class="n">b</span> <span class="bp">&lt;</span> <span class="mi">0</span><span class="o">)</span> <span class="o">:</span> <span class="n">fmod</span> <span class="n">a</span> <span class="o">(</span><span class="bp">-</span><span class="n">b</span><span class="o">)</span> <span class="bp">&lt;</span> <span class="bp">-</span><span class="n">b</span> <span class="o">:=</span> <span class="kd">by</span>
+  <span class="n">apply</span> <span class="n">fmod_lt_of_pos</span>
   <span class="n">addarith</span> <span class="o">[</span><span class="n">h1</span><span class="o">]</span>
 
-<span class="kd">@[decreasing]</span> <span class="kd">theorem</span> <span class="n">upper_bound_fmod1</span> <span class="o">(</span><span class="n">a</span> <span class="n">b</span> <span class="o">:</span> <span class="n">&#8484;</span><span class="o">)</span> <span class="o">(</span><span class="n">h1</span> <span class="o">:</span> <span class="mi">0</span> <span class="bp">&lt;</span> <span class="n">b</span><span class="o">)</span> <span class="o">:</span> <span class="n">Int.fmod</span> <span class="n">a</span> <span class="n">b</span> <span class="bp">&lt;</span> <span class="n">b</span> <span class="o">:=</span> <span class="kd">by</span>
-  <span class="n">apply</span> <span class="n">Int.fmod_lt_of_pos</span>
+<span class="kd">@[decreasing]</span> <span class="kd">theorem</span> <span class="n">upper_bound_fmod1</span> <span class="o">(</span><span class="n">a</span> <span class="n">b</span> <span class="o">:</span> <span class="n">&#8484;</span><span class="o">)</span> <span class="o">(</span><span class="n">h1</span> <span class="o">:</span> <span class="mi">0</span> <span class="bp">&lt;</span> <span class="n">b</span><span class="o">)</span> <span class="o">:</span> <span class="n">fmod</span> <span class="n">a</span> <span class="n">b</span> <span class="bp">&lt;</span> <span class="n">b</span> <span class="o">:=</span> <span class="kd">by</span>
+  <span class="n">apply</span> <span class="n">fmod_lt_of_pos</span>
   <span class="n">apply</span> <span class="n">h1</span>
 
 <span class="kd">def</span> <span class="n">gcd</span> <span class="o">(</span><span class="n">a</span> <span class="n">b</span> <span class="o">:</span> <span class="n">&#8484;</span><span class="o">)</span> <span class="o">:</span> <span class="n">&#8484;</span> <span class="o">:=</span>
   <span class="k">if</span> <span class="mi">0</span> <span class="bp">&lt;</span> <span class="n">b</span> <span class="k">then</span>
-    <span class="n">gcd</span> <span class="n">b</span> <span class="o">(</span><span class="n">Int.fmod</span> <span class="n">a</span> <span class="n">b</span><span class="o">)</span>
+    <span class="n">gcd</span> <span class="n">b</span> <span class="o">(</span><span class="n">fmod</span> <span class="n">a</span> <span class="n">b</span><span class="o">)</span>
   <span class="k">else</span> <span class="k">if</span> <span class="n">b</span> <span class="bp">&lt;</span> <span class="mi">0</span> <span class="k">then</span>
-    <span class="n">gcd</span> <span class="n">b</span> <span class="o">(</span><span class="n">Int.fmod</span> <span class="n">a</span> <span class="o">(</span><span class="bp">-</span><span class="n">b</span><span class="o">))</span>
+    <span class="n">gcd</span> <span class="n">b</span> <span class="o">(</span><span class="n">fmod</span> <span class="n">a</span> <span class="o">(</span><span class="bp">-</span><span class="n">b</span><span class="o">))</span>
   <span class="k">else</span> <span class="k">if</span> <span class="mi">0</span> <span class="bp">&#8804;</span> <span class="n">a</span> <span class="k">then</span>
     <span class="n">a</span>
   <span class="k">else</span>
@@ -2199,9 +2199,9 @@ prove later (see the exercises) that in fact it is the <em>greatest common divis
   <span class="n">rw</span> <span class="o">[</span><span class="n">gcd</span><span class="o">]</span>
   <span class="n">split_ifs</span> <span class="k">with</span> <span class="n">h1</span> <span class="n">h2</span> <span class="bp">&lt;;&gt;</span> <span class="n">push_neg</span> <span class="n">at</span> <span class="bp">*</span>
   <span class="bp">&#183;</span> <span class="c1">-- case `0 &lt; b`</span>
-    <span class="n">exact</span> <span class="n">gcd_dvd_left</span> <span class="n">b</span> <span class="o">(</span><span class="n">Int.fmod</span> <span class="n">a</span> <span class="n">b</span><span class="o">)</span>
+    <span class="n">exact</span> <span class="n">gcd_dvd_left</span> <span class="n">b</span> <span class="o">(</span><span class="n">fmod</span> <span class="n">a</span> <span class="n">b</span><span class="o">)</span>
   <span class="bp">&#183;</span> <span class="c1">-- case `b &lt; 0`</span>
-    <span class="n">exact</span> <span class="n">gcd_dvd_left</span> <span class="n">b</span> <span class="o">(</span><span class="n">Int.fmod</span> <span class="n">a</span> <span class="o">(</span><span class="bp">-</span><span class="n">b</span><span class="o">))</span>
+    <span class="n">exact</span> <span class="n">gcd_dvd_left</span> <span class="n">b</span> <span class="o">(</span><span class="n">fmod</span> <span class="n">a</span> <span class="o">(</span><span class="bp">-</span><span class="n">b</span><span class="o">))</span>
   <span class="bp">&#183;</span> <span class="c1">-- case `b = 0`, `0 &#8804; a`</span>
     <span class="k">have</span> <span class="n">hb</span> <span class="o">:</span> <span class="n">b</span> <span class="bp">=</span> <span class="mi">0</span> <span class="o">:=</span> <span class="n">le_antisymm</span> <span class="n">h1</span> <span class="n">h2</span>
     <span class="n">take</span> <span class="mi">0</span>
@@ -2217,25 +2217,25 @@ prove later (see the exercises) that in fact it is the <em>greatest common divis
   <span class="n">rw</span> <span class="o">[</span><span class="n">gcd</span><span class="o">]</span>
   <span class="n">split_ifs</span> <span class="k">with</span> <span class="n">h1</span> <span class="n">h2</span> <span class="bp">&lt;;&gt;</span> <span class="n">push_neg</span> <span class="n">at</span> <span class="bp">*</span>
   <span class="bp">&#183;</span> <span class="c1">-- case `0 &lt; b`</span>
-    <span class="k">have</span> <span class="n">IH1</span> <span class="o">:=</span> <span class="n">gcd_dvd_left</span> <span class="n">b</span> <span class="o">(</span><span class="n">Int.fmod</span> <span class="n">a</span> <span class="n">b</span><span class="o">)</span>
-    <span class="k">have</span> <span class="n">IH2</span> <span class="o">:=</span> <span class="n">gcd_dvd_right</span> <span class="n">b</span> <span class="o">(</span><span class="n">Int.fmod</span> <span class="n">a</span> <span class="n">b</span><span class="o">)</span>
+    <span class="k">have</span> <span class="n">IH1</span> <span class="o">:=</span> <span class="n">gcd_dvd_left</span> <span class="n">b</span> <span class="o">(</span><span class="n">fmod</span> <span class="n">a</span> <span class="n">b</span><span class="o">)</span>
+    <span class="k">have</span> <span class="n">IH2</span> <span class="o">:=</span> <span class="n">gcd_dvd_right</span> <span class="n">b</span> <span class="o">(</span><span class="n">fmod</span> <span class="n">a</span> <span class="n">b</span><span class="o">)</span>
     <span class="n">obtain</span> <span class="o">&#10216;</span><span class="n">k</span><span class="o">,</span> <span class="n">hk</span><span class="o">&#10217;</span> <span class="o">:=</span> <span class="n">IH1</span>
     <span class="n">obtain</span> <span class="o">&#10216;</span><span class="n">l</span><span class="o">,</span> <span class="n">hl</span><span class="o">&#10217;</span> <span class="o">:=</span> <span class="n">IH2</span>
-    <span class="k">have</span> <span class="n">H</span> <span class="o">:</span> <span class="n">Int.fmod</span> <span class="n">a</span> <span class="n">b</span> <span class="bp">+</span> <span class="n">b</span> <span class="bp">*</span> <span class="n">Int.fdiv</span> <span class="n">a</span> <span class="n">b</span> <span class="bp">=</span> <span class="n">a</span> <span class="o">:=</span> <span class="n">Int.fmod_add_fdiv</span> <span class="n">a</span> <span class="n">b</span>
-    <span class="n">set</span> <span class="n">q</span> <span class="o">:=</span> <span class="n">Int.fdiv</span> <span class="n">a</span> <span class="n">b</span>
-    <span class="n">set</span> <span class="n">r</span> <span class="o">:=</span> <span class="n">Int.fmod</span> <span class="n">a</span> <span class="n">b</span>
+    <span class="k">have</span> <span class="n">H</span> <span class="o">:</span> <span class="n">fmod</span> <span class="n">a</span> <span class="n">b</span> <span class="bp">+</span> <span class="n">b</span> <span class="bp">*</span> <span class="n">fdiv</span> <span class="n">a</span> <span class="n">b</span> <span class="bp">=</span> <span class="n">a</span> <span class="o">:=</span> <span class="n">fmod_add_fdiv</span> <span class="n">a</span> <span class="n">b</span>
+    <span class="n">set</span> <span class="n">q</span> <span class="o">:=</span> <span class="n">fdiv</span> <span class="n">a</span> <span class="n">b</span>
+    <span class="n">set</span> <span class="n">r</span> <span class="o">:=</span> <span class="n">fmod</span> <span class="n">a</span> <span class="n">b</span>
     <span class="n">take</span> <span class="n">k</span> <span class="bp">*</span> <span class="n">q</span> <span class="bp">+</span> <span class="n">l</span>
     <span class="k">calc</span> <span class="n">a</span> <span class="bp">=</span> <span class="n">r</span> <span class="bp">+</span> <span class="n">b</span> <span class="bp">*</span> <span class="n">q</span> <span class="o">:=</span> <span class="kd">by</span> <span class="n">rw</span> <span class="o">[</span><span class="n">H</span><span class="o">]</span>
       <span class="n">_</span> <span class="bp">=</span> <span class="n">gcd</span> <span class="n">b</span> <span class="n">r</span> <span class="bp">*</span> <span class="n">l</span> <span class="bp">+</span> <span class="o">(</span><span class="n">gcd</span> <span class="n">b</span> <span class="n">r</span> <span class="bp">*</span> <span class="n">k</span><span class="o">)</span> <span class="bp">*</span> <span class="n">q</span> <span class="o">:=</span> <span class="kd">by</span> <span class="n">rw</span> <span class="o">[</span><span class="bp">&#8592;</span> <span class="n">hk</span><span class="o">,</span> <span class="bp">&#8592;</span> <span class="n">hl</span><span class="o">]</span>
       <span class="n">_</span> <span class="bp">=</span> <span class="n">gcd</span> <span class="n">b</span> <span class="n">r</span> <span class="bp">*</span> <span class="o">(</span><span class="n">k</span> <span class="bp">*</span> <span class="n">q</span> <span class="bp">+</span> <span class="n">l</span><span class="o">)</span> <span class="o">:=</span> <span class="kd">by</span> <span class="n">ring</span>
   <span class="bp">&#183;</span> <span class="c1">-- case `b &lt; 0`</span>
-    <span class="k">have</span> <span class="n">IH1</span> <span class="o">:=</span> <span class="n">gcd_dvd_left</span> <span class="n">b</span> <span class="o">(</span><span class="n">Int.fmod</span> <span class="n">a</span> <span class="o">(</span><span class="bp">-</span><span class="n">b</span><span class="o">))</span>
-    <span class="k">have</span> <span class="n">IH2</span> <span class="o">:=</span> <span class="n">gcd_dvd_right</span> <span class="n">b</span> <span class="o">(</span><span class="n">Int.fmod</span> <span class="n">a</span> <span class="o">(</span><span class="bp">-</span><span class="n">b</span><span class="o">))</span>
+    <span class="k">have</span> <span class="n">IH1</span> <span class="o">:=</span> <span class="n">gcd_dvd_left</span> <span class="n">b</span> <span class="o">(</span><span class="n">fmod</span> <span class="n">a</span> <span class="o">(</span><span class="bp">-</span><span class="n">b</span><span class="o">))</span>
+    <span class="k">have</span> <span class="n">IH2</span> <span class="o">:=</span> <span class="n">gcd_dvd_right</span> <span class="n">b</span> <span class="o">(</span><span class="n">fmod</span> <span class="n">a</span> <span class="o">(</span><span class="bp">-</span><span class="n">b</span><span class="o">))</span>
     <span class="n">obtain</span> <span class="o">&#10216;</span><span class="n">k</span><span class="o">,</span> <span class="n">hk</span><span class="o">&#10217;</span> <span class="o">:=</span> <span class="n">IH1</span>
     <span class="n">obtain</span> <span class="o">&#10216;</span><span class="n">l</span><span class="o">,</span> <span class="n">hl</span><span class="o">&#10217;</span> <span class="o">:=</span> <span class="n">IH2</span>
-    <span class="k">have</span> <span class="n">H</span> <span class="o">:=</span> <span class="n">Int.fmod_add_fdiv</span> <span class="n">a</span> <span class="o">(</span><span class="bp">-</span><span class="n">b</span><span class="o">)</span>
-    <span class="n">set</span> <span class="n">q</span> <span class="o">:=</span> <span class="n">Int.fdiv</span> <span class="n">a</span> <span class="o">(</span><span class="bp">-</span><span class="n">b</span><span class="o">)</span>
-    <span class="n">set</span> <span class="n">r</span> <span class="o">:=</span> <span class="n">Int.fmod</span> <span class="n">a</span> <span class="o">(</span><span class="bp">-</span><span class="n">b</span><span class="o">)</span>
+    <span class="k">have</span> <span class="n">H</span> <span class="o">:=</span> <span class="n">fmod_add_fdiv</span> <span class="n">a</span> <span class="o">(</span><span class="bp">-</span><span class="n">b</span><span class="o">)</span>
+    <span class="n">set</span> <span class="n">q</span> <span class="o">:=</span> <span class="n">fdiv</span> <span class="n">a</span> <span class="o">(</span><span class="bp">-</span><span class="n">b</span><span class="o">)</span>
+    <span class="n">set</span> <span class="n">r</span> <span class="o">:=</span> <span class="n">fmod</span> <span class="n">a</span> <span class="o">(</span><span class="bp">-</span><span class="n">b</span><span class="o">)</span>
     <span class="n">take</span> <span class="bp">-</span><span class="n">k</span> <span class="bp">*</span> <span class="n">q</span> <span class="bp">+</span> <span class="n">l</span>
     <span class="k">calc</span> <span class="n">a</span> <span class="bp">=</span> <span class="n">r</span> <span class="bp">+</span> <span class="o">(</span><span class="bp">-</span><span class="n">b</span><span class="o">)</span> <span class="bp">*</span> <span class="n">q</span> <span class="o">:=</span> <span class="kd">by</span> <span class="n">rw</span> <span class="o">[</span><span class="n">H</span><span class="o">]</span>
       <span class="n">_</span> <span class="bp">=</span> <span class="n">gcd</span> <span class="n">b</span> <span class="n">r</span> <span class="bp">*</span> <span class="n">l</span> <span class="bp">+</span> <span class="o">(</span><span class="bp">-</span> <span class="o">(</span><span class="n">gcd</span> <span class="n">b</span> <span class="n">r</span> <span class="bp">*</span> <span class="n">k</span><span class="o">))</span> <span class="bp">*</span> <span class="n">q</span> <span class="o">:=</span> <span class="kd">by</span> <span class="n">rw</span> <span class="o">[</span><span class="bp">&#8592;</span> <span class="n">hk</span><span class="o">,</span> <span class="bp">&#8592;</span> <span class="n">hl</span><span class="o">]</span>
@@ -2269,7 +2269,7 @@ omit the text proof but see below for a Lean proof).</p>
 numbers satisfy the same property</p>
 <div class="math notranslate nohighlight">
 \[n = 2 \operatorname{div}(n, 2) + \operatorname{mod}(n, 2)\]</div>
-<p>as recorded in <code class="xref std std-numref docutils literal notranslate"><span class="pre">Example</span> <span class="pre">%s</span></code> for integers; in Lean this
+<p>as recorded in <a class="reference internal" href="#div-add-mod"><span class="std std-numref">Example 6.6.2</span></a> for integers; in Lean this
 is the theorem <code class="docutils literal notranslate"><span class="pre">Nat.div_add_mod</span></code>.</p>
 </li>
 </ol>
