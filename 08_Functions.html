@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>8. Functions &mdash; The mechanics of proof  documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/custom.css" type="text/css" />
+    <link rel="shortcut icon" href="_static/favicon.ico"/>
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Index of Lean tactics" href="Index_of_Tactics.html" />
+    <link rel="prev" title="7. Number theory" href="07_Number_Theory.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="index.html" class="icon icon-home"> The mechanics of proof
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="01_Proofs_by_Calculation.html">1. Proofs by calculation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="02_Proofs_with_Structure.html">2. Proofs with structure</a></li>
+<li class="toctree-l1"><a class="reference internal" href="03_Parity_and_Divisibility.html">3. Parity and divisibility</a></li>
+<li class="toctree-l1"><a class="reference internal" href="04_Proofs_with_Structure_II.html">4. Proofs with structure, II</a></li>
+<li class="toctree-l1"><a class="reference internal" href="05_Logic.html">5. Logic</a></li>
+<li class="toctree-l1"><a class="reference internal" href="06_Induction.html">6. Induction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="07_Number_Theory.html">7. Number theory</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">8. Functions</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#injectivity-and-surjectivity">8.1. Injectivity and surjectivity</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#example">8.1.1. Example</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#definition">8.1.2. Definition</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id2">8.1.3. Example</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id3">8.1.4. Example</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#surjective-def">8.1.5. Definition</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id5">8.1.6. Example</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id6">8.1.7. Example</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#musketeer">8.1.8. Definition</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id8">8.1.9. Example</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id9">8.1.10. Example</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#exercises">8.1.11. Exercises</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="Index_of_Tactics.html">Index of Lean tactics</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="Homework.html">Homework</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">The mechanics of proof</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+      <li><span class="section-number">8. </span>Functions</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/08_Functions.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="functions">
+<span id="id1"></span><h1><span class="section-number">8. </span>Functions<a class="headerlink" href="#functions" title="Permalink to this headline">&#61633;</a></h1>
+<section id="injectivity-and-surjectivity">
+<span id="inj-surj"></span><h2><span class="section-number">8.1. </span>Injectivity and surjectivity<a class="headerlink" href="#injectivity-and-surjectivity" title="Permalink to this headline">&#61633;</a></h2>
+<section id="example">
+<span id="functions-intro"></span><h3><span class="section-number">8.1.1. </span>Example<a class="headerlink" href="#example" title="Permalink to this headline">&#61633;</a></h3>
+<p>We have studied particular functions before.  For example, the Fibonacci sequence from
+<a class="reference internal" href="06_Induction.html#fibonacci"><span class="std std-numref">Example 6.3.3</span></a> is a function from <span class="math notranslate nohighlight">\(\mathbb{N}\)</span> to <span class="math notranslate nohighlight">\(\mathbb{Z}\)</span>: it
+takes in a natural number, for example 5, and gives out an integer, in this case 8 (the index-5
+term of the sequence).</p>
+<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="k">#eval</span> <span class="n">F</span> <span class="mi">5</span> <span class="c1">-- infoview displays `8`</span>
+</pre></div>
+</div>
+<p>The <em>domain</em> of a function is the type where it takes its input values, and the <em>codomain</em> of a
+function is the type where it takes its output values.  For example, the domain of the Fibonacci
+sequence is <span class="math notranslate nohighlight">\(\mathbb{N}\)</span> and its codomain is <span class="math notranslate nohighlight">\(\mathbb{Z}\)</span>.  The type of functions with
+domain <span class="math notranslate nohighlight">\(\mathbb{N}\)</span> and codomain <span class="math notranslate nohighlight">\(\mathbb{Z}\)</span> is denoted
+<span class="math notranslate nohighlight">\(\mathbb{N}\to \mathbb{Z}\)</span>.  Lean will confirm for us that the Fibonacci sequence <code class="docutils literal notranslate"><span class="pre">F</span></code> has
+this type:</p>
+<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="k">#check</span> <span class="bp">@</span><span class="n">F</span> <span class="c1">-- infoview displays `F : &#8469; &#8594; &#8484;`</span>
+</pre></div>
+</div>
+<p>Another way to define a function is by a closed formula.  For example,
+&#8220;let <span class="math notranslate nohighlight">\(q:\mathbb{R}\to \mathbb{R}\)</span> be the function defined by, <span class="math notranslate nohighlight">\(q(x)=x^2\)</span>.&#8221;  In Lean we
+can write this as</p>
+<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">def</span> <span class="n">q</span> <span class="o">(</span><span class="n">x</span> <span class="o">:</span> <span class="n">&#8477;</span><span class="o">)</span> <span class="o">:</span> <span class="n">&#8477;</span> <span class="o">:=</span> <span class="n">x</span> <span class="bp">+</span> <span class="mi">3</span>
+</pre></div>
+</div>
+<p>This function has domain <span class="math notranslate nohighlight">\(\mathbb{R}\)</span> and codomain <span class="math notranslate nohighlight">\(\mathbb{R}\)</span> &#8211; I even said when I
+was defining it that I was making <span class="math notranslate nohighlight">\(q\)</span> to have type <span class="math notranslate nohighlight">\(\mathbb{R}\to \mathbb{R}\)</span>.  Let&#8217;s
+check that this is indeed the type of the Lean object:</p>
+<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="k">#check</span> <span class="bp">@</span><span class="n">q</span> <span class="c1">-- infoview displays `q : &#8477; &#8594; &#8477;`</span>
+</pre></div>
+</div>
+<p>A third way to define a function, if we expect to use it just once and don&#8217;t want to waste a name on
+it, is by using the notation <span class="math notranslate nohighlight">\(\mapsto\)</span>: we can refer to &#8220;the function <span class="math notranslate nohighlight">\(x \mapsto x ^ 2\)</span>
+from <span class="math notranslate nohighlight">\(\mathbb{R}\)</span> to <span class="math notranslate nohighlight">\(\mathbb{R}\)</span>&#8221;. Here is the same notation in Lean:</p>
+<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="k">#check</span> <span class="k">fun</span> <span class="o">(</span><span class="n">x</span> <span class="o">:</span> <span class="n">&#8477;</span><span class="o">)</span> <span class="bp">&#8614;</span> <span class="n">x</span> <span class="bp">^</span> <span class="mi">2</span> <span class="c1">-- infoview displays `fun x &#8614; x ^ 2 : &#8477; &#8594; &#8477;`</span>
+</pre></div>
+</div>
+</section>
+<section id="definition">
+<span id="injective-def"></span><h3><span class="section-number">8.1.2. </span>Definition<a class="headerlink" href="#definition" title="Permalink to this headline">&#61633;</a></h3>
+<p>Now that we have the notation <span class="math notranslate nohighlight">\(X\to Y\)</span> for &#8220;the type of functions from <span class="math notranslate nohighlight">\(X\)</span> to
+<span class="math notranslate nohighlight">\(Y\)</span>&#8221;, we can introduce properties of functions, in the same way that we have previously
+introduced properties (like &#8220;odd&#8221; and &#8220;prime&#8221;) of numbers.  Here is our first one.</p>
+<div class="admonition-definition admonition">
+<p class="admonition-title">Definition</p>
+<p>A function <span class="math notranslate nohighlight">\(f : X \to Y\)</span> is <em>injective</em>, if for all <span class="math notranslate nohighlight">\(x_1\)</span> and <span class="math notranslate nohighlight">\(x_2\)</span> of type
+<span class="math notranslate nohighlight">\(X\)</span>, if <span class="math notranslate nohighlight">\(f(x_1)=f(x_2)\)</span>, then <span class="math notranslate nohighlight">\(x_1=x_2\)</span>.</p>
+</div>
+<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">def</span> <span class="n">Injective</span> <span class="o">(</span><span class="n">f</span> <span class="o">:</span> <span class="n">X</span> <span class="bp">&#8594;</span> <span class="n">Y</span><span class="o">)</span> <span class="o">:</span> <span class="kt">Prop</span> <span class="o">:=</span> <span class="bp">&#8704;</span> <span class="n">x1</span> <span class="n">x2</span> <span class="o">:</span> <span class="n">X</span><span class="o">,</span> <span class="n">f</span> <span class="n">x1</span> <span class="bp">=</span> <span class="n">f</span> <span class="n">x2</span> <span class="bp">&#8594;</span> <span class="n">x1</span> <span class="bp">=</span> <span class="n">x2</span>
+</pre></div>
+</div>
+</section>
+<section id="id2">
+<h3><span class="section-number">8.1.3. </span>Example<a class="headerlink" href="#id2" title="Permalink to this headline">&#61633;</a></h3>
+<div class="admonition-problem admonition">
+<p class="admonition-title">Problem</p>
+<p>Show that the function <span class="math notranslate nohighlight">\(q:\mathbb{R}\to\mathbb{R}\)</span> from
+<a class="reference internal" href="#functions-intro"><span class="std std-numref">Example 8.1.1</span></a> is injective.</p>
+</div>
+<div class="admonition-solution admonition">
+<p class="admonition-title">Solution</p>
+<p>Let <span class="math notranslate nohighlight">\(x_1\)</span> and <span class="math notranslate nohighlight">\(x_2\)</span> be real numbers and suppose that <span class="math notranslate nohighlight">\(q(x_1)=q(x_2)\)</span>.  Then
+<span class="math notranslate nohighlight">\(x_1+1=x_2+1\)</span>, so <span class="math notranslate nohighlight">\(x_1=x_2\)</span>.</p>
+</div>
+<p>Here is this solution in Lean.  Note that after unfolding the definition &#8220;injective&#8221; using the
+command <code class="docutils literal notranslate"><span class="pre">dsimp</span> <span class="pre">[Injective]</span></code>, the goal state displays</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>&#8866; &#8704; (x1 x2 : &#8477;), q x1 = q x2 &#8594; x1 = x2
+</pre></div>
+</div>
+<p>This is the &#8220;injective&#8221; definition specialized to the problem at hand.</p>
+<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">:</span> <span class="n">Injective</span> <span class="n">q</span> <span class="o">:=</span> <span class="kd">by</span>
+  <span class="n">dsimp</span> <span class="o">[</span><span class="n">Injective</span><span class="o">]</span>
+  <span class="n">intro</span> <span class="n">x1</span> <span class="n">x2</span> <span class="n">h</span>
+  <span class="n">dsimp</span> <span class="o">[</span><span class="n">q</span><span class="o">]</span> <span class="n">at</span> <span class="n">h</span>
+  <span class="n">addarith</span> <span class="o">[</span><span class="n">h</span><span class="o">]</span>
+</pre></div>
+</div>
+</section>
+<section id="id3">
+<h3><span class="section-number">8.1.4. </span>Example<a class="headerlink" href="#id3" title="Permalink to this headline">&#61633;</a></h3>
+<div class="admonition-problem admonition">
+<p class="admonition-title">Problem</p>
+<p>Show that the function <span class="math notranslate nohighlight">\(x \mapsto x ^ 2\)</span> from <span class="math notranslate nohighlight">\(\mathbb{R}\)</span> to <span class="math notranslate nohighlight">\(\mathbb{R}\)</span>
+is not injective.</p>
+</div>
+<div class="admonition-solution admonition">
+<p class="admonition-title">Solution</p>
+<p>We must show that there exist real numbers <span class="math notranslate nohighlight">\(x_1\)</span> and <span class="math notranslate nohighlight">\(x_2\)</span>, such that
+<span class="math notranslate nohighlight">\(x_1{}^2=x_2{}^2\)</span> and <span class="math notranslate nohighlight">\(x_1\ne x_2\)</span>.  Indeed, -1 and 1 have these properties.</p>
+</div>
+<p>The first sentence of that proof was a negation-normalization: I unfolded the &#8220;injective&#8221; definition
+and restated its negation in a logically equivalent but more convenient form.  Recall that in Lean
+we do this using the tactic <code class="docutils literal notranslate"><span class="pre">push_neg</span></code>.  Here is the goal state after the tactic <code class="docutils literal notranslate"><span class="pre">push_neg</span></code> has
+been used:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>&#8866; &#8707; x1 x2, x1 ^ 2 = x2 ^ 2 &#8743; x1 &#8800; x2
+</pre></div>
+</div>
+<p>And here is the full Lean proof.</p>
+<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">:</span> <span class="bp">&#172;</span> <span class="n">Injective</span> <span class="o">(</span><span class="k">fun</span> <span class="n">x</span> <span class="o">:</span> <span class="n">&#8477;</span> <span class="bp">&#8614;</span> <span class="n">x</span> <span class="bp">^</span> <span class="mi">2</span><span class="o">)</span> <span class="o">:=</span> <span class="kd">by</span>
+  <span class="n">dsimp</span> <span class="o">[</span><span class="n">Injective</span><span class="o">]</span>
+  <span class="n">push_neg</span>
+  <span class="n">take</span> <span class="bp">-</span><span class="mi">1</span><span class="o">,</span> <span class="mi">1</span>
+  <span class="n">constructor</span>
+  <span class="bp">&#183;</span> <span class="n">numbers</span>
+  <span class="bp">&#183;</span> <span class="n">numbers</span>
+</pre></div>
+</div>
+</section>
+<section id="surjective-def">
+<span id="id4"></span><h3><span class="section-number">8.1.5. </span>Definition<a class="headerlink" href="#surjective-def" title="Permalink to this headline">&#61633;</a></h3>
+<div class="admonition-definition admonition">
+<p class="admonition-title">Definition</p>
+<p>A function <span class="math notranslate nohighlight">\(f : X \to Y\)</span> is <em>surjective</em>, if for all <span class="math notranslate nohighlight">\(y\)</span> of type <span class="math notranslate nohighlight">\(Y\)</span>, there
+exists <span class="math notranslate nohighlight">\(x\)</span> of type <span class="math notranslate nohighlight">\(X\)</span>, such that <span class="math notranslate nohighlight">\(f(x)=y)\)</span>.</p>
+</div>
+<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">def</span> <span class="n">Surjective</span> <span class="o">(</span><span class="n">f</span> <span class="o">:</span> <span class="n">X</span> <span class="bp">&#8594;</span> <span class="n">Y</span><span class="o">)</span> <span class="o">:</span> <span class="kt">Prop</span> <span class="o">:=</span> <span class="bp">&#8704;</span> <span class="n">y</span> <span class="o">:</span> <span class="n">Y</span><span class="o">,</span> <span class="bp">&#8707;</span> <span class="n">x</span> <span class="o">:</span> <span class="n">X</span><span class="o">,</span> <span class="n">f</span> <span class="n">x</span> <span class="bp">=</span> <span class="n">y</span>
+</pre></div>
+</div>
+</section>
+<section id="id5">
+<h3><span class="section-number">8.1.6. </span>Example<a class="headerlink" href="#id5" title="Permalink to this headline">&#61633;</a></h3>
+<div class="admonition-problem admonition">
+<p class="admonition-title">Problem</p>
+<p>Consider the function <span class="math notranslate nohighlight">\(s:\mathbb{Q}\to\mathbb{Q}\)</span> defined by, <span class="math notranslate nohighlight">\(s(a)=3a+2\)</span>. Show that
+<span class="math notranslate nohighlight">\(s\)</span> is surjective.</p>
+</div>
+<div class="admonition-solution admonition">
+<p class="admonition-title">Solution</p>
+<p>Let <span class="math notranslate nohighlight">\(y\)</span> be a rational number.  Then</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}s\left(\frac{y-2}{3}&#8735;)&amp;3\left(\frac{y-2}{3}&#8735;)+2\\
+&amp;=y.\end{split}\]</div>
+</div>
+<p>Here is the solution in Lean.  The goal state after unfolding the definition of &#8220;surjective&#8221; is</p>
+<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="bp">&#8866;</span> <span class="bp">&#8704;</span> <span class="o">(</span><span class="n">y</span> <span class="o">:</span> <span class="n">&#8474;</span><span class="o">),</span> <span class="bp">&#8707;</span> <span class="n">x</span><span class="o">,</span> <span class="n">s</span> <span class="n">x</span> <span class="bp">=</span> <span class="n">y</span>
+</pre></div>
+</div>
+<p>which confirms what we need to prove and why what we wrote in the text proof above is sufficient.</p>
+<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">def</span> <span class="n">s</span> <span class="o">(</span><span class="n">a</span> <span class="o">:</span> <span class="n">&#8474;</span><span class="o">)</span> <span class="o">:</span> <span class="n">&#8474;</span> <span class="o">:=</span> <span class="mi">3</span> <span class="bp">*</span> <span class="n">a</span> <span class="bp">+</span> <span class="mi">2</span>
+
+<span class="kd">example</span> <span class="o">:</span> <span class="n">Surjective</span> <span class="n">s</span> <span class="o">:=</span> <span class="kd">by</span>
+  <span class="n">dsimp</span> <span class="o">[</span><span class="n">Surjective</span><span class="o">]</span>
+  <span class="n">intro</span> <span class="n">y</span>
+  <span class="n">take</span> <span class="o">(</span><span class="n">y</span> <span class="bp">-</span> <span class="mi">2</span><span class="o">)</span> <span class="bp">/</span> <span class="mi">3</span>
+  <span class="k">calc</span> <span class="n">s</span> <span class="o">((</span><span class="n">y</span> <span class="bp">-</span> <span class="mi">2</span><span class="o">)</span> <span class="bp">/</span> <span class="mi">3</span><span class="o">)</span> <span class="bp">=</span> <span class="mi">3</span> <span class="bp">*</span> <span class="o">((</span><span class="n">y</span> <span class="bp">-</span> <span class="mi">2</span><span class="o">)</span> <span class="bp">/</span> <span class="mi">3</span><span class="o">)</span> <span class="bp">+</span> <span class="mi">2</span> <span class="o">:=</span> <span class="kd">by</span> <span class="n">rw</span> <span class="o">[</span><span class="n">s</span><span class="o">]</span>
+    <span class="n">_</span> <span class="bp">=</span> <span class="n">y</span> <span class="o">:=</span> <span class="kd">by</span> <span class="n">ring</span>
+</pre></div>
+</div>
+</section>
+<section id="id6">
+<h3><span class="section-number">8.1.7. </span>Example<a class="headerlink" href="#id6" title="Permalink to this headline">&#61633;</a></h3>
+<div class="admonition-problem admonition">
+<p class="admonition-title">Problem</p>
+<p>Show that the function <span class="math notranslate nohighlight">\(x \mapsto x ^ 2\)</span> from <span class="math notranslate nohighlight">\(\mathbb{R}\)</span> to <span class="math notranslate nohighlight">\(\mathbb{R}\)</span>
+is not surjective.</p>
+</div>
+<div class="admonition-solution admonition">
+<p class="admonition-title">Solution</p>
+<p>We will show that there exists a real number <span class="math notranslate nohighlight">\(y\)</span>, such that for all real numbers <span class="math notranslate nohighlight">\(x\)</span>,
+<span class="math notranslate nohighlight">\(x^2\ne y\)</span>.</p>
+<p>Indeed, let us show that -1 has this property.  Let <span class="math notranslate nohighlight">\(x\)</span> be a real number.  Then</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}-1&amp;&lt;0\\
+&amp;\le x^2\end{split}\]</div>
+<p>so <span class="math notranslate nohighlight">\(x^2\ne -1\)</span>.</p>
+</div>
+<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">:</span> <span class="bp">&#172;</span> <span class="n">Surjective</span> <span class="o">(</span><span class="k">fun</span> <span class="n">x</span> <span class="o">:</span> <span class="n">&#8477;</span> <span class="bp">&#8614;</span> <span class="n">x</span> <span class="bp">^</span> <span class="mi">2</span><span class="o">)</span> <span class="o">:=</span> <span class="kd">by</span>
+  <span class="n">dsimp</span> <span class="o">[</span><span class="n">Surjective</span><span class="o">]</span>
+  <span class="n">push_neg</span>
+  <span class="n">take</span> <span class="bp">-</span><span class="mi">1</span>
+  <span class="n">intro</span> <span class="n">x</span>
+  <span class="n">apply</span> <span class="n">ne_of_gt</span>
+  <span class="k">calc</span> <span class="bp">-</span><span class="mi">1</span> <span class="bp">&lt;</span> <span class="mi">0</span> <span class="o">:=</span> <span class="kd">by</span> <span class="n">numbers</span>
+    <span class="n">_</span> <span class="bp">&#8804;</span> <span class="n">x</span> <span class="bp">^</span> <span class="mi">2</span> <span class="o">:=</span> <span class="kd">by</span> <span class="n">extra</span>
+</pre></div>
+</div>
+</section>
+<section id="musketeer">
+<span id="id7"></span><h3><span class="section-number">8.1.8. </span>Definition<a class="headerlink" href="#musketeer" title="Permalink to this headline">&#61633;</a></h3>
+<p>We have so far seen numeric types, like the integers <span class="math notranslate nohighlight">\(\mathbb{Z}\)</span> and the real numbers
+<span class="math notranslate nohighlight">\(\mathbb{R}\)</span>, and function types, like <span class="math notranslate nohighlight">\(\mathbb{Z}\to \mathbb{R}\)</span>, the functions from
+<span class="math notranslate nohighlight">\(\mathbb{Z}\)</span> to <span class="math notranslate nohighlight">\(\mathbb{R}\)</span>.</p>
+<p>Another way to make a type is as a finite set of options.  Finite types are useful for conceptual
+examples, because everything is explicit and checkable.</p>
+<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">inductive</span> <span class="n">Musketeer</span>
+  <span class="bp">|</span> <span class="n">athos</span>
+  <span class="bp">|</span> <span class="n">porthos</span>
+  <span class="bp">|</span> <span class="n">aramis</span>
+  <span class="n">deriving</span> <span class="n">Inhabited</span><span class="o">,</span> <span class="n">DecidableEq</span><span class="o">,</span> <span class="n">Repr</span>
+</pre></div>
+</div>
+<p>Here is how to define a function whose domain is a given finite inductive type.</p>
+<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">def</span> <span class="n">f</span> <span class="o">:</span> <span class="n">Musketeer</span> <span class="bp">&#8594;</span> <span class="n">Musketeer</span>
+  <span class="bp">|</span> <span class="n">athos</span> <span class="bp">=&gt;</span> <span class="n">aramis</span>
+  <span class="bp">|</span> <span class="n">porthos</span> <span class="bp">=&gt;</span> <span class="n">aramis</span>
+  <span class="bp">|</span> <span class="n">aramis</span> <span class="bp">=&gt;</span> <span class="n">athos</span>
+</pre></div>
+</div>
+</section>
+<section id="id8">
+<h3><span class="section-number">8.1.9. </span>Example<a class="headerlink" href="#id8" title="Permalink to this headline">&#61633;</a></h3>
+<div class="admonition-problem admonition">
+<p class="admonition-title">Problem</p>
+<p>Show that the function <span class="math notranslate nohighlight">\(f\)</span> defined in <a class="reference internal" href="#musketeer"><span class="std std-numref">Example 8.1.8</span></a> is not injective.</p>
+</div>
+<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">:</span> <span class="bp">&#172;</span> <span class="n">Injective</span> <span class="n">f</span> <span class="o">:=</span> <span class="kd">by</span>
+  <span class="n">dsimp</span> <span class="o">[</span><span class="n">Injective</span><span class="o">]</span>
+  <span class="n">push_neg</span>
+  <span class="n">take</span> <span class="n">athos</span><span class="o">,</span> <span class="n">porthos</span>
+  <span class="n">constructor</span>
+  <span class="bp">&#183;</span> <span class="n">decide</span>
+  <span class="bp">&#183;</span> <span class="n">decide</span>
+</pre></div>
+</div>
+</section>
+<section id="id9">
+<h3><span class="section-number">8.1.10. </span>Example<a class="headerlink" href="#id9" title="Permalink to this headline">&#61633;</a></h3>
+<div class="admonition-problem admonition">
+<p class="admonition-title">Problem</p>
+<p>Show that the function <span class="math notranslate nohighlight">\(f\)</span> defined in <a class="reference internal" href="#musketeer"><span class="std std-numref">Example 8.1.8</span></a> is not surjective.</p>
+</div>
+<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">:</span> <span class="bp">&#172;</span> <span class="n">Surjective</span> <span class="n">f</span> <span class="o">:=</span> <span class="kd">by</span>
+  <span class="n">dsimp</span> <span class="o">[</span><span class="n">Surjective</span><span class="o">]</span> <span class="c1">-- optional, for clarity</span>
+  <span class="n">push_neg</span>
+  <span class="n">take</span> <span class="n">porthos</span>
+  <span class="n">intro</span> <span class="n">a</span>
+  <span class="n">cases</span> <span class="n">a</span>
+  <span class="bp">&#183;</span> <span class="n">decide</span>
+  <span class="bp">&#183;</span> <span class="n">decide</span>
+  <span class="bp">&#183;</span> <span class="n">decide</span>
+</pre></div>
+</div>
+</section>
+<section id="exercises">
+<h3><span class="section-number">8.1.11. </span>Exercises<a class="headerlink" href="#exercises" title="Permalink to this headline">&#61633;</a></h3>
+<ol class="arabic">
+<li><p>Prove or disprove that the function <span class="math notranslate nohighlight">\(x \mapsto x-12\)</span> from <span class="math notranslate nohighlight">\(\mathbb{Q}\)</span> to
+<span class="math notranslate nohighlight">\(\mathbb{Q}\)</span> is injective.</p>
+<p>(If you think it&#8217;s true, prove it, by solving the first version below.  If you think it&#8217;s false,
+solve the second version.)</p>
+</li>
+</ol>
+<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">:</span> <span class="n">Injective</span> <span class="o">(</span><span class="k">fun</span> <span class="o">(</span><span class="n">x</span> <span class="o">:</span> <span class="n">&#8474;</span><span class="o">)</span> <span class="bp">&#8614;</span> <span class="n">x</span> <span class="bp">-</span> <span class="mi">12</span><span class="o">)</span> <span class="o">:=</span> <span class="kd">by</span>
+  <span class="gr">sorry</span>
+
+<span class="kd">example</span> <span class="o">:</span> <span class="bp">&#172;</span> <span class="n">Injective</span> <span class="o">(</span><span class="k">fun</span> <span class="o">(</span><span class="n">x</span> <span class="o">:</span> <span class="n">&#8474;</span><span class="o">)</span> <span class="bp">&#8614;</span> <span class="n">x</span> <span class="bp">-</span> <span class="mi">12</span><span class="o">)</span> <span class="o">:=</span> <span class="kd">by</span>
+  <span class="gr">sorry</span>
+</pre></div>
+</div>
+<ol class="arabic" start="2">
+<li><p>Prove or disprove that the function <span class="math notranslate nohighlight">\(x \mapsto 0\)</span> from <span class="math notranslate nohighlight">\(\mathbb{R}\)</span> to
+<span class="math notranslate nohighlight">\(\mathbb{R}\)</span> is injective.</p>
+<p>(If you think it&#8217;s true, prove it, by solving the first version below.  If you think it&#8217;s false,
+solve the second version.)</p>
+</li>
+</ol>
+<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">:</span> <span class="n">Injective</span> <span class="o">(</span><span class="k">fun</span> <span class="o">(</span><span class="n">x</span> <span class="o">:</span> <span class="n">&#8477;</span><span class="o">)</span> <span class="bp">&#8614;</span> <span class="mi">0</span><span class="o">)</span> <span class="o">:=</span> <span class="kd">by</span>
+  <span class="gr">sorry</span>
+
+<span class="kd">example</span> <span class="o">:</span> <span class="bp">&#172;</span> <span class="n">Injective</span> <span class="o">(</span><span class="k">fun</span> <span class="o">(</span><span class="n">x</span> <span class="o">:</span> <span class="n">&#8477;</span><span class="o">)</span> <span class="bp">&#8614;</span> <span class="mi">0</span><span class="o">)</span> <span class="o">:=</span> <span class="kd">by</span>
+  <span class="gr">sorry</span>
+</pre></div>
+</div>
+<ol class="arabic" start="3">
+<li><p>Prove or disprove that the function <span class="math notranslate nohighlight">\(x \mapsto 3x-1\)</span> from <span class="math notranslate nohighlight">\(\mathbb{&#8474;}\)</span> to
+<span class="math notranslate nohighlight">\(\mathbb{&#8474;}\)</span> is injective.</p>
+<p>(If you think it&#8217;s true, prove it, by solving the first version below.  If you think it&#8217;s false,
+solve the second version.)</p>
+</li>
+</ol>
+<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">:</span> <span class="n">Injective</span> <span class="o">(</span><span class="k">fun</span> <span class="o">(</span><span class="n">x</span> <span class="o">:</span> <span class="n">&#8474;</span><span class="o">)</span> <span class="bp">&#8614;</span> <span class="mi">3</span> <span class="bp">*</span> <span class="n">x</span> <span class="bp">-</span> <span class="mi">1</span><span class="o">)</span> <span class="o">:=</span> <span class="kd">by</span>
+  <span class="gr">sorry</span>
+
+<span class="kd">example</span> <span class="o">:</span> <span class="bp">&#172;</span> <span class="n">Injective</span> <span class="o">(</span><span class="k">fun</span> <span class="o">(</span><span class="n">x</span> <span class="o">:</span> <span class="n">&#8474;</span><span class="o">)</span> <span class="bp">&#8614;</span> <span class="mi">3</span> <span class="bp">*</span> <span class="n">x</span> <span class="bp">-</span> <span class="mi">1</span><span class="o">)</span> <span class="o">:=</span> <span class="kd">by</span>
+  <span class="gr">sorry</span>
+</pre></div>
+</div>
+<ol class="arabic" start="4">
+<li><p>Prove or disprove that the function <span class="math notranslate nohighlight">\(x \mapsto 3x-1\)</span> from <span class="math notranslate nohighlight">\(\mathbb{Z}\)</span> to
+<span class="math notranslate nohighlight">\(\mathbb{Z}\)</span> is injective.</p>
+<p>(If you think it&#8217;s true, prove it, by solving the first version below.  If you think it&#8217;s false,
+solve the second version.)</p>
+</li>
+</ol>
+<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">:</span> <span class="n">Injective</span> <span class="o">(</span><span class="k">fun</span> <span class="o">(</span><span class="n">x</span> <span class="o">:</span> <span class="n">&#8484;</span><span class="o">)</span> <span class="bp">&#8614;</span> <span class="mi">3</span> <span class="bp">*</span> <span class="n">x</span> <span class="bp">-</span> <span class="mi">1</span><span class="o">)</span> <span class="o">:=</span> <span class="kd">by</span>
+  <span class="gr">sorry</span>
+
+<span class="kd">example</span> <span class="o">:</span> <span class="bp">&#172;</span> <span class="n">Injective</span> <span class="o">(</span><span class="k">fun</span> <span class="o">(</span><span class="n">x</span> <span class="o">:</span> <span class="n">&#8484;</span><span class="o">)</span> <span class="bp">&#8614;</span> <span class="mi">3</span> <span class="bp">*</span> <span class="n">x</span> <span class="bp">-</span> <span class="mi">1</span><span class="o">)</span> <span class="o">:=</span> <span class="kd">by</span>
+  <span class="gr">sorry</span>
+</pre></div>
+</div>
+<ol class="arabic" start="5">
+<li><p>Prove or disprove that the function <span class="math notranslate nohighlight">\(x \mapsto 2x\)</span> from <span class="math notranslate nohighlight">\(\mathbb{R}\)</span> to
+<span class="math notranslate nohighlight">\(\mathbb{R}\)</span> is surjective.</p>
+<p>(If you think it&#8217;s true, prove it, by solving the first version below.  If you think it&#8217;s false,
+solve the second version.)</p>
+</li>
+</ol>
+<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">:</span> <span class="n">Surjective</span> <span class="o">(</span><span class="k">fun</span> <span class="o">(</span><span class="n">x</span> <span class="o">:</span> <span class="n">&#8477;</span><span class="o">)</span> <span class="bp">&#8614;</span> <span class="mi">2</span> <span class="bp">*</span> <span class="n">x</span><span class="o">)</span> <span class="o">:=</span> <span class="kd">by</span>
+  <span class="gr">sorry</span>
+
+<span class="kd">example</span> <span class="o">:</span> <span class="bp">&#172;</span> <span class="n">Surjective</span> <span class="o">(</span><span class="k">fun</span> <span class="o">(</span><span class="n">x</span> <span class="o">:</span> <span class="n">&#8477;</span><span class="o">)</span> <span class="bp">&#8614;</span> <span class="mi">2</span> <span class="bp">*</span> <span class="n">x</span><span class="o">)</span> <span class="o">:=</span> <span class="kd">by</span>
+  <span class="gr">sorry</span>
+</pre></div>
+</div>
+<ol class="arabic" start="6">
+<li><p>Prove or disprove that the function <span class="math notranslate nohighlight">\(x \mapsto 2x\)</span> from <span class="math notranslate nohighlight">\(\mathbb{Z}\)</span> to
+<span class="math notranslate nohighlight">\(\mathbb{Z}\)</span> is surjective.</p>
+<p>(If you think it&#8217;s true, prove it, by solving the first version below.  If you think it&#8217;s false,
+solve the second version.)</p>
+</li>
+</ol>
+<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">:</span> <span class="n">Surjective</span> <span class="o">(</span><span class="k">fun</span> <span class="o">(</span><span class="n">x</span> <span class="o">:</span> <span class="n">&#8484;</span><span class="o">)</span> <span class="bp">&#8614;</span> <span class="mi">2</span> <span class="bp">*</span> <span class="n">x</span><span class="o">)</span> <span class="o">:=</span> <span class="kd">by</span>
+  <span class="gr">sorry</span>
+
+<span class="kd">example</span> <span class="o">:</span> <span class="bp">&#172;</span> <span class="n">Surjective</span> <span class="o">(</span><span class="k">fun</span> <span class="o">(</span><span class="n">x</span> <span class="o">:</span> <span class="n">&#8484;</span><span class="o">)</span> <span class="bp">&#8614;</span> <span class="mi">2</span> <span class="bp">*</span> <span class="n">x</span><span class="o">)</span> <span class="o">:=</span> <span class="kd">by</span>
+  <span class="gr">sorry</span>
+</pre></div>
+</div>
+<ol class="arabic" start="7">
+<li><p>Prove or disprove that the function <span class="math notranslate nohighlight">\(n \mapsto n^2\)</span> from <span class="math notranslate nohighlight">\(\mathbb{N}\)</span> to
+<span class="math notranslate nohighlight">\(\mathbb{N}\)</span> is surjective.</p>
+<p>(If you think it&#8217;s true, prove it, by solving the first version below.  If you think it&#8217;s false,
+solve the second version.)</p>
+</li>
+</ol>
+<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">:</span> <span class="n">Surjective</span> <span class="o">(</span><span class="k">fun</span> <span class="o">(</span><span class="n">n</span> <span class="o">:</span> <span class="n">&#8469;</span><span class="o">)</span> <span class="bp">&#8614;</span> <span class="n">n</span> <span class="bp">^</span> <span class="mi">2</span><span class="o">)</span> <span class="o">:=</span> <span class="kd">by</span>
+  <span class="gr">sorry</span>
+
+<span class="kd">example</span> <span class="o">:</span> <span class="bp">&#172;</span> <span class="n">Surjective</span> <span class="o">(</span><span class="k">fun</span> <span class="o">(</span><span class="n">n</span> <span class="o">:</span> <span class="n">&#8469;</span><span class="o">)</span> <span class="bp">&#8614;</span> <span class="n">n</span> <span class="bp">^</span> <span class="mi">2</span><span class="o">)</span> <span class="o">:=</span> <span class="kd">by</span>
+  <span class="gr">sorry</span>
+</pre></div>
+</div>
+<ol class="arabic" start="8">
+<li><p>Let <span class="math notranslate nohighlight">\(f : X \to Y\)</span> be a function.  Show that <span class="math notranslate nohighlight">\(f\)</span> is injective if and only if for all
+<span class="math notranslate nohighlight">\(x_1\)</span> and <span class="math notranslate nohighlight">\(x_2\)</span> of type <span class="math notranslate nohighlight">\(X\)</span>, if <span class="math notranslate nohighlight">\(x_1\ne x_2\)</span>  then
+<span class="math notranslate nohighlight">\(f(x_1)\ne f(x_2)\)</span>.</p>
+<p>You will need to use the tactic <code class="docutils literal notranslate"><span class="pre">by_cases</span></code>.</p>
+</li>
+</ol>
+<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">(</span><span class="n">f</span> <span class="o">:</span> <span class="n">X</span> <span class="bp">&#8594;</span> <span class="n">Y</span><span class="o">)</span> <span class="o">:</span> <span class="n">Injective</span> <span class="n">f</span> <span class="bp">&#8596;</span> <span class="bp">&#8704;</span> <span class="n">x1</span> <span class="n">x2</span> <span class="o">:</span> <span class="n">X</span><span class="o">,</span> <span class="n">x1</span> <span class="bp">&#8800;</span> <span class="n">x2</span> <span class="bp">&#8594;</span> <span class="n">f</span> <span class="n">x1</span> <span class="bp">&#8800;</span> <span class="n">f</span> <span class="n">x2</span> <span class="o">:=</span> <span class="kd">by</span>
+  <span class="gr">sorry</span>
+</pre></div>
+</div>
+<ol class="arabic simple" start="9">
+<li><p>Prove or disprove that for all functions <span class="math notranslate nohighlight">\(f:\mathbb{Q}\to \mathbb{Q}\)</span>, if <span class="math notranslate nohighlight">\(f\)</span> is
+injective, then the function <span class="math notranslate nohighlight">\(x \mapsto f(x)+1\)</span> from <span class="math notranslate nohighlight">\(\mathbb{Q}\)</span> to
+<span class="math notranslate nohighlight">\(\mathbb{Q}\)</span> is also injective.</p></li>
+</ol>
+<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">:</span> <span class="bp">&#8704;</span> <span class="o">(</span><span class="n">f</span> <span class="o">:</span> <span class="n">&#8474;</span> <span class="bp">&#8594;</span> <span class="n">&#8474;</span><span class="o">)</span> <span class="o">(</span><span class="n">hf</span> <span class="o">:</span> <span class="n">Injective</span> <span class="n">f</span><span class="o">),</span> <span class="n">Injective</span> <span class="o">(</span><span class="k">fun</span> <span class="n">x</span> <span class="bp">&#8614;</span> <span class="n">f</span> <span class="n">x</span> <span class="bp">+</span> <span class="mi">1</span><span class="o">)</span> <span class="o">:=</span> <span class="kd">by</span>
+  <span class="gr">sorry</span>
+
+<span class="kd">example</span> <span class="o">:</span> <span class="bp">&#172;</span> <span class="bp">&#8704;</span> <span class="o">(</span><span class="n">f</span> <span class="o">:</span> <span class="n">&#8474;</span> <span class="bp">&#8594;</span> <span class="n">&#8474;</span><span class="o">)</span> <span class="o">(</span><span class="n">hf</span> <span class="o">:</span> <span class="n">Injective</span> <span class="n">f</span><span class="o">),</span> <span class="n">Injective</span> <span class="o">(</span><span class="k">fun</span> <span class="n">x</span> <span class="bp">&#8614;</span> <span class="n">f</span> <span class="n">x</span> <span class="bp">+</span> <span class="mi">1</span><span class="o">)</span> <span class="o">:=</span> <span class="kd">by</span>
+  <span class="gr">sorry</span>
+</pre></div>
+</div>
+<ol class="arabic simple" start="10">
+<li><p>Prove or disprove that for all functions <span class="math notranslate nohighlight">\(f:\mathbb{Q}\to \mathbb{Q}\)</span>, if <span class="math notranslate nohighlight">\(f\)</span> is
+injective, then the function <span class="math notranslate nohighlight">\(x \mapsto f(x)+1\)</span> from <span class="math notranslate nohighlight">\(\mathbb{Q}\)</span> to
+<span class="math notranslate nohighlight">\(\mathbb{Q}\)</span> is also injective.</p></li>
+</ol>
+<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">:</span> <span class="bp">&#8704;</span> <span class="o">(</span><span class="n">f</span> <span class="o">:</span> <span class="n">&#8474;</span> <span class="bp">&#8594;</span> <span class="n">&#8474;</span><span class="o">)</span> <span class="o">(</span><span class="n">hf</span> <span class="o">:</span> <span class="n">Injective</span> <span class="n">f</span><span class="o">),</span> <span class="n">Injective</span> <span class="o">(</span><span class="k">fun</span> <span class="n">x</span> <span class="bp">&#8614;</span> <span class="n">f</span> <span class="n">x</span> <span class="bp">+</span> <span class="n">x</span><span class="o">)</span> <span class="o">:=</span> <span class="kd">by</span>
+  <span class="gr">sorry</span>
+
+<span class="kd">example</span> <span class="o">:</span> <span class="bp">&#172;</span> <span class="bp">&#8704;</span> <span class="o">(</span><span class="n">f</span> <span class="o">:</span> <span class="n">&#8474;</span> <span class="bp">&#8594;</span> <span class="n">&#8474;</span><span class="o">)</span> <span class="o">(</span><span class="n">hf</span> <span class="o">:</span> <span class="n">Injective</span> <span class="n">f</span><span class="o">),</span> <span class="n">Injective</span> <span class="o">(</span><span class="k">fun</span> <span class="n">x</span> <span class="bp">&#8614;</span> <span class="n">f</span> <span class="n">x</span> <span class="bp">+</span> <span class="n">x</span><span class="o">)</span> <span class="o">:=</span> <span class="kd">by</span>
+  <span class="gr">sorry</span>
+</pre></div>
+</div>
+<ol class="arabic simple" start="11">
+<li><p>Prove or disprove that for all functions <span class="math notranslate nohighlight">\(f:\mathbb{Z}\to \mathbb{Z}\)</span>, if <span class="math notranslate nohighlight">\(f\)</span> is
+surjective, then the function <span class="math notranslate nohighlight">\(x \mapsto 2f(x)\)</span> from <span class="math notranslate nohighlight">\(\mathbb{Z}\)</span> to
+<span class="math notranslate nohighlight">\(\mathbb{Z}\)</span> is also surjective.</p></li>
+</ol>
+<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">:</span> <span class="bp">&#8704;</span> <span class="o">(</span><span class="n">f</span> <span class="o">:</span> <span class="n">&#8484;</span> <span class="bp">&#8594;</span> <span class="n">&#8484;</span><span class="o">)</span> <span class="o">(</span><span class="n">hf</span> <span class="o">:</span> <span class="n">Surjective</span> <span class="n">f</span><span class="o">),</span> <span class="n">Surjective</span> <span class="o">(</span><span class="k">fun</span> <span class="n">x</span> <span class="bp">&#8614;</span> <span class="mi">2</span> <span class="bp">*</span> <span class="n">f</span> <span class="n">x</span><span class="o">)</span> <span class="o">:=</span> <span class="kd">by</span>
+  <span class="gr">sorry</span>
+
+<span class="kd">example</span> <span class="o">:</span> <span class="bp">&#172;</span> <span class="bp">&#8704;</span> <span class="o">(</span><span class="n">f</span> <span class="o">:</span> <span class="n">&#8484;</span> <span class="bp">&#8594;</span> <span class="n">&#8484;</span><span class="o">)</span> <span class="o">(</span><span class="n">hf</span> <span class="o">:</span> <span class="n">Surjective</span> <span class="n">f</span><span class="o">),</span> <span class="n">Surjective</span> <span class="o">(</span><span class="k">fun</span> <span class="n">x</span> <span class="bp">&#8614;</span> <span class="mi">2</span> <span class="bp">*</span> <span class="n">f</span> <span class="n">x</span><span class="o">)</span> <span class="o">:=</span> <span class="kd">by</span>
+  <span class="gr">sorry</span>
+</pre></div>
+</div>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="07_Number_Theory.html" class="btn btn-neutral float-left" title="7. Number theory" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="Index_of_Tactics.html" class="btn btn-neutral float-right" title="Index of Lean tactics" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2022-2023, Heather Macbeth.  All rights reserved.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

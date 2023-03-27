@@ -30,6 +30,7 @@ problems without yet the explanatory paragraphs which would be needed to solve t
    05_Logic
    06_Induction
    07_Number_Theory
+   08_Functions
 
 .. toctree::
    :hidden:

@@ -1,0 +1,6 @@
+.. _functions:
+
+Functions
+=========
+
+.. include:: 08_Functions/01_Injective_Surjective.inc
