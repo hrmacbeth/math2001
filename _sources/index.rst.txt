@@ -29,6 +29,7 @@ problems without yet the explanatory paragraphs which would be needed to solve t
    04_Proofs_with_Structure_II
    05_Logic
    06_Induction
+   07_Number_Theory
 
 .. toctree::
    :hidden:
