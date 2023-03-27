@@ -117,7 +117,7 @@ example : Injective g := by
   dsimp [Injective]
   intro x1 x2 hx
   cases x1 <;> cases x2 <;> dsimp [g] at hx
-  · trivial
+  · decide
   · contradiction
   · contradiction
   · contradiction

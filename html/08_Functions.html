@@ -315,7 +315,7 @@ examples, because everything is explicit and checkable.</p>
 <p class="admonition-title">Problem</p>
 <p>Show that the function <span class="math notranslate nohighlight">\(f\)</span> is not injective.</p>
 </div>
-<p>Equalities and inequalities in a finite inductive type can by proved by the tactic <code class="docutils literal notranslate"><span class="pre">decide</span></code>.</p>
+<p>Equalities and disequalities in a finite inductive type can by proved by the tactic <code class="docutils literal notranslate"><span class="pre">decide</span></code>.</p>
 <div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">:</span> <span class="bp">&#172;</span> <span class="n">Injective</span> <span class="n">f</span> <span class="o">:=</span> <span class="kd">by</span>
   <span class="n">dsimp</span> <span class="o">[</span><span class="n">Injective</span><span class="o">]</span>
   <span class="n">push_neg</span>
@@ -363,7 +363,7 @@ examples, because everything is explicit and checkable.</p>
   <span class="n">dsimp</span> <span class="o">[</span><span class="n">Injective</span><span class="o">]</span>
   <span class="n">intro</span> <span class="n">x1</span> <span class="n">x2</span> <span class="n">hx</span>
   <span class="n">cases</span> <span class="n">x1</span> <span class="bp">&lt;;&gt;</span> <span class="n">cases</span> <span class="n">x2</span> <span class="bp">&lt;;&gt;</span> <span class="n">dsimp</span> <span class="o">[</span><span class="n">g</span><span class="o">]</span> <span class="n">at</span> <span class="n">hx</span>
-  <span class="bp">&#183;</span> <span class="n">trivial</span>
+  <span class="bp">&#183;</span> <span class="n">decide</span>
   <span class="bp">&#183;</span> <span class="n">contradiction</span>
   <span class="bp">&#183;</span> <span class="n">contradiction</span>
   <span class="bp">&#183;</span> <span class="n">contradiction</span>
