@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>7. Number theory &mdash; The mechanics of proof  documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/custom.css" type="text/css" />
+    <link rel="shortcut icon" href="_static/favicon.ico"/>
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Index of Lean tactics" href="Index_of_Tactics.html" />
+    <link rel="prev" title="6. Induction" href="06_Induction.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="index.html" class="icon icon-home"> The mechanics of proof
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="01_Proofs_by_Calculation.html">1. Proofs by calculation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="02_Proofs_with_Structure.html">2. Proofs with structure</a></li>
+<li class="toctree-l1"><a class="reference internal" href="03_Parity_and_Divisibility.html">3. Parity and divisibility</a></li>
+<li class="toctree-l1"><a class="reference internal" href="04_Proofs_with_Structure_II.html">4. Proofs with structure, II</a></li>
+<li class="toctree-l1"><a class="reference internal" href="05_Logic.html">5. Logic</a></li>
+<li class="toctree-l1"><a class="reference internal" href="06_Induction.html">6. Induction</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">7. Number theory</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#infinitely-many-primes">7.1. Infinitely many primes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#gauss-and-euclid-s-lemmas">7.2. Gauss&#8217; and Euclid&#8217;s lemmas</a></li>
+</ul>
+</li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="Index_of_Tactics.html">Index of Lean tactics</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="Homework.html">Homework</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">The mechanics of proof</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+      <li><span class="section-number">7. </span>Number theory</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/07_Number_Theory.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="number-theory">
+<span id="id1"></span><h1><span class="section-number">7. </span>Number theory<a class="headerlink" href="#number-theory" title="Permalink to this headline">&#61633;</a></h1>
+<p>This chapter is different in style from the other chapters of the lecture notes.  The facts here are
+famous theorems, and their proofs require one-off, clever ideas.  These particular ideas will not
+turn up again on homework or exams.  Think of this chapter instead as a capstone: we explore what
+kinds of mathematical statements are in reach with the reasoning tools and theory we have developed
+so far in the course.</p>
+<section id="infinitely-many-primes">
+<span id="infinitude-primes"></span><h2><span class="section-number">7.1. </span>Infinitely many primes<a class="headerlink" href="#infinitely-many-primes" title="Permalink to this headline">&#61633;</a></h2>
+<div class="admonition-theorem admonition">
+<p class="admonition-title">Theorem</p>
+<p>There are infinitely many prime numbers.</p>
+</div>
+<p>This is a <a class="reference external" href="https://en.wikipedia.org/wiki/Euclid%27s_theorem">famous theorem</a>, with the first known
+proof written in Euclid&#8217;s <em>Elements</em> in about 300 BC.</p>
+<div class="admonition-proof admonition">
+<p class="admonition-title">Proof</p>
+<p>We show that for a given natural number <span class="math notranslate nohighlight">\(N\)</span>, there exists a prime number <span class="math notranslate nohighlight">\(p \geq N\)</span>.</p>
+<p>Consider <span class="math notranslate nohighlight">\(N!\)</span>, the factorial of <span class="math notranslate nohighlight">\(N\)</span>.  By one of the exercises to
+<a class="reference internal" href="06_Induction.html#recurrences"><span class="std std-numref">Section 6.2</span></a>, <span class="math notranslate nohighlight">\(0&lt;N!\)</span>, so <span class="math notranslate nohighlight">\(2 \le N! + 1\)</span>. Therefore, by
+<a class="reference internal" href="06_Induction.html#exists-prime-factor"><span class="std std-numref">Example 6.4.2</span></a>, there exists a prime number <span class="math notranslate nohighlight">\(p\)</span> which is a
+factor of <span class="math notranslate nohighlight">\(N! + 1\)</span>. We will show that <span class="math notranslate nohighlight">\(p \geq N\)</span>.</p>
+<p>If not, <span class="math notranslate nohighlight">\(p &lt; N\)</span>.  In this case we will show that <span class="math notranslate nohighlight">\(p\)</span> is not a factor of
+<span class="math notranslate nohighlight">\(N! + 1\)</span>, which contradicts a hypothesis and rules out this case.</p>
+<p>Indeed, since <span class="math notranslate nohighlight">\(p &lt; N\)</span>, by <a class="reference internal" href="06_Induction.html#factorial"><span class="std std-numref">Example 6.2.5</span></a>, <span class="math notranslate nohighlight">\(p\)</span> is a factor of
+<span class="math notranslate nohighlight">\(N!\)</span>.  Let <span class="math notranslate nohighlight">\(k\)</span> be a natural number such that <span class="math notranslate nohighlight">\(N!=pk\)</span>.  We observe that
+<span class="math notranslate nohighlight">\(N! + 1\)</span> lies between the consecutive multiples <span class="math notranslate nohighlight">\(pk\)</span> and <span class="math notranslate nohighlight">\(p(k+1)\)</span> of <span class="math notranslate nohighlight">\(p\)</span>,
+since</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}N!+1&amp;=pk+1\\
+&amp;&lt;pk+p\\
+&amp;=p(k+1).\end{split}\]</div>
+<p>By <a class="reference internal" href="04_Proofs_with_Structure_II.html#not-divisible-proof"><span class="std std-numref">Example 4.5.8</span></a>, this shows that <span class="math notranslate nohighlight">\(p\)</span> is not a factor of
+<span class="math notranslate nohighlight">\(N! + 1\)</span>, as required.</p>
+</div>
+<p>In Lean, the exercise to <a class="reference internal" href="06_Induction.html#recurrences"><span class="std std-numref">Section 6.2</span></a> has the name <code class="docutils literal notranslate"><span class="pre">factorial_pos</span></code>,
+<a class="reference internal" href="06_Induction.html#exists-prime-factor"><span class="std std-numref">Example 6.4.2</span></a> has the name <code class="docutils literal notranslate"><span class="pre">exists_prime_factor</span></code>,
+<a class="reference internal" href="06_Induction.html#factorial"><span class="std std-numref">Example 6.2.5</span></a> has the name <code class="docutils literal notranslate"><span class="pre">dvd_factorial</span></code>, and
+<a class="reference internal" href="04_Proofs_with_Structure_II.html#not-divisible-proof"><span class="std std-numref">Example 4.5.8</span></a> has the name <code class="docutils literal notranslate"><span class="pre">Nat.not_dvd_of_exists_lt_and_lt</span></code>.</p>
+<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">(</span><span class="n">N</span> <span class="o">:</span> <span class="n">&#8469;</span><span class="o">)</span> <span class="o">:</span> <span class="bp">&#8707;</span> <span class="n">p</span> <span class="bp">&#8805;</span> <span class="n">N</span><span class="o">,</span> <span class="n">Prime</span> <span class="n">p</span> <span class="o">:=</span> <span class="kd">by</span>
+  <span class="k">have</span> <span class="n">hN0</span> <span class="o">:</span> <span class="mi">0</span> <span class="bp">&lt;</span> <span class="n">N</span> <span class="bp">!</span> <span class="o">:=</span> <span class="kd">by</span> <span class="n">apply</span> <span class="n">factorial_pos</span>
+  <span class="k">have</span> <span class="n">hN2</span> <span class="o">:</span> <span class="mi">2</span> <span class="bp">&#8804;</span> <span class="n">N</span> <span class="bp">!</span> <span class="bp">+</span> <span class="mi">1</span> <span class="o">:=</span> <span class="kd">by</span> <span class="n">addarith</span> <span class="o">[</span><span class="n">hN0</span><span class="o">]</span>
+  <span class="n">obtain</span> <span class="o">&#10216;</span><span class="n">p</span><span class="o">,</span> <span class="n">hp</span><span class="o">,</span> <span class="n">hpN</span><span class="o">&#10217;</span> <span class="o">:</span> <span class="bp">&#8707;</span> <span class="n">p</span> <span class="o">:</span> <span class="n">&#8469;</span><span class="o">,</span> <span class="n">Prime</span> <span class="n">p</span> <span class="bp">&#8743;</span> <span class="n">p</span> <span class="bp">&#8739;</span> <span class="n">N</span> <span class="bp">!</span> <span class="bp">+</span> <span class="mi">1</span> <span class="o">:=</span> <span class="n">exists_prime_factor</span> <span class="n">hN2</span>
+  <span class="n">take</span> <span class="n">p</span>
+  <span class="n">constructor</span>
+  <span class="bp">&#183;</span> <span class="n">obtain</span> <span class="n">h_le</span> <span class="bp">|</span> <span class="n">h_ge</span> <span class="o">:</span> <span class="n">N</span> <span class="bp">&#8804;</span> <span class="n">p</span> <span class="bp">&#8744;</span> <span class="n">p</span> <span class="bp">&lt;</span> <span class="n">N</span> <span class="o">:=</span> <span class="n">le_or_lt</span> <span class="n">N</span> <span class="n">p</span>
+    <span class="bp">&#183;</span> <span class="n">apply</span> <span class="n">h_le</span>
+    <span class="k">have</span> <span class="n">hp2</span> <span class="o">:</span> <span class="mi">2</span> <span class="bp">&#8804;</span> <span class="n">p</span>
+    <span class="bp">&#183;</span> <span class="n">obtain</span> <span class="o">&#10216;</span><span class="n">hp&#39;</span><span class="o">,</span> <span class="n">hp&#39;&#39;</span><span class="o">&#10217;</span> <span class="o">:=</span> <span class="n">hp</span>
+      <span class="n">apply</span> <span class="n">hp&#39;</span>
+    <span class="k">have</span> <span class="n">hp_pos</span> <span class="o">:</span> <span class="mi">0</span> <span class="bp">&lt;</span> <span class="n">p</span> <span class="o">:=</span> <span class="kd">by</span> <span class="n">extra</span>
+    <span class="k">have</span> <span class="n">h_dvd</span> <span class="o">:</span> <span class="n">p</span> <span class="bp">&#8739;</span> <span class="o">(</span><span class="n">N</span> <span class="bp">!</span><span class="o">)</span>
+    <span class="bp">&#183;</span> <span class="n">apply</span> <span class="n">dvd_factorial</span> <span class="n">hp_pos</span>
+      <span class="n">addarith</span> <span class="o">[</span><span class="n">h_ge</span><span class="o">]</span>
+    <span class="n">obtain</span> <span class="o">&#10216;</span><span class="n">k</span><span class="o">,</span> <span class="n">hk</span><span class="o">&#10217;</span> <span class="o">:=</span> <span class="n">h_dvd</span>
+    <span class="k">have</span> <span class="o">:</span> <span class="bp">&#172;</span> <span class="n">p</span> <span class="bp">&#8739;</span> <span class="o">(</span><span class="n">N</span> <span class="bp">!</span> <span class="bp">+</span> <span class="mi">1</span><span class="o">)</span>
+    <span class="bp">&#183;</span> <span class="n">apply</span> <span class="n">Nat.not_dvd_of_exists_lt_and_lt</span> <span class="o">(</span><span class="n">N</span> <span class="bp">!</span> <span class="bp">+</span> <span class="mi">1</span><span class="o">)</span> <span class="n">hp_pos</span>
+      <span class="n">take</span> <span class="n">k</span>
+      <span class="n">constructor</span>
+      <span class="bp">&#183;</span> <span class="n">addarith</span> <span class="o">[</span><span class="n">hk</span><span class="o">]</span>
+      <span class="k">calc</span> <span class="n">N</span> <span class="bp">!</span> <span class="bp">+</span> <span class="mi">1</span> <span class="bp">=</span> <span class="n">p</span> <span class="bp">*</span> <span class="n">k</span> <span class="bp">+</span> <span class="mi">1</span> <span class="o">:=</span> <span class="kd">by</span> <span class="n">addarith</span> <span class="o">[</span><span class="n">hk</span><span class="o">]</span>
+        <span class="n">_</span> <span class="bp">&lt;</span> <span class="n">p</span> <span class="bp">*</span> <span class="n">k</span> <span class="bp">+</span> <span class="n">p</span> <span class="o">:=</span> <span class="kd">by</span> <span class="n">addarith</span> <span class="o">[</span><span class="n">hp2</span><span class="o">]</span>
+        <span class="n">_</span> <span class="bp">=</span> <span class="n">p</span> <span class="bp">*</span> <span class="o">(</span><span class="n">k</span> <span class="bp">+</span> <span class="mi">1</span><span class="o">)</span> <span class="o">:=</span> <span class="kd">by</span> <span class="n">ring</span>
+    <span class="n">contradiction</span>
+  <span class="bp">&#183;</span> <span class="n">apply</span> <span class="n">hp</span>
+</pre></div>
+</div>
+</section>
+<section id="gauss-and-euclid-s-lemmas">
+<span id="euclid-lemma"></span><h2><span class="section-number">7.2. </span>Gauss&#8217; and Euclid&#8217;s lemmas<a class="headerlink" href="#gauss-and-euclid-s-lemmas" title="Permalink to this headline">&#61633;</a></h2>
+<div class="admonition-theorem-gauss-lemma admonition">
+<p class="admonition-title">Theorem (Gauss&#8217; lemma)</p>
+<p>Let <span class="math notranslate nohighlight">\(a\)</span>, <span class="math notranslate nohighlight">\(b\)</span> and <span class="math notranslate nohighlight">\(d\)</span> be integers.  Suppose that <span class="math notranslate nohighlight">\(ab\)</span> is a multiple of
+<span class="math notranslate nohighlight">\(d\)</span> and <span class="math notranslate nohighlight">\(\operatorname{gcd}(a,d)=1\)</span>.  Then <span class="math notranslate nohighlight">\(b\)</span> is a multiple of <span class="math notranslate nohighlight">\(d\)</span>.</p>
+</div>
+<p>This lemma is the &#8220;final form&#8221; of the argument we have carried out in special cases in
+<a class="reference internal" href="03_Parity_and_Divisibility.html#bezout-prob1"><span class="std std-numref">Example 3.5.1</span></a>, <a class="reference internal" href="03_Parity_and_Divisibility.html#bezout-prob2"><span class="std std-numref">Example 3.5.2</span></a>, etc.  Like in those
+special cases, the trick is to find a &#8220;B&#233;zout identity&#8221; relating <span class="math notranslate nohighlight">\(a\)</span> and <span class="math notranslate nohighlight">\(d\)</span>: multiples
+of  <span class="math notranslate nohighlight">\(a\)</span> and <span class="math notranslate nohighlight">\(d\)</span> which differ by 1.  In the special cases we could find such multiples
+explicitly.  In the general situation the existence of such multiples is guaranteed by
+<a class="reference internal" href="06_Induction.html#bezout-gcd"><span class="std std-numref">Example 6.7.6</span></a>.</p>
+<div class="admonition-proof admonition">
+<p class="admonition-title">Proof</p>
+<p>By <a class="reference internal" href="06_Induction.html#bezout-gcd"><span class="std std-numref">Example 6.7.6</span></a> (B&#233;zout&#8217;s identity) there exist integers <span class="math notranslate nohighlight">\(x\)</span> and
+<span class="math notranslate nohighlight">\(y\)</span> such that <span class="math notranslate nohighlight">\(xa + yd = \operatorname{gcd}(a, d)\)</span>.  Since <span class="math notranslate nohighlight">\(ab\)</span> is a multiple of
+<span class="math notranslate nohighlight">\(d\)</span>, there exists an integer <span class="math notranslate nohighlight">\(z\)</span> such that <span class="math notranslate nohighlight">\(ab=dz\)</span>.  We then have that</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}b &amp;= b \cdot 1\\
+  &amp;= b \cdot \operatorname{gcd}(a, d)\\
+  &amp;= b(xa + yd)\\
+  &amp;= x(ab) + byd\\
+  &amp;= x(dz) + byd\\
+  &amp;= d(xz + by),\end{split}\]</div>
+<p>so <span class="math notranslate nohighlight">\(b\)</span> is a multiple of <span class="math notranslate nohighlight">\(d\)</span>.</p>
+</div>
+<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">theorem</span> <span class="n">gauss_lemma</span> <span class="o">{</span><span class="n">d</span> <span class="n">a</span> <span class="n">b</span> <span class="o">:</span> <span class="n">&#8484;</span><span class="o">}</span> <span class="o">(</span><span class="n">h1</span> <span class="o">:</span> <span class="n">d</span> <span class="bp">&#8739;</span> <span class="n">a</span> <span class="bp">*</span> <span class="n">b</span><span class="o">)</span> <span class="o">(</span><span class="n">h2</span> <span class="o">:</span> <span class="n">gcd</span> <span class="n">a</span> <span class="n">d</span> <span class="bp">=</span> <span class="mi">1</span><span class="o">)</span> <span class="o">:</span> <span class="n">d</span> <span class="bp">&#8739;</span> <span class="n">b</span> <span class="o">:=</span> <span class="kd">by</span>
+  <span class="n">obtain</span> <span class="o">&#10216;</span><span class="n">x</span><span class="o">,</span> <span class="n">y</span><span class="o">,</span> <span class="n">h</span><span class="o">&#10217;</span> <span class="o">:=</span> <span class="n">bezout</span> <span class="n">a</span> <span class="n">d</span>
+  <span class="n">obtain</span> <span class="o">&#10216;</span><span class="n">z</span><span class="o">,</span> <span class="n">hz</span><span class="o">&#10217;</span> <span class="o">:=</span> <span class="n">h1</span>
+  <span class="n">take</span> <span class="n">x</span> <span class="bp">*</span> <span class="n">z</span> <span class="bp">+</span> <span class="n">b</span> <span class="bp">*</span> <span class="n">y</span>
+  <span class="k">calc</span> <span class="n">b</span> <span class="bp">=</span> <span class="n">b</span> <span class="bp">*</span> <span class="mi">1</span> <span class="o">:=</span> <span class="kd">by</span> <span class="n">ring</span>
+    <span class="n">_</span> <span class="bp">=</span> <span class="n">b</span> <span class="bp">*</span> <span class="n">gcd</span> <span class="n">a</span> <span class="n">d</span> <span class="o">:=</span> <span class="kd">by</span> <span class="n">rw</span> <span class="o">[</span><span class="n">h2</span><span class="o">]</span>
+    <span class="n">_</span> <span class="bp">=</span> <span class="n">b</span> <span class="bp">*</span> <span class="o">(</span><span class="n">x</span> <span class="bp">*</span> <span class="n">a</span> <span class="bp">+</span> <span class="n">y</span> <span class="bp">*</span> <span class="n">d</span><span class="o">)</span> <span class="o">:=</span> <span class="kd">by</span> <span class="n">rw</span> <span class="o">[</span><span class="n">h</span><span class="o">]</span>
+    <span class="n">_</span> <span class="bp">=</span> <span class="n">x</span> <span class="bp">*</span> <span class="o">(</span><span class="n">a</span> <span class="bp">*</span> <span class="n">b</span><span class="o">)</span> <span class="bp">+</span> <span class="n">b</span> <span class="bp">*</span> <span class="n">y</span> <span class="bp">*</span> <span class="n">d</span> <span class="o">:=</span> <span class="kd">by</span> <span class="n">ring</span>
+    <span class="n">_</span> <span class="bp">=</span> <span class="n">x</span> <span class="bp">*</span> <span class="o">(</span><span class="n">d</span> <span class="bp">*</span> <span class="n">z</span><span class="o">)</span> <span class="bp">+</span> <span class="n">b</span> <span class="bp">*</span> <span class="n">y</span> <span class="bp">*</span> <span class="n">d</span> <span class="o">:=</span> <span class="kd">by</span> <span class="n">rw</span> <span class="o">[</span><span class="n">hz</span><span class="o">]</span>
+    <span class="n">_</span> <span class="bp">=</span> <span class="n">d</span> <span class="bp">*</span> <span class="o">(</span><span class="n">x</span> <span class="bp">*</span> <span class="n">z</span> <span class="bp">+</span> <span class="n">b</span> <span class="bp">*</span> <span class="n">y</span><span class="o">)</span> <span class="o">:=</span> <span class="kd">by</span> <span class="n">ring</span>
+</pre></div>
+</div>
+<div class="admonition-theorem-euclid-s-lemma admonition">
+<p class="admonition-title">Theorem (Euclid&#8217;s lemma)</p>
+<p>Let <span class="math notranslate nohighlight">\(a\)</span>, <span class="math notranslate nohighlight">\(b\)</span> and <span class="math notranslate nohighlight">\(p\)</span> be natural numbers, with <span class="math notranslate nohighlight">\(p\)</span> prime.  Suppose that
+<span class="math notranslate nohighlight">\(ab\)</span> is a multiple of <span class="math notranslate nohighlight">\(p\)</span>.  Then either <span class="math notranslate nohighlight">\(a\)</span> or <span class="math notranslate nohighlight">\(b\)</span> is a multiple of
+<span class="math notranslate nohighlight">\(p\)</span>.</p>
+</div>
+<div class="admonition-proof admonition">
+<p class="admonition-title">Proof</p>
+<p>By <a class="reference internal" href="06_Induction.html#gcd-nonneg"><span class="std std-numref">Example 6.7.2</span></a>, <span class="math notranslate nohighlight">\(\operatorname{gcd}(a,p)\geq 0\)</span>, so
+<span class="math notranslate nohighlight">\(\operatorname{gcd}(a,p)\)</span> (a priori an integer) can be considered as a natural number.  Let
+us call that natural number <span class="math notranslate nohighlight">\(d\)</span>.  Then</p>
+<ul class="simple">
+<li><p>by <a class="reference internal" href="06_Induction.html#common-divisor"><span class="std std-numref">Example 6.7.3</span></a>, <span class="math notranslate nohighlight">\(d\mid a\)</span> and <span class="math notranslate nohighlight">\(d\mid p\)</span>;</p></li>
+<li><p>(<span class="math notranslate nohighlight">\(\star\)</span>) by Gauss&#8217; lemma, if <span class="math notranslate nohighlight">\(p\mid ab\)</span> and <span class="math notranslate nohighlight">\(d=1\)</span> then <span class="math notranslate nohighlight">\(p \mid b\)</span>.</p></li>
+</ul>
+<p>A priori these divisibility statements are all statements about
+<span class="math notranslate nohighlight">\(a\)</span>, <span class="math notranslate nohighlight">\(b\)</span>, <span class="math notranslate nohighlight">\(p\)</span> and <span class="math notranslate nohighlight">\(d\)</span> considered as integers, but these are equivalent to
+the corresponding divisibility statements about natural numbers.</p>
+<p>We now begin the proof proper.  Since <span class="math notranslate nohighlight">\(p\)</span> is prime and <span class="math notranslate nohighlight">\(d\mid p\)</span>, either <span class="math notranslate nohighlight">\(d=1\)</span>
+or <span class="math notranslate nohighlight">\(d=p\)</span>.</p>
+<p><strong>Case 1</strong> (<span class="math notranslate nohighlight">\(d=1\)</span>):  Then by (<span class="math notranslate nohighlight">\(\star\)</span>), <span class="math notranslate nohighlight">\(p \mid b\)</span>.</p>
+<p><strong>Case 2</strong> (<span class="math notranslate nohighlight">\(d=p\)</span>):  Then since <span class="math notranslate nohighlight">\(d\mid a\)</span>, <span class="math notranslate nohighlight">\(p\mid a\)</span>.</p>
+</div>
+<p>To write this proof in Lean, we need some tricks to handle the interaction between integers and
+natural numbers.  These will not be used again and it&#8217;s fine not to read them very closely.</p>
+<ul class="simple">
+<li><p>When invoking lemmas about integers (<code class="docutils literal notranslate"><span class="pre">gcd_dvd_left</span></code>, <code class="docutils literal notranslate"><span class="pre">gcd_dvd_right</span></code>, <code class="docutils literal notranslate"><span class="pre">gauss_lemma</span></code>,
+<code class="docutils literal notranslate"><span class="pre">gcd_nonneg</span></code>) on natural number inputs, we <em>cast</em> the natural number inputs to integers, like
+<code class="docutils literal notranslate"><span class="pre">(a:&#8484;)</span></code> &#8211; this is not always necessary but it avoids ambiguity.  (The casts then display in the
+infoview with arrows, as <code class="docutils literal notranslate"><span class="pre">&#8593;a</span></code>, etc.)</p></li>
+<li><p>Once we have the hypothesis <code class="docutils literal notranslate"><span class="pre">0</span> <span class="pre">&#8804;</span> <span class="pre">gcd</span> <span class="pre">(a:&#8484;)</span> <span class="pre">(p:&#8484;)</span></code>, we can use the Lean tactic <code class="docutils literal notranslate"><span class="pre">lift</span></code> to
+introduce a natural number <code class="docutils literal notranslate"><span class="pre">d</span></code> whose cast to the integers is <code class="docutils literal notranslate"><span class="pre">gcd</span> <span class="pre">(a:&#8484;)</span> <span class="pre">(p:&#8484;)</span></code>.</p></li>
+<li><p>Finally, we can run the tactic <code class="docutils literal notranslate"><span class="pre">norm_cast</span></code> on all our hypotheses, which converts statements
+about natural-numbers-cast-to-integers into the corresponding statements about natural numbers, if
+this is mathematically valid.  For example, <code class="docutils literal notranslate"><span class="pre">&#8593;d</span> <span class="pre">&#8739;</span> <span class="pre">&#8593;a</span></code> is converted to <code class="docutils literal notranslate"><span class="pre">d</span> <span class="pre">&#8739;</span> <span class="pre">a</span></code>.</p></li>
+</ul>
+<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">theorem</span> <span class="n">euclid_lemma</span> <span class="o">{</span><span class="n">a</span> <span class="n">b</span> <span class="n">p</span> <span class="o">:</span> <span class="n">&#8469;</span><span class="o">}</span> <span class="o">(</span><span class="n">hp</span> <span class="o">:</span> <span class="n">Prime</span> <span class="n">p</span><span class="o">)</span> <span class="o">(</span><span class="n">H</span> <span class="o">:</span> <span class="n">p</span> <span class="bp">&#8739;</span> <span class="n">a</span> <span class="bp">*</span> <span class="n">b</span><span class="o">)</span> <span class="o">:</span> <span class="n">p</span> <span class="bp">&#8739;</span> <span class="n">a</span> <span class="bp">&#8744;</span> <span class="n">p</span> <span class="bp">&#8739;</span> <span class="n">b</span> <span class="o">:=</span> <span class="kd">by</span>
+  <span class="c1">-- write down everything we know about `gcd (a:&#8484;) (p:&#8484;)`</span>
+  <span class="k">have</span> <span class="n">hap1</span> <span class="o">:</span> <span class="n">gcd</span> <span class="o">(</span><span class="n">a</span><span class="o">:</span><span class="n">&#8484;</span><span class="o">)</span> <span class="o">(</span><span class="n">p</span><span class="o">:</span><span class="n">&#8484;</span><span class="o">)</span> <span class="bp">&#8739;</span> <span class="o">(</span><span class="n">a</span><span class="o">:</span><span class="n">&#8484;</span><span class="o">)</span> <span class="o">:=</span> <span class="n">gcd_dvd_left</span> <span class="o">(</span><span class="n">a</span><span class="o">:</span><span class="n">&#8484;</span><span class="o">)</span> <span class="o">(</span><span class="n">p</span><span class="o">:</span><span class="n">&#8484;</span><span class="o">)</span>
+  <span class="k">have</span> <span class="n">hap2</span> <span class="o">:</span> <span class="n">gcd</span> <span class="o">(</span><span class="n">a</span><span class="o">:</span><span class="n">&#8484;</span><span class="o">)</span> <span class="o">(</span><span class="n">p</span><span class="o">:</span><span class="n">&#8484;</span><span class="o">)</span> <span class="bp">&#8739;</span> <span class="o">(</span><span class="n">p</span><span class="o">:</span><span class="n">&#8484;</span><span class="o">)</span> <span class="o">:=</span> <span class="n">gcd_dvd_right</span> <span class="o">(</span><span class="n">a</span><span class="o">:</span><span class="n">&#8484;</span><span class="o">)</span> <span class="o">(</span><span class="n">p</span><span class="o">:</span><span class="n">&#8484;</span><span class="o">)</span>
+  <span class="k">have</span> <span class="n">h_gauss</span> <span class="o">:</span> <span class="o">(</span><span class="n">p</span><span class="o">:</span><span class="n">&#8484;</span><span class="o">)</span> <span class="bp">&#8739;</span> <span class="o">(</span><span class="n">a</span><span class="o">:</span><span class="n">&#8484;</span><span class="o">)</span> <span class="bp">*</span> <span class="o">(</span><span class="n">b</span><span class="o">:</span><span class="n">&#8484;</span><span class="o">)</span> <span class="bp">&#8594;</span> <span class="n">gcd</span> <span class="o">(</span><span class="n">a</span><span class="o">:</span><span class="n">&#8484;</span><span class="o">)</span> <span class="o">(</span><span class="n">p</span><span class="o">:</span><span class="n">&#8484;</span><span class="o">)</span> <span class="bp">=</span> <span class="mi">1</span> <span class="bp">&#8594;</span> <span class="o">(</span><span class="n">p</span><span class="o">:</span><span class="n">&#8484;</span><span class="o">)</span> <span class="bp">&#8739;</span> <span class="o">(</span><span class="n">b</span><span class="o">:</span><span class="n">&#8484;</span><span class="o">)</span> <span class="o">:=</span> <span class="n">gauss_lemma</span>
+  <span class="k">have</span> <span class="n">hgcd</span> <span class="o">:</span> <span class="mi">0</span> <span class="bp">&#8804;</span> <span class="n">gcd</span> <span class="o">(</span><span class="n">a</span><span class="o">:</span><span class="n">&#8484;</span><span class="o">)</span> <span class="o">(</span><span class="n">p</span><span class="o">:</span><span class="n">&#8484;</span><span class="o">)</span> <span class="o">:=</span> <span class="n">gcd_nonneg</span> <span class="n">a</span> <span class="n">p</span>
+  <span class="c1">-- convert to `&#8469;` facts</span>
+  <span class="n">lift</span> <span class="n">gcd</span> <span class="n">a</span> <span class="n">p</span> <span class="n">to</span> <span class="n">&#8469;</span> <span class="n">using</span> <span class="n">hgcd</span> <span class="k">with</span> <span class="n">d</span> <span class="n">hd</span>
+  <span class="n">norm_cast</span> <span class="n">at</span> <span class="n">hap1</span> <span class="n">hap2</span> <span class="n">h_gauss</span>
+  <span class="c1">-- actually prove the theorem</span>
+  <span class="n">dsimp</span> <span class="o">[</span><span class="n">Prime</span><span class="o">]</span> <span class="n">at</span> <span class="n">hp</span>
+  <span class="n">obtain</span> <span class="o">&#10216;</span><span class="n">hp1</span><span class="o">,</span> <span class="n">hp2</span><span class="o">&#10217;</span> <span class="o">:=</span> <span class="n">hp</span>
+  <span class="n">obtain</span> <span class="n">hgcd_1</span> <span class="bp">|</span> <span class="n">hgcd_p</span> <span class="o">:</span> <span class="n">d</span> <span class="bp">=</span> <span class="mi">1</span> <span class="bp">&#8744;</span> <span class="n">d</span> <span class="bp">=</span> <span class="n">p</span> <span class="o">:=</span> <span class="n">hp2</span> <span class="n">d</span> <span class="n">hap2</span>
+  <span class="bp">&#183;</span> <span class="n">right</span>
+    <span class="n">apply</span> <span class="n">h_gauss</span> <span class="n">H</span> <span class="n">hgcd_1</span>
+  <span class="bp">&#183;</span> <span class="n">left</span>
+    <span class="n">rw</span> <span class="o">[</span><span class="bp">&#8592;</span> <span class="n">hgcd_p</span><span class="o">]</span>
+    <span class="n">apply</span> <span class="n">hap1</span>
+</pre></div>
+</div>
+<div class="admonition-corollary admonition">
+<p class="admonition-title">Corollary</p>
+<p>Let <span class="math notranslate nohighlight">\(a\)</span>, <span class="math notranslate nohighlight">\(p\)</span> and <span class="math notranslate nohighlight">\(k\)</span> be natural numbers, with <span class="math notranslate nohighlight">\(p\)</span> prime and
+<span class="math notranslate nohighlight">\(k\geq 1\)</span>. If <span class="math notranslate nohighlight">\(a^k\)</span> is a multiple of <span class="math notranslate nohighlight">\(p\)</span>, then <span class="math notranslate nohighlight">\(a\)</span> is a multiple of
+<span class="math notranslate nohighlight">\(p\)</span>.</p>
+</div>
+<div class="admonition-proof admonition">
+<p class="admonition-title">Proof</p>
+<p>We prove this by induction on <span class="math notranslate nohighlight">\(k\)</span>, starting at 1.</p>
+<p><strong>Base case:</strong> If <span class="math notranslate nohighlight">\(a^1\)</span> is a multiple of <span class="math notranslate nohighlight">\(p\)</span>, then since <span class="math notranslate nohighlight">\(a^1=a\)</span>, we conclude
+that <span class="math notranslate nohighlight">\(a\)</span> is a multiple of <span class="math notranslate nohighlight">\(p\)</span>.</p>
+<p><strong>Inductive step:</strong> Let <span class="math notranslate nohighlight">\(t\)</span> be a natural number and suppose that if <span class="math notranslate nohighlight">\(a^t\)</span> is a
+multiple of <span class="math notranslate nohighlight">\(p\)</span> then <span class="math notranslate nohighlight">\(a\)</span> is. (<span class="math notranslate nohighlight">\(\star\)</span>)</p>
+<p>Now suppose that <span class="math notranslate nohighlight">\(a^{t+1}\)</span> is a multiple of <span class="math notranslate nohighlight">\(p\)</span>.  Since <span class="math notranslate nohighlight">\(a^{t+1}=a\cdot a^t\)</span>,
+this means that <span class="math notranslate nohighlight">\(a \cdot a^t\)</span> is a multiple of <span class="math notranslate nohighlight">\(p\)</span>.</p>
+<p>Therefore, by Euclid&#8217;s lemma, either <span class="math notranslate nohighlight">\(a\)</span> is a multiple of <span class="math notranslate nohighlight">\(p\)</span>, in which case we are
+done, or <span class="math notranslate nohighlight">\(a^t\)</span> is a multiple of <span class="math notranslate nohighlight">\(p\)</span>, in which case by the inductive hypothesis
+(<span class="math notranslate nohighlight">\(\star\)</span>) we are done.</p>
+</div>
+<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">theorem</span> <span class="n">euclid_lemma_pow</span> <span class="o">(</span><span class="n">a</span> <span class="n">k</span> <span class="n">p</span> <span class="o">:</span> <span class="n">&#8469;</span><span class="o">)</span> <span class="o">(</span><span class="n">hp</span> <span class="o">:</span> <span class="n">Prime</span> <span class="n">p</span><span class="o">)</span> <span class="o">(</span><span class="n">hk</span> <span class="o">:</span> <span class="mi">1</span> <span class="bp">&#8804;</span> <span class="n">k</span><span class="o">)</span> <span class="o">(</span><span class="n">H</span> <span class="o">:</span> <span class="n">p</span> <span class="bp">&#8739;</span> <span class="n">a</span> <span class="bp">^</span> <span class="n">k</span><span class="o">)</span> <span class="o">:</span>
+    <span class="n">p</span> <span class="bp">&#8739;</span> <span class="n">a</span> <span class="o">:=</span> <span class="kd">by</span>
+  <span class="n">induction_from_starting_point</span> <span class="n">k</span><span class="o">,</span> <span class="n">hk</span> <span class="k">with</span> <span class="n">t</span> <span class="n">ht</span> <span class="n">IH</span>
+  <span class="bp">&#183;</span> <span class="k">have</span> <span class="n">ha</span> <span class="o">:</span> <span class="n">a</span> <span class="bp">^</span> <span class="mi">1</span> <span class="bp">=</span> <span class="n">a</span> <span class="o">:=</span> <span class="kd">by</span> <span class="n">ring</span>
+    <span class="n">rw</span> <span class="o">[</span><span class="n">ha</span><span class="o">]</span> <span class="n">at</span> <span class="n">H</span>
+    <span class="n">apply</span> <span class="n">H</span>
+  <span class="k">have</span> <span class="n">ha</span> <span class="o">:</span> <span class="n">a</span> <span class="bp">^</span> <span class="o">(</span><span class="n">t</span> <span class="bp">+</span> <span class="mi">1</span><span class="o">)</span> <span class="bp">=</span> <span class="n">a</span> <span class="bp">*</span> <span class="n">a</span> <span class="bp">^</span> <span class="n">t</span> <span class="o">:=</span> <span class="kd">by</span> <span class="n">ring</span>
+  <span class="n">rw</span> <span class="o">[</span><span class="n">ha</span><span class="o">]</span> <span class="n">at</span> <span class="n">H</span>
+  <span class="k">have</span> <span class="n">key</span> <span class="o">:</span> <span class="n">p</span> <span class="bp">&#8739;</span> <span class="n">a</span> <span class="bp">&#8744;</span> <span class="n">p</span> <span class="bp">&#8739;</span> <span class="n">a</span> <span class="bp">^</span> <span class="n">t</span> <span class="o">:=</span> <span class="n">euclid_lemma</span> <span class="n">hp</span> <span class="n">H</span>
+  <span class="n">obtain</span> <span class="n">h1</span> <span class="bp">|</span> <span class="n">h2</span> <span class="o">:=</span> <span class="n">key</span>
+  <span class="bp">&#183;</span> <span class="n">apply</span> <span class="n">h1</span>
+  <span class="bp">&#183;</span> <span class="n">apply</span> <span class="n">IH</span>
+    <span class="n">apply</span> <span class="n">h2</span>
+</pre></div>
+</div>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="06_Induction.html" class="btn btn-neutral float-left" title="6. Induction" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="Index_of_Tactics.html" class="btn btn-neutral float-right" title="Index of Lean tactics" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2022-2023, Heather Macbeth.  All rights reserved.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

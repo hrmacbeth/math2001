@@ -1,5 +1,5 @@
 /- Copyright (c) Heather Macbeth, 2023.  All rights reserved. -/
-import Math2001.Library.Prime
+import Mathlib.Tactic.Set
 import Math2001.Tactic.Addarith
 import Math2001.Tactic.Induction
 import Math2001.Tactic.Numbers
@@ -154,7 +154,6 @@ theorem gcd_dvd_left (a b : ℤ) : gcd a b ∣ a := by
 end
 termination_by gcd_dvd_right a b => b ; gcd_dvd_left a b => b
 
-namespace bezout
 
 mutual
 
@@ -179,13 +178,16 @@ def R (a b : ℤ) : ℤ :=
 end
 termination_by L a b => b ; R a b => b
 
-#eval L 24 15
-#eval R 24 15
+
+#eval L (-21) 15 -- infoview displays `2`
+#eval R (-21) 15 -- infoview displays `3`
+
 
 theorem L_mul_add_R_mul (a b : ℤ) : L a b * a + R a b * b = gcd a b := by
   rw [R, L, gcd]
   split_ifs with h1 h2 <;> push_neg at *
-  · have := L_mul_add_R_mul b (fmod a b) -- inductive hypothesis
+  · -- case `0 < b`
+    have := L_mul_add_R_mul b (fmod a b) -- inductive hypothesis
     have H : fmod a b + b * fdiv a b = a := fmod_add_fdiv a b
     set q := fdiv a b
     set r := fmod a b
@@ -193,7 +195,8 @@ theorem L_mul_add_R_mul (a b : ℤ) : L a b * a + R a b * b = gcd a b := by
         = R b r * (r + b * q) + (L b r - q * R b r) * b:= by rw [H]
       _ = L b r * b + R b r * r := by ring
       _ = gcd b r := this
-  · have := L_mul_add_R_mul b (fmod a (-b)) -- inductive hypothesis
+  · -- case `b < 0`
+    have := L_mul_add_R_mul b (fmod a (-b)) -- inductive hypothesis
     have H : fmod a (-b) + (-b) * fdiv a (-b) = a := fmod_add_fdiv a (-b)
     set q := fdiv a (-b)
     set r := fmod a (-b)
@@ -201,13 +204,17 @@ theorem L_mul_add_R_mul (a b : ℤ) : L a b * a + R a b * b = gcd a b := by
         =  R b r * (r + -b * q) + (L b r + q * R b r) * b := by rw [H]
       _ = L b r * b + R b r * r := by ring
       _ = gcd b r := this
-  · ring
-  · ring
+  · -- case `b = 0`, `0 ≤ a`
+    ring
+  · -- case `b = 0`, `a < 0`
+    ring
 termination_by L_mul_add_R_mul a b => b
 
-end bezout
 
-open bezout
+#eval L 7 5 -- infoview displays `-2`
+#eval R 7 5 -- infoview displays `3`
+#eval gcd 7 5 -- infoview displays `1`
+
 
 theorem bezout (a b : ℤ) : ∃ x y : ℤ, x * a + y * b = gcd a b := by
   take L a b, R a b
@@ -215,28 +222,6 @@ theorem bezout (a b : ℤ) : ∃ x y : ℤ, x * a + y * b = gcd a b := by
 
 /-! # Exercises -/
 
-
-@[decreasing] theorem Q_bound {n : ℕ} (h0 : n ≠ 0) (h2 : Nat.mod n 2 = 0) :
-    Nat.div n 2 < n := by
-  have H : 2 * (Nat.div n 2) + Nat.mod n 2 = n := Nat.div_add_mod n 2
-  apply lt_of_mul_lt_mul_left (a := 2)
-  calc 2 * Nat.div n 2 = 2 * Nat.div n 2 + 0 := by ring
-    _ = 2 * Nat.div n 2 + Nat.mod n 2 := by rw [h2]
-    _ = n := H
-    _ < n + n := by extra
-    _ = 2 * n := by ring
-  numbers
-
-def Q (n : ℕ) : ℕ :=
-  if n = 0 then
-    0
-  else if Nat.mod n 2 = 0 then
-    Q (Nat.div n 2)
-  else
-    n
-
-theorem Q_div (n : ℕ) : Q n ∣ n := by
-  sorry
 
 theorem gcd_maximal {d a b : ℤ} (ha : d ∣ a) (hb : d ∣ b) : d ∣ gcd a b := by
   sorry

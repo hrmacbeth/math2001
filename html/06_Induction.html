@@ -21,7 +21,7 @@
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Index of Lean tactics" href="Index_of_Tactics.html" />
+    <link rel="next" title="7. Number theory" href="07_Number_Theory.html" />
     <link rel="prev" title="5. Logic" href="05_Logic.html" /> 
 </head>
 
@@ -101,13 +101,17 @@
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#the-euclidean-algorithm">6.7. The Euclidean algorithm</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#euclidean-algorithm-def">6.7.1. Definition</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id36">6.7.2. Example</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#gcd-nonneg">6.7.2. Example</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#common-divisor">6.7.3. Example</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id38">6.7.4. Exercises</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#bezout-def">6.7.4. Definition</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#bezout-gcd-recursive">6.7.5. Example</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#bezout-gcd">6.7.6. Example</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id41">6.7.7. Exercises</a></li>
 </ul>
 </li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="07_Number_Theory.html">7. Number theory</a></li>
 </ul>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="Index_of_Tactics.html">Index of Lean tactics</a></li>
@@ -2161,8 +2165,8 @@ definition agree with our calculation above for <span class="math notranslate no
 </pre></div>
 </div>
 </section>
-<section id="id36">
-<h3><span class="section-number">6.7.2. </span>Example<a class="headerlink" href="#id36" title="Permalink to this headline">&#61633;</a></h3>
+<section id="gcd-nonneg">
+<span id="id36"></span><h3><span class="section-number">6.7.2. </span>Example<a class="headerlink" href="#gcd-nonneg" title="Permalink to this headline">&#61633;</a></h3>
 <p>Every fact about <span class="math notranslate nohighlight">\(\operatorname{gcd}\)</span> will be proved by strong induction, using the same
 well-foundedness justification.</p>
 <div class="admonition-proposition admonition">
@@ -2400,58 +2404,242 @@ termination explanation at the end, like this:</p>
 <span class="n">termination_by</span> <span class="n">gcd_dvd_right</span> <span class="n">a</span> <span class="n">b</span> <span class="bp">=&gt;</span> <span class="n">b</span> <span class="bp">;</span> <span class="n">gcd_dvd_left</span> <span class="n">a</span> <span class="n">b</span> <span class="bp">=&gt;</span> <span class="n">b</span>
 </pre></div>
 </div>
+<p>There is a new tactic in the above proof: <code class="docutils literal notranslate"><span class="pre">set</span></code>, which introduce a short name for a long
+expression (typically one which occurs frequently and you are tired of typing out in full).  Notice
+how the goal state changes before and after its use.</p>
 </section>
-<section id="id38">
-<h3><span class="section-number">6.7.4. </span>Exercises<a class="headerlink" href="#id38" title="Permalink to this headline">&#61633;</a></h3>
-<ol class="arabic">
-<li><p>Consider the function <span class="math notranslate nohighlight">\(Q\)</span> defined recursively on the natural numbers by,</p>
-<div class="math notranslate nohighlight">
-\[\begin{split}Q(n)=
+<section id="bezout-def">
+<span id="id38"></span><h3><span class="section-number">6.7.4. </span>Definition<a class="headerlink" href="#bezout-def" title="Permalink to this headline">&#61633;</a></h3>
+<p>The process described in <a class="reference internal" href="#euclidean-algorithm-def"><span class="std std-numref">Definition 6.7.1</span></a> is generally called the
+<em>Euclidean algorithm</em>.  A process called the <em>extended Euclidean algorithm</em> is used to compute two
+other functions, which we will call <span class="math notranslate nohighlight">\(L(a,b)\)</span> and <span class="math notranslate nohighlight">\(R(a,b)\)</span>, at the same time as
+<span class="math notranslate nohighlight">\(\operatorname{gcd}(a,b)\)</span>.</p>
+<div class="admonition-definition admonition">
+<p class="admonition-title">Definition</p>
+<p>The functions <span class="math notranslate nohighlight">\(L\)</span> and <span class="math notranslate nohighlight">\(R\)</span> of two integers are defined mutually recursively as follows:</p>
+<blockquote>
+<div><div class="math notranslate nohighlight">
+\[\begin{split}L(a,b)&amp;=
 \begin{cases}
-0,&amp;n=0\\
-Q(\operatorname{div}(n,2)),&amp;\operatorname{mod}(n,2)=0\\
-n&amp;n\ne 0\text{ and }\operatorname{mod}(n,2)\ne 0.
-\end{cases}\end{split}\]</div>
-<p>This recursive definition is well-founded, since its self-references are strictly decreasing (we
-omit the text proof but see below for a Lean proof).</p>
-<p>Prove that for all natural numbers <span class="math notranslate nohighlight">\(n\)</span>, <span class="math notranslate nohighlight">\(Q(n)\)</span> is a factor of <span class="math notranslate nohighlight">\(n\)</span>.</p>
-<p>Useful fact: The functions <span class="math notranslate nohighlight">\(\operatorname{div}\)</span> and <span class="math notranslate nohighlight">\(\operatorname{mod}\)</span> for natural
-numbers satisfy the same property</p>
+  R(b,\operatorname{mod}(a,b)) &amp; 0&lt;b\\
+  R(b,\operatorname{mod}(a,-b)) &amp; b&lt;0\\
+  1 &amp; b=0\text{ and }0\le a\\
+  -1 &amp; b=0\text{ and }a&lt;0.
+\end{cases}  \\
+R(a,b)&amp;=
+\begin{cases}
+  L(b,\operatorname{mod}(a,b))-\operatorname{div}(a,b)R(b,\operatorname{mod}(a,b)) &amp; 0&lt;b\\
+  L(b,\operatorname{mod}(a,-b))+\operatorname{div}(a,-b)R(b,\operatorname{mod}(a,-b)) &amp; b&lt;0\\
+  0 &amp; b=0.
+\end{cases}  \\\end{split}\]</div>
+</div></blockquote>
+</div>
+<p>Let&#8217;s practice evaluating the <span class="math notranslate nohighlight">\(\operatorname{gcd}(a,b)\)</span>, <span class="math notranslate nohighlight">\(L(a,b)\)</span> and <span class="math notranslate nohighlight">\(R(a,b)\)</span>
+functions jointly, on the same example (<span class="math notranslate nohighlight">\(a=-21\)</span>, <span class="math notranslate nohighlight">\(b=15\)</span>) as
+in <a class="reference internal" href="#euclidean-algorithm-def"><span class="std std-numref">Definition 6.7.1</span></a>.</p>
+<p>Since we will need both <span class="math notranslate nohighlight">\(\operatorname{div}\)</span> and <span class="math notranslate nohighlight">\(\operatorname{mod}\)</span> down the
+recursion, it is convenient to calculate them jointly in advance:</p>
 <div class="math notranslate nohighlight">
-\[n = 2 \operatorname{div}(n, 2) + \operatorname{mod}(n, 2)\]</div>
-<p>as recorded in <a class="reference internal" href="#mod-add-div"><span class="std std-numref">Example 6.6.2</span></a> for integers; in Lean this
-is the theorem <code class="docutils literal notranslate"><span class="pre">Nat.div_add_mod</span></code>.</p>
-</li>
-</ol>
-<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">@[decreasing]</span> <span class="kd">theorem</span> <span class="n">Q_bound</span> <span class="o">{</span><span class="n">n</span> <span class="o">:</span> <span class="n">&#8469;</span><span class="o">}</span> <span class="o">(</span><span class="n">h0</span> <span class="o">:</span> <span class="n">n</span> <span class="bp">&#8800;</span> <span class="mi">0</span><span class="o">)</span> <span class="o">(</span><span class="n">h2</span> <span class="o">:</span> <span class="n">Nat.mod</span> <span class="n">n</span> <span class="mi">2</span> <span class="bp">=</span> <span class="mi">0</span><span class="o">)</span> <span class="o">:</span>
-    <span class="n">Nat.div</span> <span class="n">n</span> <span class="mi">2</span> <span class="bp">&lt;</span> <span class="n">n</span> <span class="o">:=</span> <span class="kd">by</span>
-  <span class="k">have</span> <span class="n">H</span> <span class="o">:</span> <span class="mi">2</span> <span class="bp">*</span> <span class="o">(</span><span class="n">Nat.div</span> <span class="n">n</span> <span class="mi">2</span><span class="o">)</span> <span class="bp">+</span> <span class="n">Nat.mod</span> <span class="n">n</span> <span class="mi">2</span> <span class="bp">=</span> <span class="n">n</span> <span class="o">:=</span> <span class="n">Nat.div_add_mod</span> <span class="n">n</span> <span class="mi">2</span>
-  <span class="n">apply</span> <span class="n">lt_of_mul_lt_mul_left</span> <span class="o">(</span><span class="n">a</span> <span class="o">:=</span> <span class="mi">2</span><span class="o">)</span>
-  <span class="k">calc</span> <span class="mi">2</span> <span class="bp">*</span> <span class="n">Nat.div</span> <span class="n">n</span> <span class="mi">2</span> <span class="bp">=</span> <span class="mi">2</span> <span class="bp">*</span> <span class="n">Nat.div</span> <span class="n">n</span> <span class="mi">2</span> <span class="bp">+</span> <span class="mi">0</span> <span class="o">:=</span> <span class="kd">by</span> <span class="n">ring</span>
-    <span class="n">_</span> <span class="bp">=</span> <span class="mi">2</span> <span class="bp">*</span> <span class="n">Nat.div</span> <span class="n">n</span> <span class="mi">2</span> <span class="bp">+</span> <span class="n">Nat.mod</span> <span class="n">n</span> <span class="mi">2</span> <span class="o">:=</span> <span class="kd">by</span> <span class="n">rw</span> <span class="o">[</span><span class="n">h2</span><span class="o">]</span>
-    <span class="n">_</span> <span class="bp">=</span> <span class="n">n</span> <span class="o">:=</span> <span class="n">H</span>
-    <span class="n">_</span> <span class="bp">&lt;</span> <span class="n">n</span> <span class="bp">+</span> <span class="n">n</span> <span class="o">:=</span> <span class="kd">by</span> <span class="n">extra</span>
-    <span class="n">_</span> <span class="bp">=</span> <span class="mi">2</span> <span class="bp">*</span> <span class="n">n</span> <span class="o">:=</span> <span class="kd">by</span> <span class="n">ring</span>
-  <span class="n">numbers</span>
+\[\begin{split}-21&amp;=9+15\cdot -2\\
+15&amp;=6+9\cdot 1\\
+9&amp;=3+6\cdot 1\\
+6&amp;=0+3\cdot 2.\end{split}\]</div>
+<p>(This table is a shorthand record that <span class="math notranslate nohighlight">\(\operatorname{div}(-21,15)=-2\)</span> and
+<span class="math notranslate nohighlight">\(\operatorname{mod}(-21,15)=9\)</span>, and so on.)  We conclude immediately that</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\operatorname{gcd}(-21,15)&amp;=\operatorname{gcd}(15,9)\\
+&amp;=\operatorname{gcd}(9,6)\\
+&amp;=\operatorname{gcd}(6,3)\\
+&amp;=\operatorname{gcd}(3,0)\\
+&amp;=3,\end{split}\]</div>
+<p>as before.  To calculate <span class="math notranslate nohighlight">\(L(a,b)\)</span> and <span class="math notranslate nohighlight">\(R(a,b)\)</span>, it is convenient to work backwards:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}L(3,0)&amp;=1&amp;\qquad R(3,0)&amp;=0\\
+L(6,3)&amp;=R(3,0)&amp;\qquad R(6,3)&amp;=L(3,0)-\operatorname{div}(6,3)R(3,0)\\
+&amp;=0&amp;\qquad&amp;=1-2\cdot 0\\
+&amp;&amp;\qquad&amp;=1\\
+L(9,6)&amp;=R(6,3)&amp;\qquad R(9,6)&amp;=L(6,3)-\operatorname{div}(9,6)R(6,3)\\
+&amp;=1&amp;\qquad&amp;=0-1\cdot 1\\
+&amp;&amp;\qquad&amp;=-1\\
+L(15,9)&amp;=R(9,6)&amp;\qquad R(15,9)&amp;=L(9,6)-\operatorname{div}(15,9)R(9,6)\\
+&amp;=-1&amp;\qquad&amp;=1-1\cdot -1\\
+&amp;&amp;\qquad&amp;=2\\
+L(-21,15)&amp;=R(15,9)&amp;\qquad R(-21,15)&amp;=L(15,9)-\operatorname{div}(-21,15)R(15,9)\\
+&amp;=2&amp;\qquad&amp;=-1-(-2)\cdot 2\\
+&amp;&amp;\qquad&amp;=3\end{split}\]</div>
+<p>In Lean this mutual-recursion definition looks similar to the mutual-induction proof in
+<a class="reference internal" href="#common-divisor"><span class="std std-numref">Example 6.7.3</span></a>; like that example it is enclosed in a block marked
+<code class="docutils literal notranslate"><span class="pre">mutual</span></code>.</p>
+<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">mutual</span>
 
-<span class="kd">def</span> <span class="n">Q</span> <span class="o">(</span><span class="n">n</span> <span class="o">:</span> <span class="n">&#8469;</span><span class="o">)</span> <span class="o">:</span> <span class="n">&#8469;</span> <span class="o">:=</span>
-  <span class="k">if</span> <span class="n">n</span> <span class="bp">=</span> <span class="mi">0</span> <span class="k">then</span>
-    <span class="mi">0</span>
-  <span class="k">else</span> <span class="k">if</span> <span class="n">Nat.mod</span> <span class="n">n</span> <span class="mi">2</span> <span class="bp">=</span> <span class="mi">0</span> <span class="k">then</span>
-    <span class="n">Q</span> <span class="o">(</span><span class="n">Nat.div</span> <span class="n">n</span> <span class="mi">2</span><span class="o">)</span>
+<span class="kd">def</span> <span class="n">L</span> <span class="o">(</span><span class="n">a</span> <span class="n">b</span> <span class="o">:</span> <span class="n">&#8484;</span><span class="o">)</span> <span class="o">:</span> <span class="n">&#8484;</span> <span class="o">:=</span>
+  <span class="k">if</span> <span class="mi">0</span> <span class="bp">&lt;</span> <span class="n">b</span> <span class="k">then</span>
+    <span class="n">R</span> <span class="n">b</span> <span class="o">(</span><span class="n">fmod</span> <span class="n">a</span> <span class="n">b</span><span class="o">)</span>
+  <span class="k">else</span> <span class="k">if</span> <span class="n">b</span> <span class="bp">&lt;</span> <span class="mi">0</span> <span class="k">then</span>
+    <span class="n">R</span> <span class="n">b</span> <span class="o">(</span><span class="n">fmod</span> <span class="n">a</span> <span class="o">(</span><span class="bp">-</span><span class="n">b</span><span class="o">))</span>
+  <span class="k">else</span> <span class="k">if</span> <span class="mi">0</span> <span class="bp">&#8804;</span> <span class="n">a</span> <span class="k">then</span>
+    <span class="mi">1</span>
   <span class="k">else</span>
-    <span class="n">n</span>
+    <span class="bp">-</span><span class="mi">1</span>
 
-<span class="kd">theorem</span> <span class="n">Q_div</span> <span class="o">(</span><span class="n">n</span> <span class="o">:</span> <span class="n">&#8469;</span><span class="o">)</span> <span class="o">:</span> <span class="n">Q</span> <span class="n">n</span> <span class="bp">&#8739;</span> <span class="n">n</span> <span class="o">:=</span> <span class="kd">by</span>
-  <span class="gr">sorry</span>
+<span class="kd">def</span> <span class="n">R</span> <span class="o">(</span><span class="n">a</span> <span class="n">b</span> <span class="o">:</span> <span class="n">&#8484;</span><span class="o">)</span> <span class="o">:</span> <span class="n">&#8484;</span> <span class="o">:=</span>
+  <span class="k">if</span> <span class="mi">0</span> <span class="bp">&lt;</span> <span class="n">b</span> <span class="k">then</span>
+    <span class="n">L</span> <span class="n">b</span> <span class="o">(</span><span class="n">fmod</span> <span class="n">a</span> <span class="n">b</span><span class="o">)</span> <span class="bp">-</span> <span class="o">(</span><span class="n">fdiv</span> <span class="n">a</span> <span class="n">b</span><span class="o">)</span> <span class="bp">*</span> <span class="n">R</span> <span class="n">b</span> <span class="o">(</span><span class="n">fmod</span> <span class="n">a</span> <span class="n">b</span><span class="o">)</span>
+  <span class="k">else</span> <span class="k">if</span> <span class="n">b</span> <span class="bp">&lt;</span> <span class="mi">0</span> <span class="k">then</span>
+    <span class="n">L</span> <span class="n">b</span> <span class="o">(</span><span class="n">fmod</span> <span class="n">a</span> <span class="o">(</span><span class="bp">-</span><span class="n">b</span><span class="o">))</span> <span class="bp">+</span> <span class="o">(</span><span class="n">fdiv</span> <span class="n">a</span> <span class="o">(</span><span class="bp">-</span><span class="n">b</span><span class="o">))</span> <span class="bp">*</span> <span class="n">R</span> <span class="n">b</span> <span class="o">(</span><span class="n">fmod</span> <span class="n">a</span> <span class="o">(</span><span class="bp">-</span><span class="n">b</span><span class="o">))</span>
+  <span class="k">else</span>
+    <span class="mi">0</span>
+
+<span class="kd">end</span>
+<span class="n">termination_by</span> <span class="n">L</span> <span class="n">a</span> <span class="n">b</span> <span class="bp">=&gt;</span> <span class="n">b</span> <span class="bp">;</span> <span class="n">R</span> <span class="n">a</span> <span class="n">b</span> <span class="bp">=&gt;</span> <span class="n">b</span>
 </pre></div>
 </div>
-<ol class="arabic" start="2">
+<p>Sanity check: does the Lean definition agree with our computation by hand of <span class="math notranslate nohighlight">\(L(-21,15)\)</span> and
+<span class="math notranslate nohighlight">\(R(-21,15)\)</span>?</p>
+<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="k">#eval</span> <span class="n">L</span> <span class="o">(</span><span class="bp">-</span><span class="mi">21</span><span class="o">)</span> <span class="mi">15</span> <span class="c1">-- infoview displays `2`</span>
+<span class="k">#eval</span> <span class="n">R</span> <span class="o">(</span><span class="bp">-</span><span class="mi">21</span><span class="o">)</span> <span class="mi">15</span> <span class="c1">-- infoview displays `3`</span>
+</pre></div>
+</div>
+</section>
+<section id="bezout-gcd-recursive">
+<span id="id39"></span><h3><span class="section-number">6.7.5. </span>Example<a class="headerlink" href="#bezout-gcd-recursive" title="Permalink to this headline">&#61633;</a></h3>
+<p>The reason for making the definitions <span class="math notranslate nohighlight">\(L(a,b)\)</span> and <span class="math notranslate nohighlight">\(R(a,b)\)</span> is that they satisfy the
+following identity.</p>
+<div class="admonition-theorem admonition">
+<p class="admonition-title">Theorem</p>
+<p>For all integers <span class="math notranslate nohighlight">\(a\)</span> and <span class="math notranslate nohighlight">\(b\)</span>,</p>
+<div class="math notranslate nohighlight">
+\[L(a,b)a+R(a,b)b=\operatorname{gcd}(a,b).\]</div>
+</div>
+<div class="admonition-proof admonition">
+<p class="admonition-title">Proof</p>
+<p>We prove this by strong induction on <span class="math notranslate nohighlight">\(b\)</span>.   Suppose that for all
+integers <span class="math notranslate nohighlight">\(x\)</span> and <span class="math notranslate nohighlight">\(y\)</span> with <span class="math notranslate nohighlight">\(|y|&lt;|b|\)</span>, it is true that
+<span class="math notranslate nohighlight">\(0 \le  \operatorname{gcd}(x, y)\)</span>.</p>
+<p><strong>Case 1</strong> (<span class="math notranslate nohighlight">\(0&lt;b\)</span>): Let <span class="math notranslate nohighlight">\(q=\operatorname{div}(a,b)\)</span> and let
+<span class="math notranslate nohighlight">\(r=\operatorname{mod}(a,b)\)</span>, so that <span class="math notranslate nohighlight">\(a=r+bq\)</span> (by <a class="reference internal" href="#mod-add-div"><span class="std std-numref">Example 6.6.2</span></a>).</p>
+<p>Then by the recurrence definitions,</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\operatorname{gcd}(a,b)&amp;=\operatorname{gcd}(b,r)\\
+L(a,b)&amp;=R(b,r)\\
+R(a,b)&amp;=L(b,r)-qR(b,r)\end{split}\]</div>
+<p>and by the inductive hypothesis <span class="math notranslate nohighlight">\(L(b,r)b+R(b,r)r=\operatorname{gcd}(b,r)\)</span>.  So</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}L(a,b)a+R(a,b)b
+&amp;=R(b,r)a+&#8592;(L(b,r)-qR(b,r)&#8735;)b\\
+&amp;=R(b,r)(r+bq)+\left(L(b,r)-qR(b,r)\right)b\\
+&amp;=R(b,r)r+L(b,r)b\\
+&amp;=\operatorname{gcd}(b,r)\\
+&amp;=\operatorname{gcd}(a,b).\end{split}\]</div>
+<p><strong>Case 2</strong> (<span class="math notranslate nohighlight">\(b&lt;0\)</span>): Let <span class="math notranslate nohighlight">\(q=\operatorname{div}(a,-b)\)</span> and let
+<span class="math notranslate nohighlight">\(r=\operatorname{mod}(a,-b)\)</span>, so that <span class="math notranslate nohighlight">\(a=r+(-b)q\)</span> (by
+<a class="reference internal" href="#mod-add-div"><span class="std std-numref">Example 6.6.2</span></a>).</p>
+<p>Then by the recurrence definitions,</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\operatorname{gcd}(a,b)&amp;=\operatorname{gcd}(b,r)\\
+L(a,b)&amp;=R(b,r)\\
+R(a,b)&amp;=L(b,r)+qR(b,r)\end{split}\]</div>
+<p>and by the inductive hypothesis <span class="math notranslate nohighlight">\(L(b,r)b+R(b,r)r=\operatorname{gcd}(b,r)\)</span>.  So</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}L(a,b)a+R(a,b)b
+&amp;=R(b,r)a+&#8592;(L(b,r)+qR(b,r)&#8735;)b\\
+&amp;=R(b,r)(r+(-b)q)+\left(L(b,r)+qR(b,r)\right)b\\
+&amp;=R(b,r)r+L(b,r)b\\
+&amp;=\operatorname{gcd}(b,r)\\
+&amp;=\operatorname{gcd}(a,b).\end{split}\]</div>
+<p><strong>Case 3</strong> (<span class="math notranslate nohighlight">\(b=0\)</span>, <span class="math notranslate nohighlight">\(0\le a\)</span>): Then by the recurrence definitions,
+<span class="math notranslate nohighlight">\(\operatorname{gcd}(a,b)=a\)</span>, <span class="math notranslate nohighlight">\(L(a,b)=1\)</span> and <span class="math notranslate nohighlight">\(R(a,b)=0\)</span>, so</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}L(a,b)a+R(a,b)b
+&amp;=1\cdot a+0\cdot b\\
+&amp;=a\\
+&amp;=\operatorname{gcd}(a,b).\end{split}\]</div>
+<p><strong>Case 4</strong> (<span class="math notranslate nohighlight">\(b=0\)</span>, <span class="math notranslate nohighlight">\(a&lt;0\)</span>): Then by the recurrence definitions,
+<span class="math notranslate nohighlight">\(\operatorname{gcd}(a,b)=-a\)</span>, <span class="math notranslate nohighlight">\(L(a,b)=-1\)</span> and <span class="math notranslate nohighlight">\(R(a,b)=0\)</span>, so</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}L(a,b)a+R(a,b)b
+&amp;=-1\cdot -a+0\cdot b\\
+&amp;=a\\
+&amp;=\operatorname{gcd}(a,b).\end{split}\]</div>
+</div>
+<p>Here is the same proof in Lean.</p>
+<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">theorem</span> <span class="n">L_mul_add_R_mul</span> <span class="o">(</span><span class="n">a</span> <span class="n">b</span> <span class="o">:</span> <span class="n">&#8484;</span><span class="o">)</span> <span class="o">:</span> <span class="n">L</span> <span class="n">a</span> <span class="n">b</span> <span class="bp">*</span> <span class="n">a</span> <span class="bp">+</span> <span class="n">R</span> <span class="n">a</span> <span class="n">b</span> <span class="bp">*</span> <span class="n">b</span> <span class="bp">=</span> <span class="n">gcd</span> <span class="n">a</span> <span class="n">b</span> <span class="o">:=</span> <span class="kd">by</span>
+  <span class="n">rw</span> <span class="o">[</span><span class="n">R</span><span class="o">,</span> <span class="n">L</span><span class="o">,</span> <span class="n">gcd</span><span class="o">]</span>
+  <span class="n">split_ifs</span> <span class="k">with</span> <span class="n">h1</span> <span class="n">h2</span> <span class="bp">&lt;;&gt;</span> <span class="n">push_neg</span> <span class="n">at</span> <span class="bp">*</span>
+  <span class="bp">&#183;</span> <span class="c1">-- case `0 &lt; b`</span>
+    <span class="k">have</span> <span class="o">:=</span> <span class="n">L_mul_add_R_mul</span> <span class="n">b</span> <span class="o">(</span><span class="n">fmod</span> <span class="n">a</span> <span class="n">b</span><span class="o">)</span> <span class="c1">-- inductive hypothesis</span>
+    <span class="k">have</span> <span class="n">H</span> <span class="o">:</span> <span class="n">fmod</span> <span class="n">a</span> <span class="n">b</span> <span class="bp">+</span> <span class="n">b</span> <span class="bp">*</span> <span class="n">fdiv</span> <span class="n">a</span> <span class="n">b</span> <span class="bp">=</span> <span class="n">a</span> <span class="o">:=</span> <span class="n">fmod_add_fdiv</span> <span class="n">a</span> <span class="n">b</span>
+    <span class="n">set</span> <span class="n">q</span> <span class="o">:=</span> <span class="n">fdiv</span> <span class="n">a</span> <span class="n">b</span>
+    <span class="n">set</span> <span class="n">r</span> <span class="o">:=</span> <span class="n">fmod</span> <span class="n">a</span> <span class="n">b</span>
+    <span class="k">calc</span> <span class="n">R</span> <span class="n">b</span> <span class="n">r</span> <span class="bp">*</span> <span class="n">a</span> <span class="bp">+</span> <span class="o">(</span><span class="n">L</span> <span class="n">b</span> <span class="n">r</span> <span class="bp">-</span> <span class="n">q</span> <span class="bp">*</span> <span class="n">R</span> <span class="n">b</span> <span class="n">r</span><span class="o">)</span> <span class="bp">*</span> <span class="n">b</span>
+        <span class="bp">=</span> <span class="n">R</span> <span class="n">b</span> <span class="n">r</span> <span class="bp">*</span> <span class="o">(</span><span class="n">r</span> <span class="bp">+</span> <span class="n">b</span> <span class="bp">*</span> <span class="n">q</span><span class="o">)</span> <span class="bp">+</span> <span class="o">(</span><span class="n">L</span> <span class="n">b</span> <span class="n">r</span> <span class="bp">-</span> <span class="n">q</span> <span class="bp">*</span> <span class="n">R</span> <span class="n">b</span> <span class="n">r</span><span class="o">)</span> <span class="bp">*</span> <span class="n">b</span><span class="o">:=</span> <span class="kd">by</span> <span class="n">rw</span> <span class="o">[</span><span class="n">H</span><span class="o">]</span>
+      <span class="n">_</span> <span class="bp">=</span> <span class="n">L</span> <span class="n">b</span> <span class="n">r</span> <span class="bp">*</span> <span class="n">b</span> <span class="bp">+</span> <span class="n">R</span> <span class="n">b</span> <span class="n">r</span> <span class="bp">*</span> <span class="n">r</span> <span class="o">:=</span> <span class="kd">by</span> <span class="n">ring</span>
+      <span class="n">_</span> <span class="bp">=</span> <span class="n">gcd</span> <span class="n">b</span> <span class="n">r</span> <span class="o">:=</span> <span class="n">this</span>
+  <span class="bp">&#183;</span> <span class="c1">-- case `b &lt; 0`</span>
+    <span class="k">have</span> <span class="o">:=</span> <span class="n">L_mul_add_R_mul</span> <span class="n">b</span> <span class="o">(</span><span class="n">fmod</span> <span class="n">a</span> <span class="o">(</span><span class="bp">-</span><span class="n">b</span><span class="o">))</span> <span class="c1">-- inductive hypothesis</span>
+    <span class="k">have</span> <span class="n">H</span> <span class="o">:</span> <span class="n">fmod</span> <span class="n">a</span> <span class="o">(</span><span class="bp">-</span><span class="n">b</span><span class="o">)</span> <span class="bp">+</span> <span class="o">(</span><span class="bp">-</span><span class="n">b</span><span class="o">)</span> <span class="bp">*</span> <span class="n">fdiv</span> <span class="n">a</span> <span class="o">(</span><span class="bp">-</span><span class="n">b</span><span class="o">)</span> <span class="bp">=</span> <span class="n">a</span> <span class="o">:=</span> <span class="n">fmod_add_fdiv</span> <span class="n">a</span> <span class="o">(</span><span class="bp">-</span><span class="n">b</span><span class="o">)</span>
+    <span class="n">set</span> <span class="n">q</span> <span class="o">:=</span> <span class="n">fdiv</span> <span class="n">a</span> <span class="o">(</span><span class="bp">-</span><span class="n">b</span><span class="o">)</span>
+    <span class="n">set</span> <span class="n">r</span> <span class="o">:=</span> <span class="n">fmod</span> <span class="n">a</span> <span class="o">(</span><span class="bp">-</span><span class="n">b</span><span class="o">)</span>
+    <span class="k">calc</span>  <span class="n">R</span> <span class="n">b</span> <span class="n">r</span> <span class="bp">*</span> <span class="n">a</span> <span class="bp">+</span> <span class="o">(</span><span class="n">L</span> <span class="n">b</span> <span class="n">r</span> <span class="bp">+</span> <span class="n">q</span> <span class="bp">*</span> <span class="n">R</span> <span class="n">b</span> <span class="n">r</span><span class="o">)</span> <span class="bp">*</span> <span class="n">b</span>
+        <span class="bp">=</span>  <span class="n">R</span> <span class="n">b</span> <span class="n">r</span> <span class="bp">*</span> <span class="o">(</span><span class="n">r</span> <span class="bp">+</span> <span class="bp">-</span><span class="n">b</span> <span class="bp">*</span> <span class="n">q</span><span class="o">)</span> <span class="bp">+</span> <span class="o">(</span><span class="n">L</span> <span class="n">b</span> <span class="n">r</span> <span class="bp">+</span> <span class="n">q</span> <span class="bp">*</span> <span class="n">R</span> <span class="n">b</span> <span class="n">r</span><span class="o">)</span> <span class="bp">*</span> <span class="n">b</span> <span class="o">:=</span> <span class="kd">by</span> <span class="n">rw</span> <span class="o">[</span><span class="n">H</span><span class="o">]</span>
+      <span class="n">_</span> <span class="bp">=</span> <span class="n">L</span> <span class="n">b</span> <span class="n">r</span> <span class="bp">*</span> <span class="n">b</span> <span class="bp">+</span> <span class="n">R</span> <span class="n">b</span> <span class="n">r</span> <span class="bp">*</span> <span class="n">r</span> <span class="o">:=</span> <span class="kd">by</span> <span class="n">ring</span>
+      <span class="n">_</span> <span class="bp">=</span> <span class="n">gcd</span> <span class="n">b</span> <span class="n">r</span> <span class="o">:=</span> <span class="n">this</span>
+  <span class="bp">&#183;</span> <span class="c1">-- case `b = 0`, `0 &#8804; a`</span>
+    <span class="n">ring</span>
+  <span class="bp">&#183;</span> <span class="c1">-- case `b = 0`, `a &lt; 0`</span>
+    <span class="n">ring</span>
+<span class="n">termination_by</span> <span class="n">L_mul_add_R_mul</span> <span class="n">a</span> <span class="n">b</span> <span class="bp">=&gt;</span> <span class="n">b</span>
+</pre></div>
+</div>
+</section>
+<section id="bezout-gcd">
+<span id="id40"></span><h3><span class="section-number">6.7.6. </span>Example<a class="headerlink" href="#bezout-gcd" title="Permalink to this headline">&#61633;</a></h3>
+<p>We proved in <a class="reference internal" href="#bezout-gcd-recursive"><span class="std std-numref">Example 6.7.5</span></a> that for any integers <span class="math notranslate nohighlight">\(a\)</span> and
+<span class="math notranslate nohighlight">\(b\)</span>, the integers <span class="math notranslate nohighlight">\(L(a,b)\)</span> and  <span class="math notranslate nohighlight">\(R(a,b)\)</span> satisfy</p>
+<div class="math notranslate nohighlight">
+\[L(a,b)a+R(a,b)b=\operatorname{gcd}(a,b).\]</div>
+<p>For example, <span class="math notranslate nohighlight">\(L(7,5)=-2\)</span> and <span class="math notranslate nohighlight">\(R(7,5)=3\)</span> and <span class="math notranslate nohighlight">\(\operatorname{gcd}(7,5)=1\)</span></p>
+<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="k">#eval</span> <span class="n">L</span> <span class="mi">7</span> <span class="mi">5</span> <span class="c1">-- infoview displays `-2`</span>
+<span class="k">#eval</span> <span class="n">R</span> <span class="mi">7</span> <span class="mi">5</span> <span class="c1">-- infoview displays `3`</span>
+<span class="k">#eval</span> <span class="n">gcd</span> <span class="mi">7</span> <span class="mi">5</span> <span class="c1">-- infoview displays `1`</span>
+</pre></div>
+</div>
+<p>and <span class="math notranslate nohighlight">\((-2) \cdot 7 + 3 \cdot 5 = 1\)</span>.</p>
+<p>But it is interesting to note that these are generally not the only pair of integers with that
+property.  For example,</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}3 \cdot 7 + (-4) \cdot 5 &amp;= 1\\
+(-7) \cdot 7 + 10 \cdot 5 &amp;= 1\\
+8 \cdot 7 + (-11) \cdot 5 &amp;= 1\\
+\ldots\end{split}\]</div>
+<p>In applications, it is common to need only the property, not the particular construction via
+<span class="math notranslate nohighlight">\(L(a,b)\)</span> and  <span class="math notranslate nohighlight">\(R(a,b)\)</span>.  So we record this separately.  This fact is known as
+<em>B&#233;zout&#8217;s identity</em>.</p>
+<div class="admonition-corollary-bezout-s-identity admonition">
+<p class="admonition-title">Corollary (B&#233;zout&#8217;s identity)</p>
+<p>Let <span class="math notranslate nohighlight">\(a\)</span> and <span class="math notranslate nohighlight">\(b\)</span> be integers.  Then there exist integers <span class="math notranslate nohighlight">\(x\)</span> and <span class="math notranslate nohighlight">\(y\)</span>, such
+that <span class="math notranslate nohighlight">\(xa+yb=\operatorname{gcd}(a,b)\)</span>.</p>
+</div>
+<div class="admonition-proof admonition">
+<p class="admonition-title">Proof</p>
+<p>By  <a class="reference internal" href="#bezout-gcd-recursive"><span class="std std-numref">Example 6.7.5</span></a>, the integers  <span class="math notranslate nohighlight">\(L(a,b)\)</span> and  <span class="math notranslate nohighlight">\(R(a,b)\)</span>
+have this property.</p>
+</div>
+<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">theorem</span> <span class="n">bezout</span> <span class="o">(</span><span class="n">a</span> <span class="n">b</span> <span class="o">:</span> <span class="n">&#8484;</span><span class="o">)</span> <span class="o">:</span> <span class="bp">&#8707;</span> <span class="n">x</span> <span class="n">y</span> <span class="o">:</span> <span class="n">&#8484;</span><span class="o">,</span> <span class="n">x</span> <span class="bp">*</span> <span class="n">a</span> <span class="bp">+</span> <span class="n">y</span> <span class="bp">*</span> <span class="n">b</span> <span class="bp">=</span> <span class="n">gcd</span> <span class="n">a</span> <span class="n">b</span> <span class="o">:=</span> <span class="kd">by</span>
+  <span class="n">take</span> <span class="n">L</span> <span class="n">a</span> <span class="n">b</span><span class="o">,</span> <span class="n">R</span> <span class="n">a</span> <span class="n">b</span>
+  <span class="n">apply</span> <span class="n">L_mul_add_R_mul</span>
+</pre></div>
+</div>
+</section>
+<section id="id41">
+<h3><span class="section-number">6.7.7. </span>Exercises<a class="headerlink" href="#id41" title="Permalink to this headline">&#61633;</a></h3>
+<ol class="arabic">
 <li><p>Show that <span class="math notranslate nohighlight">\(gcd(a,b)\)</span> is not just a <em>common divisor</em> of <span class="math notranslate nohighlight">\(a\)</span> and <span class="math notranslate nohighlight">\(b\)</span> (see
 <a class="reference internal" href="#common-divisor"><span class="std std-numref">Example 6.7.3</span></a>), but their <em>greatest common divisor</em>: if <span class="math notranslate nohighlight">\(d\)</span> is an
-integer which divides both <span class="math notranslate nohighlight">\(a\)</span> and <span class="math notranslate nohighlight">\(b\)</span>, then it divides <span class="math notranslate nohighlight">\(gcd(a,b)\)</span>.</p>
-<p>This problem does not need an induction; it is a direct corollary of
-<code class="xref std std-numref docutils literal notranslate"><span class="pre">Example</span> <span class="pre">%s</span></code>.</p>
+integer which divides both <span class="math notranslate nohighlight">\(a\)</span> and <span class="math notranslate nohighlight">\(b\)</span>, then it divides
+<span class="math notranslate nohighlight">\(\operatorname{gcd}(a,b)\)</span>.</p>
+<p>This problem does not need an induction; it is a direct corollary of B&#233;zout&#8217;s identity
+(<a class="reference internal" href="#bezout-gcd"><span class="std std-numref">Example 6.7.6</span></a>).</p>
 </li>
 </ol>
 <div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">theorem</span> <span class="n">gcd_maximal</span> <span class="o">{</span><span class="n">d</span> <span class="n">a</span> <span class="n">b</span> <span class="o">:</span> <span class="n">&#8484;</span><span class="o">}</span> <span class="o">(</span><span class="n">ha</span> <span class="o">:</span> <span class="n">d</span> <span class="bp">&#8739;</span> <span class="n">a</span><span class="o">)</span> <span class="o">(</span><span class="n">hb</span> <span class="o">:</span> <span class="n">d</span> <span class="bp">&#8739;</span> <span class="n">b</span><span class="o">)</span> <span class="o">:</span> <span class="n">d</span> <span class="bp">&#8739;</span> <span class="n">gcd</span> <span class="n">a</span> <span class="n">b</span> <span class="o">:=</span> <span class="kd">by</span>
@@ -2467,7 +2655,7 @@ integer which divides both <span class="math notranslate nohighlight">\(a\)</spa
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
         <a href="05_Logic.html" class="btn btn-neutral float-left" title="5. Logic" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="Index_of_Tactics.html" class="btn btn-neutral float-right" title="Index of Lean tactics" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="07_Number_Theory.html" class="btn btn-neutral float-right" title="7. Number theory" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>
