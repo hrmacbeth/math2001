@@ -498,7 +498,8 @@ solve the second version.)</p>
 <li><p>Let <span class="math notranslate nohighlight">\(f : X \to Y\)</span> be a function.  Show that <span class="math notranslate nohighlight">\(f\)</span> is injective if and only if for all
 <span class="math notranslate nohighlight">\(x_1\)</span> and <span class="math notranslate nohighlight">\(x_2\)</span> of type <span class="math notranslate nohighlight">\(X\)</span>, if <span class="math notranslate nohighlight">\(x_1\ne x_2\)</span>  then
 <span class="math notranslate nohighlight">\(f(x_1)\ne f(x_2)\)</span>.</p>
-<p>You will need to use the tactic <code class="docutils literal notranslate"><span class="pre">by_cases</span></code>.</p>
+<p>You will need to use a tactic (such as <code class="docutils literal notranslate"><span class="pre">push_neg</span></code> or <code class="docutils literal notranslate"><span class="pre">by_cases</span></code>) which is capable of
+handling the subtler negations.</p>
 </li>
 </ol>
 <div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">(</span><span class="n">f</span> <span class="o">:</span> <span class="n">X</span> <span class="bp">&#8594;</span> <span class="n">Y</span><span class="o">)</span> <span class="o">:</span> <span class="n">Injective</span> <span class="n">f</span> <span class="bp">&#8596;</span> <span class="bp">&#8704;</span> <span class="n">x1</span> <span class="n">x2</span> <span class="o">:</span> <span class="n">X</span><span class="o">,</span> <span class="n">x1</span> <span class="bp">&#8800;</span> <span class="n">x2</span> <span class="bp">&#8594;</span> <span class="n">f</span> <span class="n">x1</span> <span class="bp">&#8800;</span> <span class="n">f</span> <span class="n">x2</span> <span class="o">:=</span> <span class="kd">by</span>
