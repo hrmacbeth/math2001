@@ -1,3 +1,4 @@
+/- Copyright (c) Heather Macbeth, 2023.  All rights reserved. -/
 import Math2001.Library.GCD
 import Math2001.Library.Prime
 import Math2001.Tactic.Numbers

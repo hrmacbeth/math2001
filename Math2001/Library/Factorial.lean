@@ -1,3 +1,4 @@
+/- Copyright (c) Heather Macbeth, 2023.  All rights reserved. -/
 import Mathlib.Data.Nat.Factorial.Basic
 
 open Nat
