@@ -63,9 +63,11 @@ theorem fmod_nonneg_of_pos (n : ℤ) {d : ℤ} (hd : 0 < d) : 0 ≤ fmod n d := 
   rw [fmod]
   split_ifs with h1 h2 h3 <;> push_neg at *
   · -- case `n * d < 0`
-    exact fmod_nonneg_of_pos (n + d) hd -- inductive hypothesis
+    have IH := fmod_nonneg_of_pos (n + d) hd -- inductive hypothesis
+    apply IH
   · -- case `0 < d * (n - d)`
-    exact fmod_nonneg_of_pos (n - d) hd -- inductive hypothesis
+    have IH := fmod_nonneg_of_pos (n - d) hd -- inductive hypothesis
+    apply IH
   · -- case `n = d`
     extra
   · -- last case
@@ -79,9 +81,11 @@ theorem fmod_lt_of_pos (n : ℤ) {d : ℤ} (hd : 0 < d) : fmod n d < d := by
   rw [fmod]
   split_ifs with h1 h2 h3 <;> push_neg at *
   · -- case `n * d < 0`
-    exact fmod_lt_of_pos (n + d) hd -- inductive hypothesis
+    have IH := fmod_lt_of_pos (n + d) hd -- inductive hypothesis
+    apply IH
   · -- case `0 < d * (n - d)`
-    exact fmod_lt_of_pos (n - d) hd -- inductive hypothesis
+    have IH := fmod_lt_of_pos (n - d) hd -- inductive hypothesis
+    apply IH
   · -- case `n = d`
     exact hd
   · -- last case

@@ -54,9 +54,11 @@ theorem gcd_nonneg (a b : ℤ) : 0 ≤ gcd a b := by
   rw [gcd]
   split_ifs with h1 h2 ha <;> push_neg at *
   · -- case `0 < b`
-    apply gcd_nonneg
+    have IH := gcd_nonneg b (fmod a b)
+    apply IH
   · -- case `b < 0`
-    apply gcd_nonneg
+    have IH := gcd_nonneg b (fmod a (-b))
+    apply IH
   · -- case `b = 0`, `0 ≤ a`
     apply ha
   · -- case `b = 0`, `a < 0`
