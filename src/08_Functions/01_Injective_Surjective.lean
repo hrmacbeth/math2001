@@ -5,14 +5,14 @@ import Math2001.Tactic.Numbers
 import Math2001.Tactic.Rel
 import Math2001.Tactic.Take
 
+set_option pp.unicode.fun true
+set_option linter.unusedVariables false
+
+
 def F : ℕ → ℤ 
   | 0 => 1
   | 1 => 1
   | n + 2 => F (n + 1) + F n 
-
-set_option pp.unicode.fun true
-set_option linter.unusedVariables false
-
 
 #eval F 5 -- infoview displays `8`  
 
@@ -75,7 +75,7 @@ inductive Musketeer
   | athos
   | porthos
   | aramis
-  deriving Inhabited, DecidableEq, Repr
+  deriving DecidableEq
 
 open Musketeer
 
@@ -90,20 +90,54 @@ example : ¬ Injective f := by
   dsimp [Injective]
   push_neg
   take athos, porthos
+  dsimp [f]
   constructor
   · decide
   · decide
 
 
 example : ¬ Surjective f := by
-  dsimp [Surjective] -- optional, for clarity
+  dsimp [Surjective]
   push_neg
   take porthos
   intro a
-  cases a
+  cases a <;> dsimp [f]
   · decide
   · decide
   · decide
+
+
+def g : Musketeer → Musketeer
+  | athos => porthos
+  | porthos => aramis
+  | aramis => athos
+
+
+example : Injective g := by
+  dsimp [Injective]
+  intro x1 x2 hx
+  cases x1 <;> cases x2 <;> dsimp [g] at hx
+  · trivial
+  · contradiction
+  · contradiction
+  · contradiction
+  · decide
+  · contradiction
+  · contradiction
+  · contradiction
+  · decide
+
+
+example : Surjective g := by
+  dsimp [Surjective]
+  intro y
+  cases y
+  · take aramis
+    decide
+  · take athos
+    decide
+  · take porthos
+    decide 
 
 /-! # Exercises -/
 
