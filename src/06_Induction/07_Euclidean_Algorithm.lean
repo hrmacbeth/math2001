@@ -54,10 +54,10 @@ theorem gcd_nonneg (a b : ℤ) : 0 ≤ gcd a b := by
   rw [gcd]
   split_ifs with h1 h2 ha <;> push_neg at *
   · -- case `0 < b`
-    have IH := gcd_nonneg b (fmod a b)
+    have IH := gcd_nonneg b (fmod a b) -- inductive hypothesis
     apply IH
   · -- case `b < 0`
-    have IH := gcd_nonneg b (fmod a (-b))
+    have IH := gcd_nonneg b (fmod a (-b)) -- inductive hypothesis
     apply IH
   · -- case `b = 0`, `0 ≤ a`
     apply ha
@@ -189,23 +189,23 @@ theorem L_mul_add_R_mul (a b : ℤ) : L a b * a + R a b * b = gcd a b := by
   rw [R, L, gcd]
   split_ifs with h1 h2 <;> push_neg at *
   · -- case `0 < b`
-    have := L_mul_add_R_mul b (fmod a b) -- inductive hypothesis
+    have IH := L_mul_add_R_mul b (fmod a b) -- inductive hypothesis
     have H : fmod a b + b * fdiv a b = a := fmod_add_fdiv a b
     set q := fdiv a b
     set r := fmod a b
     calc R b r * a + (L b r - q * R b r) * b
         = R b r * (r + b * q) + (L b r - q * R b r) * b:= by rw [H]
       _ = L b r * b + R b r * r := by ring
-      _ = gcd b r := this
+      _ = gcd b r := IH
   · -- case `b < 0`
-    have := L_mul_add_R_mul b (fmod a (-b)) -- inductive hypothesis
+    have IH := L_mul_add_R_mul b (fmod a (-b)) -- inductive hypothesis
     have H : fmod a (-b) + (-b) * fdiv a (-b) = a := fmod_add_fdiv a (-b)
     set q := fdiv a (-b)
     set r := fmod a (-b)
     calc  R b r * a + (L b r + q * R b r) * b 
         =  R b r * (r + -b * q) + (L b r + q * R b r) * b := by rw [H]
       _ = L b r * b + R b r * r := by ring
-      _ = gcd b r := this
+      _ = gcd b r := IH
   · -- case `b = 0`, `0 ≤ a`
     ring
   · -- case `b = 0`, `a < 0`

@@ -1059,11 +1059,8 @@ modulo 6.</p>
 <li><p><span class="math notranslate nohighlight">\(a_n\equiv 5\mod 6\)</span> and <span class="math notranslate nohighlight">\(a_{n+1}\equiv 1\mod 6\)</span>.</p></li>
 </ul>
 <p>We prove this by induction on <span class="math notranslate nohighlight">\(n\)</span>.</p>
-<p>For the base case, <span class="math notranslate nohighlight">\(n=1\)</span>, notice that <span class="math notranslate nohighlight">\(a_1=5\)</span> and</p>
-<div class="math notranslate nohighlight">
-\[\begin{split}a_2&amp;=7\\
-&amp;=6\cdot 1+1\\
-&amp;\equiv 1\mod 6.\end{split}\]</div>
+<p>For the base case, <span class="math notranslate nohighlight">\(n=1\)</span>, notice that <span class="math notranslate nohighlight">\(a_1=1\)</span> and <span class="math notranslate nohighlight">\(a_2=5\)</span>, so
+<span class="math notranslate nohighlight">\(a_1&amp;\equiv 1\mod 6\)</span> and <span class="math notranslate nohighlight">\(a_2&amp;\equiv 5\mod 6\)</span>.</p>
 <p>For the inductive step, let <span class="math notranslate nohighlight">\(k\)</span> be a natural number and suppose that either</p>
 <ul class="simple">
 <li><p><span class="math notranslate nohighlight">\(a_k\equiv 1\mod 6\)</span> and <span class="math notranslate nohighlight">\(a_{k+1}\equiv 5\mod 6\)</span>, or</p></li>
@@ -2198,10 +2195,10 @@ nonnegative.</p>
   <span class="n">rw</span> <span class="o">[</span><span class="n">gcd</span><span class="o">]</span>
   <span class="n">split_ifs</span> <span class="k">with</span> <span class="n">h1</span> <span class="n">h2</span> <span class="n">ha</span> <span class="bp">&lt;;&gt;</span> <span class="n">push_neg</span> <span class="n">at</span> <span class="bp">*</span>
   <span class="bp">&#183;</span> <span class="c1">-- case `0 &lt; b`</span>
-    <span class="k">have</span> <span class="n">IH</span> <span class="o">:=</span> <span class="n">gcd_nonneg</span> <span class="n">b</span> <span class="o">(</span><span class="n">fmod</span> <span class="n">a</span> <span class="n">b</span><span class="o">)</span>
+    <span class="k">have</span> <span class="n">IH</span> <span class="o">:=</span> <span class="n">gcd_nonneg</span> <span class="n">b</span> <span class="o">(</span><span class="n">fmod</span> <span class="n">a</span> <span class="n">b</span><span class="o">)</span> <span class="c1">-- inductive hypothesis</span>
     <span class="n">apply</span> <span class="n">IH</span>
   <span class="bp">&#183;</span> <span class="c1">-- case `b &lt; 0`</span>
-    <span class="k">have</span> <span class="n">IH</span> <span class="o">:=</span> <span class="n">gcd_nonneg</span> <span class="n">b</span> <span class="o">(</span><span class="n">fmod</span> <span class="n">a</span> <span class="o">(</span><span class="bp">-</span><span class="n">b</span><span class="o">))</span>
+    <span class="k">have</span> <span class="n">IH</span> <span class="o">:=</span> <span class="n">gcd_nonneg</span> <span class="n">b</span> <span class="o">(</span><span class="n">fmod</span> <span class="n">a</span> <span class="o">(</span><span class="bp">-</span><span class="n">b</span><span class="o">))</span> <span class="c1">-- inductive hypothesis</span>
     <span class="n">apply</span> <span class="n">IH</span>
   <span class="bp">&#183;</span> <span class="c1">-- case `b = 0`, `0 &#8804; a`</span>
     <span class="n">apply</span> <span class="n">ha</span>
@@ -2337,8 +2334,8 @@ features two separate lemmas, one to show <span class="math notranslate nohighli
 </pre></div>
 </div>
 <p>But now the strong induction structure is complicated: the proof of <code class="docutils literal notranslate"><span class="pre">gcd_dvd_right</span></code> depends on
-<code class="docutils literal notranslate"><span class="pre">gcd_dvd_left</span></code> for smaller values of <code class="docutils literal notranslate"><span class="pre">a</span></code> and <code class="docutils literal notranslate"><span class="pre">b</span></code>, and the proof of <code class="docutils literal notranslate"><span class="pre">gcd_dvd_left</span></code> depends on
-<code class="docutils literal notranslate"><span class="pre">gcd_dvd_right</span></code> for smaller values of <code class="docutils literal notranslate"><span class="pre">a</span></code> and <code class="docutils literal notranslate"><span class="pre">b</span></code>.  This is called a <em>mutual induction</em> and it
+<code class="docutils literal notranslate"><span class="pre">gcd_dvd_left</span></code> for smaller values of <code class="docutils literal notranslate"><span class="pre">a</span></code>, <code class="docutils literal notranslate"><span class="pre">b</span></code>, and the proof of <code class="docutils literal notranslate"><span class="pre">gcd_dvd_left</span></code> depends on
+<code class="docutils literal notranslate"><span class="pre">gcd_dvd_right</span></code> for smaller values of <code class="docutils literal notranslate"><span class="pre">a</span></code>, <code class="docutils literal notranslate"><span class="pre">b</span></code>.  This is called a <em>mutual induction</em> and it
 has a special syntax in Lean: the two theorems are enclosed in a <code class="docutils literal notranslate"><span class="pre">mutual</span></code> block, with a joint
 termination explanation at the end, like this:</p>
 <div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">mutual</span>
@@ -2533,7 +2530,7 @@ R(a,b)&amp;=L(b,r)-qR(b,r)\end{split}\]</div>
 <p>and by the inductive hypothesis <span class="math notranslate nohighlight">\(L(b,r)b+R(b,r)r=\operatorname{gcd}(b,r)\)</span>.  So</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}L(a,b)a+R(a,b)b
-&amp;=R(b,r)a+&#8592;(L(b,r)-qR(b,r)&#8735;)b\\
+&amp;=R(b,r)a+\left(L(b,r)-qR(b,r)\right)b\\
 &amp;=R(b,r)(r+bq)+\left(L(b,r)-qR(b,r)\right)b\\
 &amp;=R(b,r)r+L(b,r)b\\
 &amp;=\operatorname{gcd}(b,r)\\
@@ -2549,7 +2546,7 @@ R(a,b)&amp;=L(b,r)+qR(b,r)\end{split}\]</div>
 <p>and by the inductive hypothesis <span class="math notranslate nohighlight">\(L(b,r)b+R(b,r)r=\operatorname{gcd}(b,r)\)</span>.  So</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}L(a,b)a+R(a,b)b
-&amp;=R(b,r)a+&#8592;(L(b,r)+qR(b,r)&#8735;)b\\
+&amp;=R(b,r)a+left(L(b,r)+qR(b,r)\right)b\\
 &amp;=R(b,r)(r+(-b)q)+\left(L(b,r)+qR(b,r)\right)b\\
 &amp;=R(b,r)r+L(b,r)b\\
 &amp;=\operatorname{gcd}(b,r)\\
@@ -2574,23 +2571,23 @@ R(a,b)&amp;=L(b,r)+qR(b,r)\end{split}\]</div>
   <span class="n">rw</span> <span class="o">[</span><span class="n">R</span><span class="o">,</span> <span class="n">L</span><span class="o">,</span> <span class="n">gcd</span><span class="o">]</span>
   <span class="n">split_ifs</span> <span class="k">with</span> <span class="n">h1</span> <span class="n">h2</span> <span class="bp">&lt;;&gt;</span> <span class="n">push_neg</span> <span class="n">at</span> <span class="bp">*</span>
   <span class="bp">&#183;</span> <span class="c1">-- case `0 &lt; b`</span>
-    <span class="k">have</span> <span class="o">:=</span> <span class="n">L_mul_add_R_mul</span> <span class="n">b</span> <span class="o">(</span><span class="n">fmod</span> <span class="n">a</span> <span class="n">b</span><span class="o">)</span> <span class="c1">-- inductive hypothesis</span>
+    <span class="k">have</span> <span class="n">IH</span> <span class="o">:=</span> <span class="n">L_mul_add_R_mul</span> <span class="n">b</span> <span class="o">(</span><span class="n">fmod</span> <span class="n">a</span> <span class="n">b</span><span class="o">)</span> <span class="c1">-- inductive hypothesis</span>
     <span class="k">have</span> <span class="n">H</span> <span class="o">:</span> <span class="n">fmod</span> <span class="n">a</span> <span class="n">b</span> <span class="bp">+</span> <span class="n">b</span> <span class="bp">*</span> <span class="n">fdiv</span> <span class="n">a</span> <span class="n">b</span> <span class="bp">=</span> <span class="n">a</span> <span class="o">:=</span> <span class="n">fmod_add_fdiv</span> <span class="n">a</span> <span class="n">b</span>
     <span class="n">set</span> <span class="n">q</span> <span class="o">:=</span> <span class="n">fdiv</span> <span class="n">a</span> <span class="n">b</span>
     <span class="n">set</span> <span class="n">r</span> <span class="o">:=</span> <span class="n">fmod</span> <span class="n">a</span> <span class="n">b</span>
     <span class="k">calc</span> <span class="n">R</span> <span class="n">b</span> <span class="n">r</span> <span class="bp">*</span> <span class="n">a</span> <span class="bp">+</span> <span class="o">(</span><span class="n">L</span> <span class="n">b</span> <span class="n">r</span> <span class="bp">-</span> <span class="n">q</span> <span class="bp">*</span> <span class="n">R</span> <span class="n">b</span> <span class="n">r</span><span class="o">)</span> <span class="bp">*</span> <span class="n">b</span>
         <span class="bp">=</span> <span class="n">R</span> <span class="n">b</span> <span class="n">r</span> <span class="bp">*</span> <span class="o">(</span><span class="n">r</span> <span class="bp">+</span> <span class="n">b</span> <span class="bp">*</span> <span class="n">q</span><span class="o">)</span> <span class="bp">+</span> <span class="o">(</span><span class="n">L</span> <span class="n">b</span> <span class="n">r</span> <span class="bp">-</span> <span class="n">q</span> <span class="bp">*</span> <span class="n">R</span> <span class="n">b</span> <span class="n">r</span><span class="o">)</span> <span class="bp">*</span> <span class="n">b</span><span class="o">:=</span> <span class="kd">by</span> <span class="n">rw</span> <span class="o">[</span><span class="n">H</span><span class="o">]</span>
       <span class="n">_</span> <span class="bp">=</span> <span class="n">L</span> <span class="n">b</span> <span class="n">r</span> <span class="bp">*</span> <span class="n">b</span> <span class="bp">+</span> <span class="n">R</span> <span class="n">b</span> <span class="n">r</span> <span class="bp">*</span> <span class="n">r</span> <span class="o">:=</span> <span class="kd">by</span> <span class="n">ring</span>
-      <span class="n">_</span> <span class="bp">=</span> <span class="n">gcd</span> <span class="n">b</span> <span class="n">r</span> <span class="o">:=</span> <span class="n">this</span>
+      <span class="n">_</span> <span class="bp">=</span> <span class="n">gcd</span> <span class="n">b</span> <span class="n">r</span> <span class="o">:=</span> <span class="n">IH</span>
   <span class="bp">&#183;</span> <span class="c1">-- case `b &lt; 0`</span>
-    <span class="k">have</span> <span class="o">:=</span> <span class="n">L_mul_add_R_mul</span> <span class="n">b</span> <span class="o">(</span><span class="n">fmod</span> <span class="n">a</span> <span class="o">(</span><span class="bp">-</span><span class="n">b</span><span class="o">))</span> <span class="c1">-- inductive hypothesis</span>
+    <span class="k">have</span> <span class="n">IH</span> <span class="o">:=</span> <span class="n">L_mul_add_R_mul</span> <span class="n">b</span> <span class="o">(</span><span class="n">fmod</span> <span class="n">a</span> <span class="o">(</span><span class="bp">-</span><span class="n">b</span><span class="o">))</span> <span class="c1">-- inductive hypothesis</span>
     <span class="k">have</span> <span class="n">H</span> <span class="o">:</span> <span class="n">fmod</span> <span class="n">a</span> <span class="o">(</span><span class="bp">-</span><span class="n">b</span><span class="o">)</span> <span class="bp">+</span> <span class="o">(</span><span class="bp">-</span><span class="n">b</span><span class="o">)</span> <span class="bp">*</span> <span class="n">fdiv</span> <span class="n">a</span> <span class="o">(</span><span class="bp">-</span><span class="n">b</span><span class="o">)</span> <span class="bp">=</span> <span class="n">a</span> <span class="o">:=</span> <span class="n">fmod_add_fdiv</span> <span class="n">a</span> <span class="o">(</span><span class="bp">-</span><span class="n">b</span><span class="o">)</span>
     <span class="n">set</span> <span class="n">q</span> <span class="o">:=</span> <span class="n">fdiv</span> <span class="n">a</span> <span class="o">(</span><span class="bp">-</span><span class="n">b</span><span class="o">)</span>
     <span class="n">set</span> <span class="n">r</span> <span class="o">:=</span> <span class="n">fmod</span> <span class="n">a</span> <span class="o">(</span><span class="bp">-</span><span class="n">b</span><span class="o">)</span>
     <span class="k">calc</span>  <span class="n">R</span> <span class="n">b</span> <span class="n">r</span> <span class="bp">*</span> <span class="n">a</span> <span class="bp">+</span> <span class="o">(</span><span class="n">L</span> <span class="n">b</span> <span class="n">r</span> <span class="bp">+</span> <span class="n">q</span> <span class="bp">*</span> <span class="n">R</span> <span class="n">b</span> <span class="n">r</span><span class="o">)</span> <span class="bp">*</span> <span class="n">b</span>
         <span class="bp">=</span>  <span class="n">R</span> <span class="n">b</span> <span class="n">r</span> <span class="bp">*</span> <span class="o">(</span><span class="n">r</span> <span class="bp">+</span> <span class="bp">-</span><span class="n">b</span> <span class="bp">*</span> <span class="n">q</span><span class="o">)</span> <span class="bp">+</span> <span class="o">(</span><span class="n">L</span> <span class="n">b</span> <span class="n">r</span> <span class="bp">+</span> <span class="n">q</span> <span class="bp">*</span> <span class="n">R</span> <span class="n">b</span> <span class="n">r</span><span class="o">)</span> <span class="bp">*</span> <span class="n">b</span> <span class="o">:=</span> <span class="kd">by</span> <span class="n">rw</span> <span class="o">[</span><span class="n">H</span><span class="o">]</span>
       <span class="n">_</span> <span class="bp">=</span> <span class="n">L</span> <span class="n">b</span> <span class="n">r</span> <span class="bp">*</span> <span class="n">b</span> <span class="bp">+</span> <span class="n">R</span> <span class="n">b</span> <span class="n">r</span> <span class="bp">*</span> <span class="n">r</span> <span class="o">:=</span> <span class="kd">by</span> <span class="n">ring</span>
-      <span class="n">_</span> <span class="bp">=</span> <span class="n">gcd</span> <span class="n">b</span> <span class="n">r</span> <span class="o">:=</span> <span class="n">this</span>
+      <span class="n">_</span> <span class="bp">=</span> <span class="n">gcd</span> <span class="n">b</span> <span class="n">r</span> <span class="o">:=</span> <span class="n">IH</span>
   <span class="bp">&#183;</span> <span class="c1">-- case `b = 0`, `0 &#8804; a`</span>
     <span class="n">ring</span>
   <span class="bp">&#183;</span> <span class="c1">-- case `b = 0`, `a &lt; 0`</span>
@@ -2641,9 +2638,9 @@ have this property.</p>
 <section id="id41">
 <h3><span class="section-number">6.7.7. </span>Exercises<a class="headerlink" href="#id41" title="Permalink to this headline">&#61633;</a></h3>
 <ol class="arabic">
-<li><p>Show that <span class="math notranslate nohighlight">\(gcd(a,b)\)</span> is not just a <em>common divisor</em> of <span class="math notranslate nohighlight">\(a\)</span> and <span class="math notranslate nohighlight">\(b\)</span> (see
-<a class="reference internal" href="#common-divisor"><span class="std std-numref">Example 6.7.3</span></a>), but their <em>greatest common divisor</em>: if <span class="math notranslate nohighlight">\(d\)</span> is an
-integer which divides both <span class="math notranslate nohighlight">\(a\)</span> and <span class="math notranslate nohighlight">\(b\)</span>, then it divides
+<li><p>Show that <span class="math notranslate nohighlight">\(\operatorname{gcd}(a,b)\)</span> is not just a <em>common divisor</em> of <span class="math notranslate nohighlight">\(a\)</span> and
+<span class="math notranslate nohighlight">\(b\)</span> (see <a class="reference internal" href="#common-divisor"><span class="std std-numref">Example 6.7.3</span></a>), but their <em>greatest common divisor</em>: if
+<span class="math notranslate nohighlight">\(d\)</span> is an integer which divides both <span class="math notranslate nohighlight">\(a\)</span> and <span class="math notranslate nohighlight">\(b\)</span>, then it divides
 <span class="math notranslate nohighlight">\(\operatorname{gcd}(a,b)\)</span>.</p>
 <p>This problem does not need an induction; it is a direct corollary of B&#233;zout&#8217;s identity
 (<a class="reference internal" href="#bezout-gcd"><span class="std std-numref">Example 6.7.6</span></a>).</p>

@@ -520,7 +520,7 @@ injective, then the function <span class="math notranslate nohighlight">\(x \map
 </div>
 <ol class="arabic simple" start="10">
 <li><p>Prove or disprove that for all functions <span class="math notranslate nohighlight">\(f:\mathbb{Q}\to \mathbb{Q}\)</span>, if <span class="math notranslate nohighlight">\(f\)</span> is
-injective, then the function <span class="math notranslate nohighlight">\(x \mapsto f(x)+1\)</span> from <span class="math notranslate nohighlight">\(\mathbb{Q}\)</span> to
+injective, then the function <span class="math notranslate nohighlight">\(x \mapsto f(x)+x\)</span> from <span class="math notranslate nohighlight">\(\mathbb{Q}\)</span> to
 <span class="math notranslate nohighlight">\(\mathbb{Q}\)</span> is also injective.</p></li>
 </ol>
 <div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">:</span> <span class="bp">&#8704;</span> <span class="o">(</span><span class="n">f</span> <span class="o">:</span> <span class="n">&#8474;</span> <span class="bp">&#8594;</span> <span class="n">&#8474;</span><span class="o">)</span> <span class="o">(</span><span class="n">hf</span> <span class="o">:</span> <span class="n">Injective</span> <span class="n">f</span><span class="o">),</span> <span class="n">Injective</span> <span class="o">(</span><span class="k">fun</span> <span class="n">x</span> <span class="bp">&#8614;</span> <span class="n">f</span> <span class="n">x</span> <span class="bp">+</span> <span class="n">x</span><span class="o">)</span> <span class="o">:=</span> <span class="kd">by</span>
