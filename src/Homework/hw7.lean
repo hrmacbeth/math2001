@@ -1,6 +1,6 @@
 /- Copyright (c) Heather Macbeth, 2023.  All rights reserved. -/
 import Mathlib.Data.Real.Basic
-import Math2001.Library.Parity
+import Math2001.Library.ParityModular
 import Math2001.Tactic.Addarith
 import Math2001.Tactic.Numbers
 import Math2001.Tactic.Rel
