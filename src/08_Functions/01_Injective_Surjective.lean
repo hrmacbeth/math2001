@@ -1,12 +1,14 @@
 /- Copyright (c) Heather Macbeth, 2023.  All rights reserved. -/
 import Mathlib.Data.Real.Basic
 import Math2001.Tactic.Addarith
+import Math2001.Tactic.ExistsDelaborator
 import Math2001.Tactic.Numbers
 import Math2001.Tactic.Rel
 import Math2001.Tactic.Take
 
 set_option pp.unicode.fun true
 set_option linter.unusedVariables false
+open Function
 
 
 def F : ℕ → ℤ 
@@ -29,9 +31,6 @@ def q (x : ℝ) : ℝ := x + 3
 #check fun (x : ℝ) ↦ x ^ 2 -- infoview displays `fun x ↦ x ^ 2 : ℝ → ℝ`  
 
 
-def Injective (f : X → Y) : Prop := ∀ x1 x2 : X, f x1 = f x2 → x1 = x2
-
-
 example : Injective q := by
   dsimp [Injective]
   intro x1 x2 h
@@ -46,9 +45,6 @@ example : ¬ Injective (fun x : ℝ ↦ x ^ 2) := by
   constructor
   · numbers
   · numbers  
-
-
-def Surjective (f : X → Y) : Prop := ∀ y : Y, ∃ x : X, f x = y
 
 
 def s (a : ℚ) : ℚ := 3 * a + 2
@@ -90,7 +86,6 @@ example : ¬ Injective f := by
   dsimp [Injective]
   push_neg
   take athos, porthos
-  dsimp [f]
   constructor
   · decide
   · decide
@@ -101,7 +96,7 @@ example : ¬ Surjective f := by
   push_neg
   take porthos
   intro a
-  cases a <;> dsimp [f]
+  cases a
   · decide
   · decide
   · decide
@@ -116,7 +111,7 @@ def g : Musketeer → Musketeer
 example : Injective g := by
   dsimp [Injective]
   intro x1 x2 hx
-  cases x1 <;> cases x2 <;> dsimp [g] at hx
+  cases x1 <;> cases x2
   · decide
   · contradiction
   · contradiction
@@ -139,6 +134,37 @@ example : Surjective g := by
   · take porthos
     decide 
 
+
+
+example : Injective (fun (x:ℝ) ↦ x ^ 3) := by
+  intro x1 x2 hx
+  dsimp at hx
+  have H : (x1 - x2) * (x1 ^ 2 + x1 * x2 + x2 ^ 2) = 0
+  · calc (x1 - x2) * (x1 ^ 2 + x1 * x2 + x2 ^ 2) = x1 ^ 3 - x2 ^ 3 := by ring
+      _ = x1 ^ 3 - x1 ^ 3 := by rw [hx]
+      _ = 0 := by ring
+  rw [mul_eq_zero] at H
+  obtain H1 | H2 := H
+  · -- case 1: x1 - x2 = 0
+    addarith [H1]
+  · -- case 2: x1 ^2 + x1 * x2 + x2 ^ 2  = 0
+    by_cases hx1 : x1 = 0
+    · -- case 2a: x1 = 0
+      have hx2 : x2 = 0
+      · apply pow_eq_zero (n := 3)
+        calc x2 ^ 3 = x1 ^ 3 := by rw [hx]
+          _ = 0 ^ 3 := by rw [hx1]
+          _ = 0 := by numbers
+      calc x1 = 0 := by rw [hx1]
+        _ = x2 := by rw [hx2]    
+    · -- case 2b: x1 ≠ 0
+      have :=
+      calc 0 < x1 ^ 2 + ((x1 + x2) ^ 2 + x2 ^ 2) := by extra
+          _ = 2 * (x1 ^ 2 + x1 * x2 + x2 ^ 2) := by ring
+          _ = 2 * 0 := by rw [H2]
+          _ = 0 := by ring
+      numbers at this -- contradiction!
+
 /-! # Exercises -/
 
 
@@ -149,10 +175,10 @@ example : ¬ Injective (fun (x : ℚ) ↦ x - 12) := by
   sorry
 
 
-example : Injective (fun (x : ℝ) ↦ 0) := by
+example : Injective (fun (x : ℝ) ↦ 3) := by
   sorry
 
-example : ¬ Injective (fun (x : ℝ) ↦ 0) := by
+example : ¬ Injective (fun (x : ℝ) ↦ 3) := by
   sorry
 
 example : Injective (fun (x : ℚ) ↦ 3 * x - 1) := by
@@ -188,6 +214,48 @@ example : Surjective (fun (n : ℕ) ↦ n ^ 2) := by
 example : ¬ Surjective (fun (n : ℕ) ↦ n ^ 2) := by
   sorry
 
+inductive White
+  | meg
+  | jack
+  deriving DecidableEq
+
+open White
+
+def h : Musketeer → White
+  | athos => jack
+  | porthos => meg
+  | aramis => jack
+
+example : Injective h := by
+  sorry
+
+example : ¬ Injective h := by
+  sorry
+
+example : Surjective h := by
+  sorry
+
+example : ¬ Surjective h := by
+  sorry
+
+
+def l : White → Musketeer 
+  | meg => aramis
+  | jack => porthos
+
+example : Injective l := by
+  sorry
+
+example : ¬ Injective l := by
+  sorry
+
+
+example : Surjective l := by
+  sorry
+
+example : ¬ Surjective l := by
+  sorry
+
 example (f : X → Y) : Injective f ↔ ∀ x1 x2 : X, x1 ≠ x2 → f x1 ≠ f x2 := by
   sorry
 
@@ -208,4 +276,13 @@ example : ∀ (f : ℤ → ℤ) (hf : Surjective f), Surjective (fun x ↦ 2 * f
   sorry
 
 example : ¬ ∀ (f : ℤ → ℤ) (hf : Surjective f), Surjective (fun x ↦ 2 * f x) := by
+  sorry
+
+example : ∀ c : ℝ, Surjective (fun x ↦ c * x) := by
+  sorry
+
+example : ¬ ∀ c : ℝ, Surjective (fun x ↦ c * x) := by
+  sorry
+
+example {f : ℚ → ℚ} (hf : ∀ x y, x < y → f x < f y) : Injective f := by
   sorry
