@@ -8,7 +8,6 @@ import Math2001.Tactic.Take
 
 set_option push_neg.use_distrib true
 set_option pp.unicode.fun true
-noncomputable theory
 open Function
 
 
