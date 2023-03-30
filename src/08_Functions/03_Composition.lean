@@ -8,6 +8,7 @@ import Math2001.Tactic.Take
 
 set_option push_neg.use_distrib true
 set_option pp.unicode.fun true
+noncomputable theory
 open Function
 
 
@@ -126,6 +127,40 @@ theorem bijective_iff_exists_inverse (f : X → Y) :
 
 /-! # Exercises -/
 
+
+def a : Humour → Humour
+  | melancholic => sanguine
+  | choleric => choleric
+  | phlegmatic => phlegmatic
+  | sanguine => melancholic
+
+def b : Humour → Humour
+  | melancholic => phlegmatic
+  | choleric => phlegmatic
+  | phlegmatic => melancholic
+  | sanguine => sanguine
+
+def c : Humour → Humour
+  | melancholic => sorry
+  | choleric => sorry
+  | phlegmatic => sorry
+  | sanguine => sorry
+
+example : b ∘ a = c := by
+  ext x
+  cases x
+  · decide 
+  · decide 
+  · decide 
+  · decide 
+
+
+def u (x : ℝ) : ℝ := 5 * x + 1
+
+noncomputable def v (x : ℝ) : ℝ := sorry
+
+example : Inverse u v := by
+  sorry
 
 example {f : X → Y} (hf : Injective f) {g : Y → Z} (hg : Injective g) :
     Injective (g ∘ f) := by

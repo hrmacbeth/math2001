@@ -158,9 +158,18 @@ example : ¬ ∀ f : ℕ → ℕ, Injective f → Bijective f := by
 /-! # Exercises -/
 
 
-example : ∀ f : Subatomic → Subatomic, Injective f → Bijective f := by
+example : Bijective (fun (x : ℝ) ↦ 4 - 3 * x) := by
   sorry
 
+example : ¬ Bijective (fun (x : ℝ) ↦ 4 - 3 * x) := by
+  sorry
+
+
+example : Bijective (fun (x : ℝ) ↦ x ^ 2 + 2 * x) := by
+  sorry
+
+example : ¬ Bijective (fun (x : ℝ) ↦ x ^ 2 + 2 * x) := by
+  sorry
 
 inductive Element
   | fire
@@ -170,6 +179,23 @@ inductive Element
   deriving DecidableEq
 
 open Element
+
+def e : Element → Element
+  | fire => earth
+  | water => air
+  | earth => fire
+  | air => water
+
+example : Bijective e := by
+  sorry
+
+example : ¬ Bijective e := by
+  sorry
+
+
+example : ∀ f : Subatomic → Subatomic, Injective f → Bijective f := by
+  sorry
+
 
 example : ∀ f : Element → Element, Injective f → Bijective f := by
   sorry

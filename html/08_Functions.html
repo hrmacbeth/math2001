@@ -1001,21 +1001,38 @@ for all natural numbers <span class="math notranslate nohighlight">\(n\)</span>,
 <section id="id19">
 <h3><span class="section-number">8.2.8. </span>Exercises<a class="headerlink" href="#id19" title="Permalink to this headline">&#61633;</a></h3>
 <ol class="arabic">
-<li><p>Show that for all functions <span class="math notranslate nohighlight">\(f\)</span> from the Subatomic type
-(<a class="reference internal" href="#celestial-subatomic"><span class="std std-numref">Example 8.2.4</span></a>) to itself, if <span class="math notranslate nohighlight">\(f\)</span> is injective then it is
-bijective.</p>
-<p>This is like <a class="reference internal" href="#bij-card2"><span class="std std-numref">Example 8.2.6</span></a>, but with more cases to check.</p>
+<li><p>Prove or disprove that the function <span class="math notranslate nohighlight">\(x \mapsto 4-3x\)</span> from <span class="math notranslate nohighlight">\(\mathbb{R}\)</span> to
+<span class="math notranslate nohighlight">\(\mathbb{R}\)</span> is bijective.</p>
+<p>(If you think it&#8217;s true, prove it, by solving the first version below.  If you think it&#8217;s false,
+solve the second version.)</p>
 </li>
 </ol>
-<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">:</span> <span class="bp">&#8704;</span> <span class="n">f</span> <span class="o">:</span> <span class="n">Subatomic</span> <span class="bp">&#8594;</span> <span class="n">Subatomic</span><span class="o">,</span> <span class="n">Injective</span> <span class="n">f</span> <span class="bp">&#8594;</span> <span class="n">Bijective</span> <span class="n">f</span> <span class="o">:=</span> <span class="kd">by</span>
+<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">:</span> <span class="n">Bijective</span> <span class="o">(</span><span class="k">fun</span> <span class="o">(</span><span class="n">x</span> <span class="o">:</span> <span class="n">&#8477;</span><span class="o">)</span> <span class="bp">&#8614;</span> <span class="mi">4</span> <span class="bp">-</span> <span class="mi">3</span> <span class="bp">*</span> <span class="n">x</span><span class="o">)</span> <span class="o">:=</span> <span class="kd">by</span>
+  <span class="gr">sorry</span>
+
+<span class="kd">example</span> <span class="o">:</span> <span class="bp">&#172;</span> <span class="n">Bijective</span> <span class="o">(</span><span class="k">fun</span> <span class="o">(</span><span class="n">x</span> <span class="o">:</span> <span class="n">&#8477;</span><span class="o">)</span> <span class="bp">&#8614;</span> <span class="mi">4</span> <span class="bp">-</span> <span class="mi">3</span> <span class="bp">*</span> <span class="n">x</span><span class="o">)</span> <span class="o">:=</span> <span class="kd">by</span>
   <span class="gr">sorry</span>
 </pre></div>
 </div>
 <ol class="arabic" start="2">
-<li><p>Consider the following finite inductive type Element.  Show that for all functions <span class="math notranslate nohighlight">\(f\)</span>
-from the Element type to itself, if <span class="math notranslate nohighlight">\(f\)</span> is injective then it is bijective.</p>
-<p>This is like <a class="reference internal" href="#bij-card2"><span class="std std-numref">Example 8.2.6</span></a> and the previous exercise, but with even more
-(frankly, way too many &#8230;.) cases to check.</p>
+<li><p>Prove or disprove that the function <span class="math notranslate nohighlight">\(x \mapsto x^2+2x\)</span> from <span class="math notranslate nohighlight">\(\mathbb{R}\)</span> to
+<span class="math notranslate nohighlight">\(\mathbb{R}\)</span> is bijective.</p>
+<p>(If you think it&#8217;s true, prove it, by solving the first version below.  If you think it&#8217;s false,
+solve the second version.)</p>
+</li>
+</ol>
+<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">:</span> <span class="n">Bijective</span> <span class="o">(</span><span class="k">fun</span> <span class="o">(</span><span class="n">x</span> <span class="o">:</span> <span class="n">&#8477;</span><span class="o">)</span> <span class="bp">&#8614;</span> <span class="n">x</span> <span class="bp">^</span> <span class="mi">2</span> <span class="bp">+</span> <span class="mi">2</span> <span class="bp">*</span> <span class="n">x</span><span class="o">)</span> <span class="o">:=</span> <span class="kd">by</span>
+  <span class="gr">sorry</span>
+
+<span class="kd">example</span> <span class="o">:</span> <span class="bp">&#172;</span> <span class="n">Bijective</span> <span class="o">(</span><span class="k">fun</span> <span class="o">(</span><span class="n">x</span> <span class="o">:</span> <span class="n">&#8477;</span><span class="o">)</span> <span class="bp">&#8614;</span> <span class="n">x</span> <span class="bp">^</span> <span class="mi">2</span> <span class="bp">+</span> <span class="mi">2</span> <span class="bp">*</span> <span class="n">x</span><span class="o">)</span> <span class="o">:=</span> <span class="kd">by</span>
+  <span class="gr">sorry</span>
+</pre></div>
+</div>
+<ol class="arabic" start="3">
+<li><p>Consider the following finite inductive type Element, and the following function <span class="math notranslate nohighlight">\(e\)</span> from
+the Element type to itself. Prove or disprove that the function <span class="math notranslate nohighlight">\(e\)</span> is bijective.</p>
+<p>(If you think it&#8217;s true, prove it, by solving the first version below.  If you think it&#8217;s false,
+solve the second version.)</p>
 </li>
 </ol>
 <div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">inductive</span> <span class="n">Element</span>
@@ -1027,7 +1044,39 @@ from the Element type to itself, if <span class="math notranslate nohighlight">\
 
 <span class="kn">open</span> <span class="n">Element</span>
 
-<span class="kd">example</span> <span class="o">:</span> <span class="bp">&#8704;</span> <span class="n">f</span> <span class="o">:</span> <span class="n">Element</span> <span class="bp">&#8594;</span> <span class="n">Element</span><span class="o">,</span> <span class="n">Injective</span> <span class="n">f</span> <span class="bp">&#8594;</span> <span class="n">Bijective</span> <span class="n">f</span> <span class="o">:=</span> <span class="kd">by</span>
+<span class="kd">def</span> <span class="n">e</span> <span class="o">:</span> <span class="n">Element</span> <span class="bp">&#8594;</span> <span class="n">Element</span>
+  <span class="bp">|</span> <span class="n">fire</span> <span class="bp">=&gt;</span> <span class="n">earth</span>
+  <span class="bp">|</span> <span class="n">water</span> <span class="bp">=&gt;</span> <span class="n">air</span>
+  <span class="bp">|</span> <span class="n">earth</span> <span class="bp">=&gt;</span> <span class="n">fire</span>
+  <span class="bp">|</span> <span class="n">air</span> <span class="bp">=&gt;</span> <span class="n">water</span>
+
+<span class="kd">example</span> <span class="o">:</span> <span class="n">Bijective</span> <span class="n">e</span> <span class="o">:=</span> <span class="kd">by</span>
+  <span class="gr">sorry</span>
+
+<span class="kd">example</span> <span class="o">:</span> <span class="bp">&#172;</span> <span class="n">Bijective</span> <span class="n">e</span> <span class="o">:=</span> <span class="kd">by</span>
+  <span class="gr">sorry</span>
+</pre></div>
+</div>
+<ol class="arabic" start="4">
+<li><p>Show that for all functions <span class="math notranslate nohighlight">\(f\)</span> from the Subatomic type
+(<a class="reference internal" href="#celestial-subatomic"><span class="std std-numref">Example 8.2.4</span></a>) to itself, if <span class="math notranslate nohighlight">\(f\)</span> is injective then it is
+bijective.</p>
+<p>This is like <a class="reference internal" href="#bij-card2"><span class="std std-numref">Example 8.2.6</span></a>, but with more cases to check.</p>
+</li>
+</ol>
+<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">:</span> <span class="bp">&#8704;</span> <span class="n">f</span> <span class="o">:</span> <span class="n">Subatomic</span> <span class="bp">&#8594;</span> <span class="n">Subatomic</span><span class="o">,</span> <span class="n">Injective</span> <span class="n">f</span> <span class="bp">&#8594;</span> <span class="n">Bijective</span> <span class="n">f</span> <span class="o">:=</span> <span class="kd">by</span>
+  <span class="gr">sorry</span>
+</pre></div>
+</div>
+<ol class="arabic" start="5">
+<li><p>Consider the finite inductive type Element from a previous exercise.  Show that for all
+functions <span class="math notranslate nohighlight">\(f\)</span> from the Element type to itself, if <span class="math notranslate nohighlight">\(f\)</span> is injective then it is
+bijective.</p>
+<p>This is like <a class="reference internal" href="#bij-card2"><span class="std std-numref">Example 8.2.6</span></a> and the previous exercise, but with even more
+(frankly, way too many &#8230;.) cases to check.</p>
+</li>
+</ol>
+<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">:</span> <span class="bp">&#8704;</span> <span class="n">f</span> <span class="o">:</span> <span class="n">Element</span> <span class="bp">&#8594;</span> <span class="n">Element</span><span class="o">,</span> <span class="n">Injective</span> <span class="n">f</span> <span class="bp">&#8594;</span> <span class="n">Bijective</span> <span class="n">f</span> <span class="o">:=</span> <span class="kd">by</span>
   <span class="gr">sorry</span>
 </pre></div>
 </div>
@@ -1311,7 +1360,53 @@ direction by <a class="reference internal" href="#inverse-to-bijection"><span cl
 </section>
 <section id="id29">
 <h3><span class="section-number">8.3.10. </span>Exercises<a class="headerlink" href="#id29" title="Permalink to this headline">&#61633;</a></h3>
-<ol class="arabic simple">
+<ol class="arabic">
+<li><p>Consider the following functions <span class="math notranslate nohighlight">\(a\)</span> and <span class="math notranslate nohighlight">\(b\)</span> from the Humour type (see
+<a class="reference internal" href="#humour"><span class="std std-numref">Example 8.3.6</span></a>) to itself. Write down a function <span class="math notranslate nohighlight">\(c\)</span> from the Humour type
+to itself, so that <span class="math notranslate nohighlight">\(b \circ a=c\)</span>.</p>
+<p>When you have the right function written down, the included proof will work.</p>
+</li>
+</ol>
+<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">def</span> <span class="n">a</span> <span class="o">:</span> <span class="n">Humour</span> <span class="bp">&#8594;</span> <span class="n">Humour</span>
+  <span class="bp">|</span> <span class="n">melancholic</span> <span class="bp">=&gt;</span> <span class="n">sanguine</span>
+  <span class="bp">|</span> <span class="n">choleric</span> <span class="bp">=&gt;</span> <span class="n">choleric</span>
+  <span class="bp">|</span> <span class="n">phlegmatic</span> <span class="bp">=&gt;</span> <span class="n">phlegmatic</span>
+  <span class="bp">|</span> <span class="n">sanguine</span> <span class="bp">=&gt;</span> <span class="n">melancholic</span>
+
+<span class="kd">def</span> <span class="n">b</span> <span class="o">:</span> <span class="n">Humour</span> <span class="bp">&#8594;</span> <span class="n">Humour</span>
+  <span class="bp">|</span> <span class="n">melancholic</span> <span class="bp">=&gt;</span> <span class="n">phlegmatic</span>
+  <span class="bp">|</span> <span class="n">choleric</span> <span class="bp">=&gt;</span> <span class="n">phlegmatic</span>
+  <span class="bp">|</span> <span class="n">phlegmatic</span> <span class="bp">=&gt;</span> <span class="n">melancholic</span>
+  <span class="bp">|</span> <span class="n">sanguine</span> <span class="bp">=&gt;</span> <span class="n">sanguine</span>
+
+<span class="kd">def</span> <span class="n">c</span> <span class="o">:</span> <span class="n">Humour</span> <span class="bp">&#8594;</span> <span class="n">Humour</span>
+  <span class="bp">|</span> <span class="n">melancholic</span> <span class="bp">=&gt;</span> <span class="gr">sorry</span>
+  <span class="bp">|</span> <span class="n">choleric</span> <span class="bp">=&gt;</span> <span class="gr">sorry</span>
+  <span class="bp">|</span> <span class="n">phlegmatic</span> <span class="bp">=&gt;</span> <span class="gr">sorry</span>
+  <span class="bp">|</span> <span class="n">sanguine</span> <span class="bp">=&gt;</span> <span class="gr">sorry</span>
+
+<span class="kd">example</span> <span class="o">:</span> <span class="n">b</span> <span class="bp">&#8728;</span> <span class="n">a</span> <span class="bp">=</span> <span class="n">c</span> <span class="o">:=</span> <span class="kd">by</span>
+  <span class="n">ext</span> <span class="n">x</span>
+  <span class="n">cases</span> <span class="n">x</span>
+  <span class="bp">&#183;</span> <span class="n">decide</span>
+  <span class="bp">&#183;</span> <span class="n">decide</span>
+  <span class="bp">&#183;</span> <span class="n">decide</span>
+  <span class="bp">&#183;</span> <span class="n">decide</span>
+</pre></div>
+</div>
+<ol class="arabic simple" start="2">
+<li><p>Consider the function <span class="math notranslate nohighlight">\(u:\mathbb{R}\to\mathbb{R}\)</span> defined by, <span class="math notranslate nohighlight">\(u(x)=5x+1\)</span>. Write
+down a function <span class="math notranslate nohighlight">\(v:\mathbb{R}\to\mathbb{R}\)</span> which is inverse to <span class="math notranslate nohighlight">\(u\)</span>, and prove it.</p></li>
+</ol>
+<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">def</span> <span class="n">u</span> <span class="o">(</span><span class="n">x</span> <span class="o">:</span> <span class="n">&#8477;</span><span class="o">)</span> <span class="o">:</span> <span class="n">&#8477;</span> <span class="o">:=</span> <span class="mi">5</span> <span class="bp">*</span> <span class="n">x</span> <span class="bp">+</span> <span class="mi">1</span>
+
+<span class="kd">noncomputable</span> <span class="kd">def</span> <span class="n">v</span> <span class="o">(</span><span class="n">x</span> <span class="o">:</span> <span class="n">&#8477;</span><span class="o">)</span> <span class="o">:</span> <span class="n">&#8477;</span> <span class="o">:=</span> <span class="gr">sorry</span>
+
+<span class="kd">example</span> <span class="o">:</span> <span class="n">Inverse</span> <span class="n">u</span> <span class="n">v</span> <span class="o">:=</span> <span class="kd">by</span>
+  <span class="gr">sorry</span>
+</pre></div>
+</div>
+<ol class="arabic simple" start="3">
 <li><p>Let <span class="math notranslate nohighlight">\(f : X \to Y\)</span> and <span class="math notranslate nohighlight">\(g : Y \to Z\)</span> be injective functions.  Show that
 <span class="math notranslate nohighlight">\(g \circ f\)</span> is also injective.</p></li>
 </ol>
@@ -1320,7 +1415,7 @@ direction by <a class="reference internal" href="#inverse-to-bijection"><span cl
   <span class="gr">sorry</span>
 </pre></div>
 </div>
-<ol class="arabic simple" start="2">
+<ol class="arabic simple" start="4">
 <li><p>Let <span class="math notranslate nohighlight">\(f : X \to Y\)</span> and <span class="math notranslate nohighlight">\(g : Y \to Z\)</span> be surjective functions.  Show that
 <span class="math notranslate nohighlight">\(g \circ f\)</span> is also surjective.</p></li>
 </ol>
@@ -1329,7 +1424,7 @@ direction by <a class="reference internal" href="#inverse-to-bijection"><span cl
   <span class="gr">sorry</span>
 </pre></div>
 </div>
-<ol class="arabic simple" start="3">
+<ol class="arabic simple" start="5">
 <li><p>Let <span class="math notranslate nohighlight">\(f : X \to Y\)</span> be a surjective function.  Show that there exists a function
 <span class="math notranslate nohighlight">\(g : Y \to Z\)</span>, such that <span class="math notranslate nohighlight">\(f \circ g=\operatorname{Id}_Y\)</span>.</p></li>
 </ol>
@@ -1337,7 +1432,7 @@ direction by <a class="reference internal" href="#inverse-to-bijection"><span cl
   <span class="gr">sorry</span>
 </pre></div>
 </div>
-<ol class="arabic simple" start="4">
+<ol class="arabic simple" start="6">
 <li><p>Let <span class="math notranslate nohighlight">\(f : X \to Y\)</span> and <span class="math notranslate nohighlight">\(g : Y \to X\)</span> be functions, with <span class="math notranslate nohighlight">\(g\)</span> inverse
 to <span class="math notranslate nohighlight">\(f\)</span>.  Show that <span class="math notranslate nohighlight">\(f\)</span> is inverse to <span class="math notranslate nohighlight">\(g\)</span>.</p></li>
 </ol>
@@ -1345,7 +1440,7 @@ to <span class="math notranslate nohighlight">\(f\)</span>.  Show that <span cla
   <span class="gr">sorry</span>
 </pre></div>
 </div>
-<ol class="arabic" start="5">
+<ol class="arabic" start="7">
 <li><p>Let <span class="math notranslate nohighlight">\(f : X \to Y\)</span> and <span class="math notranslate nohighlight">\(g_1, g_2 : Y \to X\)</span> be functions, with both <span class="math notranslate nohighlight">\(g_1\)</span> and
 <span class="math notranslate nohighlight">\(g_1\)</span> inverse to <span class="math notranslate nohighlight">\(f\)</span>.  Show that <span class="math notranslate nohighlight">\(g_1=g_2\)</span>.</p>
 <p>This problem says that if a function <span class="math notranslate nohighlight">\(f\)</span> has an inverse, then that inverse is unique.</p>
