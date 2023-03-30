@@ -23,19 +23,19 @@ theorem problem2b : ¬ Surjective (fun (x : ℝ) ↦ 2 * x) := by
   sorry
 
 
-/- 5 points -/
+/- 4 points -/
 theorem problem3a : Surjective (fun (x : ℤ) ↦ 2 * x) := by
   sorry
 
-/- 5 points -/
+/- 4 points -/
 theorem problem3b : ¬ Surjective (fun (x : ℤ) ↦ 2 * x) := by
   sorry
 
-/- 4 points -/
+/- 5 points -/
 theorem problem4a : ∀ (f : ℚ → ℚ) (hf : Injective f), Injective (fun x ↦ f x + 1) := by
   sorry
 
-/- 4 points -/
+/- 5 points -/
 theorem problem4b : ¬ ∀ (f : ℚ → ℚ) (hf : Injective f), Injective (fun x ↦ f x + 1) := by
   sorry
 
