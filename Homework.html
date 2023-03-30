@@ -61,6 +61,7 @@
 <li class="toctree-l2"><a class="reference internal" href="#homework-4">Homework 4</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#homework-5">Homework 5</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#homework-6">Homework 6</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#homework-7">Homework 7</a></li>
 </ul>
 </li>
 </ul>
@@ -554,6 +555,89 @@ Euclidean algorithm (<a class="reference internal" href="06_Induction.html#eucli
 <p>Write this solution only on paper, not in Lean (but you are free to check your work using Lean).</p>
 </li>
 </ol>
+</section>
+<section id="homework-7">
+<span id="hw7"></span><h2>Homework 7<a class="headerlink" href="#homework-7" title="Permalink to this headline">&#61633;</a></h2>
+<ol class="arabic">
+<li><p>Using the extended Euclidean algorithm, find (a) integers <span class="math notranslate nohighlight">\(m\)</span> and <span class="math notranslate nohighlight">\(n\)</span> such that
+<span class="math notranslate nohighlight">\((-66)m+38n=\operatorname{gcd}(-66,38)\)</span>; (b) integers <span class="math notranslate nohighlight">\(m\)</span> and <span class="math notranslate nohighlight">\(n\)</span> such that
+<span class="math notranslate nohighlight">\(33m+(-23)n=\operatorname{gcd}(33,-23)\)</span>.</p>
+<p>Write this solution only on paper, not in Lean (but you are free to check your work using Lean).</p>
+</li>
+<li><p>Prove or disprove that the function <span class="math notranslate nohighlight">\(x \mapsto 2x\)</span> from <span class="math notranslate nohighlight">\(\mathbb{R}\)</span> to
+<span class="math notranslate nohighlight">\(\mathbb{R}\)</span> is surjective.</p>
+<p>(If you think it&#8217;s true, prove it, by solving the first version below.  If you think it&#8217;s false,
+solve the second version.)</p>
+</li>
+</ol>
+<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="c">/-</span><span class="cm"> 4 points -/</span>
+<span class="kd">theorem</span> <span class="n">problem2a</span> <span class="o">:</span> <span class="n">Surjective</span> <span class="o">(</span><span class="k">fun</span> <span class="o">(</span><span class="n">x</span> <span class="o">:</span> <span class="n">&#8477;</span><span class="o">)</span> <span class="bp">&#8614;</span> <span class="mi">2</span> <span class="bp">*</span> <span class="n">x</span><span class="o">)</span> <span class="o">:=</span> <span class="kd">by</span>
+  <span class="gr">sorry</span>
+
+<span class="c">/-</span><span class="cm"> 4 points -/</span>
+<span class="kd">theorem</span> <span class="n">problem2b</span> <span class="o">:</span> <span class="bp">&#172;</span> <span class="n">Surjective</span> <span class="o">(</span><span class="k">fun</span> <span class="o">(</span><span class="n">x</span> <span class="o">:</span> <span class="n">&#8477;</span><span class="o">)</span> <span class="bp">&#8614;</span> <span class="mi">2</span> <span class="bp">*</span> <span class="n">x</span><span class="o">)</span> <span class="o">:=</span> <span class="kd">by</span>
+  <span class="gr">sorry</span>
+</pre></div>
+</div>
+<ol class="arabic" start="3">
+<li><p>Prove or disprove that the function <span class="math notranslate nohighlight">\(x \mapsto 2x\)</span> from <span class="math notranslate nohighlight">\(\mathbb{Z}\)</span> to
+<span class="math notranslate nohighlight">\(\mathbb{Z}\)</span> is surjective.</p>
+<p>(If you think it&#8217;s true, prove it, by solving the first version below.  If you think it&#8217;s false,
+solve the second version.)</p>
+</li>
+</ol>
+<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="c">/-</span><span class="cm"> 5 points -/</span>
+<span class="kd">theorem</span> <span class="n">problem3a</span> <span class="o">:</span> <span class="n">Surjective</span> <span class="o">(</span><span class="k">fun</span> <span class="o">(</span><span class="n">x</span> <span class="o">:</span> <span class="n">&#8484;</span><span class="o">)</span> <span class="bp">&#8614;</span> <span class="mi">2</span> <span class="bp">*</span> <span class="n">x</span><span class="o">)</span> <span class="o">:=</span> <span class="kd">by</span>
+  <span class="gr">sorry</span>
+
+<span class="c">/-</span><span class="cm"> 5 points -/</span>
+<span class="kd">theorem</span> <span class="n">problem3b</span> <span class="o">:</span> <span class="bp">&#172;</span> <span class="n">Surjective</span> <span class="o">(</span><span class="k">fun</span> <span class="o">(</span><span class="n">x</span> <span class="o">:</span> <span class="n">&#8484;</span><span class="o">)</span> <span class="bp">&#8614;</span> <span class="mi">2</span> <span class="bp">*</span> <span class="n">x</span><span class="o">)</span> <span class="o">:=</span> <span class="kd">by</span>
+  <span class="gr">sorry</span>
+</pre></div>
+</div>
+<ol class="arabic" start="4">
+<li><p>Prove or disprove that for all functions <span class="math notranslate nohighlight">\(f:\mathbb{Q}\to \mathbb{Q}\)</span>, if <span class="math notranslate nohighlight">\(f\)</span> is
+injective, then the function <span class="math notranslate nohighlight">\(x \mapsto f(x)+1\)</span> from <span class="math notranslate nohighlight">\(\mathbb{Q}\)</span> to
+<span class="math notranslate nohighlight">\(\mathbb{Q}\)</span> is also injective.</p>
+<p>(If you think it&#8217;s true, prove it, by solving the first version below.  If you think it&#8217;s false,
+solve the second version.)</p>
+</li>
+</ol>
+<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="c">/-</span><span class="cm"> 4 points -/</span>
+<span class="kd">theorem</span> <span class="n">problem4a</span> <span class="o">:</span> <span class="bp">&#8704;</span> <span class="o">(</span><span class="n">f</span> <span class="o">:</span> <span class="n">&#8474;</span> <span class="bp">&#8594;</span> <span class="n">&#8474;</span><span class="o">)</span> <span class="o">(</span><span class="n">hf</span> <span class="o">:</span> <span class="n">Injective</span> <span class="n">f</span><span class="o">),</span> <span class="n">Injective</span> <span class="o">(</span><span class="k">fun</span> <span class="n">x</span> <span class="bp">&#8614;</span> <span class="n">f</span> <span class="n">x</span> <span class="bp">+</span> <span class="mi">1</span><span class="o">)</span> <span class="o">:=</span> <span class="kd">by</span>
+  <span class="gr">sorry</span>
+
+<span class="c">/-</span><span class="cm"> 4 points -/</span>
+<span class="kd">theorem</span> <span class="n">problem4b</span> <span class="o">:</span> <span class="bp">&#172;</span> <span class="bp">&#8704;</span> <span class="o">(</span><span class="n">f</span> <span class="o">:</span> <span class="n">&#8474;</span> <span class="bp">&#8594;</span> <span class="n">&#8474;</span><span class="o">)</span> <span class="o">(</span><span class="n">hf</span> <span class="o">:</span> <span class="n">Injective</span> <span class="n">f</span><span class="o">),</span> <span class="n">Injective</span> <span class="o">(</span><span class="k">fun</span> <span class="n">x</span> <span class="bp">&#8614;</span> <span class="n">f</span> <span class="n">x</span> <span class="bp">+</span> <span class="mi">1</span><span class="o">)</span> <span class="o">:=</span> <span class="kd">by</span>
+  <span class="gr">sorry</span>
+</pre></div>
+</div>
+<ol class="arabic" start="5">
+<li><p>Prove or disprove that the function <span class="math notranslate nohighlight">\(x \mapsto 4-3x\)</span> from <span class="math notranslate nohighlight">\(\mathbb{R}\)</span> to
+<span class="math notranslate nohighlight">\(\mathbb{R}\)</span> is bijective.</p>
+<p>(If you think it&#8217;s true, prove it, by solving the first version below.  If you think it&#8217;s false,
+solve the second version.)</p>
+</li>
+</ol>
+<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="c">/-</span><span class="cm"> 4 points -/</span>
+<span class="kd">theorem</span> <span class="n">problem5a</span> <span class="o">:</span> <span class="n">Bijective</span> <span class="o">(</span><span class="k">fun</span> <span class="o">(</span><span class="n">x</span> <span class="o">:</span> <span class="n">&#8477;</span><span class="o">)</span> <span class="bp">&#8614;</span> <span class="mi">4</span> <span class="bp">-</span> <span class="mi">3</span> <span class="bp">*</span> <span class="n">x</span><span class="o">)</span> <span class="o">:=</span> <span class="kd">by</span>
+  <span class="gr">sorry</span>
+
+<span class="c">/-</span><span class="cm"> 4 points -/</span>
+<span class="kd">theorem</span> <span class="n">problem5b</span> <span class="o">:</span> <span class="bp">&#172;</span> <span class="n">Bijective</span> <span class="o">(</span><span class="k">fun</span> <span class="o">(</span><span class="n">x</span> <span class="o">:</span> <span class="n">&#8477;</span><span class="o">)</span> <span class="bp">&#8614;</span> <span class="mi">4</span> <span class="bp">-</span> <span class="mi">3</span> <span class="bp">*</span> <span class="n">x</span><span class="o">)</span> <span class="o">:=</span> <span class="kd">by</span>
+  <span class="gr">sorry</span>
+</pre></div>
+</div>
+<ol class="arabic simple" start="6">
+<li><p>Let <span class="math notranslate nohighlight">\(f : X \to Y\)</span> and <span class="math notranslate nohighlight">\(g : Y \to Z\)</span> be surjective functions.  Show that
+<span class="math notranslate nohighlight">\(g \circ f\)</span> is also surjective.</p></li>
+</ol>
+<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="c">/-</span><span class="cm"> 4 points -/</span>
+<span class="kd">theorem</span> <span class="n">problem6</span> <span class="o">{</span><span class="n">f</span> <span class="o">:</span> <span class="n">X</span> <span class="bp">&#8594;</span> <span class="n">Y</span><span class="o">}</span> <span class="o">(</span><span class="n">hf</span> <span class="o">:</span> <span class="n">Surjective</span> <span class="n">f</span><span class="o">)</span> <span class="o">{</span><span class="n">g</span> <span class="o">:</span> <span class="n">Y</span> <span class="bp">&#8594;</span> <span class="n">Z</span><span class="o">}</span> <span class="o">(</span><span class="n">hg</span> <span class="o">:</span> <span class="n">Surjective</span> <span class="n">g</span><span class="o">)</span> <span class="o">:</span>
+    <span class="n">Surjective</span> <span class="o">(</span><span class="n">g</span> <span class="bp">&#8728;</span> <span class="n">f</span><span class="o">)</span> <span class="o">:=</span> <span class="kd">by</span>
+  <span class="gr">sorry</span>
+</pre></div>
+</div>
 </section>
 </section>
 
