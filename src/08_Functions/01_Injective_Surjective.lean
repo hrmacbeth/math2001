@@ -261,23 +261,23 @@ example : ¬ Surjective l := by
 example (f : X → Y) : Injective f ↔ ∀ x1 x2 : X, x1 ≠ x2 → f x1 ≠ f x2 := by
   sorry
 
-example : ∀ (f : ℚ → ℚ) (hf : Injective f), Injective (fun x ↦ f x + 1) := by
+example : ∀ (f : ℚ → ℚ), Injective f → Injective (fun x ↦ f x + 1) := by
   sorry
 
-example : ¬ ∀ (f : ℚ → ℚ) (hf : Injective f), Injective (fun x ↦ f x + 1) := by
+example : ¬ ∀ (f : ℚ → ℚ), Injective f → Injective (fun x ↦ f x + 1) := by
   sorry
 
 
-example : ∀ (f : ℚ → ℚ) (hf : Injective f), Injective (fun x ↦ f x + x) := by
+example : ∀ (f : ℚ → ℚ), Injective f → Injective (fun x ↦ f x + x) := by
   sorry
 
-example : ¬ ∀ (f : ℚ → ℚ) (hf : Injective f), Injective (fun x ↦ f x + x) := by
+example : ¬ ∀ (f : ℚ → ℚ), Injective f → Injective (fun x ↦ f x + x) := by
   sorry
 
-example : ∀ (f : ℤ → ℤ) (hf : Surjective f), Surjective (fun x ↦ 2 * f x) := by
+example : ∀ (f : ℤ → ℤ), Surjective f → Surjective (fun x ↦ 2 * f x) := by
   sorry
 
-example : ¬ ∀ (f : ℤ → ℤ) (hf : Surjective f), Surjective (fun x ↦ 2 * f x) := by
+example : ¬ ∀ (f : ℤ → ℤ), Surjective f → Surjective (fun x ↦ 2 * f x) := by
   sorry
 
 example : ∀ c : ℝ, Surjective (fun x ↦ c * x) := by
