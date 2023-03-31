@@ -1,5 +1,6 @@
 /- Copyright (c) Heather Macbeth, 2023.  All rights reserved. -/
 import Mathlib.Data.Real.Basic
+import Math2001.Library.ParityModular
 import Math2001.Tactic.Addarith
 import Math2001.Tactic.ExistsDelaborator
 import Math2001.Tactic.Numbers
@@ -9,6 +10,7 @@ import Math2001.Tactic.Take
 set_option pp.unicode.fun true
 set_option linter.unusedVariables false
 open Function
+namespace Int
 
 
 def F : ℕ → ℤ 
