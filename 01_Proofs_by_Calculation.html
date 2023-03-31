@@ -1151,6 +1151,8 @@ the incorrect solution in Lean, and check that Lean complains.</p>
   <span class="gr">sorry</span>
 </pre></div>
 </div>
+<p>In fact, while writing up the correct solution, you probably had difficulty justifying the last
+step.  Come back to that step after you have studied the next example.</p>
 </section>
 <section id="sq-nonneg">
 <span id="id41"></span><h3><span class="section-number">1.4.7. </span>Example<a class="headerlink" href="#sq-nonneg" title="Permalink to this headline">&#61633;</a></h3>
@@ -1160,9 +1162,9 @@ the incorrect solution in Lean, and check that Lean complains.</p>
 <p>Let <span class="math notranslate nohighlight">\(m\)</span> and <span class="math notranslate nohighlight">\(n\)</span> be integers, and suppose that <span class="math notranslate nohighlight">\(m ^ 2 + n \le 2\)</span>.
 Show that <span class="math notranslate nohighlight">\(n \le 2\)</span>.</p>
 </div>
-<p>We solve this problem by seeing that squares are positive, so <span class="math notranslate nohighlight">\(n\)</span> must be smaller than <span class="math notranslate nohighlight">\(m ^ 2 + n\)</span>.
-(Pedantically, &#8220;smaller than or equal to&#8221;.)   So since we have an upper bound, 2, for <span class="math notranslate nohighlight">\(m ^ 2 + n\)</span>, this
-upper bound must also apply to the smaller number, <span class="math notranslate nohighlight">\(n\)</span>.</p>
+<p>We solve this problem by seeing that squares are positive, so <span class="math notranslate nohighlight">\(n\)</span> must be smaller than
+<span class="math notranslate nohighlight">\(m ^ 2 + n\)</span>. (Pedantically, &#8220;smaller than or equal to&#8221;.)   So since we have an upper bound, 2,
+for <span class="math notranslate nohighlight">\(m ^ 2 + n\)</span>, this upper bound must also apply to the smaller number, <span class="math notranslate nohighlight">\(n\)</span>.</p>
 <div class="admonition-solution admonition">
 <p class="admonition-title">Solution</p>
 <div class="math notranslate nohighlight">
@@ -1179,8 +1181,9 @@ upper bound must also apply to the smaller number, <span class="math notranslate
 </section>
 <section id="id42">
 <h3><span class="section-number">1.4.8. </span>Example<a class="headerlink" href="#id42" title="Permalink to this headline">&#61633;</a></h3>
-<p>Exploiting that squares are nonnegative is a very common method for proving inequalities.  Here&#8217;s another
-example, where it requires some cleverness to come up with just the right square to add: <span class="math notranslate nohighlight">\((x-y)^2\)</span>.</p>
+<p>Exploiting that squares are nonnegative is a very common method for proving inequalities.  Here&#8217;s
+another example, where it requires some cleverness to come up with just the right square to add:
+<span class="math notranslate nohighlight">\((x-y)^2\)</span>.</p>
 <div class="admonition-problem admonition" id="id43">
 <p class="admonition-title">Problem</p>
 <p>Let <span class="math notranslate nohighlight">\(x\)</span> and <span class="math notranslate nohighlight">\(y\)</span> be real numbers, and suppose that <span class="math notranslate nohighlight">\(x ^ 2 + y ^ 2 \le 1\)</span>.
@@ -1237,8 +1240,8 @@ Show that <span class="math notranslate nohighlight">\((x + y) ^ 2 &lt; 3\)</spa
 </section>
 <section id="id46">
 <h3><span class="section-number">1.4.10. </span>Example<a class="headerlink" href="#id46" title="Permalink to this headline">&#61633;</a></h3>
-<p>Finally, here&#8217;s a particularly wild example <a class="footnote-reference brackets" href="#id49" id="id47">2</a> of the technique,  invoking the nonnegativity of three
-separate squares: <span class="math notranslate nohighlight">\((a ^ 2 (b ^ 2 - c ^ 2)) ^ 2\)</span>, <span class="math notranslate nohighlight">\((b ^ 4 - c ^ 4) ^ 2\)</span>, and
+<p>Finally, here&#8217;s a particularly wild example <a class="footnote-reference brackets" href="#id49" id="id47">2</a> of the technique,  invoking the nonnegativity of
+three separate squares: <span class="math notranslate nohighlight">\((a ^ 2 (b ^ 2 - c ^ 2)) ^ 2\)</span>, <span class="math notranslate nohighlight">\((b ^ 4 - c ^ 4) ^ 2\)</span>, and
 <span class="math notranslate nohighlight">\((a ^ 2 b c - b ^ 2 c ^ 2) ^ 2\)</span>.</p>
 <div class="admonition-problem admonition">
 <p class="admonition-title">Problem</p>
