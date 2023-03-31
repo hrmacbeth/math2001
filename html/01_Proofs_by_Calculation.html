@@ -985,8 +985,8 @@ preservation of inequalities under addition, and under division by positive numb
 implicitly, the fact that 2 is positive).</p>
 <p>3.
 <span class="math notranslate nohighlight">\(\underline{\text{Proof that }\frac{3+(s+3)-s}{2}=3}\)</span>: algebraic rearrangement.</p>
-<p>This time the first step features the relation <span class="math notranslate nohighlight">\(=\)</span>, the second a <span class="math notranslate nohighlight">\(\geq\)</span>, and the third
-a <span class="math notranslate nohighlight">\(=\)</span>, and the &#8220;net result&#8221; is the relation <span class="math notranslate nohighlight">\(\geq\)</span>.</p>
+<p>This time the first step features the relation <span class="math notranslate nohighlight">\(=\)</span>, the second a <span class="math notranslate nohighlight">\(\leq\)</span>, and the third
+a <span class="math notranslate nohighlight">\(=\)</span>, and the &#8220;net result&#8221; is the relation <span class="math notranslate nohighlight">\(\leq\)</span>.</p>
 <p>Exercise: Fill in the sorries in the following Lean solution to this problem.</p>
 <div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">{</span><span class="n">r</span> <span class="n">s</span> <span class="o">:</span> <span class="n">&#8474;</span><span class="o">}</span> <span class="o">(</span><span class="n">h1</span> <span class="o">:</span> <span class="n">s</span> <span class="bp">+</span> <span class="mi">3</span> <span class="bp">&#8805;</span> <span class="n">r</span><span class="o">)</span> <span class="o">(</span><span class="n">h2</span> <span class="o">:</span> <span class="n">s</span> <span class="bp">+</span> <span class="n">r</span> <span class="bp">&#8804;</span> <span class="mi">3</span><span class="o">)</span> <span class="o">:</span> <span class="n">r</span> <span class="bp">&#8804;</span> <span class="mi">3</span> <span class="o">:=</span>
   <span class="k">calc</span>

@@ -144,7 +144,7 @@ example : ¬ ∀ f : ℕ → ℕ, Injective f → Bijective f := by
   · -- the function is injective
     intro n1 n2 hn
     addarith [hn] 
-  · -- the function is not injective
+  · -- the function is not bijective
     dsimp [Bijective]
     push_neg
     right
