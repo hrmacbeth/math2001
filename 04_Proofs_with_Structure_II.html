@@ -191,8 +191,8 @@ that <span class="math notranslate nohighlight">\(1\)</span> is positive. So we 
 <span class="math notranslate nohighlight">\(1 \le n\)</span>.  Therefore <span class="math notranslate nohighlight">\(n=1\)</span>.</p>
 </div>
 <p>For the Lean proof, remember that the bound from <a class="reference internal" href="03_Parity_and_Divisibility.html#dvd-bd-1"><span class="std std-numref">Example 3.2.7</span></a> is in Lean as
-<code class="docutils literal notranslate"><span class="pre">nat.le_of_dvd</span></code>, and the bound from <a class="reference internal" href="03_Parity_and_Divisibility.html#dvd-bd-2"><span class="std std-numref">Example 3.2.8</span></a> is in Lean as
-<code class="docutils literal notranslate"><span class="pre">nat.pos_of_dvd_of_pos</span></code>.</p>
+<code class="docutils literal notranslate"><span class="pre">Nat.le_of_dvd</span></code>, and the bound from <a class="reference internal" href="03_Parity_and_Divisibility.html#dvd-bd-2"><span class="std std-numref">Example 3.2.8</span></a> is in Lean as
+<code class="docutils literal notranslate"><span class="pre">Nat.pos_of_dvd_of_pos</span></code>.</p>
 <div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">{</span><span class="n">n</span> <span class="o">:</span> <span class="n">&#8469;</span><span class="o">}</span> <span class="o">(</span><span class="n">hn</span> <span class="o">:</span> <span class="bp">&#8704;</span> <span class="n">m</span><span class="o">,</span> <span class="n">n</span> <span class="bp">&#8739;</span> <span class="n">m</span><span class="o">)</span> <span class="o">:</span> <span class="n">n</span> <span class="bp">=</span> <span class="mi">1</span> <span class="o">:=</span> <span class="kd">by</span>
   <span class="gr">sorry</span>
 </pre></div>
@@ -229,7 +229,7 @@ either at least <span class="math notranslate nohighlight">\(a\)</span> or at mo
 <h3><span class="section-number">4.1.4. </span>Example<a class="headerlink" href="#id4" title="Permalink to this headline">&#61633;</a></h3>
 <div class="admonition-problem admonition">
 <p class="admonition-title">Problem</p>
-<p>Let <span class="math notranslate nohighlight">\(a\)</span> a real number whose square is at most 2, and which is greater than or equal to
+<p>Let <span class="math notranslate nohighlight">\(a\)</span> be real number whose square is at most 2, and which is greater than or equal to
 any real number whose square is at most 2. <a class="footnote-reference brackets" href="#id11" id="id5">1</a> Let <span class="math notranslate nohighlight">\(b\)</span> be another real number with the same
 two properties.  Prove that <span class="math notranslate nohighlight">\(a=b\)</span>.</p>
 </div>
@@ -237,7 +237,7 @@ two properties.  Prove that <span class="math notranslate nohighlight">\(a=b\)</
 <blockquote>
 <div><p><span class="math notranslate nohighlight">\(a\)</span> is greater than or equal to any real number whose square is at most 2.</p>
 </div></blockquote>
-<p>Implicitly, there is a a universal quantification (&#8220;any real number&#8221;), and also an <em>implication</em>,
+<p>Implicitly, there is a universal quantification (&#8220;any real number&#8221;), and also an <em>implication</em>,
 so a more pedantic version of this hypothesis would be</p>
 <blockquote>
 <div><p>for all real numbers <span class="math notranslate nohighlight">\(y\)</span>, if <span class="math notranslate nohighlight">\(y^2\le 2\)</span> then <span class="math notranslate nohighlight">\(y\le a\)</span>.</p>
