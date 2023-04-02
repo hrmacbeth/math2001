@@ -943,7 +943,7 @@ filling in the necessary information in the lemma: the two arguments <code class
 <a class="reference internal" href="#trichotomy-statement"><span class="std std-ref">lemma statement</span></a>, which in this application are <code class="docutils literal notranslate"><span class="pre">a</span></code> and <code class="docutils literal notranslate"><span class="pre">0</span></code>
 respectively.  So</p>
 <div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="k">have</span> <span class="n">ha</span> <span class="o">:</span> <span class="n">a</span> <span class="bp">&lt;</span> <span class="mi">0</span> <span class="bp">&#8744;</span> <span class="n">a</span> <span class="bp">=</span> <span class="mi">0</span> <span class="bp">&#8744;</span> <span class="mi">0</span> <span class="bp">&lt;</span> <span class="n">a</span>
-<span class="n">apply</span> <span class="n">lt_trichotomy</span><span class="o">,</span>
+<span class="n">apply</span> <span class="n">lt_trichotomy</span>
 </pre></div>
 </div>
 <p>can be shortened to</p>
@@ -1589,7 +1589,7 @@ such that <span class="math notranslate nohighlight">\(at&lt;0\)</span>.  Show t
 </div>
 <div class="admonition-solution admonition">
 <p class="admonition-title">Solution</p>
-<p>Let <span class="math notranslate nohighlight">\(x\)</span> be a rational number such that <span class="math notranslate nohighlight">\(xt&lt;0\)</span>. We consider separately the cases
+<p>Let <span class="math notranslate nohighlight">\(x\)</span> be a real number such that <span class="math notranslate nohighlight">\(xt&lt;0\)</span>. We consider separately the cases
 <span class="math notranslate nohighlight">\(x\le 0\)</span> and <span class="math notranslate nohighlight">\(0&lt;x\)</span>.</p>
 <p><strong>Case 1</strong> (<span class="math notranslate nohighlight">\(x \le 0\)</span>):  Since <span class="math notranslate nohighlight">\(xt&lt;0\)</span> and <span class="math notranslate nohighlight">\(x \le 0\)</span>, we have that
 <span class="math notranslate nohighlight">\(0 &lt; t\)</span>, and so <span class="math notranslate nohighlight">\(t\ne 0\)</span>,</p>

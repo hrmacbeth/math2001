@@ -1,5 +1,5 @@
 /- Copyright (c) Heather Macbeth, 2023.  All rights reserved. -/
-import Mathlib.Tactic.Polyrith
+import Mathlib.Tactic.LinearCombination
 import Math2001.Tactic.Induction
 
 open Int

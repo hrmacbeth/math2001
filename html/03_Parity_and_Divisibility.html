@@ -155,8 +155,9 @@
 </div>
 <p>On paper, you need to memorize every definition; this is crucial to be able to work with them.
 In Lean, when you see a term whose definition you&#8217;d like to double-check, you can right-click
-(Windows) / two-finger-click (Mac) to bring up an option &#8220;Go to Definition&#8221;.  This will bring you
-back to the place in the Lean code where the definition was introduced.</p>
+(Windows) / two-finger-click (Mac) to bring up an option &#8220;Go to Definition&#8221;.  This will send you
+to the place in the Lean code where the definition was introduced.  (The keyboard shortcut
+<code class="docutils literal notranslate"><span class="pre">Ctrl</span></code>-<code class="docutils literal notranslate"><span class="pre">-</span></code> will bring you back from that definition to where you were working before.)</p>
 <div class="admonition-problem admonition">
 <p class="admonition-title">Problem</p>
 <p>Show that <span class="math notranslate nohighlight">\(7\)</span> is odd.</p>
@@ -245,7 +246,7 @@ hn : &#8707; (k : &#8484;), n = 2 * k + 1
 existential is a &#8220;throwaway&#8221; variable, which exists only for the duration of the sentence.  So the
 same variable might occur within the goal state repeatedly, without meaning the same thing.  Here
 the <code class="docutils literal notranslate"><span class="pre">k</span></code> in the hypothesis <code class="docutils literal notranslate"><span class="pre">hn</span></code> is different from the <code class="docutils literal notranslate"><span class="pre">k</span></code> in the goal; it&#8217;s just the default
-name when the definition of &#8220;odd&#8221; comes is unfolded.</p>
+name when the definition &#8220;odd&#8221; is unfolded.</p>
 <div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">{</span><span class="n">n</span> <span class="o">:</span> <span class="n">&#8484;</span><span class="o">}</span> <span class="o">(</span><span class="n">hn</span> <span class="o">:</span> <span class="n">Odd</span> <span class="n">n</span><span class="o">)</span> <span class="o">:</span> <span class="n">Odd</span> <span class="o">(</span><span class="mi">3</span> <span class="bp">*</span> <span class="n">n</span> <span class="bp">+</span> <span class="mi">2</span><span class="o">)</span> <span class="o">:=</span> <span class="kd">by</span>
   <span class="n">dsimp</span> <span class="o">[</span><span class="n">Odd</span><span class="o">]</span> <span class="n">at</span> <span class="bp">*</span>
   <span class="n">obtain</span> <span class="o">&#10216;</span><span class="n">k</span><span class="o">,</span> <span class="n">hk</span><span class="o">&#10217;</span> <span class="o">:=</span> <span class="n">hn</span>
@@ -529,10 +530,15 @@ compact.  There is also a standard notation, <span class="math notranslate nohig
 <p>In Lean, the definition of divisibility is already in the library,
 together with many theorems about it.  We will typically work with this definition in Lean using
 the notation, <code class="docutils literal notranslate"><span class="pre">&#8739;</span></code>, which you can type in Lean as <code class="docutils literal notranslate"><span class="pre">\|</span></code> or <code class="docutils literal notranslate"><span class="pre">\mid</span></code>.  (In general, hover over a
-symbol in VSCode with your mouse to find out how to type it.)</p>
-<p>As in <a class="reference internal" href="#odd"><span class="std std-numref">Example 3.1.1</span></a>, the <code class="docutils literal notranslate"><span class="pre">dsimp</span></code> in the following Lean solution is optional, but
-can be used to remind yourself of the definition of divisibility (<span class="math notranslate nohighlight">\(\mid\)</span>) in the context of
-the proof.</p>
+symbol in VSCode with your mouse to find out how to type it.)  Warning: this is different from the
+visually similar symbol <code class="docutils literal notranslate"><span class="pre">|</span></code> which appears on your keyboard and which we use in <code class="docutils literal notranslate"><span class="pre">obtain</span></code>
+statements.</p>
+<p>As in <a class="reference internal" href="#parity"><span class="std std-numref">Section 3.1</span></a> with <code class="docutils literal notranslate"><span class="pre">dsimp</span> <span class="pre">[Odd]</span></code>, it is possible to unfold the definition of
+divisibility in the middle of a Lean proof to remind yourself of what it means in the current
+context.  You can write either <code class="docutils literal notranslate"><span class="pre">dsimp</span> <span class="pre">[Dvd.dvd]</span></code> (this being the text name of the Lean notation
+<span class="math notranslate nohighlight">\(\mid\)</span> for divisibility) or <code class="docutils literal notranslate"><span class="pre">dsimp</span> <span class="pre">[(&#183;</span> <span class="pre">&#8739;</span> <span class="pre">&#183;)]</span></code> &#8211; unfortunately <code class="docutils literal notranslate"><span class="pre">dsimp</span> <span class="pre">[(&#8739;)]</span></code> without the
+dots does not work. As in the <a class="reference internal" href="#parity"><span class="std std-numref">Section 3.1</span></a> examples, this unfolding is optional &#8211;
+the proof still works without it.</p>
 <div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">:</span> <span class="o">(</span><span class="mi">11</span> <span class="o">:</span> <span class="n">&#8469;</span><span class="o">)</span> <span class="bp">&#8739;</span> <span class="mi">88</span> <span class="o">:=</span> <span class="kd">by</span>
   <span class="n">dsimp</span> <span class="o">[(</span><span class="bp">&#183;</span> <span class="bp">&#8739;</span> <span class="bp">&#183;</span><span class="o">)]</span>
   <span class="n">take</span> <span class="mi">8</span>
@@ -1350,7 +1356,7 @@ Show that <span class="math notranslate nohighlight">\(n^3+7n\equiv 2\mod 3\)</s
 <span id="id37"></span><h3><span class="section-number">3.5.2. </span>Example<a class="headerlink" href="#bezout-prob2" title="Permalink to this headline">&#61633;</a></h3>
 <div class="admonition-problem admonition">
 <p class="admonition-title">Problem</p>
-<p>Show that if for some integer <span class="math notranslate nohighlight">\(n\)</span> we have that <span class="math notranslate nohighlight">\(5\)</span> divides <span class="math notranslate nohighlight">\(3n\)</span>, then <span class="math notranslate nohighlight">\(n\)</span>
+<p>Show that if for some integer <span class="math notranslate nohighlight">\(n\)</span> we have that <span class="math notranslate nohighlight">\(5\)</span> divides <span class="math notranslate nohighlight">\(3n\)</span>, then <span class="math notranslate nohighlight">\(5\)</span>
 also divides <span class="math notranslate nohighlight">\(n\)</span>.</p>
 </div>
 <div class="admonition-solution admonition">
