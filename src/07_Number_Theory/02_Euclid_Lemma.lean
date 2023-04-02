@@ -25,7 +25,7 @@ theorem euclid_lemma {a b p : ℕ} (hp : Prime p) (H : p ∣ a * b) : p ∣ a �
   have hap1 : gcd (a:ℤ) (p:ℤ) ∣ (a:ℤ) := gcd_dvd_left (a:ℤ) (p:ℤ)
   have hap2 : gcd (a:ℤ) (p:ℤ) ∣ (p:ℤ) := gcd_dvd_right (a:ℤ) (p:ℤ)
   have h_gauss : (p:ℤ) ∣ (a:ℤ) * (b:ℤ) → gcd (a:ℤ) (p:ℤ) = 1 → (p:ℤ) ∣ (b:ℤ) := gauss_lemma
-  have hgcd : 0 ≤ gcd (a:ℤ) (p:ℤ) := gcd_nonneg a p
+  have hgcd : 0 ≤ gcd (a:ℤ) (p:ℤ) := gcd_nonneg (a:ℤ) (p:ℤ)
   -- convert to `ℕ` facts
   lift gcd a p to ℕ using hgcd with d hd
   norm_cast at hap1 hap2 h_gauss

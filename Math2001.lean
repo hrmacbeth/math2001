@@ -4,6 +4,7 @@ import Math2001.Library.Factorial
 import Math2001.Library.GCD
 import Math2001.Library.ModEq.Defs
 import Math2001.Library.ModEq.Lemmas
+import Math2001.Library.NumberTheory
 import Math2001.Library.Parity
 import Math2001.Library.ParityModular
 import Math2001.Library.Prime

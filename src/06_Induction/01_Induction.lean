@@ -7,6 +7,7 @@ import Math2001.Tactic.Numbers
 import Math2001.Tactic.Rel
 import Math2001.Tactic.Take
 
+namespace Nat
 set_option linter.unusedVariables false
 
 notation3 "forall_sufficiently_large "(...)", "r:(scoped P => ∃ C, ∀ x ≥ C, P x) => r
@@ -23,7 +24,7 @@ example (n : ℕ) : 2 ^ n ≥ n + 1 := by
       _ ≥ k + 1 + 1 := by extra
 
 
-example (n : ℕ) : Nat.Even n ∨ Nat.Odd n := by
+example (n : ℕ) : Even n ∨ Odd n := by
   simple_induction n with k IH
   · -- base case
     sorry
@@ -121,4 +122,10 @@ example : forall_sufficiently_large n : ℕ, 2 ^ n ≥ n ^ 2 + 4 := by
 
 example : forall_sufficiently_large n : ℕ, 2 ^ n ≥ n ^ 3 := by
   dsimp
+  sorry
+
+theorem Odd.pow {a : ℕ} (ha : Odd a) (n : ℕ) : Odd (a ^ n) := by
+  sorry
+
+theorem Nat.even_of_pow_even {a n : ℕ} (ha : Even (a ^ n)) : Even a := by
   sorry
