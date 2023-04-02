@@ -217,7 +217,7 @@ and</p>
 <p>so <span class="math notranslate nohighlight">\(k+1\)</span> is even.</p>
 </div>
 <p>Here is the outline of this argument in Lean.  Fill in the sorries.</p>
-<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">(</span><span class="n">n</span> <span class="o">:</span> <span class="n">&#8469;</span><span class="o">)</span> <span class="o">:</span> <span class="n">Nat.Even</span> <span class="n">n</span> <span class="bp">&#8744;</span> <span class="n">Nat.Odd</span> <span class="n">n</span> <span class="o">:=</span> <span class="kd">by</span>
+<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">(</span><span class="n">n</span> <span class="o">:</span> <span class="n">&#8469;</span><span class="o">)</span> <span class="o">:</span> <span class="n">Even</span> <span class="n">n</span> <span class="bp">&#8744;</span> <span class="n">Odd</span> <span class="n">n</span> <span class="o">:=</span> <span class="kd">by</span>
   <span class="n">simple_induction</span> <span class="n">n</span> <span class="k">with</span> <span class="n">k</span> <span class="n">IH</span>
   <span class="bp">&#183;</span> <span class="c1">-- base case</span>
     <span class="gr">sorry</span>
@@ -482,6 +482,20 @@ or <span class="math notranslate nohighlight">\(4\)</span> modulo 7.</p></li>
 </ol>
 <div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">:</span> <span class="n">forall_sufficiently_large</span> <span class="n">n</span> <span class="o">:</span> <span class="n">&#8469;</span><span class="o">,</span> <span class="mi">2</span> <span class="bp">^</span> <span class="n">n</span> <span class="bp">&#8805;</span> <span class="n">n</span> <span class="bp">^</span> <span class="mi">3</span> <span class="o">:=</span> <span class="kd">by</span>
   <span class="n">dsimp</span>
+  <span class="gr">sorry</span>
+</pre></div>
+</div>
+<ol class="arabic" start="9">
+<li><p>Let <span class="math notranslate nohighlight">\(a\)</span> be an odd natural number.  Show by induction that for all natural numbers
+<span class="math notranslate nohighlight">\(n\)</span>, the natural number <span class="math notranslate nohighlight">\(a^n\)</span> is odd.</p>
+<p>Also deduce that for all natural numbers <span class="math notranslate nohighlight">\(a\)</span> and <span class="math notranslate nohighlight">\(n\)</span>, if <span class="math notranslate nohighlight">\(a^n\)</span> is even then
+<span class="math notranslate nohighlight">\(a\)</span> is even.  (This part is not an induction problem.)</p>
+</li>
+</ol>
+<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">theorem</span> <span class="n">Odd.pow</span> <span class="o">{</span><span class="n">a</span> <span class="o">:</span> <span class="n">&#8469;</span><span class="o">}</span> <span class="o">(</span><span class="n">ha</span> <span class="o">:</span> <span class="n">Odd</span> <span class="n">a</span><span class="o">)</span> <span class="o">(</span><span class="n">n</span> <span class="o">:</span> <span class="n">&#8469;</span><span class="o">)</span> <span class="o">:</span> <span class="n">Odd</span> <span class="o">(</span><span class="n">a</span> <span class="bp">^</span> <span class="n">n</span><span class="o">)</span> <span class="o">:=</span> <span class="kd">by</span>
+  <span class="gr">sorry</span>
+
+<span class="kd">theorem</span> <span class="n">Nat.even_of_pow_even</span> <span class="o">{</span><span class="n">a</span> <span class="n">n</span> <span class="o">:</span> <span class="n">&#8469;</span><span class="o">}</span> <span class="o">(</span><span class="n">ha</span> <span class="o">:</span> <span class="n">Even</span> <span class="o">(</span><span class="n">a</span> <span class="bp">^</span> <span class="n">n</span><span class="o">))</span> <span class="o">:</span> <span class="n">Even</span> <span class="n">a</span> <span class="o">:=</span> <span class="kd">by</span>
   <span class="gr">sorry</span>
 </pre></div>
 </div>

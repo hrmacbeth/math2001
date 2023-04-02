@@ -68,7 +68,7 @@
 <li class="toctree-l3"><a class="reference internal" href="#integral-domain-step3">2.3.4. Example</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#solve-quadratic">2.3.5. Example</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#pow-eq-zero-disc">2.3.6. Example</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id22">2.3.7. Example</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#int-sq-ne-two">2.3.7. Example</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#id23">2.3.8. Exercises</a></li>
 </ul>
 </li>
@@ -1046,8 +1046,8 @@ This lemma is recorded in Lean as <code class="docutils literal notranslate"><sp
 </pre></div>
 </div>
 </section>
-<section id="id22">
-<h3><span class="section-number">2.3.7. </span>Example<a class="headerlink" href="#id22" title="Permalink to this headline">&#61633;</a></h3>
+<section id="int-sq-ne-two">
+<span id="id22"></span><h3><span class="section-number">2.3.7. </span>Example<a class="headerlink" href="#int-sq-ne-two" title="Permalink to this headline">&#61633;</a></h3>
 <p>In <a class="reference internal" href="#sq-ne-two"><span class="std std-numref">Example 2.3.2</span></a> we showed that no natural number squares to 2.  It is also
 true that no integer squares to 2, but since order laws are more complicated when negative numbers
 are involved, the proof is more complicated, requiring cases within cases.</p>
@@ -1111,6 +1111,7 @@ sub-proof with the symbol <code class="docutils literal notranslate"><span class
         <span class="n">_</span> <span class="bp">&#8804;</span> <span class="n">n</span> <span class="bp">^</span> <span class="mi">2</span> <span class="o">:=</span> <span class="kd">by</span> <span class="n">rel</span> <span class="o">[</span><span class="n">hn</span><span class="o">]</span>
 </pre></div>
 </div>
+<p>We record this theorem for future use under the name <code class="docutils literal notranslate"><span class="pre">sq_ne_two</span></code>.</p>
 </section>
 <section id="id23">
 <h3><span class="section-number">2.3.8. </span>Exercises<a class="headerlink" href="#id23" title="Permalink to this headline">&#61633;</a></h3>

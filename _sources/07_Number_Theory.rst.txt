@@ -11,3 +11,4 @@ so far in the course.
 
 .. include:: 07_Number_Theory/01_Infinitely_Many_Primes.inc
 .. include:: 07_Number_Theory/02_Euclid_Lemma.inc
+.. include:: 07_Number_Theory/03_Sqrt_Two.inc
