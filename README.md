@@ -1,6 +1,6 @@
 # The mechanics of proof
 
-This repository contains the Lean code for the lecture notes [The mechanics of proof](https://hrmacbeth.github.io/math2001/index.html), by Heather Macbeth, developed for the course Math 2001 at Fordham University.  Please note that these lecture notes are work in progress and currently the coverage is very partial!
+This repository contains the Lean code for the lecture notes [The mechanics of proof](https://hrmacbeth.github.io/math2001/index.html), by [Heather Macbeth](https://faculty.fordham.edu/hmacbeth1/), developed for the course Math 2001 at Fordham University.  The course is currently (Spring 2023) in progress, and new material is being added regularly. Check back often for updates!
 
 If you have a GitHub account, you can run the code on the web using Gitpod.
 
