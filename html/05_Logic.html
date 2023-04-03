@@ -823,7 +823,10 @@ and then writing out <a class="reference internal" href="02_Proofs_with_Structur
 <span id="id19"></span><h3><span class="section-number">5.3.6. </span>Exercises<a class="headerlink" href="#negation-normalize-exercises" title="Permalink to this headline">&#61633;</a></h3>
 <ol class="arabic">
 <li><p>Show that <span class="math notranslate nohighlight">\(\lnot(\lnot P)\)</span> is logically equivalent to <span class="math notranslate nohighlight">\(P\)</span>.</p>
-<p>You will need to use the law of the excluded middle.</p>
+<p>The point of this exercise is that you are proving the lemma <code class="docutils literal notranslate"><span class="pre">not_not</span></code>, from
+<a class="reference internal" href="#negation-rule-table"><span class="std std-numref">Table 5.1</span></a>.  So don&#8217;t use that lemma or the tactic <code class="docutils literal notranslate"><span class="pre">push_neg</span></code>
+which depends on it; instead prove this from scratch.  You will need to use the law of the
+excluded middle.</p>
 </li>
 </ol>
 <div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">(</span><span class="n">P</span> <span class="o">:</span> <span class="kt">Prop</span><span class="o">)</span> <span class="o">:</span> <span class="bp">&#172;</span> <span class="o">(</span><span class="bp">&#172;</span> <span class="n">P</span><span class="o">)</span> <span class="bp">&#8596;</span> <span class="n">P</span> <span class="o">:=</span> <span class="kd">by</span>
@@ -832,7 +835,10 @@ and then writing out <a class="reference internal" href="02_Proofs_with_Structur
 </div>
 <ol class="arabic" start="2">
 <li><p>Prove that <span class="math notranslate nohighlight">\(\lnot(P \to Q)\)</span> is logically equivalent to <span class="math notranslate nohighlight">\(P \land \lnot Q\)</span>.</p>
-<p>You will need to use the law of the excluded middle.</p>
+<p>The point of this exercise is that you are proving the lemma <code class="docutils literal notranslate"><span class="pre">not_imp</span></code>, from
+<a class="reference internal" href="#negation-rule-table"><span class="std std-numref">Table 5.1</span></a>.  So don&#8217;t use that lemma or the tactic <code class="docutils literal notranslate"><span class="pre">push_neg</span></code>
+which depends on it; instead prove this from scratch.  You will need to use the law of the
+excluded middle.</p>
 </li>
 </ol>
 <div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">(</span><span class="n">P</span> <span class="n">Q</span> <span class="o">:</span> <span class="kt">Prop</span><span class="o">)</span> <span class="o">:</span> <span class="bp">&#172;</span> <span class="o">(</span><span class="n">P</span> <span class="bp">&#8594;</span> <span class="n">Q</span><span class="o">)</span> <span class="bp">&#8596;</span> <span class="o">(</span><span class="n">P</span> <span class="bp">&#8743;</span> <span class="bp">&#172;</span> <span class="n">Q</span><span class="o">)</span> <span class="o">:=</span> <span class="kd">by</span>
@@ -841,7 +847,10 @@ and then writing out <a class="reference internal" href="02_Proofs_with_Structur
 </div>
 <ol class="arabic" start="3">
 <li><p>Show that <span class="math notranslate nohighlight">\(\lnot\forall x, P(x)\)</span> is logically equivalent to <span class="math notranslate nohighlight">\(\exists x, \lnot P(x)\)</span>.</p>
-<p>You will need to use the law of the excluded middle.</p>
+<p>The point of this exercise is that you are proving the lemma <code class="docutils literal notranslate"><span class="pre">not_forall</span></code>, from
+<a class="reference internal" href="#negation-rule-table"><span class="std std-numref">Table 5.1</span></a>.  So don&#8217;t use that lemma or the tactic <code class="docutils literal notranslate"><span class="pre">push_neg</span></code>
+which depends on it; instead prove this from scratch.  You will need to use the law of the
+excluded middle.</p>
 </li>
 </ol>
 <div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">(</span><span class="n">P</span> <span class="o">:</span> <span class="n">&#945;</span> <span class="bp">&#8594;</span> <span class="kt">Prop</span><span class="o">)</span> <span class="o">:</span> <span class="bp">&#172;</span> <span class="o">(</span><span class="bp">&#8704;</span> <span class="n">x</span><span class="o">,</span> <span class="n">P</span> <span class="n">x</span><span class="o">)</span> <span class="bp">&#8596;</span> <span class="bp">&#8707;</span> <span class="n">x</span><span class="o">,</span> <span class="bp">&#172;</span> <span class="n">P</span> <span class="n">x</span> <span class="o">:=</span> <span class="kd">by</span>

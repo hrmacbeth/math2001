@@ -2,6 +2,7 @@
 import Mathlib.Data.Real.Basic
 import Math2001.Library.ParityModular
 import Math2001.Tactic.Addarith
+import Math2001.Tactic.ExistsDelaborator
 import Math2001.Tactic.Numbers
 import Math2001.Tactic.Rel
 import Math2001.Tactic.Take
