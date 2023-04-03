@@ -536,9 +536,9 @@ statements.</p>
 <p>As in <a class="reference internal" href="#parity"><span class="std std-numref">Section 3.1</span></a> with <code class="docutils literal notranslate"><span class="pre">dsimp</span> <span class="pre">[Odd]</span></code>, it is possible to unfold the definition of
 divisibility in the middle of a Lean proof to remind yourself of what it means in the current
 context.  You can write either <code class="docutils literal notranslate"><span class="pre">dsimp</span> <span class="pre">[Dvd.dvd]</span></code> (this being the text name of the Lean notation
-<span class="math notranslate nohighlight">\(\mid\)</span> for divisibility) or <code class="docutils literal notranslate"><span class="pre">dsimp</span> <span class="pre">[(&#183;</span> <span class="pre">&#8739;</span> <span class="pre">&#183;)]</span></code> &#8211; unfortunately <code class="docutils literal notranslate"><span class="pre">dsimp</span> <span class="pre">[(&#8739;)]</span></code> without the
-dots does not work. As in the <a class="reference internal" href="#parity"><span class="std std-numref">Section 3.1</span></a> examples, this unfolding is optional &#8211;
-the proof still works without it.</p>
+<span class="math notranslate nohighlight">\(\mid\)</span> for divisibility) or <code class="docutils literal notranslate"><span class="pre">dsimp</span> <span class="pre">[(&#183;</span> <span class="pre">&#8739;</span> <span class="pre">&#183;)]</span></code> &#8211; unfortunately <code class="docutils literal notranslate"><span class="pre">dsimp</span> <span class="pre">[&#8739;]</span></code> without the
+dots and parentheses does not work. As in the <a class="reference internal" href="#parity"><span class="std std-numref">Section 3.1</span></a> examples, this unfolding
+is optional &#8211; the proof still works without it.</p>
 <div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">:</span> <span class="o">(</span><span class="mi">11</span> <span class="o">:</span> <span class="n">&#8469;</span><span class="o">)</span> <span class="bp">&#8739;</span> <span class="mi">88</span> <span class="o">:=</span> <span class="kd">by</span>
   <span class="n">dsimp</span> <span class="o">[(</span><span class="bp">&#183;</span> <span class="bp">&#8739;</span> <span class="bp">&#183;</span><span class="o">)]</span>
   <span class="n">take</span> <span class="mi">8</span>

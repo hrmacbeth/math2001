@@ -2,8 +2,10 @@
 import Math2001.Library.Factorial
 import Math2001.Tactic.Induction
 import Math2001.Tactic.Rel
+import Mathlib.Tactic.FieldSimp
 
 set_option linter.unusedVariables false
+attribute [field_simps] LT.lt.ne'
 
 open Nat
 
@@ -72,6 +74,15 @@ theorem pascal_eq (a b : ℕ) : pascal a b * a ! * b ! = (a + b)! := by
       _ = ((1 + a + b) + 1) ! := by rw [factorial]
       _ = ((a + 1) + (b + 1)) ! := by ring
 termination_by _ a b => a + b
+
+
+example (a b : ℕ) : (pascal a b : ℚ) = (a + b)! / (a ! * b !) := by
+  have ha := factorial_pos a
+  have hb := factorial_pos b
+  field_simp [ha, hb]
+  norm_cast
+  calc pascal a b * (a ! * b !) = pascal a b * a ! * b ! := by ring
+    _ = (a + b)! := by apply pascal_eq
 
 /-! # Exercises -/
 
