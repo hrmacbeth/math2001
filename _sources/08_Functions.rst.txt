@@ -6,3 +6,4 @@ Functions
 .. include:: 08_Functions/01_Injective_Surjective.inc
 .. include:: 08_Functions/02_Bijective.inc
 .. include:: 08_Functions/03_Composition.inc
+.. include:: 08_Functions/04_Product_Types.inc
