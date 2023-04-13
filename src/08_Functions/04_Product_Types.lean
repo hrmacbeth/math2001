@@ -1,5 +1,6 @@
 /- Copyright (c) Heather Macbeth, 2023.  All rights reserved. -/
 import Mathlib.Data.Real.Basic
+import Math2001.Library.InjectiveSurjective
 import Math2001.Tactic.Addarith
 import Math2001.Tactic.ExistsDelaborator
 import Math2001.Tactic.Induction
@@ -11,13 +12,7 @@ import Math2001.Tactic.Take
 
 set_option linter.unusedVariables false
 set_option push_neg.use_distrib true
-attribute [-simp] ne_eq
 open Function
-
-def Inverse (f : X → Y) (g : Y → X) : Prop := g ∘ f = id ∧ f ∘ g = id
-theorem bijective_iff_exists_inverse (f : X → Y) :
-    Bijective f ↔ ∃ g : Y → X, Inverse f g :=
-  sorry
 
 /-! # Product types -/
 
@@ -31,14 +26,15 @@ example : Injective q := by
   obtain ⟨hm', hm''⟩ := hm
   addarith [hm']
 
+
 example : ¬ Surjective q := by
   dsimp [Surjective]
   push_neg
   take (0, 1)
-  intro a ha
-  dsimp [q] at ha
-  obtain ⟨ha1, ha2⟩ := ha
-  have H : 0 = -1 := by addarith [ha1, ha2]
+  intro m hm
+  dsimp [q] at hm
+  obtain ⟨hm1, hm2⟩ := hm
+  have H : 1 = -1 := by addarith [hm1, hm2]
   numbers at H
 
 
@@ -46,14 +42,12 @@ example : Bijective (fun ((m, n) : ℤ × ℤ) ↦ (m + n, m + 2 * n)) := by
   rw [bijective_iff_exists_inverse]
   take fun (a, b) ↦ (2 * a - b, b - a)
   constructor
-  · funext x
-    let (m, n) := x
+  · funext (m, n)
     dsimp
     constructor
     · ring
     · ring 
-  · funext x
-    let (a, b) := x
+  · funext (a, b)
     dsimp
     constructor
     · ring
@@ -142,8 +136,7 @@ def g (v : ℝ × ℝ) : ℝ × ℝ :=
   (-y, x)
 
 example : g ∘ g = - id := by
-  funext v
-  let (x, y) := v
+  funext (x, y)
   dsimp [g]
   constructor
   · ring

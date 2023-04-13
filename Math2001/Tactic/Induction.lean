@@ -145,12 +145,3 @@ macro_rules
 
 theorem Int.fmod_nonneg_of_pos (a : ℤ) (hb : 0 < b) : 0 ≤ Int.fmod a b := 
   Int.fmod_eq_emod _ hb.le ▸ emod_nonneg _ hb.ne'
-
-theorem surjective_of_intertwining {f : X → ℕ} {x0 : X} (h0 : f x0 = 0) {i : X → X}
-    (hi : ∀ x, f (i x) = f x + 1) :
-    Function.Surjective f
-  | 0 => ⟨x0, h0⟩
-  | k + 1 => by
-    obtain ⟨x, hx⟩ := surjective_of_intertwining h0 hi k
-    refine ⟨i x, (hi x).trans ?_⟩
-    rw [hx]
