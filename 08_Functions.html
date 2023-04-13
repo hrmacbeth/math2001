@@ -78,19 +78,19 @@
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#composition-of-functions">8.3. Composition of functions</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#id20">8.3.1. Definition</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id21">8.3.2. Example</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#funext">8.3.2. Example</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#id22">8.3.3. Definition</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#id23">8.3.4. Example</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#id24">8.3.5. Definition</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#humour">8.3.6. Example</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#bijective-to-inverse">8.3.7. Example</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#inverse-to-bijection">8.3.8. Example</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id28">8.3.9. Example</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#bijective-iff-inverse">8.3.9. Example</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#id29">8.3.10. Exercises</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#product-types">8.4. Product types</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#id30">8.4.1. Example</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#obtain-product">8.4.1. Example</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#standard-plane-bij">8.4.2. Example</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#id32">8.4.3. Example</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#id33">8.4.4. Example</a></li>
@@ -1121,8 +1121,8 @@ function from <span class="math notranslate nohighlight">\(X\)</span> to <span c
 <p>The composition of <span class="math notranslate nohighlight">\(g : Y \to Z\)</span> with <span class="math notranslate nohighlight">\(f : X \to Y\)</span> is denoted <span class="math notranslate nohighlight">\(g \circ f\)</span> (in
 Lean, <code class="docutils literal notranslate"><span class="pre">g</span> <span class="pre">&#8728;</span> <span class="pre">f</span></code>).</p>
 </section>
-<section id="id21">
-<h3><span class="section-number">8.3.2. </span>Example<a class="headerlink" href="#id21" title="Permalink to this headline">&#61633;</a></h3>
+<section id="funext">
+<span id="id21"></span><h3><span class="section-number">8.3.2. </span>Example<a class="headerlink" href="#funext" title="Permalink to this headline">&#61633;</a></h3>
 <div class="admonition-problem admonition">
 <p class="admonition-title">Problem</p>
 <p>Let <span class="math notranslate nohighlight">\(f:\mathbb{R}\to\mathbb{R}\)</span> be the function defined by, <span class="math notranslate nohighlight">\(f(a)=a+3\)</span>.
@@ -1360,8 +1360,8 @@ to <span class="math notranslate nohighlight">\(f : X \to Y\)</span>.  Show that
 </pre></div>
 </div>
 </section>
-<section id="id28">
-<h3><span class="section-number">8.3.9. </span>Example<a class="headerlink" href="#id28" title="Permalink to this headline">&#61633;</a></h3>
+<section id="bijective-iff-inverse">
+<span id="id28"></span><h3><span class="section-number">8.3.9. </span>Example<a class="headerlink" href="#bijective-iff-inverse" title="Permalink to this headline">&#61633;</a></h3>
 <div class="admonition-theorem admonition">
 <p class="admonition-title">Theorem</p>
 <p>Let <span class="math notranslate nohighlight">\(f : X \to Y\)</span> be a function.  Prove that <span class="math notranslate nohighlight">\(f\)</span> is bijective, if and only if there
@@ -1478,17 +1478,53 @@ to <span class="math notranslate nohighlight">\(f\)</span>.  Show that <span cla
 </section>
 <section id="product-types">
 <span id="products"></span><h2><span class="section-number">8.4. </span>Product types<a class="headerlink" href="#product-types" title="Permalink to this headline">&#61633;</a></h2>
-<section id="id30">
-<h3><span class="section-number">8.4.1. </span>Example<a class="headerlink" href="#id30" title="Permalink to this headline">&#61633;</a></h3>
+<section id="obtain-product">
+<span id="id30"></span><h3><span class="section-number">8.4.1. </span>Example<a class="headerlink" href="#obtain-product" title="Permalink to this headline">&#61633;</a></h3>
 <div class="admonition-problem admonition">
 <p class="admonition-title">Problem</p>
 <p>Consider the function <span class="math notranslate nohighlight">\(f:\mathbb{Z}\to\mathbb{Z}^2\)</span> defined by, <span class="math notranslate nohighlight">\(q(m)=(m + 1, 2 - m)\)</span>.
 Show that <span class="math notranslate nohighlight">\(q\)</span> is</p>
-<ul class="simple">
+<ol class="arabic simple">
 <li><p>injective</p></li>
 <li><p>not surjective</p></li>
-</ul>
+</ol>
 </div>
+<div class="admonition-solution admonition">
+<p class="admonition-title">Solution</p>
+<ol class="arabic">
+<li><p>Let <span class="math notranslate nohighlight">\(m_1\)</span> and <span class="math notranslate nohighlight">\(m_2\)</span> be integers and suppose that <span class="math notranslate nohighlight">\(q(m_1)=q(m_2)\)</span>.  Then
+by definition</p>
+<div class="math notranslate nohighlight">
+\[(m_1+1,2-m_1)=(m_2+1,2-m_2),\]</div>
+<p>so <span class="math notranslate nohighlight">\(m_1+1=m_2+1\)</span> and <span class="math notranslate nohighlight">\(2-m_1=2-m_2\)</span>, so <span class="math notranslate nohighlight">\(m_1=m_2\)</span>.</p>
+</li>
+<li><p>We will show that there exists <span class="math notranslate nohighlight">\((a,b)\)</span> in <span class="math notranslate nohighlight">\(\mathbb{Z}^2\)</span> such that for all
+integers <span class="math notranslate nohighlight">\(m\)</span>, <span class="math notranslate nohighlight">\(q(m)\ne(a,b)\)</span>.  Indeed, we will show that <span class="math notranslate nohighlight">\((0,1)\)</span> has this
+property.  Suppose that <span class="math notranslate nohighlight">\(m\)</span> were an integer with <span class="math notranslate nohighlight">\(q(m)=(0,1)\)</span>.  Then by definition</p>
+<div class="math notranslate nohighlight">
+\[(m+1,2-m)=(0,1),\]</div>
+<p>so <span class="math notranslate nohighlight">\(m+1=0\)</span> and <span class="math notranslate nohighlight">\(2-m=1\)</span>, hence</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}1&amp;=(m+1)+(2-m)-2\\
+&amp;=0+1-2\\
+&amp;=-1,\end{split}\]</div>
+<p>contradiction.</p>
+</li>
+</ol>
+</div>
+<p>To write these proofs in Lean, notice the use of the tactic <code class="docutils literal notranslate"><span class="pre">obtain</span></code> in the injectivity problem to
+convert the hypothesis of a equality in a product type,</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>hm : (m1 + 1, 2 - m1) = (m2 + 1, 2 - m2)
+</pre></div>
+</div>
+<p>to two hypotheses of equality in the two components of the product:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>hm&#39; : m1 + 1 = m2 + 1
+hm&#39;&#39; : 2 - m1 = 2 - m2
+</pre></div>
+</div>
+<p>This is consistent with how you should think about equality in a product type: two ordered pairs are
+equal if the two left parts are equal <em>and</em> the two right parts are equal.  So we use the same
+tactic, with the same syntax, as for the logical operator &#8220;and&#8221;.</p>
 <div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">def</span> <span class="n">q</span> <span class="o">(</span><span class="n">m</span> <span class="o">:</span> <span class="n">&#8484;</span><span class="o">)</span> <span class="o">:</span> <span class="n">&#8484;</span> <span class="bp">&#215;</span> <span class="n">&#8484;</span> <span class="o">:=</span> <span class="o">(</span><span class="n">m</span> <span class="bp">+</span> <span class="mi">1</span><span class="o">,</span> <span class="mi">2</span> <span class="bp">-</span> <span class="n">m</span><span class="o">)</span>
 
 <span class="kd">example</span> <span class="o">:</span> <span class="n">Injective</span> <span class="n">q</span> <span class="o">:=</span> <span class="kd">by</span>
@@ -1497,15 +1533,22 @@ Show that <span class="math notranslate nohighlight">\(q\)</span> is</p>
   <span class="n">dsimp</span> <span class="o">[</span><span class="n">q</span><span class="o">]</span> <span class="n">at</span> <span class="n">hm</span>
   <span class="n">obtain</span> <span class="o">&#10216;</span><span class="n">hm&#39;</span><span class="o">,</span> <span class="n">hm&#39;&#39;</span><span class="o">&#10217;</span> <span class="o">:=</span> <span class="n">hm</span>
   <span class="n">addarith</span> <span class="o">[</span><span class="n">hm&#39;</span><span class="o">]</span>
-
-<span class="kd">example</span> <span class="o">:</span> <span class="bp">&#172;</span> <span class="n">Surjective</span> <span class="n">q</span> <span class="o">:=</span> <span class="kd">by</span>
+</pre></div>
+</div>
+<p>The tactic <code class="docutils literal notranslate"><span class="pre">obtain</span></code> is used similarly in the non-surjectivity problem to break down the hypothesis
+of equality in a product type</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>hm : (m + 1, 2 - m) = (0, 1)
+</pre></div>
+</div>
+<p>which arises in that problem.</p>
+<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">:</span> <span class="bp">&#172;</span> <span class="n">Surjective</span> <span class="n">q</span> <span class="o">:=</span> <span class="kd">by</span>
   <span class="n">dsimp</span> <span class="o">[</span><span class="n">Surjective</span><span class="o">]</span>
   <span class="n">push_neg</span>
   <span class="n">take</span> <span class="o">(</span><span class="mi">0</span><span class="o">,</span> <span class="mi">1</span><span class="o">)</span>
-  <span class="n">intro</span> <span class="n">a</span> <span class="n">ha</span>
-  <span class="n">dsimp</span> <span class="o">[</span><span class="n">q</span><span class="o">]</span> <span class="n">at</span> <span class="n">ha</span>
-  <span class="n">obtain</span> <span class="o">&#10216;</span><span class="n">ha1</span><span class="o">,</span> <span class="n">ha2</span><span class="o">&#10217;</span> <span class="o">:=</span> <span class="n">ha</span>
-  <span class="k">have</span> <span class="n">H</span> <span class="o">:</span> <span class="mi">0</span> <span class="bp">=</span> <span class="bp">-</span><span class="mi">1</span> <span class="o">:=</span> <span class="kd">by</span> <span class="n">addarith</span> <span class="o">[</span><span class="n">ha1</span><span class="o">,</span> <span class="n">ha2</span><span class="o">]</span>
+  <span class="n">intro</span> <span class="n">m</span> <span class="n">hm</span>
+  <span class="n">dsimp</span> <span class="o">[</span><span class="n">q</span><span class="o">]</span> <span class="n">at</span> <span class="n">hm</span>
+  <span class="n">obtain</span> <span class="o">&#10216;</span><span class="n">hm1</span><span class="o">,</span> <span class="n">hm2</span><span class="o">&#10217;</span> <span class="o">:=</span> <span class="n">hm</span>
+  <span class="k">have</span> <span class="n">H</span> <span class="o">:</span> <span class="mi">1</span> <span class="bp">=</span> <span class="bp">-</span><span class="mi">1</span> <span class="o">:=</span> <span class="kd">by</span> <span class="n">addarith</span> <span class="o">[</span><span class="n">hm1</span><span class="o">,</span> <span class="n">hm2</span><span class="o">]</span>
   <span class="n">numbers</span> <span class="n">at</span> <span class="n">H</span>
 </pre></div>
 </div>
@@ -1518,18 +1561,73 @@ Show that <span class="math notranslate nohighlight">\(q\)</span> is</p>
 <span class="math notranslate nohighlight">\(\mathbb{Z}^2\)</span>.
 Show that this function is bijective.</p>
 </div>
+<p>Usually, the most efficient way to prove a function is bijective is to produce an inverse for it.
+This is enough because of the theorem we proved in <a class="reference internal" href="#bijective-iff-inverse"><span class="std std-numref">Example 8.3.9</span></a>.
+Coming up with this inverse is something you should do in rough work, probably on paper rather than
+in Lean.  For example, in this problem, you can set up an equation in <span class="math notranslate nohighlight">\((a,b)\)</span> which the
+inverse has to satisfy:</p>
+<div class="math notranslate nohighlight">
+\[(a,b)=(m+n, m+2n)\]</div>
+<p>and simplify to a system of integer equations, and then solve for <span class="math notranslate nohighlight">\(m\)</span> and <span class="math notranslate nohighlight">\(n\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}a&amp;=m+n\\
+b&amp;=m+2n\\
+b-a&amp;=(m+2n)-(m+n)\\
+&amp;=n\\
+n&amp;=b-a\\
+a&amp;=m+n\\
+&amp;=m+(b-a)\\
+a-(b-a)&amp;=m\\
+2a-b&amp;=m\\
+m&amp;=2a-b\end{split}\]</div>
+<p>to conclude that a good candidate for the inverse is the function
+<span class="math notranslate nohighlight">\((a,b)\mapsto (2a-b, b-a)\)</span> from <span class="math notranslate nohighlight">\(\mathbb{Z}^2\)</span> to <span class="math notranslate nohighlight">\(\mathbb{Z}^2\)</span>.  But this rough
+work does not get included in the write-up, either on paper or in Lean.  Instead, just produce the
+inverse out of a hat, and check that it works.</p>
+<div class="admonition-solution admonition">
+<p class="admonition-title">Solution</p>
+<p>By <a class="reference internal" href="#bijective-iff-inverse"><span class="std std-numref">Example 8.3.9</span></a> it suffices to show that this function has an
+inverse.  We will show that the function <span class="math notranslate nohighlight">\((a,b)\mapsto (2a-b, b-a)\)</span> is inverse to this
+function.</p>
+<p>Firstly, for any <span class="math notranslate nohighlight">\((m,n)\)</span> in <span class="math notranslate nohighlight">\(\mathbb{Z}^2\)</span>, we have that
+<span class="math notranslate nohighlight">\(2 (m + n) - (m + 2 n)=m\)</span> and <span class="math notranslate nohighlight">\((m + 2 n) - (m + n)=n\)</span>, so</p>
+<div class="math notranslate nohighlight">
+\[\left(2 (m + n) - (m + 2 n), (m + 2 n) - (m + n)\right) = (m, n).\]</div>
+<p>Secondly, for any <span class="math notranslate nohighlight">\((a,b)\)</span> in <span class="math notranslate nohighlight">\(\mathbb{Z}^2\)</span>, we have that
+<span class="math notranslate nohighlight">\((2  a - b) + (b - a)=a\)</span> and <span class="math notranslate nohighlight">\((2  a - b) + 2  (b - a)=b\)</span>, so</p>
+<div class="math notranslate nohighlight">
+\[\left((2  a - b) + (b - a), (2  a - b) + 2  (b - a)\right) = (a, b).\]</div>
+</div>
+<p>In Lean, note</p>
+<ul>
+<li><p>the lemma <code class="docutils literal notranslate"><span class="pre">bijective_iff_exists_inverse</span></code>, which is the Lean name for the theorem from
+<a class="reference internal" href="#bijective-iff-inverse"><span class="std std-numref">Example 8.3.9</span></a></p></li>
+<li><p>the use of the tactic <code class="docutils literal notranslate"><span class="pre">funext</span></code> (recall <a class="reference internal" href="#funext"><span class="std std-numref">Example 8.3.2</span></a>) to show that two functions
+are equal by showing that they are equal on arbitrary input</p></li>
+<li><p>the use of the tactic <code class="docutils literal notranslate"><span class="pre">constructor</span></code> to reduce a goal of equality in a product type,</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>&#8866; (2 * (m + n) - (m + 2 * n), m + 2 * n - (m + n)) = (m, n)
+</pre></div>
+</div>
+<p>to two simpler goals, one for each co-ordinate:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>&#8866; 2 * (m + n) - (m + 2 * n) = m
+&#8866; m + 2 * n - (m + n) = n
+</pre></div>
+</div>
+<p>As with the use of <code class="docutils literal notranslate"><span class="pre">obtain</span></code> for hypotheses of equality in a product type  (recall
+<a class="reference internal" href="#obtain-product"><span class="std std-numref">Example 8.4.1</span></a>), the point is that an equality in a product type is
+effectively an &#8220;and&#8221; statement about equality in the first and the second co-ordinates.</p>
+</li>
+</ul>
 <div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">:</span> <span class="n">Bijective</span> <span class="o">(</span><span class="k">fun</span> <span class="o">((</span><span class="n">m</span><span class="o">,</span> <span class="n">n</span><span class="o">)</span> <span class="o">:</span> <span class="n">&#8484;</span> <span class="bp">&#215;</span> <span class="n">&#8484;</span><span class="o">)</span> <span class="bp">&#8614;</span> <span class="o">(</span><span class="n">m</span> <span class="bp">+</span> <span class="n">n</span><span class="o">,</span> <span class="n">m</span> <span class="bp">+</span> <span class="mi">2</span> <span class="bp">*</span> <span class="n">n</span><span class="o">))</span> <span class="o">:=</span> <span class="kd">by</span>
   <span class="n">rw</span> <span class="o">[</span><span class="n">bijective_iff_exists_inverse</span><span class="o">]</span>
   <span class="n">take</span> <span class="k">fun</span> <span class="o">(</span><span class="n">a</span><span class="o">,</span> <span class="n">b</span><span class="o">)</span> <span class="bp">&#8614;</span> <span class="o">(</span><span class="mi">2</span> <span class="bp">*</span> <span class="n">a</span> <span class="bp">-</span> <span class="n">b</span><span class="o">,</span> <span class="n">b</span> <span class="bp">-</span> <span class="n">a</span><span class="o">)</span>
   <span class="n">constructor</span>
-  <span class="bp">&#183;</span> <span class="n">funext</span> <span class="n">x</span>
-    <span class="k">let</span> <span class="o">(</span><span class="n">m</span><span class="o">,</span> <span class="n">n</span><span class="o">)</span> <span class="o">:=</span> <span class="n">x</span>
+  <span class="bp">&#183;</span> <span class="n">funext</span> <span class="o">(</span><span class="n">m</span><span class="o">,</span> <span class="n">n</span><span class="o">)</span>
     <span class="n">dsimp</span>
     <span class="n">constructor</span>
     <span class="bp">&#183;</span> <span class="n">ring</span>
     <span class="bp">&#183;</span> <span class="n">ring</span>
-  <span class="bp">&#183;</span> <span class="n">funext</span> <span class="n">x</span>
-    <span class="k">let</span> <span class="o">(</span><span class="n">a</span><span class="o">,</span> <span class="n">b</span><span class="o">)</span> <span class="o">:=</span> <span class="n">x</span>
+  <span class="bp">&#183;</span> <span class="n">funext</span> <span class="o">(</span><span class="n">a</span><span class="o">,</span> <span class="n">b</span><span class="o">)</span>
     <span class="n">dsimp</span>
     <span class="n">constructor</span>
     <span class="bp">&#183;</span> <span class="n">ring</span>
@@ -1551,13 +1649,33 @@ Show that this function is bijective.</p>
   <span class="gr">sorry</span>
 </pre></div>
 </div>
-<p>But over the integers, complications can ensue.</p>
+<p>But over the integers, complications can ensue.  You&#8217;ll find that the inverse you come up with for
+the previous example involves a division, which works fine over <span class="math notranslate nohighlight">\(\mathbb{R}\)</span> but doesn&#8217;t work
+over <span class="math notranslate nohighlight">\(\mathbb{Z}\)</span>.  And in fact in this case the function is <em>not</em> bijective as a map from
+<span class="math notranslate nohighlight">\(\mathbb{Z}^2\)</span> to <span class="math notranslate nohighlight">\(\mathbb{Z}^2\)</span>.</p>
 <div class="admonition-problem admonition">
 <p class="admonition-title">Problem</p>
 <p>Consider the function <span class="math notranslate nohighlight">\((m,n)\mapsto (m + n, m - n)\)</span> from <span class="math notranslate nohighlight">\(\mathbb{Z}^2\)</span> to
 <span class="math notranslate nohighlight">\(\mathbb{Z}^2\)</span>.
 Show that this function is not bijective.</p>
 </div>
+<div class="admonition-solution admonition">
+<p class="admonition-title">Solution</p>
+<p>We will show that the function is not surjective.  In fact, we will show that for all
+<span class="math notranslate nohighlight">\((m,n)\)</span> in <span class="math notranslate nohighlight">\(\mathbb{Z}^2\)</span>, it is not true that <span class="math notranslate nohighlight">\((m + n, m - n)=(0,1)\)</span>.  So let
+<span class="math notranslate nohighlight">\((m,n)\)</span> be in <span class="math notranslate nohighlight">\(\mathbb{Z}^2\)</span> and suppose that <span class="math notranslate nohighlight">\((m + n, m - n)=(0,1)\)</span>.  Then
+<span class="math notranslate nohighlight">\(m+n=0\)</span> and <span class="math notranslate nohighlight">\(m-n=1\)</span>, so</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}0&amp;\equiv 2m\mod 2\\
+&amp;=(m-n)+(m+n)\\
+&amp;=1+0\\
+&amp;=1,\end{split}\]</div>
+<p>contradiction.</p>
+</div>
+<p>The last part of the problem could play out in several different ways.  The hypotheses <span class="math notranslate nohighlight">\(m+n=0\)</span>
+and <span class="math notranslate nohighlight">\(m-n=1\)</span> are pretty clearly contradictory (for integers), so there are several variant ways
+you could produce the contradiction instead of the numeric contradiction <span class="math notranslate nohighlight">\(0\equiv 1\mod 2\)</span>
+which I produced here.</p>
 <div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">:</span> <span class="bp">&#172;</span> <span class="n">Bijective</span> <span class="o">(</span><span class="k">fun</span> <span class="o">((</span><span class="n">m</span><span class="o">,</span> <span class="n">n</span><span class="o">)</span> <span class="o">:</span> <span class="n">&#8484;</span> <span class="bp">&#215;</span> <span class="n">&#8484;</span><span class="o">)</span> <span class="bp">&#8614;</span> <span class="o">(</span><span class="n">m</span> <span class="bp">+</span> <span class="n">n</span><span class="o">,</span> <span class="n">m</span> <span class="bp">-</span> <span class="n">n</span><span class="o">))</span> <span class="o">:=</span> <span class="kd">by</span>
   <span class="n">dsimp</span> <span class="o">[</span><span class="n">Bijective</span><span class="o">,</span> <span class="n">Injective</span><span class="o">,</span> <span class="n">Surjective</span><span class="o">]</span>
   <span class="n">push_neg</span>
@@ -1581,10 +1699,10 @@ Show that this function is not bijective.</p>
 <p class="admonition-title">Problem</p>
 <p>Consider the function <span class="math notranslate nohighlight">\((x,y)\mapsto x + y\)</span> from <span class="math notranslate nohighlight">\(\mathbb{R}^2\)</span> to <span class="math notranslate nohighlight">\(\mathbb{R}\)</span>.
 Show that this function is</p>
-<ul class="simple">
+<ol class="arabic simple">
 <li><p>surjective</p></li>
 <li><p>not injective</p></li>
-</ul>
+</ol>
 </div>
 <div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">:</span> <span class="bp">&#172;</span> <span class="n">Injective</span> <span class="o">(</span><span class="k">fun</span> <span class="o">((</span><span class="n">x</span><span class="o">,</span> <span class="n">y</span><span class="o">)</span> <span class="o">:</span> <span class="n">&#8477;</span> <span class="bp">&#215;</span> <span class="n">&#8477;</span><span class="o">)</span> <span class="bp">&#8614;</span> <span class="n">x</span> <span class="bp">+</span> <span class="n">y</span><span class="o">)</span> <span class="o">:=</span> <span class="kd">by</span>
   <span class="n">dsimp</span> <span class="o">[</span><span class="n">Injective</span><span class="o">]</span>
@@ -1611,10 +1729,10 @@ Show that this function is</p>
 <p class="admonition-title">Problem</p>
 <p>Consider the function <span class="math notranslate nohighlight">\((m,n)\mapsto 5m+7n\)</span> from <span class="math notranslate nohighlight">\(\mathbb{Z}^2\)</span> to <span class="math notranslate nohighlight">\(\mathbb{Z}\)</span>.
 Show that this function is</p>
-<ul class="simple">
+<ol class="arabic simple">
 <li><p>surjective</p></li>
 <li><p>not injective</p></li>
-</ul>
+</ol>
 </div>
 <div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">:</span> <span class="bp">&#172;</span> <span class="n">Injective</span> <span class="o">(</span><span class="k">fun</span> <span class="o">((</span><span class="n">m</span><span class="o">,</span> <span class="n">n</span><span class="o">)</span> <span class="o">:</span> <span class="n">&#8484;</span> <span class="bp">&#215;</span> <span class="n">&#8484;</span><span class="o">)</span> <span class="bp">&#8614;</span> <span class="mi">5</span> <span class="bp">*</span> <span class="n">m</span> <span class="bp">+</span> <span class="mi">7</span> <span class="bp">*</span> <span class="n">n</span><span class="o">)</span> <span class="o">:=</span> <span class="kd">by</span>
   <span class="n">dsimp</span> <span class="o">[</span><span class="n">Injective</span><span class="o">]</span>
@@ -1640,10 +1758,10 @@ Show that this function is</p>
 <p class="admonition-title">Problem</p>
 <p>Consider the function <span class="math notranslate nohighlight">\((m,n)\mapsto 5m+10n\)</span> from <span class="math notranslate nohighlight">\(\mathbb{Z}^2\)</span> to <span class="math notranslate nohighlight">\(\mathbb{Z}\)</span>.
 Show that this function is</p>
-<ul class="simple">
+<ol class="arabic simple">
 <li><p>not surjective</p></li>
 <li><p>not injective</p></li>
-</ul>
+</ol>
 </div>
 <div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">:</span> <span class="bp">&#172;</span> <span class="n">Injective</span> <span class="o">(</span><span class="k">fun</span> <span class="o">((</span><span class="n">m</span><span class="o">,</span> <span class="n">n</span><span class="o">)</span> <span class="o">:</span> <span class="n">&#8484;</span> <span class="bp">&#215;</span> <span class="n">&#8484;</span><span class="o">)</span> <span class="bp">&#8614;</span> <span class="mi">5</span> <span class="bp">*</span> <span class="n">m</span> <span class="bp">+</span> <span class="mi">10</span> <span class="bp">*</span> <span class="n">n</span><span class="o">)</span> <span class="o">:=</span> <span class="kd">by</span>
   <span class="n">dsimp</span> <span class="o">[</span><span class="n">Injective</span><span class="o">]</span>
@@ -1681,8 +1799,7 @@ Show that this function is</p>
   <span class="o">(</span><span class="bp">-</span><span class="n">y</span><span class="o">,</span> <span class="n">x</span><span class="o">)</span>
 
 <span class="kd">example</span> <span class="o">:</span> <span class="n">g</span> <span class="bp">&#8728;</span> <span class="n">g</span> <span class="bp">=</span> <span class="bp">-</span> <span class="n">id</span> <span class="o">:=</span> <span class="kd">by</span>
-  <span class="n">funext</span> <span class="n">v</span>
-  <span class="k">let</span> <span class="o">(</span><span class="n">x</span><span class="o">,</span> <span class="n">y</span><span class="o">)</span> <span class="o">:=</span> <span class="n">v</span>
+  <span class="n">funext</span> <span class="o">(</span><span class="n">x</span><span class="o">,</span> <span class="n">y</span><span class="o">)</span>
   <span class="n">dsimp</span> <span class="o">[</span><span class="n">g</span><span class="o">]</span>
   <span class="n">constructor</span>
   <span class="bp">&#183;</span> <span class="n">ring</span>
@@ -1786,7 +1903,7 @@ will be the bijection we seek:  <span class="math notranslate nohighlight">\(p(a
 <section id="id38">
 <h3><span class="section-number">8.4.9. </span>Exercises<a class="headerlink" href="#id38" title="Permalink to this headline">&#61633;</a></h3>
 <ol class="arabic simple">
-<li><p>Consider the function <span class="math notranslate nohighlight">\((r,s)\mapsto (s, r+s)\)</span> from <span class="math notranslate nohighlight">\(\mathbb{Q}^2\)</span> to
+<li><p>Consider the function <span class="math notranslate nohighlight">\((r,s)\mapsto (s, r-s)\)</span> from <span class="math notranslate nohighlight">\(\mathbb{Q}^2\)</span> to
 <span class="math notranslate nohighlight">\(\mathbb{Q}^2\)</span>.
 Show that this function is bijective.</p></li>
 </ol>
@@ -1799,10 +1916,10 @@ Show that this function is bijective.</p></li>
 <li><p>Consider the function <span class="math notranslate nohighlight">\((x,y)\mapsto x-2y-1\)</span> from <span class="math notranslate nohighlight">\(\mathbb{Z}^2\)</span> to
 <span class="math notranslate nohighlight">\(\mathbb{Z}\)</span>.
 Show that this function is</p>
-<ul class="simple">
+<ol class="arabic simple">
 <li><p>not injective</p></li>
 <li><p>surjective</p></li>
-</ul>
+</ol>
 </li>
 </ol>
 <div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">:</span> <span class="bp">&#172;</span> <span class="n">Injective</span> <span class="o">(</span><span class="k">fun</span> <span class="o">((</span><span class="n">x</span><span class="o">,</span> <span class="n">y</span><span class="o">)</span> <span class="o">:</span> <span class="n">&#8484;</span> <span class="bp">&#215;</span> <span class="n">&#8484;</span><span class="o">)</span> <span class="bp">&#8614;</span> <span class="n">x</span> <span class="bp">-</span> <span class="mi">2</span> <span class="bp">*</span> <span class="n">y</span> <span class="bp">-</span> <span class="mi">1</span><span class="o">)</span> <span class="o">:=</span> <span class="kd">by</span>
