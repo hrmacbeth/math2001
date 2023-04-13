@@ -3,6 +3,7 @@ import Mathlib.Data.Real.Basic
 import Math2001.Library.ParityModular
 import Math2001.Tactic.Addarith
 import Math2001.Tactic.ExistsDelaborator
+import Math2001.Tactic.Induction
 import Math2001.Tactic.Numbers
 import Math2001.Tactic.Rel
 import Math2001.Tactic.Take
@@ -287,4 +288,8 @@ example : ¬ ∀ c : ℝ, Surjective (fun x ↦ c * x) := by
   sorry
 
 example {f : ℚ → ℚ} (hf : ∀ x y, x < y → f x < f y) : Injective f := by
+  sorry
+
+example {f : X → ℕ} {x0 : X} (h0 : f x0 = 0) {i : X → X} (hi : ∀ x, f (i x) = f x + 1) :
+    Surjective f := by
   sorry

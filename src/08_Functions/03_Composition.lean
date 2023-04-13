@@ -1,3 +1,4 @@
+/- Copyright (c) Heather Macbeth, 2023.  All rights reserved. -/
 import Mathlib.Data.Real.Basic
 import Math2001.Tactic.Addarith
 import Math2001.Tactic.ExistsDelaborator
@@ -16,7 +17,7 @@ def g (b : ℝ) : ℝ := 2 * b
 def h (c : ℝ) : ℝ := 2 * c + 6 
 
 example : g ∘ f = h := by
-  ext x
+  funext x
   calc (g ∘ f) x = g (f x) := by rfl
     _ = 2 * (x + 3) := by rfl
     _ = 2 * x + 6 := by ring
@@ -26,7 +27,7 @@ example : g ∘ f = h := by
 def s (x : ℝ) : ℝ := 5 - x
 
 example : s ∘ s = id := by
-  ext x
+  funext x
   dsimp [s]
   ring
 
@@ -59,13 +60,13 @@ def q : Humour → Humour
 
 example : Inverse p q := by
   constructor
-  · ext x
+  · funext x
     cases x
     · decide  
     · decide  
     · decide  
     · decide  
-  · ext x
+  · funext x
     cases x
     · decide  
     · decide  
@@ -83,14 +84,14 @@ theorem exists_inverse_of_bijective {f : X → Y} (hf : Bijective f) :
   dsimp [Inverse]
   constructor
   · -- prove `g ∘ f = id` 
-    ext x
+    funext x
     dsimp [Injective] at h_inj
     apply h_inj
     calc f ((g ∘ f) x) = f (g (f x)) := by rfl
       _ = f x := by apply hg
       _ = f (id x) := by rfl
   · -- prove `f ∘ g = id` 
-    ext y
+    funext y
     apply hg
 
 
@@ -146,7 +147,7 @@ def c : Humour → Humour
   | sanguine => sorry
 
 example : b ∘ a = c := by
-  ext x
+  funext x
   cases x
   · decide 
   · decide 

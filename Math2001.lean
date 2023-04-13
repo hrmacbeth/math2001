@@ -13,6 +13,7 @@ import Math2001.Tactic.ExistsDelaborator
 import Math2001.Tactic.Induction
 import Math2001.Tactic.ModCases
 import Math2001.Tactic.Numbers
+import Math2001.Tactic.Product
 import Math2001.Tactic.Rel
 import Math2001.Tactic.Rel.Basic
 import Math2001.Tactic.Rel.IffRel
