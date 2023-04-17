@@ -12,6 +12,7 @@ import Math2001.Tactic.Take
 
 set_option linter.unusedVariables false
 set_option push_neg.use_distrib true
+attribute [-simp] ne_eq
 open Function
 
 /-! # Product types -/
@@ -44,14 +45,10 @@ example : Bijective (fun ((m, n) : ℤ × ℤ) ↦ (m + n, m + 2 * n)) := by
   constructor
   · funext (m, n)
     dsimp
-    constructor
-    · ring
-    · ring 
+    ring
   · funext (a, b)
     dsimp
-    constructor
-    · ring
-    · ring 
+    ring
 
 
 example : Bijective (fun ((m, n) : ℝ × ℝ) ↦ (m + n, m - n)) := by
@@ -73,6 +70,15 @@ example : ¬ Bijective (fun ((m, n) : ℤ × ℤ) ↦ (m + n, m - n)) := by
   numbers at this
 
 
+example : Injective (fun ((x, y) : ℝ × ℝ) ↦ (x + y, x - y, y)) := by
+  intro (x1, y1) (x2, y2) h
+  dsimp at h
+  obtain ⟨h, h', hy⟩ := h
+  constructor
+  · addarith [h, hy]
+  · apply hy
+
+
 example : ¬ Injective (fun ((x, y) : ℝ × ℝ) ↦ x + y) := by
   dsimp [Injective]
   push_neg
@@ -80,9 +86,7 @@ example : ¬ Injective (fun ((x, y) : ℝ × ℝ) ↦ x + y) := by
   dsimp
   constructor
   · numbers
-  · intro h
-    obtain ⟨h1, h2⟩ := h
-    numbers at h1
+  · numbers
     
 example : Surjective (fun ((x, y) : ℝ × ℝ) ↦ x + y) := by
   intro a
@@ -91,32 +95,23 @@ example : Surjective (fun ((x, y) : ℝ × ℝ) ↦ x + y) := by
   ring
 
 
-example : ¬ Injective (fun ((m, n) : ℤ × ℤ) ↦ 5 * m + 7 * n) := by
+example : ¬ Injective (fun ((m, n) : ℤ × ℤ) ↦ 5 * m + 8 * n) := by
   dsimp [Injective]
   push_neg
-  take (0, 0), (7, -5)
+  take (0, 0), (8, -5)
   constructor
   · numbers
-  · intro h
-    obtain ⟨h1, h2⟩ := h
-    numbers at h1
+  · numbers
 
-example : Surjective (fun ((m, n) : ℤ × ℤ) ↦ 5 * m + 7 * n) := by
+example : Surjective (fun ((m, n) : ℤ × ℤ) ↦ 5 * m + 8 * n) := by
   intro a
-  take (3 * a, -2 * a)
+  take (-3 * a, 2 * a)
   dsimp
   ring
 
 
 example : ¬ Injective (fun ((m, n) : ℤ × ℤ) ↦ 5 * m + 10 * n) := by
-  dsimp [Injective]
-  push_neg
-  take (0, 0), (10, -5)
-  constructor
-  · numbers
-  · intro h
-    obtain ⟨h1, h2⟩ := h
-    numbers at h1
+  sorry
 
 example : ¬ Surjective (fun ((m, n) : ℤ × ℤ) ↦ 5 * m + 10 * n) := by
   dsimp [Surjective]
@@ -131,16 +126,13 @@ example : ¬ Surjective (fun ((m, n) : ℤ × ℤ) ↦ 5 * m + 10 * n) := by
   numbers at this
 
 
-def g (v : ℝ × ℝ) : ℝ × ℝ :=
-  let (x, y) := v
-  (-y, x)
+def g : ℝ × ℝ → ℝ × ℝ
+  | (x, y) => (y, x)
 
-example : g ∘ g = - id := by
+example : g ∘ g = id := by
   funext (x, y)
   dsimp [g]
-  constructor
-  · ring
-  · ring
+  ring
 
 
 def A : ℕ → ℕ
@@ -156,14 +148,14 @@ theorem A_mono {n m : ℕ} (h : n ≤ m) : A n ≤ A m := by
       _ = A (k + 1) := by rw [A]
 
 -- STUDENTS: ignore this, it is temporary while waiting for a bugfix
-theorem s_zero : A 0 = 0 := rfl
-theorem s_succ (n : ℕ) : A (n + 1) = A n + n + 1 := rfl
+theorem A_zero : A 0 = 0 := rfl
+theorem A_succ (n : ℕ) : A (n + 1) = A n + n + 1 := rfl
 
 -- ignore this too
 open Lean Meta in
 #eval modifyEnv (m := MetaM) fun env =>
   eqnsExt.modifyState env fun s =>
-    { s with map := s.map.insert ``A #[``s_succ, ``s_zero] }
+    { s with map := s.map.insert ``A #[``A_succ, ``A_zero] }
 
 
 theorem of_A_add_mono {a1 a2 b1 b2 : ℕ} (h : A (a1 + b1) + b1 ≤ A (a2 + b2) + b2) :
@@ -182,9 +174,8 @@ theorem of_A_add_mono {a1 a2 b1 b2 : ℕ} (h : A (a1 + b1) + b1 ≤ A (a2 + b2) 
   contradiction
 
 
-def p (x : ℕ × ℕ) : ℕ :=
-  let (a, b) := x
-  A (a + b) + b
+def p : ℕ × ℕ → ℕ
+  | (a, b) => A (a + b) + b
 
 
 def i : ℕ × ℕ → ℕ × ℕ
@@ -217,13 +208,13 @@ example : Bijective p := by
       · apply of_A_add_mono
         rw [hab]
     have hb : b1 = b2
-    · apply add_left_cancel (a := A (a1 + b1))
-      calc A (a1 + b1) + b1 = A (a2 + b2) + b2 := by rw [hab]
-        _ = A (a1 + b1) + b2 := by rw [H]
+    · zify at hab ⊢
+      calc (b1:ℤ) = A (a2 + b2) + b2 - A (a1 + b1) := by addarith [hab]
+        _ = A (a2 + b2) + b2 - A (a2 + b2) := by rw [H]
+        _ = b2 := by ring
     constructor
-    · apply add_right_cancel (b := b1)
-      calc a1 + b1 = a2 + b2 := H
-        _ = a2 + b1 := by rw [hb]
+    · zify at hb H ⊢
+      addarith [H, hb]
     · apply hb
   · apply surjective_of_intertwining (x0 := (0, 0)) (i := i)
     · calc p (0, 0) = A (0 + 0) + 0 := by dsimp [p]
@@ -250,9 +241,17 @@ example : ¬ Surjective (fun ((x, y) : ℚ × ℚ) ↦ x ^ 2 + y ^ 2) := by
 example : Surjective (fun ((x, y) : ℚ × ℚ) ↦ x ^ 2 - y ^ 2) := by
   sorry
 
-def h (v : ℝ × ℝ × ℝ) : ℝ × ℝ × ℝ :=
-  let (x, y, z) := v
-  (y, z, x)
+example : Surjective (fun ((a, b) : ℚ × ℕ) ↦ a ^ b) := by
+  sorry
+
+example : ¬ Injective (fun ((x, y, z) : ℝ × ℝ × ℝ) ↦ (x + y + z, x + 2 * y + 3 * z)) := by
+  sorry
+
+example : Injective (fun ((x, y) : ℝ × ℝ) ↦ (x + y, x + 2 * y, x + 3 * y)) := by
+  sorry
+
+def h : ℝ × ℝ × ℝ → ℝ × ℝ × ℝ
+  | (x, y, z) => (y, z, x)
 
 example : h ∘ h ∘ h = id := by
   sorry

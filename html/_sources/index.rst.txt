@@ -31,6 +31,7 @@ problems without yet the explanatory paragraphs which would be needed to solve t
    06_Induction
    07_Number_Theory
    08_Functions
+   09_Sets
 
 .. toctree::
    :hidden:
