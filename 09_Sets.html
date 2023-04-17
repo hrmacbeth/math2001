@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>9. Sets &mdash; The mechanics of proof  documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/custom.css" type="text/css" />
+    <link rel="shortcut icon" href="_static/favicon.ico"/>
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Index of Lean tactics" href="Index_of_Tactics.html" />
+    <link rel="prev" title="8. Functions" href="08_Functions.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="index.html" class="icon icon-home"> The mechanics of proof
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="01_Proofs_by_Calculation.html">1. Proofs by calculation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="02_Proofs_with_Structure.html">2. Proofs with structure</a></li>
+<li class="toctree-l1"><a class="reference internal" href="03_Parity_and_Divisibility.html">3. Parity and divisibility</a></li>
+<li class="toctree-l1"><a class="reference internal" href="04_Proofs_with_Structure_II.html">4. Proofs with structure, II</a></li>
+<li class="toctree-l1"><a class="reference internal" href="05_Logic.html">5. Logic</a></li>
+<li class="toctree-l1"><a class="reference internal" href="06_Induction.html">6. Induction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="07_Number_Theory.html">7. Number theory</a></li>
+<li class="toctree-l1"><a class="reference internal" href="08_Functions.html">8. Functions</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">9. Sets</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#introduction">9.1. Introduction</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#example">9.1.1. Example</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id2">9.1.2. Example</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#exercises">9.1.3. Exercises</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="Index_of_Tactics.html">Index of Lean tactics</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="Homework.html">Homework</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">The mechanics of proof</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+      <li><span class="section-number">9. </span>Sets</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/09_Sets.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="sets">
+<span id="id1"></span><h1><span class="section-number">9. </span>Sets<a class="headerlink" href="#sets" title="Permalink to this headline">&#61633;</a></h1>
+<section id="introduction">
+<span id="sets-intro"></span><h2><span class="section-number">9.1. </span>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">&#61633;</a></h2>
+<section id="example">
+<h3><span class="section-number">9.1.1. </span>Example<a class="headerlink" href="#example" title="Permalink to this headline">&#61633;</a></h3>
+<p>In type theory, the logical foundation for this course, a <em>set</em> in a type <span class="math notranslate nohighlight">\(X\)</span> is specified
+by a predicate on <span class="math notranslate nohighlight">\(X\)</span>.  For example, &#8220;the set of integers <span class="math notranslate nohighlight">\(n\)</span> such that <span class="math notranslate nohighlight">\(n\le 3\)</span>&#8221;
+is a set in <span class="math notranslate nohighlight">\(\mathbb{Z}\)</span>.</p>
+<p>There is a standard notation for sets specified by predicates.  For example, the set described above
+is written notationally as <span class="math notranslate nohighlight">\(\{n:\mathbb{Z} \mid n\le 3\}\)</span>. Here is that set in Lean.</p>
+<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="k">#check</span> <span class="o">{</span> <span class="n">n</span> <span class="o">:</span> <span class="n">&#8484;</span> <span class="bp">|</span> <span class="n">n</span> <span class="bp">&#8804;</span> <span class="mi">3</span> <span class="o">}</span>
+</pre></div>
+</div>
+<p>Note that the infoview confirms that the type of the expression is <code class="docutils literal notranslate"><span class="pre">Set</span> <span class="pre">&#8484;</span></code>, a set of integers.</p>
+<p>A term of type <span class="math notranslate nohighlight">\(X\)</span> <em>belongs to</em> a set in <span class="math notranslate nohighlight">\(X\)</span> specified by some predicate, if the
+predicate holds for that term.</p>
+<div class="admonition-problem admonition">
+<p class="admonition-title">Problem</p>
+<p>Show that the integer 1 belongs to the set of integers <span class="math notranslate nohighlight">\(\{n:\mathbb{Z} \mid n\le 3\}\)</span>.</p>
+</div>
+<div class="admonition-solution admonition">
+<p class="admonition-title">Solution</p>
+<p><span class="math notranslate nohighlight">\(1\le 3\)</span>.</p>
+</div>
+<p>Other phrasings you may see for this concept are that 1 <em>is a member of</em> the set
+<span class="math notranslate nohighlight">\(\{n:\mathbb{Z} \mid n\le 3\}\)</span>, or <em>is in</em> <span class="math notranslate nohighlight">\(\{n:\mathbb{Z} \mid n\le 3\}\)</span>.  The notation is
+<span class="math notranslate nohighlight">\(1\in \{n:\mathbb{Z} \mid n\le 3\}\)</span>.</p>
+<p>Here is this proof in Lean:</p>
+<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">:</span> <span class="mi">1</span> <span class="bp">&#8712;</span> <span class="o">{</span> <span class="n">n</span> <span class="o">:</span> <span class="n">&#8484;</span> <span class="bp">|</span> <span class="n">n</span> <span class="bp">&#8804;</span> <span class="mi">3</span> <span class="o">}</span> <span class="o">:=</span> <span class="kd">by</span>
+  <span class="n">dsimp</span>
+  <span class="n">numbers</span>
+</pre></div>
+</div>
+<p>The tactic <code class="docutils literal notranslate"><span class="pre">dsimp</span></code> unfolds the definition of the set and of membership in that set, reducing it
+to the goal</p>
+<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="bp">&#8866;</span> <span class="mi">1</span> <span class="bp">&#8804;</span> <span class="mi">3</span>
+</pre></div>
+</div>
+<p>which is resolved by <code class="docutils literal notranslate"><span class="pre">numbers</span></code>.</p>
+</section>
+<section id="id2">
+<h3><span class="section-number">9.1.2. </span>Example<a class="headerlink" href="#id2" title="Permalink to this headline">&#61633;</a></h3>
+<p>The symbol <span class="math notranslate nohighlight">\(\notin\)</span> is used for the negation of <span class="math notranslate nohighlight">\(\in\)</span>.</p>
+<div class="admonition-problem admonition">
+<p class="admonition-title">Problem</p>
+<p>Prove that <span class="math notranslate nohighlight">\(10\notin \{n:\mathbb{N} \mid n\text{ is odd}\}\)</span>.</p>
+</div>
+<div class="admonition-solution admonition">
+<p class="admonition-title">Solution</p>
+<p>Since <span class="math notranslate nohighlight">\(10=2\cdot 5\)</span>, we have that 10 is even, so it is not odd.</p>
+</div>
+<p>In the Lean proof below, the tactic <code class="docutils literal notranslate"><span class="pre">dsimp</span></code> cleans up the goal to</p>
+<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="bp">&#8866;</span> <span class="bp">&#172;</span><span class="n">Odd</span> <span class="mi">10</span>
+</pre></div>
+</div>
+<p>which can then be solved by general-purpose methods.</p>
+<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">:</span> <span class="mi">10</span> <span class="bp">&#8713;</span> <span class="o">{</span> <span class="n">n</span> <span class="o">:</span> <span class="n">&#8469;</span> <span class="bp">|</span> <span class="n">Odd</span> <span class="n">n</span> <span class="o">}</span> <span class="o">:=</span> <span class="kd">by</span>
+  <span class="n">dsimp</span>
+  <span class="n">rw</span> <span class="o">[</span><span class="bp">&#8592;</span> <span class="n">even_iff_not_odd</span><span class="o">]</span>
+  <span class="n">take</span> <span class="mi">5</span>
+  <span class="n">numbers</span>
+</pre></div>
+</div>
+</section>
+<section id="exercises">
+<h3><span class="section-number">9.1.3. </span>Exercises<a class="headerlink" href="#exercises" title="Permalink to this headline">&#61633;</a></h3>
+<ol class="arabic simple">
+<li><p>Prove or disprove that <span class="math notranslate nohighlight">\(4\in \{a:\mathbb{Q} \mid a&lt;3\}\)</span>.</p></li>
+</ol>
+<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">:</span> <span class="mi">4</span> <span class="bp">&#8712;</span> <span class="o">{</span> <span class="n">a</span> <span class="o">:</span> <span class="n">&#8474;</span> <span class="bp">|</span> <span class="n">a</span> <span class="bp">&lt;</span> <span class="mi">3</span> <span class="o">}</span> <span class="o">:=</span> <span class="kd">by</span>
+  <span class="gr">sorry</span>
+
+<span class="kd">example</span> <span class="o">:</span> <span class="mi">4</span> <span class="bp">&#8713;</span> <span class="o">{</span> <span class="n">a</span> <span class="o">:</span> <span class="n">&#8474;</span> <span class="bp">|</span> <span class="n">a</span> <span class="bp">&lt;</span> <span class="mi">3</span> <span class="o">}</span> <span class="o">:=</span> <span class="kd">by</span>
+  <span class="gr">sorry</span>
+</pre></div>
+</div>
+<ol class="arabic simple" start="2">
+<li><p>Prove or disprove that <span class="math notranslate nohighlight">\(6\in \{n:\mathbb{N} \mid n\mid 42\}\)</span>.</p></li>
+</ol>
+<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">:</span> <span class="mi">6</span> <span class="bp">&#8712;</span> <span class="o">{</span> <span class="n">n</span> <span class="o">:</span> <span class="n">&#8469;</span> <span class="bp">|</span> <span class="n">n</span> <span class="bp">&#8739;</span> <span class="mi">42</span> <span class="o">}</span> <span class="o">:=</span> <span class="kd">by</span>
+  <span class="gr">sorry</span>
+
+<span class="kd">example</span> <span class="o">:</span> <span class="mi">6</span> <span class="bp">&#8713;</span> <span class="o">{</span> <span class="n">n</span> <span class="o">:</span> <span class="n">&#8469;</span> <span class="bp">|</span> <span class="n">n</span> <span class="bp">&#8739;</span> <span class="mi">42</span> <span class="o">}</span> <span class="o">:=</span> <span class="kd">by</span>
+  <span class="gr">sorry</span>
+</pre></div>
+</div>
+<ol class="arabic simple" start="3">
+<li><p>Prove or disprove that <span class="math notranslate nohighlight">\(8\in \{k:\mathbb{Z} \mid 5\mid k\}\)</span>.</p></li>
+</ol>
+<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">:</span> <span class="mi">8</span> <span class="bp">&#8712;</span> <span class="o">{</span> <span class="n">k</span> <span class="o">:</span> <span class="n">&#8484;</span> <span class="bp">|</span> <span class="mi">5</span> <span class="bp">&#8739;</span> <span class="n">k</span> <span class="o">}</span> <span class="o">:=</span> <span class="kd">by</span>
+  <span class="gr">sorry</span>
+
+<span class="kd">example</span> <span class="o">:</span> <span class="mi">8</span> <span class="bp">&#8713;</span> <span class="o">{</span> <span class="n">k</span> <span class="o">:</span> <span class="n">&#8484;</span> <span class="bp">|</span> <span class="mi">5</span> <span class="bp">&#8739;</span> <span class="n">k</span> <span class="o">}</span> <span class="o">:=</span> <span class="kd">by</span>
+  <span class="gr">sorry</span>
+</pre></div>
+</div>
+<ol class="arabic simple" start="4">
+<li><p>Prove or disprove that <span class="math notranslate nohighlight">\(11\in \{n:\mathbb{N} \mid n\text{ is odd}\}\)</span>.</p></li>
+</ol>
+<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">:</span> <span class="mi">11</span> <span class="bp">&#8712;</span> <span class="o">{</span> <span class="n">n</span> <span class="o">:</span> <span class="n">&#8469;</span> <span class="bp">|</span> <span class="n">Odd</span> <span class="n">n</span> <span class="o">}</span> <span class="o">:=</span> <span class="kd">by</span>
+  <span class="gr">sorry</span>
+
+<span class="kd">example</span> <span class="o">:</span> <span class="mi">11</span> <span class="bp">&#8713;</span> <span class="o">{</span> <span class="n">n</span> <span class="o">:</span> <span class="n">&#8469;</span> <span class="bp">|</span> <span class="n">Odd</span> <span class="n">n</span> <span class="o">}</span> <span class="o">:=</span> <span class="kd">by</span>
+  <span class="gr">sorry</span>
+</pre></div>
+</div>
+<ol class="arabic simple" start="5">
+<li><p>Prove or disprove that <span class="math notranslate nohighlight">\(-3\in \{x:\mathbb{R} \mid \forall y, x\le y^2\}\)</span>.</p></li>
+</ol>
+<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">:</span> <span class="bp">-</span><span class="mi">3</span> <span class="bp">&#8712;</span> <span class="o">{</span> <span class="n">x</span> <span class="o">:</span> <span class="n">&#8477;</span> <span class="bp">|</span> <span class="bp">&#8704;</span> <span class="n">y</span> <span class="o">:</span> <span class="n">&#8477;</span><span class="o">,</span> <span class="n">x</span> <span class="bp">&#8804;</span> <span class="n">y</span> <span class="bp">^</span> <span class="mi">2</span> <span class="o">}</span> <span class="o">:=</span> <span class="kd">by</span>
+  <span class="gr">sorry</span>
+
+<span class="kd">example</span> <span class="o">:</span> <span class="bp">-</span><span class="mi">3</span> <span class="bp">&#8713;</span> <span class="o">{</span> <span class="n">x</span> <span class="o">:</span> <span class="n">&#8477;</span> <span class="bp">|</span> <span class="bp">&#8704;</span> <span class="n">y</span> <span class="o">:</span> <span class="n">&#8477;</span><span class="o">,</span> <span class="n">x</span> <span class="bp">&#8804;</span> <span class="n">y</span> <span class="bp">^</span> <span class="mi">2</span> <span class="o">}</span> <span class="o">:=</span> <span class="kd">by</span>
+  <span class="gr">sorry</span>
+</pre></div>
+</div>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="08_Functions.html" class="btn btn-neutral float-left" title="8. Functions" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="Index_of_Tactics.html" class="btn btn-neutral float-right" title="Index of Lean tactics" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2022-2023, Heather Macbeth.  All rights reserved.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
