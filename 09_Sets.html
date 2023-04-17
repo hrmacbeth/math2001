@@ -53,7 +53,9 @@
 <li class="toctree-l2"><a class="reference internal" href="#introduction">9.1. Introduction</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#example">9.1.1. Example</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#id2">9.1.2. Example</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#exercises">9.1.3. Exercises</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id3">9.1.3. Example</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id4">9.1.4. Example</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#exercises">9.1.5. Exercises</a></li>
 </ul>
 </li>
 </ul>
@@ -155,8 +157,77 @@ to the goal</p>
 </pre></div>
 </div>
 </section>
+<section id="id3">
+<h3><span class="section-number">9.1.3. </span>Example<a class="headerlink" href="#id3" title="Permalink to this headline">&#61633;</a></h3>
+<div class="admonition-definition admonition">
+<p class="admonition-title">Definition</p>
+<p>Let <span class="math notranslate nohighlight">\(U\)</span> and <span class="math notranslate nohighlight">\(V\)</span> be sets in the type <span class="math notranslate nohighlight">\(X\)</span>.  The set <span class="math notranslate nohighlight">\(U\)</span> <em>is a subset of</em>
+the set <span class="math notranslate nohighlight">\(V\)</span>, if for all <span class="math notranslate nohighlight">\(x\)</span> of type <span class="math notranslate nohighlight">\(X\)</span>, if <span class="math notranslate nohighlight">\(x\in U\)</span>, then <span class="math notranslate nohighlight">\(x\in V\)</span>.</p>
+</div>
+<p>The statement &#8220;<span class="math notranslate nohighlight">\(U\)</span> <em>is a subset of</em> <span class="math notranslate nohighlight">\(V\)</span>&#8221; is expressed in notation as
+<span class="math notranslate nohighlight">\(U \subseteq V\)</span>.</p>
+<p>In Lean the definition looks like this:</p>
+<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">def</span> <span class="n">Set.Subset</span> <span class="o">(</span><span class="n">U</span> <span class="n">V</span> <span class="o">:</span> <span class="n">Set</span> <span class="n">&#945;</span><span class="o">)</span> <span class="o">:</span> <span class="kt">Prop</span> <span class="o">:=</span> <span class="bp">&#8704;</span> <span class="o">&#10627;</span><span class="n">x</span><span class="o">&#10628;,</span> <span class="n">x</span> <span class="bp">&#8712;</span> <span class="n">U</span> <span class="bp">&#8594;</span> <span class="n">x</span> <span class="bp">&#8712;</span> <span class="n">V</span>
+</pre></div>
+</div>
+<p>and the notation is <code class="docutils literal notranslate"><span class="pre">U</span> <span class="pre">&#8838;</span> <span class="pre">V</span></code>.</p>
+<div class="admonition-problem admonition">
+<p class="admonition-title">Problem</p>
+<p>Show that <span class="math notranslate nohighlight">\(\{a:\mathbb{N} \mid 4\mid a\}\subseteq\{b:\mathbb{N} \mid 2\mid b\}\)</span>.</p>
+</div>
+<div class="admonition-solution admonition">
+<p class="admonition-title">Solution</p>
+<p>We will show that for all natural numbers <span class="math notranslate nohighlight">\(a\)</span>, if <span class="math notranslate nohighlight">\(4\mid a\)</span> then <span class="math notranslate nohighlight">\(2\mid a\)</span>.
+Indeed, let <span class="math notranslate nohighlight">\(a\)</span> be a natural number and suppose that <span class="math notranslate nohighlight">\(4\mid a\)</span>.  Then there exists a
+natural number <span class="math notranslate nohighlight">\(k\)</span> such that <span class="math notranslate nohighlight">\(a=4k\)</span>, so</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}a&amp;=4a\\
+&amp;=2(2k),\end{split}\]</div>
+<p>so <span class="math notranslate nohighlight">\(2\mid a\)</span>.</p>
+</div>
+<p>Here is that solution in Lean.  Note that after unfolding the definition using <code class="docutils literal notranslate"><span class="pre">dsimp</span> <span class="pre">[subset_def]</span></code>
+the goal state is simplified to</p>
+<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="bp">&#8866;</span> <span class="bp">&#8704;</span> <span class="o">(</span><span class="n">x</span> <span class="o">:</span> <span class="n">&#8469;</span><span class="o">),</span> <span class="mi">4</span> <span class="bp">&#8739;</span> <span class="n">x</span> <span class="bp">&#8594;</span> <span class="mi">2</span> <span class="bp">&#8739;</span> <span class="n">x</span>
+</pre></div>
+</div>
+<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">:</span> <span class="o">{</span> <span class="n">a</span> <span class="o">:</span> <span class="n">&#8469;</span> <span class="bp">|</span> <span class="mi">4</span> <span class="bp">&#8739;</span> <span class="n">a</span> <span class="o">}</span> <span class="bp">&#8838;</span> <span class="o">{</span> <span class="n">b</span> <span class="o">:</span> <span class="n">&#8469;</span> <span class="bp">|</span> <span class="mi">2</span> <span class="bp">&#8739;</span> <span class="n">b</span> <span class="o">}</span> <span class="o">:=</span> <span class="kd">by</span>
+  <span class="n">dsimp</span> <span class="o">[</span><span class="n">subset_def</span><span class="o">]</span>
+  <span class="n">intro</span> <span class="n">a</span> <span class="n">ha</span>
+  <span class="n">obtain</span> <span class="o">&#10216;</span><span class="n">k</span><span class="o">,</span> <span class="n">hk</span><span class="o">&#10217;</span> <span class="o">:=</span> <span class="n">ha</span>
+  <span class="n">take</span> <span class="mi">2</span> <span class="bp">*</span> <span class="n">k</span>
+  <span class="k">calc</span> <span class="n">a</span> <span class="bp">=</span> <span class="mi">4</span> <span class="bp">*</span> <span class="n">k</span> <span class="o">:=</span> <span class="n">hk</span>
+    <span class="n">_</span> <span class="bp">=</span> <span class="mi">2</span> <span class="bp">*</span> <span class="o">(</span><span class="mi">2</span> <span class="bp">*</span> <span class="n">k</span><span class="o">)</span> <span class="o">:=</span> <span class="kd">by</span> <span class="n">ring</span>
+</pre></div>
+</div>
+</section>
+<section id="id4">
+<h3><span class="section-number">9.1.4. </span>Example<a class="headerlink" href="#id4" title="Permalink to this headline">&#61633;</a></h3>
+<p>The notation <span class="math notranslate nohighlight">\(\not\subseteq\)</span> stands for &#8220;not a subset of&#8221;.  (In Lean, this notation is not
+available &#8211; such a statement must be written out using <code class="docutils literal notranslate"><span class="pre">&#172;</span></code> and <code class="docutils literal notranslate"><span class="pre">&#8838;</span></code>.)</p>
+<div class="admonition-problem admonition">
+<p class="admonition-title">Problem</p>
+<dl class="simple">
+<dt>Prove that</dt><dd><p><span class="math notranslate nohighlight">\(\{x:\mathbb{R} \mid 0 \le x^2\}\not\subseteq \{t:\mathbb{R} \mid 0\le t\}\)</span>.</p>
+</dd>
+</dl>
+</div>
+<div class="admonition-solution admonition">
+<p class="admonition-title">Solution</p>
+<p>We will show that there exists a real number <span class="math notranslate nohighlight">\(x\)</span>, such that <span class="math notranslate nohighlight">\(0\le x^2\)</span> and
+<span class="math notranslate nohighlight">\(x&lt;0\)</span>.  Indeed, <span class="math notranslate nohighlight">\(0\le (-3)^2\)</span> and <span class="math notranslate nohighlight">\(-3&lt;0\)</span>.</p>
+</div>
+<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">:</span> <span class="bp">&#172;</span> <span class="o">{</span> <span class="n">x</span> <span class="o">:</span> <span class="n">&#8477;</span> <span class="bp">|</span> <span class="mi">0</span> <span class="bp">&#8804;</span> <span class="n">x</span> <span class="bp">^</span> <span class="mi">2</span> <span class="o">}</span> <span class="bp">&#8838;</span> <span class="o">{</span> <span class="n">t</span> <span class="o">:</span> <span class="n">&#8477;</span> <span class="bp">|</span> <span class="mi">0</span> <span class="bp">&#8804;</span> <span class="n">t</span> <span class="o">}</span> <span class="o">:=</span> <span class="kd">by</span>
+  <span class="n">dsimp</span> <span class="o">[</span><span class="n">subset_def</span><span class="o">]</span>
+  <span class="n">push_neg</span>
+  <span class="n">take</span> <span class="bp">-</span><span class="mi">3</span>
+  <span class="n">constructor</span>
+  <span class="bp">&#183;</span> <span class="n">numbers</span>
+  <span class="bp">&#183;</span> <span class="n">numbers</span>
+</pre></div>
+</div>
+</section>
 <section id="exercises">
-<h3><span class="section-number">9.1.3. </span>Exercises<a class="headerlink" href="#exercises" title="Permalink to this headline">&#61633;</a></h3>
+<h3><span class="section-number">9.1.5. </span>Exercises<a class="headerlink" href="#exercises" title="Permalink to this headline">&#61633;</a></h3>
 <ol class="arabic simple">
 <li><p>Prove or disprove that <span class="math notranslate nohighlight">\(4\in \{a:\mathbb{Q} \mid a&lt;3\}\)</span>.</p></li>
 </ol>
@@ -198,12 +269,56 @@ to the goal</p>
 </pre></div>
 </div>
 <ol class="arabic simple" start="5">
-<li><p>Prove or disprove that <span class="math notranslate nohighlight">\(-3\in \{x:\mathbb{R} \mid \forall y, x\le y^2\}\)</span>.</p></li>
+<li><p>Prove or disprove that <span class="math notranslate nohighlight">\(-3\in \{x:\mathbb{R} \mid \forall y :\mathbb{R}, x\le y^2\}\)</span>.</p></li>
 </ol>
 <div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">:</span> <span class="bp">-</span><span class="mi">3</span> <span class="bp">&#8712;</span> <span class="o">{</span> <span class="n">x</span> <span class="o">:</span> <span class="n">&#8477;</span> <span class="bp">|</span> <span class="bp">&#8704;</span> <span class="n">y</span> <span class="o">:</span> <span class="n">&#8477;</span><span class="o">,</span> <span class="n">x</span> <span class="bp">&#8804;</span> <span class="n">y</span> <span class="bp">^</span> <span class="mi">2</span> <span class="o">}</span> <span class="o">:=</span> <span class="kd">by</span>
   <span class="gr">sorry</span>
 
 <span class="kd">example</span> <span class="o">:</span> <span class="bp">-</span><span class="mi">3</span> <span class="bp">&#8713;</span> <span class="o">{</span> <span class="n">x</span> <span class="o">:</span> <span class="n">&#8477;</span> <span class="bp">|</span> <span class="bp">&#8704;</span> <span class="n">y</span> <span class="o">:</span> <span class="n">&#8477;</span><span class="o">,</span> <span class="n">x</span> <span class="bp">&#8804;</span> <span class="n">y</span> <span class="bp">^</span> <span class="mi">2</span> <span class="o">}</span> <span class="o">:=</span> <span class="kd">by</span>
+  <span class="gr">sorry</span>
+</pre></div>
+</div>
+<ol class="arabic simple" start="6">
+<li><p>Prove or disprove that
+<span class="math notranslate nohighlight">\(\{a:\mathbb{N} \mid 20\mid a\}\subseteq \{x:\mathbb{N} \mid 5 \mid x\}\)</span>.</p></li>
+</ol>
+<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">:</span> <span class="o">{</span> <span class="n">a</span> <span class="o">:</span> <span class="n">&#8469;</span> <span class="bp">|</span> <span class="mi">20</span> <span class="bp">&#8739;</span> <span class="n">a</span> <span class="o">}</span> <span class="bp">&#8838;</span> <span class="o">{</span> <span class="n">x</span> <span class="o">:</span> <span class="n">&#8469;</span> <span class="bp">|</span> <span class="mi">5</span> <span class="bp">&#8739;</span> <span class="n">x</span> <span class="o">}</span> <span class="o">:=</span> <span class="kd">by</span>
+  <span class="gr">sorry</span>
+
+<span class="kd">example</span> <span class="o">:</span> <span class="bp">&#172;</span> <span class="o">{</span> <span class="n">a</span> <span class="o">:</span> <span class="n">&#8469;</span> <span class="bp">|</span> <span class="mi">20</span> <span class="bp">&#8739;</span> <span class="n">a</span> <span class="o">}</span> <span class="bp">&#8838;</span> <span class="o">{</span> <span class="n">x</span> <span class="o">:</span> <span class="n">&#8469;</span> <span class="bp">|</span> <span class="mi">5</span> <span class="bp">&#8739;</span> <span class="n">x</span> <span class="o">}</span> <span class="o">:=</span> <span class="kd">by</span>
+  <span class="gr">sorry</span>
+</pre></div>
+</div>
+<ol class="arabic simple" start="7">
+<li><p>Prove or disprove that
+<span class="math notranslate nohighlight">\(\{a:\mathbb{N} \mid 5\mid a\}\subseteq \{x:\mathbb{N} \mid 20 \mid x\}\)</span>.</p></li>
+</ol>
+<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">:</span> <span class="o">{</span> <span class="n">a</span> <span class="o">:</span> <span class="n">&#8469;</span> <span class="bp">|</span> <span class="mi">5</span> <span class="bp">&#8739;</span> <span class="n">a</span> <span class="o">}</span> <span class="bp">&#8838;</span> <span class="o">{</span> <span class="n">x</span> <span class="o">:</span> <span class="n">&#8469;</span> <span class="bp">|</span> <span class="mi">20</span> <span class="bp">&#8739;</span> <span class="n">x</span> <span class="o">}</span> <span class="o">:=</span> <span class="kd">by</span>
+  <span class="gr">sorry</span>
+
+<span class="kd">example</span> <span class="o">:</span> <span class="bp">&#172;</span> <span class="o">{</span> <span class="n">a</span> <span class="o">:</span> <span class="n">&#8469;</span> <span class="bp">|</span> <span class="mi">5</span> <span class="bp">&#8739;</span> <span class="n">a</span> <span class="o">}</span> <span class="bp">&#8838;</span> <span class="o">{</span> <span class="n">x</span> <span class="o">:</span> <span class="n">&#8469;</span> <span class="bp">|</span> <span class="mi">20</span> <span class="bp">&#8739;</span> <span class="n">x</span> <span class="o">}</span> <span class="o">:=</span> <span class="kd">by</span>
+  <span class="gr">sorry</span>
+</pre></div>
+</div>
+<ol class="arabic simple" start="8">
+<li><p>Prove or disprove that
+<span class="math notranslate nohighlight">\(\{r:\mathbb{Z} \mid 3\mid r\}\subseteq \{s:\mathbb{Z} \mid 0 \le s\}\)</span>.</p></li>
+</ol>
+<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">:</span> <span class="o">{</span> <span class="n">r</span> <span class="o">:</span> <span class="n">&#8484;</span> <span class="bp">|</span> <span class="mi">3</span> <span class="bp">&#8739;</span> <span class="n">r</span> <span class="o">}</span> <span class="bp">&#8838;</span> <span class="o">{</span> <span class="n">s</span> <span class="o">:</span> <span class="n">&#8484;</span> <span class="bp">|</span> <span class="mi">0</span> <span class="bp">&#8804;</span> <span class="n">s</span> <span class="o">}</span> <span class="o">:=</span> <span class="kd">by</span>
+  <span class="gr">sorry</span>
+
+<span class="kd">example</span> <span class="o">:</span> <span class="bp">&#172;</span> <span class="o">{</span> <span class="n">r</span> <span class="o">:</span> <span class="n">&#8484;</span> <span class="bp">|</span> <span class="mi">3</span> <span class="bp">&#8739;</span> <span class="n">r</span> <span class="o">}</span> <span class="bp">&#8838;</span> <span class="o">{</span> <span class="n">s</span> <span class="o">:</span> <span class="n">&#8484;</span> <span class="bp">|</span> <span class="mi">0</span> <span class="bp">&#8804;</span> <span class="n">s</span> <span class="o">}</span> <span class="o">:=</span> <span class="kd">by</span>
+  <span class="gr">sorry</span>
+</pre></div>
+</div>
+<ol class="arabic simple" start="9">
+<li><p>Prove or disprove that
+<span class="math notranslate nohighlight">\(\{m:\mathbb{Z} \mid m\ge 10\}\subseteq \{n:\mathbb{Z} \mid n^3-7n^2\geq 4n\}\)</span>.</p></li>
+</ol>
+<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">:</span> <span class="o">{</span> <span class="n">m</span> <span class="o">:</span> <span class="n">&#8484;</span> <span class="bp">|</span> <span class="n">m</span> <span class="bp">&#8805;</span> <span class="mi">10</span> <span class="o">}</span> <span class="bp">&#8838;</span> <span class="o">{</span> <span class="n">n</span> <span class="o">:</span> <span class="n">&#8484;</span> <span class="bp">|</span> <span class="n">n</span> <span class="bp">^</span> <span class="mi">3</span> <span class="bp">-</span> <span class="mi">7</span> <span class="bp">*</span> <span class="n">n</span> <span class="bp">^</span> <span class="mi">2</span> <span class="bp">&#8805;</span> <span class="mi">4</span> <span class="bp">*</span> <span class="n">n</span> <span class="o">}</span> <span class="o">:=</span> <span class="kd">by</span>
+  <span class="gr">sorry</span>
+
+<span class="kd">example</span> <span class="o">:</span> <span class="bp">&#172;</span> <span class="o">{</span> <span class="n">m</span> <span class="o">:</span> <span class="n">&#8484;</span> <span class="bp">|</span> <span class="n">m</span> <span class="bp">&#8805;</span> <span class="mi">10</span> <span class="o">}</span> <span class="bp">&#8838;</span> <span class="o">{</span> <span class="n">n</span> <span class="o">:</span> <span class="n">&#8484;</span> <span class="bp">|</span> <span class="n">n</span> <span class="bp">^</span> <span class="mi">3</span> <span class="bp">-</span> <span class="mi">7</span> <span class="bp">*</span> <span class="n">n</span> <span class="bp">^</span> <span class="mi">2</span> <span class="bp">&#8805;</span> <span class="mi">4</span> <span class="bp">*</span> <span class="n">n</span> <span class="o">}</span> <span class="o">:=</span> <span class="kd">by</span>
   <span class="gr">sorry</span>
 </pre></div>
 </div>
