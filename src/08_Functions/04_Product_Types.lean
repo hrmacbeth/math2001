@@ -46,9 +46,11 @@ example : Bijective (fun ((m, n) : ℤ × ℤ) ↦ (m + n, m + 2 * n)) := by
   · funext (m, n)
     dsimp
     ring
+    exact trivial -- FIXME
   · funext (a, b)
     dsimp
     ring
+    exact trivial -- FIXME
 
 
 example : Bijective (fun ((m, n) : ℝ × ℝ) ↦ (m + n, m - n)) := by
@@ -133,6 +135,7 @@ example : g ∘ g = id := by
   funext (x, y)
   dsimp [g]
   ring
+  exact trivial -- FIXME
 
 
 def A : ℕ → ℕ
