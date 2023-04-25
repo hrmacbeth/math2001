@@ -15,7 +15,7 @@ set_option push_neg.use_distrib true
 attribute [-simp] ne_eq
 open Function
 
-/-! # Product types -/
+macro_rules | `(tactic| ring) => `(tactic| ring_nf <;> with_reducible exact trivial)
 
 
 def q (m : ℤ) : ℤ × ℤ := (m + 1, 2 - m)
@@ -46,11 +46,9 @@ example : Bijective (fun ((m, n) : ℤ × ℤ) ↦ (m + n, m + 2 * n)) := by
   · funext (m, n)
     dsimp
     ring
-    exact trivial -- FIXME
   · funext (a, b)
     dsimp
     ring
-    exact trivial -- FIXME
 
 
 example : Bijective (fun ((m, n) : ℝ × ℝ) ↦ (m + n, m - n)) := by
@@ -135,7 +133,6 @@ example : g ∘ g = id := by
   funext (x, y)
   dsimp [g]
   ring
-  exact trivial -- FIXME
 
 
 def A : ℕ → ℕ

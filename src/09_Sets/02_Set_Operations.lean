@@ -2,7 +2,7 @@ import Mathlib.Data.Real.Basic
 import Mathlib.Tactic.IntervalCases
 import Math2001.Library.ParityModular
 import Math2001.Tactic.Addarith
-import Math2001.Tactic.Define.Basic
+import Math2001.Tactic.Define
 import Math2001.Tactic.ModCases
 import Math2001.Tactic.Numbers
 import Math2001.Tactic.Rel
@@ -70,7 +70,7 @@ namespace Int
 example : { n : ℤ | Even n }ᶜ = { n : ℤ | Odd n} := by
   dsimp
   intro n
-  apply not_even_iff_odd
+  rw [odd_iff_not_even]
 end Int
 
 /-! # Exercises -/

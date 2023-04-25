@@ -10,6 +10,9 @@ import Math2001.Library.Parity
 import Math2001.Library.ParityModular
 import Math2001.Library.Prime
 import Math2001.Tactic.Addarith
+import Math2001.Tactic.BetaReduce
+import Math2001.Tactic.Define
+import Math2001.Tactic.Define.Attr
 import Math2001.Tactic.ExistsDelaborator
 import Math2001.Tactic.Induction
 import Math2001.Tactic.ModCases

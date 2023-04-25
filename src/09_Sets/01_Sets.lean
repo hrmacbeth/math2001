@@ -1,7 +1,7 @@
 import Mathlib.Data.Real.Basic
 import Math2001.Library.Parity
-import Math2001.Tactic.Define.Basic
 import Math2001.Tactic.Addarith
+import Math2001.Tactic.Define
 import Math2001.Tactic.Numbers
 import Math2001.Tactic.Rel
 import Math2001.Tactic.Take
@@ -13,7 +13,6 @@ open Set
 notation:50 a:50 " ⊈ " b:50 => ¬ (a ⊆ b)
 
 
-namespace Nat
 
 #check { n : ℤ | n ≤ 3 }
 
@@ -23,11 +22,13 @@ example : 1 ∈ { n : ℤ | n ≤ 3 } := by
   numbers
 
 
+namespace Nat
 example : 10 ∉ { n : ℕ | Odd n } := by
   dsimp
   rw [← even_iff_not_odd]
   take 5
   numbers
+end Nat
 
 
 example : { a : ℕ | 4 ∣ a } ⊆ { b : ℕ | 2 ∣ b } := by
@@ -70,7 +71,7 @@ example : { a : ℕ | 4 ∣ a } ≠ { b : ℕ | 2 ∣ b } := by
   take 6
   right
   constructor
-  · apply not_dvd_of_exists_lt_and_lt
+  · apply Nat.not_dvd_of_exists_lt_and_lt
     · numbers
     take 1
     constructor <;> numbers
@@ -78,22 +79,22 @@ example : { a : ℕ | 4 ∣ a } ≠ { b : ℕ | 2 ∣ b } := by
     numbers
 
 
-example : { n : ℤ | 3 ∣ n } = { n : ℤ | 3 ∣ 5 * n } := by
+example : { k : ℤ | 8 ∣ 5 * k } = { l : ℤ | 8 ∣ l } := by
   dsimp
-  intro x
+  intro n
   constructor
-  · intro h
-    obtain ⟨k, hk⟩ := h
-    take 5 * k
-    calc 5 * x = 5 * (3 * k) := by rw [hk]
-      _ = 3 * (5 * k) := by ring
-  · intro h
-    obtain ⟨k, hk⟩ := h
-    take 2 * k - 3 * x
+  · intro hn
+    obtain ⟨a, ha⟩ := hn
+    take -3 * a + 2 * n
     calc
-      x = 2 * (5 * x) - 3 * 3 * x := by ring
-      _ = 2 * (3 * k) - 3 * 3 * x := by rw [hk] 
-      _ = 3 * (2 * k - 3 * x) := by ring
+      n = -3 * (5 * n) + 16 * n := by ring
+      _ = -3 * (8 * a) + 16 * n := by rw [ha]
+      _ = 8 * (-3 * a + 2 * n) := by ring
+  · intro hn
+    obtain ⟨a, ha⟩ := hn
+    take 5 * a
+    calc 5 * n = 5 * (8 * a) := by rw [ha]
+      _ = 8 * (5 * a) := by ring
 
 
 example : { x : ℝ | x ^ 2 - x - 2 = 0 } = {-1, 2} := by
@@ -188,6 +189,40 @@ example : { m : ℤ | m ≥ 10 } ⊆ { n : ℤ | n ^ 3 - 7 * n ^ 2 ≥ 4 * n } :
 example : { m : ℤ | m ≥ 10 } ⊈ { n : ℤ | n ^ 3 - 7 * n ^ 2 ≥ 4 * n } := by
   sorry
 
+
+namespace Int
+example : { n : ℤ | Even n } = { a : ℤ | a ≡ 6 [ZMOD 2] } := by
+  sorry
+
+example : { n : ℤ | Even n } ≠ { a : ℤ | a ≡ 6 [ZMOD 2] } := by
+  sorry
+end Int
+
+
+example : { t : ℝ | t ^ 2 - 5 * t + 4 = 0 } = { s : ℝ | s = 4 } := by
+  sorry
+
+example : { t : ℝ | t ^ 2 - 5 * t + 4 = 0 } ≠ { s : ℝ | s = 4 } := by
+  sorry
+
+example : { k : ℤ | 8 ∣ 6 * k } = { l : ℤ | 8 ∣ l } := by
+  sorry
+
+example : { k : ℤ | 8 ∣ 6 * k } ≠ { l : ℤ | 8 ∣ l } := by
+  sorry
+
+example : { k : ℤ | 7 ∣ 9 * k } = { l : ℤ | 7 ∣ l } := by
+  sorry
+
+example : { k : ℤ | 7 ∣ 9 * k } ≠ { l : ℤ | 7 ∣ l } := by
+  sorry
+
+
+example : {1, 2, 3} = {1, 2} := by
+  sorry
+
+example : {1, 2, 3} ≠ {1, 2} := by
+  sorry
 
 example : { x : ℝ | x ^ 2 + 3 * x + 2 = 0 } = {-1, -2} := by
   sorry
