@@ -1,3 +1,4 @@
+/- Copyright (c) Heather Macbeth, 2023.  All rights reserved. -/
 import Mathlib.Data.Real.Basic
 import Math2001.Library.Parity
 import Math2001.Tactic.Addarith
@@ -5,7 +6,6 @@ import Math2001.Tactic.Define
 import Math2001.Tactic.Numbers
 import Math2001.Tactic.Rel
 import Math2001.Tactic.Take
-import Mathlib.Tactic.LibrarySearch
 
 set_option push_neg.use_distrib true
 open Set
@@ -199,10 +199,10 @@ example : { n : ℤ | Even n } ≠ { a : ℤ | a ≡ 6 [ZMOD 2] } := by
 end Int
 
 
-example : { t : ℝ | t ^ 2 - 5 * t + 4 = 0 } = { s : ℝ | s = 4 } := by
+example : { t : ℝ | t ^ 2 - 5 * t + 4 = 0 } = {4} := by
   sorry
 
-example : { t : ℝ | t ^ 2 - 5 * t + 4 = 0 } ≠ { s : ℝ | s = 4 } := by
+example : { t : ℝ | t ^ 2 - 5 * t + 4 = 0 } ≠ {4} := by
   sorry
 
 example : { k : ℤ | 8 ∣ 6 * k } = { l : ℤ | 8 ∣ l } := by
