@@ -2,8 +2,10 @@
 import Mathlib.Data.Real.Basic
 import Math2001.Library.Parity
 import Math2001.Tactic.Addarith
+import Math2001.Tactic.Define
 import Math2001.Tactic.ExistsDelaborator
 import Math2001.Tactic.Numbers
+import Math2001.Tactic.Product
 import Math2001.Tactic.Rel
 import Math2001.Tactic.Take
 
@@ -67,8 +69,6 @@ example : Transitive ((·:ℕ) ∣ ·) := by
 
 example : Reflexive ((·:ℝ) = ·) := by
   dsimp [Reflexive]
-  intro x
-  ring
 
 example : Symmetric ((·:ℝ) = ·) := by
   dsimp [Symmetric]
@@ -272,6 +272,92 @@ example : Transitive (· ∼ ·) := by
   sorry
 
 example : ¬ Transitive (· ∼ ·) := by
+  sorry
+
+end
+
+
+section
+local infix:50 "∼" => fun (x y : ℤ) ↦ x + y ≡ 0 [ZMOD 3]  
+
+example : Reflexive (· ∼ ·) := by
+  sorry
+
+example : ¬ Reflexive (· ∼ ·) := by
+  sorry
+
+example : Symmetric (· ∼ ·) := by
+  sorry
+
+example : ¬ Symmetric (· ∼ ·) := by
+  sorry
+
+example : AntiSymmetric (· ∼ ·) := by
+  sorry
+
+example : ¬ AntiSymmetric (· ∼ ·) := by
+  sorry
+
+example : Transitive (· ∼ ·) := by
+  sorry
+
+example : ¬ Transitive (· ∼ ·) := by
+  sorry
+
+end
+
+
+example : Reflexive ((· : Set ℕ) ⊆ ·) := by
+  sorry
+
+example : ¬ Reflexive ((· : Set ℕ) ⊆ ·) := by
+  sorry
+
+example : Symmetric ((· : Set ℕ) ⊆ ·) := by
+  sorry
+
+example : ¬ Symmetric ((· : Set ℕ) ⊆ ·) := by
+  sorry
+
+example : AntiSymmetric ((· : Set ℕ) ⊆ ·) := by
+  sorry
+
+example : ¬ AntiSymmetric ((· : Set ℕ) ⊆ ·) := by
+  sorry
+
+example : Transitive ((· : Set ℕ) ⊆ ·) := by
+  sorry
+
+example : ¬ Transitive ((· : Set ℕ) ⊆ ·) := by
+  sorry
+
+
+
+section
+local infix:50 "≺" => fun ((x1, y1) : ℝ × ℝ) (x2, y2) ↦ (x1 ≤ x2 ∧ y1 ≤ y2)
+
+example : Reflexive (· ≺ ·) := by
+  sorry
+
+example : ¬ Reflexive (· ≺ ·) := by
+  sorry
+
+example : Symmetric (· ≺ ·) := by
+  sorry
+
+example : ¬ Symmetric (· ≺ ·) := by
+  sorry
+
+example : AntiSymmetric (· ≺ ·) := by
+  sorry
+
+example : ¬ AntiSymmetric (· ≺ ·) := by
+  sorry
+
+example : Transitive (· ≺ ·) := by
+  sorry
+
+example : ¬ Transitive (· ≺ ·) := by
   sorry
 
 end
