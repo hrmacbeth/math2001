@@ -65,6 +65,7 @@
 <li class="toctree-l2"><a class="reference internal" href="#homework-6">Homework 6</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#homework-7">Homework 7</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#homework-8">Homework 8</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#homework-9">Homework 9</a></li>
 </ul>
 </li>
 </ul>
@@ -714,6 +715,84 @@ solve the second version.)</p>
   <span class="gr">sorry</span>
 </pre></div>
 </div>
+</section>
+<section id="homework-9">
+<span id="hw9"></span><h2>Homework 9<a class="headerlink" href="#homework-9" title="Permalink to this headline">&#61633;</a></h2>
+<ol class="arabic simple">
+<li><p>Prove that
+<span class="math notranslate nohighlight">\(\{r:\mathbb{Z}\mid r\equiv 7\mod 10\}\subseteq \{s:\mathbb{Z}\mid s\equiv 1\mod 2\}\cap\{t:\mathbb{Z}\mid t\equiv 2\mod 5\}\)</span>.</p></li>
+</ol>
+<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="c">/-</span><span class="cm"> 4 points -/</span>
+<span class="kd">theorem</span> <span class="n">problem1</span> <span class="o">:</span> <span class="o">{</span> <span class="n">r</span> <span class="o">:</span> <span class="n">&#8484;</span> <span class="bp">|</span> <span class="n">r</span> <span class="bp">&#8801;</span> <span class="mi">7</span> <span class="o">[</span><span class="n">ZMOD</span> <span class="mi">10</span><span class="o">]</span> <span class="o">}</span>
+    <span class="bp">&#8838;</span> <span class="o">{</span> <span class="n">s</span> <span class="o">:</span> <span class="n">&#8484;</span> <span class="bp">|</span> <span class="n">s</span> <span class="bp">&#8801;</span> <span class="mi">1</span> <span class="o">[</span><span class="n">ZMOD</span> <span class="mi">2</span><span class="o">]</span> <span class="o">}</span> <span class="bp">&#8745;</span> <span class="o">{</span> <span class="n">t</span> <span class="o">:</span> <span class="n">&#8484;</span> <span class="bp">|</span> <span class="n">t</span> <span class="bp">&#8801;</span> <span class="mi">2</span> <span class="o">[</span><span class="n">ZMOD</span> <span class="mi">5</span><span class="o">]</span> <span class="o">}</span> <span class="o">:=</span> <span class="kd">by</span>
+  <span class="gr">sorry</span>
+</pre></div>
+</div>
+<ol class="arabic" start="2">
+<li><p>Determine which of these properties hold for the relation <span class="math notranslate nohighlight">\(\sim\)</span> on <span class="math notranslate nohighlight">\(\mathbb{Z}\)</span>,
+defined by, <span class="math notranslate nohighlight">\(x\sim y\)</span> if <span class="math notranslate nohighlight">\(y\equiv x+1\mod 5\)</span>:</p>
+<ol class="arabic simple">
+<li><p>reflexive</p></li>
+<li><p>symmetric</p></li>
+<li><p>antisymmetric</p></li>
+<li><p>transitive</p></li>
+</ol>
+<p>Also (for submission only on paper, not in Lean)</p>
+<ol class="arabic simple" start="5">
+<li><p>Sketch (a representative portion of) this relation as a directed graph.</p></li>
+</ol>
+</li>
+</ol>
+<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kn">local</span> <span class="kd">infix</span><span class="o">:</span><span class="mi">50</span> <span class="s2">&quot;&#8764;&quot;</span> <span class="bp">=&gt;</span> <span class="k">fun</span> <span class="o">(</span><span class="n">x</span> <span class="n">y</span> <span class="o">:</span> <span class="n">&#8484;</span><span class="o">)</span> <span class="bp">&#8614;</span> <span class="n">y</span> <span class="bp">&#8801;</span> <span class="n">x</span> <span class="bp">+</span> <span class="mi">1</span> <span class="o">[</span><span class="n">ZMOD</span> <span class="mi">5</span><span class="o">]</span>
+
+<span class="c">/-</span><span class="cm"> 2 points -/</span>
+<span class="kd">theorem</span> <span class="n">problem21a</span> <span class="o">:</span> <span class="n">Reflexive</span> <span class="o">(</span><span class="bp">&#183;</span> <span class="bp">&#8764;</span> <span class="bp">&#183;</span><span class="o">)</span> <span class="o">:=</span> <span class="kd">by</span>
+  <span class="gr">sorry</span>
+
+<span class="c">/-</span><span class="cm"> 2 points -/</span>
+<span class="kd">theorem</span> <span class="n">problem21b</span> <span class="o">:</span> <span class="bp">&#172;</span> <span class="n">Reflexive</span> <span class="o">(</span><span class="bp">&#183;</span> <span class="bp">&#8764;</span> <span class="bp">&#183;</span><span class="o">)</span> <span class="o">:=</span> <span class="kd">by</span>
+  <span class="gr">sorry</span>
+
+<span class="c">/-</span><span class="cm"> 2 points -/</span>
+<span class="kd">theorem</span> <span class="n">problem22a</span> <span class="o">:</span> <span class="n">Symmetric</span> <span class="o">(</span><span class="bp">&#183;</span> <span class="bp">&#8764;</span> <span class="bp">&#183;</span><span class="o">)</span> <span class="o">:=</span> <span class="kd">by</span>
+  <span class="gr">sorry</span>
+
+<span class="c">/-</span><span class="cm"> 2 points -/</span>
+<span class="kd">theorem</span> <span class="n">problem22b</span> <span class="o">:</span> <span class="bp">&#172;</span> <span class="n">Symmetric</span> <span class="o">(</span><span class="bp">&#183;</span> <span class="bp">&#8764;</span> <span class="bp">&#183;</span><span class="o">)</span> <span class="o">:=</span> <span class="kd">by</span>
+  <span class="gr">sorry</span>
+
+<span class="c">/-</span><span class="cm"> 3 points -/</span>
+<span class="kd">theorem</span> <span class="n">problem23a</span> <span class="o">:</span> <span class="n">AntiSymmetric</span> <span class="o">(</span><span class="bp">&#183;</span> <span class="bp">&#8764;</span> <span class="bp">&#183;</span><span class="o">)</span> <span class="o">:=</span> <span class="kd">by</span>
+  <span class="gr">sorry</span>
+
+<span class="c">/-</span><span class="cm"> 3 points -/</span>
+<span class="kd">theorem</span> <span class="n">problem23b</span> <span class="o">:</span> <span class="bp">&#172;</span> <span class="n">AntiSymmetric</span> <span class="o">(</span><span class="bp">&#183;</span> <span class="bp">&#8764;</span> <span class="bp">&#183;</span><span class="o">)</span> <span class="o">:=</span> <span class="kd">by</span>
+  <span class="gr">sorry</span>
+
+<span class="c">/-</span><span class="cm"> 3 points -/</span>
+<span class="kd">theorem</span> <span class="n">problem24a</span> <span class="o">:</span> <span class="n">Transitive</span> <span class="o">(</span><span class="bp">&#183;</span> <span class="bp">&#8764;</span> <span class="bp">&#183;</span><span class="o">)</span> <span class="o">:=</span> <span class="kd">by</span>
+  <span class="gr">sorry</span>
+
+<span class="c">/-</span><span class="cm"> 3 points -/</span>
+<span class="kd">theorem</span> <span class="n">problem24b</span> <span class="o">:</span> <span class="bp">&#172;</span> <span class="n">Transitive</span> <span class="o">(</span><span class="bp">&#183;</span> <span class="bp">&#8764;</span> <span class="bp">&#183;</span><span class="o">)</span> <span class="o">:=</span> <span class="kd">by</span>
+  <span class="gr">sorry</span>
+</pre></div>
+</div>
+<ol class="arabic" start="3">
+<li><p>The relation <span class="math notranslate nohighlight">\(\sim\)</span> on <span class="math notranslate nohighlight">\(\mathbb{N}^2\)</span> defined by, <span class="math notranslate nohighlight">\((a,b)\sim(c,d)\)</span> if
+<span class="math notranslate nohighlight">\(a+d=b+c\)</span>, is an equivalence relation.  (You do not need to prove this.)</p>
+<p>Sketch the relation <span class="math notranslate nohighlight">\(\sim\)</span>, by drawing  (a portion of) the underlying type
+<span class="math notranslate nohighlight">\(\mathbb{N}^2\)</span> in the plane, then colouring each equivalence class in a different colour.</p>
+<p>Do this problem only on paper, not in Lean.</p>
+</li>
+<li><p>The relation <span class="math notranslate nohighlight">\(\sim\)</span> on <span class="math notranslate nohighlight">\(\mathbb{Z}^2\)</span> defined by, <span class="math notranslate nohighlight">\((a,b)\sim(c,d)\)</span> if
+there exist positive integers <span class="math notranslate nohighlight">\(m\)</span> and <span class="math notranslate nohighlight">\(n\)</span> with <span class="math notranslate nohighlight">\(mb(b^2-3a^2)=nd(d^2-3c^2)\)</span>,
+is an equivalence relation.  (You do not need to prove this.)</p>
+<p>Sketch the relation <span class="math notranslate nohighlight">\(\sim\)</span>, by drawing (a portion of) the underlying type
+<span class="math notranslate nohighlight">\(\mathbb{Z}^2\)</span> in the plane, then colouring each equivalence class in a different colour.</p>
+<p>Do this problem only on paper, not in Lean.</p>
+</li>
+</ol>
 </section>
 </section>
 
