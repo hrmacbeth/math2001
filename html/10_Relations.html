@@ -64,7 +64,9 @@
 <li class="toctree-l3"><a class="reference internal" href="#id7">10.2.2. Example</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#id8">10.2.3. Example</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#id9">10.2.4. Example</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id10">10.2.5. Exercises</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id10">10.2.5. Example</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id11">10.2.6. Example</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id12">10.2.7. Exercises</a></li>
 </ul>
 </li>
 </ul>
@@ -634,6 +636,12 @@ defined by, <span class="math notranslate nohighlight">\((x_1, y_1) \prec (x_2,y
 Show that the relation <span class="math notranslate nohighlight">\(\sim\)</span> on <span class="math notranslate nohighlight">\(\mathbb{Z}\)</span> defined by, <span class="math notranslate nohighlight">\(x\sim y\)</span> if
 <span class="math notranslate nohighlight">\(x\equiv y\mod n\)</span> is an equivalence relation.</p>
 </div>
+<div class="admonition-solution admonition">
+<p class="admonition-title">Solution</p>
+<p>By <a class="reference internal" href="03_Parity_and_Divisibility.html#modeq-refl"><span class="std std-numref">Example 3.3.10</span></a>, the relation <span class="math notranslate nohighlight">\(\sim\)</span>  is reflexive.</p>
+<p>By two of the exercises to <a class="reference internal" href="03_Parity_and_Divisibility.html#theory-modular"><span class="std std-numref">Section 3.3</span></a>, the
+relation <span class="math notranslate nohighlight">\(\sim\)</span>  is symmetric and transitive.</p>
+</div>
 <div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">variable</span> <span class="o">(</span><span class="n">n</span> <span class="o">:</span> <span class="n">&#8484;</span><span class="o">)</span>
 
 <span class="kn">local</span> <span class="kd">infix</span><span class="o">:</span><span class="mi">50</span> <span class="s2">&quot;&#8764;&quot;</span> <span class="bp">=&gt;</span> <span class="k">fun</span> <span class="o">(</span><span class="n">x</span> <span class="n">y</span> <span class="o">:</span> <span class="n">&#8484;</span><span class="o">)</span> <span class="bp">&#8614;</span> <span class="n">x</span> <span class="bp">&#8801;</span> <span class="n">y</span> <span class="o">[</span><span class="n">ZMOD</span> <span class="n">n</span><span class="o">]</span>
@@ -651,26 +659,44 @@ Show that the relation <span class="math notranslate nohighlight">\(\sim\)</span
   <span class="n">apply</span> <span class="n">Int.ModEq.trans</span>
 </pre></div>
 </div>
-<p>Let&#8217;s sketch this relation as a directed graph, say for <span class="math notranslate nohighlight">\(n=3\)</span>.</p>
+<p>Let&#8217;s sketch (a portion of) this relation as a directed graph, say for <span class="math notranslate nohighlight">\(n=3\)</span>.</p>
+<figure class="align-default">
+<img alt="_images/mod3alt.png" src="_images/mod3alt.png" />
+</figure>
+<p>It&#8217;s a mess, but it&#8217;s just possible to make out a pattern: the numbers form cliques, with, for
+example, &#8230; -5, -2, 1, 4, 7, &#8230; all connected to each other and to nothing else.  We introduce
+the following visual shorthand for such a directed graph: when nodes are given different colours,
+this represents the directed graph in which all nodes of a given colour are connected
+bi-directionally to all nodes of that colour (including themselves) and to no other nodes.</p>
+<figure class="align-default">
+<img alt="_images/mod3.png" src="_images/mod3.png" />
+</figure>
 </section>
 <section id="id7">
 <h3><span class="section-number">10.2.2. </span>Example<a class="headerlink" href="#id7" title="Permalink to this headline">&#61633;</a></h3>
 <div class="admonition-problem admonition">
 <p class="admonition-title">Problem</p>
-<p>Consider the relation <span class="math notranslate nohighlight">\(\sim\)</span> on <span class="math notranslate nohighlight">\(\mathbb{Z}\)</span>, defined by <span class="math notranslate nohighlight">\(a\sim b\)</span> if
-<span class="math notranslate nohighlight">\(a^2=b^2\)</span>.</p>
-<ul class="simple">
-<li><p>Show that <span class="math notranslate nohighlight">\(\sim\)</span> is an equivalence relation.</p></li>
-<li><p>Sketch the relation <span class="math notranslate nohighlight">\(\sim\)</span> by drawing (a portion of) the underlying type
-<span class="math notranslate nohighlight">\(\mathbb{Z}\)</span> along a line, then colouring each equivalence class in a different colour.</p></li>
-</ul>
+<p>Show that the relation <span class="math notranslate nohighlight">\(\sim\)</span> on <span class="math notranslate nohighlight">\(\mathbb{Z}\)</span> defined by <span class="math notranslate nohighlight">\(a\sim b\)</span> if
+<span class="math notranslate nohighlight">\(a^2=b^2\)</span> is an equivalence relation.</p>
+</div>
+<div class="admonition-solution admonition">
+<p class="admonition-title">Solution</p>
+<p>For all integers <span class="math notranslate nohighlight">\(x\)</span>, we have <span class="math notranslate nohighlight">\(x^2=x^2\)</span>.  Therefore the relation <span class="math notranslate nohighlight">\(\sim\)</span>
+is reflexive.</p>
+<p>For all integers <span class="math notranslate nohighlight">\(x\)</span> and <span class="math notranslate nohighlight">\(y\)</span>, we have that if <span class="math notranslate nohighlight">\(x^2=y^2\)</span> then <span class="math notranslate nohighlight">\(y^2=x^2\)</span>.
+Therefore the relation <span class="math notranslate nohighlight">\(\sim\)</span>
+is symmetric.</p>
+<p>For all integers <span class="math notranslate nohighlight">\(x\)</span>, <span class="math notranslate nohighlight">\(y\)</span> and <span class="math notranslate nohighlight">\(z\)</span>, we have that if <span class="math notranslate nohighlight">\(x^2=y^2\)</span> and
+<span class="math notranslate nohighlight">\(y^2=z^2\)</span> then</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}x^2&amp;=y^2\\
+&amp;=z^2.\end{split}\]</div>
+<p>Therefore the relation <span class="math notranslate nohighlight">\(\sim\)</span> is transitive.</p>
 </div>
 <div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kn">local</span> <span class="kd">infix</span><span class="o">:</span><span class="mi">50</span> <span class="s2">&quot;&#8764;&quot;</span> <span class="bp">=&gt;</span> <span class="k">fun</span> <span class="o">(</span><span class="n">x</span> <span class="n">y</span> <span class="o">:</span> <span class="n">&#8484;</span><span class="o">)</span> <span class="bp">&#8614;</span> <span class="n">x</span> <span class="bp">^</span> <span class="mi">2</span> <span class="bp">=</span> <span class="n">y</span> <span class="bp">^</span> <span class="mi">2</span>
 
 <span class="kd">example</span> <span class="o">:</span> <span class="n">Reflexive</span> <span class="o">(</span><span class="bp">&#183;</span> <span class="bp">&#8764;</span> <span class="bp">&#183;</span><span class="o">)</span> <span class="o">:=</span> <span class="kd">by</span>
   <span class="n">dsimp</span> <span class="o">[</span><span class="n">Reflexive</span><span class="o">]</span>
-  <span class="n">intro</span> <span class="n">x</span>
-  <span class="n">ring</span>
 
 <span class="kd">example</span> <span class="o">:</span> <span class="n">Symmetric</span> <span class="o">(</span><span class="bp">&#183;</span> <span class="bp">&#8764;</span> <span class="bp">&#183;</span><span class="o">)</span> <span class="o">:=</span> <span class="kd">by</span>
   <span class="n">dsimp</span> <span class="o">[</span><span class="n">Symmetric</span><span class="o">]</span>
@@ -680,12 +706,72 @@ Show that the relation <span class="math notranslate nohighlight">\(\sim\)</span
 <span class="kd">example</span> <span class="o">:</span> <span class="n">Transitive</span> <span class="o">(</span><span class="bp">&#183;</span> <span class="bp">&#8764;</span> <span class="bp">&#183;</span><span class="o">)</span> <span class="o">:=</span> <span class="kd">by</span>
   <span class="n">dsimp</span> <span class="o">[</span><span class="n">Transitive</span><span class="o">]</span>
   <span class="n">intro</span> <span class="n">x</span> <span class="n">y</span> <span class="n">z</span> <span class="n">hxy</span> <span class="n">hyz</span>
-  <span class="n">rw</span> <span class="o">[</span><span class="n">hxy</span><span class="o">,</span> <span class="n">hyz</span><span class="o">]</span>
+  <span class="k">calc</span> <span class="n">x</span> <span class="bp">^</span> <span class="mi">2</span> <span class="bp">=</span> <span class="n">y</span> <span class="bp">^</span> <span class="mi">2</span> <span class="o">:=</span> <span class="kd">by</span> <span class="n">rw</span> <span class="o">[</span><span class="n">hxy</span><span class="o">]</span>
+    <span class="n">_</span> <span class="bp">=</span> <span class="n">z</span> <span class="bp">^</span> <span class="mi">2</span> <span class="o">:=</span> <span class="kd">by</span> <span class="n">rw</span> <span class="o">[</span><span class="n">hyz</span><span class="o">]</span>
 </pre></div>
 </div>
+<p>If you try to sketch the directed graph for this relation, you will see that it has the same
+&#8220;clique&#8221; behaviour as the previous relation.  After sketching the directed graph, sketch the
+multicoloured &#8220;clique&#8221; version.</p>
 </section>
 <section id="id8">
 <h3><span class="section-number">10.2.3. </span>Example<a class="headerlink" href="#id8" title="Permalink to this headline">&#61633;</a></h3>
+<p>You have probably guessed that the colouring can be made consistent in this way for any equivalence
+relation. Let&#8217;s make this mathematically rigorous.</p>
+<p>Let <span class="math notranslate nohighlight">\(r\)</span> be a relation on a type <span class="math notranslate nohighlight">\(\alpha\)</span>, denoted <span class="math notranslate nohighlight">\(\sim\)</span> in infix notation.</p>
+<div class="admonition-definition admonition">
+<p class="admonition-title">Definition</p>
+<p>For <span class="math notranslate nohighlight">\(a\)</span> in <span class="math notranslate nohighlight">\(\alpha\)</span>, the <em>equivalence class</em> of <span class="math notranslate nohighlight">\(a\)</span> (denoted <span class="math notranslate nohighlight">\([a]\)</span>) is
+<span class="math notranslate nohighlight">\(\{b:\alpha\mid a\sim b\}\)</span>.</p>
+</div>
+<div class="admonition-theorem admonition">
+<p class="admonition-title">Theorem</p>
+<p>If the relation <span class="math notranslate nohighlight">\(r\)</span> is symmetric and transitive, then for all <span class="math notranslate nohighlight">\(a_1\)</span> and <span class="math notranslate nohighlight">\(a_2\)</span>,
+if <span class="math notranslate nohighlight">\(a_1\sim a_2\)</span>, then <span class="math notranslate nohighlight">\([a_1]=[a_2]\)</span>.</p>
+</div>
+<div class="admonition-proof admonition">
+<p class="admonition-title">Proof</p>
+<p>We must show that for all <span class="math notranslate nohighlight">\(b\)</span> in <span class="math notranslate nohighlight">\(\alpha\)</span>, <span class="math notranslate nohighlight">\(a_1\sim b\)</span> if and only if
+<span class="math notranslate nohighlight">\(a_2\sim b\)</span>.</p>
+<p>First, suppose that <span class="math notranslate nohighlight">\(a_1\sim b\)</span>.  Since <span class="math notranslate nohighlight">\(a_1\sim a_2\)</span>, by symmetry
+<span class="math notranslate nohighlight">\(a_2\sim a_1\)</span>, and so by transitivity <span class="math notranslate nohighlight">\(a_2\sim a_1\sim b\)</span>.</p>
+<p>Conversely, suppose that <span class="math notranslate nohighlight">\(a_2\sim b\)</span>.  Then since <span class="math notranslate nohighlight">\(a_1\sim a_2\)</span>, by transitivity
+<span class="math notranslate nohighlight">\(a_1\sim a_2\sim b\)</span>.</p>
+</div>
+<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">notation</span><span class="o">:</span><span class="n">arg</span> <span class="s2">&quot;&#10637;&quot;</span> <span class="n">a</span> <span class="s2">&quot;&#10640;&quot;</span> <span class="bp">=&gt;</span> <span class="o">{</span> <span class="n">b</span> <span class="bp">|</span> <span class="n">a</span> <span class="bp">&#8764;</span> <span class="n">b</span> <span class="o">}</span>
+
+<span class="kd">theorem</span> <span class="n">EquivalenceClass.eq_of_rel</span> <span class="o">(</span><span class="n">h_symm</span> <span class="o">:</span> <span class="bp">@</span><span class="n">Symmetric</span> <span class="n">&#945;</span> <span class="n">r</span><span class="o">)</span> <span class="o">(</span><span class="n">h_trans</span> <span class="o">:</span> <span class="bp">@</span><span class="n">Transitive</span> <span class="n">&#945;</span> <span class="n">r</span><span class="o">)</span>
+    <span class="o">{</span><span class="n">a1</span> <span class="n">a2</span> <span class="o">:</span> <span class="n">&#945;</span><span class="o">}</span> <span class="o">(</span><span class="n">ha</span> <span class="o">:</span> <span class="n">a1</span> <span class="bp">&#8764;</span> <span class="n">a2</span><span class="o">)</span> <span class="o">:</span>
+    <span class="bp">&#10637;</span><span class="n">a1</span><span class="bp">&#10640;</span> <span class="bp">=</span> <span class="bp">&#10637;</span><span class="n">a2</span><span class="bp">&#10640;</span> <span class="o">:=</span> <span class="kd">by</span>
+  <span class="n">dsimp</span>
+  <span class="n">intro</span> <span class="n">b</span>
+  <span class="n">constructor</span>
+  <span class="bp">&#183;</span> <span class="n">intro</span> <span class="n">ha1b</span>
+    <span class="n">apply</span> <span class="n">h_trans</span> <span class="o">(</span><span class="n">y</span> <span class="o">:=</span> <span class="n">a1</span><span class="o">)</span>
+    <span class="bp">&#183;</span> <span class="n">apply</span> <span class="n">h_symm</span> <span class="n">ha</span>
+    <span class="bp">&#183;</span> <span class="n">apply</span> <span class="n">ha1b</span>
+  <span class="bp">&#183;</span> <span class="n">intro</span> <span class="n">ha2b</span>
+    <span class="n">apply</span> <span class="n">h_trans</span> <span class="n">ha</span> <span class="n">ha2b</span>
+</pre></div>
+</div>
+<div class="admonition-theorem admonition">
+<p class="admonition-title">Theorem</p>
+<p>If the relation <span class="math notranslate nohighlight">\(r\)</span> is reflexive, then every <span class="math notranslate nohighlight">\(a\)</span> is an element of its own equivalence
+class: <span class="math notranslate nohighlight">\(a\in [a]\)</span>.</p>
+</div>
+<div class="admonition-proof admonition">
+<p class="admonition-title">Proof</p>
+<p>We must show that for all <span class="math notranslate nohighlight">\(a\)</span>, it is true that <span class="math notranslate nohighlight">\(a\sim a\)</span>, and this is the definition
+of reflexivity.</p>
+</div>
+<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">theorem</span> <span class="n">EquivalenceClass.mem_self</span> <span class="o">(</span><span class="n">h_refl</span> <span class="o">:</span> <span class="bp">@</span><span class="n">Reflexive</span> <span class="n">&#945;</span> <span class="n">r</span><span class="o">)</span> <span class="o">(</span><span class="n">a</span> <span class="o">:</span> <span class="n">&#945;</span><span class="o">)</span> <span class="o">:</span> <span class="n">a</span> <span class="bp">&#8712;</span> <span class="o">{</span> <span class="n">b</span> <span class="o">:</span> <span class="n">&#945;</span> <span class="bp">|</span> <span class="n">a</span> <span class="bp">&#8764;</span> <span class="n">b</span> <span class="o">}</span> <span class="o">:=</span> <span class="kd">by</span>
+  <span class="n">dsimp</span>
+  <span class="n">apply</span> <span class="n">h_refl</span>
+</pre></div>
+</div>
+</section>
+<section id="id9">
+<h3><span class="section-number">10.2.4. </span>Example<a class="headerlink" href="#id9" title="Permalink to this headline">&#61633;</a></h3>
 <div class="admonition-problem admonition">
 <p class="admonition-title">Problem</p>
 <p>Consider the relation <span class="math notranslate nohighlight">\(=\)</span> on <span class="math notranslate nohighlight">\(\mathbb{Z}\)</span>.  It is an equivalance relation, by
@@ -694,8 +780,8 @@ Show that the relation <span class="math notranslate nohighlight">\(\sim\)</span
 <span class="math notranslate nohighlight">\(\mathbb{Z}\)</span> along a line, then colouring each equivalence class in a different colour.</p>
 </div>
 </section>
-<section id="id9">
-<h3><span class="section-number">10.2.4. </span>Example<a class="headerlink" href="#id9" title="Permalink to this headline">&#61633;</a></h3>
+<section id="id10">
+<h3><span class="section-number">10.2.5. </span>Example<a class="headerlink" href="#id10" title="Permalink to this headline">&#61633;</a></h3>
 <div class="admonition-problem admonition">
 <p class="admonition-title">Problem</p>
 <p>Consider the relation <span class="math notranslate nohighlight">\(\sim\)</span> on <span class="math notranslate nohighlight">\(\mathbb{Z}\times\mathbb{N}\)</span> defined by,
@@ -707,9 +793,86 @@ Show that the relation <span class="math notranslate nohighlight">\(\sim\)</span
 different colour.</p></li>
 </ul>
 </div>
+<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kn">local</span> <span class="kd">infix</span><span class="o">:</span><span class="mi">50</span> <span class="s2">&quot;&#8764;&quot;</span> <span class="bp">=&gt;</span> <span class="k">fun</span> <span class="o">((</span><span class="n">a</span><span class="o">,</span> <span class="n">b</span><span class="o">)</span> <span class="o">:</span> <span class="n">&#8484;</span> <span class="bp">&#215;</span> <span class="n">&#8469;</span><span class="o">)</span> <span class="o">(</span><span class="n">c</span><span class="o">,</span> <span class="n">d</span><span class="o">)</span> <span class="bp">&#8614;</span> <span class="n">a</span> <span class="bp">*</span> <span class="o">(</span><span class="n">d</span> <span class="bp">+</span> <span class="mi">1</span><span class="o">)</span> <span class="bp">=</span> <span class="n">c</span> <span class="bp">*</span> <span class="o">(</span><span class="n">b</span> <span class="bp">+</span> <span class="mi">1</span><span class="o">)</span>
+
+<span class="kd">example</span> <span class="o">:</span> <span class="n">Reflexive</span> <span class="o">(</span><span class="bp">&#183;</span> <span class="bp">&#8764;</span> <span class="bp">&#183;</span><span class="o">)</span> <span class="o">:=</span> <span class="kd">by</span>
+  <span class="n">dsimp</span> <span class="o">[</span><span class="n">Reflexive</span><span class="o">]</span>
+
+<span class="kd">example</span> <span class="o">:</span> <span class="n">Symmetric</span> <span class="o">(</span><span class="bp">&#183;</span> <span class="bp">&#8764;</span> <span class="bp">&#183;</span><span class="o">)</span> <span class="o">:=</span> <span class="kd">by</span>
+  <span class="n">dsimp</span> <span class="o">[</span><span class="n">Symmetric</span><span class="o">]</span>
+  <span class="n">intro</span> <span class="o">(</span><span class="n">a</span><span class="o">,</span> <span class="n">b</span><span class="o">)</span> <span class="o">(</span><span class="n">c</span><span class="o">,</span> <span class="n">d</span><span class="o">)</span> <span class="n">h</span>
+  <span class="n">dsimp</span> <span class="n">at</span> <span class="bp">*</span>
+  <span class="n">rw</span> <span class="o">[</span><span class="n">h</span><span class="o">]</span>
+
+<span class="kd">example</span> <span class="o">:</span> <span class="n">Transitive</span> <span class="o">(</span><span class="bp">&#183;</span> <span class="bp">&#8764;</span> <span class="bp">&#183;</span><span class="o">)</span> <span class="o">:=</span> <span class="kd">by</span>
+  <span class="n">dsimp</span> <span class="o">[</span><span class="n">Transitive</span><span class="o">]</span>
+  <span class="n">intro</span> <span class="o">(</span><span class="n">a</span><span class="o">,</span> <span class="n">b</span><span class="o">)</span> <span class="o">(</span><span class="n">c</span><span class="o">,</span> <span class="n">d</span><span class="o">)</span> <span class="o">(</span><span class="n">e</span><span class="o">,</span> <span class="n">f</span><span class="o">)</span> <span class="n">h1</span> <span class="n">h2</span>
+  <span class="n">dsimp</span> <span class="n">at</span> <span class="bp">*</span>
+  <span class="n">apply</span> <span class="n">mul_left_cancel&#8320;</span> <span class="o">(</span><span class="n">a</span> <span class="o">:=</span> <span class="o">(</span><span class="n">d</span><span class="o">:</span><span class="n">&#8484;</span><span class="o">)</span> <span class="bp">+</span> <span class="mi">1</span><span class="o">)</span>
+  <span class="bp">&#183;</span> <span class="n">apply</span> <span class="n">ne_of_gt</span>
+    <span class="n">extra</span>
+  <span class="n">set</span> <span class="n">B</span> <span class="o">:=</span> <span class="o">(</span><span class="n">b</span><span class="o">:</span><span class="n">&#8484;</span><span class="o">)</span> <span class="bp">+</span> <span class="mi">1</span>
+  <span class="n">set</span> <span class="n">D</span> <span class="o">:=</span> <span class="o">(</span><span class="n">d</span><span class="o">:</span><span class="n">&#8484;</span><span class="o">)</span> <span class="bp">+</span> <span class="mi">1</span>
+  <span class="n">set</span> <span class="n">F</span> <span class="o">:=</span> <span class="o">(</span><span class="n">f</span><span class="o">:</span><span class="n">&#8484;</span><span class="o">)</span> <span class="bp">+</span> <span class="mi">1</span>
+  <span class="k">calc</span> <span class="n">D</span> <span class="bp">*</span> <span class="o">(</span><span class="n">a</span> <span class="bp">*</span> <span class="n">F</span><span class="o">)</span> <span class="bp">=</span> <span class="o">(</span><span class="n">a</span> <span class="bp">*</span> <span class="n">D</span><span class="o">)</span> <span class="bp">*</span> <span class="n">F</span> <span class="o">:=</span> <span class="kd">by</span> <span class="n">ring</span>
+    <span class="n">_</span> <span class="bp">=</span> <span class="o">(</span><span class="n">c</span> <span class="bp">*</span> <span class="n">B</span><span class="o">)</span> <span class="bp">*</span> <span class="n">F</span> <span class="o">:=</span> <span class="kd">by</span> <span class="n">rw</span> <span class="o">[</span><span class="n">h1</span><span class="o">]</span>
+    <span class="n">_</span> <span class="bp">=</span> <span class="o">(</span><span class="n">c</span> <span class="bp">*</span> <span class="n">F</span><span class="o">)</span> <span class="bp">*</span> <span class="n">B</span> <span class="o">:=</span> <span class="kd">by</span> <span class="n">ring</span>
+    <span class="n">_</span> <span class="bp">=</span> <span class="o">(</span><span class="n">e</span> <span class="bp">*</span> <span class="n">D</span><span class="o">)</span> <span class="bp">*</span> <span class="n">B</span> <span class="o">:=</span> <span class="kd">by</span> <span class="n">rw</span> <span class="o">[</span><span class="n">h2</span><span class="o">]</span>
+    <span class="n">_</span> <span class="bp">=</span> <span class="n">D</span> <span class="bp">*</span> <span class="o">(</span><span class="n">e</span> <span class="bp">*</span> <span class="n">B</span><span class="o">)</span> <span class="o">:=</span> <span class="kd">by</span> <span class="n">ring</span>
+</pre></div>
+</div>
 </section>
-<section id="id10">
-<h3><span class="section-number">10.2.5. </span>Exercises<a class="headerlink" href="#id10" title="Permalink to this headline">&#61633;</a></h3>
+<section id="id11">
+<h3><span class="section-number">10.2.6. </span>Example<a class="headerlink" href="#id11" title="Permalink to this headline">&#61633;</a></h3>
+<div class="admonition-theorem admonition">
+<p class="admonition-title">Theorem</p>
+<p>Consider the relation <span class="math notranslate nohighlight">\(\sim\)</span> on the type of level-0 types defined by,
+<span class="math notranslate nohighlight">\(\alpha\sim\beta\)</span> if there exists a bijective function <span class="math notranslate nohighlight">\(f:\alpha\to\beta\)</span>.</p>
+<p>Show that <span class="math notranslate nohighlight">\(\sim\)</span> is an equivalence relation.</p>
+</div>
+<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kn">local</span> <span class="kd">infix</span><span class="o">:</span><span class="mi">50</span> <span class="s2">&quot;&#8764;&quot;</span> <span class="bp">=&gt;</span> <span class="k">fun</span> <span class="o">(</span><span class="n">&#945;</span> <span class="n">&#946;</span> <span class="o">:</span> <span class="kt">Type</span><span class="o">)</span> <span class="bp">&#8614;</span> <span class="bp">&#8707;</span> <span class="n">f</span> <span class="o">:</span> <span class="n">&#945;</span> <span class="bp">&#8594;</span> <span class="n">&#946;</span><span class="o">,</span> <span class="n">Bijective</span> <span class="n">f</span>
+
+<span class="kd">example</span> <span class="o">:</span> <span class="n">Reflexive</span> <span class="o">(</span><span class="bp">&#183;</span> <span class="bp">&#8764;</span> <span class="bp">&#183;</span><span class="o">)</span> <span class="o">:=</span> <span class="kd">by</span>
+  <span class="n">dsimp</span> <span class="o">[</span><span class="n">Reflexive</span><span class="o">]</span>
+  <span class="n">intro</span> <span class="n">&#945;</span>
+  <span class="n">take</span> <span class="n">id</span>
+  <span class="n">rw</span> <span class="o">[</span><span class="n">bijective_iff_exists_inverse</span><span class="o">]</span>
+  <span class="n">take</span> <span class="n">id</span>
+  <span class="n">constructor</span>
+  <span class="bp">&#183;</span> <span class="n">rfl</span>
+  <span class="bp">&#183;</span> <span class="n">rfl</span>
+
+<span class="kd">example</span> <span class="o">:</span> <span class="n">Symmetric</span> <span class="o">(</span><span class="bp">&#183;</span> <span class="bp">&#8764;</span> <span class="bp">&#183;</span><span class="o">)</span> <span class="o">:=</span> <span class="kd">by</span>
+  <span class="n">dsimp</span> <span class="o">[</span><span class="n">Symmetric</span><span class="o">]</span>
+  <span class="n">intro</span> <span class="n">&#945;</span> <span class="n">&#946;</span> <span class="n">h</span>
+  <span class="n">obtain</span> <span class="o">&#10216;</span><span class="n">f</span><span class="o">,</span> <span class="n">hf</span><span class="o">&#10217;</span> <span class="o">:=</span> <span class="n">h</span>
+  <span class="n">rw</span> <span class="o">[</span><span class="n">bijective_iff_exists_inverse</span><span class="o">]</span> <span class="n">at</span> <span class="n">hf</span>
+  <span class="n">obtain</span> <span class="o">&#10216;</span><span class="n">g</span><span class="o">,</span> <span class="n">hfg1</span><span class="o">,</span> <span class="n">hfg2</span><span class="o">&#10217;</span> <span class="o">:=</span> <span class="n">hf</span>
+  <span class="n">take</span> <span class="n">g</span>
+  <span class="n">rw</span> <span class="o">[</span><span class="n">bijective_iff_exists_inverse</span><span class="o">]</span>
+  <span class="n">take</span> <span class="n">f</span>
+  <span class="n">constructor</span>
+  <span class="bp">&#183;</span> <span class="n">apply</span> <span class="n">hfg2</span>
+  <span class="bp">&#183;</span> <span class="n">apply</span> <span class="n">hfg1</span>
+
+<span class="kd">example</span> <span class="o">:</span> <span class="n">Transitive</span> <span class="o">(</span><span class="bp">&#183;</span> <span class="bp">&#8764;</span> <span class="bp">&#183;</span><span class="o">)</span> <span class="o">:=</span> <span class="kd">by</span>
+  <span class="n">dsimp</span> <span class="o">[</span><span class="n">Transitive</span><span class="o">]</span>
+  <span class="n">intro</span> <span class="n">&#945;</span> <span class="n">&#946;</span> <span class="n">&#947;</span> <span class="n">h1</span> <span class="n">h2</span>
+  <span class="n">obtain</span> <span class="o">&#10216;</span><span class="n">f1</span><span class="o">,</span> <span class="n">hf1a</span><span class="o">,</span> <span class="n">hf1b</span><span class="o">&#10217;</span> <span class="o">:=</span> <span class="n">h1</span>
+  <span class="n">obtain</span> <span class="o">&#10216;</span><span class="n">f2</span><span class="o">,</span> <span class="n">hf2a</span><span class="o">,</span> <span class="n">hf2b</span><span class="o">&#10217;</span> <span class="o">:=</span> <span class="n">h2</span>
+  <span class="n">take</span> <span class="n">f2</span> <span class="bp">&#8728;</span> <span class="n">f1</span>
+  <span class="n">constructor</span>
+  <span class="bp">&#183;</span> <span class="n">apply</span> <span class="n">Injective.comp</span>
+    <span class="bp">&#183;</span> <span class="n">apply</span> <span class="n">hf2a</span>
+    <span class="bp">&#183;</span> <span class="n">apply</span> <span class="n">hf1a</span>
+  <span class="bp">&#183;</span> <span class="n">apply</span> <span class="n">Surjective.comp</span>
+    <span class="bp">&#183;</span> <span class="n">apply</span> <span class="n">hf2b</span>
+    <span class="bp">&#183;</span> <span class="n">apply</span> <span class="n">hf1b</span>
+</pre></div>
+</div>
+</section>
+<section id="id12">
+<h3><span class="section-number">10.2.7. </span>Exercises<a class="headerlink" href="#id12" title="Permalink to this headline">&#61633;</a></h3>
 <ol class="arabic simple">
 <li><p>Consider the relation <span class="math notranslate nohighlight">\(\sim\)</span> on <span class="math notranslate nohighlight">\(\mathbb{Z}\)</span> defined by, <span class="math notranslate nohighlight">\(a\sim b\)</span> if there
 exist positive integers <span class="math notranslate nohighlight">\(m\)</span> and <span class="math notranslate nohighlight">\(n\)</span> such that
