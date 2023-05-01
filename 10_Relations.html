@@ -681,17 +681,17 @@ bi-directionally to all nodes of that colour (including themselves) and to no ot
 </div>
 <div class="admonition-solution admonition">
 <p class="admonition-title">Solution</p>
-<p>For all integers <span class="math notranslate nohighlight">\(x\)</span>, we have <span class="math notranslate nohighlight">\(x^2=x^2\)</span>.  Therefore the relation <span class="math notranslate nohighlight">\(\sim\)</span>
-is reflexive.</p>
-<p>For all integers <span class="math notranslate nohighlight">\(x\)</span> and <span class="math notranslate nohighlight">\(y\)</span>, we have that if <span class="math notranslate nohighlight">\(x^2=y^2\)</span> then <span class="math notranslate nohighlight">\(y^2=x^2\)</span>.
-Therefore the relation <span class="math notranslate nohighlight">\(\sim\)</span>
-is symmetric.</p>
-<p>For all integers <span class="math notranslate nohighlight">\(x\)</span>, <span class="math notranslate nohighlight">\(y\)</span> and <span class="math notranslate nohighlight">\(z\)</span>, we have that if <span class="math notranslate nohighlight">\(x^2=y^2\)</span> and
-<span class="math notranslate nohighlight">\(y^2=z^2\)</span> then</p>
+<p>For all integers <span class="math notranslate nohighlight">\(x\)</span>, we have <span class="math notranslate nohighlight">\(x^2=x^2\)</span>, so <span class="math notranslate nohighlight">\(x\sim x\)</span>.  Therefore the relation
+<span class="math notranslate nohighlight">\(\sim\)</span> is reflexive.</p>
+<p>For all integers <span class="math notranslate nohighlight">\(x\)</span> and <span class="math notranslate nohighlight">\(y\)</span>, we have that if <span class="math notranslate nohighlight">\(x\sim y\)</span> then <span class="math notranslate nohighlight">\(x^2=y^2\)</span>,
+so <span class="math notranslate nohighlight">\(y^2=x^2\)</span>, so <span class="math notranslate nohighlight">\(y\sim z\)</span>.
+Therefore the relation <span class="math notranslate nohighlight">\(\sim\)</span> is symmetric.</p>
+<p>For all integers <span class="math notranslate nohighlight">\(x\)</span>, <span class="math notranslate nohighlight">\(y\)</span> and <span class="math notranslate nohighlight">\(z\)</span>, we have that if <span class="math notranslate nohighlight">\(x\sim y\)</span> and
+<span class="math notranslate nohighlight">\(y\sim z\)</span> then <span class="math notranslate nohighlight">\(x^2=y^2\)</span> and <span class="math notranslate nohighlight">\(y^2=z^2\)</span>, so</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}x^2&amp;=y^2\\
-&amp;=z^2.\end{split}\]</div>
-<p>Therefore the relation <span class="math notranslate nohighlight">\(\sim\)</span> is transitive.</p>
+&amp;=z^2,\end{split}\]</div>
+<p>so <span class="math notranslate nohighlight">\(x\sim z\)</span>. Therefore the relation <span class="math notranslate nohighlight">\(\sim\)</span> is transitive.</p>
 </div>
 <div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kn">local</span> <span class="kd">infix</span><span class="o">:</span><span class="mi">50</span> <span class="s2">&quot;&#8764;&quot;</span> <span class="bp">=&gt;</span> <span class="k">fun</span> <span class="o">(</span><span class="n">x</span> <span class="n">y</span> <span class="o">:</span> <span class="n">&#8484;</span><span class="o">)</span> <span class="bp">&#8614;</span> <span class="n">x</span> <span class="bp">^</span> <span class="mi">2</span> <span class="bp">=</span> <span class="n">y</span> <span class="bp">^</span> <span class="mi">2</span>
 
@@ -784,14 +784,31 @@ of reflexivity.</p>
 <h3><span class="section-number">10.2.5. </span>Example<a class="headerlink" href="#id10" title="Permalink to this headline">&#61633;</a></h3>
 <div class="admonition-problem admonition">
 <p class="admonition-title">Problem</p>
-<p>Consider the relation <span class="math notranslate nohighlight">\(\sim\)</span> on <span class="math notranslate nohighlight">\(\mathbb{Z}\times\mathbb{N}\)</span> defined by,
-<span class="math notranslate nohighlight">\((a,b)\sim(c,d)\)</span> if <span class="math notranslate nohighlight">\(a(d+1)=c(b+1)\)</span>.</p>
-<ul class="simple">
-<li><p>Show that <span class="math notranslate nohighlight">\(\sim\)</span> is an equivalence relation.</p></li>
-<li><p>Sketch the relation <span class="math notranslate nohighlight">\(\sim\)</span>, by drawing (a portion of) the underlying type
-<span class="math notranslate nohighlight">\(\mathbb{Z}\times\mathbb{N}\)</span> in the plane, then colouring each equivalence class in a
-different colour.</p></li>
-</ul>
+<p>Show that the relation <span class="math notranslate nohighlight">\(\sim\)</span> on <span class="math notranslate nohighlight">\(\mathbb{Z}\times\mathbb{N}\)</span> defined by,
+<span class="math notranslate nohighlight">\((a,b)\sim(c,d)\)</span> if <span class="math notranslate nohighlight">\(a(d+1)=c(b+1)\)</span>, is an equivalence relation.</p>
+</div>
+<div class="admonition-solution admonition">
+<p class="admonition-title">Solution</p>
+<p>For all <span class="math notranslate nohighlight">\((a,b)\)</span> in <span class="math notranslate nohighlight">\(\mathbb{Z}\times\mathbb{N}\)</span>, <span class="math notranslate nohighlight">\(a(b+1)=a(b+1)\)</span>, so
+<span class="math notranslate nohighlight">\((a,b)\sim (a,b)\)</span>.  Therefore <span class="math notranslate nohighlight">\(\sim\)</span> is reflexive.</p>
+<p>For all <span class="math notranslate nohighlight">\((a,b)\)</span> and <span class="math notranslate nohighlight">\((c,d)\)</span> in <span class="math notranslate nohighlight">\(\mathbb{Z}\times\mathbb{N}\)</span>, if
+<span class="math notranslate nohighlight">\((a,b)\sim (c,d)\)</span> then <span class="math notranslate nohighlight">\(a(d+1)=c(b+1)\)</span>, so <span class="math notranslate nohighlight">\(c(b+1)=a(d+1)\)</span>, so
+<span class="math notranslate nohighlight">\((c,d)\sim (a,b)\)</span>.  Therefore <span class="math notranslate nohighlight">\(\sim\)</span> is reflexive.</p>
+<p>For all <span class="math notranslate nohighlight">\((a,b)\)</span>, <span class="math notranslate nohighlight">\((c,d)\)</span> and <span class="math notranslate nohighlight">\((e,f)\)</span> in <span class="math notranslate nohighlight">\(\mathbb{Z}\times\mathbb{N}\)</span>, if
+<span class="math notranslate nohighlight">\((a,b)\sim (c,d)\)</span> and <span class="math notranslate nohighlight">\((c,d)\sim (e,f)\)</span> then <span class="math notranslate nohighlight">\(a(d+1)=c(b+1)\)</span> and
+<span class="math notranslate nohighlight">\(c(f+1)=e(d+1)\)</span>.  We will show that <span class="math notranslate nohighlight">\(a(f+1)=e(b+1)\)</span>, which will imply that
+<span class="math notranslate nohighlight">\((a,b)\sim (e,f)\)</span>, which proves the transitivity of <span class="math notranslate nohighlight">\(\sim\)</span>.</p>
+<p>Since <span class="math notranslate nohighlight">\(d+1&gt;0\)</span>, it suffices to prove that
+<span class="math notranslate nohighlight">\((d+1)\left[a(f+1)\right]=(d+1)\left[e(b+1)\right]\)</span>.  Let
+<span class="math notranslate nohighlight">\(B:= b+1\)</span>, <span class="math notranslate nohighlight">\(D:= d+1\)</span>, and <span class="math notranslate nohighlight">\(F:= f+1\)</span>: then we know that <span class="math notranslate nohighlight">\(aD=cB\)</span> and
+<span class="math notranslate nohighlight">\(cF=eD\)</span> and need to prove that <span class="math notranslate nohighlight">\(D(aF)=D(eB)\)</span>.</p>
+<p>Indeed,</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}D  (a  F) &amp;= (a  D)  F \\
+  &amp; = (c  B)  F \\
+  &amp; = (c  F)  B \\
+  &amp; = (e  D)  B \\
+  &amp; = D  (e  B).\end{split}\]</div>
 </div>
 <div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kn">local</span> <span class="kd">infix</span><span class="o">:</span><span class="mi">50</span> <span class="s2">&quot;&#8764;&quot;</span> <span class="bp">=&gt;</span> <span class="k">fun</span> <span class="o">((</span><span class="n">a</span><span class="o">,</span> <span class="n">b</span><span class="o">)</span> <span class="o">:</span> <span class="n">&#8484;</span> <span class="bp">&#215;</span> <span class="n">&#8469;</span><span class="o">)</span> <span class="o">(</span><span class="n">c</span><span class="o">,</span> <span class="n">d</span><span class="o">)</span> <span class="bp">&#8614;</span> <span class="n">a</span> <span class="bp">*</span> <span class="o">(</span><span class="n">d</span> <span class="bp">+</span> <span class="mi">1</span><span class="o">)</span> <span class="bp">=</span> <span class="n">c</span> <span class="bp">*</span> <span class="o">(</span><span class="n">b</span> <span class="bp">+</span> <span class="mi">1</span><span class="o">)</span>
 
@@ -821,6 +838,9 @@ different colour.</p></li>
     <span class="n">_</span> <span class="bp">=</span> <span class="n">D</span> <span class="bp">*</span> <span class="o">(</span><span class="n">e</span> <span class="bp">*</span> <span class="n">B</span><span class="o">)</span> <span class="o">:=</span> <span class="kd">by</span> <span class="n">ring</span>
 </pre></div>
 </div>
+<p>Now, sketch the relation <span class="math notranslate nohighlight">\(\sim\)</span>, by drawing (a portion of) the underlying type
+<span class="math notranslate nohighlight">\(\mathbb{Z}\times\mathbb{N}\)</span> in the plane, then colouring each equivalence class in a
+different colour.</p>
 </section>
 <section id="id11">
 <h3><span class="section-number">10.2.6. </span>Example<a class="headerlink" href="#id11" title="Permalink to this headline">&#61633;</a></h3>
