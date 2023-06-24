@@ -325,7 +325,6 @@ and <span class="math notranslate nohighlight">\(b\mid c\)</span> then <span cla
   <span class="bp">|</span> <span class="n">rock</span>
   <span class="bp">|</span> <span class="n">paper</span>
   <span class="bp">|</span> <span class="n">scissors</span>
-  <span class="n">deriving</span> <span class="n">DecidableEq</span>
 </pre></div>
 </div>
 <p>Consider the following relation <span class="math notranslate nohighlight">\(\prec\)</span> on the Hand type.</p>
@@ -359,24 +358,24 @@ and <span class="math notranslate nohighlight">\(b\mid c\)</span> then <span cla
   <span class="n">dsimp</span> <span class="o">[</span><span class="n">Reflexive</span><span class="o">]</span>
   <span class="n">push_neg</span>
   <span class="n">take</span> <span class="n">rock</span>
-  <span class="n">decide</span>
+  <span class="n">tauto</span>
 
 <span class="kd">example</span> <span class="o">:</span> <span class="bp">&#172;</span> <span class="n">Symmetric</span> <span class="o">(</span><span class="bp">&#183;</span> <span class="bp">&#8826;</span> <span class="bp">&#183;</span><span class="o">)</span> <span class="o">:=</span> <span class="kd">by</span>
   <span class="n">dsimp</span> <span class="o">[</span><span class="n">Symmetric</span><span class="o">]</span>
   <span class="n">push_neg</span>
   <span class="n">take</span> <span class="n">rock</span><span class="o">,</span> <span class="n">paper</span>
-  <span class="n">decide</span>
+  <span class="n">tauto</span>
 
 <span class="kd">example</span> <span class="o">:</span> <span class="n">AntiSymmetric</span> <span class="o">(</span><span class="bp">&#183;</span> <span class="bp">&#8826;</span> <span class="bp">&#183;</span><span class="o">)</span> <span class="o">:=</span> <span class="kd">by</span>
   <span class="n">dsimp</span> <span class="o">[</span><span class="n">AntiSymmetric</span><span class="o">]</span>
-  <span class="n">intro</span> <span class="n">x</span> <span class="n">y</span>
-  <span class="n">cases</span> <span class="n">x</span> <span class="bp">&lt;;&gt;</span> <span class="n">cases</span> <span class="n">y</span> <span class="bp">&lt;;&gt;</span> <span class="n">decide</span>
+  <span class="n">intro</span> <span class="n">x</span> <span class="n">y</span> <span class="n">h</span>
+  <span class="n">cases</span> <span class="n">x</span> <span class="bp">&lt;;&gt;</span> <span class="n">cases</span> <span class="n">y</span> <span class="bp">&lt;;&gt;</span> <span class="n">tauto</span>
 
 <span class="kd">example</span> <span class="o">:</span> <span class="bp">&#172;</span> <span class="n">Transitive</span> <span class="o">(</span><span class="bp">&#183;</span> <span class="bp">&#8826;</span> <span class="bp">&#183;</span><span class="o">)</span> <span class="o">:=</span> <span class="kd">by</span>
   <span class="n">dsimp</span> <span class="o">[</span><span class="n">Transitive</span><span class="o">]</span>
   <span class="n">push_neg</span>
   <span class="n">take</span> <span class="n">rock</span><span class="o">,</span> <span class="n">paper</span><span class="o">,</span> <span class="n">scissors</span>
-  <span class="n">decide</span>
+  <span class="n">tauto</span>
 </pre></div>
 </div>
 </section>
@@ -416,7 +415,6 @@ the Little type. Determine which of these properties hold for the relation <span
   <span class="bp">|</span> <span class="n">jo</span>
   <span class="bp">|</span> <span class="n">beth</span>
   <span class="bp">|</span> <span class="n">amy</span>
-  <span class="n">deriving</span> <span class="n">DecidableEq</span>
 </pre></div>
 </div>
 <div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">@[reducible]</span> <span class="kd">def</span> <span class="n">s</span> <span class="o">:</span> <span class="n">Little</span> <span class="bp">&#8594;</span> <span class="n">Little</span> <span class="bp">&#8594;</span> <span class="kt">Prop</span>

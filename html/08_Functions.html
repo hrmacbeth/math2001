@@ -341,7 +341,6 @@ examples, because everything is explicit and checkable.</p>
   <span class="bp">|</span> <span class="n">athos</span>
   <span class="bp">|</span> <span class="n">porthos</span>
   <span class="bp">|</span> <span class="n">aramis</span>
-  <span class="n">deriving</span> <span class="n">DecidableEq</span>
 </pre></div>
 </div>
 <p>Here is how to define a function whose domain is a given finite inductive type.</p>
@@ -358,15 +357,13 @@ examples, because everything is explicit and checkable.</p>
 <figure class="align-default">
 <img alt="_images/musketeer1a.png" src="_images/musketeer1a.png" />
 </figure>
-<p>Equalities and disequalities in a finite inductive type can by proved (if they are in fact true) by
-the tactic <code class="docutils literal notranslate"><span class="pre">decide</span></code>.</p>
+<p>Logical statements built from equalities and disequalities in a finite inductive type can by proved
+(if they are in fact true) by the tactic <code class="docutils literal notranslate"><span class="pre">tauto</span></code>.</p>
 <div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">:</span> <span class="bp">&#172;</span> <span class="n">Injective</span> <span class="n">f</span> <span class="o">:=</span> <span class="kd">by</span>
   <span class="n">dsimp</span> <span class="o">[</span><span class="n">Injective</span><span class="o">]</span>
   <span class="n">push_neg</span>
   <span class="n">take</span> <span class="n">athos</span><span class="o">,</span> <span class="n">porthos</span>
-  <span class="n">constructor</span>
-  <span class="bp">&#183;</span> <span class="n">decide</span>
-  <span class="bp">&#183;</span> <span class="n">decide</span>
+  <span class="n">tauto</span>
 </pre></div>
 </div>
 </section>
@@ -386,9 +383,23 @@ the tactic <code class="docutils literal notranslate"><span class="pre">decide</
   <span class="n">take</span> <span class="n">porthos</span>
   <span class="n">intro</span> <span class="n">a</span>
   <span class="n">cases</span> <span class="n">a</span>
-  <span class="bp">&#183;</span> <span class="n">decide</span>
-  <span class="bp">&#183;</span> <span class="n">decide</span>
-  <span class="bp">&#183;</span> <span class="n">decide</span>
+  <span class="bp">&#183;</span> <span class="n">tauto</span>
+  <span class="bp">&#183;</span> <span class="n">tauto</span>
+  <span class="bp">&#183;</span> <span class="n">tauto</span>
+</pre></div>
+</div>
+<p>Such proofs can become repetitive, and you may wish to use a trick we have seen before (for example
+<a class="reference internal" href="04_Proofs_with_Structure_II.html#prime-test"><span class="std std-numref">Example 4.4.4</span></a>, <a class="reference internal" href="04_Proofs_with_Structure_II.html#better-prime-test"><span class="std std-numref">Example 4.5.9</span></a>,
+<a class="reference internal" href="06_Induction.html#mod-add-div"><span class="std std-numref">Example 6.6.2</span></a>, <a class="reference internal" href="06_Induction.html#gcd-nonneg"><span class="std std-numref">Example 6.7.2</span></a>): when a tactic such as
+<code class="docutils literal notranslate"><span class="pre">cases</span></code> generates many goals which can all be proved by the same tactic, you can write
+<code class="docutils literal notranslate"><span class="pre">&lt;;&gt;</span></code> to apply the tactic to all those goals.</p>
+<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="c1">-- better (more automated) version of the previous proof</span>
+<span class="kd">example</span> <span class="o">:</span> <span class="bp">&#172;</span> <span class="n">Surjective</span> <span class="n">f</span> <span class="o">:=</span> <span class="kd">by</span>
+  <span class="n">dsimp</span> <span class="o">[</span><span class="n">Surjective</span><span class="o">]</span>
+  <span class="n">push_neg</span>
+  <span class="n">take</span> <span class="n">porthos</span>
+  <span class="n">intro</span> <span class="n">a</span>
+  <span class="n">cases</span> <span class="n">a</span> <span class="bp">&lt;;&gt;</span> <span class="n">tauto</span>
 </pre></div>
 </div>
 </section>
@@ -411,16 +422,30 @@ the tactic <code class="docutils literal notranslate"><span class="pre">decide</
 <div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">:</span> <span class="n">Injective</span> <span class="n">g</span> <span class="o">:=</span> <span class="kd">by</span>
   <span class="n">dsimp</span> <span class="o">[</span><span class="n">Injective</span><span class="o">]</span>
   <span class="n">intro</span> <span class="n">x1</span> <span class="n">x2</span> <span class="n">hx</span>
-  <span class="n">cases</span> <span class="n">x1</span> <span class="bp">&lt;;&gt;</span> <span class="n">cases</span> <span class="n">x2</span>
-  <span class="bp">&#183;</span> <span class="n">decide</span>
-  <span class="bp">&#183;</span> <span class="n">contradiction</span>
-  <span class="bp">&#183;</span> <span class="n">contradiction</span>
-  <span class="bp">&#183;</span> <span class="n">contradiction</span>
-  <span class="bp">&#183;</span> <span class="n">decide</span>
-  <span class="bp">&#183;</span> <span class="n">contradiction</span>
-  <span class="bp">&#183;</span> <span class="n">contradiction</span>
-  <span class="bp">&#183;</span> <span class="n">contradiction</span>
-  <span class="bp">&#183;</span> <span class="n">decide</span>
+  <span class="n">cases</span> <span class="n">x1</span> <span class="bp">&lt;;&gt;</span> <span class="n">cases</span> <span class="n">x2</span> <span class="bp">&lt;;&gt;</span> <span class="n">tauto</span>
+</pre></div>
+</div>
+<p>If we unfold the efficient <code class="docutils literal notranslate"><span class="pre">&lt;;&gt;</span></code> notation to look more closely at what <code class="docutils literal notranslate"><span class="pre">tauto</span></code> is doing for us
+here, we can see that it is quite powerful.  In some cases, such as the first one, it is proving a
+true equality goal such <code class="docutils literal notranslate"><span class="pre">&#8866;</span> <span class="pre">athos</span> <span class="pre">=</span> <span class="pre">athos</span></code>.  In other cases, such as the second one, it is
+deducing a contradiction from a <em>false</em> equality hypothesis, such as <code class="docutils literal notranslate"><span class="pre">hx</span> <span class="pre">:</span> <span class="pre">g</span> <span class="pre">athos</span> <span class="pre">=</span> <span class="pre">g</span> <span class="pre">porthos</span></code>.</p>
+<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="c1">-- less automated version of the previous proof -- don&#39;t take this as a model!</span>
+<span class="kd">example</span> <span class="o">:</span> <span class="n">Injective</span> <span class="n">g</span> <span class="o">:=</span> <span class="kd">by</span>
+  <span class="n">dsimp</span> <span class="o">[</span><span class="n">Injective</span><span class="o">]</span>
+  <span class="n">intro</span> <span class="n">x1</span> <span class="n">x2</span> <span class="n">hx</span>
+  <span class="n">cases</span> <span class="n">x1</span>
+  <span class="bp">&#183;</span> <span class="n">cases</span> <span class="n">x2</span>
+    <span class="bp">&#183;</span> <span class="n">tauto</span> <span class="c1">-- goal `&#8866; athos = athos`</span>
+    <span class="bp">&#183;</span> <span class="n">tauto</span> <span class="c1">-- hypothesis `hx : g athos = g porthos`</span>
+    <span class="bp">&#183;</span> <span class="n">tauto</span>
+  <span class="bp">&#183;</span> <span class="n">cases</span> <span class="n">x2</span>
+    <span class="bp">&#183;</span> <span class="n">tauto</span>
+    <span class="bp">&#183;</span> <span class="n">tauto</span>
+    <span class="bp">&#183;</span> <span class="n">tauto</span>
+  <span class="bp">&#183;</span> <span class="n">cases</span> <span class="n">x2</span>
+    <span class="bp">&#183;</span> <span class="n">tauto</span>
+    <span class="bp">&#183;</span> <span class="n">tauto</span>
+    <span class="bp">&#183;</span> <span class="n">tauto</span>
 </pre></div>
 </div>
 </section>
@@ -435,11 +460,11 @@ the tactic <code class="docutils literal notranslate"><span class="pre">decide</
   <span class="n">intro</span> <span class="n">y</span>
   <span class="n">cases</span> <span class="n">y</span>
   <span class="bp">&#183;</span> <span class="n">take</span> <span class="n">aramis</span>
-    <span class="n">decide</span>
+    <span class="n">tauto</span>
   <span class="bp">&#183;</span> <span class="n">take</span> <span class="n">athos</span>
-    <span class="n">decide</span>
+    <span class="n">tauto</span>
   <span class="bp">&#183;</span> <span class="n">take</span> <span class="n">porthos</span>
-    <span class="n">decide</span>
+    <span class="n">tauto</span>
 </pre></div>
 </div>
 </section>
@@ -619,7 +644,6 @@ solve the second version.)</p>
 <div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">inductive</span> <span class="n">White</span>
   <span class="bp">|</span> <span class="n">meg</span>
   <span class="bp">|</span> <span class="n">jack</span>
-  <span class="n">deriving</span> <span class="n">DecidableEq</span>
 
 <span class="kn">open</span> <span class="n">White</span>
 
@@ -855,13 +879,11 @@ Show that <span class="math notranslate nohighlight">\(a\)</span> is not bijecti
 <div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">inductive</span> <span class="n">Celestial</span>
   <span class="bp">|</span> <span class="n">sun</span>
   <span class="bp">|</span> <span class="n">moon</span>
-  <span class="n">deriving</span> <span class="n">DecidableEq</span>
 
 <span class="kd">inductive</span> <span class="n">Subatomic</span>
   <span class="bp">|</span> <span class="n">proton</span>
   <span class="bp">|</span> <span class="n">neutron</span>
   <span class="bp">|</span> <span class="n">electron</span>
-  <span class="n">deriving</span> <span class="n">DecidableEq</span>
 </pre></div>
 </div>
 <p>Consider the following function <span class="math notranslate nohighlight">\(f\)</span> from the Celestial type to the Subatomic type.</p>
@@ -885,9 +907,7 @@ Show that <span class="math notranslate nohighlight">\(a\)</span> is not bijecti
   <span class="n">push_neg</span>
   <span class="n">take</span> <span class="n">neutron</span>
   <span class="n">intro</span> <span class="n">x</span>
-  <span class="n">cases</span> <span class="n">x</span>
-  <span class="bp">&#183;</span> <span class="n">decide</span>
-  <span class="bp">&#183;</span> <span class="n">decide</span>
+  <span class="n">cases</span> <span class="n">x</span> <span class="bp">&lt;;&gt;</span> <span class="n">tauto</span>
 </pre></div>
 </div>
 </section>
@@ -1021,6 +1041,7 @@ for all natural numbers <span class="math notranslate nohighlight">\(n\)</span>,
     <span class="n">push_neg</span>
     <span class="n">take</span> <span class="mi">0</span>
     <span class="n">intro</span> <span class="n">n</span>
+    <span class="n">apply</span> <span class="n">ne_of_gt</span>
     <span class="n">extra</span>
 </pre></div>
 </div>
@@ -1067,7 +1088,6 @@ solve the second version.)</p>
   <span class="bp">|</span> <span class="n">water</span>
   <span class="bp">|</span> <span class="n">earth</span>
   <span class="bp">|</span> <span class="n">air</span>
-  <span class="n">deriving</span> <span class="n">DecidableEq</span>
 
 <span class="kn">open</span> <span class="n">Element</span>
 
@@ -1217,7 +1237,6 @@ for &#8220;functional extensionality&#8221;.) Before we use it, the goal state i
   <span class="bp">|</span> <span class="n">choleric</span>
   <span class="bp">|</span> <span class="n">phlegmatic</span>
   <span class="bp">|</span> <span class="n">sanguine</span>
-  <span class="n">deriving</span> <span class="n">DecidableEq</span>
 </pre></div>
 </div>
 <p>Consider the following function <span class="math notranslate nohighlight">\(p\)</span> from the Humour type to itself.</p>
@@ -1245,17 +1264,9 @@ prove this.</p>
 <span class="kd">example</span> <span class="o">:</span> <span class="n">Inverse</span> <span class="n">p</span> <span class="n">q</span> <span class="o">:=</span> <span class="kd">by</span>
   <span class="n">constructor</span>
   <span class="bp">&#183;</span> <span class="n">funext</span> <span class="n">x</span>
-    <span class="n">cases</span> <span class="n">x</span>
-    <span class="bp">&#183;</span> <span class="n">decide</span>
-    <span class="bp">&#183;</span> <span class="n">decide</span>
-    <span class="bp">&#183;</span> <span class="n">decide</span>
-    <span class="bp">&#183;</span> <span class="n">decide</span>
+    <span class="n">cases</span> <span class="n">x</span> <span class="bp">&lt;;&gt;</span> <span class="n">tauto</span>
   <span class="bp">&#183;</span> <span class="n">funext</span> <span class="n">x</span>
-    <span class="n">cases</span> <span class="n">x</span>
-    <span class="bp">&#183;</span> <span class="n">decide</span>
-    <span class="bp">&#183;</span> <span class="n">decide</span>
-    <span class="bp">&#183;</span> <span class="n">decide</span>
-    <span class="bp">&#183;</span> <span class="n">decide</span>
+    <span class="n">cases</span> <span class="n">x</span> <span class="bp">&lt;;&gt;</span> <span class="n">tauto</span>
 </pre></div>
 </div>
 </section>
@@ -1414,11 +1425,7 @@ to itself, so that <span class="math notranslate nohighlight">\(b \circ a=c\)</s
 
 <span class="kd">example</span> <span class="o">:</span> <span class="n">b</span> <span class="bp">&#8728;</span> <span class="n">a</span> <span class="bp">=</span> <span class="n">c</span> <span class="o">:=</span> <span class="kd">by</span>
   <span class="n">funext</span> <span class="n">x</span>
-  <span class="n">cases</span> <span class="n">x</span>
-  <span class="bp">&#183;</span> <span class="n">decide</span>
-  <span class="bp">&#183;</span> <span class="n">decide</span>
-  <span class="bp">&#183;</span> <span class="n">decide</span>
-  <span class="bp">&#183;</span> <span class="n">decide</span>
+  <span class="n">cases</span> <span class="n">x</span> <span class="bp">&lt;;&gt;</span> <span class="n">tauto</span>
 </pre></div>
 </div>
 <ol class="arabic simple" start="2">

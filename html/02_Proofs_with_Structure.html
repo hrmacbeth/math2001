@@ -645,13 +645,13 @@ text proof as they are used.</p>
 </div>
 <p>In Lean, the relevant lemmas are <a class="reference internal" href="#le-antisymm"><span class="std std-ref">the antisymmetry lemma</span></a>, together with two
 variants on <a class="reference internal" href="#pos-of-mul-pos-right-lem"><span class="std std-ref">the lemma deducing positivity from positivity of a multiple</span></a>.</p>
-<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">theorem</span> <span class="n">eq_zero_of_mul_pos_eq_zero</span> <span class="o">{</span><span class="n">b</span> <span class="o">:</span> <span class="n">&#8477;</span><span class="o">}</span> <span class="o">(</span><span class="n">a</span> <span class="o">:</span> <span class="n">&#8477;</span><span class="o">)</span> <span class="o">(</span><span class="n">H1</span> <span class="o">:</span> <span class="n">a</span> <span class="bp">*</span> <span class="n">b</span> <span class="bp">=</span> <span class="mi">0</span><span class="o">)</span> <span class="o">(</span><span class="n">H2</span> <span class="o">:</span> <span class="mi">0</span> <span class="bp">&lt;</span> <span class="n">a</span><span class="o">)</span> <span class="o">:</span>
-    <span class="n">b</span> <span class="bp">=</span> <span class="mi">0</span> <span class="o">:=</span> <span class="kd">by</span>
+<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">{</span><span class="n">b</span> <span class="o">:</span> <span class="n">&#8477;</span><span class="o">}</span> <span class="o">(</span><span class="n">a</span> <span class="o">:</span> <span class="n">&#8477;</span><span class="o">)</span> <span class="o">(</span><span class="n">H1</span> <span class="o">:</span> <span class="n">a</span> <span class="bp">*</span> <span class="n">b</span> <span class="bp">=</span> <span class="mi">0</span><span class="o">)</span> <span class="o">(</span><span class="n">H2</span> <span class="o">:</span> <span class="mi">0</span> <span class="bp">&lt;</span> <span class="n">a</span><span class="o">)</span> <span class="o">:</span> <span class="n">b</span> <span class="bp">=</span> <span class="mi">0</span> <span class="o">:=</span> <span class="kd">by</span>
   <span class="gr">sorry</span>
 </pre></div>
 </div>
-<p>Unusually, we&#8217;re giving this problem a name in Lean, <code class="docutils literal notranslate"><span class="pre">eq_zero_of_mul_pos_eq_zero</span></code>, for future reference.
-This is because we&#8217;ll use it later in <a class="reference internal" href="#integral-domain-step3"><span class="std std-numref">Example 2.3.4</span></a>.</p>
+<p>We&#8217;ll use this theorem later in <a class="reference internal" href="#integral-domain-step3"><span class="std std-numref">Example 2.3.4</span></a>, under the name
+<code class="docutils literal notranslate"><span class="pre">eq_zero_of_mul_pos_eq_zero</span></code> (which is the name under which it is already recorded in the Lean
+mathematical library).</p>
 </section>
 <section id="exercises">
 <h3><span class="section-number">2.2.6. </span>Exercises<a class="headerlink" href="#exercises" title="Permalink to this headline">&#61633;</a></h3>
@@ -689,10 +689,10 @@ lemma <code class="docutils literal notranslate"><span class="pre">le_of_pow_le_
 <p>This problem is a variant on <a class="reference internal" href="#integral-domain-step1"><span class="std std-numref">Example 2.2.5</span></a>. The lemmas
 involved will be different, but see if you can guess their names by analogy with the names of
 the lemmas used in that example.</p>
+<p>We record this lemma for later use under the name <code class="docutils literal notranslate"><span class="pre">eq_zero_of_mul_neg_eq_zero</span></code>.</p>
 </li>
 </ol>
-<div class="highlight-lean notranslate" id="integral-domain-step2"><div class="highlight"><pre><span></span><span class="kd">theorem</span> <span class="n">eq_zero_of_mul_neg_eq_zero</span> <span class="o">{</span><span class="n">b</span> <span class="o">:</span> <span class="n">&#8477;</span><span class="o">}</span> <span class="o">(</span><span class="n">a</span> <span class="o">:</span> <span class="n">&#8477;</span><span class="o">)</span> <span class="o">(</span><span class="n">H1</span> <span class="o">:</span> <span class="n">a</span> <span class="bp">*</span> <span class="n">b</span> <span class="bp">=</span> <span class="mi">0</span><span class="o">)</span> <span class="o">(</span><span class="n">H2</span> <span class="o">:</span> <span class="n">a</span> <span class="bp">&lt;</span> <span class="mi">0</span><span class="o">)</span> <span class="o">:</span>
-    <span class="n">b</span> <span class="bp">=</span> <span class="mi">0</span> <span class="o">:=</span> <span class="kd">by</span>
+<div class="highlight-lean notranslate" id="integral-domain-step2"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">{</span><span class="n">b</span> <span class="o">:</span> <span class="n">&#8477;</span><span class="o">}</span> <span class="o">(</span><span class="n">a</span> <span class="o">:</span> <span class="n">&#8477;</span><span class="o">)</span> <span class="o">(</span><span class="n">H1</span> <span class="o">:</span> <span class="n">a</span> <span class="bp">*</span> <span class="n">b</span> <span class="bp">=</span> <span class="mi">0</span><span class="o">)</span> <span class="o">(</span><span class="n">H2</span> <span class="o">:</span> <span class="n">a</span> <span class="bp">&lt;</span> <span class="mi">0</span><span class="o">)</span> <span class="o">:</span> <span class="n">b</span> <span class="bp">=</span> <span class="mi">0</span> <span class="o">:=</span> <span class="kd">by</span>
   <span class="gr">sorry</span>
 </pre></div>
 </div>
