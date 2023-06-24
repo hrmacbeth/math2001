@@ -4,7 +4,7 @@ This repository contains the Lean code for the lecture notes [The mechanics of p
 
 The Lean files corresponding to each chapter of the lecture notes are in the folder [`Math2001`](https://github.com/hrmacbeth/math2001/tree/main/Math2001).  The folder [`Library`](https://github.com/hrmacbeth/math2001/tree/main/Library) contains supporting material, including automation custom-written for this course.
 
-If you have a GitHub account, you can run the code on the web using Gitpod.  This is the easiest way to get started if you have never used Lean before.
+You can run the code on the web using Gitpod, by clicking the link below.  (You will be prompted to make an account, if you do not yet have one -- the free tier offers 50 hours of use per month.) This is the easiest way to get started if you have never used Lean before.
 
 [![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/#https://github.com/hrmacbeth/math2001)
 

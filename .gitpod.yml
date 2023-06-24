@@ -4,6 +4,7 @@ image:
 vscode:
   extensions:
     - leanprover.lean4
+    - usernamehw.errorlens
 
 tasks:
   - init: |

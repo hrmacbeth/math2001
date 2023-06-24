@@ -1,4 +1,3 @@
-/.vscode
 *.olean
 /_target
 /leanpkg.path

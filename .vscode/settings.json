@@ -1,0 +1,12 @@
+{
+    "workbench.colorTheme": "Default Light+",
+    "editor.semanticHighlighting.enabled": true,
+    "editor.semanticTokenColorCustomizations": {
+            "[Default Light+]": {"rules": {"variable": "#7f197f"}}
+    },
+    "editor.minimap.enabled": false,
+    "editor.rulers": [100],
+    "lean4.infoview.showExpectedType": false,
+    "lean4.infoview.emphasizeFirstGoal": true,
+    "lean4.infoview.showGoalNames": false,
+}
