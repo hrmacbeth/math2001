@@ -3,5 +3,5 @@
 Sets
 ====
 
-.. include:: 09_Sets/01_Sets.inc
-.. include:: 09_Sets/02_Set_Operations.inc
+.. include:: ch09_Sets/01_Sets.inc
+.. include:: ch09_Sets/02_Set_Operations.inc

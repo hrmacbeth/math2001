@@ -3,8 +3,8 @@
 Proofs with structure, II
 =========================
 
-.. include:: 04_Proofs_with_Structure_II/01_Forall_Implies.inc
-.. include:: 04_Proofs_with_Structure_II/02_Iff.inc
-.. include:: 04_Proofs_with_Structure_II/03_Exists_Unique.inc
-.. include:: 04_Proofs_with_Structure_II/04_Contradictory_Hypotheses.inc
-.. include:: 04_Proofs_with_Structure_II/05_Proof_by_Contradiction.inc
+.. include:: ch04_Proofs_with_Structure_II/01_Forall_Implies.inc
+.. include:: ch04_Proofs_with_Structure_II/02_Iff.inc
+.. include:: ch04_Proofs_with_Structure_II/03_Exists_Unique.inc
+.. include:: ch04_Proofs_with_Structure_II/04_Contradictory_Hypotheses.inc
+.. include:: ch04_Proofs_with_Structure_II/05_Proof_by_Contradiction.inc

@@ -3,5 +3,5 @@
 Relations
 =========
 
-.. include:: 10_Relations/01_Introduction.inc
-.. include:: 10_Relations/02_Equivalence_Relations.inc
+.. include:: ch10_Relations/01_Introduction.inc
+.. include:: ch10_Relations/02_Equivalence_Relations.inc

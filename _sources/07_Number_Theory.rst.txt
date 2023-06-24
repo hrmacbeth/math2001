@@ -9,6 +9,6 @@ turn up again on homework or exams.  Think of this chapter instead as a capstone
 kinds of mathematical statements are in reach with the reasoning tools and theory we have developed
 so far in the course.
 
-.. include:: 07_Number_Theory/01_Infinitely_Many_Primes.inc
-.. include:: 07_Number_Theory/02_Euclid_Lemma.inc
-.. include:: 07_Number_Theory/03_Sqrt_Two.inc
+.. include:: ch07_Number_Theory/01_Infinitely_Many_Primes.inc
+.. include:: ch07_Number_Theory/02_Euclid_Lemma.inc
+.. include:: ch07_Number_Theory/03_Sqrt_Two.inc

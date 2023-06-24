@@ -3,8 +3,8 @@
 Proofs by calculation
 =====================
 
-.. include:: 01_Proofs_by_Calculation/01_Proving_Equalities.inc
-.. include:: 01_Proofs_by_Calculation/02_Proving_Equalities_in_Lean.inc
-.. include:: 01_Proofs_by_Calculation/03_Tips_and_Tricks.inc
-.. include:: 01_Proofs_by_Calculation/04_Proving_Inequalities.inc
-.. include:: 01_Proofs_by_Calculation/05_A_Shortcut.inc
+.. include:: ch01_Proofs_by_Calculation/01_Proving_Equalities.inc
+.. include:: ch01_Proofs_by_Calculation/02_Proving_Equalities_in_Lean.inc
+.. include:: ch01_Proofs_by_Calculation/03_Tips_and_Tricks.inc
+.. include:: ch01_Proofs_by_Calculation/04_Proving_Inequalities.inc
+.. include:: ch01_Proofs_by_Calculation/05_A_Shortcut.inc

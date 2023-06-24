@@ -3,10 +3,10 @@
 Induction
 =========
 
-.. include:: 06_Induction/01_Induction.inc
-.. include:: 06_Induction/02_Recurrence_Relations.inc
-.. include:: 06_Induction/03_Two_Step_Induction.inc
-.. include:: 06_Induction/04_Strong_Induction.inc
-.. include:: 06_Induction/05_Pascal.inc
-.. include:: 06_Induction/06_Division_Algorithm.inc
-.. include:: 06_Induction/07_Euclidean_Algorithm.inc
+.. include:: ch06_Induction/01_Induction.inc
+.. include:: ch06_Induction/02_Recurrence_Relations.inc
+.. include:: ch06_Induction/03_Two_Step_Induction.inc
+.. include:: ch06_Induction/04_Strong_Induction.inc
+.. include:: ch06_Induction/05_Pascal.inc
+.. include:: ch06_Induction/06_Division_Algorithm.inc
+.. include:: ch06_Induction/07_Euclidean_Algorithm.inc
