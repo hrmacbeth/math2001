@@ -69,6 +69,7 @@ example : ∃! r : ℤ, 0 ≤ r ∧ r < 5 ∧ 14 ≡ r [ZMOD 5] := by
   interval_cases q
   addarith [hr3]
 
+/-! # Exercises -/
 
 
 example : ∃! x : ℚ, 4 * x - 3 = 9 := by

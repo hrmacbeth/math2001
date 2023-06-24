@@ -55,6 +55,9 @@ example {a b : ℕ} (hb : 0 < b) (hab : a ∣ b) : a ≤ b := by
 example {a b : ℕ} (hab : a ∣ b) (hb : 0 < b) : 0 < a := by
   sorry
 
+/-! # Exercises -/
+
+
 example (t : ℤ) : t ∣ 0 := by
   sorry
 

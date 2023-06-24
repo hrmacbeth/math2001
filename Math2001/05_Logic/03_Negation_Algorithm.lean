@@ -58,6 +58,9 @@ example : ¬ (∃ n : ℕ, n ^ 2 = 2) := by
       _ < 2 := by numbers
   · sorry
 
+/-! # Exercises -/
+
+
 example (P : Prop) : ¬ (¬ P) ↔ P := by
   sorry
 

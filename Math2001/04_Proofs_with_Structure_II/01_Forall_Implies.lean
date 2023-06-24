@@ -74,6 +74,8 @@ example : ¬ Prime 6 := by
   · take 3
     numbers -- show `6 = 2 * 3`
 
+/-! # Exercises -/
+
 
 example {a : ℚ} (h : ∀ b : ℚ, a ≥ -3 + 4 * b - b ^ 2) : a ≥ 1 :=
   sorry

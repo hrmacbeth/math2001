@@ -91,6 +91,9 @@ example (n : ℤ) : Even n ∨ Odd n := by
     apply hn
   · sorry
 
+/-! # Exercises -/
+
+
 example {x : ℝ} : 2 * x - 1 = 11 ↔ x = 6 := by
   sorry
 

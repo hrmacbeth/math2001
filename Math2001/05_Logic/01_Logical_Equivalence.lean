@@ -77,6 +77,8 @@ example (P : α → Prop) : ¬ (∃ x, P x) ↔ ∀ x, ¬ P x := by
     have : ¬ P x := h x
     contradiction
 
+/-! # Exercises -/
+
 
 example {P Q : Prop} (h : P ∧ Q) : P ∨ Q := by
   sorry

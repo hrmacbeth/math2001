@@ -28,6 +28,8 @@ example {m : ℤ} (h2 : 5 ∣ m) (h1 : 8 ∣ m) : 40 ∣ m := by
     _ = -15 * (8 * a) + 16 * (5 * b) := by rw [hb]
     _ = 40 * (-3 * a + 2 * b) := by ring
 
+/-! # Exercises -/
+
 
 example {n : ℤ} (hn : 6 ∣ 11 * n) : 6 ∣ n := by
   sorry

@@ -60,6 +60,8 @@ example (n : ℤ) : Even (n ^ 2 + 3 * n + 4) := by
       n ^ 2 + 3 * n + 4 = (2 * x + 1) ^ 2 + 3 * (2 * x + 1) + 4 := by rw [hx]
       _ = 2 * (2 * x ^ 2 + 5 * x + 4) := by ring
 
+/-! # Exercises -/
+
 
 example : Odd (-9 : ℤ) := by
   sorry

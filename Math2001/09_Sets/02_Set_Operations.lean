@@ -57,7 +57,7 @@ example : { n : ℤ | n ≡ 1 [ZMOD 5] } ∩ { n : ℤ | n ≡ 2 [ZMOD 5] } = �
   intro x hx
   obtain ⟨hx1, hx2⟩ := hx
   have :=
-  calc 1 ≡ x [ZMOD 5] := by rel [hx1.symm]
+  calc 1 ≡ x [ZMOD 5] := by rel [hx1]
     _ ≡ 2 [ZMOD 5] := by rel [hx2]
   numbers at this
 

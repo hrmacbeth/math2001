@@ -93,6 +93,9 @@ example {n : ℤ} : n ^ 2 ≠ 2 := by
         _ ≤ n ^ 2 := by rel [hn]
 
 
+/-! # Exercises -/
+
+
 example {x : ℚ} (h : x = 4 ∨ x = -4) : x ^ 2 + 1 = 17 := by
   sorry
 

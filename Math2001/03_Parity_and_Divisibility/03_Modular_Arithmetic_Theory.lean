@@ -88,6 +88,8 @@ example {a b : ℤ} (ha : a ≡ 2 [ZMOD 4]) :
   apply Int.ModEq.refl
   apply Int.ModEq.refl
 
+/-! # Exercises -/
+
 
 example : 34 ≡ 104 [ZMOD 5] := by
   sorry

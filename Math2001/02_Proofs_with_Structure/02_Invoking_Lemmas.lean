@@ -25,6 +25,9 @@ example (x y : ℚ) (h : x * y = 1) (h2 : 1 ≤ x) : 1 ≥ y := by
 example {b : ℝ} (a : ℝ) (H1 : a * b = 0) (H2 : 0 < a) : b = 0 := by
   sorry
 
+/-! # Exercises -/
+
+
 example {m : ℤ} (hm : m + 1 = 5) : 3 * m ≠ 6 := by
   sorry
 

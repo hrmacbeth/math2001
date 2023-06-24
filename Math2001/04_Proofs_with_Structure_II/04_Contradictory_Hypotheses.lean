@@ -52,7 +52,7 @@ example (n : ℤ) (hn : n ^ 2 + n + 1 ≡ 1 [ZMOD 3]) : n ≡ 0 [ZMOD 3] ∨ n �
     have H : 0 ≡ 1 [ZMOD 3]
     · calc 0 ≡ 0 + 3 * 1 [ZMOD 3] := by extra
       _ = 1 ^ 2 + 1 + 1 := by numbers
-      _ ≡ n ^ 2 + n + 1 [ZMOD 3] := by rel [h.symm]
+      _ ≡ n ^ 2 + n + 1 [ZMOD 3] := by rel [h]
       _ ≡ 1 [ZMOD 3] := hn
     numbers at H -- contradiction!
   · -- case 3: `n ≡ 2 [ZMOD 3]`
@@ -91,6 +91,9 @@ example : Prime 5 := by
 example {a b c : ℕ} (ha : 0 < a) (hb : 0 < b) (hc : 0 < c) (h_pyth : a ^ 2 + b ^ 2 = c ^ 2) :
     3 ≤ a := by
   sorry
+
+/-! # Exercises -/
+
 
 example {x y : ℝ} (n : ℕ) (hx : 0 ≤ x) (hn : 0 < n) (h : y ^ n ≤ x ^ n) : y ≤ x := by
   sorry

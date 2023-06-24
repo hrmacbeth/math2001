@@ -51,6 +51,9 @@ example {a b : ℝ} (h1 : a ^ 2 + b ^ 2 = 0) : a = 0 ∧ b = 0 := by
     extra
   sorry
 
+/-! # Exercises -/
+
+
 example {a b : ℚ} (H : a ≤ 1 ∧ a + b ≤ 3) : 2 * a + b ≤ 4 := by
   sorry
 

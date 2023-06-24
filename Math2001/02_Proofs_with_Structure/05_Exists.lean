@@ -50,6 +50,8 @@ example : ∃ a b c d : ℕ, a ^ 3 + b ^ 3 = 1729 ∧ c ^ 3 + d ^ 3 = 1729 ∧ a
   numbers
   numbers
 
+/-! # Exercises -/
+
 
 example : ∃ t : ℚ, t ^ 2 = 1.69 := by
   sorry

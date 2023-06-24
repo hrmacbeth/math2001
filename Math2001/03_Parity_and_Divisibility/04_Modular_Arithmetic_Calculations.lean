@@ -31,16 +31,18 @@ example {x : ℤ} : x ^ 3 ≡ x [ZMOD 3] := by
   calc
     x ^ 3 ≡ 0 ^ 3 [ZMOD 3] := by rel [hx]
     _ = 0 := by numbers
-    _ ≡ x [ZMOD 3] := by rel [hx.symm]    
+    _ ≡ x [ZMOD 3] := by rel [hx]    
   calc
     x ^ 3 ≡ 1 ^ 3 [ZMOD 3] := by rel [hx]
     _ = 1 := by numbers
-    _ ≡ x [ZMOD 3] := by rel [hx.symm]
+    _ ≡ x [ZMOD 3] := by rel [hx]
   calc
     x ^ 3 ≡ 2 ^ 3 [ZMOD 3] := by rel [hx]
     _ = 2 + 3 * 2 := by numbers
     _ ≡ 2 [ZMOD 3] := by extra
-    _ ≡ x [ZMOD 3] := by rel [hx.symm]
+    _ ≡ x [ZMOD 3] := by rel [hx]
+
+/-! # Exercises -/
 
 
 example {n : ℤ} (hn : n ≡ 1 [ZMOD 3]) : n ^ 3 + 7 * n ≡ 2 [ZMOD 3] :=

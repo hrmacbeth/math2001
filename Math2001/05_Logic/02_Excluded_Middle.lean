@@ -76,6 +76,8 @@ example {P : Prop} (hP : ¬¬P) : P := by
   · apply hP
   · contradiction
 
+/-! # Exercises -/
+
 
 def Tribalanced (x : ℝ) : Prop := ∀ n : ℕ, (1 + x / n) ^ n < 3
 

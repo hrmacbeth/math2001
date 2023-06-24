@@ -46,7 +46,7 @@ example (n : ℤ) : Int.Even n ↔ ¬ Int.Odd n := by
     rw [Int.even_iff_modEq] at h1
     rw [Int.odd_iff_modEq] at h2
     have h :=
-    calc 0 ≡ n [ZMOD 2] := by rel [h1.symm]
+    calc 0 ≡ n [ZMOD 2] := by rel [h1]
       _ ≡ 1 [ZMOD 2] := by rel [h2]
     numbers at h -- contradiction!
   · intro h
@@ -63,7 +63,7 @@ example (n : ℤ) : ¬(n ^ 2 ≡ 2 [ZMOD 3]) := by
   mod_cases hn : n % 3
   · have h :=
     calc (0:ℤ) = 0 ^ 2 := by numbers
-      _ ≡ n ^ 2 [ZMOD 3] := by rel [hn.symm]
+      _ ≡ n ^ 2 [ZMOD 3] := by rel [hn]
       _ ≡ 2 [ZMOD 3] := by rel [h]
     numbers at h -- contradiction!
   · sorry
@@ -133,6 +133,9 @@ example : Prime 79 := by
   · sorry
   · sorry
   · sorry
+
+/-! # Exercises -/
+
 
 example : ¬ (∃ a : ℝ, a ^ 2 ≤ 8 ∧ a ^ 3 ≥ 30) := by
   sorry

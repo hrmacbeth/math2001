@@ -78,6 +78,8 @@ example {a b c : ℝ} : a ^ 2 * (a ^ 6 + 8 * b ^ 3 * c ^ 3) ≤ (a ^ 4 + b ^ 4 +
           + a ^ 2 * (a ^ 6 + 8 * b ^ 3 * c ^ 3) := by extra
     _ = (a ^ 4 + b ^ 4 + c ^ 4) ^ 2 := by ring
 
+/-! # Exercises -/
+
 
 example {x y : ℤ} (h1 : x + 3 ≥ 2 * y) (h2 : 1 ≤ y) : x ≥ -1 :=
   sorry
