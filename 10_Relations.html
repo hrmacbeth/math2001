@@ -358,24 +358,28 @@ and <span class="math notranslate nohighlight">\(b\mid c\)</span> then <span cla
   <span class="n">dsimp</span> <span class="o">[</span><span class="n">Reflexive</span><span class="o">]</span>
   <span class="n">push_neg</span>
   <span class="n">take</span> <span class="n">rock</span>
-  <span class="n">tauto</span>
+  <span class="n">numbers</span>
 
 <span class="kd">example</span> <span class="o">:</span> <span class="bp">&#172;</span> <span class="n">Symmetric</span> <span class="o">(</span><span class="bp">&#183;</span> <span class="bp">&#8826;</span> <span class="bp">&#183;</span><span class="o">)</span> <span class="o">:=</span> <span class="kd">by</span>
   <span class="n">dsimp</span> <span class="o">[</span><span class="n">Symmetric</span><span class="o">]</span>
   <span class="n">push_neg</span>
   <span class="n">take</span> <span class="n">rock</span><span class="o">,</span> <span class="n">paper</span>
-  <span class="n">tauto</span>
+  <span class="n">constructor</span> <span class="bp">&lt;;&gt;</span> <span class="n">numbers</span>
 
 <span class="kd">example</span> <span class="o">:</span> <span class="n">AntiSymmetric</span> <span class="o">(</span><span class="bp">&#183;</span> <span class="bp">&#8826;</span> <span class="bp">&#183;</span><span class="o">)</span> <span class="o">:=</span> <span class="kd">by</span>
   <span class="n">dsimp</span> <span class="o">[</span><span class="n">AntiSymmetric</span><span class="o">]</span>
   <span class="n">intro</span> <span class="n">x</span> <span class="n">y</span> <span class="n">h</span>
-  <span class="n">cases</span> <span class="n">x</span> <span class="bp">&lt;;&gt;</span> <span class="n">cases</span> <span class="n">y</span> <span class="bp">&lt;;&gt;</span> <span class="n">tauto</span>
+  <span class="n">cases</span> <span class="n">x</span> <span class="bp">&lt;;&gt;</span> <span class="n">cases</span> <span class="n">y</span> <span class="bp">&lt;;&gt;</span> <span class="n">intro</span> <span class="n">h</span> <span class="bp">&lt;;&gt;</span> <span class="n">contradiction</span>
 
 <span class="kd">example</span> <span class="o">:</span> <span class="bp">&#172;</span> <span class="n">Transitive</span> <span class="o">(</span><span class="bp">&#183;</span> <span class="bp">&#8826;</span> <span class="bp">&#183;</span><span class="o">)</span> <span class="o">:=</span> <span class="kd">by</span>
   <span class="n">dsimp</span> <span class="o">[</span><span class="n">Transitive</span><span class="o">]</span>
   <span class="n">push_neg</span>
   <span class="n">take</span> <span class="n">rock</span><span class="o">,</span> <span class="n">paper</span><span class="o">,</span> <span class="n">scissors</span>
-  <span class="n">tauto</span>
+  <span class="n">constructor</span>
+  <span class="bp">&#183;</span> <span class="n">numbers</span>
+  <span class="n">constructor</span>
+  <span class="bp">&#183;</span> <span class="n">numbers</span>
+  <span class="bp">&#183;</span> <span class="n">numbers</span>
 </pre></div>
 </div>
 </section>
