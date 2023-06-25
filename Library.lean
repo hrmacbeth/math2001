@@ -16,6 +16,7 @@ import Library.Tactic.Define.Attr
 import Library.Tactic.ExistsDelaborator
 import Library.Tactic.Extra
 import Library.Tactic.Extra.Attr
+import Library.Tactic.FiniteInductive
 import Library.Tactic.Induction
 import Library.Tactic.ModCases
 import Library.Tactic.Numbers

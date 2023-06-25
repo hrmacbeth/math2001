@@ -6,8 +6,6 @@ import Library.Tactic.Numbers
 import Library.Tactic.Extra
 import Library.Tactic.Take
 
-set_option linter.unusedVariables false
-
 
 def fmod (n d : ℤ) : ℤ :=
   if n * d < 0 then
@@ -87,7 +85,7 @@ theorem fmod_lt_of_pos (n : ℤ) {d : ℤ} (hd : 0 < d) : fmod n d < d := by
     have IH := fmod_lt_of_pos (n - d) hd -- inductive hypothesis
     apply IH
   · -- case `n = d`
-    exact hd
+    apply hd
   · -- last case
     have h4 : n - d ≤ 0
     · apply nonpos_of_mul_nonpos_right (a := d)

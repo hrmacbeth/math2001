@@ -6,7 +6,6 @@ import Library.Tactic.Numbers
 import Library.Tactic.Take
 
 set_option push_neg.use_distrib true
-set_option linter.unusedVariables false
 
 
 example (P Q : Prop) : ¬ (P ∧ Q) ↔ (¬ P ∨ ¬ Q) := by

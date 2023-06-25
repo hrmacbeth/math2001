@@ -5,8 +5,6 @@ import Library.Tactic.Induction
 import Library.Tactic.Numbers
 import Library.Tactic.Take
 
-set_option linter.unusedVariables false
-
 namespace Euclid
 open Int
 
@@ -104,9 +102,9 @@ theorem gcd_dvd_right (a b : ℤ) : gcd a b ∣ b := by
   rw [gcd]
   split_ifs with h1 h2 <;> push_neg at *
   · -- case `0 < b`
-    exact gcd_dvd_left b (fmod a b) -- inductive hypothesis
+    apply gcd_dvd_left b (fmod a b) -- inductive hypothesis
   · -- case `b < 0`
-    exact gcd_dvd_left b (fmod a (-b)) -- inductive hypothesis
+    apply gcd_dvd_left b (fmod a (-b)) -- inductive hypothesis
   · -- case `b = 0`, `0 ≤ a`
     have hb : b = 0 := le_antisymm h1 h2
     take 0

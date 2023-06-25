@@ -2,6 +2,7 @@
 import Mathlib.Data.Real.Basic
 import Library.Tactic.Addarith
 import Library.Tactic.ExistsDelaborator
+import Library.Tactic.FiniteInductive
 import Library.Tactic.Numbers
 import Library.Tactic.Extra
 import Library.Tactic.Take
@@ -72,7 +73,7 @@ example : ¬ Bijective f := by
   push_neg
   take neutron
   intro x
-  cases x <;> tauto
+  cases x <;> inductive_type
 
 
 example {f : X → Y} : Bijective f ↔ ∀ y, ∃! x, f x = y := by

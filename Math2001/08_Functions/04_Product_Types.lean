@@ -10,7 +10,6 @@ import Library.Tactic.Product
 import Library.Tactic.Extra
 import Library.Tactic.Take
 
-set_option linter.unusedVariables false
 set_option push_neg.use_distrib true
 attribute [-simp] ne_eq
 open Function

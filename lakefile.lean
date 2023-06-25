@@ -1,21 +1,29 @@
 import Lake
 open Lake DSL
 
-package math2001
+package math2001 where
+  moreServerArgs := #[
+    "-Dlinter.unusedVariables=false", -- ignores unused variables
+    "-DquotPrecheck=false",
+    "-DwarningAsError=false", 
+    "-Dpp.unicode.fun=true"  -- pretty-prints `fun a ↦ b`
+  ]
 
 lean_lib Library
 
 @[default_target]
 lean_lib Math2001 where
-  moreLeanArgs := #["-Dlinter.unusedVariables=false", "-DwarningAsError=false", "-Dpp.unicode.fun=true"] -- pretty-prints `fun a ↦ b`
-/-
-# Figure out how to enable all these:
+  moreLeanArgs := #[
+    "-Dlinter.unusedVariables=false", -- ignores unused variables
+    "-DquotPrecheck=false",
+    "-DwarningAsError=false", 
+    "-Dpp.unicode.fun=true"  -- pretty-prints `fun a ↦ b`
+  ]
 
+/-
+want also
 "-Dpush_neg.use_distrib=true", -- negates ¬(P ∧ Q) to (¬ P ∨ ¬ Q) 
-"-DquotPrecheck=false",
-"-DautoImplicit=false",
-"-Dpp.unicode.fun=true", -- pretty-prints `fun a ↦ b`
-"-Dlinter.unusedVariables=false"] -- ignores unused variables
+but currently only Lean core options can be set in lakefile
 -/
 
 require mathlib from git "https://github.com/leanprover-community/mathlib4" @ "750b7536599c7b0924e12fe79d0522b8554125c9"

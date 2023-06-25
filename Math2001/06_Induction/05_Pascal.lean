@@ -5,7 +5,6 @@ import Library.Tactic.Extra
 import Mathlib.Tactic.FieldSimp
 import Mathlib.Tactic.GCongr
 
-set_option linter.unusedVariables false
 attribute [field_simps] LT.lt.ne'
 
 open Nat

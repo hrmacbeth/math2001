@@ -2,6 +2,7 @@
 import Mathlib.Data.Real.Basic
 import Library.Tactic.Addarith
 import Library.Tactic.ExistsDelaborator
+import Library.Tactic.FiniteInductive
 import Library.Tactic.Numbers
 import Library.Tactic.Rel
 import Library.Tactic.Take
@@ -60,9 +61,9 @@ def q : Humour → Humour
 example : Inverse p q := by
   constructor
   · funext x
-    cases x <;> tauto
+    cases x <;> inductive_type
   · funext x
-    cases x <;> tauto
+    cases x <;> inductive_type
 
 
 theorem exists_inverse_of_bijective {f : X → Y} (hf : Bijective f) :
@@ -139,7 +140,7 @@ def c : Humour → Humour
 
 example : b ∘ a = c := by
   funext x
-  cases x <;> tauto
+  cases x <;> inductive_type
 
 
 def u (x : ℝ) : ℝ := 5 * x + 1

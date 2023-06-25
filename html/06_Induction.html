@@ -2106,7 +2106,7 @@ that <span class="math notranslate nohighlight">\(\operatorname{mod}(m, c)&lt;c\
     <span class="k">have</span> <span class="n">IH</span> <span class="o">:=</span> <span class="n">fmod_lt_of_pos</span> <span class="o">(</span><span class="n">n</span> <span class="bp">-</span> <span class="n">d</span><span class="o">)</span> <span class="n">hd</span> <span class="c1">-- inductive hypothesis</span>
     <span class="n">apply</span> <span class="n">IH</span>
   <span class="bp">&#183;</span> <span class="c1">-- case `n = d`</span>
-    <span class="n">exact</span> <span class="n">hd</span>
+    <span class="n">apply</span> <span class="n">hd</span>
   <span class="bp">&#183;</span> <span class="c1">-- last case</span>
     <span class="k">have</span> <span class="n">h4</span> <span class="o">:</span> <span class="n">n</span> <span class="bp">-</span> <span class="n">d</span> <span class="bp">&#8804;</span> <span class="mi">0</span>
     <span class="bp">&#183;</span> <span class="n">apply</span> <span class="n">nonpos_of_mul_nonpos_right</span> <span class="o">(</span><span class="n">a</span> <span class="o">:=</span> <span class="n">d</span><span class="o">)</span>
@@ -2532,9 +2532,9 @@ termination explanation at the end, like this:</p>
   <span class="n">rw</span> <span class="o">[</span><span class="n">gcd</span><span class="o">]</span>
   <span class="n">split_ifs</span> <span class="k">with</span> <span class="n">h1</span> <span class="n">h2</span> <span class="bp">&lt;;&gt;</span> <span class="n">push_neg</span> <span class="n">at</span> <span class="bp">*</span>
   <span class="bp">&#183;</span> <span class="c1">-- case `0 &lt; b`</span>
-    <span class="n">exact</span> <span class="n">gcd_dvd_left</span> <span class="n">b</span> <span class="o">(</span><span class="n">fmod</span> <span class="n">a</span> <span class="n">b</span><span class="o">)</span> <span class="c1">-- inductive hypothesis</span>
+    <span class="n">apply</span> <span class="n">gcd_dvd_left</span> <span class="n">b</span> <span class="o">(</span><span class="n">fmod</span> <span class="n">a</span> <span class="n">b</span><span class="o">)</span> <span class="c1">-- inductive hypothesis</span>
   <span class="bp">&#183;</span> <span class="c1">-- case `b &lt; 0`</span>
-    <span class="n">exact</span> <span class="n">gcd_dvd_left</span> <span class="n">b</span> <span class="o">(</span><span class="n">fmod</span> <span class="n">a</span> <span class="o">(</span><span class="bp">-</span><span class="n">b</span><span class="o">))</span> <span class="c1">-- inductive hypothesis</span>
+    <span class="n">apply</span> <span class="n">gcd_dvd_left</span> <span class="n">b</span> <span class="o">(</span><span class="n">fmod</span> <span class="n">a</span> <span class="o">(</span><span class="bp">-</span><span class="n">b</span><span class="o">))</span> <span class="c1">-- inductive hypothesis</span>
   <span class="bp">&#183;</span> <span class="c1">-- case `b = 0`, `0 &#8804; a`</span>
     <span class="k">have</span> <span class="n">hb</span> <span class="o">:</span> <span class="n">b</span> <span class="bp">=</span> <span class="mi">0</span> <span class="o">:=</span> <span class="n">le_antisymm</span> <span class="n">h1</span> <span class="n">h2</span>
     <span class="n">take</span> <span class="mi">0</span>

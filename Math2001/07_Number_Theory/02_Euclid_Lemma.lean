@@ -5,7 +5,6 @@ import Library.Tactic.Numbers
 import Library.Tactic.Rel
 import Library.Tactic.Take
 
-set_option linter.unusedVariables false
 
 
 theorem gauss_lemma {d a b : ℤ} (h1 : d ∣ a * b) (h2 : gcd a d = 1) : d ∣ b := by

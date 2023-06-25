@@ -3,13 +3,12 @@ import Mathlib.Data.Real.Basic
 import Library.Theory.ParityModular
 import Library.Tactic.Addarith
 import Library.Tactic.ExistsDelaborator
+import Library.Tactic.FiniteInductive
 import Library.Tactic.Induction
 import Library.Tactic.Numbers
 import Library.Tactic.Extra
 import Library.Tactic.Take
 
-set_option pp.unicode.fun true
-set_option linter.unusedVariables false
 open Function
 namespace Int
 
@@ -88,7 +87,9 @@ example : ¬ Injective f := by
   dsimp [Injective]
   push_neg
   take athos, porthos
-  tauto
+  constructor
+  · inductive_type
+  · inductive_type
 
 
 example : ¬ Surjective f := by
@@ -97,9 +98,9 @@ example : ¬ Surjective f := by
   take porthos
   intro a
   cases a
-  · tauto
-  · tauto
-  · tauto
+  · inductive_type
+  · inductive_type
+  · inductive_type
 
 
 -- better (more automated) version of the previous proof
@@ -108,7 +109,7 @@ example : ¬ Surjective f := by
   push_neg
   take porthos
   intro a
-  cases a <;> tauto
+  cases a <;> inductive_type
 
 
 def g : Musketeer → Musketeer
@@ -120,26 +121,16 @@ def g : Musketeer → Musketeer
 example : Injective g := by
   dsimp [Injective]
   intro x1 x2 hx
-  cases x1 <;> cases x2 <;> tauto
-
-
--- less automated version of the previous proof -- don't take this as a model!
-example : Injective g := by
-  dsimp [Injective]
-  intro x1 x2 hx
-  cases x1
-  · cases x2
-    · tauto -- goal `⊢ athos = athos`
-    · tauto -- hypothesis `hx : g athos = g porthos`
-    · tauto 
-  · cases x2
-    · tauto 
-    · tauto 
-    · tauto 
-  · cases x2
-    · tauto 
-    · tauto 
-    · tauto 
+  cases x1 <;> cases x2
+  · inductive_type -- goal `⊢ athos = athos`
+  · contradiction -- hypothesis `hx : g athos = g porthos`
+  · contradiction 
+  · contradiction 
+  · inductive_type 
+  · contradiction 
+  · contradiction 
+  · contradiction 
+  · inductive_type 
 
 
 example : Surjective g := by
@@ -147,11 +138,11 @@ example : Surjective g := by
   intro y
   cases y
   · take aramis
-    tauto
+    inductive_type
   · take athos
-    tauto
+    inductive_type
   · take porthos
-    tauto 
+    inductive_type 
 
 
 

@@ -5,7 +5,6 @@ import Library.Tactic.Numbers
 import Library.Tactic.Extra
 import Library.Tactic.Take
 
-set_option linter.unusedVariables false
 namespace Nat
 
 

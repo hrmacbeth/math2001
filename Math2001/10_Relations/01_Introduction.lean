@@ -3,14 +3,16 @@ import Mathlib.Data.Real.Basic
 import Library.Tactic.Addarith
 import Library.Tactic.Define
 import Library.Tactic.ExistsDelaborator
+import Library.Tactic.FiniteInductive
 import Library.Tactic.Numbers
 import Library.Tactic.Product
 import Library.Tactic.Extra
 import Library.Tactic.Take
 
 set_option push_neg.use_distrib true
-set_option linter.unusedVariables false
-set_option quotPrecheck false
+
+macro_rules | `(tactic| numbers) => `(tactic| exact trivial)
+macro_rules | `(tactic| numbers) => `(tactic| exact not_false)
 
 
 example : Reflexive ((·:ℕ) ∣ ·) := by
@@ -151,24 +153,28 @@ example : ¬ Reflexive (· ≺ ·) := by
   dsimp [Reflexive]
   push_neg
   take rock
-  tauto
+  numbers
 
 example : ¬ Symmetric (· ≺ ·) := by
   dsimp [Symmetric]
   push_neg
   take rock, paper
-  tauto
+  constructor <;> numbers
 
 example : AntiSymmetric (· ≺ ·) := by
   dsimp [AntiSymmetric]
   intro x y h
-  cases x <;> cases y <;> tauto
+  cases x <;> cases y <;> intro h <;> contradiction
 
 example : ¬ Transitive (· ≺ ·) := by
   dsimp [Transitive]
   push_neg
   take rock, paper, scissors
-  tauto
+  constructor
+  · numbers
+  constructor
+  · numbers
+  · numbers
 
 end
 

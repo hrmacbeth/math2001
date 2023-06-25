@@ -103,7 +103,7 @@ example : {1, 2} ∪ {2, 4} = {1, 2, 4} := by
 
 example : {1, 2} ∪ {2, 4} = {1, 2, 4} := by
   dsimp
-  tauto
+  aesop
 
 
 
@@ -111,7 +111,7 @@ example : { n : ℕ | 4 ≤ n } ∩ { n : ℕ | n < 7 } ⊆ {4, 5, 6} := by
   dsimp
   intro n h
   obtain ⟨h1, h2⟩ := h
-  interval_cases n <;> tauto
+  interval_cases n <;> aesop
 
 
 /-! # Exercises -/
@@ -119,28 +119,22 @@ example : { n : ℕ | 4 ≤ n } ∩ { n : ℕ | n < 7 } ⊆ {4, 5, 6} := by
 
 example : {-1, 2, 4, 4} ∪ {3, -2, 2} = sorry := by
   dsimp
-  tauto
+  aesop
 
 
 example : {0, 1, 2, 3, 4} ∩ {0, 2, 4, 6, 8} = sorry := by
   dsimp
-  intro x
-  constructor
-  · intro h
-    obtain ⟨(h1 | h1 | h1 | h1 | h1), (h2 | h2 | h2 | h2 | h2)⟩ := h <;> tauto <;> addarith [h1, h2]
-  · tauto
+  aesop
+
+
+example : {1, 2} ∩ {3} = sorry := by
+  dsimp
+  aesop
 
 
 example : {3, 4, 5}ᶜ ∩ {1, 3, 5, 7, 9} = sorry := by
   dsimp
-  push_neg
-  intro x
-  constructor
-  · tauto
-  · intro h
-    constructor
-    · obtain h | h | h := h <;> repeat (try constructor) ; addarith [h]
-    · tauto
+  aesop
 
 
 example : { r : ℤ | r ≡ 7 [ZMOD 10] } ⊆ { s : ℤ | s ≡ 1 [ZMOD 2] } ∩ { t : ℤ | t ≡ 2 [ZMOD 5] } := by
@@ -150,9 +144,6 @@ example : { n : ℤ | 5 ∣ n } ∩ { n : ℤ | 8 ∣ n } ⊆ { n : ℤ | 40 ∣
   sorry
 
 example : { n : ℤ | 3 ∣ n } ∪ { n : ℤ | 2 ∣ n } ⊆ { n : ℤ | n ^ 2 ≡ 1 [ZMOD 6] }ᶜ := by
-  sorry
-
-example : {1, 2} ∩ {3} = ∅ := by
   sorry
 
 namespace Int

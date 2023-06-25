@@ -10,8 +10,6 @@ import Library.Tactic.Extra
 import Library.Tactic.Take
 
 set_option push_neg.use_distrib true
-set_option linter.unusedVariables false
-set_option quotPrecheck false
 open Function
 macro_rules | `(tactic| ring) => `(tactic| ring_nf <;> with_reducible exact trivial)
 

@@ -13,9 +13,11 @@ A tactic which proves goals such as
 -- See https://leanprover.zulipchat.com/#narrow/stream/270676-lean4/topic/hygiene.20question.3F/near/313556764
 set_option hygiene false in
 /-- A thin wrapper for `aesop`, which adds the `extra` rule set. -/
-macro (name := extra) "extra" c:Aesop.tactic_clause*: tactic =>
-  `(tactic|
-    (aesop $c* (rule_sets [extra, -default]) (simp_options := { enabled := false })))
+macro (name := extra) "extra" : tactic =>
+  `(tactic
+    | first
+    | focus (aesop (rule_sets [extra, -default]) (simp_options := { enabled := false }); done)
+    | fail "out of scope: extra proves relations between a LHS and a RHS differing by some neutral quantity for the relation")
 
 lemma IneqExtra.neg_le_sub_self_of_nonneg [LinearOrderedAddCommGroup G] {a b : G} (h : 0 ≤ a) :
     -b ≤ a - b := by

@@ -825,7 +825,7 @@ the universe set.</p>
 proof for you and gives a thumbs-up if one of them worked.</p>
 <div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">:</span> <span class="o">{</span><span class="mi">1</span><span class="o">,</span> <span class="mi">2</span><span class="o">}</span> <span class="bp">&#8746;</span> <span class="o">{</span><span class="mi">2</span><span class="o">,</span> <span class="mi">4</span><span class="o">}</span> <span class="bp">=</span> <span class="o">{</span><span class="mi">1</span><span class="o">,</span> <span class="mi">2</span><span class="o">,</span> <span class="mi">4</span><span class="o">}</span> <span class="o">:=</span> <span class="kd">by</span>
   <span class="n">dsimp</span>
-  <span class="n">tauto</span>
+  <span class="n">aesop</span>
 </pre></div>
 </div>
 </section>
@@ -840,54 +840,53 @@ proof for you and gives a thumbs-up if one of them worked.</p>
   <span class="n">dsimp</span>
   <span class="n">intro</span> <span class="n">n</span> <span class="n">h</span>
   <span class="n">obtain</span> <span class="o">&#10216;</span><span class="n">h1</span><span class="o">,</span> <span class="n">h2</span><span class="o">&#10217;</span> <span class="o">:=</span> <span class="n">h</span>
-  <span class="n">interval_cases</span> <span class="n">n</span> <span class="bp">&lt;;&gt;</span> <span class="n">tauto</span>
+  <span class="n">interval_cases</span> <span class="n">n</span> <span class="bp">&lt;;&gt;</span> <span class="n">aesop</span>
 </pre></div>
 </div>
 </section>
 <section id="id18">
 <h3><span class="section-number">9.2.8. </span>Exercises<a class="headerlink" href="#id18" title="Permalink to this headline">&#61633;</a></h3>
 <ol class="arabic simple">
-<li><p>Write in an explicitly-listed finite set without repeats which is equal to
-<span class="math notranslate nohighlight">\(\{-1,2,4,4\}\cup\{3,-2,2\}\)</span>.  When you have the correct answer, the given Lean proof will
-work.</p></li>
+<li><p>Write in an explicitly-listed finite set without repeats, or <span class="math notranslate nohighlight">\(\emptyset\)</span>, which is equal
+to <span class="math notranslate nohighlight">\(\{-1,2,4,4\}\cup\{3,-2,2\}\)</span>.  When you have the correct answer, the given Lean proof
+will work.</p></li>
 </ol>
 <div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">:</span> <span class="o">{</span><span class="bp">-</span><span class="mi">1</span><span class="o">,</span> <span class="mi">2</span><span class="o">,</span> <span class="mi">4</span><span class="o">,</span> <span class="mi">4</span><span class="o">}</span> <span class="bp">&#8746;</span> <span class="o">{</span><span class="mi">3</span><span class="o">,</span> <span class="bp">-</span><span class="mi">2</span><span class="o">,</span> <span class="mi">2</span><span class="o">}</span> <span class="bp">=</span> <span class="gr">sorry</span> <span class="o">:=</span> <span class="kd">by</span>
   <span class="n">dsimp</span>
-  <span class="n">tauto</span>
+  <span class="n">aesop</span>
 </pre></div>
 </div>
 <ol class="arabic simple" start="2">
-<li><p>Write in an explicitly-listed finite set without repeats which is equal to
-<span class="math notranslate nohighlight">\(\{-1,2,4,4\}\cup\{3,-2,2\}\)</span>.  When you have the correct answer, the given Lean proof will
-work.</p></li>
+<li><p>Write in an explicitly-listed finite set without repeats, or <span class="math notranslate nohighlight">\(\emptyset\)</span>, which is equal
+to <span class="math notranslate nohighlight">\(\{-1,2,4,4\}\cup\{3,-2,2\}\)</span>.  When you have the correct answer, the given Lean proof
+will work.</p></li>
 </ol>
 <div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">:</span> <span class="o">{</span><span class="mi">0</span><span class="o">,</span> <span class="mi">1</span><span class="o">,</span> <span class="mi">2</span><span class="o">,</span> <span class="mi">3</span><span class="o">,</span> <span class="mi">4</span><span class="o">}</span> <span class="bp">&#8745;</span> <span class="o">{</span><span class="mi">0</span><span class="o">,</span> <span class="mi">2</span><span class="o">,</span> <span class="mi">4</span><span class="o">,</span> <span class="mi">6</span><span class="o">,</span> <span class="mi">8</span><span class="o">}</span> <span class="bp">=</span> <span class="gr">sorry</span> <span class="o">:=</span> <span class="kd">by</span>
   <span class="n">dsimp</span>
-  <span class="n">intro</span> <span class="n">x</span>
-  <span class="n">constructor</span>
-  <span class="bp">&#183;</span> <span class="n">intro</span> <span class="n">h</span>
-    <span class="n">obtain</span> <span class="o">&#10216;(</span><span class="n">h1</span> <span class="bp">|</span> <span class="n">h1</span> <span class="bp">|</span> <span class="n">h1</span> <span class="bp">|</span> <span class="n">h1</span> <span class="bp">|</span> <span class="n">h1</span><span class="o">),</span> <span class="o">(</span><span class="n">h2</span> <span class="bp">|</span> <span class="n">h2</span> <span class="bp">|</span> <span class="n">h2</span> <span class="bp">|</span> <span class="n">h2</span> <span class="bp">|</span> <span class="n">h2</span><span class="o">)&#10217;</span> <span class="o">:=</span> <span class="n">h</span> <span class="bp">&lt;;&gt;</span> <span class="n">tauto</span> <span class="bp">&lt;;&gt;</span> <span class="n">addarith</span> <span class="o">[</span><span class="n">h1</span><span class="o">,</span> <span class="n">h2</span><span class="o">]</span>
-  <span class="bp">&#183;</span> <span class="n">tauto</span>
+  <span class="n">aesop</span>
 </pre></div>
 </div>
 <ol class="arabic simple" start="3">
-<li><p>Write in an explicitly-listed finite set without repeats which is equal to
-<span class="math notranslate nohighlight">\(\{3,4,5\}^c\cap\{1,3,5,7,9\}\)</span>.  When you have the correct answer, the given Lean proof
+<li><p>Write in an explicitly-listed finite set without repeats, or <span class="math notranslate nohighlight">\(\emptyset\)</span>, which is equal
+to <span class="math notranslate nohighlight">\(\{1,2\}\cap\{3\}\)</span>.  When you have the correct answer, the given Lean proof
+will work.</p></li>
+</ol>
+<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">:</span> <span class="o">{</span><span class="mi">1</span><span class="o">,</span> <span class="mi">2</span><span class="o">}</span> <span class="bp">&#8745;</span> <span class="o">{</span><span class="mi">3</span><span class="o">}</span> <span class="bp">=</span> <span class="gr">sorry</span> <span class="o">:=</span> <span class="kd">by</span>
+  <span class="n">dsimp</span>
+  <span class="n">aesop</span>
+</pre></div>
+</div>
+<ol class="arabic simple" start="4">
+<li><p>Write in an explicitly-listed finite set without repeats, or <span class="math notranslate nohighlight">\(\emptyset\)</span>, which is equal
+to <span class="math notranslate nohighlight">\(\{3,4,5\}^c\cap\{1,3,5,7,9\}\)</span>.  When you have the correct answer, the given Lean proof
 will work.</p></li>
 </ol>
 <div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">:</span> <span class="o">{</span><span class="mi">3</span><span class="o">,</span> <span class="mi">4</span><span class="o">,</span> <span class="mi">5</span><span class="o">}</span><span class="bp">&#7580;</span> <span class="bp">&#8745;</span> <span class="o">{</span><span class="mi">1</span><span class="o">,</span> <span class="mi">3</span><span class="o">,</span> <span class="mi">5</span><span class="o">,</span> <span class="mi">7</span><span class="o">,</span> <span class="mi">9</span><span class="o">}</span> <span class="bp">=</span> <span class="gr">sorry</span> <span class="o">:=</span> <span class="kd">by</span>
   <span class="n">dsimp</span>
-  <span class="n">push_neg</span>
-  <span class="n">intro</span> <span class="n">x</span>
-  <span class="n">constructor</span>
-  <span class="bp">&#183;</span> <span class="n">tauto</span>
-  <span class="bp">&#183;</span> <span class="n">intro</span> <span class="n">h</span>
-    <span class="n">constructor</span>
-    <span class="bp">&#183;</span> <span class="n">obtain</span> <span class="n">h</span> <span class="bp">|</span> <span class="n">h</span> <span class="bp">|</span> <span class="n">h</span> <span class="o">:=</span> <span class="n">h</span> <span class="bp">&lt;;&gt;</span> <span class="n">repeat</span> <span class="o">(</span><span class="n">try</span> <span class="n">constructor</span><span class="o">)</span> <span class="bp">;</span> <span class="n">addarith</span> <span class="o">[</span><span class="n">h</span><span class="o">]</span>
-    <span class="bp">&#183;</span> <span class="n">tauto</span>
+  <span class="n">aesop</span>
 </pre></div>
 </div>
-<ol class="arabic simple" start="4">
+<ol class="arabic simple" start="5">
 <li><p>Prove that
 <span class="math notranslate nohighlight">\(\{r:\mathbb{Z}\mid r\equiv 7\mod 10\}\subseteq \{s:\mathbb{Z}\mid s\equiv 1\mod 2\}\cap\{t:\mathbb{Z}\mid t\equiv 2\mod 5\}\)</span>.</p></li>
 </ol>
@@ -895,7 +894,7 @@ will work.</p></li>
   <span class="gr">sorry</span>
 </pre></div>
 </div>
-<ol class="arabic simple" start="5">
+<ol class="arabic simple" start="6">
 <li><p>Prove that
 <span class="math notranslate nohighlight">\(\{n:\mathbb{Z}\mid 5\mid n\}\cap \{n:\mathbb{Z}\mid 8\mid n\}&#8838;\{n:\mathbb{Z}\mid 40\mid n\}\)</span>.</p></li>
 </ol>
@@ -903,17 +902,10 @@ will work.</p></li>
   <span class="gr">sorry</span>
 </pre></div>
 </div>
-<ol class="arabic simple" start="6">
+<ol class="arabic simple" start="7">
 <li><p>Prove that <span class="math notranslate nohighlight">\(\{n:\mathbb{Z}\mid 3\mid n\}\cup \{n:\mathbb{Z}\mid 2\mid n\}&#8838;\{n:\mathbb{Z}\mid n^2\equiv 1\mod 6\}^{c}\)</span>.</p></li>
 </ol>
 <div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">:</span> <span class="o">{</span> <span class="n">n</span> <span class="o">:</span> <span class="n">&#8484;</span> <span class="bp">|</span> <span class="mi">3</span> <span class="bp">&#8739;</span> <span class="n">n</span> <span class="o">}</span> <span class="bp">&#8746;</span> <span class="o">{</span> <span class="n">n</span> <span class="o">:</span> <span class="n">&#8484;</span> <span class="bp">|</span> <span class="mi">2</span> <span class="bp">&#8739;</span> <span class="n">n</span> <span class="o">}</span> <span class="bp">&#8838;</span> <span class="o">{</span> <span class="n">n</span> <span class="o">:</span> <span class="n">&#8484;</span> <span class="bp">|</span> <span class="n">n</span> <span class="bp">^</span> <span class="mi">2</span> <span class="bp">&#8801;</span> <span class="mi">1</span> <span class="o">[</span><span class="n">ZMOD</span> <span class="mi">6</span><span class="o">]</span> <span class="o">}</span><span class="bp">&#7580;</span> <span class="o">:=</span> <span class="kd">by</span>
-  <span class="gr">sorry</span>
-</pre></div>
-</div>
-<ol class="arabic simple" start="7">
-<li><p>Prove that <span class="math notranslate nohighlight">\(\{1,2\}\cap \{3\}=\emptyset\)</span>.</p></li>
-</ol>
-<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">:</span> <span class="o">{</span><span class="mi">1</span><span class="o">,</span> <span class="mi">2</span><span class="o">}</span> <span class="bp">&#8745;</span> <span class="o">{</span><span class="mi">3</span><span class="o">}</span> <span class="bp">=</span> <span class="bp">&#8709;</span> <span class="o">:=</span> <span class="kd">by</span>
   <span class="gr">sorry</span>
 </pre></div>
 </div>
