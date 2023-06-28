@@ -16,8 +16,6 @@ very easy) appear as examples in the text.  Each solution is presented both in s
 prose and in Lean, and since these two "languages" are almost equally foreign for students who are
 new to proofs, most solutions are annotated with informal commentary.
 
-.. Typical example :numref:`Example %s <not_surjective>`
-
 Several hundred more problems are included as exercises for the reader.  These exercises are also
 presented both in prose and in Lean.
 
@@ -25,13 +23,6 @@ You are ready to read this book if (1) you know high school algebra inside out a
 experience learning to carry out complicated mathematical algorithms.  I have in mind, as a typical
 reader, a first- or second-year university student who has just taken Calculus II.  But no calculus
 is actually used in this book.
-
-.. Might also be suitable for very strong high school students.
-
-.. Anecdotally, also suitable as an introduction to Lean for programmers, people who like mathematics
-.. but have not studied it recently.
-
-.. Goal: **Rigorous, but concrete.**
 
 The main novelty of this text is the "bilingual" presentation, juxtaposing prose mathematics with 
 Lean code.  But the design choices enforced by this presentation have shaped the text in other ways.
@@ -64,16 +55,6 @@ primarily using natural deduction, to link with Chapters 2 and 4, rather than us
 The other chapters of the book are more recognizable as the "normal mathematics" for a book of this
 type.  Sufficient familiarity with Lean has been established, and the mathematical presentation is
 no longer constrained.
-
-.. well-founded induction on :math:`\mathbb{N}\times \mathbb{N}`, :math:`\mathbb{Z}`)
-
-
-.. Clarity for students about acceptable "atoms of reasoning", and carefully distinguish among
-.. different types of such. (see section on why to use Lean in a intro to proof textbook)
-
-.. Maintain a distinction between formal mathematical prose (which students can copy as a model) and
-.. informal discussion.
-
 
 
 About Lean
@@ -108,9 +89,6 @@ backward reasoning, or how easily you lose track of one case in a case division.
 Lean's live-updating visual representation of the proof state frees you from needing to keep this
 in your working memory.
 
-.. Think about how much easier it is to record a license plate number on paper than to remember it
-.. in your head
-
 Second: Computer formalization systems, fussy unforgiving programming languages that they are, give
 syntax errors when you make a mistake.  Feedback is instant and you can keep iterating until you
 have something that works. Writing a solution in Lean ensures that it is completely correct:
@@ -119,8 +97,6 @@ the algebra.  This is especially useful in doing proof-based mathematics: make a
 halfway through a calculus problem and the rest of the solution probably won't change much, but
 make a small error halfway through a proof and the rest of the solution may be useless.
 
-.. * referring to variables you haven't yet formally introduced
-
 Finally: You interact with Lean using *tactics* which each perform a single step of a certain mode
 of reasoning.  The tactics which are taught in this textbook (some custom-written for this book)
 each constitute a single permissible "atom" of reasoning in the mental world of the book.
@@ -128,14 +104,6 @@ This makes objective something which in a prose-only textbook can be subjective:
 fully-detailed proof.  What's more, the "atoms" I offer you are designed to nudge you toward
 certain styles of mathematical argument structure [#]_ which are conventional in standard
 mathematical prose but which students are often slow to adopt.
-
-.. distinguishing between different modes of reasoning rather than just thinking of them all as "one
-.. step" also fosters mental clarity
-
-.. * proving too much, like trying to give a complete characterization of numbers satisfying a
-..   predicate when you are only asked to establish bare existence
-..   misunderstand what you were asked to prove, include material in your proof that is not relevant
-..   to the question being posed -- is blah even relevant?
 
 This is a book about mathematics which uses Lean as a tool. It is not optimized as an introduction
 to Lean, or even to mathematical Lean. (If you are looking for such a book, you're in luck -- refer
