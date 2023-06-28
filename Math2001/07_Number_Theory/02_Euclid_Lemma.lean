@@ -5,6 +5,7 @@ import Library.Tactic.Numbers
 import Library.Tactic.Rel
 import Library.Tactic.Take
 
+attribute [-instance] Int.instDivInt_1 Int.instDivInt Nat.instDivNat
 
 
 theorem gauss_lemma {d a b : ℤ} (h1 : d ∣ a * b) (h2 : gcd a d = 1) : d ∣ b := by

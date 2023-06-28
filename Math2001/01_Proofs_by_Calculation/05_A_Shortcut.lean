@@ -2,6 +2,8 @@
 import Mathlib.Data.Real.Basic
 import Library.Tactic.Addarith
 
+attribute [-instance] Int.instDivInt_1 Int.instDivInt EuclideanDomain.instDiv Nat.instDivNat
+
 example {x : ℤ} (h1 : x + 4 = 2) : x = -2 := by addarith [h1]
 
 example {a b : ℤ} (ha : a - 2 * b = 1) : a = 2 * b + 1 := by addarith [ha]

@@ -2,6 +2,8 @@
 import Mathlib.Tactic.Ring
 import Library.Tactic.Take
 
+attribute [-instance] Int.instDivInt_1 Int.instDivInt Nat.instDivNat
+
 
 example {n : ℤ} (hn : 8 ∣ 5 * n) : 8 ∣ n := by
   obtain ⟨a, ha⟩ := hn

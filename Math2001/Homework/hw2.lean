@@ -4,6 +4,8 @@ import Library.Tactic.Addarith
 import Library.Tactic.Numbers
 import Library.Tactic.Take
 
+attribute [-instance] Int.instDivInt_1 Int.instDivInt EuclideanDomain.instDiv Nat.instDivNat
+
 /-! # Homework 2 -/
 
 

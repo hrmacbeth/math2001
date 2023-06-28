@@ -5,6 +5,8 @@ import Library.Tactic.Induction
 import Library.Tactic.Numbers
 import Library.Tactic.Take
 
+attribute [-instance] Int.instDivInt_1 Int.instDivInt Nat.instDivNat
+
 namespace Euclid
 open Int
 

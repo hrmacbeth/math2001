@@ -7,6 +7,7 @@ import Library.Tactic.Numbers
 import Library.Tactic.Extra
 import Library.Tactic.Take
 
+attribute [-instance] Int.instDivInt_1 Int.instDivInt Nat.instDivNat
 
 
 @[decreasing] theorem irrat_aux_wf (b k : ℕ) (hb : k ≠ 0) (hab : b ^ 2 = 2 * k ^ 2) :

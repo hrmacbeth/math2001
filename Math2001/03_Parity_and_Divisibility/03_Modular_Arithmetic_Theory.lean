@@ -4,6 +4,8 @@ import Library.Theory.Division
 import Library.Tactic.Numbers
 import Library.Tactic.Take
 
+attribute [-instance] Int.instDivInt_1 Int.instDivInt Nat.instDivNat
+
 
 example : 11 ≡ 3 [ZMOD 4] := by
   take 2

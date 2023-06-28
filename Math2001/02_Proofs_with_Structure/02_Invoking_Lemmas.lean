@@ -4,6 +4,8 @@ import Library.Tactic.Addarith
 import Library.Tactic.Numbers
 import Library.Tactic.Extra
 
+attribute [-instance] Int.instDivInt_1 Int.instDivInt EuclideanDomain.instDiv Nat.instDivNat
+
 example {x : ℚ} (hx : 3 * x = 2) : x ≠ 1 := by
   apply ne_of_lt
   calc

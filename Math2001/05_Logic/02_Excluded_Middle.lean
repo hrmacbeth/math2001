@@ -5,6 +5,8 @@ import Library.Tactic.Numbers
 import Library.Tactic.Take
 import Library.Tactic.TruthTable
 
+attribute [-instance] Int.instDivInt_1 Int.instDivInt EuclideanDomain.instDiv Nat.instDivNat
+
 
 def Superpowered (k : ℕ) : Prop := ∀ n : ℕ, Prime (k ^ k ^ n + 1)
 

@@ -5,6 +5,8 @@ import Library.Tactic.Numbers
 import Library.Tactic.Extra
 import Library.Tactic.Take
 
+attribute [-instance] Int.instDivInt_1 Int.instDivInt EuclideanDomain.instDiv Nat.instDivNat
+
 
 example {a : ℚ} (h : ∃ b : ℚ, a = b ^ 2 + 1) : a > 0 := by
   obtain ⟨b, hb⟩ := h

@@ -10,6 +10,7 @@ import Library.Tactic.Take
 set_option linter.unusedVariables false
 set_option pp.unicode.fun true
 set_option push_neg.use_distrib true
+attribute [-instance] Int.instDivInt_1 Int.instDivInt EuclideanDomain.instDiv Nat.instDivNat
 open Function
 notation:50 a:50 " ⊈ " b:50 => ¬ (a ⊆ b)
 

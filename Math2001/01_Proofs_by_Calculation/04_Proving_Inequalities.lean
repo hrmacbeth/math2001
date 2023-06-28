@@ -3,6 +3,8 @@ import Mathlib.Data.Real.Basic
 import Library.Tactic.Extra
 import Library.Tactic.Numbers
 
+attribute [-instance] Int.instDivInt_1 Int.instDivInt EuclideanDomain.instDiv Nat.instDivNat
+
 
 
 example {x y : ℤ} (hx : x + 3 ≤ 2) (hy : y + 2 * x ≥ 3) : y > 3 :=

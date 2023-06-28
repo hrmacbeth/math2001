@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Transitioning to mainstream Lean &mdash; The mechanics of proof  documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/custom.css" type="text/css" />
+    <link rel="shortcut icon" href="_static/favicon.ico"/>
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Homework (Spring 2023)" href="Homework.html" />
+    <link rel="prev" title="Index of Lean tactics" href="Index_of_Tactics.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="index.html" class="icon icon-home"> The mechanics of proof
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="00_Introduction.html">Introduction</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="01_Proofs_by_Calculation.html">1. Proofs by calculation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="02_Proofs_with_Structure.html">2. Proofs with structure</a></li>
+<li class="toctree-l1"><a class="reference internal" href="03_Parity_and_Divisibility.html">3. Parity and divisibility</a></li>
+<li class="toctree-l1"><a class="reference internal" href="04_Proofs_with_Structure_II.html">4. Proofs with structure, II</a></li>
+<li class="toctree-l1"><a class="reference internal" href="05_Logic.html">5. Logic</a></li>
+<li class="toctree-l1"><a class="reference internal" href="06_Induction.html">6. Induction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="07_Number_Theory.html">7. Number theory</a></li>
+<li class="toctree-l1"><a class="reference internal" href="08_Functions.html">8. Functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="09_Sets.html">9. Sets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="10_Relations.html">10. Relations</a></li>
+</ul>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="Index_of_Tactics.html">Index of Lean tactics</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Transitioning to mainstream Lean</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="Homework.html">Homework (Spring 2023)</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">The mechanics of proof</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+      <li>Transitioning to mainstream Lean</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/Mainstream_Lean.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="transitioning-to-mainstream-lean">
+<span id="transitioning-to-regular-lean"></span><h1>Transitioning to mainstream Lean<a class="headerlink" href="#transitioning-to-mainstream-lean" title="Permalink to this headline">&#61633;</a></h1>
+<p>If you have enjoyed this book, you may wish to work further with Lean, for example by working
+through the book
+<a class="reference external" href="https://leanprover-community.github.io/mathematics_in_lean/">Mathematics in Lean</a> or by starting
+an
+<a class="reference external" href="https://github.com/leanprover-community/mathlib4/wiki/Using-mathlib4-as-a-dependency">independent formalization project</a>.</p>
+<p>You will discover that the Lean &#8220;dialect&#8221; used in this book differs from the mainstream mathematical
+Lean used in the library <a class="reference external" href="https://github.com/leanprover-community/mathlib4">mathlib</a> and its
+associated literature such as <em>Mathematics in Lean</em>.  To help you adjust, in this appendix I outline
+the major differences.</p>
+<p>Some tactics used in this book are deliberately weakened versions of tactics in mathlib: I have
+done this to block certain of Lean&#8217;s capabilities because prose proofs at the level of this book
+would typically write out the details in full. These deliberately weakened tactics include:</p>
+<span id="tactic-comparison-table"></span><table class="colwidths-given docutils align-default" id="id1">
+<caption><span class="caption-number">Table 1 </span><span class="caption-text">Tactics in this book, and their mathlib originals</span><a class="headerlink" href="#id1" title="Permalink to this table">&#61633;</a></caption>
+<colgroup>
+<col style="width: 27%" />
+<col style="width: 27%" />
+<col style="width: 45%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>mathlib tactic</p></th>
+<th class="head"><p>weakened</p>
+<p><em>Mechanics of</em></p>
+<p><em>Proof</em> version</p>
+</th>
+<th class="head"><p>differences</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">use</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">take</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">use</span></code> can sometimes automatically fill in the proof that the witness</p>
+<p>has the desired property</p>
+</td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">norm_num</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">numbers</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">norm_num</span></code> can do some calculations which in this book we require</p>
+<p>the reader to carry out by hand, including reduction mod <span class="math notranslate nohighlight">\(n\)</span>,</p>
+<p>handling logic, and checking divisibility and primality</p>
+</td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">gcongr</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">rel</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">gcongr</span></code> does not require you to state which hypotheses you are</p>
+<p>substituting</p>
+</td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">linarith</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">addarith</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">linarith</span></code> can take constant multiples of linear inequalities as well</p>
+<p>as adding/subtracting constants, it can combine many linear</p>
+<p>inequalities, and it does not require you to state which hypotheses</p>
+<p>you are using</p>
+</td>
+</tr>
+</tbody>
+</table>
+<p>Some tactics used in this book have no mathlib analogues.  They are typically wrappers for a small
+collection of lemmas, and in mathlib these lemmas would be invoked by name.</p>
+<span id="tactic-lemma-wrapper-table"></span><table class="colwidths-given docutils align-default" id="id2">
+<caption><span class="caption-number">Table 2 </span><span class="caption-text">Tactics in this book with no mathlib analogues</span><a class="headerlink" href="#id2" title="Permalink to this table">&#61633;</a></caption>
+<colgroup>
+<col style="width: 27%" />
+<col style="width: 73%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p><em>Mechanics of Proof</em> tactic</p></th>
+<th class="head"><p>lemmas wrapped</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">extra</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">Int.modEq_fac_zero</span></code>, <code class="docutils literal notranslate"><span class="pre">le_add_of_nonneg_right</span></code>,</p>
+<p><code class="docutils literal notranslate"><span class="pre">lt_add_of_pos_right</span></code>, etc. together with the tactic</p>
+<p><code class="docutils literal notranslate"><span class="pre">positivity</span></code></p>
+</td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">inductive_type</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">rfl</span></code>, <code class="docutils literal notranslate"><span class="pre">nomatch</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">simple_induction</span></code></p>
+<p><code class="docutils literal notranslate"><span class="pre">induction_from_starting_point</span></code></p>
+<p><code class="docutils literal notranslate"><span class="pre">two_step_induction</span></code></p>
+<p><code class="docutils literal notranslate"><span class="pre">two_step_induction_from_starting_point</span></code></p>
+</td>
+<td><p><code class="docutils literal notranslate"><span class="pre">Nat.le_induction</span></code>, <code class="docutils literal notranslate"><span class="pre">Nat.two_step_induction</span></code>, etc. together</p>
+<p>with the tactics <code class="docutils literal notranslate"><span class="pre">induction</span></code> or <code class="docutils literal notranslate"><span class="pre">induction'</span></code></p>
+</td>
+</tr>
+</tbody>
+</table>
+<p>Many of the problems in this book would be solved much more efficiently in mathlib-style
+Lean, because there is some sequence of steps which can be carried out as one step by an advanced
+algorithm which is beyond the mathematical scope of this book.  Some tactics of this kind to be
+aware of:</p>
+<span id="decision-procedures"></span><table class="colwidths-given docutils align-default" id="id3">
+<caption><span class="caption-number">Table 3 </span><span class="caption-text">Advanced algorithms not used in this book</span><a class="headerlink" href="#id3" title="Permalink to this table">&#61633;</a></caption>
+<colgroup>
+<col style="width: 27%" />
+<col style="width: 27%" />
+<col style="width: 45%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>algorithm</p></th>
+<th class="head"><p>mathlib tactic</p></th>
+<th class="head"><p>the kinds of steps this tactic can replace</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><a class="reference external" href="https://en.wikipedia.org/wiki/Fourier%E2%80%93Motzkin_elimination">Fourier-Motzkin elimination</a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">linarith</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">addarith</span></code>, <code class="docutils literal notranslate"><span class="pre">rel</span></code>, <code class="docutils literal notranslate"><span class="pre">ring</span></code>, <code class="docutils literal notranslate"><span class="pre">numbers</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference external" href="https://en.wikipedia.org/wiki/Buchberger%27s_algorithm">Buchberger&#8217;s algorithm</a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">polyrith</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">rw</span></code>, <code class="docutils literal notranslate"><span class="pre">ring</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>best-first search</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">aesop</span></code></p></td>
+<td><p>logic tactics at the end of a proof or sub-proof</p></td>
+</tr>
+</tbody>
+</table>
+<p>Another point not covered in this book is how to interact with the library.  Since mathlib contains
+over a million lines of Lean code, it is not always easy to find out whether a lemma you want exists
+in the library!  In this book, I avoid the issue by telling you in advance the name of any lemma I
+expect you to use.</p>
+<p>A few basic points to be aware of in interacting with the library:</p>
+<ul class="simple">
+<li><p>The <a class="reference external" href="https://leanprover-community.github.io/mathlib4_docs/">online documentation</a> is generally
+more readable than the source code: it is searchable and it has internal hyperlinks.</p></li>
+<li><p>Lemmas are often stated in extreme generality &#8230; <span class="math notranslate nohighlight">\((a - b) + c = a - (b - c)\)</span>
+<a class="reference external" href="https://leanprover-community.github.io/mathlib4_docs/Mathlib/Algebra/Group/Basic.html#sub_sub">is stated</a>
+not for <span class="math notranslate nohighlight">\(\mathbb{R}\)</span> but for a <code class="docutils literal notranslate"><span class="pre">SubtractionCommMonoid</span></code>.  You may have better
+luck interacting with the library after first courses on algebra and point-set topology.</p></li>
+<li><p>If you can guess the exact statement of a lemma, the tactic <code class="docutils literal notranslate"><span class="pre">exact?</span></code> will find it in the
+library.</p></li>
+</ul>
+<p>All this only scratches the surface: there are many more features of Lean to help you in your
+mathematical discoveries.  <em>Mathematics in Lean</em>, the
+<a class="reference external" href="https://leanprover-community.github.io/">community website</a>, and the
+<a class="reference external" href="https://leanprover.zulipchat.com/">community discussion board</a> offer further pointers for
+exploration.  Have fun!</p>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="Index_of_Tactics.html" class="btn btn-neutral float-left" title="Index of Lean tactics" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="Homework.html" class="btn btn-neutral float-right" title="Homework (Spring 2023)" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2022-2023, Heather Macbeth.  All rights reserved.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

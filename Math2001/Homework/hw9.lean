@@ -11,6 +11,7 @@ set_option push_neg.use_distrib true
 set_option quotPrecheck false
 open Set
 
+attribute [-instance] Int.instDivInt_1 Int.instDivInt EuclideanDomain.instDiv Nat.instDivNat
 attribute [-simp] Set.setOf_eq_eq_singleton
 
 

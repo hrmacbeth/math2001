@@ -4,6 +4,8 @@ import Library.Tactic.Addarith
 import Library.Tactic.Numbers
 import Library.Tactic.Extra
 
+attribute [-instance] Int.instDivInt_1 Int.instDivInt EuclideanDomain.instDiv Nat.instDivNat
+
 
 example {x y : ℤ} (h : 2 * x - y = 4 ∧ y - x + 1 = 2) : x = 5 := by
   obtain ⟨h1, h2⟩ := h

@@ -7,8 +7,10 @@ import Library.Tactic.Numbers
 import Library.Tactic.Extra
 import Library.Tactic.Take
 
-namespace Nat
+attribute [-instance] Int.instDivInt_1 Int.instDivInt EuclideanDomain.instDiv Nat.instDivNat
 set_option linter.unusedVariables false
+
+namespace Nat
 
 notation3 (prettyPrint := false) "forall_sufficiently_large "(...)", "r:(scoped P => ∃ C, ∀ x ≥ C, P x) => r
 
@@ -64,7 +66,10 @@ example (n : ℕ) : 4 ^ n ≡ 1 [ZMOD 15] ∨ 4 ^ n ≡ 4 [ZMOD 15] := by
     numbers
   · -- inductive step
     obtain hk | hk := IH
-    · sorry
+    · right
+      calc (4:ℤ) ^ (k + 1) = 4 * 4 ^ k := by ring
+        _ ≡ 4 * 1 [ZMOD 15] := by rel [hk]
+        _ = 4 := by numbers 
     · left
       calc (4:ℤ) ^ (k + 1) = 4 * 4 ^ k := by ring
         _ ≡ 4 * 4 [ZMOD 15] := by rel [hk]

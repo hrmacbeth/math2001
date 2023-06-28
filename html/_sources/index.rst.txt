@@ -11,7 +11,12 @@ the cloud on Gitpod.
 
 These lecture notes are aimed at the early university level and have been written for the course
 Math 2001, at Fordham University.  Please reach out to the author,
-`Heather Macbeth <https://hrmacbeth.github.io/math2001/>`_, with comments and corrections.
+`Heather Macbeth <https://faculty.fordham.edu/hmacbeth1/>`_, with comments and corrections.
+
+.. toctree::
+   :maxdepth: 2
+
+   00_Introduction
 
 .. toctree::
    :numbered:
@@ -28,10 +33,11 @@ Math 2001, at Fordham University.  Please reach out to the author,
    09_Sets
    10_Relations 
 
-.. toctree::
-   :hidden:
+**Appendices**
 
+.. toctree::
    Index_of_Tactics
+   Mainstream_Lean
 
 .. toctree::
    Homework

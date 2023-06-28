@@ -7,6 +7,7 @@ import Library.Tactic.Take
 
 /-! # Homework 3 -/
 
+attribute [-instance] Int.instDivInt_1 Int.instDivInt Nat.instDivNat
 open Int
 
 

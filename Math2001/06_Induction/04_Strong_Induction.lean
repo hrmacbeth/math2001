@@ -8,6 +8,7 @@ import Library.Tactic.Numbers
 import Library.Tactic.Take
 
 notation3 (prettyPrint := false) "forall_sufficiently_large "(...)", "r:(scoped P => ∃ C, ∀ x ≥ C, P x) => r
+attribute [-instance] Int.instDivInt_1 Int.instDivInt Nat.instDivNat
 set_option push_neg.use_distrib true
 set_option linter.unusedVariables false
 open Nat

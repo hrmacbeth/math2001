@@ -13,6 +13,7 @@ import Library.Tactic.Take
 set_option push_neg.use_distrib true
 open Set
 
+attribute [-instance] Int.instDivInt_1 Int.instDivInt EuclideanDomain.instDiv Nat.instDivNat
 attribute [-simp] Set.setOf_eq_eq_singleton
 
 

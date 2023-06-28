@@ -5,6 +5,7 @@ import Library.Tactic.Extra
 import Mathlib.Tactic.FieldSimp
 import Mathlib.Tactic.GCongr
 
+attribute [-instance] Int.instDivInt_1 Int.instDivInt Nat.instDivNat
 attribute [field_simps] LT.lt.ne'
 
 open Nat

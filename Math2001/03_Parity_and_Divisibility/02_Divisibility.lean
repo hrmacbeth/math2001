@@ -5,6 +5,8 @@ import Library.Tactic.Extra
 import Library.Tactic.Numbers
 import Library.Tactic.Take
 
+attribute [-instance] Int.instDivInt_1 Int.instDivInt Nat.instDivNat
+
 
 example : (11 : ℕ) ∣ 88 := by
   dsimp [(· ∣ ·)]

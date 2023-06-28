@@ -5,6 +5,8 @@ import Library.Tactic.Addarith
 import Library.Tactic.Numbers
 import Library.Tactic.Extra
 
+attribute [-instance] Int.instDivInt_1 Int.instDivInt EuclideanDomain.instDiv Nat.instDivNat
+
 
 example {x y : ℝ} (h : x = 1 ∨ y = -1) : x * y + x = y + 1 := by
   obtain hx | hy := h

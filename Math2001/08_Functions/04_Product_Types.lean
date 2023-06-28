@@ -10,6 +10,7 @@ import Library.Tactic.Product
 import Library.Tactic.Extra
 import Library.Tactic.Take
 
+attribute [-instance] Int.instDivInt_1 Int.instDivInt EuclideanDomain.instDiv Nat.instDivNat
 set_option push_neg.use_distrib true
 attribute [-simp] ne_eq
 open Function
@@ -145,16 +146,6 @@ theorem A_mono {n m : ℕ} (h : n ≤ m) : A n ≤ A m := by
       _ ≤ A k + (k + 1) := by extra
       _ = A k + k + 1 := by ring
       _ = A (k + 1) := by rw [A]
-
--- STUDENTS: ignore this, it is temporary while waiting for a bugfix
-theorem A_zero : A 0 = 0 := rfl
-theorem A_succ (n : ℕ) : A (n + 1) = A n + n + 1 := rfl
-
--- ignore this too
-open Lean Meta in
-#eval modifyEnv (m := MetaM) fun env =>
-  eqnsExt.modifyState env fun s =>
-    { s with map := s.map.insert ``A #[``A_succ, ``A_zero] }
 
 
 theorem of_A_add_mono {a1 a2 b1 b2 : ℕ} (h : A (a1 + b1) + b1 ≤ A (a2 + b2) + b2) :
