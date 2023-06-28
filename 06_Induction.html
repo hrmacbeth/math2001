@@ -40,7 +40,10 @@
   </form>
 </div>
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
-              <ul class="current">
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="00_Introduction.html">Introduction</a></li>
+</ul>
+<ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="01_Proofs_by_Calculation.html">1. Proofs by calculation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="02_Proofs_with_Structure.html">2. Proofs with structure</a></li>
 <li class="toctree-l1"><a class="reference internal" href="03_Parity_and_Divisibility.html">3. Parity and divisibility</a></li>
@@ -52,7 +55,7 @@
 <li class="toctree-l3"><a class="reference internal" href="#id2">6.1.2. Example</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#modeq-pow-proof">6.1.3. Example</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#pow-eq-zero-proof">6.1.4. Example</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id5">6.1.5. Example</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#induction-alternating-congruence">6.1.5. Example</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#induction-starting-point">6.1.6. Example</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#id7">6.1.7. Example</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#exercises">6.1.8. Exercises</a></li>
@@ -118,9 +121,10 @@
 </ul>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="Index_of_Tactics.html">Index of Lean tactics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Mainstream_Lean.html">Transitioning to mainstream Lean</a></li>
 </ul>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="Homework.html">Homework</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Homework.html">Homework (Spring 2023)</a></li>
 </ul>
 
         </div>
@@ -309,8 +313,8 @@ that <span class="math notranslate nohighlight">\(a=0\)</span>, or else <span cl
 </pre></div>
 </div>
 </section>
-<section id="id5">
-<h3><span class="section-number">6.1.5. </span>Example<a class="headerlink" href="#id5" title="Permalink to this headline">&#61633;</a></h3>
+<section id="induction-alternating-congruence">
+<span id="id5"></span><h3><span class="section-number">6.1.5. </span>Example<a class="headerlink" href="#induction-alternating-congruence" title="Permalink to this headline">&#61633;</a></h3>
 <div class="admonition-problem admonition">
 <p class="admonition-title">Problem</p>
 <p>Let <span class="math notranslate nohighlight">\(n\)</span> be a natural number.  Show that <span class="math notranslate nohighlight">\(4^n\)</span> is congruent to either <span class="math notranslate nohighlight">\(1\)</span> or
@@ -340,7 +344,10 @@ either <span class="math notranslate nohighlight">\(1\)</span> or <span class="m
     <span class="n">numbers</span>
   <span class="bp">&#183;</span> <span class="c1">-- inductive step</span>
     <span class="n">obtain</span> <span class="n">hk</span> <span class="bp">|</span> <span class="n">hk</span> <span class="o">:=</span> <span class="n">IH</span>
-    <span class="bp">&#183;</span> <span class="gr">sorry</span>
+    <span class="bp">&#183;</span> <span class="n">right</span>
+      <span class="k">calc</span> <span class="o">(</span><span class="mi">4</span><span class="o">:</span><span class="n">&#8484;</span><span class="o">)</span> <span class="bp">^</span> <span class="o">(</span><span class="n">k</span> <span class="bp">+</span> <span class="mi">1</span><span class="o">)</span> <span class="bp">=</span> <span class="mi">4</span> <span class="bp">*</span> <span class="mi">4</span> <span class="bp">^</span> <span class="n">k</span> <span class="o">:=</span> <span class="kd">by</span> <span class="n">ring</span>
+        <span class="n">_</span> <span class="bp">&#8801;</span> <span class="mi">4</span> <span class="bp">*</span> <span class="mi">1</span> <span class="o">[</span><span class="n">ZMOD</span> <span class="mi">15</span><span class="o">]</span> <span class="o">:=</span> <span class="kd">by</span> <span class="n">rel</span> <span class="o">[</span><span class="n">hk</span><span class="o">]</span>
+        <span class="n">_</span> <span class="bp">=</span> <span class="mi">4</span> <span class="o">:=</span> <span class="kd">by</span> <span class="n">numbers</span>
     <span class="bp">&#183;</span> <span class="n">left</span>
       <span class="k">calc</span> <span class="o">(</span><span class="mi">4</span><span class="o">:</span><span class="n">&#8484;</span><span class="o">)</span> <span class="bp">^</span> <span class="o">(</span><span class="n">k</span> <span class="bp">+</span> <span class="mi">1</span><span class="o">)</span> <span class="bp">=</span> <span class="mi">4</span> <span class="bp">*</span> <span class="mi">4</span> <span class="bp">^</span> <span class="n">k</span> <span class="o">:=</span> <span class="kd">by</span> <span class="n">ring</span>
         <span class="n">_</span> <span class="bp">&#8801;</span> <span class="mi">4</span> <span class="bp">*</span> <span class="mi">4</span> <span class="o">[</span><span class="n">ZMOD</span> <span class="mi">15</span><span class="o">]</span> <span class="o">:=</span> <span class="kd">by</span> <span class="n">rel</span> <span class="o">[</span><span class="n">hk</span><span class="o">]</span>

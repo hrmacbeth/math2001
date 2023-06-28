@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Introduction &mdash; The mechanics of proof  documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/custom.css" type="text/css" />
+    <link rel="shortcut icon" href="_static/favicon.ico"/>
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="1. Proofs by calculation" href="01_Proofs_by_Calculation.html" />
+    <link rel="prev" title="The mechanics of proof" href="index.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="index.html" class="icon icon-home"> The mechanics of proof
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Introduction</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#about-this-book">About this book</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#about-lean">About Lean</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#note-for-instructors">Note for instructors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#acknowledgements">Acknowledgements</a></li>
+</ul>
+</li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="01_Proofs_by_Calculation.html">1. Proofs by calculation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="02_Proofs_with_Structure.html">2. Proofs with structure</a></li>
+<li class="toctree-l1"><a class="reference internal" href="03_Parity_and_Divisibility.html">3. Parity and divisibility</a></li>
+<li class="toctree-l1"><a class="reference internal" href="04_Proofs_with_Structure_II.html">4. Proofs with structure, II</a></li>
+<li class="toctree-l1"><a class="reference internal" href="05_Logic.html">5. Logic</a></li>
+<li class="toctree-l1"><a class="reference internal" href="06_Induction.html">6. Induction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="07_Number_Theory.html">7. Number theory</a></li>
+<li class="toctree-l1"><a class="reference internal" href="08_Functions.html">8. Functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="09_Sets.html">9. Sets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="10_Relations.html">10. Relations</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="Index_of_Tactics.html">Index of Lean tactics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Mainstream_Lean.html">Transitioning to mainstream Lean</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="Homework.html">Homework (Spring 2023)</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">The mechanics of proof</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+      <li>Introduction</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/00_Introduction.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="introduction">
+<span id="id1"></span><h1>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">&#61633;</a></h1>
+<section id="about-this-book">
+<h2>About this book<a class="headerlink" href="#about-this-book" title="Permalink to this headline">&#61633;</a></h2>
+<p>This is a book dealing with how to write careful, rigorous mathematical proofs.
+The book is paired with code in the computer formalization language
+<a class="reference external" href="https://leanprover.github.io/about/">Lean</a>.</p>
+<p>The book&#8217;s focus is on technique, not on theory-building: rather few theorems are proved and then
+relied on later.  Instead, the core of the book is in examples.  Over two hundred problems (most
+very easy) appear as examples in the text.  Each solution is presented both in standard mathematical
+prose and in Lean, and since these two &#8220;languages&#8221; are almost equally foreign for students who are
+new to proofs, most solutions are annotated with informal commentary.</p>
+<p>Several hundred more problems are included as exercises for the reader.  These exercises are also
+presented both in prose and in Lean.</p>
+<p>You are ready to read this book if (1) you know high school algebra inside out and (2) you have
+experience learning to carry out complicated mathematical algorithms.  I have in mind, as a typical
+reader, a first- or second-year university student who has just taken Calculus II.  But no calculus
+is actually used in this book.</p>
+<p>The main novelty of this text is the &#8220;bilingual&#8221; presentation, juxtaposing prose mathematics with
+Lean code.  But the design choices enforced by this presentation have shaped the text in other ways.</p>
+<p>The <a class="reference internal" href="01_Proofs_by_Calculation.html#proofs-by-calculation"><span class="std std-ref">first chapter</span></a> of the book contains an unusually careful treatment
+of &#8220;calculational proofs&#8221;.  These proofs are a natural starting point for the book because they
+translate easily to Lean, but they are also worthy of attention as a topic which students at this
+level often struggle with. (It&#8217;s in fact quite possible to get through the <em>equality</em>-heavy
+reasoning of many intro-to-proof courses
+without really mastering this mode of reasoning, but it&#8217;s nearly impossible to reason about
+<em>inequalities</em> without mastering calculational proofs, and students who don&#8217;t pick up the skill in
+an intro-to-proof course will find it come back to haunt them when they reach real analysis.)</p>
+<p>The <a class="reference internal" href="02_Proofs_with_Structure.html#proofs-with-structure"><span class="std std-ref">second</span></a> and <a class="reference internal" href="04_Proofs_with_Structure_II.html#proofs-with-structure-ii"><span class="std std-ref">fourth chapters</span></a> of
+the book constitute a slow march through the rules of
+<a class="reference external" href="https://en.wikipedia.org/wiki/Natural_deduction">natural deduction</a>, solving problems about
+<span class="math notranslate nohighlight">\(\mathbb{N}\)</span>, <span class="math notranslate nohighlight">\(\mathbb{Z}\)</span>, <span class="math notranslate nohighlight">\(\mathbb{Q}\)</span> and <span class="math notranslate nohighlight">\(\mathbb{R}\)</span> which feature
+increasingly many of the logical connectives and quantifiers.  The requirement to translate
+everything to Lean keeps the book strictly honest through these chapters. The typical intro-to-proof
+textbook does not have this guardrail, and will commonly make minor abuses here &#8211; for example,
+presenting a good example of a proof by cases which implicitly also uses a not-yet-covered proof
+technique such as filling a witness to an existential.</p>
+<p>Logic is not taught explicitly until the <a class="reference internal" href="05_Logic.html#logic"><span class="std std-ref">fifth chapter</span></a> of the book, by which stage
+readers will already be comfortable with the various logical connectives/quantifiers and with
+translating mathematical statements back and forth between words and symbols.  This permits the
+logic chapter to be relatively brief, with a focus on the concept of logical equivalence (presented
+primarily using natural deduction, to link with Chapters 2 and 4, rather than using truth tables).</p>
+<p>The other chapters of the book are more recognizable as the &#8220;normal mathematics&#8221; for a book of this
+type.  Sufficient familiarity with Lean has been established, and the mathematical presentation is
+no longer constrained.</p>
+</section>
+<section id="about-lean">
+<h2>About Lean<a class="headerlink" href="#about-lean" title="Permalink to this headline">&#61633;</a></h2>
+<p>People have been expressing mathematical arguments in words for thousands of years, and mathematical
+language is by now very standardized, with many conventions to let mathematicians communicate with
+each other efficiently and unambiguously.  The primary goal of this book is to teach you to read and
+write standard mathematical English prose.</p>
+<p>Computer systems called <em>interactive theorem provers</em> (also known as <em>proof assistants</em> or systems
+for <em>formalization</em>) offer an alternative way to express a mathematical argument.
+<a class="reference external" href="https://leanprover.github.io/">Lean</a>, an open-source project developed at Microsoft Research and
+elsewhere since 2013, is one such system, but they have existed since
+<a class="reference external" href="https://en.wikipedia.org/wiki/Automath">the early days of computing</a>.</p>
+<p>This book is bilingual: mathematical arguments are presented both in prose and in Lean. You should
+read the book with a computer open to the corresponding file of Lean code, and jump back and forth
+between them.</p>
+<p>Interactive theorem-proving systems such as Lean have become steadily easier to use over the
+years, but they are not yet actually <em>easy</em> to use: they can be fussy and unforgiving, just like any
+other computer programming language.  So why does this book propose that you use such
+a system in your first encounter with proofs?</p>
+<p>First: Like it says on the tin, writing proofs in an interactive theorem prover is interactive.  At
+each point in your proof, you can see a visual representation of the <em>proof state</em>: what you know
+(your <em>hypotheses</em>) and what you are currently working towards (your <em>goal(s)</em>).
+If you are new to writing mathematical proofs, you may be surprised at how hard you find it to
+distinguish hypotheses from goals on paper after a few steps alternating between forward and
+backward reasoning, or how easily you lose track of one case in a case division.
+Lean&#8217;s live-updating visual representation of the proof state frees you from needing to keep this
+in your working memory.</p>
+<p>Second: Computer formalization systems, fussy unforgiving programming languages that they are, give
+syntax errors when you make a mistake.  Feedback is instant and you can keep iterating until you
+have something that works. Writing a solution in Lean ensures that it is completely correct:
+no substitutions of an inequality under a minus sign, no divisions by zero, no terms dropped in
+the algebra.  This is especially useful in doing proof-based mathematics: make a small error
+halfway through a calculus problem and the rest of the solution probably won&#8217;t change much, but
+make a small error halfway through a proof and the rest of the solution may be useless.</p>
+<p>Finally: You interact with Lean using <em>tactics</em> which each perform a single step of a certain mode
+of reasoning.  The tactics which are taught in this textbook (some custom-written for this book)
+each constitute a single permissible &#8220;atom&#8221; of reasoning in the mental world of the book.
+This makes objective something which in a prose-only textbook can be subjective: what constitutes a
+fully-detailed proof.  What&#8217;s more, the &#8220;atoms&#8221; I offer you are designed to nudge you toward
+certain styles of mathematical argument structure <a class="footnote-reference brackets" href="#id3" id="id2">1</a> which are conventional in standard
+mathematical prose but which students are often slow to adopt.</p>
+<p>This is a book about mathematics which uses Lean as a tool. It is not optimized as an introduction
+to Lean, or even to mathematical Lean. (If you are looking for such a book, you&#8217;re in luck &#8211; refer
+to the excellent
+<a class="reference external" href="https://leanprover-community.github.io/mathematics_in_lean/">Mathematics in Lean</a>, but note that
+that book expects more mathematical experience than this one does: writing idiomatic Lean code, even
+to prove elementary statements, requires some mathematical maturity.) For pedagogical purposes, the
+Lean code of this book is written in a &#8220;dialect&#8221; of my own, featuring many modifications from the
+usual vernacular.  A summary of the differences can be found in the appendix
+<a class="reference internal" href="Mainstream_Lean.html#transitioning-to-regular-lean"><span class="std std-ref">Transitioning to mainstream Lean</span></a>.</p>
+</section>
+<section id="note-for-instructors">
+<h2>Note for instructors<a class="headerlink" href="#note-for-instructors" title="Permalink to this headline">&#61633;</a></h2>
+<p>This book is based on lecture notes from a course I taught in Spring 2023 at Fordham University.
+There were 20 students in the course, mostly first- and second-year students, with a median
+background of Calculus II.  (Many but not all had also taken a first course in computer
+programming.)</p>
+<p>The course had 75-minute classes, twice a week for 13 weeks, and in this time covered about 80% of
+the material in this book.  A typical class structure might look like this:</p>
+<ul class="simple">
+<li><p>25 minutes traditional blackboard lecture</p></li>
+<li><p>5 minutes screenshare lecture doing the same problems in Lean</p></li>
+<li><p>20 minutes working in Lean in pairs, instructor circulating</p></li>
+<li><p>25 minutes traditional blackboard lecture, perhaps on a more theoretical topic which doesn&#8217;t
+translate directly into a &#8220;machine to generate homework problems&#8221;</p></li>
+</ul>
+<p>The homework assignments for the course are included <a class="reference internal" href="Homework.html#homework"><span class="std std-ref">at the end of the book</span></a>. They
+are relatively short (5-7 problems per week), but students were required to submit almost all
+problems both in writing and in Lean.  Most students required support in office hours or by email
+to complete the homework assignments (I was fairly careful to keep this support &#8220;spoiler-free&#8221;).</p>
+<p>The course also featured oral examinations at the 5- and 10-week marks.  These were 20-minute
+one-on-one interviews assessing Lean fluency: students solved previously-unseen Lean exercises
+(different exercises for each student), explaining their reasoning aloud. The grade breakdown for
+the course was 25% homework, 20% oral examinations, and 55% traditional written examinations
+(a midterm and a final, both completely Lean-free).</p>
+<p>Clearly, the combination of in-class work with instructor circulating, homework support in office
+hours and by email, and oral examinations adds up to a significant amount of time spent interacting
+with individual (or small groups of) students.  The student:staff ratio 20:1 was sustainable.  I
+suspect that to go beyond this ratio, one would need very strong students or an experienced and
+enthusiastic TA.</p>
+<p>The students ran Lean in a cloud development environment, to avoid needing to install Lean on their
+own computers.  I used <a class="reference external" href="https://www.gitpod.io/">Gitpod</a> for this (an alternative is
+<a class="reference external" href="https://github.com/features/codespaces">GitHub Codespaces</a>) &#8211; see the README of the book&#8217;s
+<a class="reference external" href="https://github.com/hrmacbeth/math2001">code repository</a> for brief instructions on how to start
+using Gitpod.  The students&#8217; Lean homework was automatically graded using a
+<a class="reference external" href="https://www.gradescope.com/">Gradescope</a> auto-grader (an alternative is
+<a class="reference external" href="https://classroom.github.com/">GitHub Classroom</a>).</p>
+<p>The book is currently being updated for future semesters.  Please email
+<a class="reference external" href="https://faculty.fordham.edu/hmacbeth1/">me</a> if you would like to be kept apprised of major
+changes.</p>
+</section>
+<section id="acknowledgements">
+<h2>Acknowledgements<a class="headerlink" href="#acknowledgements" title="Permalink to this headline">&#61633;</a></h2>
+<p>My heartfelt thanks to</p>
+<ul class="simple">
+<li><p>Microsoft Research, for a <a class="reference external" href="https://www.microsoft.com/en-us/research/academic-program/microsoft-research-lean-award-program/">grant</a>
+which supported the writing of the book</p></li>
+<li><p>My department at Fordham, for letting me teach the experimental course which this book grew from</p></li>
+<li><p>The intrepid students in that course, Math 2001 L01 Spring 2023, for their enthusiasm and
+resourcefulness</p></li>
+<li><p>Matthew Hertz, for setting up the Sphinx infrastructure for the book and typesetting the first
+chapters</p></li>
+<li><p>The <a class="reference external" href="https://leanprover-community.github.io/">mathlib community</a>, and particularly Mario
+Carneiro, Gabriel Ebner, Scott Morrison, Thomas Murrills and David Renshaw, for their work on the
+Lean 3 to Lean 4 port in fall 2022 and winter 2023 prioritizing the parts of the library I needed
+for the course</p></li>
+<li><p>Mario Carneiro (also) for marathon hacking sessions which produced the most interesting custom
+tactics used in the book</p></li>
+<li><p>Jeremy Avigad, Rob Lewis and Patrick Massot, for sharing technical infrastructure for Lean-based
+courses and for many conversations about the dream of teaching mathematics with Lean</p></li>
+</ul>
+<p class="rubric">Footnotes</p>
+<dl class="footnote brackets">
+<dt class="label" id="id3"><span class="brackets"><a class="fn-backref" href="#id2">1</a></span></dt>
+<dd><p>For example, the uses of calculation blocks for most algebraic reasoning, and a preference
+for forward over backward reasoning.</p>
+</dd>
+</dl>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="index.html" class="btn btn-neutral float-left" title="The mechanics of proof" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="01_Proofs_by_Calculation.html" class="btn btn-neutral float-right" title="1. Proofs by calculation" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2022-2023, Heather Macbeth.  All rights reserved.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

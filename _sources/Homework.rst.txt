@@ -1,7 +1,7 @@
 .. _homework:
 
-Homework
-========
+Homework (Spring 2023)
+======================
 
 .. include:: Homework/hw0.inc
 .. include:: Homework/hw1.inc

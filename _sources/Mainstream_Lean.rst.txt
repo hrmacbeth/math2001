@@ -1,0 +1,146 @@
+.. _transitioning_to_regular_lean:
+
+Transitioning to mainstream Lean
+================================
+
+If you have enjoyed this book, you may wish to work further with Lean, for example by working
+through the book
+`Mathematics in Lean <https://leanprover-community.github.io/mathematics_in_lean/>`_ or by starting
+an
+`independent formalization project <https://github.com/leanprover-community/mathlib4/wiki/Using-mathlib4-as-a-dependency>`_.
+
+You will discover that the Lean "dialect" used in this book differs from the mainstream mathematical
+Lean used in the library `mathlib <https://github.com/leanprover-community/mathlib4>`_ and its
+associated literature such as *Mathematics in Lean*.  To help you adjust, in this appendix I outline
+the major differences.
+
+Some tactics used in this book are deliberately weakened versions of tactics in mathlib: I have
+done this to block certain of Lean's capabilities because prose proofs at the level of this book
+would typically write out the details in full. These deliberately weakened tactics include:
+
+.. _tactic_comparison_table:
+
+..  list-table::  Tactics in this book, and their mathlib originals
+    :widths: 30 30 50
+    :header-rows: 1
+
+    * - mathlib tactic
+      - weakened
+      
+        *Mechanics of*
+        
+        *Proof* version
+      - differences
+
+    * - ``use``
+      - ``take``
+      - ``use`` can sometimes automatically fill in the proof that the witness
+        
+        has the desired property
+
+    * - ``norm_num``
+      - ``numbers``
+      - ``norm_num`` can do some calculations which in this book we require
+      
+        the reader to carry out by hand, including reduction mod :math:`n`,
+        
+        handling logic, and checking divisibility and primality
+
+    * - ``gcongr``
+      - ``rel``
+      - ``gcongr`` does not require you to state which hypotheses you are
+      
+        substituting      
+
+    * - ``linarith``
+      - ``addarith``
+      - ``linarith`` can take constant multiples of linear inequalities as well
+      
+        as adding/subtracting constants, it can combine many linear
+        
+        inequalities, and it does not require you to state which hypotheses
+        
+        you are using
+
+Some tactics used in this book have no mathlib analogues.  They are typically wrappers for a small
+collection of lemmas, and in mathlib these lemmas would be invoked by name.
+
+.. _tactic_lemma_wrapper_table:
+
+..  list-table::  Tactics in this book with no mathlib analogues
+    :widths: 30 80
+    :header-rows: 1
+
+    * - *Mechanics of Proof* tactic
+      - lemmas wrapped
+
+    * - ``extra``
+      - ``Int.modEq_fac_zero``, ``le_add_of_nonneg_right``,
+      
+        ``lt_add_of_pos_right``, etc. together with the tactic
+        
+        ``positivity``
+
+    * - ``inductive_type``
+      - ``rfl``, ``nomatch``
+
+    * - ``simple_induction``
+
+        ``induction_from_starting_point``
+
+        ``two_step_induction``
+
+        ``two_step_induction_from_starting_point``
+
+      - ``Nat.le_induction``, ``Nat.two_step_induction``, etc. together
+      
+        with the tactics ``induction`` or ``induction'``
+
+Many of the problems in this book would be solved much more efficiently in mathlib-style
+Lean, because there is some sequence of steps which can be carried out as one step by an advanced
+algorithm which is beyond the mathematical scope of this book.  Some tactics of this kind to be
+aware of:
+
+.. _decision_procedures:
+
+..  list-table::  Advanced algorithms not used in this book
+    :widths: 30 30 50
+    :header-rows: 1
+
+    * - algorithm
+      - mathlib tactic
+      - the kinds of steps this tactic can replace
+      
+    * - `Fourier-Motzkin elimination <https://en.wikipedia.org/wiki/Fourier%E2%80%93Motzkin_elimination>`_
+      - ``linarith``
+      - ``addarith``, ``rel``, ``ring``, ``numbers``
+
+    * - `Buchberger's algorithm <https://en.wikipedia.org/wiki/Buchberger%27s_algorithm>`_
+      - ``polyrith``
+      - ``rw``, ``ring``
+
+    * - best-first search
+      - ``aesop``
+      - logic tactics at the end of a proof or sub-proof
+
+Another point not covered in this book is how to interact with the library.  Since mathlib contains
+over a million lines of Lean code, it is not always easy to find out whether a lemma you want exists
+in the library!  In this book, I avoid the issue by telling you in advance the name of any lemma I
+expect you to use.
+
+A few basic points to be aware of in interacting with the library:
+
+* The `online documentation <https://leanprover-community.github.io/mathlib4_docs/>`_ is generally
+  more readable than the source code: it is searchable and it has internal hyperlinks.
+* Lemmas are often stated in extreme generality ... :math:`(a - b) + c = a - (b - c)` 
+  `is stated <https://leanprover-community.github.io/mathlib4_docs/Mathlib/Algebra/Group/Basic.html#sub_sub>`_
+  not for :math:`\mathbb{R}` but for a ``SubtractionCommMonoid``.  You may have better
+  luck interacting with the library after first courses on algebra and point-set topology.
+* If you can guess the exact statement of a lemma, the tactic ``exact?`` will find it in the
+  library.
+
+All this only scratches the surface: there are many more features of Lean to help you in your
+mathematical discoveries.  *Mathematics in Lean*, the
+`community website <https://leanprover-community.github.io/>`_, and the
+`community discussion board <https://leanprover.zulipchat.com/>`_ offer further pointers for
+exploration.  Have fun!
