@@ -1,6 +1,7 @@
 /- Copyright (c) Heather Macbeth, 2023.  All rights reserved. -/
 import Mathlib.Tactic.IntervalCases
 import Library.Tactic.Addarith
+import Library.Tactic.Cancel
 import Library.Tactic.Induction
 import Library.Tactic.Numbers
 import Library.Tactic.Extra
@@ -71,9 +72,7 @@ theorem fmod_nonneg_of_pos (n : ℤ) {d : ℤ} (hd : 0 < d) : 0 ≤ fmod n d := 
   · -- case `n = d`
     extra
   · -- last case
-    apply nonneg_of_mul_nonneg_left (b := d)
-    apply h1
-    apply hd
+    cancel d at h1
 termination_by _ n d hd => 2 * n - d
 
 
@@ -89,10 +88,10 @@ theorem fmod_lt_of_pos (n : ℤ) {d : ℤ} (hd : 0 < d) : fmod n d < d := by
   · -- case `n = d`
     apply hd
   · -- last case
-    have h4 : n - d ≤ 0
-    · apply nonpos_of_mul_nonpos_right (a := d)
-      apply h2
-      apply hd
+    have h4 :=
+    calc 0 ≤ - d * (n - d) := by addarith [h2]
+      _ = d * (d - n) := by ring
+    cancel d at h4
     apply lt_of_le_of_ne
     · addarith [h4]
     · apply h3

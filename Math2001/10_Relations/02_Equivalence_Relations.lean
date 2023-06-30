@@ -3,6 +3,7 @@ import Mathlib.Data.Real.Basic
 import Library.Theory.ModEq.Lemmas
 import Library.Theory.InjectiveSurjective
 import Library.Tactic.Addarith
+import Library.Tactic.Cancel
 import Library.Tactic.Define
 import Library.Tactic.ExistsDelaborator
 import Library.Tactic.Numbers
@@ -106,17 +107,16 @@ example : Transitive (· ∼ ·) := by
   dsimp [Transitive]
   intro (a, b) (c, d) (e, f) h1 h2
   dsimp at *
-  apply mul_left_cancel₀ (a := (d:ℤ) + 1)
-  · apply ne_of_gt
-    extra
   set B := (b:ℤ) + 1
   set D := (d:ℤ) + 1
   set F := (f:ℤ) + 1
+  have :=
   calc D * (a * F) = (a * D) * F := by ring
     _ = (c * B) * F := by rw [h1]
     _ = (c * F) * B := by ring
     _ = (e * D) * B := by rw [h2]
     _ = D * (e * B) := by ring
+  cancel D at this
 
 end
 

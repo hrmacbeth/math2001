@@ -38,27 +38,6 @@ example (n : ℕ) : Even n ∨ Odd n := by
 example {a b d : ℤ} (h : a ≡ b [ZMOD d]) (n : ℕ) : a ^ n ≡ b ^ n [ZMOD d] := by
   sorry
 
-example (a : ℝ) {n : ℕ} : a ^ n = 0 → a = 0 := by
-  simple_induction n with k IH
-  · -- base case
-    intro H
-    have h :=
-    calc 1 = a ^ 0 := by ring
-      _ = 0 := by rw [H]
-    numbers at h
-  · -- inductive step
-    intro H
-    have : a ^ k = 0 ∨ a = 0
-    · apply eq_zero_or_eq_zero_of_mul_eq_zero
-      calc a ^ k * a = a ^ (k + 1) := by ring
-        _ = 0 := by rw [H]
-    obtain H1 | H2 := this
-    · apply IH
-      apply H1
-    · apply H2
-
-
-
 example (n : ℕ) : 4 ^ n ≡ 1 [ZMOD 15] ∨ 4 ^ n ≡ 4 [ZMOD 15] := by  
   simple_induction n with k IH
   · -- base case

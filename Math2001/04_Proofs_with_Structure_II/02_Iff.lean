@@ -2,6 +2,7 @@
 import Mathlib.Data.Real.Basic
 import Library.Theory.Parity
 import Library.Tactic.Addarith
+import Library.Tactic.Cancel
 import Library.Tactic.ModCases
 import Library.Tactic.Numbers
 import Library.Tactic.Extra

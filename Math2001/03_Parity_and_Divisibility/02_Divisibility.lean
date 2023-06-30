@@ -1,5 +1,6 @@
 /- Copyright (c) Heather Macbeth, 2022.  All rights reserved. -/
 import Mathlib.Tactic.GCongr
+import Library.Tactic.Cancel
 import Library.Theory.Division
 import Library.Tactic.Extra
 import Library.Tactic.Numbers
@@ -42,12 +43,12 @@ example : ¬(5 : ℤ) ∣ 12 := by
 
 example {a b : ℕ} (hb : 0 < b) (hab : a ∣ b) : a ≤ b := by
   obtain ⟨k, hk⟩ := hab
-  have H : 1 ≤ k
-  · apply pos_of_mul_pos_right (a := a)
-    · calc
-        0 < b := hb
-        _ = a * k := hk
-    · extra
+  have H1 :=
+    calc
+      0 < b := hb
+      _ = a * k := hk
+  cancel a at H1
+  have H : 1 ≤ k := H1
   calc
     a = a * 1 := by ring
     _ ≤ a * k := by rel [H]

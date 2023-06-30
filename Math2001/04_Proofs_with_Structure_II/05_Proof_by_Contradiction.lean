@@ -1,9 +1,11 @@
 /- Copyright (c) Heather Macbeth, 2023.  All rights reserved. -/
 import Mathlib.Data.Real.Basic
 import Mathlib.Tactic.IntervalCases
+import Library.Theory.Comparison
 import Library.Theory.ParityModular
 import Library.Theory.Prime
 import Library.Tactic.Addarith
+import Library.Tactic.Cancel
 import Library.Tactic.ModCases
 import Library.Tactic.Numbers
 import Library.Tactic.Extra
@@ -22,7 +24,7 @@ example : ¬ (∀ x : ℝ, x ^ 2 ≥ x) := by
 example : ¬ 3 ∣ 13 := by
   intro H
   obtain ⟨k, hk⟩ := H
-  obtain h4 | h5 : k ≤ 4 ∨ 5 ≤ k := le_or_lt k 4
+  obtain h4 | h5 := le_or_succ_le k 4
   · have h :=
     calc 13 = 3 * k := hk
       _ ≤ 3 * 4 := by rel [h4]
@@ -84,13 +86,10 @@ example (a : ℤ) {b : ℤ} (hb : 0 < b)
   intro H
   obtain ⟨k, hk⟩ := H
   obtain ⟨q, hq₁, hq₂⟩ := h
-  have h₂ : k < q + 1
-  · apply lt_of_mul_lt_mul_left (a := b)
-    calc b * k = a := by rw [hk]
-      _ < b * (q + 1) := hq₂
-    extra
-  have h₁ : ¬ (k < q + 1)
-  · sorry
+  have h1 :=
+  calc b * k = a := by rw [hk]
+    _ < b * (q + 1) := hq₂
+  cancel b at h1
   sorry
 
 example {p : ℕ} (hp : 2 ≤ p)  (T : ℕ) (hTp : p < T ^ 2) 
@@ -104,15 +103,14 @@ example {p : ℕ} (hp : 2 ≤ p)  (T : ℕ) (hTp : p < T ^ 2)
   obtain ⟨l, hl⟩ := h_div
   have : l ∣ p
   · sorry
-  have hl1 : 1 < l
-  · apply lt_of_mul_lt_mul_left (a := m)
+  have hl1 :=
     calc m * 1 = m := by ring
       _ < p := hmp
       _ = m * l := hl
-    extra
+  cancel m at hl1
   have hl2 : l < T
   · sorry
-  have : ¬ l ∣ p := by apply H l hl1 hl2
+  have : ¬ l ∣ p := H l hl1 hl2
   contradiction
 
 

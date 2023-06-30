@@ -470,7 +470,7 @@ equality hypothesis, such as <code class="docutils literal notranslate"><span cl
 <p>We finish with a relatively hard example.  The proof here is efficient and self-contained but not
 particularly well-motivated.  For an alternative (perhaps more intuitive) approach, combine the last
 exercise in this section (the one about <em>strictly monotone</em> functions) with the idea from
-<a class="reference internal" href="02_Proofs_with_Structure.html#cube-inequality"><span class="std std-numref">Example 2.1.6</span></a>.</p>
+<a class="reference internal" href="02_Proofs_with_Structure.html#cube-inequality"><span class="std std-numref">Example 2.1.8</span></a>.</p>
 <div class="admonition-example admonition">
 <p class="admonition-title">Example</p>
 <p>Show that the function <span class="math notranslate nohighlight">\(x \mapsto x ^ 3\)</span> from <span class="math notranslate nohighlight">\(\mathbb{R}\)</span> to <span class="math notranslate nohighlight">\(\mathbb{R}\)</span> is
@@ -493,7 +493,7 @@ we henceforth assume.</p>
 <p>so <span class="math notranslate nohighlight">\(x_2=0\)</span> also.  Thus <span class="math notranslate nohighlight">\(x_1=0=x_2\)</span> as required.</p>
 <p><strong>Case 2</strong> (<span class="math notranslate nohighlight">\(x_1\ne 0\)</span>): Then</p>
 <div class="math notranslate nohighlight">
-\[\begin{split}0&amp;&lt;x_1{}^2+\left((x_1+x_2)^2+x_2{}^2\right)\\
+\[\begin{split}0&amp;&lt; x_1{}^2+\left((x_1+x_2)^2+x_2{}^2\right)\\
 &amp;=2(x_1{}^2+x_1x_2+x_2{}^2)\\
 &amp;=2\cdot 0\\
 &amp;=0,\end{split}\]</div>
@@ -513,11 +513,11 @@ we henceforth assume.</p>
   <span class="bp">&#183;</span> <span class="c1">-- case 2: x1 ^2 + x1 * x2 + x2 ^ 2  = 0</span>
     <span class="n">by_cases</span> <span class="n">hx1</span> <span class="o">:</span> <span class="n">x1</span> <span class="bp">=</span> <span class="mi">0</span>
     <span class="bp">&#183;</span> <span class="c1">-- case 2a: x1 = 0</span>
-      <span class="k">have</span> <span class="n">hx2</span> <span class="o">:</span> <span class="n">x2</span> <span class="bp">=</span> <span class="mi">0</span>
-      <span class="bp">&#183;</span> <span class="n">apply</span> <span class="n">pow_eq_zero</span> <span class="o">(</span><span class="n">n</span> <span class="o">:=</span> <span class="mi">3</span><span class="o">)</span>
-        <span class="k">calc</span> <span class="n">x2</span> <span class="bp">^</span> <span class="mi">3</span> <span class="bp">=</span> <span class="n">x1</span> <span class="bp">^</span> <span class="mi">3</span> <span class="o">:=</span> <span class="kd">by</span> <span class="n">rw</span> <span class="o">[</span><span class="n">hx</span><span class="o">]</span>
-          <span class="n">_</span> <span class="bp">=</span> <span class="mi">0</span> <span class="bp">^</span> <span class="mi">3</span> <span class="o">:=</span> <span class="kd">by</span> <span class="n">rw</span> <span class="o">[</span><span class="n">hx1</span><span class="o">]</span>
-          <span class="n">_</span> <span class="bp">=</span> <span class="mi">0</span> <span class="o">:=</span> <span class="kd">by</span> <span class="n">numbers</span>
+      <span class="k">have</span> <span class="n">hx2</span> <span class="o">:=</span>
+      <span class="k">calc</span> <span class="n">x2</span> <span class="bp">^</span> <span class="mi">3</span> <span class="bp">=</span> <span class="n">x1</span> <span class="bp">^</span> <span class="mi">3</span> <span class="o">:=</span> <span class="kd">by</span> <span class="n">rw</span> <span class="o">[</span><span class="n">hx</span><span class="o">]</span>
+        <span class="n">_</span> <span class="bp">=</span> <span class="mi">0</span> <span class="bp">^</span> <span class="mi">3</span> <span class="o">:=</span> <span class="kd">by</span> <span class="n">rw</span> <span class="o">[</span><span class="n">hx1</span><span class="o">]</span>
+        <span class="n">_</span> <span class="bp">=</span> <span class="mi">0</span> <span class="o">:=</span> <span class="kd">by</span> <span class="n">numbers</span>
+      <span class="n">cancel</span> <span class="mi">3</span> <span class="n">at</span> <span class="n">hx2</span>
       <span class="k">calc</span> <span class="n">x1</span> <span class="bp">=</span> <span class="mi">0</span> <span class="o">:=</span> <span class="kd">by</span> <span class="n">rw</span> <span class="o">[</span><span class="n">hx1</span><span class="o">]</span>
         <span class="n">_</span> <span class="bp">=</span> <span class="n">x2</span> <span class="o">:=</span> <span class="kd">by</span> <span class="n">rw</span> <span class="o">[</span><span class="n">hx2</span><span class="o">]</span>
     <span class="bp">&#183;</span> <span class="c1">-- case 2b: x1 &#8800; 0</span>
@@ -761,11 +761,14 @@ surjective, then the function <span class="math notranslate nohighlight">\(x \ma
 </pre></div>
 </div>
 <ol class="arabic" start="17">
-<li><p>Let <span class="math notranslate nohighlight">\(f:\mathbb{R}\to\mathbb{R}\)</span> be a function which is <em>strictly monotone</em>; that is, for
+<li><p>Let <span class="math notranslate nohighlight">\(f:\mathbb{Q}\to\mathbb{Q}\)</span> be a function which is <em>strictly monotone</em>; that is, for
 all real numbers <span class="math notranslate nohighlight">\(x\)</span> and <span class="math notranslate nohighlight">\(y\)</span> with <span class="math notranslate nohighlight">\(x&lt;y\)</span>, it is true that <span class="math notranslate nohighlight">\(f(x)&lt;f(y)\)</span>.
 Prove that <span class="math notranslate nohighlight">\(f\)</span> is injective.</p>
-<p>You may wish to use the lemma <code class="docutils literal notranslate"><span class="pre">lt_trichotomy</span></code> (<a class="reference internal" href="02_Proofs_with_Structure.html#integral-domain-step3"><span class="std std-numref">Example 2.3.4</span></a>),
-which gives a case division on the relative sizes of two real numbers.</p>
+<p>You may wish to use the lemma <code class="docutils literal notranslate"><span class="pre">lt_trichotomy</span></code></p>
+<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">lemma</span> <span class="n">lt_trichotomy</span> <span class="o">(</span><span class="n">x</span> <span class="n">y</span> <span class="o">:</span> <span class="n">&#8474;</span><span class="o">)</span> <span class="o">:</span> <span class="n">x</span> <span class="bp">&lt;</span> <span class="n">y</span> <span class="bp">&#8744;</span> <span class="n">x</span> <span class="bp">=</span> <span class="n">y</span> <span class="bp">&#8744;</span> <span class="n">x</span> <span class="bp">&lt;</span> <span class="n">y</span> <span class="o">:=</span>
+</pre></div>
+</div>
+<p>which gives a case division on the relative sizes of two real numbers.</p>
 </li>
 </ol>
 <div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">{</span><span class="n">f</span> <span class="o">:</span> <span class="n">&#8474;</span> <span class="bp">&#8594;</span> <span class="n">&#8474;</span><span class="o">}</span> <span class="o">(</span><span class="n">hf</span> <span class="o">:</span> <span class="bp">&#8704;</span> <span class="n">x</span> <span class="n">y</span><span class="o">,</span> <span class="n">x</span> <span class="bp">&lt;</span> <span class="n">y</span> <span class="bp">&#8594;</span> <span class="n">f</span> <span class="n">x</span> <span class="bp">&lt;</span> <span class="n">f</span> <span class="n">y</span><span class="o">)</span> <span class="o">:</span> <span class="n">Injective</span> <span class="n">f</span> <span class="o">:=</span> <span class="kd">by</span>

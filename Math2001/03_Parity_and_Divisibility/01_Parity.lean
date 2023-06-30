@@ -1,4 +1,5 @@
 /- Copyright (c) Heather Macbeth, 2022.  All rights reserved. -/
+import Library.Theory.Comparison
 import Library.Theory.Parity
 import Library.Tactic.Addarith
 import Library.Tactic.Numbers

@@ -2,6 +2,7 @@
 import Mathlib.Data.Real.Basic
 import Library.Theory.Parity
 import Library.Tactic.Addarith
+import Library.Tactic.Cancel
 import Library.Tactic.Numbers
 import Library.Tactic.Extra
 import Library.Tactic.Take
@@ -55,18 +56,16 @@ example : ∃! r : ℤ, 0 ≤ r ∧ r < 5 ∧ 14 ≡ r [ZMOD 5] := by
     numbers
   intro r hr
   obtain ⟨hr1, hr2, q, hr3⟩ := hr
-  have : 1 < q
-  · apply lt_of_mul_lt_mul_left
+  have :=
     calc
       5 * 1 < 14 - r := by addarith [hr2]
       _ = 5 * q := by rw [hr3]
-    numbers
-  have : q < 3
-  · apply lt_of_mul_lt_mul_left
+  cancel 5 at this
+  have :=
     calc
       5 * q = 14 - r := by rw [hr3]
       _ < 5 * 3 := by addarith [hr1]
-    numbers
+  cancel 5 at this
   interval_cases q
   addarith [hr3]
 

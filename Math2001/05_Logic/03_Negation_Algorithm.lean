@@ -1,5 +1,6 @@
 /- Copyright (c) Heather Macbeth, 2023.  All rights reserved. -/
 import Mathlib.Data.Real.Basic
+import Library.Theory.Comparison
 import Library.Theory.Prime
 import Library.Tactic.Rel
 import Library.Tactic.Numbers
@@ -50,7 +51,7 @@ example : ¬(∀ n : ℤ, ∃ m : ℤ, n ^ 2 < m ∧ m < (n + 1) ^ 2)
 example : ¬ (∃ n : ℕ, n ^ 2 = 2) := by
   push_neg
   intro n
-  have hn : n ≤ 1 ∨ 2 ≤ n := le_or_lt n 1
+  have hn := le_or_succ_le n 1
   obtain hn | hn := hn
   · apply ne_of_lt
     calc

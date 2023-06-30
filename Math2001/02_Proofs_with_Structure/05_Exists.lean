@@ -1,6 +1,8 @@
 /- Copyright (c) Heather Macbeth, 2022.  All rights reserved. -/
 import Mathlib.Data.Real.Basic
+import Library.Theory.Comparison
 import Library.Tactic.Addarith
+import Library.Tactic.Cancel
 import Library.Tactic.Numbers
 import Library.Tactic.Extra
 import Library.Tactic.Take
@@ -17,10 +19,13 @@ example {a : ℚ} (h : ∃ b : ℚ, a = b ^ 2 + 1) : a > 0 := by
 
 example {t : ℝ} (h : ∃ a : ℝ, a * t < 0) : t ≠ 0 := by
   obtain ⟨x, hxt⟩ := h
-  have H : x ≤ 0 ∨ 0 < x := le_or_gt x 0
+  have H := le_or_gt x 0
   obtain hx | hx := H
-  · apply ne_of_gt
-    apply pos_of_mul_neg_right hxt hx
+  · have hxt' : 0 < (-x) * t := by addarith [hxt]
+    have hx' : 0 ≤ -x := by addarith [hx]
+    cancel -x at hxt'
+    apply ne_of_gt
+    apply hxt'
   · sorry
 
 example : ∃ n : ℤ, 12 * n = 84 := by

@@ -1,7 +1,9 @@
 /- Copyright (c) Heather Macbeth, 2023.  All rights reserved. -/
 import Mathlib.Data.Real.Basic
+import Library.Theory.Comparison
 import Library.Theory.ParityModular
 import Library.Tactic.Addarith
+import Library.Tactic.Cancel
 import Library.Tactic.ExistsDelaborator
 import Library.Tactic.FiniteInductive
 import Library.Tactic.Induction
@@ -161,11 +163,11 @@ example : Injective (fun (x:ℝ) ↦ x ^ 3) := by
   · -- case 2: x1 ^2 + x1 * x2 + x2 ^ 2  = 0
     by_cases hx1 : x1 = 0
     · -- case 2a: x1 = 0
-      have hx2 : x2 = 0
-      · apply pow_eq_zero (n := 3)
-        calc x2 ^ 3 = x1 ^ 3 := by rw [hx]
-          _ = 0 ^ 3 := by rw [hx1]
-          _ = 0 := by numbers
+      have hx2 :=
+      calc x2 ^ 3 = x1 ^ 3 := by rw [hx]
+        _ = 0 ^ 3 := by rw [hx1]
+        _ = 0 := by numbers
+      cancel 3 at hx2
       calc x1 = 0 := by rw [hx1]
         _ = x2 := by rw [hx2]    
     · -- case 2b: x1 ≠ 0

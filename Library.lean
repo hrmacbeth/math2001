@@ -1,4 +1,5 @@
 import Library.Theory.Arithmetic
+import Library.Theory.Comparison
 import Library.Theory.Division
 import Library.Theory.Factorial
 import Library.Theory.InjectiveSurjective
@@ -11,6 +12,7 @@ import Library.Theory.ParityModular
 import Library.Theory.Prime
 import Library.Tactic.Addarith
 import Library.Tactic.BetaReduce
+import Library.Tactic.Cancel
 import Library.Tactic.Define
 import Library.Tactic.Define.Attr
 import Library.Tactic.ExistsDelaborator

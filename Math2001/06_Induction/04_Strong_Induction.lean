@@ -3,6 +3,7 @@ import Mathlib.Tactic.GCongr
 import Library.Theory.Parity
 import Library.Theory.Prime
 import Library.Tactic.Addarith
+import Library.Tactic.Cancel
 import Library.Tactic.Induction
 import Library.Tactic.Numbers
 import Library.Tactic.Take

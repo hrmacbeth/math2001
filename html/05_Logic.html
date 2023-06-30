@@ -815,7 +815,7 @@ and then writing out <a class="reference internal" href="02_Proofs_with_Structur
 <div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">:</span> <span class="bp">&#172;</span> <span class="o">(</span><span class="bp">&#8707;</span> <span class="n">n</span> <span class="o">:</span> <span class="n">&#8469;</span><span class="o">,</span> <span class="n">n</span> <span class="bp">^</span> <span class="mi">2</span> <span class="bp">=</span> <span class="mi">2</span><span class="o">)</span> <span class="o">:=</span> <span class="kd">by</span>
   <span class="n">push_neg</span>
   <span class="n">intro</span> <span class="n">n</span>
-  <span class="k">have</span> <span class="n">hn</span> <span class="o">:</span> <span class="n">n</span> <span class="bp">&#8804;</span> <span class="mi">1</span> <span class="bp">&#8744;</span> <span class="mi">2</span> <span class="bp">&#8804;</span> <span class="n">n</span> <span class="o">:=</span> <span class="n">le_or_lt</span> <span class="n">n</span> <span class="mi">1</span>
+  <span class="k">have</span> <span class="n">hn</span> <span class="o">:=</span> <span class="n">le_or_succ_le</span> <span class="n">n</span> <span class="mi">1</span>
   <span class="n">obtain</span> <span class="n">hn</span> <span class="bp">|</span> <span class="n">hn</span> <span class="o">:=</span> <span class="n">hn</span>
   <span class="bp">&#183;</span> <span class="n">apply</span> <span class="n">ne_of_lt</span>
     <span class="k">calc</span>

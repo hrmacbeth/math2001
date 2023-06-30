@@ -1,6 +1,7 @@
 /- Copyright (c) Heather Macbeth, 2022.  All rights reserved. -/
 import Mathlib.Data.Real.Basic
 import Library.Tactic.Addarith
+import Library.Tactic.Cancel
 import Library.Tactic.Numbers
 import Library.Tactic.Extra
 
@@ -15,7 +16,7 @@ example {x y : ℤ} (h : 2 * x - y = 4 ∧ y - x + 1 = 2) : x = 5 := by
     _ = 5 := by ring
 
 
-example {p : ℚ} (hp : p ^ 2 = 9) : p ≤ 5 := by
+example {p : ℚ} (hp : p ^ 2 ≤ 8) : p ≥ -5 := by
   have hp' : -3 ≤ p ∧ p ≤ 3
   · apply abs_le_of_sq_le_sq'
     calc

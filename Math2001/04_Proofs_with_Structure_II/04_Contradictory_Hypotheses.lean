@@ -2,9 +2,11 @@
 import Mathlib.Data.Real.Basic
 import Mathlib.Tactic.GCongr
 import Mathlib.Tactic.IntervalCases
+import Library.Theory.Comparison
 import Library.Theory.Parity
 import Library.Theory.Prime
 import Library.Tactic.Addarith
+import Library.Tactic.Cancel
 import Library.Tactic.ModCases
 import Library.Tactic.Numbers
 import Library.Tactic.Extra

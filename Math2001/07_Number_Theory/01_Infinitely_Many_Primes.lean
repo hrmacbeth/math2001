@@ -1,6 +1,7 @@
 /- Copyright (c) Heather Macbeth, 2023.  All rights reserved. -/
 import Library.Theory.Prime
 import Library.Tactic.Addarith
+import Library.Tactic.Cancel
 import Library.Tactic.Numbers
 import Library.Tactic.Extra
 import Library.Tactic.Take
@@ -23,12 +24,11 @@ example (N : ℕ) : ∃ p ≥ N, Prime p := by
   -- the key fact: `p` is not a factor of `N!`
   have key : ¬ p ∣ (N !)
   · apply Nat.not_dvd_of_exists_lt_and_lt (N !) hp_pos
-    have : k ≠ 0 
-    · apply ne_of_gt
-      apply pos_of_mul_pos_right (a := p)
-      · calc 0 < N ! + 1 := by extra
-          _ = p * k := hk
-      · extra 
+    have hk' :=
+      calc 0 < N ! + 1 := by extra
+        _ = p * k := hk
+    cancel p at hk'
+    have : k ≠ 0 := ne_of_gt hk'
     obtain ⟨l, hlk⟩ : ∃ l, k = l + 1 := Nat.exists_eq_succ_of_ne_zero this
     take l
     have hl :=

@@ -20,6 +20,10 @@ Invokes a specified lemma or hypothesis to modify the goal.
 
 Case-splits on whether a given statement is true or false.
 
+.. rubric:: *cancel* (first use: :numref:`Section %s <tactic_mode>`)
+    
+Cancels a common factor from LHS/RHS of equality/inequality, cancels an exponentiation common to both sides, etc.
+
 .. rubric:: constructor (first use: :numref:`Section %s <and>`; for ``↔`` goals: :numref:`Section %s <iff>`)
 
 Splits an "and" goal (:math:`\land`) into sub-goals for its left and right parts.
