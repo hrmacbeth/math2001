@@ -738,17 +738,17 @@ even.</p>
 even; if the latter, then <span class="math notranslate nohighlight">\(n=2\cdot 3\)</span> so <span class="math notranslate nohighlight">\(n\)</span> is even.</p>
 </div>
 <p>In this problem we need to transform the fact <span class="math notranslate nohighlight">\((n-4)(n-6)=0\)</span> into the fact that
-&#8220;<span class="math notranslate nohighlight">\(n-4=0\)</span> or <span class="math notranslate nohighlight">\(n-6=0\)</span>.&#8221;  Previously we would have done this in Lean by <code class="docutils literal notranslate"><span class="pre">apply</span></code>-ing a
-lemma, such as the lemma</p>
+&#8220;<span class="math notranslate nohighlight">\(n-4=0\)</span> or <span class="math notranslate nohighlight">\(n-6=0\)</span>.&#8221;  Previously we would have done this in Lean by building up a
+<code class="docutils literal notranslate"><span class="pre">have</span></code>-statement using a lemma, such as the lemma</p>
 <div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">theorem</span> <span class="n">eq_zero_or_eq_zero_of_mul_eq_zero</span> <span class="o">{</span><span class="n">a</span> <span class="n">b</span> <span class="o">:</span> <span class="n">&#8484;</span><span class="o">}</span> <span class="o">(</span><span class="n">h</span> <span class="o">:</span> <span class="n">a</span> <span class="bp">*</span> <span class="n">b</span> <span class="bp">=</span> <span class="mi">0</span><span class="o">)</span> <span class="o">:</span> <span class="n">a</span> <span class="bp">=</span> <span class="mi">0</span> <span class="bp">&#8744;</span> <span class="n">b</span> <span class="bp">=</span> <span class="mi">0</span> <span class="o">:=</span>
 </pre></div>
 </div>
 <p>from <a class="reference internal" href="02_Proofs_with_Structure.html#solve-quadratic"><span class="std std-numref">Example 2.3.4</span></a>:</p>
 <div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">{</span><span class="n">n</span> <span class="o">:</span> <span class="n">&#8484;</span><span class="o">}</span> <span class="o">(</span><span class="n">hn</span> <span class="o">:</span> <span class="n">n</span> <span class="bp">^</span> <span class="mi">2</span> <span class="bp">-</span> <span class="mi">10</span> <span class="bp">*</span> <span class="n">n</span> <span class="bp">+</span> <span class="mi">24</span> <span class="bp">=</span> <span class="mi">0</span><span class="o">)</span> <span class="o">:</span> <span class="n">Even</span> <span class="n">n</span> <span class="o">:=</span> <span class="kd">by</span>
-  <span class="k">have</span> <span class="n">hn2</span> <span class="o">:</span> <span class="n">n</span> <span class="bp">-</span> <span class="mi">4</span> <span class="bp">=</span> <span class="mi">0</span> <span class="bp">&#8744;</span> <span class="n">n</span> <span class="bp">-</span> <span class="mi">6</span> <span class="bp">=</span> <span class="mi">0</span>
-  <span class="bp">&#183;</span> <span class="n">apply</span> <span class="n">eq_zero_or_eq_zero_of_mul_eq_zero</span>
+  <span class="k">have</span> <span class="n">hn1</span> <span class="o">:=</span>
     <span class="k">calc</span> <span class="o">(</span><span class="n">n</span> <span class="bp">-</span> <span class="mi">4</span><span class="o">)</span> <span class="bp">*</span> <span class="o">(</span><span class="n">n</span> <span class="bp">-</span> <span class="mi">6</span><span class="o">)</span> <span class="bp">=</span> <span class="n">n</span> <span class="bp">^</span> <span class="mi">2</span> <span class="bp">-</span> <span class="mi">10</span> <span class="bp">*</span> <span class="n">n</span> <span class="bp">+</span> <span class="mi">24</span> <span class="o">:=</span> <span class="kd">by</span> <span class="n">ring</span>
       <span class="n">_</span> <span class="bp">=</span> <span class="mi">0</span> <span class="o">:=</span> <span class="n">hn</span>
+  <span class="k">have</span> <span class="n">hn2</span> <span class="o">:=</span> <span class="n">eq_zero_or_eq_zero_of_mul_eq_zero</span> <span class="n">hn1</span>
   <span class="gr">sorry</span>
 </pre></div>
 </div>
@@ -761,10 +761,10 @@ lemma, such as the lemma</p>
 <p>We can use an <code class="docutils literal notranslate"><span class="pre">&#8596;</span></code> lemma in Lean with the <code class="docutils literal notranslate"><span class="pre">rw</span></code> tactic; it converts a hypothesis (or the goal) in
 the form of the left-hand side of the <code class="docutils literal notranslate"><span class="pre">&#8596;</span></code> to one with the form of the right-hand side.</p>
 <div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">{</span><span class="n">n</span> <span class="o">:</span> <span class="n">&#8484;</span><span class="o">}</span> <span class="o">(</span><span class="n">hn</span> <span class="o">:</span> <span class="n">n</span> <span class="bp">^</span> <span class="mi">2</span> <span class="bp">-</span> <span class="mi">10</span> <span class="bp">*</span> <span class="n">n</span> <span class="bp">+</span> <span class="mi">24</span> <span class="bp">=</span> <span class="mi">0</span><span class="o">)</span> <span class="o">:</span> <span class="n">Even</span> <span class="n">n</span> <span class="o">:=</span> <span class="kd">by</span>
-  <span class="k">have</span> <span class="n">hn2</span> <span class="o">:</span> <span class="o">(</span><span class="n">n</span> <span class="bp">-</span> <span class="mi">4</span><span class="o">)</span> <span class="bp">*</span> <span class="o">(</span><span class="n">n</span> <span class="bp">-</span> <span class="mi">6</span><span class="o">)</span> <span class="bp">=</span> <span class="mi">0</span>
-  <span class="bp">&#183;</span> <span class="k">calc</span> <span class="o">(</span><span class="n">n</span> <span class="bp">-</span> <span class="mi">4</span><span class="o">)</span> <span class="bp">*</span> <span class="o">(</span><span class="n">n</span> <span class="bp">-</span> <span class="mi">6</span><span class="o">)</span> <span class="bp">=</span> <span class="n">n</span> <span class="bp">^</span> <span class="mi">2</span> <span class="bp">-</span> <span class="mi">10</span> <span class="bp">*</span> <span class="n">n</span> <span class="bp">+</span> <span class="mi">24</span> <span class="o">:=</span> <span class="kd">by</span> <span class="n">ring</span>
+  <span class="k">have</span> <span class="n">hn1</span> <span class="o">:=</span>
+    <span class="k">calc</span> <span class="o">(</span><span class="n">n</span> <span class="bp">-</span> <span class="mi">4</span><span class="o">)</span> <span class="bp">*</span> <span class="o">(</span><span class="n">n</span> <span class="bp">-</span> <span class="mi">6</span><span class="o">)</span> <span class="bp">=</span> <span class="n">n</span> <span class="bp">^</span> <span class="mi">2</span> <span class="bp">-</span> <span class="mi">10</span> <span class="bp">*</span> <span class="n">n</span> <span class="bp">+</span> <span class="mi">24</span> <span class="o">:=</span> <span class="kd">by</span> <span class="n">ring</span>
       <span class="n">_</span> <span class="bp">=</span> <span class="mi">0</span> <span class="o">:=</span> <span class="n">hn</span>
-  <span class="n">rw</span> <span class="o">[</span><span class="n">mul_eq_zero</span><span class="o">]</span> <span class="n">at</span> <span class="n">hn2</span> <span class="c1">-- `hn2 : n - 4 = 0 &#8744; n - 6 = 0`</span>
+  <span class="n">rw</span> <span class="o">[</span><span class="n">mul_eq_zero</span><span class="o">]</span> <span class="n">at</span> <span class="n">hn1</span> <span class="c1">-- `hn1 : n - 4 = 0 &#8744; n - 6 = 0`</span>
   <span class="gr">sorry</span>
 </pre></div>
 </div>
@@ -967,8 +967,8 @@ or 2.</p></li>
     <span class="k">calc</span>
       <span class="o">(</span><span class="bp">-</span><span class="n">a</span><span class="o">)</span> <span class="bp">^</span> <span class="mi">2</span> <span class="bp">=</span> <span class="n">a</span> <span class="bp">^</span> <span class="mi">2</span> <span class="o">:=</span> <span class="kd">by</span> <span class="n">ring</span>
       <span class="n">_</span> <span class="bp">=</span> <span class="n">x</span> <span class="o">:=</span> <span class="n">ha1</span>
-  <span class="k">have</span> <span class="n">h2</span> <span class="o">:</span> <span class="n">a</span> <span class="bp">=</span> <span class="mi">0</span>
-  <span class="bp">&#183;</span> <span class="k">calc</span>
+  <span class="k">have</span> <span class="n">h2</span> <span class="o">:=</span>
+    <span class="k">calc</span>
       <span class="n">a</span> <span class="bp">=</span> <span class="o">(</span><span class="n">a</span> <span class="bp">-</span> <span class="bp">-</span><span class="n">a</span><span class="o">)</span> <span class="bp">/</span> <span class="mi">2</span> <span class="o">:=</span> <span class="kd">by</span> <span class="n">ring</span>
       <span class="n">_</span> <span class="bp">=</span> <span class="o">(</span><span class="n">a</span> <span class="bp">-</span> <span class="n">a</span><span class="o">)</span> <span class="bp">/</span> <span class="mi">2</span> <span class="o">:=</span> <span class="kd">by</span> <span class="n">rw</span> <span class="o">[</span><span class="n">h1</span><span class="o">]</span>
       <span class="n">_</span> <span class="bp">=</span> <span class="mi">0</span> <span class="o">:=</span> <span class="kd">by</span> <span class="n">ring</span>
@@ -1154,7 +1154,7 @@ false&#8221; numeric fact, whose falseness can be checked with <code class="docu
 <p>You can write this proof up in Lean directly using the <code class="docutils literal notranslate"><span class="pre">contradiction</span></code> tactic, as in the previous
 examples:</p>
 <div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">{</span><span class="n">t</span> <span class="o">:</span> <span class="n">&#8484;</span><span class="o">}</span> <span class="o">(</span><span class="n">h2</span> <span class="o">:</span> <span class="n">t</span> <span class="bp">&lt;</span> <span class="mi">3</span><span class="o">)</span> <span class="o">(</span><span class="n">h</span> <span class="o">:</span> <span class="n">t</span> <span class="bp">-</span> <span class="mi">1</span> <span class="bp">=</span> <span class="mi">6</span><span class="o">)</span> <span class="o">:</span> <span class="n">t</span> <span class="bp">=</span> <span class="mi">13</span> <span class="o">:=</span> <span class="kd">by</span>
-  <span class="k">have</span> <span class="n">H</span> <span class="o">:</span> <span class="o">(</span><span class="mi">7</span> <span class="o">:</span> <span class="n">&#8484;</span><span class="o">)</span> <span class="bp">&lt;</span> <span class="mi">3</span>
+  <span class="k">have</span> <span class="n">H</span> <span class="o">:=</span>
   <span class="k">calc</span>
     <span class="mi">7</span> <span class="bp">=</span> <span class="n">t</span> <span class="o">:=</span> <span class="kd">by</span> <span class="n">addarith</span> <span class="o">[</span><span class="n">h</span><span class="o">]</span>
     <span class="n">_</span> <span class="bp">&lt;</span> <span class="mi">3</span> <span class="o">:=</span> <span class="n">h2</span>
@@ -1166,7 +1166,7 @@ examples:</p>
 hypothesis whose negation can be proved by <code class="docutils literal notranslate"><span class="pre">numbers</span></code>, then writing <code class="docutils literal notranslate"><span class="pre">numbers</span> <span class="pre">at</span> <span class="pre">H</span></code> will
 close the goal.</p>
 <div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">{</span><span class="n">t</span> <span class="o">:</span> <span class="n">&#8484;</span><span class="o">}</span> <span class="o">(</span><span class="n">h2</span> <span class="o">:</span> <span class="n">t</span> <span class="bp">&lt;</span> <span class="mi">3</span><span class="o">)</span> <span class="o">(</span><span class="n">h</span> <span class="o">:</span> <span class="n">t</span> <span class="bp">-</span> <span class="mi">1</span> <span class="bp">=</span> <span class="mi">6</span><span class="o">)</span> <span class="o">:</span> <span class="n">t</span> <span class="bp">=</span> <span class="mi">13</span> <span class="o">:=</span> <span class="kd">by</span>
-  <span class="k">have</span> <span class="n">H</span> <span class="o">:</span> <span class="o">(</span><span class="mi">7</span> <span class="o">:</span> <span class="n">&#8484;</span><span class="o">)</span> <span class="bp">&lt;</span> <span class="mi">3</span>
+  <span class="k">have</span> <span class="n">H</span> <span class="o">:=</span>
   <span class="k">calc</span>
     <span class="mi">7</span> <span class="bp">=</span> <span class="n">t</span> <span class="o">:=</span> <span class="kd">by</span> <span class="n">addarith</span> <span class="o">[</span><span class="n">h</span><span class="o">]</span>
     <span class="n">_</span> <span class="bp">&lt;</span> <span class="mi">3</span> <span class="o">:=</span> <span class="n">h2</span>
@@ -1209,8 +1209,8 @@ discussed in <a class="reference internal" href="#division-algorithm"><span clas
     <span class="n">left</span>
     <span class="n">apply</span> <span class="n">h</span>
   <span class="bp">&#183;</span> <span class="c1">-- case 2: `n &#8801; 1 [ZMOD 3]`</span>
-    <span class="k">have</span> <span class="n">H</span> <span class="o">:</span> <span class="mi">0</span> <span class="bp">&#8801;</span> <span class="mi">1</span> <span class="o">[</span><span class="n">ZMOD</span> <span class="mi">3</span><span class="o">]</span>
-    <span class="bp">&#183;</span> <span class="k">calc</span> <span class="mi">0</span> <span class="bp">&#8801;</span> <span class="mi">0</span> <span class="bp">+</span> <span class="mi">3</span> <span class="bp">*</span> <span class="mi">1</span> <span class="o">[</span><span class="n">ZMOD</span> <span class="mi">3</span><span class="o">]</span> <span class="o">:=</span> <span class="kd">by</span> <span class="n">extra</span>
+    <span class="k">have</span> <span class="n">H</span> <span class="o">:=</span>
+      <span class="k">calc</span> <span class="mi">0</span> <span class="bp">&#8801;</span> <span class="mi">0</span> <span class="bp">+</span> <span class="mi">3</span> <span class="bp">*</span> <span class="mi">1</span> <span class="o">[</span><span class="n">ZMOD</span> <span class="mi">3</span><span class="o">]</span> <span class="o">:=</span> <span class="kd">by</span> <span class="n">extra</span>
       <span class="n">_</span> <span class="bp">=</span> <span class="mi">1</span> <span class="bp">^</span> <span class="mi">2</span> <span class="bp">+</span> <span class="mi">1</span> <span class="bp">+</span> <span class="mi">1</span> <span class="o">:=</span> <span class="kd">by</span> <span class="n">numbers</span>
       <span class="n">_</span> <span class="bp">&#8801;</span> <span class="n">n</span> <span class="bp">^</span> <span class="mi">2</span> <span class="bp">+</span> <span class="n">n</span> <span class="bp">+</span> <span class="mi">1</span> <span class="o">[</span><span class="n">ZMOD</span> <span class="mi">3</span><span class="o">]</span> <span class="o">:=</span> <span class="kd">by</span> <span class="n">rel</span> <span class="o">[</span><span class="n">h</span><span class="o">]</span>
       <span class="n">_</span> <span class="bp">&#8801;</span> <span class="mi">1</span> <span class="o">[</span><span class="n">ZMOD</span> <span class="mi">3</span><span class="o">]</span> <span class="o">:=</span> <span class="n">hn</span>
@@ -1469,20 +1469,6 @@ principles.</p>
   <span class="bp">&#183;</span> <span class="gr">sorry</span>
 </pre></div>
 </div>
-<p>Notice the pattern</p>
-<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="k">have</span> <span class="n">h</span> <span class="o">:=</span>
-<span class="k">calc</span> <span class="mi">13</span> <span class="bp">=</span> <span class="mi">3</span> <span class="bp">*</span> <span class="n">k</span> <span class="o">:=</span> <span class="n">hk</span>
-  <span class="n">_</span> <span class="bp">&#8804;</span> <span class="mi">3</span> <span class="bp">*</span> <span class="mi">4</span> <span class="o">:=</span> <span class="kd">by</span> <span class="n">rel</span> <span class="o">[</span><span class="n">h</span><span class="o">]</span>
-</pre></div>
-</div>
-<p>in the Lean code above.  This is a shorter version of</p>
-<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="k">have</span> <span class="n">h</span> <span class="o">:</span> <span class="mi">13</span> <span class="bp">&#8804;</span> <span class="mi">3</span> <span class="bp">*</span> <span class="mi">4</span>
-<span class="k">calc</span> <span class="mi">13</span> <span class="bp">=</span> <span class="mi">3</span> <span class="bp">*</span> <span class="n">k</span> <span class="o">:=</span> <span class="n">hk</span>
-  <span class="n">_</span> <span class="bp">&#8804;</span> <span class="mi">3</span> <span class="bp">*</span> <span class="mi">4</span> <span class="o">:=</span> <span class="kd">by</span> <span class="n">rel</span> <span class="o">[</span><span class="n">h</span><span class="o">]</span>
-</pre></div>
-</div>
-<p>which is convenient if you want to state and prove an intermediate goal (here, <code class="docutils literal notranslate"><span class="pre">13</span> <span class="pre">&#8804;</span> <span class="pre">3</span> <span class="pre">*</span> <span class="pre">4</span></code>) whose
-proof is just a single calculation.</p>
 </section>
 <section id="id35">
 <h3><span class="section-number">4.5.3. </span>Example<a class="headerlink" href="#id35" title="Permalink to this headline">&#61633;</a></h3>
