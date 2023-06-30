@@ -66,17 +66,17 @@ example {a : ℤ} : a ^ 2 - 5 * a + 5 ≤ -1 ↔ a = 2 ∨ a = 3 := by
   sorry
 
 example {n : ℤ} (hn : n ^ 2 - 10 * n + 24 = 0) : Even n := by
-  have hn2 : n - 4 = 0 ∨ n - 6 = 0
-  · apply eq_zero_or_eq_zero_of_mul_eq_zero
+  have hn1 :=
     calc (n - 4) * (n - 6) = n ^ 2 - 10 * n + 24 := by ring
       _ = 0 := hn
+  have hn2 := eq_zero_or_eq_zero_of_mul_eq_zero hn1
   sorry
 
 example {n : ℤ} (hn : n ^ 2 - 10 * n + 24 = 0) : Even n := by
-  have hn2 : (n - 4) * (n - 6) = 0
-  · calc (n - 4) * (n - 6) = n ^ 2 - 10 * n + 24 := by ring
+  have hn1 :=
+    calc (n - 4) * (n - 6) = n ^ 2 - 10 * n + 24 := by ring
       _ = 0 := hn
-  rw [mul_eq_zero] at hn2 -- `hn2 : n - 4 = 0 ∨ n - 6 = 0`
+  rw [mul_eq_zero] at hn1 -- `hn1 : n - 4 = 0 ∨ n - 6 = 0`
   sorry
 
 example {x y : ℤ} (hx : Odd x) (hy : Odd y) : Odd (x + y + 1) := by

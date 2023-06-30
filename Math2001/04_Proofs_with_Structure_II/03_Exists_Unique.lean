@@ -33,8 +33,8 @@ example {x : ℚ} (hx : ∃! a : ℚ, a ^ 2 = x) : x = 0 := by
     calc
       (-a) ^ 2 = a ^ 2 := by ring
       _ = x := ha1
-  have h2 : a = 0
-  · calc
+  have h2 :=
+    calc
       a = (a - -a) / 2 := by ring
       _ = (a - a) / 2 := by rw [h1]
       _ = 0 := by ring

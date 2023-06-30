@@ -810,21 +810,6 @@ and <span class="math notranslate nohighlight">\(b^3\)</span> divides <span clas
   <span class="gr">sorry</span>
 </pre></div>
 </div>
-<ol class="arabic simple" start="10">
-<li><p>(hard) Let <span class="math notranslate nohighlight">\(a\)</span> be a natural number and suppose that <span class="math notranslate nohighlight">\(a^2 \mid a\)</span>.  Show that
-<span class="math notranslate nohighlight">\(a=0\)</span> or <span class="math notranslate nohighlight">\(a=1\)</span>.</p></li>
-</ol>
-<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">(</span><span class="n">a</span> <span class="o">:</span> <span class="n">&#8469;</span><span class="o">)</span> <span class="o">(</span><span class="n">h</span> <span class="o">:</span> <span class="n">a</span> <span class="bp">^</span> <span class="mi">2</span> <span class="bp">&#8739;</span> <span class="n">a</span><span class="o">)</span> <span class="o">:</span> <span class="n">a</span> <span class="bp">=</span> <span class="mi">0</span> <span class="bp">&#8744;</span> <span class="n">a</span> <span class="bp">=</span> <span class="mi">1</span> <span class="o">:=</span> <span class="kd">by</span>
-  <span class="k">have</span> <span class="n">ha</span> <span class="o">:</span> <span class="mi">0</span> <span class="bp">&#8804;</span> <span class="n">a</span> <span class="o">:=</span> <span class="kd">by</span> <span class="n">extra</span>
-  <span class="n">obtain</span> <span class="n">ha</span> <span class="bp">|</span> <span class="n">ha</span> <span class="o">:=</span> <span class="n">eq_or_lt_of_le</span> <span class="n">ha</span>
-  <span class="bp">&#183;</span> <span class="gr">sorry</span>
-  <span class="k">have</span> <span class="n">H1</span> <span class="o">:</span> <span class="n">a</span> <span class="bp">^</span> <span class="mi">2</span> <span class="bp">=</span> <span class="n">a</span>
-  <span class="bp">&#183;</span> <span class="gr">sorry</span>
-  <span class="k">have</span> <span class="n">H2</span> <span class="o">:</span> <span class="n">a</span> <span class="bp">=</span> <span class="mi">1</span> <span class="bp">&#8744;</span> <span class="n">a</span> <span class="bp">=</span> <span class="mi">0</span>
-  <span class="bp">&#183;</span> <span class="gr">sorry</span>
-  <span class="gr">sorry</span>
-</pre></div>
-</div>
 </section>
 </section>
 <section id="modular-arithmetic-theory">

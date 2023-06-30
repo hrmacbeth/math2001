@@ -30,7 +30,7 @@ example {y : ℝ} (x : ℝ) (h : 0 < x * y) (hx : 0 ≤ x) : 0 < y := by
 
 
 example {t : ℤ} (h2 : t < 3) (h : t - 1 = 6) : t = 13 := by
-  have H : (7 : ℤ) < 3
+  have H :=
   calc
     7 = t := by addarith [h]
     _ < 3 := h2
@@ -39,7 +39,7 @@ example {t : ℤ} (h2 : t < 3) (h : t - 1 = 6) : t = 13 := by
 
 
 example {t : ℤ} (h2 : t < 3) (h : t - 1 = 6) : t = 13 := by
-  have H : (7 : ℤ) < 3
+  have H :=
   calc
     7 = t := by addarith [h]
     _ < 3 := h2
@@ -52,8 +52,8 @@ example (n : ℤ) (hn : n ^ 2 + n + 1 ≡ 1 [ZMOD 3]) : n ≡ 0 [ZMOD 3] ∨ n �
     left
     apply h
   · -- case 2: `n ≡ 1 [ZMOD 3]`
-    have H : 0 ≡ 1 [ZMOD 3]
-    · calc 0 ≡ 0 + 3 * 1 [ZMOD 3] := by extra
+    have H :=
+      calc 0 ≡ 0 + 3 * 1 [ZMOD 3] := by extra
       _ = 1 ^ 2 + 1 + 1 := by numbers
       _ ≡ n ^ 2 + n + 1 [ZMOD 3] := by rel [h]
       _ ≡ 1 [ZMOD 3] := hn

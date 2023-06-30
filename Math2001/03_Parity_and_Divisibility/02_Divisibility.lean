@@ -87,13 +87,3 @@ example : ∃ n : ℕ, 0 < n ∧ 9 ∣ 2 ^ n - 1 := by
 
 example : ∃ a b : ℤ, 0 < b ∧ b < a ∧ a - b ∣ a + b := by
   sorry
-
-example (a : ℕ) (h : a ^ 2 ∣ a) : a = 0 ∨ a = 1 := by
-  have ha : 0 ≤ a := by extra
-  obtain ha | ha := eq_or_lt_of_le ha
-  · sorry
-  have H1 : a ^ 2 = a
-  · sorry
-  have H2 : a = 1 ∨ a = 0
-  · sorry
-  sorry
