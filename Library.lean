@@ -11,7 +11,6 @@ import Library.Theory.Parity
 import Library.Theory.ParityModular
 import Library.Theory.Prime
 import Library.Tactic.Addarith
-import Library.Tactic.BetaReduce
 import Library.Tactic.Cancel
 import Library.Tactic.Define
 import Library.Tactic.Define.Attr
