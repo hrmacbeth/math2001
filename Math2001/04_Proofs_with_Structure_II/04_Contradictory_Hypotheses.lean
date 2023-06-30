@@ -26,7 +26,7 @@ example {y : ℝ} (x : ℝ) (h : 0 < x * y) (hx : 0 ≤ x) : 0 < y := by
         _ ≥ x * y := by rel [hneg]
     contradiction
   · -- the case `0 < y`
-    exact hpos
+    apply hpos
 
 
 example {t : ℤ} (h2 : t < 3) (h : t - 1 = 6) : t = 13 := by
@@ -108,7 +108,11 @@ example : Prime 7 := by
   sorry
 
 example {x : ℚ} (h1 : x ^ 2 = 4) (h2 : 1 < x) : x = 2 := by
-  have : x = 2 ∨ x + 2 = 0
+  have h3 :=
+    calc
+      (x + 2) * (x - 2) = x ^ 2 + 2 * x - 2 * x - 4 := by ring
+      _ = 0 := by addarith [h1]
+  rw [mul_eq_zero] at h3
   · sorry
   sorry
 

@@ -1129,7 +1129,7 @@ that <code class="docutils literal notranslate"><span class="pre">&#172;</span><
         <span class="n">_</span> <span class="bp">&#8805;</span> <span class="n">x</span> <span class="bp">*</span> <span class="n">y</span> <span class="o">:=</span> <span class="kd">by</span> <span class="n">rel</span> <span class="o">[</span><span class="n">hneg</span><span class="o">]</span>
     <span class="n">contradiction</span>
   <span class="bp">&#183;</span> <span class="c1">-- the case `0 &lt; y`</span>
-    <span class="n">exact</span> <span class="n">hpos</span>
+    <span class="n">apply</span> <span class="n">hpos</span>
 </pre></div>
 </div>
 </section>
@@ -1351,7 +1351,7 @@ We can analyze all these cases and check they don&#8217;t work:</p>
   &amp; = (b + 1) ^ 2,\end{split}\]</div>
 <p>so <span class="math notranslate nohighlight">\(c&lt;b+1\)</span>, so it is false that <span class="math notranslate nohighlight">\(b+1\le c\)</span>.  These two facts contradict each other.</p>
 </div>
-<p>Write this proof up in Lean.  It will be long; my version is 22 lines.</p>
+<p>Write this proof up in Lean.  It will be long; my version is 27 lines.</p>
 <div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">{</span><span class="n">a</span> <span class="n">b</span> <span class="n">c</span> <span class="o">:</span> <span class="n">&#8469;</span><span class="o">}</span> <span class="o">(</span><span class="n">ha</span> <span class="o">:</span> <span class="mi">0</span> <span class="bp">&lt;</span> <span class="n">a</span><span class="o">)</span> <span class="o">(</span><span class="n">hb</span> <span class="o">:</span> <span class="mi">0</span> <span class="bp">&lt;</span> <span class="n">b</span><span class="o">)</span> <span class="o">(</span><span class="n">hc</span> <span class="o">:</span> <span class="mi">0</span> <span class="bp">&lt;</span> <span class="n">c</span><span class="o">)</span> <span class="o">(</span><span class="n">h_pyth</span> <span class="o">:</span> <span class="n">a</span> <span class="bp">^</span> <span class="mi">2</span> <span class="bp">+</span> <span class="n">b</span> <span class="bp">^</span> <span class="mi">2</span> <span class="bp">=</span> <span class="n">c</span> <span class="bp">^</span> <span class="mi">2</span><span class="o">)</span> <span class="o">:</span>
     <span class="mi">3</span> <span class="bp">&#8804;</span> <span class="n">a</span> <span class="o">:=</span> <span class="kd">by</span>
   <span class="gr">sorry</span>
@@ -1366,8 +1366,7 @@ We can analyze all these cases and check they don&#8217;t work:</p>
 <span class="math notranslate nohighlight">\(y\le x\)</span>.</p></li>
 </ol>
 <blockquote>
-<div><p>We have used this fact before, as a lemma (in Lean <code class="docutils literal notranslate"><span class="pre">le_of_pow_le_pow</span></code>), in the exercises to
-<a class="reference internal" href="02_Proofs_with_Structure.html#lemmas"><span class="std std-numref">Section 2.2</span></a>.</p>
+<div><p>We have used this fact before; it&#8217;s another of the lemmas which underlie the <code class="docutils literal notranslate"><span class="pre">cancel</span></code> tactic.</p>
 </div></blockquote>
 <div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">{</span><span class="n">x</span> <span class="n">y</span> <span class="o">:</span> <span class="n">&#8477;</span><span class="o">}</span> <span class="o">(</span><span class="n">n</span> <span class="o">:</span> <span class="n">&#8469;</span><span class="o">)</span> <span class="o">(</span><span class="n">hx</span> <span class="o">:</span> <span class="mi">0</span> <span class="bp">&#8804;</span> <span class="n">x</span><span class="o">)</span> <span class="o">(</span><span class="n">hn</span> <span class="o">:</span> <span class="mi">0</span> <span class="bp">&lt;</span> <span class="n">n</span><span class="o">)</span> <span class="o">(</span><span class="n">h</span> <span class="o">:</span> <span class="n">y</span> <span class="bp">^</span> <span class="n">n</span> <span class="bp">&#8804;</span> <span class="n">x</span> <span class="bp">^</span> <span class="n">n</span><span class="o">)</span> <span class="o">:</span> <span class="n">y</span> <span class="bp">&#8804;</span> <span class="n">x</span> <span class="o">:=</span> <span class="kd">by</span>
   <span class="gr">sorry</span>
@@ -1388,16 +1387,20 @@ We can analyze all these cases and check they don&#8217;t work:</p>
 </pre></div>
 </div>
 <ol class="arabic" start="4">
-<li><p>Give a different proof of a problem from the exercises to <a class="reference internal" href="02_Proofs_with_Structure.html#lemmas"><span class="std std-numref">Section 2.2</span></a>: Let
+<li><p>Give a different proof of a problem from the exercises to <a class="reference internal" href="02_Proofs_with_Structure.html#tactic-mode"><span class="std std-numref">Section 2.1</span></a>: Let
 <span class="math notranslate nohighlight">\(x\)</span>
 be a rational number whose square is 4, and which is greater than 1.  Show that <span class="math notranslate nohighlight">\(x=2\)</span>.</p>
-<p>Instead of invoking the lemma about cancelling a
-nonzero factor, give a direct proof using the ideas of this section: break into two cases, and
+<p>Instead of using the <code class="docutils literal notranslate"><span class="pre">cancel</span></code> tactic, give a direct proof using the ideas of this section:
+break into two cases, and
 then rule out one of them. (You may find it convenient to deduce a numeric contradiction.)</p>
 </li>
 </ol>
 <div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">{</span><span class="n">x</span> <span class="o">:</span> <span class="n">&#8474;</span><span class="o">}</span> <span class="o">(</span><span class="n">h1</span> <span class="o">:</span> <span class="n">x</span> <span class="bp">^</span> <span class="mi">2</span> <span class="bp">=</span> <span class="mi">4</span><span class="o">)</span> <span class="o">(</span><span class="n">h2</span> <span class="o">:</span> <span class="mi">1</span> <span class="bp">&lt;</span> <span class="n">x</span><span class="o">)</span> <span class="o">:</span> <span class="n">x</span> <span class="bp">=</span> <span class="mi">2</span> <span class="o">:=</span> <span class="kd">by</span>
-  <span class="k">have</span> <span class="o">:</span> <span class="n">x</span> <span class="bp">=</span> <span class="mi">2</span> <span class="bp">&#8744;</span> <span class="n">x</span> <span class="bp">+</span> <span class="mi">2</span> <span class="bp">=</span> <span class="mi">0</span>
+  <span class="k">have</span> <span class="n">h3</span> <span class="o">:=</span>
+    <span class="k">calc</span>
+      <span class="o">(</span><span class="n">x</span> <span class="bp">+</span> <span class="mi">2</span><span class="o">)</span> <span class="bp">*</span> <span class="o">(</span><span class="n">x</span> <span class="bp">-</span> <span class="mi">2</span><span class="o">)</span> <span class="bp">=</span> <span class="n">x</span> <span class="bp">^</span> <span class="mi">2</span> <span class="bp">+</span> <span class="mi">2</span> <span class="bp">*</span> <span class="n">x</span> <span class="bp">-</span> <span class="mi">2</span> <span class="bp">*</span> <span class="n">x</span> <span class="bp">-</span> <span class="mi">4</span> <span class="o">:=</span> <span class="kd">by</span> <span class="n">ring</span>
+      <span class="n">_</span> <span class="bp">=</span> <span class="mi">0</span> <span class="o">:=</span> <span class="kd">by</span> <span class="n">addarith</span> <span class="o">[</span><span class="n">h1</span><span class="o">]</span>
+  <span class="n">rw</span> <span class="o">[</span><span class="n">mul_eq_zero</span><span class="o">]</span> <span class="n">at</span> <span class="n">h3</span>
   <span class="bp">&#183;</span> <span class="gr">sorry</span>
   <span class="gr">sorry</span>
 </pre></div>
