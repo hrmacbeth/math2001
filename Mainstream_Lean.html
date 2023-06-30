@@ -167,10 +167,16 @@ collection of lemmas, and in mathlib these lemmas would be invoked by name.</p>
 <p><code class="docutils literal notranslate"><span class="pre">positivity</span></code></p>
 </td>
 </tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">inductive_type</span></code></p></td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">cancel</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">mul_left_cancel&#8320;</span></code>, <code class="docutils literal notranslate"><span class="pre">lt_of_pow_lt_pow</span></code>,</p>
+<p><code class="docutils literal notranslate"><span class="pre">pos_of_mul_pos_left</span></code>, etc. together with the tactic</p>
+<p><code class="docutils literal notranslate"><span class="pre">positivity</span></code></p>
+</td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">inductive_type</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">rfl</span></code>, <code class="docutils literal notranslate"><span class="pre">nomatch</span></code></p></td>
 </tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">simple_induction</span></code></p>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">simple_induction</span></code></p>
 <p><code class="docutils literal notranslate"><span class="pre">induction_from_starting_point</span></code></p>
 <p><code class="docutils literal notranslate"><span class="pre">two_step_induction</span></code></p>
 <p><code class="docutils literal notranslate"><span class="pre">two_step_induction_from_starting_point</span></code></p>
@@ -203,7 +209,7 @@ aware of:</p>
 <td><p><code class="docutils literal notranslate"><span class="pre">linarith</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">addarith</span></code>, <code class="docutils literal notranslate"><span class="pre">rel</span></code>, <code class="docutils literal notranslate"><span class="pre">ring</span></code>, <code class="docutils literal notranslate"><span class="pre">numbers</span></code></p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference external" href="https://en.wikipedia.org/wiki/Buchberger%27s_algorithm">Buchberger&#8217;s algorithm</a></p></td>
+<tr class="row-odd"><td><p><a class="reference external" href="https://en.wikipedia.org/wiki/Gr%C3%B6bner_basis">Gr&#246;bner bases</a></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">polyrith</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">rw</span></code>, <code class="docutils literal notranslate"><span class="pre">ring</span></code></p></td>
 </tr>
@@ -224,7 +230,7 @@ more readable than the source code: it is searchable and it has internal hyperli
 <li><p>Lemmas are often stated in extreme generality &#8230; <span class="math notranslate nohighlight">\((a - b) + c = a - (b - c)\)</span>
 <a class="reference external" href="https://leanprover-community.github.io/mathlib4_docs/Mathlib/Algebra/Group/Basic.html#sub_sub">is stated</a>
 not for <span class="math notranslate nohighlight">\(\mathbb{R}\)</span> but for a <code class="docutils literal notranslate"><span class="pre">SubtractionCommMonoid</span></code>.  You may have better
-luck interacting with the library after first courses on algebra and point-set topology.</p></li>
+luck interacting with the library after first courses on abstract algebra and point-set topology.</p></li>
 <li><p>If you can guess the exact statement of a lemma, the tactic <code class="docutils literal notranslate"><span class="pre">exact?</span></code> will find it in the
 library.</p></li>
 </ul>

@@ -691,10 +691,10 @@ example applying this test:</p>
 <div class="admonition-solution admonition">
 <p class="admonition-title">Solution</p>
 <p>Since <span class="math notranslate nohighlight">\(a \mid b\)</span>, there exists a natural number <span class="math notranslate nohighlight">\(k\)</span> such that <span class="math notranslate nohighlight">\(b=ak\)</span>.</p>
-<p>We first show <span class="math notranslate nohighlight">\(1 \le k\)</span>.  It suffices to show that <span class="math notranslate nohighlight">\(0&lt;k\)</span>, which is true since</p>
+<p>We first note that</p>
 <div class="math notranslate nohighlight">
 \[0 &lt; b =ak\]</div>
-<p>and <span class="math notranslate nohighlight">\(0\le a\)</span>.</p>
+<p>so since <span class="math notranslate nohighlight">\(0\le a\)</span>, <span class="math notranslate nohighlight">\(0&lt;k\)</span>. Thus in fact <span class="math notranslate nohighlight">\(1 \le k\)</span>.</p>
 <p>Now, we have</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}a &amp;= a \cdot 1 \\
@@ -703,12 +703,12 @@ example applying this test:</p>
 </div>
 <div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">{</span><span class="n">a</span> <span class="n">b</span> <span class="o">:</span> <span class="n">&#8469;</span><span class="o">}</span> <span class="o">(</span><span class="n">hb</span> <span class="o">:</span> <span class="mi">0</span> <span class="bp">&lt;</span> <span class="n">b</span><span class="o">)</span> <span class="o">(</span><span class="n">hab</span> <span class="o">:</span> <span class="n">a</span> <span class="bp">&#8739;</span> <span class="n">b</span><span class="o">)</span> <span class="o">:</span> <span class="n">a</span> <span class="bp">&#8804;</span> <span class="n">b</span> <span class="o">:=</span> <span class="kd">by</span>
   <span class="n">obtain</span> <span class="o">&#10216;</span><span class="n">k</span><span class="o">,</span> <span class="n">hk</span><span class="o">&#10217;</span> <span class="o">:=</span> <span class="n">hab</span>
-  <span class="k">have</span> <span class="n">H</span> <span class="o">:</span> <span class="mi">1</span> <span class="bp">&#8804;</span> <span class="n">k</span>
-  <span class="bp">&#183;</span> <span class="n">apply</span> <span class="n">pos_of_mul_pos_right</span> <span class="o">(</span><span class="n">a</span> <span class="o">:=</span> <span class="n">a</span><span class="o">)</span>
-    <span class="bp">&#183;</span> <span class="k">calc</span>
-        <span class="mi">0</span> <span class="bp">&lt;</span> <span class="n">b</span> <span class="o">:=</span> <span class="n">hb</span>
-        <span class="n">_</span> <span class="bp">=</span> <span class="n">a</span> <span class="bp">*</span> <span class="n">k</span> <span class="o">:=</span> <span class="n">hk</span>
-    <span class="bp">&#183;</span> <span class="n">extra</span>
+  <span class="k">have</span> <span class="n">H1</span> <span class="o">:=</span>
+    <span class="k">calc</span>
+      <span class="mi">0</span> <span class="bp">&lt;</span> <span class="n">b</span> <span class="o">:=</span> <span class="n">hb</span>
+      <span class="n">_</span> <span class="bp">=</span> <span class="n">a</span> <span class="bp">*</span> <span class="n">k</span> <span class="o">:=</span> <span class="n">hk</span>
+  <span class="n">cancel</span> <span class="n">a</span> <span class="n">at</span> <span class="n">H1</span>
+  <span class="k">have</span> <span class="n">H</span> <span class="o">:</span> <span class="mi">1</span> <span class="bp">&#8804;</span> <span class="n">k</span> <span class="o">:=</span> <span class="n">H1</span>
   <span class="k">calc</span>
     <span class="n">a</span> <span class="bp">=</span> <span class="n">a</span> <span class="bp">*</span> <span class="mi">1</span> <span class="o">:=</span> <span class="kd">by</span> <span class="n">ring</span>
     <span class="n">_</span> <span class="bp">&#8804;</span> <span class="n">a</span> <span class="bp">*</span> <span class="n">k</span> <span class="o">:=</span> <span class="kd">by</span> <span class="n">rel</span> <span class="o">[</span><span class="n">H</span><span class="o">]</span>

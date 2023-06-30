@@ -81,6 +81,13 @@ collection of lemmas, and in mathlib these lemmas would be invoked by name.
         
         ``positivity``
 
+    * - ``cancel``
+      - ``mul_left_cancel₀``, ``lt_of_pow_lt_pow``,
+      
+        ``pos_of_mul_pos_left``, etc. together with the tactic
+        
+        ``positivity``
+
     * - ``inductive_type``
       - ``rfl``, ``nomatch``
 
@@ -115,7 +122,7 @@ aware of:
       - ``linarith``
       - ``addarith``, ``rel``, ``ring``, ``numbers``
 
-    * - `Buchberger's algorithm <https://en.wikipedia.org/wiki/Buchberger%27s_algorithm>`_
+    * - `Gröbner bases <https://en.wikipedia.org/wiki/Gr%C3%B6bner_basis>`_
       - ``polyrith``
       - ``rw``, ``ring``
 
@@ -135,7 +142,7 @@ A few basic points to be aware of in interacting with the library:
 * Lemmas are often stated in extreme generality ... :math:`(a - b) + c = a - (b - c)` 
   `is stated <https://leanprover-community.github.io/mathlib4_docs/Mathlib/Algebra/Group/Basic.html#sub_sub>`_
   not for :math:`\mathbb{R}` but for a ``SubtractionCommMonoid``.  You may have better
-  luck interacting with the library after first courses on algebra and point-set topology.
+  luck interacting with the library after first courses on abstract algebra and point-set topology.
 * If you can guess the exact statement of a lemma, the tactic ``exact?`` will find it in the
   library.
 

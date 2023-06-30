@@ -153,7 +153,7 @@
 <ol class="arabic" start="5">
 <li><p>Let <span class="math notranslate nohighlight">\(a\)</span> and <span class="math notranslate nohighlight">\(b\)</span> be real numbers and suppose that <span class="math notranslate nohighlight">\(a \le b\)</span>.
 Show that <span class="math notranslate nohighlight">\(a ^ 3 \le b ^ 3\)</span>.</p>
-<p>This problem is solved in words in the text in <a class="reference internal" href="02_Proofs_with_Structure.html#cube-inequality"><span class="std std-numref">Example 2.1.6</span></a>, so don&#8217;t
+<p>This problem is solved in words in the text in <a class="reference internal" href="02_Proofs_with_Structure.html#cube-inequality"><span class="std std-numref">Example 2.1.8</span></a>, so don&#8217;t
 submit a solution in words, only in Lean.</p>
 </li>
 </ol>
@@ -180,11 +180,7 @@ submit a solution in words, only in Lean.</p>
 <ol class="arabic" start="2">
 <li><p>Let <span class="math notranslate nohighlight">\(a\)</span> be a real number and suppose that <span class="math notranslate nohighlight">\(a ^ 3 = 0\)</span>.
 Show that <span class="math notranslate nohighlight">\(a = 0\)</span>.</p>
-<p>You will probably use the lemma <code class="docutils literal notranslate"><span class="pre">eq_zero_or_eq_zero_of_mul_eq_zero</span></code>, stating that if
-<span class="math notranslate nohighlight">\(ab=0\)</span> then either <span class="math notranslate nohighlight">\(a=0\)</span> or <span class="math notranslate nohighlight">\(b=0\)</span>.</p>
-<p>Note: <a class="reference internal" href="02_Proofs_with_Structure.html#pow-eq-zero-disc"><span class="std std-numref">Example 2.3.6</span></a> in the text is similar (but simpler), and trying it
-first will give you some ideas for this one.  But don&#8217;t invoke the lemma <code class="docutils literal notranslate"><span class="pre">pow_eq_zero</span></code>
-mentioned in that example: the idea is that we&#8217;re establishing here a special case of that lemma.</p>
+<p>[Note, June 2023: this problem was based on material which has since been deleted from the book.]</p>
 </li>
 </ol>
 <div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="c">/-</span><span class="cm"> 5 points -/</span>
@@ -283,10 +279,6 @@ integers, and suppose that <span class="math notranslate nohighlight">\(a\equiv 
 <ol class="arabic" start="6">
 <li><p>Let <span class="math notranslate nohighlight">\(a\)</span> and <span class="math notranslate nohighlight">\(b\)</span> be natural numbers, with <span class="math notranslate nohighlight">\(b\)</span> positive, and suppose that
 <span class="math notranslate nohighlight">\(a\)</span> divides <span class="math notranslate nohighlight">\(b\)</span>.  Show that <span class="math notranslate nohighlight">\(a\)</span> is positive.</p>
-<p>You will probably use the lemma <code class="docutils literal notranslate"><span class="pre">pos_of_mul_pos_left</span></code>, stating that if <span class="math notranslate nohighlight">\(ab\)</span> is positive
-and <span class="math notranslate nohighlight">\(b\)</span> is nonnegative then <span class="math notranslate nohighlight">\(a\)</span> is positive.  Note that the variables named <span class="math notranslate nohighlight">\(a\)</span>
-and <span class="math notranslate nohighlight">\(b\)</span> in this lemma are not necessarily the same as the variables named <span class="math notranslate nohighlight">\(a\)</span> and
-<span class="math notranslate nohighlight">\(b\)</span> in the problem!</p>
 <p>This problem is solved in words in the text in <a class="reference internal" href="03_Parity_and_Divisibility.html#dvd-bd-2"><span class="std std-numref">Example 3.2.8</span></a>, so don&#8217;t
 submit a solution in words, only in Lean.</p>
 </li>
@@ -384,9 +376,10 @@ including the use of the lemmas <code class="docutils literal notranslate"><span
 <ol class="arabic" start="2">
 <li><p>Show that <span class="math notranslate nohighlight">\(\lnot\forall x, P(x)\)</span> is logically equivalent to <span class="math notranslate nohighlight">\(\exists x, \lnot P(x)\)</span>.</p>
 <p>You will need to use the law of the excluded middle (the tactic <code class="docutils literal notranslate"><span class="pre">by_cases</span></code>).</p>
-<p>Note: this is one of the facts from <a class="reference internal" href="05_Logic.html#negation-rule-table"><span class="std std-numref">Table 5.1</span></a> which form the
-theoretical underpinning for negation-normalization (the tactic <code class="docutils literal notranslate"><span class="pre">push_neg</span></code>).  So <em>don&#8217;t</em> use
-the tactic <code class="docutils literal notranslate"><span class="pre">push_neg</span></code> in this problem!</p>
+<p>The point of this exercise is that you are proving the lemma <code class="docutils literal notranslate"><span class="pre">not_forall</span></code>, from
+<a class="reference internal" href="05_Logic.html#negation-rule-table"><span class="std std-numref">Table 5.1</span></a>.  So don&#8217;t use that lemma or the tactic <code class="docutils literal notranslate"><span class="pre">push_neg</span></code>
+which depends on it; instead prove this from scratch.  You will need to use the law of the
+excluded middle.</p>
 <p>Write this problem only in Lean, not on paper.</p>
 </li>
 </ol>
@@ -534,8 +527,8 @@ r_1&amp;=0\\
 <div class="math notranslate nohighlight">
 \[\begin{split}T(n)=
 \begin{cases}
-T(1-n)+2n-1,&amp;0&lt;n\\
-T(-n),&amp;n&lt;0\\
+T(1-n)+2n-1,&amp;0&lt; n\\
+T(-n),&amp;n&lt; 0\\
 0&amp;n=0.
 \end{cases}\end{split}\]</div>
 <p>This recursive definition is well-founded, since its self-references are strictly decreasing in
