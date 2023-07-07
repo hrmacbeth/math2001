@@ -210,8 +210,8 @@ It is common to put each expression of the proof on its own line, so that the
 first expression isn&#8217;t all alone on the left.  This is certainly acceptable,
 and is useful if the expressions involved are very long, so the extra space
 is needed.</p>
-<div class="admonition-alternative-solution admonition">
-<p class="admonition-title">Alternative solution</p>
+<div class="admonition-solution admonition">
+<p class="admonition-title">Solution</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}&amp;r \\
 &amp;= (r + 2s) - 2s \\
@@ -252,8 +252,8 @@ and suppose that <span class="math notranslate nohighlight">\(b^2=2a^2\)</span> 
 the Indian mathematican who discovered it in c. 628 CE.) You might
 optionally choose to help your reader by providing several intermediate steps,
 each one of which can be checked by a simpler algebraic calculation.</p>
-<div class="admonition-alternative-solution admonition">
-<p class="admonition-title">Alternative solution</p>
+<div class="admonition-solution admonition">
+<p class="admonition-title">Solution</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}(2an + bm) ^ 2
 &amp;=4a^2n^2+4anbm+b^2m^2\\
@@ -276,8 +276,8 @@ calculation avoids these case splits.</p>
 <p>Let <span class="math notranslate nohighlight">\(a\)</span>, <cite>b</cite>, <cite>c</cite>, <cite>d</cite>, <cite>e</cite> and <cite>f</cite> be integers, and suppose that
 <span class="math notranslate nohighlight">\(ad = bc\)</span> and <span class="math notranslate nohighlight">\(cf=de\)</span>.  Show that <span class="math notranslate nohighlight">\(d(af - be) = 0\)</span>.</p>
 </div>
-<div class="admonition-proof admonition">
-<p class="admonition-title">Proof</p>
+<div class="admonition-solution admonition">
+<p class="admonition-title">Solution</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}d(af - be)
 &amp;= (ad)  f - dbe \\
@@ -604,11 +604,17 @@ and <span class="math notranslate nohighlight">\(y-x+1=2\)</span>.  Prove that <
 equations to eliminate the variable not of interest, then solving the remaining
 one-variable equation.</p>
 <div class="math notranslate nohighlight">
-\[\begin{split}2x-y&amp;=4 &amp;&amp;(1)\\
-y-x+1&amp;=2 &amp;&amp;(2)\\
-(2x-y)+(y-x+1)&amp;=4+2\hspace{1cm}&amp;&amp;\text{by adding (1) and (2)}\\
-x +1&amp;=6\\
-x&amp;=5\end{split}\]</div>
+\[ \begin{align}\begin{aligned}2x-y&amp;=4
+&amp;
+\hspace{1cm}&amp;(1)\\y-x+1&amp;=2
+&amp;
+\hspace{1cm}&amp;(2)\\(2x-y)+(y-x+1)&amp;=4+2
+&amp;
+\hspace{1cm}&amp;\text{by adding (1) and (2)}\\x +1&amp;=6
+&amp;
+\hspace{1cm}&amp;\\x&amp;=5
+&amp;
+\hspace{1cm}&amp;\end{aligned}\end{align} \]</div>
 <p>But this argument can also be presented as a proof by calculation, which has the
 advantage that there is no magic &#8220;add (1) and (2)&#8221; line requiring an annotation
 for the reader to follow.</p>
@@ -692,8 +698,8 @@ deal with the <span class="math notranslate nohighlight">\(a\)</span> term; then
 It could be shortened to a proof in which successive purely-algebra steps are
 combined, leaving something as short as possible: one step consisting of a
 big algebraic calculation, one substitution step, then one more algebra step.</p>
-<div class="admonition-alternative-solution admonition">
-<p class="admonition-title">Alternative solution</p>
+<div class="admonition-solution admonition">
+<p class="admonition-title">Solution</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}a ^ 2 - a + 3 &amp;=(a-3)^2+5(a-3)+9\\
 &amp;=(2b)^2+5(2b)+9\\
@@ -726,8 +732,8 @@ Show that <span class="math notranslate nohighlight">\(z^4+z^3+2z^2+z+3=2\)</spa
 </div>
 <p>Again, this can be compressed, while remaining easily checkable, by combining steps
 of the same type.</p>
-<div class="admonition-alternative-solution admonition">
-<p class="admonition-title">Alternative solution</p>
+<div class="admonition-solution admonition">
+<p class="admonition-title">Solution</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}z^4+z^3+2z^2+z+3
 &amp;=z^2(z^2+1)+z(z^2+1)+(z^2+1)+2\\
@@ -751,136 +757,124 @@ and simplifying, so you can state the result without writing out the method.</p>
 <section id="id29">
 <h3><span class="section-number">1.3.11. </span>Exercises<a class="headerlink" href="#id29" title="Permalink to this headline">&#61633;</a></h3>
 <p>Give proofs by calculation for each of the following problems.</p>
-<ol class="arabic simple">
+<ol class="arabic">
 <li><p>Let <span class="math notranslate nohighlight">\(x\)</span> and <span class="math notranslate nohighlight">\(y\)</span> be real numbers and suppose that <span class="math notranslate nohighlight">\(x = 3\)</span>
-and <span class="math notranslate nohighlight">\(y = 4x - 3\)</span>.  Show that <span class="math notranslate nohighlight">\(y = 9\)</span>.</p></li>
-</ol>
+and <span class="math notranslate nohighlight">\(y = 4x - 3\)</span>.  Show that <span class="math notranslate nohighlight">\(y = 9\)</span>.</p>
 <div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">{</span><span class="n">x</span> <span class="n">y</span> <span class="o">:</span> <span class="n">&#8477;</span><span class="o">}</span> <span class="o">(</span><span class="n">h1</span> <span class="o">:</span> <span class="n">x</span> <span class="bp">=</span> <span class="mi">3</span><span class="o">)</span> <span class="o">(</span><span class="n">h2</span> <span class="o">:</span> <span class="n">y</span> <span class="bp">=</span> <span class="mi">4</span> <span class="bp">*</span> <span class="n">x</span> <span class="bp">-</span> <span class="mi">3</span><span class="o">)</span> <span class="o">:</span> <span class="n">y</span> <span class="bp">=</span> <span class="mi">9</span> <span class="o">:=</span>
   <span class="gr">sorry</span>
 </pre></div>
 </div>
-<ol class="arabic simple" start="2">
+</li>
 <li><p>Let <span class="math notranslate nohighlight">\(a\)</span> and <span class="math notranslate nohighlight">\(b\)</span> be integers and suppose that <span class="math notranslate nohighlight">\(a-b=0\)</span>.
-Show that <span class="math notranslate nohighlight">\(a=b\)</span>.</p></li>
-</ol>
+Show that <span class="math notranslate nohighlight">\(a=b\)</span>.</p>
 <div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">{</span><span class="n">a</span> <span class="n">b</span> <span class="o">:</span> <span class="n">&#8484;</span><span class="o">}</span> <span class="o">(</span><span class="n">h</span> <span class="o">:</span> <span class="n">a</span> <span class="bp">-</span> <span class="n">b</span> <span class="bp">=</span> <span class="mi">0</span><span class="o">)</span> <span class="o">:</span> <span class="n">a</span> <span class="bp">=</span> <span class="n">b</span> <span class="o">:=</span>
   <span class="gr">sorry</span>
 </pre></div>
 </div>
-<ol class="arabic simple" start="3">
+</li>
 <li><p>Let <span class="math notranslate nohighlight">\(x\)</span> and <span class="math notranslate nohighlight">\(y\)</span> be integers and suppose that <span class="math notranslate nohighlight">\(x-3y=5\)</span>
-and <span class="math notranslate nohighlight">\(y=3\)</span>. Show that <span class="math notranslate nohighlight">\(x=14\)</span>.</p></li>
-</ol>
+and <span class="math notranslate nohighlight">\(y=3\)</span>. Show that <span class="math notranslate nohighlight">\(x=14\)</span>.</p>
 <div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">{</span><span class="n">x</span> <span class="n">y</span> <span class="o">:</span> <span class="n">&#8484;</span><span class="o">}</span> <span class="o">(</span><span class="n">h1</span> <span class="o">:</span> <span class="n">x</span> <span class="bp">-</span> <span class="mi">3</span> <span class="bp">*</span> <span class="n">y</span> <span class="bp">=</span> <span class="mi">5</span><span class="o">)</span> <span class="o">(</span><span class="n">h2</span> <span class="o">:</span> <span class="n">y</span> <span class="bp">=</span> <span class="mi">3</span><span class="o">)</span> <span class="o">:</span> <span class="n">x</span> <span class="bp">=</span> <span class="mi">14</span> <span class="o">:=</span>
   <span class="gr">sorry</span>
 </pre></div>
 </div>
-<ol class="arabic simple" start="4">
+</li>
 <li><p>Let <span class="math notranslate nohighlight">\(p\)</span> and <span class="math notranslate nohighlight">\(q\)</span> be rational numbers and suppose that <span class="math notranslate nohighlight">\(p-2q=1\)</span>
-and <span class="math notranslate nohighlight">\(q=-1\)</span>.  Show that <span class="math notranslate nohighlight">\(p=-1\)</span>.</p></li>
-</ol>
+and <span class="math notranslate nohighlight">\(q=-1\)</span>.  Show that <span class="math notranslate nohighlight">\(p=-1\)</span>.</p>
 <div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">{</span><span class="n">p</span> <span class="n">q</span> <span class="o">:</span> <span class="n">&#8474;</span><span class="o">}</span> <span class="o">(</span><span class="n">h1</span> <span class="o">:</span> <span class="n">p</span> <span class="bp">-</span> <span class="mi">2</span> <span class="bp">*</span> <span class="n">q</span> <span class="bp">=</span> <span class="mi">1</span><span class="o">)</span> <span class="o">(</span><span class="n">h2</span> <span class="o">:</span> <span class="n">q</span> <span class="bp">=</span> <span class="bp">-</span><span class="mi">1</span><span class="o">)</span> <span class="o">:</span> <span class="n">p</span> <span class="bp">=</span> <span class="bp">-</span><span class="mi">1</span> <span class="o">:=</span>
   <span class="gr">sorry</span>
 </pre></div>
 </div>
-<ol class="arabic simple" start="5">
+</li>
 <li><p>Let <span class="math notranslate nohighlight">\(x\)</span> and <span class="math notranslate nohighlight">\(y\)</span> be rational numbers and suppose that <span class="math notranslate nohighlight">\(y+1=3\)</span>
-and <span class="math notranslate nohighlight">\(x+2y=3\)</span>.  Show that <span class="math notranslate nohighlight">\(x=-1\)</span>.</p></li>
-</ol>
+and <span class="math notranslate nohighlight">\(x+2y=3\)</span>.  Show that <span class="math notranslate nohighlight">\(x=-1\)</span>.</p>
 <div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">{</span><span class="n">x</span> <span class="n">y</span> <span class="o">:</span> <span class="n">&#8474;</span><span class="o">}</span> <span class="o">(</span><span class="n">h1</span> <span class="o">:</span> <span class="n">y</span> <span class="bp">+</span> <span class="mi">1</span> <span class="bp">=</span> <span class="mi">3</span><span class="o">)</span> <span class="o">(</span><span class="n">h2</span> <span class="o">:</span> <span class="n">x</span> <span class="bp">+</span> <span class="mi">2</span> <span class="bp">*</span> <span class="n">y</span> <span class="bp">=</span> <span class="mi">3</span><span class="o">)</span> <span class="o">:</span> <span class="n">x</span> <span class="bp">=</span> <span class="bp">-</span><span class="mi">1</span> <span class="o">:=</span>
   <span class="gr">sorry</span>
 </pre></div>
 </div>
-<ol class="arabic simple" start="6">
+</li>
 <li><p>Let <span class="math notranslate nohighlight">\(p\)</span> and <span class="math notranslate nohighlight">\(q\)</span> be integers and suppose that <span class="math notranslate nohighlight">\(p+4q=1\)</span> and
-<span class="math notranslate nohighlight">\(q-1=2\)</span>.  Show that <span class="math notranslate nohighlight">\(p=-11\)</span>.</p></li>
-</ol>
+<span class="math notranslate nohighlight">\(q-1=2\)</span>.  Show that <span class="math notranslate nohighlight">\(p=-11\)</span>.</p>
 <div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">{</span><span class="n">p</span> <span class="n">q</span> <span class="o">:</span> <span class="n">&#8484;</span><span class="o">}</span> <span class="o">(</span><span class="n">h1</span> <span class="o">:</span> <span class="n">p</span> <span class="bp">+</span> <span class="mi">4</span> <span class="bp">*</span> <span class="n">q</span> <span class="bp">=</span> <span class="mi">1</span><span class="o">)</span> <span class="o">(</span><span class="n">h2</span> <span class="o">:</span> <span class="n">q</span> <span class="bp">-</span> <span class="mi">1</span> <span class="bp">=</span> <span class="mi">2</span><span class="o">)</span> <span class="o">:</span> <span class="n">p</span> <span class="bp">=</span> <span class="bp">-</span><span class="mi">11</span> <span class="o">:=</span>
   <span class="gr">sorry</span>
 </pre></div>
 </div>
-<ol class="arabic simple" start="7">
+</li>
 <li><p>Let <span class="math notranslate nohighlight">\(a\)</span>, <span class="math notranslate nohighlight">\(b\)</span> and <span class="math notranslate nohighlight">\(c\)</span> be real numbers and suppose that
-<span class="math notranslate nohighlight">\(a+2b+3c=7\)</span>, <span class="math notranslate nohighlight">\(b+2c=3\)</span> and <span class="math notranslate nohighlight">\(c=1\)</span>.  Show that <span class="math notranslate nohighlight">\(a=2\)</span>.</p></li>
-</ol>
-<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">{</span><span class="n">a</span> <span class="n">b</span> <span class="n">c</span> <span class="o">:</span> <span class="n">&#8477;</span><span class="o">}</span> <span class="o">(</span><span class="n">h1</span> <span class="o">:</span> <span class="n">a</span> <span class="bp">+</span> <span class="mi">2</span> <span class="bp">*</span> <span class="n">b</span> <span class="bp">+</span> <span class="mi">3</span> <span class="bp">*</span> <span class="n">c</span> <span class="bp">=</span> <span class="mi">7</span><span class="o">)</span> <span class="o">(</span><span class="n">h2</span> <span class="o">:</span> <span class="n">b</span> <span class="bp">+</span> <span class="mi">2</span> <span class="bp">*</span> <span class="n">c</span> <span class="bp">=</span> <span class="mi">3</span><span class="o">)</span> <span class="o">(</span><span class="n">h3</span> <span class="o">:</span> <span class="n">c</span> <span class="bp">=</span> <span class="mi">1</span><span class="o">)</span> <span class="o">:</span> <span class="n">a</span> <span class="bp">=</span> <span class="mi">2</span> <span class="o">:=</span>
+<span class="math notranslate nohighlight">\(a+2b+3c=7\)</span>, <span class="math notranslate nohighlight">\(b+2c=3\)</span> and <span class="math notranslate nohighlight">\(c=1\)</span>.  Show that <span class="math notranslate nohighlight">\(a=2\)</span>.</p>
+<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">{</span><span class="n">a</span> <span class="n">b</span> <span class="n">c</span> <span class="o">:</span> <span class="n">&#8477;</span><span class="o">}</span> <span class="o">(</span><span class="n">h1</span> <span class="o">:</span> <span class="n">a</span> <span class="bp">+</span> <span class="mi">2</span> <span class="bp">*</span> <span class="n">b</span> <span class="bp">+</span> <span class="mi">3</span> <span class="bp">*</span> <span class="n">c</span> <span class="bp">=</span> <span class="mi">7</span><span class="o">)</span> <span class="o">(</span><span class="n">h2</span> <span class="o">:</span> <span class="n">b</span> <span class="bp">+</span> <span class="mi">2</span> <span class="bp">*</span> <span class="n">c</span> <span class="bp">=</span> <span class="mi">3</span><span class="o">)</span>
+    <span class="o">(</span><span class="n">h3</span> <span class="o">:</span> <span class="n">c</span> <span class="bp">=</span> <span class="mi">1</span><span class="o">)</span> <span class="o">:</span> <span class="n">a</span> <span class="bp">=</span> <span class="mi">2</span> <span class="o">:=</span>
   <span class="gr">sorry</span>
 </pre></div>
 </div>
-<ol class="arabic simple" start="8">
+</li>
 <li><p>Let <span class="math notranslate nohighlight">\(u\)</span> and <span class="math notranslate nohighlight">\(v\)</span> be rational numbers and suppose that
-<span class="math notranslate nohighlight">\(4u+v=3\)</span> and <span class="math notranslate nohighlight">\(v=2\)</span>.  Show that <span class="math notranslate nohighlight">\(u=1/4\)</span>.</p></li>
-</ol>
+<span class="math notranslate nohighlight">\(4u+v=3\)</span> and <span class="math notranslate nohighlight">\(v=2\)</span>.  Show that <span class="math notranslate nohighlight">\(u=1/4\)</span>.</p>
 <div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">{</span><span class="n">u</span> <span class="n">v</span> <span class="o">:</span> <span class="n">&#8474;</span><span class="o">}</span> <span class="o">(</span><span class="n">h1</span> <span class="o">:</span> <span class="mi">4</span> <span class="bp">*</span> <span class="n">u</span> <span class="bp">+</span> <span class="n">v</span> <span class="bp">=</span> <span class="mi">3</span><span class="o">)</span> <span class="o">(</span><span class="n">h2</span> <span class="o">:</span> <span class="n">v</span> <span class="bp">=</span> <span class="mi">2</span><span class="o">)</span> <span class="o">:</span> <span class="n">u</span> <span class="bp">=</span> <span class="mi">1</span> <span class="bp">/</span> <span class="mi">4</span> <span class="o">:=</span>
   <span class="gr">sorry</span>
 </pre></div>
 </div>
-<ol class="arabic simple" start="9">
+</li>
 <li><p>Let <span class="math notranslate nohighlight">\(c\)</span> be a rational number and suppose that <span class="math notranslate nohighlight">\(4 c + 1 = 3 c - 2\)</span>.
-Show that <span class="math notranslate nohighlight">\(c = -3\)</span>.</p></li>
-</ol>
+Show that <span class="math notranslate nohighlight">\(c = -3\)</span>.</p>
 <div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">{</span><span class="n">c</span> <span class="o">:</span> <span class="n">&#8474;</span><span class="o">}</span> <span class="o">(</span><span class="n">h1</span> <span class="o">:</span> <span class="mi">4</span> <span class="bp">*</span> <span class="n">c</span> <span class="bp">+</span> <span class="mi">1</span> <span class="bp">=</span> <span class="mi">3</span> <span class="bp">*</span> <span class="n">c</span> <span class="bp">-</span> <span class="mi">2</span><span class="o">)</span> <span class="o">:</span> <span class="n">c</span> <span class="bp">=</span> <span class="bp">-</span><span class="mi">3</span> <span class="o">:=</span>
   <span class="gr">sorry</span>
 </pre></div>
 </div>
-<ol class="arabic simple" start="10">
+</li>
 <li><p>Let <span class="math notranslate nohighlight">\(p\)</span> be a real number and suppose that <span class="math notranslate nohighlight">\(5 p - 3 = 3 p + 1\)</span>.
-Show that <span class="math notranslate nohighlight">\(p = 2\)</span>.</p></li>
-</ol>
+Show that <span class="math notranslate nohighlight">\(p = 2\)</span>.</p>
 <div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">{</span><span class="n">p</span> <span class="o">:</span> <span class="n">&#8477;</span><span class="o">}</span> <span class="o">(</span><span class="n">h1</span> <span class="o">:</span> <span class="mi">5</span> <span class="bp">*</span> <span class="n">p</span> <span class="bp">-</span> <span class="mi">3</span> <span class="bp">=</span> <span class="mi">3</span> <span class="bp">*</span> <span class="n">p</span> <span class="bp">+</span> <span class="mi">1</span><span class="o">)</span> <span class="o">:</span> <span class="n">p</span> <span class="bp">=</span> <span class="mi">2</span> <span class="o">:=</span>
   <span class="gr">sorry</span>
 </pre></div>
 </div>
-<ol class="arabic simple" start="11">
+</li>
 <li><p>Let <span class="math notranslate nohighlight">\(x\)</span> and <span class="math notranslate nohighlight">\(y\)</span> be integers and suppose that <span class="math notranslate nohighlight">\(2x+y=4\)</span> and
-<span class="math notranslate nohighlight">\(x+y=1\)</span>. Show that <span class="math notranslate nohighlight">\(x=3\)</span>.</p></li>
-</ol>
+<span class="math notranslate nohighlight">\(x+y=1\)</span>. Show that <span class="math notranslate nohighlight">\(x=3\)</span>.</p>
 <div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">{</span><span class="n">x</span> <span class="n">y</span> <span class="o">:</span> <span class="n">&#8484;</span><span class="o">}</span> <span class="o">(</span><span class="n">h1</span> <span class="o">:</span> <span class="mi">2</span> <span class="bp">*</span> <span class="n">x</span> <span class="bp">+</span> <span class="n">y</span> <span class="bp">=</span> <span class="mi">4</span><span class="o">)</span> <span class="o">(</span><span class="n">h2</span> <span class="o">:</span> <span class="n">x</span> <span class="bp">+</span> <span class="n">y</span> <span class="bp">=</span> <span class="mi">1</span><span class="o">)</span> <span class="o">:</span> <span class="n">x</span> <span class="bp">=</span> <span class="mi">3</span> <span class="o">:=</span>
   <span class="gr">sorry</span>
 </pre></div>
 </div>
-<ol class="arabic simple" start="12">
+</li>
 <li><p>Let <span class="math notranslate nohighlight">\(a\)</span> and <span class="math notranslate nohighlight">\(b\)</span> be real numbers and suppose that
-<span class="math notranslate nohighlight">\(a + 2  b = 4\)</span> and <span class="math notranslate nohighlight">\(a - b = 1\)</span>. Show that <span class="math notranslate nohighlight">\(a = 2\)</span>.</p></li>
-</ol>
+<span class="math notranslate nohighlight">\(a + 2  b = 4\)</span> and <span class="math notranslate nohighlight">\(a - b = 1\)</span>. Show that <span class="math notranslate nohighlight">\(a = 2\)</span>.</p>
 <div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">{</span><span class="n">a</span> <span class="n">b</span> <span class="o">:</span> <span class="n">&#8477;</span><span class="o">}</span> <span class="o">(</span><span class="n">h1</span> <span class="o">:</span> <span class="n">a</span> <span class="bp">+</span> <span class="mi">2</span> <span class="bp">*</span> <span class="n">b</span> <span class="bp">=</span> <span class="mi">4</span><span class="o">)</span> <span class="o">(</span><span class="n">h2</span> <span class="o">:</span> <span class="n">a</span> <span class="bp">-</span> <span class="n">b</span> <span class="bp">=</span> <span class="mi">1</span><span class="o">)</span> <span class="o">:</span> <span class="n">a</span> <span class="bp">=</span> <span class="mi">2</span> <span class="o">:=</span>
   <span class="gr">sorry</span>
 </pre></div>
 </div>
-<ol class="arabic simple" start="13">
+</li>
 <li><p>Let <span class="math notranslate nohighlight">\(u\)</span> and <span class="math notranslate nohighlight">\(v\)</span> be real numbers and suppose that <span class="math notranslate nohighlight">\(u+1=v\)</span>.
-Show that <span class="math notranslate nohighlight">\(u^2+3u+1=v^2+v-1\)</span>.</p></li>
-</ol>
+Show that <span class="math notranslate nohighlight">\(u^2+3u+1=v^2+v-1\)</span>.</p>
 <div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">{</span><span class="n">u</span> <span class="n">v</span> <span class="o">:</span> <span class="n">&#8477;</span><span class="o">}</span> <span class="o">(</span><span class="n">h1</span> <span class="o">:</span> <span class="n">u</span> <span class="bp">+</span> <span class="mi">1</span> <span class="bp">=</span> <span class="n">v</span><span class="o">)</span> <span class="o">:</span> <span class="n">u</span> <span class="bp">^</span> <span class="mi">2</span> <span class="bp">+</span> <span class="mi">3</span> <span class="bp">*</span> <span class="n">u</span> <span class="bp">+</span> <span class="mi">1</span> <span class="bp">=</span> <span class="n">v</span> <span class="bp">^</span> <span class="mi">2</span> <span class="bp">+</span> <span class="n">v</span> <span class="bp">-</span> <span class="mi">1</span> <span class="o">:=</span>
   <span class="gr">sorry</span>
 </pre></div>
 </div>
-<ol class="arabic simple" start="14">
+</li>
 <li><p>Let <span class="math notranslate nohighlight">\(t\)</span> be a rational number and suppose that <span class="math notranslate nohighlight">\(t^2-4=0\)</span>.
-Show that <span class="math notranslate nohighlight">\(t^4 + 3t^3 - 3t^2 - 2 t - 2 = 10t+2\)</span>.</p></li>
-</ol>
-<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">{</span><span class="n">t</span> <span class="o">:</span> <span class="n">&#8474;</span><span class="o">}</span> <span class="o">(</span><span class="n">ht</span> <span class="o">:</span> <span class="n">t</span> <span class="bp">^</span> <span class="mi">2</span> <span class="bp">-</span> <span class="mi">4</span> <span class="bp">=</span> <span class="mi">0</span><span class="o">)</span> <span class="o">:</span> <span class="n">t</span> <span class="bp">^</span> <span class="mi">4</span> <span class="bp">+</span> <span class="mi">3</span> <span class="bp">*</span> <span class="n">t</span> <span class="bp">^</span> <span class="mi">3</span> <span class="bp">-</span> <span class="mi">3</span> <span class="bp">*</span> <span class="n">t</span> <span class="bp">^</span> <span class="mi">2</span> <span class="bp">-</span> <span class="mi">2</span> <span class="bp">*</span> <span class="n">t</span> <span class="bp">-</span> <span class="mi">2</span> <span class="bp">=</span> <span class="mi">10</span> <span class="bp">*</span> <span class="n">t</span> <span class="bp">+</span> <span class="mi">2</span> <span class="o">:=</span>
+Show that <span class="math notranslate nohighlight">\(t^4 + 3t^3 - 3t^2 - 2 t - 2 = 10t+2\)</span>.</p>
+<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">{</span><span class="n">t</span> <span class="o">:</span> <span class="n">&#8474;</span><span class="o">}</span> <span class="o">(</span><span class="n">ht</span> <span class="o">:</span> <span class="n">t</span> <span class="bp">^</span> <span class="mi">2</span> <span class="bp">-</span> <span class="mi">4</span> <span class="bp">=</span> <span class="mi">0</span><span class="o">)</span> <span class="o">:</span>
+    <span class="n">t</span> <span class="bp">^</span> <span class="mi">4</span> <span class="bp">+</span> <span class="mi">3</span> <span class="bp">*</span> <span class="n">t</span> <span class="bp">^</span> <span class="mi">3</span> <span class="bp">-</span> <span class="mi">3</span> <span class="bp">*</span> <span class="n">t</span> <span class="bp">^</span> <span class="mi">2</span> <span class="bp">-</span> <span class="mi">2</span> <span class="bp">*</span> <span class="n">t</span> <span class="bp">-</span> <span class="mi">2</span> <span class="bp">=</span> <span class="mi">10</span> <span class="bp">*</span> <span class="n">t</span> <span class="bp">+</span> <span class="mi">2</span> <span class="o">:=</span>
   <span class="gr">sorry</span>
 </pre></div>
 </div>
-<ol class="arabic simple" start="15">
+</li>
 <li><p><span class="math notranslate nohighlight">\(\!\!\!\!{^*}\)</span> Let <span class="math notranslate nohighlight">\(x\)</span> and <span class="math notranslate nohighlight">\(y\)</span> be real numbers and suppose
-that <span class="math notranslate nohighlight">\(x + 3 = 5\)</span> and <span class="math notranslate nohighlight">\(2x - yx = 0\)</span>.  Show that <span class="math notranslate nohighlight">\(y = 2\)</span>.</p></li>
-</ol>
+that <span class="math notranslate nohighlight">\(x + 3 = 5\)</span> and <span class="math notranslate nohighlight">\(2x - yx = 0\)</span>.  Show that <span class="math notranslate nohighlight">\(y = 2\)</span>.</p>
 <div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">{</span><span class="n">x</span> <span class="n">y</span> <span class="o">:</span> <span class="n">&#8477;</span><span class="o">}</span> <span class="o">(</span><span class="n">h1</span> <span class="o">:</span> <span class="n">x</span> <span class="bp">+</span> <span class="mi">3</span> <span class="bp">=</span> <span class="mi">5</span><span class="o">)</span> <span class="o">(</span><span class="n">h2</span> <span class="o">:</span> <span class="mi">2</span> <span class="bp">*</span> <span class="n">x</span> <span class="bp">-</span> <span class="n">y</span> <span class="bp">*</span> <span class="n">x</span> <span class="bp">=</span> <span class="mi">0</span><span class="o">)</span> <span class="o">:</span> <span class="n">y</span> <span class="bp">=</span> <span class="mi">2</span> <span class="o">:=</span>
   <span class="gr">sorry</span>
 </pre></div>
 </div>
-<ol class="arabic simple" start="16">
+</li>
 <li><p><span class="math notranslate nohighlight">\(\!\!\!\!{^*}\)</span> Let <span class="math notranslate nohighlight">\(p\)</span>, <span class="math notranslate nohighlight">\(q\)</span> and <span class="math notranslate nohighlight">\(r\)</span> be rational numbers and
 suppose that <span class="math notranslate nohighlight">\(p + q + r = 0\)</span> and <span class="math notranslate nohighlight">\(pq + pr + qr = 2\)</span>. Show that
-<span class="math notranslate nohighlight">\(p ^ 2 + q ^ 2 + r ^ 2 = -4\)</span>.</p></li>
-</ol>
+<span class="math notranslate nohighlight">\(p ^ 2 + q ^ 2 + r ^ 2 = -4\)</span>.</p>
 <div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">{</span><span class="n">p</span> <span class="n">q</span> <span class="n">r</span> <span class="o">:</span> <span class="n">&#8474;</span><span class="o">}</span> <span class="o">(</span><span class="n">h1</span> <span class="o">:</span> <span class="n">p</span> <span class="bp">+</span> <span class="n">q</span> <span class="bp">+</span> <span class="n">r</span> <span class="bp">=</span> <span class="mi">0</span><span class="o">)</span> <span class="o">(</span><span class="n">h2</span> <span class="o">:</span> <span class="n">p</span> <span class="bp">*</span> <span class="n">q</span> <span class="bp">+</span> <span class="n">p</span> <span class="bp">*</span> <span class="n">r</span> <span class="bp">+</span> <span class="n">q</span> <span class="bp">*</span> <span class="n">r</span> <span class="bp">=</span> <span class="mi">2</span><span class="o">)</span> <span class="o">:</span>
     <span class="n">p</span> <span class="bp">^</span> <span class="mi">2</span> <span class="bp">+</span> <span class="n">q</span> <span class="bp">^</span> <span class="mi">2</span> <span class="bp">+</span> <span class="n">r</span> <span class="bp">^</span> <span class="mi">2</span> <span class="bp">=</span> <span class="bp">-</span><span class="mi">4</span> <span class="o">:=</span>
   <span class="gr">sorry</span>
 </pre></div>
 </div>
+</li>
+</ol>
 </section>
 </section>
 <section id="proving-inequalities">
@@ -1232,7 +1226,8 @@ Show that <span class="math notranslate nohighlight">\((x + y) ^ 2 &lt; 3\)</spa
 &amp;=7b+72.\end{split}\]</div>
 </div>
 <p>Exercise: Fill in the sorries in the following Lean solution to this problem.</p>
-<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">{</span><span class="n">a</span> <span class="n">b</span> <span class="o">:</span> <span class="n">&#8474;</span><span class="o">}</span> <span class="o">(</span><span class="n">h1</span> <span class="o">:</span> <span class="n">a</span> <span class="bp">&#8805;</span> <span class="mi">0</span><span class="o">)</span> <span class="o">(</span><span class="n">h2</span> <span class="o">:</span> <span class="n">b</span> <span class="bp">&#8805;</span> <span class="mi">0</span><span class="o">)</span> <span class="o">(</span><span class="n">h3</span> <span class="o">:</span> <span class="n">a</span> <span class="bp">+</span> <span class="n">b</span> <span class="bp">&#8804;</span> <span class="mi">8</span><span class="o">)</span> <span class="o">:</span> <span class="mi">3</span> <span class="bp">*</span> <span class="n">a</span> <span class="bp">*</span> <span class="n">b</span> <span class="bp">+</span> <span class="n">a</span> <span class="bp">&#8804;</span> <span class="mi">7</span> <span class="bp">*</span> <span class="n">b</span> <span class="bp">+</span> <span class="mi">72</span> <span class="o">:=</span>
+<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">{</span><span class="n">a</span> <span class="n">b</span> <span class="o">:</span> <span class="n">&#8474;</span><span class="o">}</span> <span class="o">(</span><span class="n">h1</span> <span class="o">:</span> <span class="n">a</span> <span class="bp">&#8805;</span> <span class="mi">0</span><span class="o">)</span> <span class="o">(</span><span class="n">h2</span> <span class="o">:</span> <span class="n">b</span> <span class="bp">&#8805;</span> <span class="mi">0</span><span class="o">)</span> <span class="o">(</span><span class="n">h3</span> <span class="o">:</span> <span class="n">a</span> <span class="bp">+</span> <span class="n">b</span> <span class="bp">&#8804;</span> <span class="mi">8</span><span class="o">)</span> <span class="o">:</span>
+    <span class="mi">3</span> <span class="bp">*</span> <span class="n">a</span> <span class="bp">*</span> <span class="n">b</span> <span class="bp">+</span> <span class="n">a</span> <span class="bp">&#8804;</span> <span class="mi">7</span> <span class="bp">*</span> <span class="n">b</span> <span class="bp">+</span> <span class="mi">72</span> <span class="o">:=</span>
   <span class="k">calc</span>
     <span class="mi">3</span> <span class="bp">*</span> <span class="n">a</span> <span class="bp">*</span> <span class="n">b</span> <span class="bp">+</span> <span class="n">a</span>
       <span class="bp">&#8804;</span> <span class="mi">2</span> <span class="bp">*</span> <span class="n">b</span> <span class="bp">^</span> <span class="mi">2</span> <span class="bp">+</span> <span class="n">a</span> <span class="bp">^</span> <span class="mi">2</span> <span class="bp">+</span> <span class="o">(</span><span class="mi">3</span> <span class="bp">*</span> <span class="n">a</span> <span class="bp">*</span> <span class="n">b</span> <span class="bp">+</span> <span class="n">a</span><span class="o">)</span> <span class="o">:=</span> <span class="kd">by</span> <span class="gr">sorry</span>
@@ -1262,7 +1257,8 @@ three separate squares: <span class="math notranslate nohighlight">\((a ^ 2 (b ^
       4(a ^ 2 b c - b ^ 2 c ^ 2) ^ 2 + a ^ 2 (a ^ 6 + 8 b ^ 3 c ^ 3) \\
 &amp;=(a ^ 4 + b ^ 4 + c ^ 4) ^ 2.\end{split}\]</div>
 </div>
-<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">{</span><span class="n">a</span> <span class="n">b</span> <span class="n">c</span> <span class="o">:</span> <span class="n">&#8477;</span><span class="o">}</span> <span class="o">:</span> <span class="n">a</span> <span class="bp">^</span> <span class="mi">2</span> <span class="bp">*</span> <span class="o">(</span><span class="n">a</span> <span class="bp">^</span> <span class="mi">6</span> <span class="bp">+</span> <span class="mi">8</span> <span class="bp">*</span> <span class="n">b</span> <span class="bp">^</span> <span class="mi">3</span> <span class="bp">*</span> <span class="n">c</span> <span class="bp">^</span> <span class="mi">3</span><span class="o">)</span> <span class="bp">&#8804;</span> <span class="o">(</span><span class="n">a</span> <span class="bp">^</span> <span class="mi">4</span> <span class="bp">+</span> <span class="n">b</span> <span class="bp">^</span> <span class="mi">4</span> <span class="bp">+</span> <span class="n">c</span> <span class="bp">^</span> <span class="mi">4</span><span class="o">)</span> <span class="bp">^</span> <span class="mi">2</span> <span class="o">:=</span>
+<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">{</span><span class="n">a</span> <span class="n">b</span> <span class="n">c</span> <span class="o">:</span> <span class="n">&#8477;</span><span class="o">}</span> <span class="o">:</span>
+    <span class="n">a</span> <span class="bp">^</span> <span class="mi">2</span> <span class="bp">*</span> <span class="o">(</span><span class="n">a</span> <span class="bp">^</span> <span class="mi">6</span> <span class="bp">+</span> <span class="mi">8</span> <span class="bp">*</span> <span class="n">b</span> <span class="bp">^</span> <span class="mi">3</span> <span class="bp">*</span> <span class="n">c</span> <span class="bp">^</span> <span class="mi">3</span><span class="o">)</span> <span class="bp">&#8804;</span> <span class="o">(</span><span class="n">a</span> <span class="bp">^</span> <span class="mi">4</span> <span class="bp">+</span> <span class="n">b</span> <span class="bp">^</span> <span class="mi">4</span> <span class="bp">+</span> <span class="n">c</span> <span class="bp">^</span> <span class="mi">4</span><span class="o">)</span> <span class="bp">^</span> <span class="mi">2</span> <span class="o">:=</span>
   <span class="k">calc</span>
     <span class="n">a</span> <span class="bp">^</span> <span class="mi">2</span> <span class="bp">*</span> <span class="o">(</span><span class="n">a</span> <span class="bp">^</span> <span class="mi">6</span> <span class="bp">+</span> <span class="mi">8</span> <span class="bp">*</span> <span class="n">b</span> <span class="bp">^</span> <span class="mi">3</span> <span class="bp">*</span> <span class="n">c</span> <span class="bp">^</span> <span class="mi">3</span><span class="o">)</span>
       <span class="bp">&#8804;</span> <span class="mi">2</span> <span class="bp">*</span> <span class="o">(</span><span class="n">a</span> <span class="bp">^</span> <span class="mi">2</span> <span class="bp">*</span> <span class="o">(</span><span class="n">b</span> <span class="bp">^</span> <span class="mi">2</span> <span class="bp">-</span> <span class="n">c</span> <span class="bp">^</span> <span class="mi">2</span><span class="o">))</span> <span class="bp">^</span> <span class="mi">2</span> <span class="bp">+</span> <span class="o">(</span><span class="n">b</span> <span class="bp">^</span> <span class="mi">4</span> <span class="bp">-</span> <span class="n">c</span> <span class="bp">^</span> <span class="mi">4</span><span class="o">)</span> <span class="bp">^</span> <span class="mi">2</span>
@@ -1274,61 +1270,58 @@ three separate squares: <span class="math notranslate nohighlight">\((a ^ 2 (b ^
 </section>
 <section id="id48">
 <h3><span class="section-number">1.4.11. </span>Exercises<a class="headerlink" href="#id48" title="Permalink to this headline">&#61633;</a></h3>
-<ol class="arabic simple">
+<ol class="arabic">
 <li><p>Let <span class="math notranslate nohighlight">\(x\)</span> and <span class="math notranslate nohighlight">\(y\)</span> be integers and suppose that
-<span class="math notranslate nohighlight">\(x+3 \geq 2y\)</span> and <span class="math notranslate nohighlight">\(1 \le y\)</span>.  Show that <span class="math notranslate nohighlight">\(x \geq -1\)</span>.</p></li>
-</ol>
+<span class="math notranslate nohighlight">\(x+3 \geq 2y\)</span> and <span class="math notranslate nohighlight">\(1 \le y\)</span>.  Show that <span class="math notranslate nohighlight">\(x \geq -1\)</span>.</p>
 <div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">{</span><span class="n">x</span> <span class="n">y</span> <span class="o">:</span> <span class="n">&#8484;</span><span class="o">}</span> <span class="o">(</span><span class="n">h1</span> <span class="o">:</span> <span class="n">x</span> <span class="bp">+</span> <span class="mi">3</span> <span class="bp">&#8805;</span> <span class="mi">2</span> <span class="bp">*</span> <span class="n">y</span><span class="o">)</span> <span class="o">(</span><span class="n">h2</span> <span class="o">:</span> <span class="mi">1</span> <span class="bp">&#8804;</span> <span class="n">y</span><span class="o">)</span> <span class="o">:</span> <span class="n">x</span> <span class="bp">&#8805;</span> <span class="bp">-</span><span class="mi">1</span> <span class="o">:=</span>
   <span class="gr">sorry</span>
 </pre></div>
 </div>
-<ol class="arabic simple" start="2">
+</li>
 <li><p>Let <span class="math notranslate nohighlight">\(a\)</span> and <span class="math notranslate nohighlight">\(b\)</span> be rational numbers and suppose that
-<span class="math notranslate nohighlight">\(3 \leq a\)</span> and <span class="math notranslate nohighlight">\(a+2b\geq 4\)</span>. Show that <span class="math notranslate nohighlight">\(a+b\geq 3\)</span>.</p></li>
-</ol>
+<span class="math notranslate nohighlight">\(3 \leq a\)</span> and <span class="math notranslate nohighlight">\(a+2b\geq 4\)</span>. Show that <span class="math notranslate nohighlight">\(a+b\geq 3\)</span>.</p>
 <div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">{</span><span class="n">a</span> <span class="n">b</span> <span class="o">:</span> <span class="n">&#8474;</span><span class="o">}</span> <span class="o">(</span><span class="n">h1</span> <span class="o">:</span> <span class="mi">3</span> <span class="bp">&#8804;</span> <span class="n">a</span><span class="o">)</span> <span class="o">(</span><span class="n">h2</span> <span class="o">:</span> <span class="n">a</span> <span class="bp">+</span> <span class="mi">2</span> <span class="bp">*</span> <span class="n">b</span> <span class="bp">&#8805;</span> <span class="mi">4</span><span class="o">)</span> <span class="o">:</span> <span class="n">a</span> <span class="bp">+</span> <span class="n">b</span> <span class="bp">&#8805;</span> <span class="mi">3</span> <span class="o">:=</span>
   <span class="gr">sorry</span>
 </pre></div>
 </div>
-<ol class="arabic simple" start="3">
+</li>
 <li><p>Let <span class="math notranslate nohighlight">\(x\)</span> be an integer, with <span class="math notranslate nohighlight">\(x\geq 9\)</span>.  Show that
-<span class="math notranslate nohighlight">\(x ^ 3 - 8x ^ 2 + 2x \geq 3\)</span>.</p></li>
-</ol>
+<span class="math notranslate nohighlight">\(x ^ 3 - 8x ^ 2 + 2x \geq 3\)</span>.</p>
 <div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">{</span><span class="n">x</span> <span class="o">:</span> <span class="n">&#8484;</span><span class="o">}</span> <span class="o">(</span><span class="n">hx</span> <span class="o">:</span> <span class="n">x</span> <span class="bp">&#8805;</span> <span class="mi">9</span><span class="o">)</span> <span class="o">:</span> <span class="n">x</span> <span class="bp">^</span> <span class="mi">3</span> <span class="bp">-</span> <span class="mi">8</span> <span class="bp">*</span> <span class="n">x</span> <span class="bp">^</span> <span class="mi">2</span> <span class="bp">+</span> <span class="mi">2</span> <span class="bp">*</span> <span class="n">x</span> <span class="bp">&#8805;</span> <span class="mi">3</span> <span class="o">:=</span>
   <span class="gr">sorry</span>
 </pre></div>
 </div>
-<ol class="arabic simple" start="4">
+</li>
 <li><p>Let <span class="math notranslate nohighlight">\(n\geq 10\)</span> be an integer. Show that
-<span class="math notranslate nohighlight">\(n ^ 4 - 2 n ^ 2 &gt; 3 n ^ 3\)</span>.</p></li>
-</ol>
+<span class="math notranslate nohighlight">\(n ^ 4 - 2 n ^ 2 &gt; 3 n ^ 3\)</span>.</p>
 <div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">{</span><span class="n">n</span> <span class="o">:</span> <span class="n">&#8484;</span><span class="o">}</span> <span class="o">(</span><span class="n">hn</span> <span class="o">:</span> <span class="n">n</span> <span class="bp">&#8805;</span> <span class="mi">10</span><span class="o">)</span> <span class="o">:</span> <span class="n">n</span> <span class="bp">^</span> <span class="mi">4</span> <span class="bp">-</span> <span class="mi">2</span> <span class="bp">*</span> <span class="n">n</span> <span class="bp">^</span> <span class="mi">2</span> <span class="bp">&gt;</span> <span class="mi">3</span> <span class="bp">*</span> <span class="n">n</span> <span class="bp">^</span> <span class="mi">3</span> <span class="o">:=</span>
   <span class="gr">sorry</span>
 </pre></div>
 </div>
-<ol class="arabic simple" start="5">
+</li>
 <li><p>Let <span class="math notranslate nohighlight">\(n\geq 5\)</span> be an integer. Show that
-<span class="math notranslate nohighlight">\(n ^ 2 - 2  n + 3 &gt; 14\)</span>.</p></li>
-</ol>
+<span class="math notranslate nohighlight">\(n ^ 2 - 2  n + 3 &gt; 14\)</span>.</p>
 <div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">{</span><span class="n">n</span> <span class="o">:</span> <span class="n">&#8484;</span><span class="o">}</span> <span class="o">(</span><span class="n">h1</span> <span class="o">:</span> <span class="n">n</span> <span class="bp">&#8805;</span> <span class="mi">5</span><span class="o">)</span> <span class="o">:</span> <span class="n">n</span> <span class="bp">^</span> <span class="mi">2</span> <span class="bp">-</span> <span class="mi">2</span> <span class="bp">*</span> <span class="n">n</span> <span class="bp">+</span> <span class="mi">3</span> <span class="bp">&gt;</span> <span class="mi">14</span> <span class="o">:=</span>
   <span class="gr">sorry</span>
 </pre></div>
 </div>
-<ol class="arabic simple" start="5">
-<li><p>Let <span class="math notranslate nohighlight">\(x\)</span> be a rational number. Show that
-<span class="math notranslate nohighlight">\(x ^ 2 - 2  x \ge -1\)</span>.</p></li>
+</li>
 </ol>
+<ol class="arabic" start="5">
+<li><p>Let <span class="math notranslate nohighlight">\(x\)</span> be a rational number. Show that
+<span class="math notranslate nohighlight">\(x ^ 2 - 2  x \ge -1\)</span>.</p>
 <div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">{</span><span class="n">x</span> <span class="o">:</span> <span class="n">&#8474;</span><span class="o">}</span> <span class="o">:</span> <span class="n">x</span> <span class="bp">^</span> <span class="mi">2</span> <span class="bp">-</span> <span class="mi">2</span> <span class="bp">*</span> <span class="n">x</span> <span class="bp">&#8805;</span> <span class="bp">-</span><span class="mi">1</span> <span class="o">:=</span>
   <span class="gr">sorry</span>
 </pre></div>
 </div>
-<ol class="arabic simple" start="6">
-<li><p>Let <span class="math notranslate nohighlight">\(a\)</span> and <span class="math notranslate nohighlight">\(b\)</span> be real numbers.  Show that <span class="math notranslate nohighlight">\(a ^ 2 + b ^ 2 \ge 2ab\)</span>.</p></li>
-</ol>
+</li>
+<li><p>Let <span class="math notranslate nohighlight">\(a\)</span> and <span class="math notranslate nohighlight">\(b\)</span> be real numbers.  Show that <span class="math notranslate nohighlight">\(a ^ 2 + b ^ 2 \ge 2ab\)</span>.</p>
 <div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">(</span><span class="n">a</span> <span class="n">b</span> <span class="o">:</span> <span class="n">&#8477;</span><span class="o">)</span> <span class="o">:</span> <span class="n">a</span> <span class="bp">^</span> <span class="mi">2</span> <span class="bp">+</span> <span class="n">b</span> <span class="bp">^</span> <span class="mi">2</span> <span class="bp">&#8805;</span> <span class="mi">2</span> <span class="bp">*</span> <span class="n">a</span> <span class="bp">*</span> <span class="n">b</span> <span class="o">:=</span>
   <span class="gr">sorry</span>
 </pre></div>
 </div>
+</li>
+</ol>
 <p class="rubric">Footnotes</p>
 <dl class="footnote brackets">
 <dt class="label" id="id49"><span class="brackets"><a class="fn-backref" href="#id47">2</a></span></dt>
@@ -1352,7 +1345,7 @@ three separate squares: <span class="math notranslate nohighlight">\((a ^ 2 (b ^
 &amp;=2-4\\
 &amp;=-2,\end{split}\]</div>
 <p>but honestly this seems kind of overkill.</p>
-<p>For the purposes of this course, let&#8217;s draw the line as follows: if a fact can be deduced from
+<p>For the purposes of this book, let&#8217;s draw the line as follows: if a fact can be deduced from
 another fact simply by adding/subtracting terms from both sides (no multiplication/division/etc),
 then there is no need to write out a full proof by calculation.</p>
 <p>For use in Lean, I&#8217;ve provided a tactic <code class="docutils literal notranslate"><span class="pre">addarith</span></code> which carries out simple deductions like this.
@@ -1362,35 +1355,35 @@ Here&#8217;s how to use it in the example above:</p>
 </div>
 <p>And here are a few more deductions which just involve adding/subtracting terms, and for which
 therefore we will not require an explicit proof by calculation:</p>
-<ul class="simple">
-<li><p>If <span class="math notranslate nohighlight">\(a-2b=1\)</span>, then <span class="math notranslate nohighlight">\(a=2b+1\)</span>.</p></li>
-</ul>
+<ul>
+<li><p>If <span class="math notranslate nohighlight">\(a-2b=1\)</span>, then <span class="math notranslate nohighlight">\(a=2b+1\)</span>.</p>
 <div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">{</span><span class="n">a</span> <span class="n">b</span> <span class="o">:</span> <span class="n">&#8484;</span><span class="o">}</span> <span class="o">(</span><span class="n">ha</span> <span class="o">:</span> <span class="n">a</span> <span class="bp">-</span> <span class="mi">2</span> <span class="bp">*</span> <span class="n">b</span> <span class="bp">=</span> <span class="mi">1</span><span class="o">)</span> <span class="o">:</span> <span class="n">a</span> <span class="bp">=</span> <span class="mi">2</span> <span class="bp">*</span> <span class="n">b</span> <span class="bp">+</span> <span class="mi">1</span> <span class="o">:=</span> <span class="kd">by</span> <span class="n">addarith</span> <span class="o">[</span><span class="n">ha</span><span class="o">]</span>
 </pre></div>
 </div>
-<ul class="simple">
-<li><p>If <span class="math notranslate nohighlight">\(x=2\)</span> and <span class="math notranslate nohighlight">\(y ^ 2 = -7\)</span>, then <span class="math notranslate nohighlight">\(x+y^2=-5\)</span>.</p></li>
-</ul>
+</li>
+<li><p>If <span class="math notranslate nohighlight">\(x=2\)</span> and <span class="math notranslate nohighlight">\(y ^ 2 = -7\)</span>, then <span class="math notranslate nohighlight">\(x+y^2=-5\)</span>.</p>
 <div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">{</span><span class="n">x</span> <span class="n">y</span> <span class="o">:</span> <span class="n">&#8474;</span><span class="o">}</span> <span class="o">(</span><span class="n">hx</span> <span class="o">:</span> <span class="n">x</span> <span class="bp">=</span> <span class="mi">2</span><span class="o">)</span> <span class="o">(</span><span class="n">hy</span> <span class="o">:</span> <span class="n">y</span> <span class="bp">^</span> <span class="mi">2</span> <span class="bp">=</span> <span class="bp">-</span><span class="mi">7</span><span class="o">)</span> <span class="o">:</span> <span class="n">x</span> <span class="bp">+</span> <span class="n">y</span> <span class="bp">^</span> <span class="mi">2</span> <span class="bp">=</span> <span class="bp">-</span><span class="mi">5</span> <span class="o">:=</span>
   <span class="k">calc</span>
     <span class="n">x</span> <span class="bp">+</span> <span class="n">y</span> <span class="bp">^</span> <span class="mi">2</span> <span class="bp">=</span> <span class="n">x</span> <span class="bp">-</span> <span class="mi">7</span> <span class="o">:=</span> <span class="kd">by</span> <span class="n">addarith</span> <span class="o">[</span><span class="n">hy</span><span class="o">]</span>
     <span class="n">_</span> <span class="bp">=</span> <span class="bp">-</span><span class="mi">5</span> <span class="o">:=</span> <span class="kd">by</span> <span class="n">addarith</span> <span class="o">[</span><span class="n">hx</span><span class="o">]</span>
 </pre></div>
 </div>
+</li>
+</ul>
 <p>It is also fine to do this for inequalities, if all that&#8217;s involved in the inequality deduction is
 adding/subtracting terms.  For example,</p>
-<ul class="simple">
-<li><p>if <span class="math notranslate nohighlight">\(t=4-st\)</span>, then <span class="math notranslate nohighlight">\(t+st&gt;0\)</span>.</p></li>
-</ul>
+<ul>
+<li><p>if <span class="math notranslate nohighlight">\(t=4-st\)</span>, then <span class="math notranslate nohighlight">\(t+st&gt;0\)</span>.</p>
 <div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">{</span><span class="n">s</span> <span class="n">t</span> <span class="o">:</span> <span class="n">&#8477;</span><span class="o">}</span> <span class="o">(</span><span class="n">h</span> <span class="o">:</span> <span class="n">t</span> <span class="bp">=</span> <span class="mi">4</span> <span class="bp">-</span> <span class="n">s</span> <span class="bp">*</span> <span class="n">t</span><span class="o">)</span> <span class="o">:</span> <span class="n">t</span> <span class="bp">+</span> <span class="n">s</span> <span class="bp">*</span> <span class="n">t</span> <span class="bp">&gt;</span> <span class="mi">0</span> <span class="o">:=</span> <span class="kd">by</span> <span class="n">addarith</span> <span class="o">[</span><span class="n">h</span><span class="o">]</span>
 </pre></div>
 </div>
-<ul class="simple">
-<li><p>if <span class="math notranslate nohighlight">\(m \le 8 - n\)</span>, then <span class="math notranslate nohighlight">\(10&gt;m+n\)</span>.</p></li>
-</ul>
+</li>
+<li><p>if <span class="math notranslate nohighlight">\(m \le 8 - n\)</span>, then <span class="math notranslate nohighlight">\(10&gt;m+n\)</span>.</p>
 <div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">{</span><span class="n">m</span> <span class="n">n</span> <span class="o">:</span> <span class="n">&#8477;</span><span class="o">}</span> <span class="o">(</span><span class="n">h1</span> <span class="o">:</span> <span class="n">m</span> <span class="bp">&#8804;</span> <span class="mi">8</span> <span class="bp">-</span> <span class="n">n</span><span class="o">)</span> <span class="o">:</span> <span class="mi">10</span> <span class="bp">&gt;</span> <span class="n">m</span> <span class="bp">+</span> <span class="n">n</span> <span class="o">:=</span> <span class="kd">by</span> <span class="n">addarith</span> <span class="o">[</span><span class="n">h1</span><span class="o">]</span>
 </pre></div>
 </div>
+</li>
+</ul>
 <p>But in <a class="reference internal" href="#eq-with-div"><span class="std std-numref">Example 1.3.4</span></a> there was a deduction which required a division, not just
 addition and subtraction: if <span class="math notranslate nohighlight">\(3w+1=4\)</span>, then <span class="math notranslate nohighlight">\(w=1\)</span>.</p>
 <div class="math notranslate nohighlight">

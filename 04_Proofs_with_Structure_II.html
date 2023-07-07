@@ -318,7 +318,7 @@ argument is performed by the tactic <code class="docutils literal notranslate"><
 </pre></div>
 </div>
 <div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">:</span> <span class="bp">&#8707;</span> <span class="n">b</span> <span class="o">:</span> <span class="n">&#8477;</span><span class="o">,</span> <span class="bp">&#8704;</span> <span class="n">x</span> <span class="o">:</span> <span class="n">&#8477;</span><span class="o">,</span> <span class="n">b</span> <span class="bp">&#8804;</span> <span class="n">x</span> <span class="bp">^</span> <span class="mi">2</span> <span class="bp">-</span> <span class="mi">2</span> <span class="bp">*</span> <span class="n">x</span> <span class="o">:=</span> <span class="kd">by</span>
-  <span class="n">take</span> <span class="bp">-</span><span class="mi">1</span>
+  <span class="n">use</span> <span class="bp">-</span><span class="mi">1</span>
   <span class="n">intro</span> <span class="n">x</span>
   <span class="k">calc</span>
     <span class="bp">-</span><span class="mi">1</span> <span class="bp">&#8804;</span> <span class="bp">-</span><span class="mi">1</span> <span class="bp">+</span> <span class="o">(</span><span class="n">x</span> <span class="bp">-</span> <span class="mi">1</span><span class="o">)</span> <span class="bp">^</span> <span class="mi">2</span> <span class="o">:=</span> <span class="kd">by</span> <span class="n">extra</span>
@@ -391,7 +391,7 @@ the lemma</p>
 Lean.</p>
 <div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">:</span> <span class="n">forall_sufficiently_large</span> <span class="n">n</span> <span class="o">:</span> <span class="n">&#8484;</span><span class="o">,</span> <span class="n">n</span> <span class="bp">^</span> <span class="mi">3</span> <span class="bp">&#8805;</span> <span class="mi">4</span> <span class="bp">*</span> <span class="n">n</span> <span class="bp">^</span> <span class="mi">2</span> <span class="bp">+</span> <span class="mi">7</span> <span class="o">:=</span> <span class="kd">by</span>
   <span class="n">dsimp</span>
-  <span class="n">take</span> <span class="mi">5</span>
+  <span class="n">use</span> <span class="mi">5</span>
   <span class="n">intro</span> <span class="n">n</span> <span class="n">hn</span>
   <span class="k">calc</span>
     <span class="n">n</span> <span class="bp">^</span> <span class="mi">3</span> <span class="bp">=</span> <span class="n">n</span> <span class="bp">*</span> <span class="n">n</span> <span class="bp">^</span> <span class="mi">2</span> <span class="o">:=</span> <span class="kd">by</span> <span class="n">ring</span>
@@ -465,55 +465,51 @@ use it.  In Lean the lemma name is <code class="docutils literal notranslate"><s
   <span class="n">apply</span> <span class="n">not_prime</span> <span class="mi">2</span>
   <span class="bp">&#183;</span> <span class="n">numbers</span> <span class="c1">-- show `2 &#8800; 1`</span>
   <span class="bp">&#183;</span> <span class="n">numbers</span> <span class="c1">-- show `2 &#8800; 6`</span>
-  <span class="bp">&#183;</span> <span class="n">take</span> <span class="mi">3</span>
+  <span class="bp">&#183;</span> <span class="n">use</span> <span class="mi">3</span>
     <span class="n">numbers</span> <span class="c1">-- show `6 = 2 * 3`</span>
 </pre></div>
 </div>
 </section>
 <section id="exercises">
 <h3><span class="section-number">4.1.10. </span>Exercises<a class="headerlink" href="#exercises" title="Permalink to this headline">&#61633;</a></h3>
-<ol class="arabic simple">
+<ol class="arabic">
 <li><p>Let <span class="math notranslate nohighlight">\(a\)</span> be a rational number and suppose that for all rational numbers <span class="math notranslate nohighlight">\(b\)</span>,
-<span class="math notranslate nohighlight">\(a\ge -3+4b-b^2\)</span>.  Show that <span class="math notranslate nohighlight">\(a\ge 1\)</span>.</p></li>
-</ol>
+<span class="math notranslate nohighlight">\(a\ge -3+4b-b^2\)</span>.  Show that <span class="math notranslate nohighlight">\(a\ge 1\)</span>.</p>
 <div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">{</span><span class="n">a</span> <span class="o">:</span> <span class="n">&#8474;</span><span class="o">}</span> <span class="o">(</span><span class="n">h</span> <span class="o">:</span> <span class="bp">&#8704;</span> <span class="n">b</span> <span class="o">:</span> <span class="n">&#8474;</span><span class="o">,</span> <span class="n">a</span> <span class="bp">&#8805;</span> <span class="bp">-</span><span class="mi">3</span> <span class="bp">+</span> <span class="mi">4</span> <span class="bp">*</span> <span class="n">b</span> <span class="bp">-</span> <span class="n">b</span> <span class="bp">^</span> <span class="mi">2</span><span class="o">)</span> <span class="o">:</span> <span class="n">a</span> <span class="bp">&#8805;</span> <span class="mi">1</span> <span class="o">:=</span>
   <span class="gr">sorry</span>
 </pre></div>
 </div>
-<ol class="arabic simple" start="2">
+</li>
 <li><p>Let <span class="math notranslate nohighlight">\(n\)</span> be an integer and suppose that every natural number <span class="math notranslate nohighlight">\(m\)</span> between 1 and 5 is a
 factor of <span class="math notranslate nohighlight">\(n\)</span>. Show that 15 is a factor of <span class="math notranslate nohighlight">\(n\)</span>.  (You may need to review
-<a class="reference internal" href="03_Parity_and_Divisibility.html#bezout"><span class="std std-numref">Section 3.5</span></a>.)</p></li>
-</ol>
+<a class="reference internal" href="03_Parity_and_Divisibility.html#bezout"><span class="std std-numref">Section 3.5</span></a>.)</p>
 <div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">{</span><span class="n">n</span> <span class="o">:</span> <span class="n">&#8484;</span><span class="o">}</span> <span class="o">(</span><span class="n">hn</span> <span class="o">:</span> <span class="bp">&#8704;</span> <span class="n">m</span><span class="o">,</span> <span class="mi">1</span> <span class="bp">&#8804;</span> <span class="n">m</span> <span class="bp">&#8594;</span> <span class="n">m</span> <span class="bp">&#8804;</span> <span class="mi">5</span> <span class="bp">&#8594;</span> <span class="n">m</span> <span class="bp">&#8739;</span> <span class="n">n</span><span class="o">)</span> <span class="o">:</span> <span class="mi">15</span> <span class="bp">&#8739;</span> <span class="n">n</span> <span class="o">:=</span> <span class="kd">by</span>
   <span class="gr">sorry</span>
 </pre></div>
 </div>
-<ol class="arabic simple" start="3">
+</li>
 <li><p>Show that there exists a natural number <span class="math notranslate nohighlight">\(n\)</span> such that every natural number <span class="math notranslate nohighlight">\(m\)</span> is at
-least <span class="math notranslate nohighlight">\(n\)</span>.</p></li>
-</ol>
+least <span class="math notranslate nohighlight">\(n\)</span>.</p>
 <div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">:</span> <span class="bp">&#8707;</span> <span class="n">n</span> <span class="o">:</span> <span class="n">&#8469;</span><span class="o">,</span> <span class="bp">&#8704;</span> <span class="n">m</span> <span class="o">:</span> <span class="n">&#8469;</span><span class="o">,</span> <span class="n">n</span> <span class="bp">&#8804;</span> <span class="n">m</span> <span class="o">:=</span> <span class="kd">by</span>
   <span class="gr">sorry</span>
 </pre></div>
 </div>
-<ol class="arabic simple" start="4">
+</li>
 <li><p>Show that for all sufficiently large real numbers <span class="math notranslate nohighlight">\(x\)</span>,
-<span class="math notranslate nohighlight">\(x ^ 3 + 3 x &#8805; 7 x ^ 2 + 12\)</span>.</p></li>
-</ol>
+<span class="math notranslate nohighlight">\(x ^ 3 + 3 x &#8805; 7 x ^ 2 + 12\)</span>.</p>
 <div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">:</span> <span class="n">forall_sufficiently_large</span> <span class="n">x</span> <span class="o">:</span> <span class="n">&#8477;</span><span class="o">,</span> <span class="n">x</span> <span class="bp">^</span> <span class="mi">3</span> <span class="bp">+</span> <span class="mi">3</span> <span class="bp">*</span> <span class="n">x</span> <span class="bp">&#8805;</span> <span class="mi">7</span> <span class="bp">*</span> <span class="n">x</span> <span class="bp">^</span> <span class="mi">2</span> <span class="bp">+</span> <span class="mi">12</span> <span class="o">:=</span> <span class="kd">by</span>
   <span class="gr">sorry</span>
 </pre></div>
 </div>
-<ol class="arabic" start="5">
+</li>
 <li><p>Show that 45 is not prime.</p>
 <p>You may use the Lean lemma <code class="docutils literal notranslate"><span class="pre">not_prime</span></code>, as in <a class="reference internal" href="#not-prime"><span class="std std-numref">Example 4.1.9</span></a>.</p>
-</li>
-</ol>
 <div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">:</span> <span class="bp">&#172;</span><span class="o">(</span><span class="n">Prime</span> <span class="mi">45</span><span class="o">)</span> <span class="o">:=</span> <span class="kd">by</span>
   <span class="gr">sorry</span>
 </pre></div>
 </div>
+</li>
+</ol>
 <p class="rubric">Footnotes</p>
 <dl class="footnote brackets">
 <dt class="label" id="id11"><span class="brackets"><a class="fn-backref" href="#id5">1</a></span></dt>
@@ -598,14 +594,14 @@ So</p>
   <span class="n">constructor</span>
   <span class="bp">&#183;</span> <span class="n">intro</span> <span class="n">hn</span>
     <span class="n">obtain</span> <span class="o">&#10216;</span><span class="n">a</span><span class="o">,</span> <span class="n">ha</span><span class="o">&#10217;</span> <span class="o">:=</span> <span class="n">hn</span>
-    <span class="n">take</span> <span class="bp">-</span><span class="mi">3</span> <span class="bp">*</span> <span class="n">a</span> <span class="bp">+</span> <span class="mi">2</span> <span class="bp">*</span> <span class="n">n</span>
+    <span class="n">use</span> <span class="bp">-</span><span class="mi">3</span> <span class="bp">*</span> <span class="n">a</span> <span class="bp">+</span> <span class="mi">2</span> <span class="bp">*</span> <span class="n">n</span>
     <span class="k">calc</span>
       <span class="n">n</span> <span class="bp">=</span> <span class="bp">-</span><span class="mi">3</span> <span class="bp">*</span> <span class="o">(</span><span class="mi">5</span> <span class="bp">*</span> <span class="n">n</span><span class="o">)</span> <span class="bp">+</span> <span class="mi">16</span> <span class="bp">*</span> <span class="n">n</span> <span class="o">:=</span> <span class="kd">by</span> <span class="n">ring</span>
       <span class="n">_</span> <span class="bp">=</span> <span class="bp">-</span><span class="mi">3</span> <span class="bp">*</span> <span class="o">(</span><span class="mi">8</span> <span class="bp">*</span> <span class="n">a</span><span class="o">)</span> <span class="bp">+</span> <span class="mi">16</span> <span class="bp">*</span> <span class="n">n</span> <span class="o">:=</span> <span class="kd">by</span> <span class="n">rw</span> <span class="o">[</span><span class="n">ha</span><span class="o">]</span>
       <span class="n">_</span> <span class="bp">=</span> <span class="mi">8</span> <span class="bp">*</span> <span class="o">(</span><span class="bp">-</span><span class="mi">3</span> <span class="bp">*</span> <span class="n">a</span> <span class="bp">+</span> <span class="mi">2</span> <span class="bp">*</span> <span class="n">n</span><span class="o">)</span> <span class="o">:=</span> <span class="kd">by</span> <span class="n">ring</span>
   <span class="bp">&#183;</span> <span class="n">intro</span> <span class="n">hn</span>
     <span class="n">obtain</span> <span class="o">&#10216;</span><span class="n">a</span><span class="o">,</span> <span class="n">ha</span><span class="o">&#10217;</span> <span class="o">:=</span> <span class="n">hn</span>
-    <span class="n">take</span> <span class="mi">5</span> <span class="bp">*</span> <span class="n">a</span>
+    <span class="n">use</span> <span class="mi">5</span> <span class="bp">*</span> <span class="n">a</span>
     <span class="k">calc</span> <span class="mi">5</span> <span class="bp">*</span> <span class="n">n</span> <span class="bp">=</span> <span class="mi">5</span> <span class="bp">*</span> <span class="o">(</span><span class="mi">8</span> <span class="bp">*</span> <span class="n">a</span><span class="o">)</span> <span class="o">:=</span> <span class="kd">by</span> <span class="n">rw</span> <span class="o">[</span><span class="n">ha</span><span class="o">]</span>
       <span class="n">_</span> <span class="bp">=</span> <span class="mi">8</span> <span class="bp">*</span> <span class="o">(</span><span class="mi">5</span> <span class="bp">*</span> <span class="n">a</span><span class="o">)</span> <span class="o">:=</span> <span class="kd">by</span> <span class="n">ring</span>
 </pre></div>
@@ -632,7 +628,7 @@ integer <span class="math notranslate nohighlight">\(k\)</span> such <span class
     <span class="n">obtain</span> <span class="o">&#10216;</span><span class="n">k</span><span class="o">,</span> <span class="n">hk</span><span class="o">&#10217;</span> <span class="o">:=</span> <span class="n">h</span>
     <span class="n">dsimp</span> <span class="o">[</span><span class="n">Int.ModEq</span><span class="o">]</span>
     <span class="n">dsimp</span> <span class="o">[(</span><span class="bp">&#183;</span> <span class="bp">&#8739;</span> <span class="bp">&#183;</span><span class="o">)]</span>
-    <span class="n">take</span> <span class="n">k</span>
+    <span class="n">use</span> <span class="n">k</span>
     <span class="n">addarith</span> <span class="o">[</span><span class="n">hk</span><span class="o">]</span>
   <span class="bp">&#183;</span> <span class="gr">sorry</span>
 </pre></div>
@@ -651,7 +647,7 @@ integer <span class="math notranslate nohighlight">\(k\)</span> such <span class
     <span class="n">obtain</span> <span class="o">&#10216;</span><span class="n">k</span><span class="o">,</span> <span class="n">hk</span><span class="o">&#10217;</span> <span class="o">:=</span> <span class="n">h</span>
     <span class="n">dsimp</span> <span class="o">[</span><span class="n">Int.ModEq</span><span class="o">]</span>
     <span class="n">dsimp</span> <span class="o">[(</span><span class="bp">&#183;</span> <span class="bp">&#8739;</span> <span class="bp">&#183;</span><span class="o">)]</span>
-    <span class="n">take</span> <span class="n">k</span>
+    <span class="n">use</span> <span class="n">k</span>
     <span class="n">addarith</span> <span class="o">[</span><span class="n">hk</span><span class="o">]</span>
   <span class="bp">&#183;</span> <span class="gr">sorry</span>
 </pre></div>
@@ -721,7 +717,7 @@ or 3.</p>
 </section>
 <section id="id18">
 <h3><span class="section-number">4.2.7. </span>Example<a class="headerlink" href="#id18" title="Permalink to this headline">&#61633;</a></h3>
-<p>Some library lemmas have the form of an &#8220;if and only if&#8221;.  This is convenient because they take
+<p>Some library lemmas have the form of an &#8220;if and only if&#8221;.  This is convenient because they use
 the place of two ordinary lemmas, one for each direction.</p>
 <div class="admonition-problem admonition">
 <p class="admonition-title">Problem</p>
@@ -826,49 +822,45 @@ tactic <code class="docutils literal notranslate"><span class="pre">mod_cases</s
 </section>
 <section id="id21">
 <h3><span class="section-number">4.2.10. </span>Exercises<a class="headerlink" href="#id21" title="Permalink to this headline">&#61633;</a></h3>
-<ol class="arabic simple">
-<li><p>Let <span class="math notranslate nohighlight">\(x\)</span> be a real number.  Show that <span class="math notranslate nohighlight">\(2x-1=11\)</span> if and only if <span class="math notranslate nohighlight">\(x=6\)</span>.</p></li>
-</ol>
+<ol class="arabic">
+<li><p>Let <span class="math notranslate nohighlight">\(x\)</span> be a real number.  Show that <span class="math notranslate nohighlight">\(2x-1=11\)</span> if and only if <span class="math notranslate nohighlight">\(x=6\)</span>.</p>
 <div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">{</span><span class="n">x</span> <span class="o">:</span> <span class="n">&#8477;</span><span class="o">}</span> <span class="o">:</span> <span class="mi">2</span> <span class="bp">*</span> <span class="n">x</span> <span class="bp">-</span> <span class="mi">1</span> <span class="bp">=</span> <span class="mi">11</span> <span class="bp">&#8596;</span> <span class="n">x</span> <span class="bp">=</span> <span class="mi">6</span> <span class="o">:=</span> <span class="kd">by</span>
   <span class="gr">sorry</span>
 </pre></div>
 </div>
-<ol class="arabic simple" start="2">
+</li>
 <li><p>Let <span class="math notranslate nohighlight">\(n\)</span> be an integer. Show that 63 is a factor of <span class="math notranslate nohighlight">\(n\)</span> if and only if both 7 and 9
-are.</p></li>
-</ol>
+are.</p>
 <div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">{</span><span class="n">n</span> <span class="o">:</span> <span class="n">&#8484;</span><span class="o">}</span> <span class="o">:</span> <span class="mi">63</span> <span class="bp">&#8739;</span> <span class="n">n</span> <span class="bp">&#8596;</span> <span class="mi">7</span> <span class="bp">&#8739;</span> <span class="n">n</span> <span class="bp">&#8743;</span> <span class="mi">9</span> <span class="bp">&#8739;</span> <span class="n">n</span> <span class="o">:=</span> <span class="kd">by</span>
   <span class="gr">sorry</span>
 </pre></div>
 </div>
-<ol class="arabic simple" start="3">
+</li>
 <li><p>Let <span class="math notranslate nohighlight">\(a\)</span> and <span class="math notranslate nohighlight">\(n\)</span> be integers. Show that <span class="math notranslate nohighlight">\(a\)</span> is a multiple of <span class="math notranslate nohighlight">\(n\)</span> if and
-only if <span class="math notranslate nohighlight">\(a \equiv 0 \mod n\)</span>.</p></li>
-</ol>
+only if <span class="math notranslate nohighlight">\(a \equiv 0 \mod n\)</span>.</p>
 <div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">theorem</span> <span class="n">dvd_iff_modEq</span> <span class="o">{</span><span class="n">a</span> <span class="n">n</span> <span class="o">:</span> <span class="n">&#8484;</span><span class="o">}</span> <span class="o">:</span> <span class="n">n</span> <span class="bp">&#8739;</span> <span class="n">a</span> <span class="bp">&#8596;</span> <span class="n">a</span> <span class="bp">&#8801;</span> <span class="mi">0</span> <span class="o">[</span><span class="n">ZMOD</span> <span class="n">n</span><span class="o">]</span> <span class="o">:=</span> <span class="kd">by</span>
   <span class="gr">sorry</span>
 </pre></div>
 </div>
-<ol class="arabic" start="4">
+</li>
 <li><p>Let <span class="math notranslate nohighlight">\(a\)</span> and <span class="math notranslate nohighlight">\(b\)</span> be integers and suppose that <span class="math notranslate nohighlight">\(a \mid b\)</span>.  Show that
 <span class="math notranslate nohighlight">\(a \mid 3b^3-b^2+5b\)</span>.</p>
 <p>Note that this appeared already as an exercise in <a class="reference internal" href="03_Parity_and_Divisibility.html#divisibility"><span class="std std-numref">Section 3.2</span></a>.  But now,
 using the lemma <code class="docutils literal notranslate"><span class="pre">Int.dvd_iff_modEq</span></code> proved in the previous exercise, this kind of problem is
 much easier.</p>
-</li>
-</ol>
 <div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">{</span><span class="n">a</span> <span class="n">b</span> <span class="o">:</span> <span class="n">&#8484;</span><span class="o">}</span> <span class="o">(</span><span class="n">hab</span> <span class="o">:</span> <span class="n">a</span> <span class="bp">&#8739;</span> <span class="n">b</span><span class="o">)</span> <span class="o">:</span> <span class="n">a</span> <span class="bp">&#8739;</span> <span class="mi">3</span> <span class="bp">*</span> <span class="n">b</span> <span class="bp">^</span> <span class="mi">3</span> <span class="bp">-</span> <span class="n">b</span> <span class="bp">^</span> <span class="mi">2</span> <span class="bp">+</span> <span class="mi">5</span> <span class="bp">*</span> <span class="n">b</span> <span class="o">:=</span> <span class="kd">by</span>
   <span class="gr">sorry</span>
 </pre></div>
 </div>
-<ol class="arabic simple" start="5">
+</li>
 <li><p>Let <span class="math notranslate nohighlight">\(k\)</span> be a natural number.  Show that <span class="math notranslate nohighlight">\(k^2 \le 6\)</span>, if and only if <span class="math notranslate nohighlight">\(k\)</span> is 0, 1
-or 2.</p></li>
-</ol>
+or 2.</p>
 <div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">{</span><span class="n">k</span> <span class="o">:</span> <span class="n">&#8469;</span><span class="o">}</span> <span class="o">:</span> <span class="n">k</span> <span class="bp">^</span> <span class="mi">2</span> <span class="bp">&#8804;</span> <span class="mi">6</span> <span class="bp">&#8596;</span> <span class="n">k</span> <span class="bp">=</span> <span class="mi">0</span> <span class="bp">&#8744;</span> <span class="n">k</span> <span class="bp">=</span> <span class="mi">1</span> <span class="bp">&#8744;</span> <span class="n">k</span> <span class="bp">=</span> <span class="mi">2</span> <span class="o">:=</span> <span class="kd">by</span>
   <span class="gr">sorry</span>
 </pre></div>
 </div>
+</li>
+</ol>
 </section>
 </section>
 <section id="there-exists-a-unique">
@@ -890,7 +882,7 @@ or 2.</p></li>
 &amp;= 2.\end{split}\]</div>
 </div>
 <div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">:</span> <span class="bp">&#8707;!</span> <span class="n">a</span> <span class="o">:</span> <span class="n">&#8477;</span><span class="o">,</span> <span class="mi">3</span> <span class="bp">*</span> <span class="n">a</span> <span class="bp">+</span> <span class="mi">1</span> <span class="bp">=</span> <span class="mi">7</span> <span class="o">:=</span> <span class="kd">by</span>
-  <span class="n">take</span> <span class="mi">2</span>
+  <span class="n">use</span> <span class="mi">2</span>
   <span class="n">dsimp</span>
   <span class="n">constructor</span>
   <span class="bp">&#183;</span> <span class="n">numbers</span>
@@ -981,7 +973,7 @@ or 2.</p></li>
 </section>
 <section id="division-algorithm">
 <span id="id25"></span><h3><span class="section-number">4.3.4. </span>Example<a class="headerlink" href="#division-algorithm" title="Permalink to this headline">&#61633;</a></h3>
-<p>The following is an important theorem about the integers, which we will prove later in the course.</p>
+<p>The following is an important theorem about the integers, which we will prove later in the book.</p>
 <div class="admonition-theorem-the-division-algorithm admonition">
 <p class="admonition-title">Theorem (the Division Algorithm)</p>
 <p>Let <span class="math notranslate nohighlight">\(a\)</span> and <span class="math notranslate nohighlight">\(b\)</span> be integers, with <span class="math notranslate nohighlight">\(b\)</span> positive.  Then there exists a unique
@@ -1022,14 +1014,14 @@ there exists an integer <span class="math notranslate nohighlight">\(q\)</span> 
 strictly between 1 and 3.  So <span class="math notranslate nohighlight">\(r=14-5\cdot 2=4\)</span>.</p>
 </div>
 <div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">:</span> <span class="bp">&#8707;!</span> <span class="n">r</span> <span class="o">:</span> <span class="n">&#8484;</span><span class="o">,</span> <span class="mi">0</span> <span class="bp">&#8804;</span> <span class="n">r</span> <span class="bp">&#8743;</span> <span class="n">r</span> <span class="bp">&lt;</span> <span class="mi">5</span> <span class="bp">&#8743;</span> <span class="mi">14</span> <span class="bp">&#8801;</span> <span class="n">r</span> <span class="o">[</span><span class="n">ZMOD</span> <span class="mi">5</span><span class="o">]</span> <span class="o">:=</span> <span class="kd">by</span>
-  <span class="n">take</span> <span class="mi">4</span>
+  <span class="n">use</span> <span class="mi">4</span>
   <span class="n">dsimp</span>
   <span class="n">constructor</span>
   <span class="bp">&#183;</span> <span class="n">constructor</span>
     <span class="bp">&#183;</span> <span class="n">numbers</span>
     <span class="n">constructor</span>
     <span class="bp">&#183;</span> <span class="n">numbers</span>
-    <span class="n">take</span> <span class="mi">2</span>
+    <span class="n">use</span> <span class="mi">2</span>
     <span class="n">numbers</span>
   <span class="n">intro</span> <span class="n">r</span> <span class="n">hr</span>
   <span class="n">obtain</span> <span class="o">&#10216;</span><span class="n">hr1</span><span class="o">,</span> <span class="n">hr2</span><span class="o">,</span> <span class="n">q</span><span class="o">,</span> <span class="n">hr3</span><span class="o">&#10217;</span> <span class="o">:=</span> <span class="n">hr</span>
@@ -1050,29 +1042,28 @@ strictly between 1 and 3.  So <span class="math notranslate nohighlight">\(r=14-
 </section>
 <section id="id26">
 <h3><span class="section-number">4.3.5. </span>Exercises<a class="headerlink" href="#id26" title="Permalink to this headline">&#61633;</a></h3>
-<ol class="arabic simple">
-<li><p>Show that there exists a unique rational number <span class="math notranslate nohighlight">\(x\)</span>, such that <span class="math notranslate nohighlight">\(4x-3=9\)</span>.</p></li>
-</ol>
+<ol class="arabic">
+<li><p>Show that there exists a unique rational number <span class="math notranslate nohighlight">\(x\)</span>, such that <span class="math notranslate nohighlight">\(4x-3=9\)</span>.</p>
 <div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">:</span> <span class="bp">&#8707;!</span> <span class="n">x</span> <span class="o">:</span> <span class="n">&#8474;</span><span class="o">,</span> <span class="mi">4</span> <span class="bp">*</span> <span class="n">x</span> <span class="bp">-</span> <span class="mi">3</span> <span class="bp">=</span> <span class="mi">9</span> <span class="o">:=</span> <span class="kd">by</span>
   <span class="gr">sorry</span>
 </pre></div>
 </div>
-<ol class="arabic simple" start="2">
+</li>
 <li><p>Show that there exists a unique natural number <span class="math notranslate nohighlight">\(n\)</span>, such that for all natural numbers
-<span class="math notranslate nohighlight">\(a\)</span>, we have <span class="math notranslate nohighlight">\(n\le a\)</span>.</p></li>
-</ol>
+<span class="math notranslate nohighlight">\(a\)</span>, we have <span class="math notranslate nohighlight">\(n\le a\)</span>.</p>
 <div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">:</span> <span class="bp">&#8707;!</span> <span class="n">n</span> <span class="o">:</span> <span class="n">&#8469;</span><span class="o">,</span> <span class="bp">&#8704;</span> <span class="n">a</span><span class="o">,</span> <span class="n">n</span> <span class="bp">&#8804;</span> <span class="n">a</span> <span class="o">:=</span> <span class="kd">by</span>
   <span class="gr">sorry</span>
 </pre></div>
 </div>
-<ol class="arabic simple" start="3">
+</li>
 <li><p>Show that there exists a unique integer <span class="math notranslate nohighlight">\(r\)</span>, such that <span class="math notranslate nohighlight">\(0\le r &lt; 3\)</span> and
-<span class="math notranslate nohighlight">\(11\equiv r\mod 3\)</span>.</p></li>
-</ol>
+<span class="math notranslate nohighlight">\(11\equiv r\mod 3\)</span>.</p>
 <div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">:</span> <span class="bp">&#8707;!</span> <span class="n">r</span> <span class="o">:</span> <span class="n">&#8484;</span><span class="o">,</span> <span class="mi">0</span> <span class="bp">&#8804;</span> <span class="n">r</span> <span class="bp">&#8743;</span> <span class="n">r</span> <span class="bp">&lt;</span> <span class="mi">3</span> <span class="bp">&#8743;</span> <span class="mi">11</span> <span class="bp">&#8801;</span> <span class="n">r</span> <span class="o">[</span><span class="n">ZMOD</span> <span class="mi">3</span><span class="o">]</span> <span class="o">:=</span> <span class="kd">by</span>
   <span class="gr">sorry</span>
 </pre></div>
 </div>
+</li>
+</ol>
 </section>
 </section>
 <section id="contradictory-hypotheses">
@@ -1197,13 +1188,14 @@ contradiction, rather than <span class="math notranslate nohighlight">\(3\equiv 
 <div class="math notranslate nohighlight">
 \[\begin{split}3 &amp; = 1 ^ 2 + 1 + 1\\
   &amp;\equiv \ldots\end{split}\]</div>
-<p>For the purposes of this course, we will treat as &#8220;obviously true/false&#8221; only congruences
+<p>For the purposes of this book, we will treat as &#8220;obviously true/false&#8221; only congruences
 <span class="math notranslate nohighlight">\(i\equiv j\mod n\)</span> for which <span class="math notranslate nohighlight">\(0 \le i&lt;n\)</span> and <span class="math notranslate nohighlight">\(0 \le j&lt;n\)</span>.  We will ask that
 congruences involving larger numbers be explicitly reduced modulo <span class="math notranslate nohighlight">\(n\)</span>, as we did here in
 reducing <span class="math notranslate nohighlight">\(3=1 ^ 2 + 1 + 1\)</span> to <span class="math notranslate nohighlight">\(0 + 3 \cdot 1\)</span> modulo 3 and thus to <span class="math notranslate nohighlight">\(0\)</span>.</p>
 <p>The mathematical justification for this is the uniqueness lemma <code class="docutils literal notranslate"><span class="pre">Int.existsUnique_modEq_lt</span></code>,
 discussed in <a class="reference internal" href="#division-algorithm"><span class="std std-numref">Example 4.3.4</span></a>.</p>
-<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">(</span><span class="n">n</span> <span class="o">:</span> <span class="n">&#8484;</span><span class="o">)</span> <span class="o">(</span><span class="n">hn</span> <span class="o">:</span> <span class="n">n</span> <span class="bp">^</span> <span class="mi">2</span> <span class="bp">+</span> <span class="n">n</span> <span class="bp">+</span> <span class="mi">1</span> <span class="bp">&#8801;</span> <span class="mi">1</span> <span class="o">[</span><span class="n">ZMOD</span> <span class="mi">3</span><span class="o">])</span> <span class="o">:</span> <span class="n">n</span> <span class="bp">&#8801;</span> <span class="mi">0</span> <span class="o">[</span><span class="n">ZMOD</span> <span class="mi">3</span><span class="o">]</span> <span class="bp">&#8744;</span> <span class="n">n</span> <span class="bp">&#8801;</span> <span class="mi">2</span> <span class="o">[</span><span class="n">ZMOD</span> <span class="mi">3</span><span class="o">]</span> <span class="o">:=</span> <span class="kd">by</span>
+<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">(</span><span class="n">n</span> <span class="o">:</span> <span class="n">&#8484;</span><span class="o">)</span> <span class="o">(</span><span class="n">hn</span> <span class="o">:</span> <span class="n">n</span> <span class="bp">^</span> <span class="mi">2</span> <span class="bp">+</span> <span class="n">n</span> <span class="bp">+</span> <span class="mi">1</span> <span class="bp">&#8801;</span> <span class="mi">1</span> <span class="o">[</span><span class="n">ZMOD</span> <span class="mi">3</span><span class="o">])</span> <span class="o">:</span>
+    <span class="n">n</span> <span class="bp">&#8801;</span> <span class="mi">0</span> <span class="o">[</span><span class="n">ZMOD</span> <span class="mi">3</span><span class="o">]</span> <span class="bp">&#8744;</span> <span class="n">n</span> <span class="bp">&#8801;</span> <span class="mi">2</span> <span class="o">[</span><span class="n">ZMOD</span> <span class="mi">3</span><span class="o">]</span> <span class="o">:=</span> <span class="kd">by</span>
   <span class="n">mod_cases</span> <span class="n">h</span> <span class="o">:</span> <span class="n">n</span> <span class="bp">%</span> <span class="mi">3</span>
   <span class="bp">&#183;</span> <span class="c1">-- case 1: `n &#8801; 0 [ZMOD 3]`</span>
     <span class="n">left</span>
@@ -1232,8 +1224,8 @@ numbers are prime.</p>
 numbers <span class="math notranslate nohighlight">\(m\)</span> for which <span class="math notranslate nohighlight">\(1&lt;m&lt;p\)</span>, it is not true that <span class="math notranslate nohighlight">\(m\)</span> is a factor of <span class="math notranslate nohighlight">\(p\)</span>.
 Show that <span class="math notranslate nohighlight">\(p\)</span> is prime.</p>
 </div>
-<div class="admonition-solution admonition">
-<p class="admonition-title">Solution</p>
+<div class="admonition-proof admonition">
+<p class="admonition-title">Proof</p>
 <p>Since we are given that <span class="math notranslate nohighlight">\(2 \le p\)</span>, what&#8217;s left is to prove the second part of the definition
 &#8220;prime&#8221;: let <span class="math notranslate nohighlight">\(m\)</span> be a factor of <span class="math notranslate nohighlight">\(p\)</span> (<span class="math notranslate nohighlight">\(\star\)</span>); we must show that <span class="math notranslate nohighlight">\(m=1\)</span> or
 <span class="math notranslate nohighlight">\(m=p\)</span>.</p>
@@ -1288,11 +1280,11 @@ proved in <a class="reference internal" href="03_Parity_and_Divisibility.html#dv
   <span class="n">apply</span> <span class="n">Nat.not_dvd_of_exists_lt_and_lt</span>
   <span class="bp">&#183;</span> <span class="n">extra</span>
   <span class="n">interval_cases</span> <span class="n">m</span>
-  <span class="bp">&#183;</span> <span class="n">take</span> <span class="mi">2</span>
+  <span class="bp">&#183;</span> <span class="n">use</span> <span class="mi">2</span>
     <span class="n">constructor</span> <span class="bp">&lt;;&gt;</span> <span class="n">numbers</span>
-  <span class="bp">&#183;</span> <span class="n">take</span> <span class="mi">1</span>
+  <span class="bp">&#183;</span> <span class="n">use</span> <span class="mi">1</span>
     <span class="n">constructor</span> <span class="bp">&lt;;&gt;</span> <span class="n">numbers</span>
-  <span class="bp">&#183;</span> <span class="n">take</span> <span class="mi">1</span>
+  <span class="bp">&#183;</span> <span class="n">use</span> <span class="mi">1</span>
     <span class="n">constructor</span> <span class="bp">&lt;;&gt;</span> <span class="n">numbers</span>
 </pre></div>
 </div>
@@ -1352,49 +1344,43 @@ We can analyze all these cases and check they don&#8217;t work:</p>
 <p>so <span class="math notranslate nohighlight">\(c&lt;b+1\)</span>, so it is false that <span class="math notranslate nohighlight">\(b+1\le c\)</span>.  These two facts contradict each other.</p>
 </div>
 <p>Write this proof up in Lean.  It will be long; my version is 27 lines.</p>
-<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">{</span><span class="n">a</span> <span class="n">b</span> <span class="n">c</span> <span class="o">:</span> <span class="n">&#8469;</span><span class="o">}</span> <span class="o">(</span><span class="n">ha</span> <span class="o">:</span> <span class="mi">0</span> <span class="bp">&lt;</span> <span class="n">a</span><span class="o">)</span> <span class="o">(</span><span class="n">hb</span> <span class="o">:</span> <span class="mi">0</span> <span class="bp">&lt;</span> <span class="n">b</span><span class="o">)</span> <span class="o">(</span><span class="n">hc</span> <span class="o">:</span> <span class="mi">0</span> <span class="bp">&lt;</span> <span class="n">c</span><span class="o">)</span> <span class="o">(</span><span class="n">h_pyth</span> <span class="o">:</span> <span class="n">a</span> <span class="bp">^</span> <span class="mi">2</span> <span class="bp">+</span> <span class="n">b</span> <span class="bp">^</span> <span class="mi">2</span> <span class="bp">=</span> <span class="n">c</span> <span class="bp">^</span> <span class="mi">2</span><span class="o">)</span> <span class="o">:</span>
-    <span class="mi">3</span> <span class="bp">&#8804;</span> <span class="n">a</span> <span class="o">:=</span> <span class="kd">by</span>
+<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">{</span><span class="n">a</span> <span class="n">b</span> <span class="n">c</span> <span class="o">:</span> <span class="n">&#8469;</span><span class="o">}</span> <span class="o">(</span><span class="n">ha</span> <span class="o">:</span> <span class="mi">0</span> <span class="bp">&lt;</span> <span class="n">a</span><span class="o">)</span> <span class="o">(</span><span class="n">hb</span> <span class="o">:</span> <span class="mi">0</span> <span class="bp">&lt;</span> <span class="n">b</span><span class="o">)</span> <span class="o">(</span><span class="n">hc</span> <span class="o">:</span> <span class="mi">0</span> <span class="bp">&lt;</span> <span class="n">c</span><span class="o">)</span>
+    <span class="o">(</span><span class="n">h_pyth</span> <span class="o">:</span> <span class="n">a</span> <span class="bp">^</span> <span class="mi">2</span> <span class="bp">+</span> <span class="n">b</span> <span class="bp">^</span> <span class="mi">2</span> <span class="bp">=</span> <span class="n">c</span> <span class="bp">^</span> <span class="mi">2</span><span class="o">)</span> <span class="o">:</span> <span class="mi">3</span> <span class="bp">&#8804;</span> <span class="n">a</span> <span class="o">:=</span> <span class="kd">by</span>
   <span class="gr">sorry</span>
 </pre></div>
 </div>
 </section>
 <section id="id32">
 <h3><span class="section-number">4.4.6. </span>Exercises<a class="headerlink" href="#id32" title="Permalink to this headline">&#61633;</a></h3>
-<ol class="arabic simple">
+<ol class="arabic">
 <li><p>Let <span class="math notranslate nohighlight">\(x\)</span> and <span class="math notranslate nohighlight">\(y\)</span> be real numbers, with <span class="math notranslate nohighlight">\(x\)</span> nonnegative, and let
 <span class="math notranslate nohighlight">\(n\)</span> is a positive natural number.  Prove that if then <span class="math notranslate nohighlight">\(y^n \le x^n\)</span> then
-<span class="math notranslate nohighlight">\(y\le x\)</span>.</p></li>
-</ol>
-<blockquote>
-<div><p>We have used this fact before; it&#8217;s another of the lemmas which underlie the <code class="docutils literal notranslate"><span class="pre">cancel</span></code> tactic.</p>
-</div></blockquote>
-<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">{</span><span class="n">x</span> <span class="n">y</span> <span class="o">:</span> <span class="n">&#8477;</span><span class="o">}</span> <span class="o">(</span><span class="n">n</span> <span class="o">:</span> <span class="n">&#8469;</span><span class="o">)</span> <span class="o">(</span><span class="n">hx</span> <span class="o">:</span> <span class="mi">0</span> <span class="bp">&#8804;</span> <span class="n">x</span><span class="o">)</span> <span class="o">(</span><span class="n">hn</span> <span class="o">:</span> <span class="mi">0</span> <span class="bp">&lt;</span> <span class="n">n</span><span class="o">)</span> <span class="o">(</span><span class="n">h</span> <span class="o">:</span> <span class="n">y</span> <span class="bp">^</span> <span class="n">n</span> <span class="bp">&#8804;</span> <span class="n">x</span> <span class="bp">^</span> <span class="n">n</span><span class="o">)</span> <span class="o">:</span> <span class="n">y</span> <span class="bp">&#8804;</span> <span class="n">x</span> <span class="o">:=</span> <span class="kd">by</span>
+<span class="math notranslate nohighlight">\(y\le x\)</span>.</p>
+<p>We have used this fact before; it&#8217;s another of the lemmas which underlie the <code class="docutils literal notranslate"><span class="pre">cancel</span></code> tactic.</p>
+<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">{</span><span class="n">x</span> <span class="n">y</span> <span class="o">:</span> <span class="n">&#8477;</span><span class="o">}</span> <span class="o">(</span><span class="n">n</span> <span class="o">:</span> <span class="n">&#8469;</span><span class="o">)</span> <span class="o">(</span><span class="n">hx</span> <span class="o">:</span> <span class="mi">0</span> <span class="bp">&#8804;</span> <span class="n">x</span><span class="o">)</span> <span class="o">(</span><span class="n">hn</span> <span class="o">:</span> <span class="mi">0</span> <span class="bp">&lt;</span> <span class="n">n</span><span class="o">)</span> <span class="o">(</span><span class="n">h</span> <span class="o">:</span> <span class="n">y</span> <span class="bp">^</span> <span class="n">n</span> <span class="bp">&#8804;</span> <span class="n">x</span> <span class="bp">^</span> <span class="n">n</span><span class="o">)</span> <span class="o">:</span>
+    <span class="n">y</span> <span class="bp">&#8804;</span> <span class="n">x</span> <span class="o">:=</span> <span class="kd">by</span>
   <span class="gr">sorry</span>
 </pre></div>
 </div>
-<ol class="arabic simple" start="2">
-<li><p>Show that if <span class="math notranslate nohighlight">\(n^2\equiv 4\mod 5\)</span> then <span class="math notranslate nohighlight">\(n\equiv 2\mod 5\)</span> or <span class="math notranslate nohighlight">\(n\equiv 3\mod 5\)</span>.</p></li>
-</ol>
+</li>
+<li><p>Show that if <span class="math notranslate nohighlight">\(n^2\equiv 4\mod 5\)</span> then <span class="math notranslate nohighlight">\(n\equiv 2\mod 5\)</span> or <span class="math notranslate nohighlight">\(n\equiv 3\mod 5\)</span>.</p>
 <div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">(</span><span class="n">n</span> <span class="o">:</span> <span class="n">&#8484;</span><span class="o">)</span> <span class="o">(</span><span class="n">hn</span> <span class="o">:</span> <span class="n">n</span> <span class="bp">^</span> <span class="mi">2</span> <span class="bp">&#8801;</span> <span class="mi">4</span> <span class="o">[</span><span class="n">ZMOD</span> <span class="mi">5</span><span class="o">])</span> <span class="o">:</span> <span class="n">n</span> <span class="bp">&#8801;</span> <span class="mi">2</span> <span class="o">[</span><span class="n">ZMOD</span> <span class="mi">5</span><span class="o">]</span> <span class="bp">&#8744;</span> <span class="n">n</span> <span class="bp">&#8801;</span> <span class="mi">3</span> <span class="o">[</span><span class="n">ZMOD</span> <span class="mi">5</span><span class="o">]</span> <span class="o">:=</span> <span class="kd">by</span>
   <span class="gr">sorry</span>
 </pre></div>
 </div>
-<ol class="arabic simple" start="3">
-<li><p>Show that 7 is prime.</p></li>
-</ol>
+</li>
+<li><p>Show that 7 is prime.</p>
 <div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">:</span> <span class="n">Prime</span> <span class="mi">7</span> <span class="o">:=</span> <span class="kd">by</span>
   <span class="gr">sorry</span>
 </pre></div>
 </div>
-<ol class="arabic" start="4">
+</li>
 <li><p>Give a different proof of a problem from the exercises to <a class="reference internal" href="02_Proofs_with_Structure.html#tactic-mode"><span class="std std-numref">Section 2.1</span></a>: Let
 <span class="math notranslate nohighlight">\(x\)</span>
 be a rational number whose square is 4, and which is greater than 1.  Show that <span class="math notranslate nohighlight">\(x=2\)</span>.</p>
 <p>Instead of using the <code class="docutils literal notranslate"><span class="pre">cancel</span></code> tactic, give a direct proof using the ideas of this section:
 break into two cases, and
 then rule out one of them. (You may find it convenient to deduce a numeric contradiction.)</p>
-</li>
-</ol>
 <div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">{</span><span class="n">x</span> <span class="o">:</span> <span class="n">&#8474;</span><span class="o">}</span> <span class="o">(</span><span class="n">h1</span> <span class="o">:</span> <span class="n">x</span> <span class="bp">^</span> <span class="mi">2</span> <span class="bp">=</span> <span class="mi">4</span><span class="o">)</span> <span class="o">(</span><span class="n">h2</span> <span class="o">:</span> <span class="mi">1</span> <span class="bp">&lt;</span> <span class="n">x</span><span class="o">)</span> <span class="o">:</span> <span class="n">x</span> <span class="bp">=</span> <span class="mi">2</span> <span class="o">:=</span> <span class="kd">by</span>
   <span class="k">have</span> <span class="n">h3</span> <span class="o">:=</span>
     <span class="k">calc</span>
@@ -1405,13 +1391,14 @@ then rule out one of them. (You may find it convenient to deduce a numeric contr
   <span class="gr">sorry</span>
 </pre></div>
 </div>
-<ol class="arabic simple" start="5">
-<li><p>Show that a prime number is either 2 or odd.</p></li>
-</ol>
+</li>
+<li><p>Show that a prime number is either 2 or odd.</p>
 <div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">(</span><span class="n">p</span> <span class="o">:</span> <span class="n">&#8469;</span><span class="o">)</span> <span class="o">(</span><span class="n">h</span> <span class="o">:</span> <span class="n">Prime</span> <span class="n">p</span><span class="o">)</span> <span class="o">:</span> <span class="n">p</span> <span class="bp">=</span> <span class="mi">2</span> <span class="bp">&#8744;</span> <span class="n">Odd</span> <span class="n">p</span> <span class="o">:=</span> <span class="kd">by</span>
   <span class="gr">sorry</span>
 </pre></div>
 </div>
+</li>
+</ol>
 </section>
 </section>
 <section id="proof-by-contradiction">
@@ -1756,11 +1743,11 @@ check:</p>
   <span class="n">apply</span> <span class="n">Nat.not_dvd_of_exists_lt_and_lt</span>
   <span class="bp">&#183;</span> <span class="n">extra</span>
   <span class="n">interval_cases</span> <span class="n">m</span>
-  <span class="bp">&#183;</span> <span class="n">take</span> <span class="mi">39</span>
+  <span class="bp">&#183;</span> <span class="n">use</span> <span class="mi">39</span>
     <span class="n">constructor</span> <span class="bp">&lt;;&gt;</span> <span class="n">numbers</span>
-  <span class="bp">&#183;</span> <span class="n">take</span> <span class="mi">26</span>
+  <span class="bp">&#183;</span> <span class="n">use</span> <span class="mi">26</span>
     <span class="n">constructor</span> <span class="bp">&lt;;&gt;</span> <span class="n">numbers</span>
-  <span class="bp">&#183;</span> <span class="n">take</span> <span class="mi">19</span>
+  <span class="bp">&#183;</span> <span class="n">use</span> <span class="mi">19</span>
     <span class="n">constructor</span> <span class="bp">&lt;;&gt;</span> <span class="n">numbers</span>
   <span class="bp">&#183;</span> <span class="gr">sorry</span>
   <span class="bp">&#183;</span> <span class="gr">sorry</span>
@@ -1771,61 +1758,55 @@ check:</p>
 </section>
 <section id="id42">
 <h3><span class="section-number">4.5.10. </span>Exercises<a class="headerlink" href="#id42" title="Permalink to this headline">&#61633;</a></h3>
-<ol class="arabic simple">
+<ol class="arabic">
 <li><p>Show that there does not exist a real number <span class="math notranslate nohighlight">\(a\)</span>, such that <span class="math notranslate nohighlight">\(a^2 \le 8\)</span> and
-<span class="math notranslate nohighlight">\(a^3\geq 30\)</span>.</p></li>
-</ol>
+<span class="math notranslate nohighlight">\(a^3\geq 30\)</span>.</p>
 <div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">:</span> <span class="bp">&#172;</span> <span class="o">(</span><span class="bp">&#8707;</span> <span class="n">a</span> <span class="o">:</span> <span class="n">&#8477;</span><span class="o">,</span> <span class="n">a</span> <span class="bp">^</span> <span class="mi">2</span> <span class="bp">&#8804;</span> <span class="mi">8</span> <span class="bp">&#8743;</span> <span class="n">a</span> <span class="bp">^</span> <span class="mi">3</span> <span class="bp">&#8805;</span> <span class="mi">30</span><span class="o">)</span> <span class="o">:=</span> <span class="kd">by</span>
   <span class="gr">sorry</span>
 </pre></div>
 </div>
-<ol class="arabic simple" start="2">
+</li>
 <li><p>Let <span class="math notranslate nohighlight">\(n\)</span> be an integer satisfying <span class="math notranslate nohighlight">\(n+3=7\)</span>.  Show that <span class="math notranslate nohighlight">\(n\)</span> cannot be both
-even and a solution to <span class="math notranslate nohighlight">\(n^2=10\)</span>.</p></li>
-</ol>
+even and a solution to <span class="math notranslate nohighlight">\(n^2=10\)</span>.</p>
 <div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">{</span><span class="n">n</span> <span class="o">:</span> <span class="n">&#8484;</span><span class="o">}</span> <span class="o">(</span><span class="n">hn</span> <span class="o">:</span> <span class="n">n</span> <span class="bp">+</span> <span class="mi">3</span> <span class="bp">=</span> <span class="mi">7</span><span class="o">)</span> <span class="o">:</span> <span class="bp">&#172;</span> <span class="o">(</span><span class="n">Int.Even</span> <span class="n">n</span> <span class="bp">&#8743;</span> <span class="n">n</span> <span class="bp">^</span> <span class="mi">2</span> <span class="bp">=</span> <span class="mi">10</span><span class="o">)</span> <span class="o">:=</span> <span class="kd">by</span>
   <span class="gr">sorry</span>
 </pre></div>
 </div>
-<ol class="arabic simple" start="3">
+</li>
 <li><p>Let <span class="math notranslate nohighlight">\(x\)</span> be a real number satisfying <span class="math notranslate nohighlight">\(x^2&lt;9\)</span>.  Show that <span class="math notranslate nohighlight">\(n\)</span> cannot be either
-less than or equal to -3, or greater than or equal to 3.</p></li>
-</ol>
+less than or equal to -3, or greater than or equal to 3.</p>
 <div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">{</span><span class="n">x</span> <span class="o">:</span> <span class="n">&#8477;</span><span class="o">}</span> <span class="o">(</span><span class="n">hx</span> <span class="o">:</span> <span class="n">x</span> <span class="bp">^</span> <span class="mi">2</span> <span class="bp">&lt;</span> <span class="mi">9</span><span class="o">)</span> <span class="o">:</span> <span class="bp">&#172;</span> <span class="o">(</span><span class="n">x</span> <span class="bp">&#8804;</span> <span class="bp">-</span><span class="mi">3</span> <span class="bp">&#8744;</span> <span class="n">x</span> <span class="bp">&#8805;</span> <span class="mi">3</span><span class="o">)</span> <span class="o">:=</span> <span class="kd">by</span>
   <span class="gr">sorry</span>
 </pre></div>
 </div>
-<ol class="arabic simple" start="4">
+</li>
 <li><p>Show that there does not exist a natural number <span class="math notranslate nohighlight">\(N\)</span>, such that every natural number
-greater than <span class="math notranslate nohighlight">\(N\)</span> is even.</p></li>
-</ol>
+greater than <span class="math notranslate nohighlight">\(N\)</span> is even.</p>
 <div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">:</span> <span class="bp">&#172;</span> <span class="o">(</span><span class="bp">&#8707;</span> <span class="n">N</span> <span class="o">:</span> <span class="n">&#8469;</span><span class="o">,</span> <span class="bp">&#8704;</span> <span class="n">k</span> <span class="bp">&gt;</span> <span class="n">N</span><span class="o">,</span> <span class="n">Nat.Even</span> <span class="n">k</span><span class="o">)</span> <span class="o">:=</span> <span class="kd">by</span>
   <span class="gr">sorry</span>
 </pre></div>
 </div>
-<ol class="arabic simple" start="5">
-<li><p>Let <span class="math notranslate nohighlight">\(n\)</span> be an integer.  Show that <span class="math notranslate nohighlight">\(n^2\not\equiv 2 \mod 4\)</span>.</p></li>
-</ol>
+</li>
+<li><p>Let <span class="math notranslate nohighlight">\(n\)</span> be an integer.  Show that <span class="math notranslate nohighlight">\(n^2\not\equiv 2 \mod 4\)</span>.</p>
 <div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">(</span><span class="n">n</span> <span class="o">:</span> <span class="n">&#8484;</span><span class="o">)</span> <span class="o">:</span> <span class="bp">&#172;</span><span class="o">(</span><span class="n">n</span> <span class="bp">^</span> <span class="mi">2</span> <span class="bp">&#8801;</span> <span class="mi">2</span> <span class="o">[</span><span class="n">ZMOD</span> <span class="mi">4</span><span class="o">])</span> <span class="o">:=</span> <span class="kd">by</span>
   <span class="gr">sorry</span>
 </pre></div>
 </div>
-<ol class="arabic" start="6">
+</li>
 <li><p>Show that 1 is not prime.</p>
 <p>We record this lemma for future use under the name <code class="docutils literal notranslate"><span class="pre">not_prime_one</span></code>.</p>
-</li>
-</ol>
 <div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">:</span> <span class="bp">&#172;</span> <span class="n">Prime</span> <span class="mi">1</span> <span class="o">:=</span> <span class="kd">by</span>
   <span class="gr">sorry</span>
 </pre></div>
 </div>
-<ol class="arabic simple" start="7">
-<li><p>Show that 97 is prime.</p></li>
-</ol>
+</li>
+<li><p>Show that 97 is prime.</p>
 <div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">:</span> <span class="n">Prime</span> <span class="mi">97</span> <span class="o">:=</span> <span class="kd">by</span>
   <span class="gr">sorry</span>
 </pre></div>
 </div>
+</li>
+</ol>
 </section>
 </section>
 </section>

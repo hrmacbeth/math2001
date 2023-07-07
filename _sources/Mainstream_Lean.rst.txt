@@ -32,12 +32,6 @@ would typically write out the details in full. These deliberately weakened tacti
         *Proof* version
       - differences
 
-    * - ``use``
-      - ``take``
-      - ``use`` can sometimes automatically fill in the proof that the witness
-        
-        has the desired property
-
     * - ``norm_num``
       - ``numbers``
       - ``norm_num`` can do some calculations which in this book we require

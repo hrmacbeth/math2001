@@ -119,7 +119,7 @@
 <span id="sets-intro"></span><h2><span class="section-number">9.1. </span>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">&#61633;</a></h2>
 <section id="example">
 <h3><span class="section-number">9.1.1. </span>Example<a class="headerlink" href="#example" title="Permalink to this headline">&#61633;</a></h3>
-<p>In type theory, the logical foundation for this course, a <em>set</em> in a type <span class="math notranslate nohighlight">\(X\)</span> is specified
+<p>In type theory, the logical foundation for this book, a <em>set</em> in a type <span class="math notranslate nohighlight">\(X\)</span> is specified
 by a predicate on <span class="math notranslate nohighlight">\(X\)</span>.  For example, &#8220;the set of integers <span class="math notranslate nohighlight">\(n\)</span> such that <span class="math notranslate nohighlight">\(n\le 3\)</span>&#8221;
 is a set in <span class="math notranslate nohighlight">\(\mathbb{Z}\)</span>.</p>
 <p>There is a standard notation for sets specified by predicates.  For example, the set described above
@@ -173,7 +173,7 @@ to the goal</p>
 <div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">:</span> <span class="mi">10</span> <span class="bp">&#8713;</span> <span class="o">{</span> <span class="n">n</span> <span class="o">:</span> <span class="n">&#8469;</span> <span class="bp">|</span> <span class="n">Odd</span> <span class="n">n</span> <span class="o">}</span> <span class="o">:=</span> <span class="kd">by</span>
   <span class="n">dsimp</span>
   <span class="n">rw</span> <span class="o">[</span><span class="bp">&#8592;</span> <span class="n">even_iff_not_odd</span><span class="o">]</span>
-  <span class="n">take</span> <span class="mi">5</span>
+  <span class="n">use</span> <span class="mi">5</span>
   <span class="n">numbers</span>
 </pre></div>
 </div>
@@ -215,7 +215,7 @@ the goal state is simplified to</p>
   <span class="n">dsimp</span>
   <span class="n">intro</span> <span class="n">a</span> <span class="n">ha</span>
   <span class="n">obtain</span> <span class="o">&#10216;</span><span class="n">k</span><span class="o">,</span> <span class="n">hk</span><span class="o">&#10217;</span> <span class="o">:=</span> <span class="n">ha</span>
-  <span class="n">take</span> <span class="mi">2</span> <span class="bp">*</span> <span class="n">k</span>
+  <span class="n">use</span> <span class="mi">2</span> <span class="bp">*</span> <span class="n">k</span>
   <span class="k">calc</span> <span class="n">a</span> <span class="bp">=</span> <span class="mi">4</span> <span class="bp">*</span> <span class="n">k</span> <span class="o">:=</span> <span class="n">hk</span>
     <span class="n">_</span> <span class="bp">=</span> <span class="mi">2</span> <span class="bp">*</span> <span class="o">(</span><span class="mi">2</span> <span class="bp">*</span> <span class="n">k</span><span class="o">)</span> <span class="o">:=</span> <span class="kd">by</span> <span class="n">ring</span>
 </pre></div>
@@ -241,7 +241,7 @@ the goal state is simplified to</p>
 <div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">:</span> <span class="o">{</span> <span class="n">x</span> <span class="o">:</span> <span class="n">&#8477;</span> <span class="bp">|</span> <span class="mi">0</span> <span class="bp">&#8804;</span> <span class="n">x</span> <span class="bp">^</span> <span class="mi">2</span> <span class="o">}</span> <span class="bp">&#8840;</span> <span class="o">{</span> <span class="n">t</span> <span class="o">:</span> <span class="n">&#8477;</span> <span class="bp">|</span> <span class="mi">0</span> <span class="bp">&#8804;</span> <span class="n">t</span> <span class="o">}</span> <span class="o">:=</span> <span class="kd">by</span>
   <span class="n">dsimp</span>
   <span class="n">push_neg</span>
-  <span class="n">take</span> <span class="bp">-</span><span class="mi">3</span>
+  <span class="n">use</span> <span class="bp">-</span><span class="mi">3</span>
   <span class="n">constructor</span>
   <span class="bp">&#183;</span> <span class="n">numbers</span>
   <span class="bp">&#183;</span> <span class="n">numbers</span>
@@ -284,12 +284,12 @@ integer <span class="math notranslate nohighlight">\(k\)</span> such that <span 
   <span class="n">constructor</span>
   <span class="bp">&#183;</span> <span class="n">intro</span> <span class="n">h</span>
     <span class="n">obtain</span> <span class="o">&#10216;</span><span class="n">l</span><span class="o">,</span> <span class="n">hl</span><span class="o">&#10217;</span> <span class="o">:=</span> <span class="n">h</span>
-    <span class="n">take</span> <span class="n">l</span> <span class="bp">+</span> <span class="mi">1</span>
+    <span class="n">use</span> <span class="n">l</span> <span class="bp">+</span> <span class="mi">1</span>
     <span class="k">calc</span> <span class="n">x</span> <span class="bp">=</span> <span class="mi">2</span> <span class="bp">*</span> <span class="n">l</span> <span class="bp">+</span> <span class="mi">1</span> <span class="o">:=</span> <span class="kd">by</span> <span class="n">rw</span> <span class="o">[</span><span class="n">hl</span><span class="o">]</span>
       <span class="n">_</span> <span class="bp">=</span> <span class="mi">2</span> <span class="bp">*</span> <span class="o">(</span><span class="n">l</span> <span class="bp">+</span> <span class="mi">1</span><span class="o">)</span> <span class="bp">-</span> <span class="mi">1</span> <span class="o">:=</span> <span class="kd">by</span> <span class="n">ring</span>
   <span class="bp">&#183;</span> <span class="n">intro</span> <span class="n">h</span>
     <span class="n">obtain</span> <span class="o">&#10216;</span><span class="n">k</span><span class="o">,</span> <span class="n">hk</span><span class="o">&#10217;</span> <span class="o">:=</span> <span class="n">h</span>
-    <span class="n">take</span> <span class="n">k</span> <span class="bp">-</span> <span class="mi">1</span>
+    <span class="n">use</span> <span class="n">k</span> <span class="bp">-</span> <span class="mi">1</span>
     <span class="k">calc</span> <span class="n">x</span> <span class="bp">=</span> <span class="mi">2</span> <span class="bp">*</span> <span class="n">k</span> <span class="bp">-</span> <span class="mi">1</span> <span class="o">:=</span> <span class="kd">by</span> <span class="n">rw</span> <span class="o">[</span><span class="n">hk</span><span class="o">]</span>
       <span class="n">_</span> <span class="bp">=</span> <span class="mi">2</span> <span class="bp">*</span> <span class="o">(</span><span class="n">k</span> <span class="bp">-</span> <span class="mi">1</span><span class="o">)</span> <span class="bp">+</span> <span class="mi">1</span> <span class="o">:=</span> <span class="kd">by</span> <span class="n">ring</span>
 </pre></div>
@@ -319,14 +319,14 @@ element of the other.</p>
 <div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">:</span> <span class="o">{</span> <span class="n">a</span> <span class="o">:</span> <span class="n">&#8469;</span> <span class="bp">|</span> <span class="mi">4</span> <span class="bp">&#8739;</span> <span class="n">a</span> <span class="o">}</span> <span class="bp">&#8800;</span> <span class="o">{</span> <span class="n">b</span> <span class="o">:</span> <span class="n">&#8469;</span> <span class="bp">|</span> <span class="mi">2</span> <span class="bp">&#8739;</span> <span class="n">b</span> <span class="o">}</span> <span class="o">:=</span> <span class="kd">by</span>
   <span class="n">dsimp</span>
   <span class="n">push_neg</span>
-  <span class="n">take</span> <span class="mi">6</span>
+  <span class="n">use</span> <span class="mi">6</span>
   <span class="n">right</span>
   <span class="n">constructor</span>
   <span class="bp">&#183;</span> <span class="n">apply</span> <span class="n">Nat.not_dvd_of_exists_lt_and_lt</span>
     <span class="bp">&#183;</span> <span class="n">numbers</span>
-    <span class="n">take</span> <span class="mi">1</span>
+    <span class="n">use</span> <span class="mi">1</span>
     <span class="n">constructor</span> <span class="bp">&lt;;&gt;</span> <span class="n">numbers</span>
-  <span class="bp">&#183;</span> <span class="n">take</span> <span class="mi">3</span>
+  <span class="bp">&#183;</span> <span class="n">use</span> <span class="mi">3</span>
     <span class="n">numbers</span>
 </pre></div>
 </div>
@@ -363,14 +363,14 @@ element of the other.</p>
   <span class="n">constructor</span>
   <span class="bp">&#183;</span> <span class="n">intro</span> <span class="n">hn</span>
     <span class="n">obtain</span> <span class="o">&#10216;</span><span class="n">a</span><span class="o">,</span> <span class="n">ha</span><span class="o">&#10217;</span> <span class="o">:=</span> <span class="n">hn</span>
-    <span class="n">take</span> <span class="bp">-</span><span class="mi">3</span> <span class="bp">*</span> <span class="n">a</span> <span class="bp">+</span> <span class="mi">2</span> <span class="bp">*</span> <span class="n">n</span>
+    <span class="n">use</span> <span class="bp">-</span><span class="mi">3</span> <span class="bp">*</span> <span class="n">a</span> <span class="bp">+</span> <span class="mi">2</span> <span class="bp">*</span> <span class="n">n</span>
     <span class="k">calc</span>
       <span class="n">n</span> <span class="bp">=</span> <span class="bp">-</span><span class="mi">3</span> <span class="bp">*</span> <span class="o">(</span><span class="mi">5</span> <span class="bp">*</span> <span class="n">n</span><span class="o">)</span> <span class="bp">+</span> <span class="mi">16</span> <span class="bp">*</span> <span class="n">n</span> <span class="o">:=</span> <span class="kd">by</span> <span class="n">ring</span>
       <span class="n">_</span> <span class="bp">=</span> <span class="bp">-</span><span class="mi">3</span> <span class="bp">*</span> <span class="o">(</span><span class="mi">8</span> <span class="bp">*</span> <span class="n">a</span><span class="o">)</span> <span class="bp">+</span> <span class="mi">16</span> <span class="bp">*</span> <span class="n">n</span> <span class="o">:=</span> <span class="kd">by</span> <span class="n">rw</span> <span class="o">[</span><span class="n">ha</span><span class="o">]</span>
       <span class="n">_</span> <span class="bp">=</span> <span class="mi">8</span> <span class="bp">*</span> <span class="o">(</span><span class="bp">-</span><span class="mi">3</span> <span class="bp">*</span> <span class="n">a</span> <span class="bp">+</span> <span class="mi">2</span> <span class="bp">*</span> <span class="n">n</span><span class="o">)</span> <span class="o">:=</span> <span class="kd">by</span> <span class="n">ring</span>
   <span class="bp">&#183;</span> <span class="n">intro</span> <span class="n">hn</span>
     <span class="n">obtain</span> <span class="o">&#10216;</span><span class="n">a</span><span class="o">,</span> <span class="n">ha</span><span class="o">&#10217;</span> <span class="o">:=</span> <span class="n">hn</span>
-    <span class="n">take</span> <span class="mi">5</span> <span class="bp">*</span> <span class="n">a</span>
+    <span class="n">use</span> <span class="mi">5</span> <span class="bp">*</span> <span class="n">a</span>
     <span class="k">calc</span> <span class="mi">5</span> <span class="bp">*</span> <span class="n">n</span> <span class="bp">=</span> <span class="mi">5</span> <span class="bp">*</span> <span class="o">(</span><span class="mi">8</span> <span class="bp">*</span> <span class="n">a</span><span class="o">)</span> <span class="o">:=</span> <span class="kd">by</span> <span class="n">rw</span> <span class="o">[</span><span class="n">ha</span><span class="o">]</span>
       <span class="n">_</span> <span class="bp">=</span> <span class="mi">8</span> <span class="bp">*</span> <span class="o">(</span><span class="mi">5</span> <span class="bp">*</span> <span class="n">a</span><span class="o">)</span> <span class="o">:=</span> <span class="kd">by</span> <span class="n">ring</span>
 </pre></div>
@@ -458,9 +458,8 @@ then <span class="math notranslate nohighlight">\(t&lt;10\)</span>.  Indeed, <sp
 </section>
 <section id="exercises">
 <h3><span class="section-number">9.1.10. </span>Exercises<a class="headerlink" href="#exercises" title="Permalink to this headline">&#61633;</a></h3>
-<ol class="arabic simple">
-<li><p>Prove or disprove that <span class="math notranslate nohighlight">\(4\in \{a:\mathbb{Q} \mid a&lt;3\}\)</span>.</p></li>
-</ol>
+<ol class="arabic">
+<li><p>Prove or disprove that <span class="math notranslate nohighlight">\(4\in \{a:\mathbb{Q} \mid a&lt;3\}\)</span>.</p>
 <div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">:</span> <span class="mi">4</span> <span class="bp">&#8712;</span> <span class="o">{</span> <span class="n">a</span> <span class="o">:</span> <span class="n">&#8474;</span> <span class="bp">|</span> <span class="n">a</span> <span class="bp">&lt;</span> <span class="mi">3</span> <span class="o">}</span> <span class="o">:=</span> <span class="kd">by</span>
   <span class="gr">sorry</span>
 
@@ -468,9 +467,8 @@ then <span class="math notranslate nohighlight">\(t&lt;10\)</span>.  Indeed, <sp
   <span class="gr">sorry</span>
 </pre></div>
 </div>
-<ol class="arabic simple" start="2">
-<li><p>Prove or disprove that <span class="math notranslate nohighlight">\(6\in \{n:\mathbb{N} \mid n\mid 42\}\)</span>.</p></li>
-</ol>
+</li>
+<li><p>Prove or disprove that <span class="math notranslate nohighlight">\(6\in \{n:\mathbb{N} \mid n\mid 42\}\)</span>.</p>
 <div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">:</span> <span class="mi">6</span> <span class="bp">&#8712;</span> <span class="o">{</span> <span class="n">n</span> <span class="o">:</span> <span class="n">&#8469;</span> <span class="bp">|</span> <span class="n">n</span> <span class="bp">&#8739;</span> <span class="mi">42</span> <span class="o">}</span> <span class="o">:=</span> <span class="kd">by</span>
   <span class="gr">sorry</span>
 
@@ -478,9 +476,8 @@ then <span class="math notranslate nohighlight">\(t&lt;10\)</span>.  Indeed, <sp
   <span class="gr">sorry</span>
 </pre></div>
 </div>
-<ol class="arabic simple" start="3">
-<li><p>Prove or disprove that <span class="math notranslate nohighlight">\(8\in \{k:\mathbb{Z} \mid 5\mid k\}\)</span>.</p></li>
-</ol>
+</li>
+<li><p>Prove or disprove that <span class="math notranslate nohighlight">\(8\in \{k:\mathbb{Z} \mid 5\mid k\}\)</span>.</p>
 <div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">:</span> <span class="mi">8</span> <span class="bp">&#8712;</span> <span class="o">{</span> <span class="n">k</span> <span class="o">:</span> <span class="n">&#8484;</span> <span class="bp">|</span> <span class="mi">5</span> <span class="bp">&#8739;</span> <span class="n">k</span> <span class="o">}</span> <span class="o">:=</span> <span class="kd">by</span>
   <span class="gr">sorry</span>
 
@@ -488,9 +485,8 @@ then <span class="math notranslate nohighlight">\(t&lt;10\)</span>.  Indeed, <sp
   <span class="gr">sorry</span>
 </pre></div>
 </div>
-<ol class="arabic simple" start="4">
-<li><p>Prove or disprove that <span class="math notranslate nohighlight">\(11\in \{n:\mathbb{N} \mid n\text{ is odd}\}\)</span>.</p></li>
-</ol>
+</li>
+<li><p>Prove or disprove that <span class="math notranslate nohighlight">\(11\in \{n:\mathbb{N} \mid n\text{ is odd}\}\)</span>.</p>
 <div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">:</span> <span class="mi">11</span> <span class="bp">&#8712;</span> <span class="o">{</span> <span class="n">n</span> <span class="o">:</span> <span class="n">&#8469;</span> <span class="bp">|</span> <span class="n">Odd</span> <span class="n">n</span> <span class="o">}</span> <span class="o">:=</span> <span class="kd">by</span>
   <span class="gr">sorry</span>
 
@@ -498,9 +494,8 @@ then <span class="math notranslate nohighlight">\(t&lt;10\)</span>.  Indeed, <sp
   <span class="gr">sorry</span>
 </pre></div>
 </div>
-<ol class="arabic simple" start="5">
-<li><p>Prove or disprove that <span class="math notranslate nohighlight">\(-3\in \{x:\mathbb{R} \mid \forall y :\mathbb{R}, x\le y^2\}\)</span>.</p></li>
-</ol>
+</li>
+<li><p>Prove or disprove that <span class="math notranslate nohighlight">\(-3\in \{x:\mathbb{R} \mid \forall y :\mathbb{R}, x\le y^2\}\)</span>.</p>
 <div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">:</span> <span class="bp">-</span><span class="mi">3</span> <span class="bp">&#8712;</span> <span class="o">{</span> <span class="n">x</span> <span class="o">:</span> <span class="n">&#8477;</span> <span class="bp">|</span> <span class="bp">&#8704;</span> <span class="n">y</span> <span class="o">:</span> <span class="n">&#8477;</span><span class="o">,</span> <span class="n">x</span> <span class="bp">&#8804;</span> <span class="n">y</span> <span class="bp">^</span> <span class="mi">2</span> <span class="o">}</span> <span class="o">:=</span> <span class="kd">by</span>
   <span class="gr">sorry</span>
 
@@ -508,10 +503,9 @@ then <span class="math notranslate nohighlight">\(t&lt;10\)</span>.  Indeed, <sp
   <span class="gr">sorry</span>
 </pre></div>
 </div>
-<ol class="arabic simple" start="6">
+</li>
 <li><p>Prove or disprove that
-<span class="math notranslate nohighlight">\(\{a:\mathbb{N} \mid 20\mid a\}\subseteq \{x:\mathbb{N} \mid 5 \mid x\}\)</span>.</p></li>
-</ol>
+<span class="math notranslate nohighlight">\(\{a:\mathbb{N} \mid 20\mid a\}\subseteq \{x:\mathbb{N} \mid 5 \mid x\}\)</span>.</p>
 <div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">:</span> <span class="o">{</span> <span class="n">a</span> <span class="o">:</span> <span class="n">&#8469;</span> <span class="bp">|</span> <span class="mi">20</span> <span class="bp">&#8739;</span> <span class="n">a</span> <span class="o">}</span> <span class="bp">&#8838;</span> <span class="o">{</span> <span class="n">x</span> <span class="o">:</span> <span class="n">&#8469;</span> <span class="bp">|</span> <span class="mi">5</span> <span class="bp">&#8739;</span> <span class="n">x</span> <span class="o">}</span> <span class="o">:=</span> <span class="kd">by</span>
   <span class="gr">sorry</span>
 
@@ -519,10 +513,9 @@ then <span class="math notranslate nohighlight">\(t&lt;10\)</span>.  Indeed, <sp
   <span class="gr">sorry</span>
 </pre></div>
 </div>
-<ol class="arabic simple" start="7">
+</li>
 <li><p>Prove or disprove that
-<span class="math notranslate nohighlight">\(\{a:\mathbb{N} \mid 5\mid a\}\subseteq \{x:\mathbb{N} \mid 20 \mid x\}\)</span>.</p></li>
-</ol>
+<span class="math notranslate nohighlight">\(\{a:\mathbb{N} \mid 5\mid a\}\subseteq \{x:\mathbb{N} \mid 20 \mid x\}\)</span>.</p>
 <div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">:</span> <span class="o">{</span> <span class="n">a</span> <span class="o">:</span> <span class="n">&#8469;</span> <span class="bp">|</span> <span class="mi">5</span> <span class="bp">&#8739;</span> <span class="n">a</span> <span class="o">}</span> <span class="bp">&#8838;</span> <span class="o">{</span> <span class="n">x</span> <span class="o">:</span> <span class="n">&#8469;</span> <span class="bp">|</span> <span class="mi">20</span> <span class="bp">&#8739;</span> <span class="n">x</span> <span class="o">}</span> <span class="o">:=</span> <span class="kd">by</span>
   <span class="gr">sorry</span>
 
@@ -530,10 +523,9 @@ then <span class="math notranslate nohighlight">\(t&lt;10\)</span>.  Indeed, <sp
   <span class="gr">sorry</span>
 </pre></div>
 </div>
-<ol class="arabic simple" start="8">
+</li>
 <li><p>Prove or disprove that
-<span class="math notranslate nohighlight">\(\{r:\mathbb{Z} \mid 3\mid r\}\subseteq \{s:\mathbb{Z} \mid 0 \le s\}\)</span>.</p></li>
-</ol>
+<span class="math notranslate nohighlight">\(\{r:\mathbb{Z} \mid 3\mid r\}\subseteq \{s:\mathbb{Z} \mid 0 \le s\}\)</span>.</p>
 <div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">:</span> <span class="o">{</span> <span class="n">r</span> <span class="o">:</span> <span class="n">&#8484;</span> <span class="bp">|</span> <span class="mi">3</span> <span class="bp">&#8739;</span> <span class="n">r</span> <span class="o">}</span> <span class="bp">&#8838;</span> <span class="o">{</span> <span class="n">s</span> <span class="o">:</span> <span class="n">&#8484;</span> <span class="bp">|</span> <span class="mi">0</span> <span class="bp">&#8804;</span> <span class="n">s</span> <span class="o">}</span> <span class="o">:=</span> <span class="kd">by</span>
   <span class="gr">sorry</span>
 
@@ -541,10 +533,9 @@ then <span class="math notranslate nohighlight">\(t&lt;10\)</span>.  Indeed, <sp
   <span class="gr">sorry</span>
 </pre></div>
 </div>
-<ol class="arabic simple" start="9">
+</li>
 <li><p>Prove or disprove that
-<span class="math notranslate nohighlight">\(\{m:\mathbb{Z} \mid m\ge 10\}\subseteq \{n:\mathbb{Z} \mid n^3-7n^2\geq 4n\}\)</span>.</p></li>
-</ol>
+<span class="math notranslate nohighlight">\(\{m:\mathbb{Z} \mid m\ge 10\}\subseteq \{n:\mathbb{Z} \mid n^3-7n^2\geq 4n\}\)</span>.</p>
 <div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">:</span> <span class="o">{</span> <span class="n">m</span> <span class="o">:</span> <span class="n">&#8484;</span> <span class="bp">|</span> <span class="n">m</span> <span class="bp">&#8805;</span> <span class="mi">10</span> <span class="o">}</span> <span class="bp">&#8838;</span> <span class="o">{</span> <span class="n">n</span> <span class="o">:</span> <span class="n">&#8484;</span> <span class="bp">|</span> <span class="n">n</span> <span class="bp">^</span> <span class="mi">3</span> <span class="bp">-</span> <span class="mi">7</span> <span class="bp">*</span> <span class="n">n</span> <span class="bp">^</span> <span class="mi">2</span> <span class="bp">&#8805;</span> <span class="mi">4</span> <span class="bp">*</span> <span class="n">n</span> <span class="o">}</span> <span class="o">:=</span> <span class="kd">by</span>
   <span class="gr">sorry</span>
 
@@ -552,10 +543,9 @@ then <span class="math notranslate nohighlight">\(t&lt;10\)</span>.  Indeed, <sp
   <span class="gr">sorry</span>
 </pre></div>
 </div>
-<ol class="arabic simple" start="10">
+</li>
 <li><p>Prove or disprove that
-<span class="math notranslate nohighlight">\(\{n:\mathbb{Z} n\mid\text{ is even}\}=\{a:\mathbb{Z} \mid a\equiv 6\mod 2\}\)</span>.</p></li>
-</ol>
+<span class="math notranslate nohighlight">\(\{n:\mathbb{Z} n\mid\text{ is even}\}=\{a:\mathbb{Z} \mid a\equiv 6\mod 2\}\)</span>.</p>
 <div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">:</span> <span class="o">{</span> <span class="n">n</span> <span class="o">:</span> <span class="n">&#8484;</span> <span class="bp">|</span> <span class="n">Even</span> <span class="n">n</span> <span class="o">}</span> <span class="bp">=</span> <span class="o">{</span> <span class="n">a</span> <span class="o">:</span> <span class="n">&#8484;</span> <span class="bp">|</span> <span class="n">a</span> <span class="bp">&#8801;</span> <span class="mi">6</span> <span class="o">[</span><span class="n">ZMOD</span> <span class="mi">2</span><span class="o">]</span> <span class="o">}</span> <span class="o">:=</span> <span class="kd">by</span>
   <span class="gr">sorry</span>
 
@@ -563,10 +553,9 @@ then <span class="math notranslate nohighlight">\(t&lt;10\)</span>.  Indeed, <sp
   <span class="gr">sorry</span>
 </pre></div>
 </div>
-<ol class="arabic simple" start="11">
+</li>
 <li><p>Prove or disprove that
-<span class="math notranslate nohighlight">\(\{t:\mathbb{R} \mid t^2-5t+4=0\}=\{4\}\)</span>.</p></li>
-</ol>
+<span class="math notranslate nohighlight">\(\{t:\mathbb{R} \mid t^2-5t+4=0\}=\{4\}\)</span>.</p>
 <div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">:</span> <span class="o">{</span> <span class="n">t</span> <span class="o">:</span> <span class="n">&#8477;</span> <span class="bp">|</span> <span class="n">t</span> <span class="bp">^</span> <span class="mi">2</span> <span class="bp">-</span> <span class="mi">5</span> <span class="bp">*</span> <span class="n">t</span> <span class="bp">+</span> <span class="mi">4</span> <span class="bp">=</span> <span class="mi">0</span> <span class="o">}</span> <span class="bp">=</span> <span class="o">{</span><span class="mi">4</span><span class="o">}</span> <span class="o">:=</span> <span class="kd">by</span>
   <span class="gr">sorry</span>
 
@@ -574,9 +563,8 @@ then <span class="math notranslate nohighlight">\(t&lt;10\)</span>.  Indeed, <sp
   <span class="gr">sorry</span>
 </pre></div>
 </div>
-<ol class="arabic simple" start="12">
-<li><p>Prove or disprove that <span class="math notranslate nohighlight">\(\{k:\mathbb{Z} \mid 8\mid 6k\}=\{l:\mathbb{Z} \mid 8\mid l\}\)</span>.</p></li>
-</ol>
+</li>
+<li><p>Prove or disprove that <span class="math notranslate nohighlight">\(\{k:\mathbb{Z} \mid 8\mid 6k\}=\{l:\mathbb{Z} \mid 8\mid l\}\)</span>.</p>
 <div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">:</span> <span class="o">{</span> <span class="n">k</span> <span class="o">:</span> <span class="n">&#8484;</span> <span class="bp">|</span> <span class="mi">8</span> <span class="bp">&#8739;</span> <span class="mi">6</span> <span class="bp">*</span> <span class="n">k</span> <span class="o">}</span> <span class="bp">=</span> <span class="o">{</span> <span class="n">l</span> <span class="o">:</span> <span class="n">&#8484;</span> <span class="bp">|</span> <span class="mi">8</span> <span class="bp">&#8739;</span> <span class="n">l</span> <span class="o">}</span> <span class="o">:=</span> <span class="kd">by</span>
   <span class="gr">sorry</span>
 
@@ -584,9 +572,8 @@ then <span class="math notranslate nohighlight">\(t&lt;10\)</span>.  Indeed, <sp
   <span class="gr">sorry</span>
 </pre></div>
 </div>
-<ol class="arabic simple" start="13">
-<li><p>Prove or disprove that <span class="math notranslate nohighlight">\(\{k:\mathbb{Z} \mid 7\mid 9k\}=\{l:\mathbb{Z} \mid 7\mid l\}\)</span>.</p></li>
-</ol>
+</li>
+<li><p>Prove or disprove that <span class="math notranslate nohighlight">\(\{k:\mathbb{Z} \mid 7\mid 9k\}=\{l:\mathbb{Z} \mid 7\mid l\}\)</span>.</p>
 <div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">:</span> <span class="o">{</span> <span class="n">k</span> <span class="o">:</span> <span class="n">&#8484;</span> <span class="bp">|</span> <span class="mi">7</span> <span class="bp">&#8739;</span> <span class="mi">9</span> <span class="bp">*</span> <span class="n">k</span> <span class="o">}</span> <span class="bp">=</span> <span class="o">{</span> <span class="n">l</span> <span class="o">:</span> <span class="n">&#8484;</span> <span class="bp">|</span> <span class="mi">7</span> <span class="bp">&#8739;</span> <span class="n">l</span> <span class="o">}</span> <span class="o">:=</span> <span class="kd">by</span>
   <span class="gr">sorry</span>
 
@@ -594,9 +581,8 @@ then <span class="math notranslate nohighlight">\(t&lt;10\)</span>.  Indeed, <sp
   <span class="gr">sorry</span>
 </pre></div>
 </div>
-<ol class="arabic simple" start="14">
-<li><p>Prove or disprove that <span class="math notranslate nohighlight">\(\{1,2,3\}=\{1,2\}\)</span>.</p></li>
-</ol>
+</li>
+<li><p>Prove or disprove that <span class="math notranslate nohighlight">\(\{1,2,3\}=\{1,2\}\)</span>.</p>
 <div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">:</span> <span class="o">{</span><span class="mi">1</span><span class="o">,</span> <span class="mi">2</span><span class="o">,</span> <span class="mi">3</span><span class="o">}</span> <span class="bp">=</span> <span class="o">{</span><span class="mi">1</span><span class="o">,</span> <span class="mi">2</span><span class="o">}</span> <span class="o">:=</span> <span class="kd">by</span>
   <span class="gr">sorry</span>
 
@@ -604,13 +590,14 @@ then <span class="math notranslate nohighlight">\(t&lt;10\)</span>.  Indeed, <sp
   <span class="gr">sorry</span>
 </pre></div>
 </div>
-<ol class="arabic simple" start="15">
-<li><p>Prove  that <span class="math notranslate nohighlight">\(\{x:\mathbb{R} \mid x^2+3x+2=0\}=\{-1, -2\}\)</span>.</p></li>
-</ol>
+</li>
+<li><p>Prove  that <span class="math notranslate nohighlight">\(\{x:\mathbb{R} \mid x^2+3x+2=0\}=\{-1, -2\}\)</span>.</p>
 <div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">:</span> <span class="o">{</span> <span class="n">x</span> <span class="o">:</span> <span class="n">&#8477;</span> <span class="bp">|</span> <span class="n">x</span> <span class="bp">^</span> <span class="mi">2</span> <span class="bp">+</span> <span class="mi">3</span> <span class="bp">*</span> <span class="n">x</span> <span class="bp">+</span> <span class="mi">2</span> <span class="bp">=</span> <span class="mi">0</span> <span class="o">}</span> <span class="bp">=</span> <span class="o">{</span><span class="bp">-</span><span class="mi">1</span><span class="o">,</span> <span class="bp">-</span><span class="mi">2</span><span class="o">}</span> <span class="o">:=</span> <span class="kd">by</span>
   <span class="gr">sorry</span>
 </pre></div>
 </div>
+</li>
+</ol>
 </section>
 </section>
 <section id="set-operations">
@@ -827,9 +814,7 @@ the universe set.</p>
 </div>
 <p>This is a bit ridiculous, right?  Here is an approach where Lean simply tries all the possible
 proof for you and gives a thumbs-up if one of them worked.</p>
-<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">:</span> <span class="o">{</span><span class="mi">1</span><span class="o">,</span> <span class="mi">2</span><span class="o">}</span> <span class="bp">&#8746;</span> <span class="o">{</span><span class="mi">2</span><span class="o">,</span> <span class="mi">4</span><span class="o">}</span> <span class="bp">=</span> <span class="o">{</span><span class="mi">1</span><span class="o">,</span> <span class="mi">2</span><span class="o">,</span> <span class="mi">4</span><span class="o">}</span> <span class="o">:=</span> <span class="kd">by</span>
-  <span class="n">dsimp</span>
-  <span class="n">aesop</span>
+<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">:</span> <span class="o">{</span><span class="mi">1</span><span class="o">,</span> <span class="mi">2</span><span class="o">}</span> <span class="bp">&#8746;</span> <span class="o">{</span><span class="mi">2</span><span class="o">,</span> <span class="mi">4</span><span class="o">}</span> <span class="bp">=</span> <span class="o">{</span><span class="mi">1</span><span class="o">,</span> <span class="mi">2</span><span class="o">,</span> <span class="mi">4</span><span class="o">}</span> <span class="o">:=</span> <span class="kd">by</span> <span class="n">aesop</span>
 </pre></div>
 </div>
 </section>
@@ -850,77 +835,62 @@ proof for you and gives a thumbs-up if one of them worked.</p>
 </section>
 <section id="id18">
 <h3><span class="section-number">9.2.8. </span>Exercises<a class="headerlink" href="#id18" title="Permalink to this headline">&#61633;</a></h3>
-<ol class="arabic simple">
+<ol class="arabic">
 <li><p>Write in an explicitly-listed finite set without repeats, or <span class="math notranslate nohighlight">\(\emptyset\)</span>, which is equal
 to <span class="math notranslate nohighlight">\(\{-1,2,4,4\}\cup\{3,-2,2\}\)</span>.  When you have the correct answer, the given Lean proof
-will work.</p></li>
-</ol>
-<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">:</span> <span class="o">{</span><span class="bp">-</span><span class="mi">1</span><span class="o">,</span> <span class="mi">2</span><span class="o">,</span> <span class="mi">4</span><span class="o">,</span> <span class="mi">4</span><span class="o">}</span> <span class="bp">&#8746;</span> <span class="o">{</span><span class="mi">3</span><span class="o">,</span> <span class="bp">-</span><span class="mi">2</span><span class="o">,</span> <span class="mi">2</span><span class="o">}</span> <span class="bp">=</span> <span class="gr">sorry</span> <span class="o">:=</span> <span class="kd">by</span>
-  <span class="n">dsimp</span>
-  <span class="n">aesop</span>
+will work.</p>
+<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">:</span> <span class="o">{</span><span class="bp">-</span><span class="mi">1</span><span class="o">,</span> <span class="mi">2</span><span class="o">,</span> <span class="mi">4</span><span class="o">,</span> <span class="mi">4</span><span class="o">}</span> <span class="bp">&#8746;</span> <span class="o">{</span><span class="mi">3</span><span class="o">,</span> <span class="bp">-</span><span class="mi">2</span><span class="o">,</span> <span class="mi">2</span><span class="o">}</span> <span class="bp">=</span> <span class="gr">sorry</span> <span class="o">:=</span> <span class="kd">by</span> <span class="n">aesop</span>
 </pre></div>
 </div>
-<ol class="arabic simple" start="2">
+</li>
 <li><p>Write in an explicitly-listed finite set without repeats, or <span class="math notranslate nohighlight">\(\emptyset\)</span>, which is equal
 to <span class="math notranslate nohighlight">\(\{-1,2,4,4\}\cup\{3,-2,2\}\)</span>.  When you have the correct answer, the given Lean proof
-will work.</p></li>
-</ol>
-<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">:</span> <span class="o">{</span><span class="mi">0</span><span class="o">,</span> <span class="mi">1</span><span class="o">,</span> <span class="mi">2</span><span class="o">,</span> <span class="mi">3</span><span class="o">,</span> <span class="mi">4</span><span class="o">}</span> <span class="bp">&#8745;</span> <span class="o">{</span><span class="mi">0</span><span class="o">,</span> <span class="mi">2</span><span class="o">,</span> <span class="mi">4</span><span class="o">,</span> <span class="mi">6</span><span class="o">,</span> <span class="mi">8</span><span class="o">}</span> <span class="bp">=</span> <span class="gr">sorry</span> <span class="o">:=</span> <span class="kd">by</span>
-  <span class="n">dsimp</span>
-  <span class="n">aesop</span>
+will work.</p>
+<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">:</span> <span class="o">{</span><span class="mi">0</span><span class="o">,</span> <span class="mi">1</span><span class="o">,</span> <span class="mi">2</span><span class="o">,</span> <span class="mi">3</span><span class="o">,</span> <span class="mi">4</span><span class="o">}</span> <span class="bp">&#8745;</span> <span class="o">{</span><span class="mi">0</span><span class="o">,</span> <span class="mi">2</span><span class="o">,</span> <span class="mi">4</span><span class="o">,</span> <span class="mi">6</span><span class="o">,</span> <span class="mi">8</span><span class="o">}</span> <span class="bp">=</span> <span class="gr">sorry</span> <span class="o">:=</span> <span class="kd">by</span> <span class="n">aesop</span>
 </pre></div>
 </div>
-<ol class="arabic simple" start="3">
+</li>
 <li><p>Write in an explicitly-listed finite set without repeats, or <span class="math notranslate nohighlight">\(\emptyset\)</span>, which is equal
 to <span class="math notranslate nohighlight">\(\{1,2\}\cap\{3\}\)</span>.  When you have the correct answer, the given Lean proof
-will work.</p></li>
-</ol>
-<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">:</span> <span class="o">{</span><span class="mi">1</span><span class="o">,</span> <span class="mi">2</span><span class="o">}</span> <span class="bp">&#8745;</span> <span class="o">{</span><span class="mi">3</span><span class="o">}</span> <span class="bp">=</span> <span class="gr">sorry</span> <span class="o">:=</span> <span class="kd">by</span>
-  <span class="n">dsimp</span>
-  <span class="n">aesop</span>
+will work.</p>
+<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">:</span> <span class="o">{</span><span class="mi">1</span><span class="o">,</span> <span class="mi">2</span><span class="o">}</span> <span class="bp">&#8745;</span> <span class="o">{</span><span class="mi">3</span><span class="o">}</span> <span class="bp">=</span> <span class="gr">sorry</span> <span class="o">:=</span> <span class="kd">by</span> <span class="n">aesop</span>
 </pre></div>
 </div>
-<ol class="arabic simple" start="4">
+</li>
 <li><p>Write in an explicitly-listed finite set without repeats, or <span class="math notranslate nohighlight">\(\emptyset\)</span>, which is equal
 to <span class="math notranslate nohighlight">\(\{3,4,5\}^c\cap\{1,3,5,7,9\}\)</span>.  When you have the correct answer, the given Lean proof
-will work.</p></li>
-</ol>
-<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">:</span> <span class="o">{</span><span class="mi">3</span><span class="o">,</span> <span class="mi">4</span><span class="o">,</span> <span class="mi">5</span><span class="o">}</span><span class="bp">&#7580;</span> <span class="bp">&#8745;</span> <span class="o">{</span><span class="mi">1</span><span class="o">,</span> <span class="mi">3</span><span class="o">,</span> <span class="mi">5</span><span class="o">,</span> <span class="mi">7</span><span class="o">,</span> <span class="mi">9</span><span class="o">}</span> <span class="bp">=</span> <span class="gr">sorry</span> <span class="o">:=</span> <span class="kd">by</span>
-  <span class="n">dsimp</span>
-  <span class="n">aesop</span>
+will work.</p>
+<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">:</span> <span class="o">{</span><span class="mi">3</span><span class="o">,</span> <span class="mi">4</span><span class="o">,</span> <span class="mi">5</span><span class="o">}</span><span class="bp">&#7580;</span> <span class="bp">&#8745;</span> <span class="o">{</span><span class="mi">1</span><span class="o">,</span> <span class="mi">3</span><span class="o">,</span> <span class="mi">5</span><span class="o">,</span> <span class="mi">7</span><span class="o">,</span> <span class="mi">9</span><span class="o">}</span> <span class="bp">=</span> <span class="gr">sorry</span> <span class="o">:=</span> <span class="kd">by</span> <span class="n">aesop</span>
 </pre></div>
 </div>
-<ol class="arabic simple" start="5">
+</li>
 <li><p>Prove that
-<span class="math notranslate nohighlight">\(\{r:\mathbb{Z}\mid r\equiv 7\mod 10\}\subseteq \{s:\mathbb{Z}\mid s\equiv 1\mod 2\}\cap\{t:\mathbb{Z}\mid t\equiv 2\mod 5\}\)</span>.</p></li>
-</ol>
-<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">:</span> <span class="o">{</span> <span class="n">r</span> <span class="o">:</span> <span class="n">&#8484;</span> <span class="bp">|</span> <span class="n">r</span> <span class="bp">&#8801;</span> <span class="mi">7</span> <span class="o">[</span><span class="n">ZMOD</span> <span class="mi">10</span><span class="o">]</span> <span class="o">}</span> <span class="bp">&#8838;</span> <span class="o">{</span> <span class="n">s</span> <span class="o">:</span> <span class="n">&#8484;</span> <span class="bp">|</span> <span class="n">s</span> <span class="bp">&#8801;</span> <span class="mi">1</span> <span class="o">[</span><span class="n">ZMOD</span> <span class="mi">2</span><span class="o">]</span> <span class="o">}</span> <span class="bp">&#8745;</span> <span class="o">{</span> <span class="n">t</span> <span class="o">:</span> <span class="n">&#8484;</span> <span class="bp">|</span> <span class="n">t</span> <span class="bp">&#8801;</span> <span class="mi">2</span> <span class="o">[</span><span class="n">ZMOD</span> <span class="mi">5</span><span class="o">]</span> <span class="o">}</span> <span class="o">:=</span> <span class="kd">by</span>
+<span class="math notranslate nohighlight">\(\{r:\mathbb{Z}\mid r\equiv 7\mod 10\}\subseteq \{s:\mathbb{Z}\mid s\equiv 1\mod 2\}\cap\{t:\mathbb{Z}\mid t\equiv 2\mod 5\}\)</span>.</p>
+<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">:</span> <span class="o">{</span> <span class="n">r</span> <span class="o">:</span> <span class="n">&#8484;</span> <span class="bp">|</span> <span class="n">r</span> <span class="bp">&#8801;</span> <span class="mi">7</span> <span class="o">[</span><span class="n">ZMOD</span> <span class="mi">10</span><span class="o">]</span> <span class="o">}</span>
+    <span class="bp">&#8838;</span> <span class="o">{</span> <span class="n">s</span> <span class="o">:</span> <span class="n">&#8484;</span> <span class="bp">|</span> <span class="n">s</span> <span class="bp">&#8801;</span> <span class="mi">1</span> <span class="o">[</span><span class="n">ZMOD</span> <span class="mi">2</span><span class="o">]</span> <span class="o">}</span> <span class="bp">&#8745;</span> <span class="o">{</span> <span class="n">t</span> <span class="o">:</span> <span class="n">&#8484;</span> <span class="bp">|</span> <span class="n">t</span> <span class="bp">&#8801;</span> <span class="mi">2</span> <span class="o">[</span><span class="n">ZMOD</span> <span class="mi">5</span><span class="o">]</span> <span class="o">}</span> <span class="o">:=</span> <span class="kd">by</span>
   <span class="gr">sorry</span>
 </pre></div>
 </div>
-<ol class="arabic simple" start="6">
+</li>
 <li><p>Prove that
-<span class="math notranslate nohighlight">\(\{n:\mathbb{Z}\mid 5\mid n\}\cap \{n:\mathbb{Z}\mid 8\mid n\}&#8838;\{n:\mathbb{Z}\mid 40\mid n\}\)</span>.</p></li>
-</ol>
+<span class="math notranslate nohighlight">\(\{n:\mathbb{Z}\mid 5\mid n\}\cap \{n:\mathbb{Z}\mid 8\mid n\}&#8838;\{n:\mathbb{Z}\mid 40\mid n\}\)</span>.</p>
 <div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">:</span> <span class="o">{</span> <span class="n">n</span> <span class="o">:</span> <span class="n">&#8484;</span> <span class="bp">|</span> <span class="mi">5</span> <span class="bp">&#8739;</span> <span class="n">n</span> <span class="o">}</span> <span class="bp">&#8745;</span> <span class="o">{</span> <span class="n">n</span> <span class="o">:</span> <span class="n">&#8484;</span> <span class="bp">|</span> <span class="mi">8</span> <span class="bp">&#8739;</span> <span class="n">n</span> <span class="o">}</span> <span class="bp">&#8838;</span> <span class="o">{</span> <span class="n">n</span> <span class="o">:</span> <span class="n">&#8484;</span> <span class="bp">|</span> <span class="mi">40</span> <span class="bp">&#8739;</span> <span class="n">n</span> <span class="o">}</span> <span class="o">:=</span> <span class="kd">by</span>
   <span class="gr">sorry</span>
 </pre></div>
 </div>
-<ol class="arabic simple" start="7">
-<li><p>Prove that <span class="math notranslate nohighlight">\(\{n:\mathbb{Z}\mid 3\mid n\}\cup \{n:\mathbb{Z}\mid 2\mid n\}&#8838;\{n:\mathbb{Z}\mid n^2\equiv 1\mod 6\}^{c}\)</span>.</p></li>
-</ol>
-<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">:</span> <span class="o">{</span> <span class="n">n</span> <span class="o">:</span> <span class="n">&#8484;</span> <span class="bp">|</span> <span class="mi">3</span> <span class="bp">&#8739;</span> <span class="n">n</span> <span class="o">}</span> <span class="bp">&#8746;</span> <span class="o">{</span> <span class="n">n</span> <span class="o">:</span> <span class="n">&#8484;</span> <span class="bp">|</span> <span class="mi">2</span> <span class="bp">&#8739;</span> <span class="n">n</span> <span class="o">}</span> <span class="bp">&#8838;</span> <span class="o">{</span> <span class="n">n</span> <span class="o">:</span> <span class="n">&#8484;</span> <span class="bp">|</span> <span class="n">n</span> <span class="bp">^</span> <span class="mi">2</span> <span class="bp">&#8801;</span> <span class="mi">1</span> <span class="o">[</span><span class="n">ZMOD</span> <span class="mi">6</span><span class="o">]</span> <span class="o">}</span><span class="bp">&#7580;</span> <span class="o">:=</span> <span class="kd">by</span>
+</li>
+<li><p>Prove that <span class="math notranslate nohighlight">\(\{n:\mathbb{Z}\mid 3\mid n\}\cup \{n:\mathbb{Z}\mid 2\mid n\}&#8838;\{n:\mathbb{Z}\mid n^2\equiv 1\mod 6\}^{c}\)</span>.</p>
+<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">:</span>
+    <span class="o">{</span> <span class="n">n</span> <span class="o">:</span> <span class="n">&#8484;</span> <span class="bp">|</span> <span class="mi">3</span> <span class="bp">&#8739;</span> <span class="n">n</span> <span class="o">}</span> <span class="bp">&#8746;</span> <span class="o">{</span> <span class="n">n</span> <span class="o">:</span> <span class="n">&#8484;</span> <span class="bp">|</span> <span class="mi">2</span> <span class="bp">&#8739;</span> <span class="n">n</span> <span class="o">}</span> <span class="bp">&#8838;</span> <span class="o">{</span> <span class="n">n</span> <span class="o">:</span> <span class="n">&#8484;</span> <span class="bp">|</span> <span class="n">n</span> <span class="bp">^</span> <span class="mi">2</span> <span class="bp">&#8801;</span> <span class="mi">1</span> <span class="o">[</span><span class="n">ZMOD</span> <span class="mi">6</span><span class="o">]</span> <span class="o">}</span><span class="bp">&#7580;</span> <span class="o">:=</span> <span class="kd">by</span>
   <span class="gr">sorry</span>
 </pre></div>
 </div>
-<ol class="arabic" start="8">
+</li>
 <li><p>Consider the sequence <span class="math notranslate nohighlight">\(U_n\)</span> of sets of integers defined recursively by,</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}U_0&amp;=\mathbb{Z} \\
 \text{for }n:\mathbb{N},\quad U_{n+1} &amp;=\{x:\mathbb{Z}\mid \exists y\in U_n, x = 2y \}\end{split}\]</div>
 <p>Show that for all natural numbers <span class="math notranslate nohighlight">\(n\)</span>, <span class="math notranslate nohighlight">\(U_n=\{x:\mathbb{Z}\mid 2^n\mid x\}\)</span>.</p>
-</li>
-</ol>
 <div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">def</span> <span class="n">U</span> <span class="o">:</span> <span class="n">&#8469;</span> <span class="bp">&#8594;</span> <span class="n">Set</span> <span class="n">&#8484;</span>
   <span class="bp">|</span> <span class="mi">0</span> <span class="bp">=&gt;</span> <span class="n">univ</span>
   <span class="bp">|</span> <span class="n">n</span> <span class="bp">+</span> <span class="mi">1</span> <span class="bp">=&gt;</span> <span class="o">{</span> <span class="n">x</span> <span class="o">:</span> <span class="n">&#8484;</span> <span class="bp">|</span> <span class="bp">&#8707;</span> <span class="n">y</span> <span class="bp">&#8712;</span> <span class="n">U</span> <span class="n">n</span><span class="o">,</span> <span class="n">x</span> <span class="bp">=</span> <span class="mi">2</span> <span class="bp">*</span> <span class="n">y</span> <span class="o">}</span>
@@ -935,6 +905,8 @@ will work.</p></li>
     <span class="gr">sorry</span>
 </pre></div>
 </div>
+</li>
+</ol>
 </section>
 </section>
 </section>
