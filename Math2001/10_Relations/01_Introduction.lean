@@ -7,7 +7,7 @@ import Library.Tactic.FiniteInductive
 import Library.Tactic.Numbers
 import Library.Tactic.Product
 import Library.Tactic.Extra
-import Library.Tactic.Take
+import Library.Tactic.Use
 
 set_option push_neg.use_distrib true
 attribute [-instance] Int.instDivInt_1 Int.instDivInt EuclideanDomain.instDiv Nat.instDivNat
@@ -19,20 +19,20 @@ macro_rules | `(tactic| numbers) => `(tactic| exact not_false)
 example : Reflexive ((·:ℕ) ∣ ·) := by
   dsimp [Reflexive]
   intro x
-  take 1
+  use 1
   ring
 
 
 example : ¬ Symmetric ((·:ℕ) ∣ ·) := by
   dsimp [Symmetric]
   push_neg
-  take 1, 2
+  use 1, 2
   constructor
-  · take 2
+  · use 2
     numbers
   · apply Nat.not_dvd_of_exists_lt_and_lt
     · numbers
-    take 0
+    use 0
     constructor
     · numbers
     · numbers
@@ -63,7 +63,7 @@ example : Transitive ((·:ℕ) ∣ ·) := by
   intro a b c hab hbc
   obtain ⟨k, hk⟩ := hab
   obtain ⟨l, hl⟩ := hbc
-  take k * l
+  use k * l
   calc c = b * l := by rw [hl]
     _ = (a * k) * l := by rw [hk]
     _ = a * (k * l) := by ring
@@ -106,7 +106,7 @@ example : Symmetric (· ∼ ·) := by
 example : ¬ AntiSymmetric (· ∼ ·) := by
   dsimp [AntiSymmetric]
   push_neg
-  take 1, 1.1
+  use 1, 1.1
   constructor
   · numbers
   constructor
@@ -116,7 +116,7 @@ example : ¬ AntiSymmetric (· ∼ ·) := by
 example : ¬ Transitive (· ∼ ·) := by
   dsimp [Transitive]
   push_neg
-  take 1, 1.9, 2.5
+  use 1, 1.9, 2.5
   constructor
   · numbers
   constructor
@@ -153,13 +153,13 @@ local infix:50 " ≺ " => r
 example : ¬ Reflexive (· ≺ ·) := by
   dsimp [Reflexive]
   push_neg
-  take rock
+  use rock
   numbers
 
 example : ¬ Symmetric (· ≺ ·) := by
   dsimp [Symmetric]
   push_neg
-  take rock, paper
+  use rock, paper
   constructor <;> numbers
 
 example : AntiSymmetric (· ≺ ·) := by
@@ -170,7 +170,7 @@ example : AntiSymmetric (· ≺ ·) := by
 example : ¬ Transitive (· ≺ ·) := by
   dsimp [Transitive]
   push_neg
-  take rock, paper, scissors
+  use rock, paper, scissors
   constructor
   · numbers
   constructor

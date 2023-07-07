@@ -9,7 +9,7 @@ import Library.Tactic.Cancel
 import Library.Tactic.ModCases
 import Library.Tactic.Numbers
 import Library.Tactic.Extra
-import Library.Tactic.Take
+import Library.Tactic.Use
 
 attribute [-instance] Int.instDivInt_1 Int.instDivInt EuclideanDomain.instDiv Nat.instDivNat
 open Int
@@ -122,11 +122,11 @@ example : Prime 79 := by
   apply Nat.not_dvd_of_exists_lt_and_lt
   · extra
   interval_cases m
-  · take 39
+  · use 39
     constructor <;> numbers
-  · take 26
+  · use 26
     constructor <;> numbers
-  · take 19
+  · use 19
     constructor <;> numbers
   · sorry
   · sorry

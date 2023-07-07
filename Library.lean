@@ -1,7 +1,5 @@
-import Library.Theory.Arithmetic
 import Library.Theory.Comparison
 import Library.Theory.Division
-import Library.Theory.Factorial
 import Library.Theory.InjectiveSurjective
 import Library.Theory.GCD
 import Library.Theory.ModEq.Defs
@@ -24,5 +22,5 @@ import Library.Tactic.Numbers
 import Library.Tactic.Product
 import Library.Tactic.Rel
 import Library.Tactic.Rel.Attr
-import Library.Tactic.Take
+import Library.Tactic.Use
 import Library.Tactic.TruthTable

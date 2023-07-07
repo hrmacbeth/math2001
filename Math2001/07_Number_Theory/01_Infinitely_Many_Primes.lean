@@ -4,7 +4,7 @@ import Library.Tactic.Addarith
 import Library.Tactic.Cancel
 import Library.Tactic.Numbers
 import Library.Tactic.Extra
-import Library.Tactic.Take
+import Library.Tactic.Use
 
 attribute [-instance] Int.instDivInt_1 Int.instDivInt Nat.instDivNat
 
@@ -30,7 +30,7 @@ example (N : ℕ) : ∃ p ≥ N, Prime p := by
     cancel p at hk'
     have : k ≠ 0 := ne_of_gt hk'
     obtain ⟨l, hlk⟩ : ∃ l, k = l + 1 := Nat.exists_eq_succ_of_ne_zero this
-    take l
+    use l
     have hl :=
     calc N ! + 1 = p * k := hk
       _ = p * (l + 1) := by rw [hlk]
@@ -43,7 +43,7 @@ example (N : ℕ) : ∃ p ≥ N, Prime p := by
     · calc N ! < N ! + 1 := by extra
         _ = p * (l + 1) := by rw [hl]
   -- so `p` is a prime number greater than or equal to `N`, as we sought
-  take p
+  use p
   constructor
   · obtain h_le | h_gt : p ≤ N ∨ N < p := le_or_lt p N
     · have : p ∣ (N !)

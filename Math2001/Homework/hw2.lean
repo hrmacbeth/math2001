@@ -2,7 +2,7 @@
 import Mathlib.Data.Real.Basic
 import Library.Tactic.Addarith
 import Library.Tactic.Numbers
-import Library.Tactic.Take
+import Library.Tactic.Use
 
 attribute [-instance] Int.instDivInt_1 Int.instDivInt EuclideanDomain.instDiv Nat.instDivNat
 

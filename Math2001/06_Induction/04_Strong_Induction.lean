@@ -6,7 +6,7 @@ import Library.Tactic.Addarith
 import Library.Tactic.Cancel
 import Library.Tactic.Induction
 import Library.Tactic.Numbers
-import Library.Tactic.Take
+import Library.Tactic.Use
 
 notation3 (prettyPrint := false) "forall_sufficiently_large "(...)", "r:(scoped P => ∃ C, ∀ x ≥ C, P x) => r
 attribute [-instance] Int.instDivInt_1 Int.instDivInt Nat.instDivNat
@@ -52,7 +52,7 @@ theorem d_bound (n : ℕ) (hn : n ≥ 4) : d n ≥ 4 ^ n := by
 
 example : forall_sufficiently_large n : ℕ, d n ≥ 4 ^ n := by
   dsimp
-  take 4
+  use 4
   apply d_bound
 
 
@@ -61,19 +61,19 @@ namespace Nat
 theorem exists_prime_factor {n : ℕ} (hn2 : 2 ≤ n) : ∃ p : ℕ, Prime p ∧ p ∣ n := by
   by_cases hn : Prime n 
   . -- case 1: `n` is prime
-    take n
+    use n
     constructor
     · apply hn
-    · take 1
+    · use 1
       ring
   . -- case 2: `n` is not prime
     obtain ⟨m, hmn, _, ⟨x, hx⟩⟩ := exists_factor_of_not_prime hn hn2
     have IH : ∃ p, Prime p ∧ p ∣ m := exists_prime_factor hmn -- inductive hypothesis
     obtain ⟨p, hp, y, hy⟩ := IH
-    take p
+    use p
     constructor
     · apply hp
-    · take x * y
+    · use x * y
       calc n = m * x := hx
         _ = (p * y) * x := by rw [hy]
         _ = p * (x * y) := by ring

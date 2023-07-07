@@ -5,7 +5,7 @@ import Library.Tactic.Addarith
 import Library.Tactic.Induction
 import Library.Tactic.Numbers
 import Library.Tactic.Extra
-import Library.Tactic.Take
+import Library.Tactic.Use
 
 attribute [-instance] Int.instDivInt_1 Int.instDivInt EuclideanDomain.instDiv Nat.instDivNat
 set_option linter.unusedVariables false
@@ -69,7 +69,7 @@ example {n : ℕ} (hn : 2 ≤ n) : (3:ℤ) ^ n ≥ 2 ^ n + 5 := by
 
 example : forall_sufficiently_large n : ℕ, 2 ^ n ≥ n ^ 2 := by
   dsimp
-  take 4
+  use 4
   intro n hn
   induction_from_starting_point n, hn with k hk IH
   · -- base case
@@ -93,7 +93,8 @@ example (n : ℕ) : 5 ^ n ≡ 1 [ZMOD 8] ∨ 5 ^ n ≡ 5 [ZMOD 8] := by
 example (n : ℕ) : 6 ^ n ≡ 1 [ZMOD 7] ∨ 6 ^ n ≡ 6 [ZMOD 7] := by  
   sorry
 
-example (n : ℕ) : 4 ^ n ≡ 1 [ZMOD 7] ∨ 4 ^ n ≡ 2 [ZMOD 7] ∨ 4 ^ n ≡ 4 [ZMOD 7] := by  
+example (n : ℕ) :
+    4 ^ n ≡ 1 [ZMOD 7] ∨ 4 ^ n ≡ 2 [ZMOD 7] ∨ 4 ^ n ≡ 4 [ZMOD 7] := by  
   sorry
 
 example : forall_sufficiently_large n : ℕ, (3:ℤ) ^ n ≥ 2 ^ n + 100 := by

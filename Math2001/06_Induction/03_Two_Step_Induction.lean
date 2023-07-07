@@ -5,7 +5,7 @@ import Library.Tactic.Addarith
 import Library.Tactic.Induction
 import Library.Tactic.Numbers
 import Library.Tactic.Extra
-import Library.Tactic.Take
+import Library.Tactic.Use
 
 open Int
 
@@ -94,7 +94,8 @@ example (n : ℕ) : F (n + 1) ^ 2 - F (n + 1) * F n - F n ^ 2 = - (-1) ^ n := by
   · calc F 1 ^ 2 - F 1 * F 0 - F 0 ^ 2 = 1 ^ 2 - 1 * 1 - 1 ^ 2 := by rw [F, F]
       _ = - (-1) ^ 0 := by numbers
   · calc F (k + 2) ^ 2 - F (k + 2) * F (k + 1) - F (k + 1) ^ 2
-        = (F (k + 1) + F k) ^ 2 - (F (k + 1) + F k) * F (k + 1) - F (k + 1) ^ 2 := by rw [F]
+        = (F (k + 1) + F k) ^ 2 - (F (k + 1) + F k) * F (k + 1)
+            - F (k + 1) ^ 2 := by rw [F]
       _ = - (F (k + 1) ^ 2 - F (k + 1) * F k - F k ^ 2) := by ring
       _ = - -(-1) ^ k := by rw [IH]
       _ = -(-1) ^ (k + 1) := by ring
@@ -124,7 +125,7 @@ def d : ℕ → ℤ
 
 example : forall_sufficiently_large n : ℕ, d n ≥ 4 ^ n := by
   dsimp
-  take 4
+  use 4
   intro n hn
   two_step_induction_from_starting_point n, hn with k hk IH1 IH2
   · calc d 4 = 267 := by rfl

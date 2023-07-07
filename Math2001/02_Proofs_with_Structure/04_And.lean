@@ -75,5 +75,6 @@ example {a : ℚ} (h : a - 1 ≥ 5) : a ≥ 6 ∧ 3 * a ≥ 10 := by
 example {x y : ℚ} (h : x + y = 5 ∧ x + 2 * y = 7) : x = 3 ∧ y = 2 := by
   sorry
 
-example {a b : ℝ} (h1 : a * b = a) (h2 : a * b = b) : a = 0 ∧ b = 0 ∨ a = 1 ∧ b = 1 := by
+example {a b : ℝ} (h1 : a * b = a) (h2 : a * b = b) :
+    a = 0 ∧ b = 0 ∨ a = 1 ∧ b = 1 := by
   sorry

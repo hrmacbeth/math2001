@@ -4,7 +4,7 @@ import Library.Theory.Parity
 import Library.Tactic.Addarith
 import Library.Tactic.Numbers
 import Library.Tactic.Extra
-import Library.Tactic.Take
+import Library.Tactic.Use
 
 attribute [-instance] Int.instDivInt_1 Int.instDivInt Nat.instDivNat
 
@@ -13,7 +13,7 @@ open Int
 
 example : Odd (7 : ℤ) := by
   dsimp [Odd]
-  take 3
+  use 3
   numbers
 
 
@@ -23,7 +23,7 @@ example : Odd (-3 : ℤ) := by
 example {n : ℤ} (hn : Odd n) : Odd (3 * n + 2) := by
   dsimp [Odd] at *
   obtain ⟨k, hk⟩ := hn
-  take 3 * k + 2
+  use 3 * k + 2
   calc
     3 * n + 2 = 3 * (2 * k + 1) + 2 := by rw [hk]
     _ = 2 * (3 * k + 2) + 1 := by ring
@@ -35,7 +35,7 @@ example {n : ℤ} (hn : Odd n) : Odd (7 * n - 4) := by
 example {x y : ℤ} (hx : Odd x) (hy : Odd y) : Odd (x + y + 1) := by
   obtain ⟨a, ha⟩ := hx
   obtain ⟨b, hb⟩ := hy
-  take a + b + 1
+  use a + b + 1
   calc
     x + y + 1 = 2 * a + 1 + (2 * b + 1) + 1 := by rw [ha, hb]
     _ = 2 * (a + b + 1) + 1 := by ring
@@ -53,12 +53,12 @@ example {n : ℤ} (hn : Even n) : Odd (n ^ 2 + 2 * n - 5) := by
 example (n : ℤ) : Even (n ^ 2 + 3 * n + 4) := by
   obtain hn | hn := Int.even_or_odd n
   · obtain ⟨x, hx⟩ := hn
-    take 2 * x ^ 2 + 3 * x + 2
+    use 2 * x ^ 2 + 3 * x + 2
     calc
       n ^ 2 + 3 * n + 4 = (2 * x) ^ 2 + 3 * (2 * x) + 4 := by rw [hx]
       _ = 2 * (2 * x ^ 2 + 3 * x + 2) := by ring
   · obtain ⟨x, hx⟩ := hn
-    take 2 * x ^ 2 + 5 * x + 4
+    use 2 * x ^ 2 + 5 * x + 4
     calc
       n ^ 2 + 3 * n + 4 = (2 * x + 1) ^ 2 + 3 * (2 * x + 1) + 4 := by rw [hx]
       _ = 2 * (2 * x ^ 2 + 5 * x + 4) := by ring

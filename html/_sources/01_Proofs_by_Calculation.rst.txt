@@ -1,3 +1,7 @@
+.. raw:: latex
+
+    \mainmatter
+
 .. _proofs_by_calculation:
     
 Proofs by calculation

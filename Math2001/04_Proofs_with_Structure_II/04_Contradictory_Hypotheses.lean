@@ -10,7 +10,7 @@ import Library.Tactic.Cancel
 import Library.Tactic.ModCases
 import Library.Tactic.Numbers
 import Library.Tactic.Extra
-import Library.Tactic.Take
+import Library.Tactic.Use
 
 attribute [-instance] Int.instDivInt_1 Int.instDivInt EuclideanDomain.instDiv Nat.instDivNat
 attribute [-simp] Nat.not_two_dvd_bit1 two_dvd_bit0
@@ -46,7 +46,8 @@ example {t : ℤ} (h2 : t < 3) (h : t - 1 = 6) : t = 13 := by
   numbers at H -- this is a contradiction!
 
 
-example (n : ℤ) (hn : n ^ 2 + n + 1 ≡ 1 [ZMOD 3]) : n ≡ 0 [ZMOD 3] ∨ n ≡ 2 [ZMOD 3] := by
+example (n : ℤ) (hn : n ^ 2 + n + 1 ≡ 1 [ZMOD 3]) :
+    n ≡ 0 [ZMOD 3] ∨ n ≡ 2 [ZMOD 3] := by
   mod_cases h : n % 3
   · -- case 1: `n ≡ 0 [ZMOD 3]`
     left
@@ -83,22 +84,23 @@ example : Prime 5 := by
   apply Nat.not_dvd_of_exists_lt_and_lt
   · extra
   interval_cases m
-  · take 2
+  · use 2
     constructor <;> numbers
-  · take 1
+  · use 1
     constructor <;> numbers
-  · take 1
+  · use 1
     constructor <;> numbers
 
 
-example {a b c : ℕ} (ha : 0 < a) (hb : 0 < b) (hc : 0 < c) (h_pyth : a ^ 2 + b ^ 2 = c ^ 2) :
-    3 ≤ a := by
+example {a b c : ℕ} (ha : 0 < a) (hb : 0 < b) (hc : 0 < c)
+    (h_pyth : a ^ 2 + b ^ 2 = c ^ 2) : 3 ≤ a := by
   sorry
 
 /-! # Exercises -/
 
 
-example {x y : ℝ} (n : ℕ) (hx : 0 ≤ x) (hn : 0 < n) (h : y ^ n ≤ x ^ n) : y ≤ x := by
+example {x y : ℝ} (n : ℕ) (hx : 0 ≤ x) (hn : 0 < n) (h : y ^ n ≤ x ^ n) :
+    y ≤ x := by
   sorry
 
 example (n : ℤ) (hn : n ^ 2 ≡ 4 [ZMOD 5]) : n ≡ 2 [ZMOD 5] ∨ n ≡ 3 [ZMOD 5] := by

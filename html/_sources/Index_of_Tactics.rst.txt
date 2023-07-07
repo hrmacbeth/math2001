@@ -1,9 +1,13 @@
+.. raw:: latex
+
+    \appendix
+
 .. _tactic_index:
     
 Index of Lean tactics
 =====================
 
-Italicized tactics are specific to this course, so you will not be able to get help with them by
+Italicized tactics are specific to this book, so you will not be able to get help with them by
 googling/consulting internet forums/etc.  Reread the indicated part of the lecture notes or ask
 your instructor!
 
@@ -106,6 +110,6 @@ the right-hand side of that fact.
 With ``↔`` hypotheses/lemmas, replaces the left-hand side of the specified ``↔`` fact with
 the right-hand side of that fact.
 
-.. rubric:: *take* (first use: :numref:`Section %s <exists>`)
+.. rubric:: use (first use: :numref:`Section %s <exists>`)
 
 Provides a witness to an existential goal (:math:`\exists`).

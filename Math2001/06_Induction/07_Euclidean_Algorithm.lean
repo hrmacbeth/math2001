@@ -3,7 +3,7 @@ import Mathlib.Tactic.Set
 import Library.Tactic.Addarith
 import Library.Tactic.Induction
 import Library.Tactic.Numbers
-import Library.Tactic.Take
+import Library.Tactic.Use
 
 attribute [-instance] Int.instDivInt_1 Int.instDivInt Nat.instDivNat
 
@@ -109,12 +109,12 @@ theorem gcd_dvd_right (a b : ℤ) : gcd a b ∣ b := by
     apply gcd_dvd_left b (fmod a (-b)) -- inductive hypothesis
   · -- case `b = 0`, `0 ≤ a`
     have hb : b = 0 := le_antisymm h1 h2
-    take 0
+    use 0
     calc b = 0 := hb
       _ = a * 0 := by ring
   · -- case `b = 0`, `a < 0`
     have hb : b = 0 := le_antisymm h1 h2
-    take 0
+    use 0
     calc b = 0 := hb
       _ = -a * 0 := by ring
 
@@ -129,7 +129,7 @@ theorem gcd_dvd_left (a b : ℤ) : gcd a b ∣ a := by
     have H : fmod a b + b * fdiv a b = a := fmod_add_fdiv a b
     set q := fdiv a b
     set r := fmod a b
-    take l + k * q
+    use l + k * q
     calc a = r + b * q := by rw [H]
       _ = gcd b r * l + (gcd b r * k) * q := by rw [← hk, ← hl]
       _ = gcd b r * (l + k * q) := by ring
@@ -141,15 +141,15 @@ theorem gcd_dvd_left (a b : ℤ) : gcd a b ∣ a := by
     have H := fmod_add_fdiv a (-b)
     set q := fdiv a (-b)
     set r := fmod a (-b)
-    take l - k * q
+    use l - k * q
     calc a = r + (-b) * q := by rw [H]
       _ = gcd b r * l + (- (gcd b r * k)) * q := by rw [← hk, ← hl]
       _ = gcd b r * (l - k * q) := by ring
   · -- case `b = 0`, `0 ≤ a`
-    take 1
+    use 1
     ring
   · -- case `b = 0`, `a < 0`
-    take -1
+    use -1
     ring
 
 end
@@ -218,7 +218,7 @@ termination_by L_mul_add_R_mul a b => b
 
 
 theorem bezout (a b : ℤ) : ∃ x y : ℤ, x * a + y * b = gcd a b := by
-  take L a b, R a b
+  use L a b, R a b
   apply L_mul_add_R_mul
 
 /-! # Exercises -/

@@ -21,3 +21,4 @@ macro_rules
 | `(tactic| dsimp $[$loc:location]?) => 
   `(tactic| simp (config := { decide := false }) only [set_simps] $[$loc]?)
 
+attribute [aesop safe apply] Set.ext

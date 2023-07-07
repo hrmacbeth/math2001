@@ -1,7 +1,8 @@
 /- Copyright (c) Heather Macbeth, 2023.  All rights reserved. -/
 import Mathlib.Tactic.LeftRight
 import Mathlib.Tactic.Have
-import Library.Tactic.Take
+import Std.Tactic.RCases
+import Library.Tactic.Use
 import Library.Tactic.TruthTable
 
 
@@ -61,7 +62,7 @@ example {P : α → β → Prop} (h : ∃ x : α, ∀ y : β, P x y) :
     ∀ y : β, ∃ x : α, P x y := by
   obtain ⟨x, hx⟩ := h
   intro y
-  take x
+  use x
   apply hx
 
 
@@ -69,7 +70,7 @@ example (P : α → Prop) : ¬ (∃ x, P x) ↔ ∀ x, ¬ P x := by
   constructor
   · intro h a ha
     have : ∃ x, P x
-    · take a
+    · use a
       apply ha
     contradiction
   · intro h h'

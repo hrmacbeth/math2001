@@ -8,7 +8,7 @@ import Library.Tactic.Define
 import Library.Tactic.ExistsDelaborator
 import Library.Tactic.Numbers
 import Library.Tactic.Extra
-import Library.Tactic.Take
+import Library.Tactic.Use
 
 set_option push_neg.use_distrib true
 attribute [-instance] Int.instDivInt_1 Int.instDivInt EuclideanDomain.instDiv Nat.instDivNat
@@ -83,7 +83,8 @@ theorem EquivalenceClass.eq_of_rel (h_symm : @Symmetric α r) (h_trans : @Transi
     apply h_trans ha ha2b
 
 
-theorem EquivalenceClass.mem_self (h_refl : @Reflexive α r) (a : α) : a ∈ { b : α | a ∼ b } := by
+theorem EquivalenceClass.mem_self (h_refl : @Reflexive α r) (a : α) :
+    a ∈ { b : α | a ∼ b } := by
   dsimp
   apply h_refl
 
@@ -128,9 +129,9 @@ local infix:50 "∼" => fun (α β : Type) ↦ ∃ f : α → β, Bijective f
 example : Reflexive (· ∼ ·) := by
   dsimp [Reflexive]
   intro α
-  take id
+  use id
   rw [bijective_iff_exists_inverse]
-  take id
+  use id
   constructor
   · rfl
   · rfl
@@ -141,9 +142,9 @@ example : Symmetric (· ∼ ·) := by
   obtain ⟨f, hf⟩ := h
   rw [bijective_iff_exists_inverse] at hf
   obtain ⟨g, hfg1, hfg2⟩ := hf
-  take g
+  use g
   rw [bijective_iff_exists_inverse]
-  take f
+  use f
   constructor
   · apply hfg2
   · apply hfg1 
@@ -153,7 +154,7 @@ example : Transitive (· ∼ ·) := by
   intro α β γ h1 h2
   obtain ⟨f1, hf1a, hf1b⟩ := h1
   obtain ⟨f2, hf2a, hf2b⟩ := h2
-  take f2 ∘ f1
+  use f2 ∘ f1
   constructor
   · apply Injective.comp
     · apply hf2a
@@ -197,7 +198,8 @@ end
 
 
 section
-local infix:50 "∼" => fun ((a, b) : ℤ × ℤ) (c, d) ↦ ∃ m n, m > 0 ∧ n > 0 ∧ m * b * (b ^ 2 - 3 * a ^ 2) = n * d * (d ^ 2 - 3 * c ^ 2)
+local infix:50 "∼" => fun ((a, b) : ℤ × ℤ) (c, d) ↦ 
+  ∃ m n, m > 0 ∧ n > 0 ∧ m * b * (b ^ 2 - 3 * a ^ 2) = n * d * (d ^ 2 - 3 * c ^ 2)
 
 example : Reflexive (· ∼ ·) := by
   sorry

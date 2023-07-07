@@ -4,7 +4,7 @@ import Mathlib.Tactic.IntervalCases
 import Library.Theory.Prime
 import Library.Tactic.Numbers
 import Library.Tactic.Extra
-import Library.Tactic.Take
+import Library.Tactic.Use
 
 attribute [-instance] Int.instDivInt_1 Int.instDivInt EuclideanDomain.instDiv Nat.instDivNat
 
@@ -30,7 +30,7 @@ example {a b : ℝ} (ha1 : a ^ 2 ≤ 2) (hb1 : b ^ 2 ≤ 2) (ha2 : ∀ y, y ^ 2 
   · sorry
 
 example : ∃ b : ℝ, ∀ x : ℝ, b ≤ x ^ 2 - 2 * x := by
-  take -1
+  use -1
   intro x
   calc
     -1 ≤ -1 + (x - 1) ^ 2 := by extra
@@ -44,7 +44,7 @@ notation3 (prettyPrint := false) "forall_sufficiently_large "(...)", "r:(scoped 
 
 example : forall_sufficiently_large n : ℤ, n ^ 3 ≥ 4 * n ^ 2 + 7 := by
   dsimp
-  take 5
+  use 5
   intro n hn
   calc
     n ^ 3 = n * n ^ 2 := by ring
@@ -73,7 +73,7 @@ example : ¬ Prime 6 := by
   apply not_prime 2
   · numbers -- show `2 ≠ 1` 
   · numbers -- show `2 ≠ 6` 
-  · take 3
+  · use 3
     numbers -- show `6 = 2 * 3`
 
 /-! # Exercises -/

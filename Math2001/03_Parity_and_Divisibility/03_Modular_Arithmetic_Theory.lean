@@ -2,13 +2,13 @@
 import Mathlib.Tactic.IntervalCases
 import Library.Theory.Division
 import Library.Tactic.Numbers
-import Library.Tactic.Take
+import Library.Tactic.Use
 
 attribute [-instance] Int.instDivInt_1 Int.instDivInt Nat.instDivNat
 
 
 example : 11 ≡ 3 [ZMOD 4] := by
-  take 2
+  use 2
   numbers
 
 example : -5 ≡ 1 [ZMOD 3] := by
@@ -19,7 +19,7 @@ theorem Int.ModEq.add {n a b c d : ℤ} (h1 : a ≡ b [ZMOD n]) (h2 : c ≡ d [Z
   dsimp [Int.ModEq] at *
   obtain ⟨x, hx⟩ := h1
   obtain ⟨y, hy⟩ := h2
-  take x + y
+  use x + y
   calc
     a + c - (b + d) = a - b + (c - d) := by ring
     _ = n * x + n * y := by rw [hx, hy]
@@ -37,7 +37,7 @@ theorem Int.ModEq.mul {n a b c d : ℤ} (h1 : a ≡ b [ZMOD n]) (h2 : c ≡ d [Z
     a * c ≡ b * d [ZMOD n] := by
   obtain ⟨x, hx⟩ := h1
   obtain ⟨y, hy⟩ := h2
-  take x * c + b * y
+  use x * c + b * y
   calc
     a * c - b * d = (a - b) * c + b * (c - d) := by ring
     _ = n * x * c + b * (n * y) := by rw [hx, hy]
@@ -46,7 +46,7 @@ theorem Int.ModEq.mul {n a b c d : ℤ} (h1 : a ≡ b [ZMOD n]) (h2 : c ≡ d [Z
 
 theorem Int.ModEq.pow_two (h : a ≡ b [ZMOD n]) : a ^ 2 ≡ b ^ 2 [ZMOD n] := by
   obtain ⟨x, hx⟩ := h
-  take x * (a + b)
+  use x * (a + b)
   calc
     a ^ 2 - b ^ 2 = (a - b) * (a + b) := by ring
     _ = n * x * (a + b) := by rw [hx]
@@ -57,18 +57,18 @@ theorem Int.ModEq.pow_three (h : a ≡ b [ZMOD n]) : a ^ 3 ≡ b ^ 3 [ZMOD n] :=
   sorry
 
 theorem Int.ModEq.pow (k : ℕ) (h : a ≡ b [ZMOD n]) : a ^ k ≡ b ^ k [ZMOD n] :=
-  sorry -- we'll prove this later in the course
+  sorry -- we'll prove this later in the book
 
 
 theorem Int.ModEq.refl (a : ℤ) : a ≡ a [ZMOD n] := by
-  take 0
+  use 0
   ring
 
 
 example {a b : ℤ} (ha : a ≡ 2 [ZMOD 4]) :
     a * b ^ 2 + a ^ 2 * b + 3 * a ≡ 2 * b ^ 2 + 2 ^ 2 * b + 3 * 2 [ZMOD 4] := by
   obtain ⟨x, hx⟩ := ha
-  take x * (b ^ 2 + a * b + 2 * b + 3)
+  use x * (b ^ 2 + a * b + 2 * b + 3)
   calc
     a * b ^ 2 + a ^ 2 * b + 3 * a - (2 * b ^ 2 + 2 ^ 2 * b + 3 * 2) =
         (a - 2) * (b ^ 2 + a * b + 2 * b + 3) :=
@@ -99,7 +99,8 @@ example : 34 ≡ 104 [ZMOD 5] := by
 theorem Int.ModEq.symm (h : a ≡ b [ZMOD n]) : b ≡ a [ZMOD n] := by
   sorry
 
-theorem Int.ModEq.trans (h1 : a ≡ b [ZMOD n]) (h2 : b ≡ c [ZMOD n]) : a ≡ c [ZMOD n] := by
+theorem Int.ModEq.trans (h1 : a ≡ b [ZMOD n]) (h2 : b ≡ c [ZMOD n]) :
+    a ≡ c [ZMOD n] := by
   sorry
 
 example : a + n * c ≡ a [ZMOD n] := by

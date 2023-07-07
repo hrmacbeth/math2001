@@ -5,14 +5,14 @@ import Library.Tactic.Addarith
 import Library.Tactic.Cancel
 import Library.Tactic.Numbers
 import Library.Tactic.Extra
-import Library.Tactic.Take
+import Library.Tactic.Use
 
 attribute [-instance] Int.instDivInt_1 Int.instDivInt EuclideanDomain.instDiv Nat.instDivNat
 namespace Int
 
 
 example : ∃! a : ℝ, 3 * a + 1 = 7 := by
-  take 2
+  use 2
   dsimp
   constructor
   · numbers
@@ -45,14 +45,14 @@ example {x : ℚ} (hx : ∃! a : ℚ, a ^ 2 = x) : x = 0 := by
 
 
 example : ∃! r : ℤ, 0 ≤ r ∧ r < 5 ∧ 14 ≡ r [ZMOD 5] := by
-  take 4
+  use 4
   dsimp
   constructor
   · constructor
     · numbers
     constructor
     · numbers
-    take 2
+    use 2
     numbers
   intro r hr
   obtain ⟨hr1, hr2, q, hr3⟩ := hr

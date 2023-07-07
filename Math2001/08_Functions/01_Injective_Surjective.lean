@@ -9,7 +9,7 @@ import Library.Tactic.FiniteInductive
 import Library.Tactic.Induction
 import Library.Tactic.Numbers
 import Library.Tactic.Extra
-import Library.Tactic.Take
+import Library.Tactic.Use
 
 attribute [-instance] Int.instDivInt_1 Int.instDivInt EuclideanDomain.instDiv Nat.instDivNat
 open Function
@@ -46,7 +46,7 @@ example : Injective q := by
 example : ¬ Injective (fun x : ℝ ↦ x ^ 2) := by
   dsimp [Injective]
   push_neg
-  take -1, 1
+  use -1, 1
   constructor
   · numbers
   · numbers  
@@ -57,7 +57,7 @@ def s (a : ℚ) : ℚ := 3 * a + 2
 example : Surjective s := by
   dsimp [Surjective]
   intro y
-  take (y - 2) / 3
+  use (y - 2) / 3
   calc s ((y - 2) / 3) = 3 * ((y - 2) / 3) + 2 := by rw [s]
     _ = y := by ring
 
@@ -65,7 +65,7 @@ example : Surjective s := by
 example : ¬ Surjective (fun x : ℝ ↦ x ^ 2) := by
   dsimp [Surjective]
   push_neg
-  take -1
+  use -1
   intro x
   apply ne_of_gt
   calc -1 < 0 := by numbers
@@ -89,7 +89,7 @@ def f : Musketeer → Musketeer
 example : ¬ Injective f := by
   dsimp [Injective]
   push_neg
-  take athos, porthos
+  use athos, porthos
   constructor
   · inductive_type
   · inductive_type
@@ -98,7 +98,7 @@ example : ¬ Injective f := by
 example : ¬ Surjective f := by
   dsimp [Surjective]
   push_neg
-  take porthos
+  use porthos
   intro a
   cases a
   · inductive_type
@@ -110,7 +110,7 @@ example : ¬ Surjective f := by
 example : ¬ Surjective f := by
   dsimp [Surjective]
   push_neg
-  take porthos
+  use porthos
   intro a
   cases a <;> inductive_type
 
@@ -140,11 +140,11 @@ example : Surjective g := by
   dsimp [Surjective]
   intro y
   cases y
-  · take aramis
+  · use aramis
     inductive_type
-  · take athos
+  · use athos
     inductive_type
-  · take porthos
+  · use porthos
     inductive_type 
 
 
@@ -299,6 +299,6 @@ example : ¬ ∀ c : ℝ, Surjective (fun x ↦ c * x) := by
 example {f : ℚ → ℚ} (hf : ∀ x y, x < y → f x < f y) : Injective f := by
   sorry
 
-example {f : X → ℕ} {x0 : X} (h0 : f x0 = 0) {i : X → X} (hi : ∀ x, f (i x) = f x + 1) :
-    Surjective f := by
+example {f : X → ℕ} {x0 : X} (h0 : f x0 = 0) {i : X → X}
+    (hi : ∀ x, f (i x) = f x + 1) : Surjective f := by
   sorry

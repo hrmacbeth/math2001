@@ -6,7 +6,7 @@ import Library.Tactic.Cancel
 import Library.Tactic.Induction
 import Library.Tactic.Numbers
 import Library.Tactic.Extra
-import Library.Tactic.Take
+import Library.Tactic.Use
 
 attribute [-instance] Int.instDivInt_1 Int.instDivInt Nat.instDivNat
 
@@ -25,7 +25,7 @@ theorem irrat_aux (a b : ℕ) (hb : b ≠ 0) : a ^ 2 ≠ 2 * b ^ 2 := by
   intro hab
   have H : Nat.Even a
   · apply Nat.even_of_pow_even (n := 2)
-    take b ^ 2
+    use b ^ 2
     apply hab
   obtain ⟨k, hk⟩ := H
   have hbk :=

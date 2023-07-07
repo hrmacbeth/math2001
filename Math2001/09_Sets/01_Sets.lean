@@ -5,7 +5,7 @@ import Library.Tactic.Addarith
 import Library.Tactic.Define
 import Library.Tactic.Numbers
 import Library.Tactic.Extra
-import Library.Tactic.Take
+import Library.Tactic.Use
 
 attribute [-instance] Int.instDivInt_1 Int.instDivInt EuclideanDomain.instDiv Nat.instDivNat
 set_option push_neg.use_distrib true
@@ -27,7 +27,7 @@ namespace Nat
 example : 10 ∉ { n : ℕ | Odd n } := by
   dsimp
   rw [← even_iff_not_odd]
-  take 5
+  use 5
   numbers
 end Nat
 
@@ -36,7 +36,7 @@ example : { a : ℕ | 4 ∣ a } ⊆ { b : ℕ | 2 ∣ b } := by
   dsimp
   intro a ha
   obtain ⟨k, hk⟩ := ha
-  take 2 * k
+  use 2 * k
   calc a = 4 * k := hk
     _ = 2 * (2 * k) := by ring
 
@@ -44,7 +44,7 @@ example : { a : ℕ | 4 ∣ a } ⊆ { b : ℕ | 2 ∣ b } := by
 example : { x : ℝ | 0 ≤ x ^ 2 } ⊈ { t : ℝ | 0 ≤ t } := by
   dsimp
   push_neg
-  take -3
+  use -3
   constructor
   · numbers
   · numbers  
@@ -56,12 +56,12 @@ example : { x : ℤ | Int.Odd x } = { a : ℤ | ∃ k, a = 2 * k - 1 } := by
   constructor
   · intro h
     obtain ⟨l, hl⟩ := h
-    take l + 1
+    use l + 1
     calc x = 2 * l + 1 := by rw [hl]
       _ = 2 * (l + 1) - 1 := by ring
   · intro h
     obtain ⟨k, hk⟩ := h
-    take k - 1
+    use k - 1
     calc x = 2 * k - 1 := by rw [hk]
       _ = 2 * (k - 1) + 1 := by ring
 
@@ -69,14 +69,14 @@ example : { x : ℤ | Int.Odd x } = { a : ℤ | ∃ k, a = 2 * k - 1 } := by
 example : { a : ℕ | 4 ∣ a } ≠ { b : ℕ | 2 ∣ b } := by
   dsimp
   push_neg
-  take 6
+  use 6
   right
   constructor
   · apply Nat.not_dvd_of_exists_lt_and_lt
     · numbers
-    take 1
+    use 1
     constructor <;> numbers
-  · take 3
+  · use 3
     numbers
 
 
@@ -86,14 +86,14 @@ example : { k : ℤ | 8 ∣ 5 * k } = { l : ℤ | 8 ∣ l } := by
   constructor
   · intro hn
     obtain ⟨a, ha⟩ := hn
-    take -3 * a + 2 * n
+    use -3 * a + 2 * n
     calc
       n = -3 * (5 * n) + 16 * n := by ring
       _ = -3 * (8 * a) + 16 * n := by rw [ha]
       _ = 8 * (-3 * a + 2 * n) := by ring
   · intro hn
     obtain ⟨a, ha⟩ := hn
-    take 5 * a
+    use 5 * a
     calc 5 * n = 5 * (8 * a) := by rw [ha]
       _ = 8 * (5 * a) := by ring
 

@@ -271,8 +271,8 @@ have</p>
 <p>Let <span class="math notranslate nohighlight">\(n\)</span> be a natural number.  Show that <span class="math notranslate nohighlight">\(4^n\)</span> is congruent to either <span class="math notranslate nohighlight">\(1\)</span> or
 <span class="math notranslate nohighlight">\(4\)</span> modulo 15.</p>
 </div>
-<div class="admonition-proof admonition">
-<p class="admonition-title">Proof</p>
+<div class="admonition-solution admonition">
+<p class="admonition-title">Solution</p>
 <p>We prove this by induction on <span class="math notranslate nohighlight">\(n\)</span>.  First, <span class="math notranslate nohighlight">\(4^0=1\)</span>, so <span class="math notranslate nohighlight">\(4^0\equiv 1\mod 15\)</span>.</p>
 <p>Now, let <span class="math notranslate nohighlight">\(k\)</span> be a natural number, and suppose that we know that <span class="math notranslate nohighlight">\(4^k\)</span> is congruent to
 either <span class="math notranslate nohighlight">\(1\)</span> or <span class="math notranslate nohighlight">\(4\)</span> modulo 15.</p>
@@ -368,7 +368,7 @@ Then</p>
 <p>Here is the outline of this argument in Lean.  Fill in the sorries.</p>
 <div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">:</span> <span class="n">forall_sufficiently_large</span> <span class="n">n</span> <span class="o">:</span> <span class="n">&#8469;</span><span class="o">,</span> <span class="mi">2</span> <span class="bp">^</span> <span class="n">n</span> <span class="bp">&#8805;</span> <span class="n">n</span> <span class="bp">^</span> <span class="mi">2</span> <span class="o">:=</span> <span class="kd">by</span>
   <span class="n">dsimp</span>
-  <span class="n">take</span> <span class="mi">4</span>
+  <span class="n">use</span> <span class="mi">4</span>
   <span class="n">intro</span> <span class="n">n</span> <span class="n">hn</span>
   <span class="n">induction_from_starting_point</span> <span class="n">n</span><span class="o">,</span> <span class="n">hn</span> <span class="k">with</span> <span class="n">k</span> <span class="n">hk</span> <span class="n">IH</span>
   <span class="bp">&#183;</span> <span class="c1">-- base case</span>
@@ -380,78 +380,68 @@ Then</p>
 </section>
 <section id="exercises">
 <h3><span class="section-number">6.1.7. </span>Exercises<a class="headerlink" href="#exercises" title="Permalink to this headline">&#61633;</a></h3>
-<ol class="arabic simple">
-<li><p>Let <span class="math notranslate nohighlight">\(n\)</span> be a natural number.  Show that <span class="math notranslate nohighlight">\(3 ^n\ge n^2+n+1\)</span>.</p></li>
-</ol>
+<ol class="arabic">
+<li><p>Let <span class="math notranslate nohighlight">\(n\)</span> be a natural number.  Show that <span class="math notranslate nohighlight">\(3 ^n\ge n^2+n+1\)</span>.</p>
 <div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">(</span><span class="n">n</span> <span class="o">:</span> <span class="n">&#8469;</span><span class="o">)</span> <span class="o">:</span> <span class="mi">3</span> <span class="bp">^</span> <span class="n">n</span> <span class="bp">&#8805;</span> <span class="n">n</span> <span class="bp">^</span> <span class="mi">2</span> <span class="bp">+</span> <span class="n">n</span> <span class="bp">+</span> <span class="mi">1</span> <span class="o">:=</span> <span class="kd">by</span>
   <span class="gr">sorry</span>
 </pre></div>
 </div>
-<ol class="arabic" start="2">
+</li>
 <li><p>Let <span class="math notranslate nohighlight">\(a\geq -1\)</span> be a real number, and let <span class="math notranslate nohighlight">\(n\)</span> be a natural number.  Show that
 <span class="math notranslate nohighlight">\((1+a)^n\ge 1+na\)</span>.</p>
 <p>This fact is known as <em>Bernoulli&#8217;s inequality</em>.</p>
-</li>
-</ol>
 <div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">{</span><span class="n">a</span> <span class="o">:</span> <span class="n">&#8477;</span><span class="o">}</span> <span class="o">(</span><span class="n">ha</span> <span class="o">:</span> <span class="bp">-</span><span class="mi">1</span> <span class="bp">&#8804;</span> <span class="n">a</span><span class="o">)</span> <span class="o">(</span><span class="n">n</span> <span class="o">:</span> <span class="n">&#8469;</span><span class="o">)</span> <span class="o">:</span> <span class="o">(</span><span class="mi">1</span> <span class="bp">+</span> <span class="n">a</span><span class="o">)</span> <span class="bp">^</span> <span class="n">n</span> <span class="bp">&#8805;</span> <span class="mi">1</span> <span class="bp">+</span> <span class="n">n</span> <span class="bp">*</span> <span class="n">a</span> <span class="o">:=</span> <span class="kd">by</span>
   <span class="gr">sorry</span>
 </pre></div>
 </div>
-<ol class="arabic simple" start="3">
+</li>
 <li><p>Let <span class="math notranslate nohighlight">\(n\)</span> be a natural number.  Show that <span class="math notranslate nohighlight">\(5^n\)</span> is congruent to either <span class="math notranslate nohighlight">\(1\)</span> or
-<span class="math notranslate nohighlight">\(5\)</span> modulo 8.</p></li>
-</ol>
+<span class="math notranslate nohighlight">\(5\)</span> modulo 8.</p>
 <div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">(</span><span class="n">n</span> <span class="o">:</span> <span class="n">&#8469;</span><span class="o">)</span> <span class="o">:</span> <span class="mi">5</span> <span class="bp">^</span> <span class="n">n</span> <span class="bp">&#8801;</span> <span class="mi">1</span> <span class="o">[</span><span class="n">ZMOD</span> <span class="mi">8</span><span class="o">]</span> <span class="bp">&#8744;</span> <span class="mi">5</span> <span class="bp">^</span> <span class="n">n</span> <span class="bp">&#8801;</span> <span class="mi">5</span> <span class="o">[</span><span class="n">ZMOD</span> <span class="mi">8</span><span class="o">]</span> <span class="o">:=</span> <span class="kd">by</span>
   <span class="gr">sorry</span>
 </pre></div>
 </div>
-<ol class="arabic simple" start="4">
+</li>
 <li><p>Let <span class="math notranslate nohighlight">\(n\)</span> be a natural number.  Show that <span class="math notranslate nohighlight">\(6^n\)</span> is congruent to either <span class="math notranslate nohighlight">\(1\)</span> or
-<span class="math notranslate nohighlight">\(6\)</span> modulo 7.</p></li>
-</ol>
+<span class="math notranslate nohighlight">\(6\)</span> modulo 7.</p>
 <div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">(</span><span class="n">n</span> <span class="o">:</span> <span class="n">&#8469;</span><span class="o">)</span> <span class="o">:</span> <span class="mi">6</span> <span class="bp">^</span> <span class="n">n</span> <span class="bp">&#8801;</span> <span class="mi">1</span> <span class="o">[</span><span class="n">ZMOD</span> <span class="mi">7</span><span class="o">]</span> <span class="bp">&#8744;</span> <span class="mi">6</span> <span class="bp">^</span> <span class="n">n</span> <span class="bp">&#8801;</span> <span class="mi">6</span> <span class="o">[</span><span class="n">ZMOD</span> <span class="mi">7</span><span class="o">]</span> <span class="o">:=</span> <span class="kd">by</span>
   <span class="gr">sorry</span>
 </pre></div>
 </div>
-<ol class="arabic simple" start="5">
+</li>
 <li><p>Let <span class="math notranslate nohighlight">\(n\)</span> be a natural number.  Show that <span class="math notranslate nohighlight">\(4^n\)</span> is congruent to <span class="math notranslate nohighlight">\(1\)</span>, <span class="math notranslate nohighlight">\(2\)</span>
-or <span class="math notranslate nohighlight">\(4\)</span> modulo 7.</p></li>
-</ol>
-<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">(</span><span class="n">n</span> <span class="o">:</span> <span class="n">&#8469;</span><span class="o">)</span> <span class="o">:</span> <span class="mi">4</span> <span class="bp">^</span> <span class="n">n</span> <span class="bp">&#8801;</span> <span class="mi">1</span> <span class="o">[</span><span class="n">ZMOD</span> <span class="mi">7</span><span class="o">]</span> <span class="bp">&#8744;</span> <span class="mi">4</span> <span class="bp">^</span> <span class="n">n</span> <span class="bp">&#8801;</span> <span class="mi">2</span> <span class="o">[</span><span class="n">ZMOD</span> <span class="mi">7</span><span class="o">]</span> <span class="bp">&#8744;</span> <span class="mi">4</span> <span class="bp">^</span> <span class="n">n</span> <span class="bp">&#8801;</span> <span class="mi">4</span> <span class="o">[</span><span class="n">ZMOD</span> <span class="mi">7</span><span class="o">]</span> <span class="o">:=</span> <span class="kd">by</span>
+or <span class="math notranslate nohighlight">\(4\)</span> modulo 7.</p>
+<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">(</span><span class="n">n</span> <span class="o">:</span> <span class="n">&#8469;</span><span class="o">)</span> <span class="o">:</span>
+    <span class="mi">4</span> <span class="bp">^</span> <span class="n">n</span> <span class="bp">&#8801;</span> <span class="mi">1</span> <span class="o">[</span><span class="n">ZMOD</span> <span class="mi">7</span><span class="o">]</span> <span class="bp">&#8744;</span> <span class="mi">4</span> <span class="bp">^</span> <span class="n">n</span> <span class="bp">&#8801;</span> <span class="mi">2</span> <span class="o">[</span><span class="n">ZMOD</span> <span class="mi">7</span><span class="o">]</span> <span class="bp">&#8744;</span> <span class="mi">4</span> <span class="bp">^</span> <span class="n">n</span> <span class="bp">&#8801;</span> <span class="mi">4</span> <span class="o">[</span><span class="n">ZMOD</span> <span class="mi">7</span><span class="o">]</span> <span class="o">:=</span> <span class="kd">by</span>
   <span class="gr">sorry</span>
 </pre></div>
 </div>
-<ol class="arabic simple" start="6">
-<li><p>Show that for all natural numbers <span class="math notranslate nohighlight">\(n\)</span> sufficiently large, <span class="math notranslate nohighlight">\(3^n\geq 2^n+100\)</span>.</p></li>
-</ol>
+</li>
+<li><p>Show that for all natural numbers <span class="math notranslate nohighlight">\(n\)</span> sufficiently large, <span class="math notranslate nohighlight">\(3^n\geq 2^n+100\)</span>.</p>
 <div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">:</span> <span class="n">forall_sufficiently_large</span> <span class="n">n</span> <span class="o">:</span> <span class="n">&#8469;</span><span class="o">,</span> <span class="o">(</span><span class="mi">3</span><span class="o">:</span><span class="n">&#8484;</span><span class="o">)</span> <span class="bp">^</span> <span class="n">n</span> <span class="bp">&#8805;</span> <span class="mi">2</span> <span class="bp">^</span> <span class="n">n</span> <span class="bp">+</span> <span class="mi">100</span> <span class="o">:=</span> <span class="kd">by</span>
   <span class="n">dsimp</span>
   <span class="gr">sorry</span>
 </pre></div>
 </div>
-<ol class="arabic simple" start="7">
-<li><p>Show that for all natural numbers <span class="math notranslate nohighlight">\(n\)</span> sufficiently large, <span class="math notranslate nohighlight">\(2^n\geq n^2+4\)</span>.</p></li>
-</ol>
+</li>
+<li><p>Show that for all natural numbers <span class="math notranslate nohighlight">\(n\)</span> sufficiently large, <span class="math notranslate nohighlight">\(2^n\geq n^2+4\)</span>.</p>
 <div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">:</span> <span class="n">forall_sufficiently_large</span> <span class="n">n</span> <span class="o">:</span> <span class="n">&#8469;</span><span class="o">,</span> <span class="mi">2</span> <span class="bp">^</span> <span class="n">n</span> <span class="bp">&#8805;</span> <span class="n">n</span> <span class="bp">^</span> <span class="mi">2</span> <span class="bp">+</span> <span class="mi">4</span> <span class="o">:=</span> <span class="kd">by</span>
   <span class="n">dsimp</span>
   <span class="gr">sorry</span>
 </pre></div>
 </div>
-<ol class="arabic simple" start="8">
-<li><p>Show that for all natural numbers <span class="math notranslate nohighlight">\(n\)</span> sufficiently large, <span class="math notranslate nohighlight">\(2^n\geq n^3\)</span>.</p></li>
-</ol>
+</li>
+<li><p>Show that for all natural numbers <span class="math notranslate nohighlight">\(n\)</span> sufficiently large, <span class="math notranslate nohighlight">\(2^n\geq n^3\)</span>.</p>
 <div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">:</span> <span class="n">forall_sufficiently_large</span> <span class="n">n</span> <span class="o">:</span> <span class="n">&#8469;</span><span class="o">,</span> <span class="mi">2</span> <span class="bp">^</span> <span class="n">n</span> <span class="bp">&#8805;</span> <span class="n">n</span> <span class="bp">^</span> <span class="mi">3</span> <span class="o">:=</span> <span class="kd">by</span>
   <span class="n">dsimp</span>
   <span class="gr">sorry</span>
 </pre></div>
 </div>
-<ol class="arabic" start="9">
+</li>
 <li><p>Let <span class="math notranslate nohighlight">\(a\)</span> be an odd natural number.  Show by induction that for all natural numbers
 <span class="math notranslate nohighlight">\(n\)</span>, the natural number <span class="math notranslate nohighlight">\(a^n\)</span> is odd.</p>
 <p>Also deduce that for all natural numbers <span class="math notranslate nohighlight">\(a\)</span> and <span class="math notranslate nohighlight">\(n\)</span>, if <span class="math notranslate nohighlight">\(a^n\)</span> is even then
 <span class="math notranslate nohighlight">\(a\)</span> is even.  (This part is not an induction problem.)</p>
-</li>
-</ol>
 <div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">theorem</span> <span class="n">Odd.pow</span> <span class="o">{</span><span class="n">a</span> <span class="o">:</span> <span class="n">&#8469;</span><span class="o">}</span> <span class="o">(</span><span class="n">ha</span> <span class="o">:</span> <span class="n">Odd</span> <span class="n">a</span><span class="o">)</span> <span class="o">(</span><span class="n">n</span> <span class="o">:</span> <span class="n">&#8469;</span><span class="o">)</span> <span class="o">:</span> <span class="n">Odd</span> <span class="o">(</span><span class="n">a</span> <span class="bp">^</span> <span class="n">n</span><span class="o">)</span> <span class="o">:=</span> <span class="kd">by</span>
   <span class="gr">sorry</span>
 
@@ -459,6 +449,8 @@ or <span class="math notranslate nohighlight">\(4\)</span> modulo 7.</p></li>
   <span class="gr">sorry</span>
 </pre></div>
 </div>
+</li>
+</ol>
 </section>
 </section>
 <section id="recurrence-relations">
@@ -541,12 +533,12 @@ definition of <span class="math notranslate nohighlight">\(b\)</span>, as needed
 <div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">(</span><span class="n">n</span> <span class="o">:</span> <span class="n">&#8469;</span><span class="o">)</span> <span class="o">:</span> <span class="n">Odd</span> <span class="o">(</span><span class="n">b</span> <span class="n">n</span><span class="o">)</span> <span class="o">:=</span> <span class="kd">by</span>
   <span class="n">simple_induction</span> <span class="n">n</span> <span class="k">with</span> <span class="n">k</span> <span class="n">hk</span>
   <span class="bp">&#183;</span> <span class="c1">-- base case</span>
-    <span class="n">take</span> <span class="mi">1</span>
+    <span class="n">use</span> <span class="mi">1</span>
     <span class="k">calc</span> <span class="n">b</span> <span class="mi">0</span> <span class="bp">=</span> <span class="mi">3</span> <span class="o">:=</span> <span class="kd">by</span> <span class="n">rw</span> <span class="o">[</span><span class="n">b</span><span class="o">]</span>
       <span class="n">_</span> <span class="bp">=</span> <span class="mi">2</span> <span class="bp">*</span> <span class="mi">1</span> <span class="bp">+</span> <span class="mi">1</span> <span class="o">:=</span> <span class="kd">by</span> <span class="n">numbers</span>
   <span class="bp">&#183;</span> <span class="c1">-- inductive step</span>
     <span class="n">obtain</span> <span class="o">&#10216;</span><span class="n">x</span><span class="o">,</span> <span class="n">hx</span><span class="o">&#10217;</span> <span class="o">:=</span> <span class="n">hk</span>
-    <span class="n">take</span> <span class="mi">2</span> <span class="bp">*</span> <span class="n">x</span> <span class="bp">^</span> <span class="mi">2</span> <span class="bp">+</span> <span class="mi">2</span> <span class="bp">*</span> <span class="n">x</span> <span class="bp">-</span> <span class="mi">1</span>
+    <span class="n">use</span> <span class="mi">2</span> <span class="bp">*</span> <span class="n">x</span> <span class="bp">^</span> <span class="mi">2</span> <span class="bp">+</span> <span class="mi">2</span> <span class="bp">*</span> <span class="n">x</span> <span class="bp">-</span> <span class="mi">1</span>
     <span class="k">calc</span> <span class="n">b</span> <span class="o">(</span><span class="n">k</span> <span class="bp">+</span> <span class="mi">1</span><span class="o">)</span> <span class="bp">=</span> <span class="n">b</span> <span class="n">k</span> <span class="bp">^</span> <span class="mi">2</span> <span class="bp">-</span> <span class="mi">2</span> <span class="o">:=</span> <span class="kd">by</span> <span class="n">rw</span> <span class="o">[</span><span class="n">b</span><span class="o">]</span>
       <span class="n">_</span> <span class="bp">=</span> <span class="o">(</span><span class="mi">2</span> <span class="bp">*</span> <span class="n">x</span> <span class="bp">+</span> <span class="mi">1</span><span class="o">)</span> <span class="bp">^</span> <span class="mi">2</span> <span class="bp">-</span> <span class="mi">2</span> <span class="o">:=</span> <span class="kd">by</span> <span class="n">rw</span> <span class="o">[</span><span class="n">hx</span><span class="o">]</span>
       <span class="n">_</span> <span class="bp">=</span> <span class="mi">2</span> <span class="bp">*</span> <span class="o">(</span><span class="mi">2</span> <span class="bp">*</span> <span class="n">x</span> <span class="bp">^</span> <span class="mi">2</span> <span class="bp">+</span> <span class="mi">2</span> <span class="bp">*</span> <span class="n">x</span> <span class="bp">-</span> <span class="mi">1</span><span class="o">)</span> <span class="bp">+</span> <span class="mi">1</span> <span class="o">:=</span> <span class="kd">by</span> <span class="n">ring</span>
@@ -831,8 +823,6 @@ Then</p>
 \[\begin{split}c_0&amp;=7 \\
 \text{for }n:\mathbb{N},\quad c_{n+1} &amp;= 3c_n-10.\end{split}\]</div>
 <p>Show that for all natural numbers <span class="math notranslate nohighlight">\(n\)</span>, the integer <span class="math notranslate nohighlight">\(c_n\)</span> is odd.</p>
-</li>
-</ol>
 <div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">def</span> <span class="n">c</span> <span class="o">:</span> <span class="n">&#8469;</span> <span class="bp">&#8594;</span> <span class="n">&#8484;</span>
   <span class="bp">|</span> <span class="mi">0</span> <span class="bp">=&gt;</span> <span class="mi">7</span>
   <span class="bp">|</span> <span class="n">n</span> <span class="bp">+</span> <span class="mi">1</span> <span class="bp">=&gt;</span> <span class="mi">3</span> <span class="bp">*</span> <span class="n">c</span> <span class="n">n</span> <span class="bp">-</span> <span class="mi">10</span>
@@ -841,22 +831,19 @@ Then</p>
   <span class="gr">sorry</span>
 </pre></div>
 </div>
-<ol class="arabic simple" start="2">
+</li>
 <li><p>Let the sequence <span class="math notranslate nohighlight">\((c_n)\)</span> be defined as in the previous problem.  Show that for all
-<span class="math notranslate nohighlight">\(n\)</span>, <span class="math notranslate nohighlight">\(c_n=2\cdot 3^n+5\)</span>.</p></li>
-</ol>
+<span class="math notranslate nohighlight">\(n\)</span>, <span class="math notranslate nohighlight">\(c_n=2\cdot 3^n+5\)</span>.</p>
 <div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">(</span><span class="n">n</span> <span class="o">:</span> <span class="n">&#8469;</span><span class="o">)</span> <span class="o">:</span> <span class="n">c</span> <span class="n">n</span> <span class="bp">=</span> <span class="mi">2</span> <span class="bp">*</span> <span class="mi">3</span> <span class="bp">^</span> <span class="n">n</span> <span class="bp">+</span> <span class="mi">5</span> <span class="o">:=</span> <span class="kd">by</span>
   <span class="gr">sorry</span>
 </pre></div>
 </div>
-<ol class="arabic" start="3">
+</li>
 <li><p>Consider the sequence <span class="math notranslate nohighlight">\((y_n)\)</span> defined recursively by,</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}y_0&amp;=2 \\
 \text{for }n:\mathbb{N},\quad y_{n+1} &amp;= y_n{}^2.\end{split}\]</div>
 <p>Show that for all natural numbers <span class="math notranslate nohighlight">\(n\)</span>, <span class="math notranslate nohighlight">\(y_n=2^{2^n}\)</span>.</p>
-</li>
-</ol>
 <div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">def</span> <span class="n">y</span> <span class="o">:</span> <span class="n">&#8469;</span> <span class="bp">&#8594;</span> <span class="n">&#8469;</span>
   <span class="bp">|</span> <span class="mi">0</span> <span class="bp">=&gt;</span> <span class="mi">2</span>
   <span class="bp">|</span> <span class="n">n</span> <span class="bp">+</span> <span class="mi">1</span> <span class="bp">=&gt;</span> <span class="o">(</span><span class="n">y</span> <span class="n">n</span><span class="o">)</span> <span class="bp">^</span> <span class="mi">2</span>
@@ -865,7 +852,7 @@ Then</p>
   <span class="gr">sorry</span>
 </pre></div>
 </div>
-<ol class="arabic" start="4">
+</li>
 <li><p>Consider the sequence <span class="math notranslate nohighlight">\((B_n)\)</span> defined recursively by,</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}B_0&amp;=0 \\
@@ -874,8 +861,6 @@ Then</p>
 Show that for all natural numbers <span class="math notranslate nohighlight">\(n\)</span>,</p>
 <div class="math notranslate nohighlight">
 \[B_n=\frac{n(n+1)(2n+1)}{6}.\]</div>
-</li>
-</ol>
 <div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">def</span> <span class="n">B</span> <span class="o">:</span> <span class="n">&#8469;</span> <span class="bp">&#8594;</span> <span class="n">&#8474;</span>
   <span class="bp">|</span> <span class="mi">0</span> <span class="bp">=&gt;</span> <span class="mi">0</span>
   <span class="bp">|</span> <span class="n">n</span> <span class="bp">+</span> <span class="mi">1</span> <span class="bp">=&gt;</span> <span class="n">B</span> <span class="n">n</span> <span class="bp">+</span> <span class="o">(</span><span class="n">n</span> <span class="bp">+</span> <span class="mi">1</span> <span class="o">:</span> <span class="n">&#8474;</span><span class="o">)</span> <span class="bp">^</span> <span class="mi">2</span>
@@ -884,7 +869,7 @@ Show that for all natural numbers <span class="math notranslate nohighlight">\(n
   <span class="gr">sorry</span>
 </pre></div>
 </div>
-<ol class="arabic" start="5">
+</li>
 <li><p>Consider the sequence <span class="math notranslate nohighlight">\((S_n)\)</span> defined recursively by,</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}S_0&amp;=1 \\
@@ -893,8 +878,6 @@ Show that for all natural numbers <span class="math notranslate nohighlight">\(n
 Show that for all natural numbers <span class="math notranslate nohighlight">\(n\)</span>,</p>
 <div class="math notranslate nohighlight">
 \[S_n=2-\frac{1}{2^n}.\]</div>
-</li>
-</ol>
 <div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">def</span> <span class="n">S</span> <span class="o">:</span> <span class="n">&#8469;</span> <span class="bp">&#8594;</span> <span class="n">&#8474;</span>
   <span class="bp">|</span> <span class="mi">0</span> <span class="bp">=&gt;</span> <span class="mi">1</span>
   <span class="bp">|</span> <span class="n">n</span> <span class="bp">+</span> <span class="mi">1</span> <span class="bp">=&gt;</span> <span class="n">S</span> <span class="n">n</span> <span class="bp">+</span> <span class="mi">1</span> <span class="bp">/</span> <span class="mi">2</span> <span class="bp">^</span> <span class="o">(</span><span class="n">n</span> <span class="bp">+</span> <span class="mi">1</span><span class="o">)</span>
@@ -903,32 +886,29 @@ Show that for all natural numbers <span class="math notranslate nohighlight">\(n
   <span class="gr">sorry</span>
 </pre></div>
 </div>
-<ol class="arabic" start="6">
+</li>
 <li><p>Show that <span class="math notranslate nohighlight">\(n!\)</span> is strictly positive, for all natural numbers <span class="math notranslate nohighlight">\(n\)</span>.</p>
 <p>We record this for future use under the name <code class="docutils literal notranslate"><span class="pre">factorial_pos</span></code>.</p>
-</li>
-</ol>
 <div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">(</span><span class="n">n</span> <span class="o">:</span> <span class="n">&#8469;</span><span class="o">)</span> <span class="o">:</span> <span class="mi">0</span> <span class="bp">&lt;</span> <span class="n">n</span> <span class="bp">!</span> <span class="o">:=</span> <span class="kd">by</span>
   <span class="gr">sorry</span>
 </pre></div>
 </div>
-<ol class="arabic simple" start="7">
+</li>
 <li><p>Show that <span class="math notranslate nohighlight">\(n!\)</span> is even for all <span class="math notranslate nohighlight">\(n\geq 2\)</span>.  Use induction from the starting point 2
-(see <a class="reference internal" href="#induction-starting-point"><span class="std std-numref">Example 6.1.5</span></a>).</p></li>
-</ol>
+(see <a class="reference internal" href="#induction-starting-point"><span class="std std-numref">Example 6.1.5</span></a>).</p>
 <div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">{</span><span class="n">n</span> <span class="o">:</span> <span class="n">&#8469;</span><span class="o">}</span> <span class="o">(</span><span class="n">hn</span> <span class="o">:</span> <span class="mi">2</span> <span class="bp">&#8804;</span> <span class="n">n</span><span class="o">)</span> <span class="o">:</span> <span class="n">Nat.Even</span> <span class="o">(</span><span class="n">n</span> <span class="bp">!</span><span class="o">)</span> <span class="o">:=</span> <span class="kd">by</span>
   <span class="gr">sorry</span>
 </pre></div>
 </div>
-<ol class="arabic" start="8">
+</li>
 <li><p>Show that for all natural numbers <span class="math notranslate nohighlight">\(n\)</span>, <span class="math notranslate nohighlight">\((n+1)!\le (n+1)^n\)</span>.</p>
 <p>(Compare with <a class="reference internal" href="#factorial-lower-bound"><span class="std std-numref">Example 6.2.6</span></a>.)</p>
-</li>
-</ol>
 <div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">(</span><span class="n">n</span> <span class="o">:</span> <span class="n">&#8469;</span><span class="o">)</span> <span class="o">:</span> <span class="o">(</span><span class="n">n</span> <span class="bp">+</span> <span class="mi">1</span><span class="o">)</span> <span class="bp">!</span> <span class="bp">&#8804;</span> <span class="o">(</span><span class="n">n</span> <span class="bp">+</span> <span class="mi">1</span><span class="o">)</span> <span class="bp">^</span> <span class="n">n</span> <span class="o">:=</span> <span class="kd">by</span>
   <span class="gr">sorry</span>
 </pre></div>
 </div>
+</li>
+</ol>
 </section>
 </section>
 <section id="two-step-induction">
@@ -1174,7 +1154,8 @@ F_1&amp;=1\\
   <span class="bp">&#183;</span> <span class="k">calc</span> <span class="n">F</span> <span class="mi">1</span> <span class="bp">^</span> <span class="mi">2</span> <span class="bp">-</span> <span class="n">F</span> <span class="mi">1</span> <span class="bp">*</span> <span class="n">F</span> <span class="mi">0</span> <span class="bp">-</span> <span class="n">F</span> <span class="mi">0</span> <span class="bp">^</span> <span class="mi">2</span> <span class="bp">=</span> <span class="mi">1</span> <span class="bp">^</span> <span class="mi">2</span> <span class="bp">-</span> <span class="mi">1</span> <span class="bp">*</span> <span class="mi">1</span> <span class="bp">-</span> <span class="mi">1</span> <span class="bp">^</span> <span class="mi">2</span> <span class="o">:=</span> <span class="kd">by</span> <span class="n">rw</span> <span class="o">[</span><span class="n">F</span><span class="o">,</span> <span class="n">F</span><span class="o">]</span>
       <span class="n">_</span> <span class="bp">=</span> <span class="bp">-</span> <span class="o">(</span><span class="bp">-</span><span class="mi">1</span><span class="o">)</span> <span class="bp">^</span> <span class="mi">0</span> <span class="o">:=</span> <span class="kd">by</span> <span class="n">numbers</span>
   <span class="bp">&#183;</span> <span class="k">calc</span> <span class="n">F</span> <span class="o">(</span><span class="n">k</span> <span class="bp">+</span> <span class="mi">2</span><span class="o">)</span> <span class="bp">^</span> <span class="mi">2</span> <span class="bp">-</span> <span class="n">F</span> <span class="o">(</span><span class="n">k</span> <span class="bp">+</span> <span class="mi">2</span><span class="o">)</span> <span class="bp">*</span> <span class="n">F</span> <span class="o">(</span><span class="n">k</span> <span class="bp">+</span> <span class="mi">1</span><span class="o">)</span> <span class="bp">-</span> <span class="n">F</span> <span class="o">(</span><span class="n">k</span> <span class="bp">+</span> <span class="mi">1</span><span class="o">)</span> <span class="bp">^</span> <span class="mi">2</span>
-        <span class="bp">=</span> <span class="o">(</span><span class="n">F</span> <span class="o">(</span><span class="n">k</span> <span class="bp">+</span> <span class="mi">1</span><span class="o">)</span> <span class="bp">+</span> <span class="n">F</span> <span class="n">k</span><span class="o">)</span> <span class="bp">^</span> <span class="mi">2</span> <span class="bp">-</span> <span class="o">(</span><span class="n">F</span> <span class="o">(</span><span class="n">k</span> <span class="bp">+</span> <span class="mi">1</span><span class="o">)</span> <span class="bp">+</span> <span class="n">F</span> <span class="n">k</span><span class="o">)</span> <span class="bp">*</span> <span class="n">F</span> <span class="o">(</span><span class="n">k</span> <span class="bp">+</span> <span class="mi">1</span><span class="o">)</span> <span class="bp">-</span> <span class="n">F</span> <span class="o">(</span><span class="n">k</span> <span class="bp">+</span> <span class="mi">1</span><span class="o">)</span> <span class="bp">^</span> <span class="mi">2</span> <span class="o">:=</span> <span class="kd">by</span> <span class="n">rw</span> <span class="o">[</span><span class="n">F</span><span class="o">]</span>
+        <span class="bp">=</span> <span class="o">(</span><span class="n">F</span> <span class="o">(</span><span class="n">k</span> <span class="bp">+</span> <span class="mi">1</span><span class="o">)</span> <span class="bp">+</span> <span class="n">F</span> <span class="n">k</span><span class="o">)</span> <span class="bp">^</span> <span class="mi">2</span> <span class="bp">-</span> <span class="o">(</span><span class="n">F</span> <span class="o">(</span><span class="n">k</span> <span class="bp">+</span> <span class="mi">1</span><span class="o">)</span> <span class="bp">+</span> <span class="n">F</span> <span class="n">k</span><span class="o">)</span> <span class="bp">*</span> <span class="n">F</span> <span class="o">(</span><span class="n">k</span> <span class="bp">+</span> <span class="mi">1</span><span class="o">)</span>
+            <span class="bp">-</span> <span class="n">F</span> <span class="o">(</span><span class="n">k</span> <span class="bp">+</span> <span class="mi">1</span><span class="o">)</span> <span class="bp">^</span> <span class="mi">2</span> <span class="o">:=</span> <span class="kd">by</span> <span class="n">rw</span> <span class="o">[</span><span class="n">F</span><span class="o">]</span>
       <span class="n">_</span> <span class="bp">=</span> <span class="bp">-</span> <span class="o">(</span><span class="n">F</span> <span class="o">(</span><span class="n">k</span> <span class="bp">+</span> <span class="mi">1</span><span class="o">)</span> <span class="bp">^</span> <span class="mi">2</span> <span class="bp">-</span> <span class="n">F</span> <span class="o">(</span><span class="n">k</span> <span class="bp">+</span> <span class="mi">1</span><span class="o">)</span> <span class="bp">*</span> <span class="n">F</span> <span class="n">k</span> <span class="bp">-</span> <span class="n">F</span> <span class="n">k</span> <span class="bp">^</span> <span class="mi">2</span><span class="o">)</span> <span class="o">:=</span> <span class="kd">by</span> <span class="n">ring</span>
       <span class="n">_</span> <span class="bp">=</span> <span class="bp">-</span> <span class="bp">-</span><span class="o">(</span><span class="bp">-</span><span class="mi">1</span><span class="o">)</span> <span class="bp">^</span> <span class="n">k</span> <span class="o">:=</span> <span class="kd">by</span> <span class="n">rw</span> <span class="o">[</span><span class="n">IH</span><span class="o">]</span>
       <span class="n">_</span> <span class="bp">=</span> <span class="bp">-</span><span class="o">(</span><span class="bp">-</span><span class="mi">1</span><span class="o">)</span> <span class="bp">^</span> <span class="o">(</span><span class="n">k</span> <span class="bp">+</span> <span class="mi">1</span><span class="o">)</span> <span class="o">:=</span> <span class="kd">by</span> <span class="n">ring</span>
@@ -1247,7 +1228,7 @@ let&#8217;s try an induction starting at 4.</p>
 argument.</p>
 <div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">:</span> <span class="n">forall_sufficiently_large</span> <span class="n">n</span> <span class="o">:</span> <span class="n">&#8469;</span><span class="o">,</span> <span class="n">d</span> <span class="n">n</span> <span class="bp">&#8805;</span> <span class="mi">4</span> <span class="bp">^</span> <span class="n">n</span> <span class="o">:=</span> <span class="kd">by</span>
   <span class="n">dsimp</span>
-  <span class="n">take</span> <span class="mi">4</span>
+  <span class="n">use</span> <span class="mi">4</span>
   <span class="n">intro</span> <span class="n">n</span> <span class="n">hn</span>
   <span class="n">two_step_induction_from_starting_point</span> <span class="n">n</span><span class="o">,</span> <span class="n">hn</span> <span class="k">with</span> <span class="n">k</span> <span class="n">hk</span> <span class="n">IH1</span> <span class="n">IH2</span>
   <span class="bp">&#183;</span> <span class="k">calc</span> <span class="n">d</span> <span class="mi">4</span> <span class="bp">=</span> <span class="mi">267</span> <span class="o">:=</span> <span class="kd">by</span> <span class="n">rfl</span>
@@ -1272,8 +1253,6 @@ argument.</p>
 b_1&amp;=1\\
 \text{for }n:\mathbb{N},\quad b_{n+2}&amp;=5b_{n+1}-6b_n.\end{split}\]</div>
 <p>Prove that for all natural numbers <span class="math notranslate nohighlight">\(n\)</span>, <span class="math notranslate nohighlight">\(b_n=3^n - 2 ^ n\)</span>.</p>
-</li>
-</ol>
 <div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">def</span> <span class="n">b</span> <span class="o">:</span> <span class="n">&#8469;</span> <span class="bp">&#8594;</span> <span class="n">&#8484;</span>
   <span class="bp">|</span> <span class="mi">0</span> <span class="bp">=&gt;</span> <span class="mi">0</span>
   <span class="bp">|</span> <span class="mi">1</span> <span class="bp">=&gt;</span> <span class="mi">1</span>
@@ -1283,15 +1262,13 @@ b_1&amp;=1\\
   <span class="gr">sorry</span>
 </pre></div>
 </div>
-<ol class="arabic" start="2">
+</li>
 <li><p>Consider the sequence <span class="math notranslate nohighlight">\((c_n)\)</span> defined recursively by,</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}c_0&amp;=3\\
 c_1&amp;=2\\
 \text{for }n:\mathbb{N},\quad c_{n+2}&amp;=4c_n.\end{split}\]</div>
 <p>Prove that for all natural numbers <span class="math notranslate nohighlight">\(n\)</span>, <span class="math notranslate nohighlight">\(c_n=2\cdot 2^n+(-2)^n\)</span>.</p>
-</li>
-</ol>
 <div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">def</span> <span class="n">c</span> <span class="o">:</span> <span class="n">&#8469;</span> <span class="bp">&#8594;</span> <span class="n">&#8484;</span>
   <span class="bp">|</span> <span class="mi">0</span> <span class="bp">=&gt;</span> <span class="mi">3</span>
   <span class="bp">|</span> <span class="mi">1</span> <span class="bp">=&gt;</span> <span class="mi">2</span>
@@ -1301,15 +1278,13 @@ c_1&amp;=2\\
   <span class="gr">sorry</span>
 </pre></div>
 </div>
-<ol class="arabic" start="3">
+</li>
 <li><p>Consider the sequence <span class="math notranslate nohighlight">\((t_n)\)</span> defined recursively by,</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}t_0&amp;=5\\
 t_1&amp;=7\\
 \text{for }n:\mathbb{N},\quad t_{n+2}&amp;=2t_{n+1}-t_n.\end{split}\]</div>
 <p>Prove that for all natural numbers <span class="math notranslate nohighlight">\(n\)</span>, <span class="math notranslate nohighlight">\(t_n=2n+5\)</span>.</p>
-</li>
-</ol>
 <div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">def</span> <span class="n">t</span> <span class="o">:</span> <span class="n">&#8469;</span> <span class="bp">&#8594;</span> <span class="n">&#8484;</span>
   <span class="bp">|</span> <span class="mi">0</span> <span class="bp">=&gt;</span> <span class="mi">5</span>
   <span class="bp">|</span> <span class="mi">1</span> <span class="bp">=&gt;</span> <span class="mi">7</span>
@@ -1319,15 +1294,13 @@ t_1&amp;=7\\
   <span class="gr">sorry</span>
 </pre></div>
 </div>
-<ol class="arabic" start="4">
+</li>
 <li><p>Consider the sequence <span class="math notranslate nohighlight">\((q_n)\)</span> defined recursively by,</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}q_0&amp;=1\\
 q_1&amp;=2\\
 \text{for }n:\mathbb{N},\quad q_{n+2}&amp;=2q_{n+1}-q_n+6n + 6.\end{split}\]</div>
 <p>Prove that for all natural numbers <span class="math notranslate nohighlight">\(n\)</span>, <span class="math notranslate nohighlight">\(q_n=n^3+1\)</span>.</p>
-</li>
-</ol>
 <div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">def</span> <span class="n">q</span> <span class="o">:</span> <span class="n">&#8469;</span> <span class="bp">&#8594;</span> <span class="n">&#8484;</span>
   <span class="bp">|</span> <span class="mi">0</span> <span class="bp">=&gt;</span> <span class="mi">1</span>
   <span class="bp">|</span> <span class="mi">1</span> <span class="bp">=&gt;</span> <span class="mi">2</span>
@@ -1337,7 +1310,7 @@ q_1&amp;=2\\
   <span class="gr">sorry</span>
 </pre></div>
 </div>
-<ol class="arabic" start="5">
+</li>
 <li><p>Consider the sequence <span class="math notranslate nohighlight">\((s_n)\)</span> defined recursively by,</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}s_0&amp;=2\\
@@ -1345,8 +1318,6 @@ s_1&amp;=3\\
 \text{for }n:\mathbb{N},\quad s_{n+2}&amp;=2s_{n+1}+3s_n.\end{split}\]</div>
 <p>Prove that for all natural numbers <span class="math notranslate nohighlight">\(m\)</span>, <span class="math notranslate nohighlight">\(s_m\)</span> is congruent to either 2 or 3
 modulo 5.</p>
-</li>
-</ol>
 <div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">def</span> <span class="n">s</span> <span class="o">:</span> <span class="n">&#8469;</span> <span class="bp">&#8594;</span> <span class="n">&#8484;</span>
   <span class="bp">|</span> <span class="mi">0</span> <span class="bp">=&gt;</span> <span class="mi">2</span>
   <span class="bp">|</span> <span class="mi">1</span> <span class="bp">=&gt;</span> <span class="mi">3</span>
@@ -1356,7 +1327,7 @@ modulo 5.</p>
   <span class="gr">sorry</span>
 </pre></div>
 </div>
-<ol class="arabic" start="6">
+</li>
 <li><p>Consider the sequence <span class="math notranslate nohighlight">\((p_n)\)</span> defined recursively by,</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}p_0&amp;=2\\
@@ -1364,8 +1335,6 @@ p_1&amp;=3\\
 \text{for }n:\mathbb{N},\quad p_{n+2}&amp;=6p_{n+1}-p_n.\end{split}\]</div>
 <p>Prove that for all natural numbers <span class="math notranslate nohighlight">\(m\geq 1\)</span>, <span class="math notranslate nohighlight">\(p_m\)</span> is congruent to either 2 or 3
 modulo 7.</p>
-</li>
-</ol>
 <div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">def</span> <span class="n">p</span> <span class="o">:</span> <span class="n">&#8469;</span> <span class="bp">&#8594;</span> <span class="n">&#8484;</span>
   <span class="bp">|</span> <span class="mi">0</span> <span class="bp">=&gt;</span> <span class="mi">2</span>
   <span class="bp">|</span> <span class="mi">1</span> <span class="bp">=&gt;</span> <span class="mi">3</span>
@@ -1375,7 +1344,7 @@ modulo 7.</p>
   <span class="gr">sorry</span>
 </pre></div>
 </div>
-<ol class="arabic" start="7">
+</li>
 <li><p>Consider the sequence <span class="math notranslate nohighlight">\((r_n)\)</span> defined recursively by,</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}r_0&amp;=2\\
@@ -1383,8 +1352,6 @@ r_1&amp;=0\\
 \text{for }n:\mathbb{N},\quad r_{n+2}&amp;=2r_{n+1}+r_n.\end{split}\]</div>
 <p>Prove that for all sufficiently large natural numbers <span class="math notranslate nohighlight">\(n\)</span>, it is true that
 <span class="math notranslate nohighlight">\(r_n\geq 2^n\)</span>.</p>
-</li>
-</ol>
 <div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">def</span> <span class="n">r</span> <span class="o">:</span> <span class="n">&#8469;</span> <span class="bp">&#8594;</span> <span class="n">&#8484;</span>
   <span class="bp">|</span> <span class="mi">0</span> <span class="bp">=&gt;</span> <span class="mi">2</span>
   <span class="bp">|</span> <span class="mi">1</span> <span class="bp">=&gt;</span> <span class="mi">0</span>
@@ -1394,15 +1361,16 @@ r_1&amp;=0\\
   <span class="gr">sorry</span>
 </pre></div>
 </div>
-<ol class="arabic simple" start="8">
+</li>
 <li><p>Show that the Fibonacci sequence <span class="math notranslate nohighlight">\((F_n)\)</span> satisfies: for all sufficiently large natural
-numbers <span class="math notranslate nohighlight">\(n\)</span>, <span class="math notranslate nohighlight">\(0.4 \cdot 1.6^n &lt; F_n &lt; 0.5 \cdot 1.7^n\)</span>.</p></li>
-</ol>
+numbers <span class="math notranslate nohighlight">\(n\)</span>, <span class="math notranslate nohighlight">\(0.4 \cdot 1.6^n &lt; F_n &lt; 0.5 \cdot 1.7^n\)</span>.</p>
 <div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">:</span> <span class="n">forall_sufficiently_large</span> <span class="n">n</span> <span class="o">:</span> <span class="n">&#8469;</span><span class="o">,</span>
     <span class="o">(</span><span class="mi">0</span><span class="bp">.</span><span class="mi">4</span><span class="o">:</span><span class="n">&#8474;</span><span class="o">)</span> <span class="bp">*</span> <span class="mi">1</span><span class="bp">.</span><span class="mi">6</span> <span class="bp">^</span> <span class="n">n</span> <span class="bp">&lt;</span> <span class="n">F</span> <span class="n">n</span> <span class="bp">&#8743;</span> <span class="n">F</span> <span class="n">n</span> <span class="bp">&lt;</span> <span class="o">(</span><span class="mi">0</span><span class="bp">.</span><span class="mi">5</span><span class="o">:</span><span class="n">&#8474;</span><span class="o">)</span> <span class="bp">*</span> <span class="mi">1</span><span class="bp">.</span><span class="mi">7</span> <span class="bp">^</span> <span class="n">n</span> <span class="o">:=</span> <span class="kd">by</span>
   <span class="gr">sorry</span>
 </pre></div>
 </div>
+</li>
+</ol>
 </section>
 </section>
 <section id="strong-induction">
@@ -1495,7 +1463,7 @@ try to invoke the lemma <code class="docutils literal notranslate"><span class="
 
 <span class="kd">example</span> <span class="o">:</span> <span class="n">forall_sufficiently_large</span> <span class="n">n</span> <span class="o">:</span> <span class="n">&#8469;</span><span class="o">,</span> <span class="n">d</span> <span class="n">n</span> <span class="bp">&#8805;</span> <span class="mi">4</span> <span class="bp">^</span> <span class="n">n</span> <span class="o">:=</span> <span class="kd">by</span>
   <span class="n">dsimp</span>
-  <span class="n">take</span> <span class="mi">4</span>
+  <span class="n">use</span> <span class="mi">4</span>
   <span class="n">apply</span> <span class="n">d_bound</span>
 </pre></div>
 </div>
@@ -1534,19 +1502,19 @@ valid.</p>
 <div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">theorem</span> <span class="n">exists_prime_factor</span> <span class="o">{</span><span class="n">n</span> <span class="o">:</span> <span class="n">&#8469;</span><span class="o">}</span> <span class="o">(</span><span class="n">hn2</span> <span class="o">:</span> <span class="mi">2</span> <span class="bp">&#8804;</span> <span class="n">n</span><span class="o">)</span> <span class="o">:</span> <span class="bp">&#8707;</span> <span class="n">p</span> <span class="o">:</span> <span class="n">&#8469;</span><span class="o">,</span> <span class="n">Prime</span> <span class="n">p</span> <span class="bp">&#8743;</span> <span class="n">p</span> <span class="bp">&#8739;</span> <span class="n">n</span> <span class="o">:=</span> <span class="kd">by</span>
   <span class="n">by_cases</span> <span class="n">hn</span> <span class="o">:</span> <span class="n">Prime</span> <span class="n">n</span>
   <span class="bp">.</span> <span class="c1">-- case 1: `n` is prime</span>
-    <span class="n">take</span> <span class="n">n</span>
+    <span class="n">use</span> <span class="n">n</span>
     <span class="n">constructor</span>
     <span class="bp">&#183;</span> <span class="n">apply</span> <span class="n">hn</span>
-    <span class="bp">&#183;</span> <span class="n">take</span> <span class="mi">1</span>
+    <span class="bp">&#183;</span> <span class="n">use</span> <span class="mi">1</span>
       <span class="n">ring</span>
   <span class="bp">.</span> <span class="c1">-- case 2: `n` is not prime</span>
     <span class="n">obtain</span> <span class="o">&#10216;</span><span class="n">m</span><span class="o">,</span> <span class="n">hmn</span><span class="o">,</span> <span class="n">_</span><span class="o">,</span> <span class="o">&#10216;</span><span class="n">x</span><span class="o">,</span> <span class="n">hx</span><span class="o">&#10217;&#10217;</span> <span class="o">:=</span> <span class="n">exists_factor_of_not_prime</span> <span class="n">hn</span> <span class="n">hn2</span>
     <span class="k">have</span> <span class="n">IH</span> <span class="o">:</span> <span class="bp">&#8707;</span> <span class="n">p</span><span class="o">,</span> <span class="n">Prime</span> <span class="n">p</span> <span class="bp">&#8743;</span> <span class="n">p</span> <span class="bp">&#8739;</span> <span class="n">m</span> <span class="o">:=</span> <span class="n">exists_prime_factor</span> <span class="n">hmn</span> <span class="c1">-- inductive hypothesis</span>
     <span class="n">obtain</span> <span class="o">&#10216;</span><span class="n">p</span><span class="o">,</span> <span class="n">hp</span><span class="o">,</span> <span class="n">y</span><span class="o">,</span> <span class="n">hy</span><span class="o">&#10217;</span> <span class="o">:=</span> <span class="n">IH</span>
-    <span class="n">take</span> <span class="n">p</span>
+    <span class="n">use</span> <span class="n">p</span>
     <span class="n">constructor</span>
     <span class="bp">&#183;</span> <span class="n">apply</span> <span class="n">hp</span>
-    <span class="bp">&#183;</span> <span class="n">take</span> <span class="n">x</span> <span class="bp">*</span> <span class="n">y</span>
+    <span class="bp">&#183;</span> <span class="n">use</span> <span class="n">x</span> <span class="bp">*</span> <span class="n">y</span>
       <span class="k">calc</span> <span class="n">n</span> <span class="bp">=</span> <span class="n">m</span> <span class="bp">*</span> <span class="n">x</span> <span class="o">:=</span> <span class="n">hx</span>
         <span class="n">_</span> <span class="bp">=</span> <span class="o">(</span><span class="n">p</span> <span class="bp">*</span> <span class="n">y</span><span class="o">)</span> <span class="bp">*</span> <span class="n">x</span> <span class="o">:=</span> <span class="kd">by</span> <span class="n">rw</span> <span class="o">[</span><span class="n">hy</span><span class="o">]</span>
         <span class="n">_</span> <span class="bp">=</span> <span class="n">p</span> <span class="bp">*</span> <span class="o">(</span><span class="n">x</span> <span class="bp">*</span> <span class="n">y</span><span class="o">)</span> <span class="o">:=</span> <span class="kd">by</span> <span class="n">ring</span>
@@ -1560,12 +1528,12 @@ valid.</p>
 <span class="math notranslate nohighlight">\(x\)</span>, with <span class="math notranslate nohighlight">\(x\)</span> odd, such that <span class="math notranslate nohighlight">\(n=2^ax\)</span>.</p>
 <p>Suggested approach: start with a case split on the parity of <span class="math notranslate nohighlight">\(n\)</span>, using the lemma
 <code class="docutils literal notranslate"><span class="pre">even_or_odd</span></code>.</p>
-</li>
-</ol>
 <div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">theorem</span> <span class="n">extract_pow_two</span> <span class="o">(</span><span class="n">n</span> <span class="o">:</span> <span class="n">&#8469;</span><span class="o">)</span> <span class="o">(</span><span class="n">hn</span> <span class="o">:</span> <span class="mi">0</span> <span class="bp">&lt;</span> <span class="n">n</span><span class="o">)</span> <span class="o">:</span> <span class="bp">&#8707;</span> <span class="n">a</span> <span class="n">x</span><span class="o">,</span> <span class="n">Odd</span> <span class="n">x</span> <span class="bp">&#8743;</span> <span class="n">n</span> <span class="bp">=</span> <span class="mi">2</span> <span class="bp">^</span> <span class="n">a</span> <span class="bp">*</span> <span class="n">x</span> <span class="o">:=</span> <span class="kd">by</span>
   <span class="gr">sorry</span>
 </pre></div>
 </div>
+</li>
+</ol>
 </section>
 </section>
 <section id="pascal-s-triangle">
@@ -1810,7 +1778,7 @@ P_{a,b+1} \ a! \ (b+1)! &amp;= (a+(b+1))!.\end{split}\]</div>
 \[P_{a,b}=\frac{(a+b)!}{a! \ b!}.\]</div>
 </div>
 <p>This fact is a trivial rearrangement of the theorem above, but the Lean proof is more complicated,
-due to issues with division, which in this course we largely avoid.  Don&#8217;t sweat the details here,
+due to issues with division, which in this book we largely avoid.  Don&#8217;t sweat the details here,
 or the two unfamiliar tactics <code class="docutils literal notranslate"><span class="pre">field_simp</span></code> and <code class="docutils literal notranslate"><span class="pre">norm_cast</span></code>.</p>
 <div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">(</span><span class="n">a</span> <span class="n">b</span> <span class="o">:</span> <span class="n">&#8469;</span><span class="o">)</span> <span class="o">:</span> <span class="o">(</span><span class="n">pascal</span> <span class="n">a</span> <span class="n">b</span> <span class="o">:</span> <span class="n">&#8474;</span><span class="o">)</span> <span class="bp">=</span> <span class="o">(</span><span class="n">a</span> <span class="bp">+</span> <span class="n">b</span><span class="o">)</span><span class="bp">!</span> <span class="bp">/</span> <span class="o">(</span><span class="n">a</span> <span class="bp">!</span> <span class="bp">*</span> <span class="n">b</span> <span class="bp">!</span><span class="o">)</span> <span class="o">:=</span> <span class="kd">by</span>
   <span class="k">have</span> <span class="n">ha</span> <span class="o">:=</span> <span class="n">factorial_pos</span> <span class="n">a</span>
@@ -1824,9 +1792,8 @@ or the two unfamiliar tactics <code class="docutils literal notranslate"><span c
 </section>
 <section id="id27">
 <h3><span class="section-number">6.5.4. </span>Exercises<a class="headerlink" href="#id27" title="Permalink to this headline">&#61633;</a></h3>
-<ol class="arabic simple">
-<li><p>Prove that for all natural numbers <span class="math notranslate nohighlight">\(a\)</span> and <span class="math notranslate nohighlight">\(b\)</span>, <span class="math notranslate nohighlight">\(P_{a,b} =P_{b,a}\)</span>.</p></li>
-</ol>
+<ol class="arabic">
+<li><p>Prove that for all natural numbers <span class="math notranslate nohighlight">\(a\)</span> and <span class="math notranslate nohighlight">\(b\)</span>, <span class="math notranslate nohighlight">\(P_{a,b} =P_{b,a}\)</span>.</p>
 <div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">theorem</span> <span class="n">pascal_symm</span> <span class="o">(</span><span class="n">m</span> <span class="n">n</span> <span class="o">:</span> <span class="n">&#8469;</span><span class="o">)</span> <span class="o">:</span> <span class="n">pascal</span> <span class="n">m</span> <span class="n">n</span> <span class="bp">=</span> <span class="n">pascal</span> <span class="n">n</span> <span class="n">m</span> <span class="o">:=</span> <span class="kd">by</span>
   <span class="k">match</span> <span class="n">m</span><span class="o">,</span> <span class="n">n</span> <span class="k">with</span>
   <span class="bp">|</span> <span class="mi">0</span><span class="o">,</span> <span class="mi">0</span> <span class="bp">=&gt;</span> <span class="gr">sorry</span>
@@ -1836,13 +1803,14 @@ or the two unfamiliar tactics <code class="docutils literal notranslate"><span c
 <span class="n">termination_by</span> <span class="n">_</span> <span class="n">a</span> <span class="n">b</span> <span class="bp">=&gt;</span> <span class="n">a</span> <span class="bp">+</span> <span class="n">b</span>
 </pre></div>
 </div>
-<ol class="arabic simple" start="2">
-<li><p>Prove using simple induction that for all natural numbers <span class="math notranslate nohighlight">\(a\)</span>, <span class="math notranslate nohighlight">\(P_{a,1} =a+1\)</span>.</p></li>
-</ol>
+</li>
+<li><p>Prove using simple induction that for all natural numbers <span class="math notranslate nohighlight">\(a\)</span>, <span class="math notranslate nohighlight">\(P_{a,1} =a+1\)</span>.</p>
 <div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">(</span><span class="n">a</span> <span class="o">:</span> <span class="n">&#8469;</span><span class="o">)</span> <span class="o">:</span> <span class="n">pascal</span> <span class="n">a</span> <span class="mi">1</span> <span class="bp">=</span> <span class="n">a</span> <span class="bp">+</span> <span class="mi">1</span> <span class="o">:=</span> <span class="kd">by</span>
   <span class="gr">sorry</span>
 </pre></div>
 </div>
+</li>
+</ol>
 </section>
 </section>
 <section id="the-division-algorithm">
@@ -1855,14 +1823,14 @@ on the integers by,</p>
 \[\begin{split}\operatorname{mod}(n, d)&amp;=
 \begin{cases}
 \operatorname{mod}(n + d, d),&amp;nd&lt;0\\
-\operatorname{mod}(n - d, d),&amp;0&lt;d(n-d)\\
+\operatorname{mod}(n - d, d),&amp;0&lt; d(n-d)\\
 0,&amp;n=d\\
 n,&amp;0\le nd\le d^2\text{ and }n\ne d
 \end{cases}\\
 \operatorname{div}(n, d)&amp;=
 \begin{cases}
 \operatorname{div}(n + d, d)-1,&amp;nd&lt;0\\
-\operatorname{div}(n - d, d)+1,&amp;0&lt;d(n-d)\\
+\operatorname{div}(n - d, d)+1,&amp;0&lt; d(n-d)\\
 1,&amp;n=d\\
 0,&amp;0\le nd\le d^2\text{ and }n\ne d
 \end{cases}\end{split}\]</div>
@@ -1871,18 +1839,47 @@ n,&amp;0\le nd\le d^2\text{ and }n\ne d
 places), and <span class="math notranslate nohighlight">\(\operatorname{mod}\)</span> computes the remainder of <span class="math notranslate nohighlight">\(n\)</span> on division by
 <span class="math notranslate nohighlight">\(d\)</span>.   For example,</p>
 <div class="math notranslate nohighlight">
-\[\begin{split}&amp;&amp;&amp;\qquad&amp;&amp;
-  \operatorname{mod}(11,4)&amp;&amp;\qquad&amp;&amp;
-  \operatorname{div}(11,4)\\
-0&amp;&lt;4(11-4)&amp;&amp;\qquad&amp;&amp;
-  =\operatorname{mod}(7,4)&amp;&amp;\qquad&amp;&amp;
-  =\operatorname{div}(7,4)+1\\
-0&amp;&lt;4(7-4)&amp;&amp;\qquad&amp;
-  &amp;=\operatorname{mod}(3,4)&amp;&amp;\qquad&amp;
-  &amp;=(\operatorname{div}(3,4)+1)+1\\
-0\le 4\cdot 3\le 4^2,4&amp;\ne 3&amp;&amp;\qquad&amp;
-&amp;=3&amp;&amp;\qquad&amp;&amp;=(0+1)+1\\
-&amp;&amp;&amp;&amp;&amp;&amp;&amp;&amp;&amp;=2.\end{split}\]</div>
+\[ \begin{align}\begin{aligned}&amp;
+&amp;
+&amp;\qquad
+&amp;
+&amp;\operatorname{mod}(11,4)
+&amp;
+&amp;\qquad
+&amp;
+&amp;\operatorname{div}(11,4)\\0&amp;&lt;4(11-4)
+&amp;
+&amp;\qquad
+&amp;
+&amp; =\operatorname{mod}(7,4)
+&amp;
+&amp;\qquad
+&amp;
+&amp; =\operatorname{div}(7,4)+1\\0&amp;&lt;4(7-4)
+&amp;
+&amp;\qquad
+&amp;
+&amp;=\operatorname{mod}(3,4)
+&amp;
+&amp;\qquad
+&amp;
+&amp;=(\operatorname{div}(3,4)+1)+1\\0\le 4\cdot 3\le 4^2,4&amp;\ne 3
+&amp;
+&amp;\qquad
+&amp;
+&amp;=3
+&amp;
+&amp;\qquad
+&amp;
+&amp;=(0+1)+1\\&amp;
+&amp;
+&amp;
+&amp;
+&amp;
+&amp;
+&amp;
+&amp;
+&amp;=2.\end{aligned}\end{align} \]</div>
 <p>These definitions are <em>well-founded</em> because each step of the definition depends only on previous
 terms <span class="math notranslate nohighlight">\(\operatorname{mod}(n, d)\)</span>, <span class="math notranslate nohighlight">\(\operatorname{div}(n, d)\)</span> for which the expression
 <span class="math notranslate nohighlight">\(2n - d\)</span> is strictly smaller in absolute value.  (This is not very obvious, although Lean can
@@ -2101,12 +2098,12 @@ integer <span class="math notranslate nohighlight">\(r\)</span>, with <span clas
 \[a \equiv \operatorname{mod}(a, b)\mod b.\]</div>
 </div>
 <div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">(</span><span class="n">a</span> <span class="n">b</span> <span class="o">:</span> <span class="n">&#8484;</span><span class="o">)</span> <span class="o">(</span><span class="n">h</span> <span class="o">:</span> <span class="mi">0</span> <span class="bp">&lt;</span> <span class="n">b</span><span class="o">)</span> <span class="o">:</span> <span class="bp">&#8707;</span> <span class="n">r</span> <span class="o">:</span> <span class="n">&#8484;</span><span class="o">,</span> <span class="mi">0</span> <span class="bp">&#8804;</span> <span class="n">r</span> <span class="bp">&#8743;</span> <span class="n">r</span> <span class="bp">&lt;</span> <span class="n">b</span> <span class="bp">&#8743;</span> <span class="n">a</span> <span class="bp">&#8801;</span> <span class="n">r</span> <span class="o">[</span><span class="n">ZMOD</span> <span class="n">b</span><span class="o">]</span> <span class="o">:=</span> <span class="kd">by</span>
-  <span class="n">take</span> <span class="n">fmod</span> <span class="n">a</span> <span class="n">b</span>
+  <span class="n">use</span> <span class="n">fmod</span> <span class="n">a</span> <span class="n">b</span>
   <span class="n">constructor</span>
   <span class="bp">&#183;</span> <span class="n">apply</span> <span class="n">fmod_nonneg_of_pos</span> <span class="n">a</span> <span class="n">h</span>
   <span class="n">constructor</span>
   <span class="bp">&#183;</span> <span class="n">apply</span> <span class="n">fmod_lt_of_pos</span> <span class="n">a</span> <span class="n">h</span>
-  <span class="bp">&#183;</span> <span class="n">take</span> <span class="n">fdiv</span> <span class="n">a</span> <span class="n">b</span>
+  <span class="bp">&#183;</span> <span class="n">use</span> <span class="n">fdiv</span> <span class="n">a</span> <span class="n">b</span>
     <span class="k">have</span> <span class="n">Hab</span> <span class="o">:</span> <span class="n">fmod</span> <span class="n">a</span> <span class="n">b</span> <span class="bp">+</span> <span class="n">b</span> <span class="bp">*</span> <span class="n">fdiv</span> <span class="n">a</span> <span class="n">b</span> <span class="bp">=</span> <span class="n">a</span> <span class="o">:=</span> <span class="n">fmod_add_fdiv</span> <span class="n">a</span> <span class="n">b</span>
     <span class="n">addarith</span> <span class="o">[</span><span class="n">Hab</span><span class="o">]</span>
 </pre></div>
@@ -2114,29 +2111,26 @@ integer <span class="math notranslate nohighlight">\(r\)</span>, with <span clas
 </section>
 <section id="id33">
 <h3><span class="section-number">6.6.6. </span>Exercises<a class="headerlink" href="#id33" title="Permalink to this headline">&#61633;</a></h3>
-<ol class="arabic simple">
+<ol class="arabic">
 <li><p>Prove the analogue of  <a class="reference internal" href="#mod-lt"><span class="std std-numref">Example 6.6.4</span></a> for <span class="math notranslate nohighlight">\(d\)</span> negative:
 For any integers <span class="math notranslate nohighlight">\(n\)</span> and <span class="math notranslate nohighlight">\(d\)</span>, with <span class="math notranslate nohighlight">\(d\)</span> negative, we have that
-<span class="math notranslate nohighlight">\(d&lt;\operatorname{mod}(n, d)\)</span>.</p></li>
-</ol>
+<span class="math notranslate nohighlight">\(d&lt;\operatorname{mod}(n, d)\)</span>.</p>
 <div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">theorem</span> <span class="n">lt_fmod_of_neg</span> <span class="o">(</span><span class="n">n</span> <span class="o">:</span> <span class="n">&#8484;</span><span class="o">)</span> <span class="o">{</span><span class="n">d</span> <span class="o">:</span> <span class="n">&#8484;</span><span class="o">}</span> <span class="o">(</span><span class="n">hd</span> <span class="o">:</span> <span class="n">d</span> <span class="bp">&lt;</span> <span class="mi">0</span><span class="o">)</span> <span class="o">:</span> <span class="n">d</span> <span class="bp">&lt;</span> <span class="n">fmod</span> <span class="n">n</span> <span class="n">d</span> <span class="o">:=</span> <span class="kd">by</span>
   <span class="gr">sorry</span>
 </pre></div>
 </div>
-<ol class="arabic" start="2">
+</li>
 <li><p>Consider the function <span class="math notranslate nohighlight">\(T\)</span> defined recursively on the integers by,</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}T(n)=
 \begin{cases}
-T(1-n)+2n-1,&amp;0&lt;n\\
-T(-n),&amp;n&lt;0\\
+T(1-n)+2n-1,&amp;0&lt; n\\
+T(-n),&amp;n&lt; 0\\
 0&amp;n=0.
 \end{cases}\end{split}\]</div>
 <p>This recursive definition is well-founded, since its self-references are strictly decreasing in
 <span class="math notranslate nohighlight">\(|3n-1|\)</span>.</p>
 <p>Prove that for all integers <span class="math notranslate nohighlight">\(n\)</span>, <span class="math notranslate nohighlight">\(T(n)=n^2\)</span>.</p>
-</li>
-</ol>
 <div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">def</span> <span class="n">T</span> <span class="o">(</span><span class="n">n</span> <span class="o">:</span> <span class="n">&#8484;</span><span class="o">)</span> <span class="o">:</span> <span class="n">&#8484;</span> <span class="o">:=</span>
   <span class="k">if</span> <span class="mi">0</span> <span class="bp">&lt;</span> <span class="n">n</span> <span class="k">then</span>
     <span class="n">T</span> <span class="o">(</span><span class="mi">1</span> <span class="bp">-</span> <span class="n">n</span><span class="o">)</span> <span class="bp">+</span> <span class="mi">2</span> <span class="bp">*</span> <span class="n">n</span> <span class="bp">-</span> <span class="mi">1</span>
@@ -2150,7 +2144,7 @@ T(-n),&amp;n&lt;0\\
   <span class="gr">sorry</span>
 </pre></div>
 </div>
-<ol class="arabic" start="3">
+</li>
 <li><p>Let <span class="math notranslate nohighlight">\(a\)</span> and <span class="math notranslate nohighlight">\(b\)</span> be integers, with <span class="math notranslate nohighlight">\(b\)</span> positive.  Prove that there exists a
 unique integer <span class="math notranslate nohighlight">\(r\)</span>, such that <span class="math notranslate nohighlight">\(a\equiv r\mod b\)</span>.</p>
 <p>This theorem is an upgrade to <a class="reference internal" href="#weak-division-algorithm"><span class="std std-numref">Example 6.6.5</span></a>, stating uniqueness
@@ -2168,17 +2162,17 @@ be integers, both in the range <span class="math notranslate nohighlight">\(0 \l
 </div></blockquote>
 <p>Then put all the pieces together, combining that with the argument from
 <a class="reference internal" href="#weak-division-algorithm"><span class="std std-numref">Example 6.6.5</span></a>.</p>
-</li>
-</ol>
-<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">theorem</span> <span class="n">uniqueness</span> <span class="o">(</span><span class="n">a</span> <span class="n">b</span> <span class="o">:</span> <span class="n">&#8484;</span><span class="o">)</span> <span class="o">(</span><span class="n">h</span> <span class="o">:</span> <span class="mi">0</span> <span class="bp">&lt;</span> <span class="n">b</span><span class="o">)</span> <span class="o">{</span><span class="n">r</span> <span class="n">s</span> <span class="o">:</span> <span class="n">&#8484;</span><span class="o">}</span> <span class="o">(</span><span class="n">hr</span> <span class="o">:</span> <span class="mi">0</span> <span class="bp">&#8804;</span> <span class="n">r</span> <span class="bp">&#8743;</span> <span class="n">r</span> <span class="bp">&lt;</span> <span class="n">b</span> <span class="bp">&#8743;</span> <span class="n">a</span> <span class="bp">&#8801;</span> <span class="n">r</span> <span class="o">[</span><span class="n">ZMOD</span> <span class="n">b</span><span class="o">])</span>
-    <span class="o">(</span><span class="n">hs</span> <span class="o">:</span> <span class="mi">0</span> <span class="bp">&#8804;</span> <span class="n">s</span> <span class="bp">&#8743;</span> <span class="n">s</span> <span class="bp">&lt;</span> <span class="n">b</span> <span class="bp">&#8743;</span> <span class="n">a</span> <span class="bp">&#8801;</span> <span class="n">s</span> <span class="o">[</span><span class="n">ZMOD</span> <span class="n">b</span><span class="o">])</span> <span class="o">:</span>
-    <span class="n">r</span> <span class="bp">=</span> <span class="n">s</span> <span class="o">:=</span> <span class="kd">by</span>
+<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">theorem</span> <span class="n">uniqueness</span> <span class="o">(</span><span class="n">a</span> <span class="n">b</span> <span class="o">:</span> <span class="n">&#8484;</span><span class="o">)</span> <span class="o">(</span><span class="n">h</span> <span class="o">:</span> <span class="mi">0</span> <span class="bp">&lt;</span> <span class="n">b</span><span class="o">)</span> <span class="o">{</span><span class="n">r</span> <span class="n">s</span> <span class="o">:</span> <span class="n">&#8484;</span><span class="o">}</span>
+    <span class="o">(</span><span class="n">hr</span> <span class="o">:</span> <span class="mi">0</span> <span class="bp">&#8804;</span> <span class="n">r</span> <span class="bp">&#8743;</span> <span class="n">r</span> <span class="bp">&lt;</span> <span class="n">b</span> <span class="bp">&#8743;</span> <span class="n">a</span> <span class="bp">&#8801;</span> <span class="n">r</span> <span class="o">[</span><span class="n">ZMOD</span> <span class="n">b</span><span class="o">])</span>
+    <span class="o">(</span><span class="n">hs</span> <span class="o">:</span> <span class="mi">0</span> <span class="bp">&#8804;</span> <span class="n">s</span> <span class="bp">&#8743;</span> <span class="n">s</span> <span class="bp">&lt;</span> <span class="n">b</span> <span class="bp">&#8743;</span> <span class="n">a</span> <span class="bp">&#8801;</span> <span class="n">s</span> <span class="o">[</span><span class="n">ZMOD</span> <span class="n">b</span><span class="o">])</span> <span class="o">:</span> <span class="n">r</span> <span class="bp">=</span> <span class="n">s</span> <span class="o">:=</span> <span class="kd">by</span>
   <span class="gr">sorry</span>
 
 <span class="kd">example</span> <span class="o">(</span><span class="n">a</span> <span class="n">b</span> <span class="o">:</span> <span class="n">&#8484;</span><span class="o">)</span> <span class="o">(</span><span class="n">h</span> <span class="o">:</span> <span class="mi">0</span> <span class="bp">&lt;</span> <span class="n">b</span><span class="o">)</span> <span class="o">:</span> <span class="bp">&#8707;!</span> <span class="n">r</span> <span class="o">:</span> <span class="n">&#8484;</span><span class="o">,</span> <span class="mi">0</span> <span class="bp">&#8804;</span> <span class="n">r</span> <span class="bp">&#8743;</span> <span class="n">r</span> <span class="bp">&lt;</span> <span class="n">b</span> <span class="bp">&#8743;</span> <span class="n">a</span> <span class="bp">&#8801;</span> <span class="n">r</span> <span class="o">[</span><span class="n">ZMOD</span> <span class="n">b</span><span class="o">]</span> <span class="o">:=</span> <span class="kd">by</span>
   <span class="gr">sorry</span>
 </pre></div>
 </div>
+</li>
+</ol>
 </section>
 </section>
 <section id="the-euclidean-algorithm">
@@ -2192,8 +2186,8 @@ be integers, both in the range <span class="math notranslate nohighlight">\(0 \l
 <div><div class="math notranslate nohighlight">
 \[\begin{split}\operatorname{gcd}(a,b)=
 \begin{cases}
-  \operatorname{gcd}(b,\operatorname{mod}(a,b)) &amp; 0&lt;b\\
-  \operatorname{gcd}(b,\operatorname{mod}(a,-b)) &amp; b&lt;0\\
+  \operatorname{gcd}(b,\operatorname{mod}(a,b)) &amp; 0&lt; b\\
+  \operatorname{gcd}(b,\operatorname{mod}(a,-b)) &amp; b&lt; 0\\
   a &amp; b=0\text{ and }0\le a\\
   -a &amp; b=0\text{ and }a&lt;0.
 \end{cases}\end{split}\]</div>
@@ -2202,11 +2196,27 @@ be integers, both in the range <span class="math notranslate nohighlight">\(0 \l
 <p>Let&#8217;s practice evaluating the <span class="math notranslate nohighlight">\(\operatorname{gcd}\)</span> function.  We calculate
 <span class="math notranslate nohighlight">\(\operatorname{gcd}(-21,15)\)</span>:</p>
 <div class="math notranslate nohighlight">
-\[\begin{split}\operatorname{mod}(-21,15)&amp;=9&amp;&amp;\qquad&amp;\operatorname{gcd}(-21,15)&amp;=\operatorname{gcd}(15,9)\\
-\operatorname{mod}(15,9)&amp;=6&amp;&amp;\qquad&amp;&amp;=\operatorname{gcd}(9,6)\\
-\operatorname{mod}(9,6)&amp;=3&amp;&amp;\qquad&amp;&amp;=\operatorname{gcd}(6,3)\\
-\operatorname{mod}(6,3)&amp;=0&amp;&amp;\qquad&amp;&amp;=\operatorname{gcd}(3,0)\\
-&amp;&amp;&amp;\qquad&amp;&amp;=3.\end{split}\]</div>
+\[ \begin{align}\begin{aligned}\operatorname{mod}(-21,15)&amp;=9
+&amp;
+&amp;\qquad
+&amp;
+\operatorname{gcd}(-21,15)&amp;=\operatorname{gcd}(15,9)\\\operatorname{mod}(15,9)&amp;=6
+&amp;
+&amp;\qquad
+&amp;
+&amp;=\operatorname{gcd}(9,6)\\\operatorname{mod}(9,6)&amp;=3
+&amp;
+&amp;\qquad
+&amp;
+&amp;=\operatorname{gcd}(6,3)\\\operatorname{mod}(6,3)&amp;=0
+&amp;
+&amp;\qquad
+&amp;
+&amp;=\operatorname{gcd}(3,0)\\&amp;
+&amp;
+&amp;\qquad
+&amp;
+&amp;=3.\end{aligned}\end{align} \]</div>
 <p>(Remember that <span class="math notranslate nohighlight">\(\operatorname{mod}(a,b)\)</span> is the &#8220;remainder&#8221; function, defined in
 <a class="reference internal" href="#constructive-division-algorithm-def"><span class="std std-numref">Definition 6.6.1</span></a>.)</p>
 <p>As in <a class="reference internal" href="#pascal-def"><span class="std std-numref">Definition 6.5.1</span></a> and
@@ -2493,12 +2503,12 @@ termination explanation at the end, like this:</p>
     <span class="n">apply</span> <span class="n">gcd_dvd_left</span> <span class="n">b</span> <span class="o">(</span><span class="n">fmod</span> <span class="n">a</span> <span class="o">(</span><span class="bp">-</span><span class="n">b</span><span class="o">))</span> <span class="c1">-- inductive hypothesis</span>
   <span class="bp">&#183;</span> <span class="c1">-- case `b = 0`, `0 &#8804; a`</span>
     <span class="k">have</span> <span class="n">hb</span> <span class="o">:</span> <span class="n">b</span> <span class="bp">=</span> <span class="mi">0</span> <span class="o">:=</span> <span class="n">le_antisymm</span> <span class="n">h1</span> <span class="n">h2</span>
-    <span class="n">take</span> <span class="mi">0</span>
+    <span class="n">use</span> <span class="mi">0</span>
     <span class="k">calc</span> <span class="n">b</span> <span class="bp">=</span> <span class="mi">0</span> <span class="o">:=</span> <span class="n">hb</span>
       <span class="n">_</span> <span class="bp">=</span> <span class="n">a</span> <span class="bp">*</span> <span class="mi">0</span> <span class="o">:=</span> <span class="kd">by</span> <span class="n">ring</span>
   <span class="bp">&#183;</span> <span class="c1">-- case `b = 0`, `a &lt; 0`</span>
     <span class="k">have</span> <span class="n">hb</span> <span class="o">:</span> <span class="n">b</span> <span class="bp">=</span> <span class="mi">0</span> <span class="o">:=</span> <span class="n">le_antisymm</span> <span class="n">h1</span> <span class="n">h2</span>
-    <span class="n">take</span> <span class="mi">0</span>
+    <span class="n">use</span> <span class="mi">0</span>
     <span class="k">calc</span> <span class="n">b</span> <span class="bp">=</span> <span class="mi">0</span> <span class="o">:=</span> <span class="n">hb</span>
       <span class="n">_</span> <span class="bp">=</span> <span class="bp">-</span><span class="n">a</span> <span class="bp">*</span> <span class="mi">0</span> <span class="o">:=</span> <span class="kd">by</span> <span class="n">ring</span>
 
@@ -2513,7 +2523,7 @@ termination explanation at the end, like this:</p>
     <span class="k">have</span> <span class="n">H</span> <span class="o">:</span> <span class="n">fmod</span> <span class="n">a</span> <span class="n">b</span> <span class="bp">+</span> <span class="n">b</span> <span class="bp">*</span> <span class="n">fdiv</span> <span class="n">a</span> <span class="n">b</span> <span class="bp">=</span> <span class="n">a</span> <span class="o">:=</span> <span class="n">fmod_add_fdiv</span> <span class="n">a</span> <span class="n">b</span>
     <span class="n">set</span> <span class="n">q</span> <span class="o">:=</span> <span class="n">fdiv</span> <span class="n">a</span> <span class="n">b</span>
     <span class="n">set</span> <span class="n">r</span> <span class="o">:=</span> <span class="n">fmod</span> <span class="n">a</span> <span class="n">b</span>
-    <span class="n">take</span> <span class="n">l</span> <span class="bp">+</span> <span class="n">k</span> <span class="bp">*</span> <span class="n">q</span>
+    <span class="n">use</span> <span class="n">l</span> <span class="bp">+</span> <span class="n">k</span> <span class="bp">*</span> <span class="n">q</span>
     <span class="k">calc</span> <span class="n">a</span> <span class="bp">=</span> <span class="n">r</span> <span class="bp">+</span> <span class="n">b</span> <span class="bp">*</span> <span class="n">q</span> <span class="o">:=</span> <span class="kd">by</span> <span class="n">rw</span> <span class="o">[</span><span class="n">H</span><span class="o">]</span>
       <span class="n">_</span> <span class="bp">=</span> <span class="n">gcd</span> <span class="n">b</span> <span class="n">r</span> <span class="bp">*</span> <span class="n">l</span> <span class="bp">+</span> <span class="o">(</span><span class="n">gcd</span> <span class="n">b</span> <span class="n">r</span> <span class="bp">*</span> <span class="n">k</span><span class="o">)</span> <span class="bp">*</span> <span class="n">q</span> <span class="o">:=</span> <span class="kd">by</span> <span class="n">rw</span> <span class="o">[</span><span class="bp">&#8592;</span> <span class="n">hk</span><span class="o">,</span> <span class="bp">&#8592;</span> <span class="n">hl</span><span class="o">]</span>
       <span class="n">_</span> <span class="bp">=</span> <span class="n">gcd</span> <span class="n">b</span> <span class="n">r</span> <span class="bp">*</span> <span class="o">(</span><span class="n">l</span> <span class="bp">+</span> <span class="n">k</span> <span class="bp">*</span> <span class="n">q</span><span class="o">)</span> <span class="o">:=</span> <span class="kd">by</span> <span class="n">ring</span>
@@ -2525,15 +2535,15 @@ termination explanation at the end, like this:</p>
     <span class="k">have</span> <span class="n">H</span> <span class="o">:=</span> <span class="n">fmod_add_fdiv</span> <span class="n">a</span> <span class="o">(</span><span class="bp">-</span><span class="n">b</span><span class="o">)</span>
     <span class="n">set</span> <span class="n">q</span> <span class="o">:=</span> <span class="n">fdiv</span> <span class="n">a</span> <span class="o">(</span><span class="bp">-</span><span class="n">b</span><span class="o">)</span>
     <span class="n">set</span> <span class="n">r</span> <span class="o">:=</span> <span class="n">fmod</span> <span class="n">a</span> <span class="o">(</span><span class="bp">-</span><span class="n">b</span><span class="o">)</span>
-    <span class="n">take</span> <span class="n">l</span> <span class="bp">-</span> <span class="n">k</span> <span class="bp">*</span> <span class="n">q</span>
+    <span class="n">use</span> <span class="n">l</span> <span class="bp">-</span> <span class="n">k</span> <span class="bp">*</span> <span class="n">q</span>
     <span class="k">calc</span> <span class="n">a</span> <span class="bp">=</span> <span class="n">r</span> <span class="bp">+</span> <span class="o">(</span><span class="bp">-</span><span class="n">b</span><span class="o">)</span> <span class="bp">*</span> <span class="n">q</span> <span class="o">:=</span> <span class="kd">by</span> <span class="n">rw</span> <span class="o">[</span><span class="n">H</span><span class="o">]</span>
       <span class="n">_</span> <span class="bp">=</span> <span class="n">gcd</span> <span class="n">b</span> <span class="n">r</span> <span class="bp">*</span> <span class="n">l</span> <span class="bp">+</span> <span class="o">(</span><span class="bp">-</span> <span class="o">(</span><span class="n">gcd</span> <span class="n">b</span> <span class="n">r</span> <span class="bp">*</span> <span class="n">k</span><span class="o">))</span> <span class="bp">*</span> <span class="n">q</span> <span class="o">:=</span> <span class="kd">by</span> <span class="n">rw</span> <span class="o">[</span><span class="bp">&#8592;</span> <span class="n">hk</span><span class="o">,</span> <span class="bp">&#8592;</span> <span class="n">hl</span><span class="o">]</span>
       <span class="n">_</span> <span class="bp">=</span> <span class="n">gcd</span> <span class="n">b</span> <span class="n">r</span> <span class="bp">*</span> <span class="o">(</span><span class="n">l</span> <span class="bp">-</span> <span class="n">k</span> <span class="bp">*</span> <span class="n">q</span><span class="o">)</span> <span class="o">:=</span> <span class="kd">by</span> <span class="n">ring</span>
   <span class="bp">&#183;</span> <span class="c1">-- case `b = 0`, `0 &#8804; a`</span>
-    <span class="n">take</span> <span class="mi">1</span>
+    <span class="n">use</span> <span class="mi">1</span>
     <span class="n">ring</span>
   <span class="bp">&#183;</span> <span class="c1">-- case `b = 0`, `a &lt; 0`</span>
-    <span class="n">take</span> <span class="bp">-</span><span class="mi">1</span>
+    <span class="n">use</span> <span class="bp">-</span><span class="mi">1</span>
     <span class="n">ring</span>
 
 <span class="kd">end</span>
@@ -2590,19 +2600,33 @@ recursion, it is convenient to calculate them jointly in advance:</p>
 &amp;=3,\end{split}\]</div>
 <p>as before.  To calculate <span class="math notranslate nohighlight">\(L(a,b)\)</span> and <span class="math notranslate nohighlight">\(R(a,b)\)</span>, it is convenient to work backwards:</p>
 <div class="math notranslate nohighlight">
-\[\begin{split}L(3,0)&amp;=1&amp;\qquad R(3,0)&amp;=0\\
-L(6,3)&amp;=R(3,0)&amp;\qquad R(6,3)&amp;=L(3,0)-\operatorname{div}(6,3)R(3,0)\\
-&amp;=0&amp;\qquad&amp;=1-2\cdot 0\\
-&amp;&amp;\qquad&amp;=1\\
-L(9,6)&amp;=R(6,3)&amp;\qquad R(9,6)&amp;=L(6,3)-\operatorname{div}(9,6)R(6,3)\\
-&amp;=1&amp;\qquad&amp;=0-1\cdot 1\\
-&amp;&amp;\qquad&amp;=-1\\
-L(15,9)&amp;=R(9,6)&amp;\qquad R(15,9)&amp;=L(9,6)-\operatorname{div}(15,9)R(9,6)\\
-&amp;=-1&amp;\qquad&amp;=1-1\cdot -1\\
-&amp;&amp;\qquad&amp;=2\\
-L(-21,15)&amp;=R(15,9)&amp;\qquad R(-21,15)&amp;=L(15,9)-\operatorname{div}(-21,15)R(15,9)\\
-&amp;=2&amp;\qquad&amp;=-1-(-2)\cdot 2\\
-&amp;&amp;\qquad&amp;=3\end{split}\]</div>
+\[ \begin{align}\begin{aligned}L(3,0)&amp;=1
+&amp;
+\qquad R(3,0)&amp;=0\\L(6,3)&amp;=R(3,0)
+&amp;
+\qquad R(6,3)&amp;=L(3,0)-\operatorname{div}(6,3)R(3,0)\\&amp;=0
+&amp;
+\qquad&amp;=1-2\cdot 0\\&amp;
+&amp;
+\qquad&amp;=1\\L(9,6)&amp;=R(6,3)
+&amp;
+\qquad R(9,6)&amp;=L(6,3)-\operatorname{div}(9,6)R(6,3)\\&amp;=1
+&amp;
+\qquad&amp;=0-1\cdot 1\\&amp;
+&amp;
+\qquad&amp;=-1\\L(15,9)&amp;=R(9,6)
+&amp;
+\qquad R(15,9)&amp;=L(9,6)-\operatorname{div}(15,9)R(9,6)\\&amp;=-1
+&amp;
+\qquad&amp;=1-1\cdot -1\\&amp;
+&amp;
+\qquad&amp;=2\\L(-21,15)&amp;=R(15,9)
+&amp;
+\qquad R(-21,15)&amp;=L(15,9)-\operatorname{div}(-21,15)R(15,9)\\&amp;=2
+&amp;
+\qquad&amp;=-1-(-2)\cdot 2\\&amp;
+&amp;
+\qquad&amp;=3\end{aligned}\end{align} \]</div>
 <p>In Lean this mutual-recursion definition looks similar to the mutual-induction proof in
 <a class="reference internal" href="#common-divisor"><span class="std std-numref">Example 6.7.3</span></a>; like that example it is enclosed in a block marked
 <code class="docutils literal notranslate"><span class="pre">mutual</span></code>.</p>
@@ -2762,7 +2786,7 @@ that <span class="math notranslate nohighlight">\(xa+yb=\operatorname{gcd}(a,b)\
 have this property.</p>
 </div>
 <div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">theorem</span> <span class="n">bezout</span> <span class="o">(</span><span class="n">a</span> <span class="n">b</span> <span class="o">:</span> <span class="n">&#8484;</span><span class="o">)</span> <span class="o">:</span> <span class="bp">&#8707;</span> <span class="n">x</span> <span class="n">y</span> <span class="o">:</span> <span class="n">&#8484;</span><span class="o">,</span> <span class="n">x</span> <span class="bp">*</span> <span class="n">a</span> <span class="bp">+</span> <span class="n">y</span> <span class="bp">*</span> <span class="n">b</span> <span class="bp">=</span> <span class="n">gcd</span> <span class="n">a</span> <span class="n">b</span> <span class="o">:=</span> <span class="kd">by</span>
-  <span class="n">take</span> <span class="n">L</span> <span class="n">a</span> <span class="n">b</span><span class="o">,</span> <span class="n">R</span> <span class="n">a</span> <span class="n">b</span>
+  <span class="n">use</span> <span class="n">L</span> <span class="n">a</span> <span class="n">b</span><span class="o">,</span> <span class="n">R</span> <span class="n">a</span> <span class="n">b</span>
   <span class="n">apply</span> <span class="n">L_mul_add_R_mul</span>
 </pre></div>
 </div>
@@ -2776,12 +2800,12 @@ have this property.</p>
 <span class="math notranslate nohighlight">\(\operatorname{gcd}(a,b)\)</span>.</p>
 <p>This problem does not need an induction; it is a direct corollary of B&#233;zout&#8217;s identity
 (<a class="reference internal" href="#bezout-gcd"><span class="std std-numref">Example 6.7.6</span></a>).</p>
-</li>
-</ol>
 <div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">theorem</span> <span class="n">gcd_maximal</span> <span class="o">{</span><span class="n">d</span> <span class="n">a</span> <span class="n">b</span> <span class="o">:</span> <span class="n">&#8484;</span><span class="o">}</span> <span class="o">(</span><span class="n">ha</span> <span class="o">:</span> <span class="n">d</span> <span class="bp">&#8739;</span> <span class="n">a</span><span class="o">)</span> <span class="o">(</span><span class="n">hb</span> <span class="o">:</span> <span class="n">d</span> <span class="bp">&#8739;</span> <span class="n">b</span><span class="o">)</span> <span class="o">:</span> <span class="n">d</span> <span class="bp">&#8739;</span> <span class="n">gcd</span> <span class="n">a</span> <span class="n">b</span> <span class="o">:=</span> <span class="kd">by</span>
   <span class="gr">sorry</span>
 </pre></div>
 </div>
+</li>
+</ol>
 </section>
 </section>
 </section>

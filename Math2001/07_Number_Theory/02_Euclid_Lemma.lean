@@ -3,7 +3,7 @@ import Library.Theory.GCD
 import Library.Theory.Prime
 import Library.Tactic.Numbers
 import Library.Tactic.Rel
-import Library.Tactic.Take
+import Library.Tactic.Use
 
 attribute [-instance] Int.instDivInt_1 Int.instDivInt Nat.instDivNat
 
@@ -11,7 +11,7 @@ attribute [-instance] Int.instDivInt_1 Int.instDivInt Nat.instDivNat
 theorem gauss_lemma {d a b : ℤ} (h1 : d ∣ a * b) (h2 : gcd a d = 1) : d ∣ b := by
   obtain ⟨x, y, h⟩ := bezout a d
   obtain ⟨z, hz⟩ := h1
-  take x * z + b * y
+  use x * z + b * y
   calc b = b * 1 := by ring
     _ = b * gcd a d := by rw [h2]
     _ = b * (x * a + y * d) := by rw [h]
@@ -24,7 +24,8 @@ theorem euclid_lemma {a b p : ℕ} (hp : Prime p) (H : p ∣ a * b) : p ∣ a �
   -- write down everything we know about `gcd (a:ℤ) (p:ℤ)`
   have hap1 : gcd (a:ℤ) (p:ℤ) ∣ (a:ℤ) := gcd_dvd_left (a:ℤ) (p:ℤ)
   have hap2 : gcd (a:ℤ) (p:ℤ) ∣ (p:ℤ) := gcd_dvd_right (a:ℤ) (p:ℤ)
-  have h_gauss : (p:ℤ) ∣ (a:ℤ) * (b:ℤ) → gcd (a:ℤ) (p:ℤ) = 1 → (p:ℤ) ∣ (b:ℤ) := gauss_lemma
+  have h_gauss : (p:ℤ) ∣ (a:ℤ) * (b:ℤ) → gcd (a:ℤ) (p:ℤ) = 1 → (p:ℤ) ∣ (b:ℤ) :=
+    gauss_lemma
   have hgcd : 0 ≤ gcd (a:ℤ) (p:ℤ) := gcd_nonneg (a:ℤ) (p:ℤ)
   -- convert to `ℕ` facts
   lift gcd a p to ℕ using hgcd with d hd

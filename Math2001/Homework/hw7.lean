@@ -7,7 +7,7 @@ import Library.Tactic.Cancel
 import Library.Tactic.ExistsDelaborator
 import Library.Tactic.Numbers
 import Library.Tactic.Extra
-import Library.Tactic.Take
+import Library.Tactic.Use
 
 set_option linter.unusedVariables false
 set_option pp.unicode.fun true

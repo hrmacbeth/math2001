@@ -5,7 +5,7 @@ import Library.Tactic.Addarith
 import Library.Tactic.Induction
 import Library.Tactic.Numbers
 import Library.Tactic.Extra
-import Library.Tactic.Take
+import Library.Tactic.Use
 
 attribute [-instance] Int.instDivInt_1 Int.instDivInt Nat.instDivNat
 
@@ -29,12 +29,12 @@ def b : ℕ → ℤ
 example (n : ℕ) : Odd (b n) := by
   simple_induction n with k hk
   · -- base case
-    take 1
+    use 1
     calc b 0 = 3 := by rw [b]
       _ = 2 * 1 + 1 := by numbers
   · -- inductive step
     obtain ⟨x, hx⟩ := hk
-    take 2 * x ^ 2 + 2 * x - 1
+    use 2 * x ^ 2 + 2 * x - 1
     calc b (k + 1) = b k ^ 2 - 2 := by rw [b]
       _ = (2 * x + 1) ^ 2 - 2 := by rw [hx]
       _ = 2 * (2 * x ^ 2 + 2 * x - 1) + 1 := by ring

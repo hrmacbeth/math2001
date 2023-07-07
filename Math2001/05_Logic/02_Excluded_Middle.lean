@@ -2,7 +2,7 @@
 import Mathlib.Data.Real.Basic
 import Library.Theory.Prime
 import Library.Tactic.Numbers
-import Library.Tactic.Take
+import Library.Tactic.Use
 import Library.Tactic.TruthTable
 
 attribute [-instance] Int.instDivInt_1 Int.instDivInt EuclideanDomain.instDiv Nat.instDivNat
@@ -56,18 +56,18 @@ theorem not_superpowered_three : ¬ Superpowered 3 := by
   · apply not_prime 2
     · numbers -- show `2 ≠ 1` 
     · numbers -- show `2 ≠ 4` 
-    take 2
+    use 2
     numbers -- show `4 = 2 * 2`
   contradiction
 
 
 example : ∃ k : ℕ, Superpowered k ∧ ¬ Superpowered (k + 1) := by
   by_cases h2 : Superpowered 2
-  · take 2
+  · use 2
     constructor
     · apply h2
     · apply not_superpowered_three
-  · take 1
+  · use 1
     constructor
     · apply superpowered_one
     · apply h2      

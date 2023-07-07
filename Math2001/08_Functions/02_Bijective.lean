@@ -5,7 +5,7 @@ import Library.Tactic.ExistsDelaborator
 import Library.Tactic.FiniteInductive
 import Library.Tactic.Numbers
 import Library.Tactic.Extra
-import Library.Tactic.Take
+import Library.Tactic.Use
 
 attribute [-instance] Int.instDivInt_1 Int.instDivInt EuclideanDomain.instDiv Nat.instDivNat
 set_option push_neg.use_distrib true
@@ -27,7 +27,7 @@ example : Bijective h := by
       _ = x2 := by ring
   · dsimp [Surjective]
     intro y
-    take (y + 5) / 2
+    use (y + 5) / 2
     calc h ((y + 5) / 2) = 2 * ((y + 5) / 2) - 5 := by rfl
       _ = y := by ring
 
@@ -41,7 +41,7 @@ example : ¬ Bijective a := by
   left
   dsimp [Injective]
   push_neg
-  take 0, 1
+  use 0, 1
   constructor
   · calc a 0 = 0 ^ 3 - 0 := by rfl
       _ = 1 ^ 3 - 1 := by numbers
@@ -72,7 +72,7 @@ example : ¬ Bijective f := by
   right
   dsimp [Surjective]
   push_neg
-  take neutron
+  use neutron
   intro x
   cases x <;> inductive_type
 
@@ -83,7 +83,7 @@ example {f : X → Y} : Bijective f ↔ ∀ y, ∃! x, f x = y := by
     intro h y
     obtain ⟨h_inj, h_surj⟩ := h
     obtain ⟨x, hx⟩ := h_surj y
-    take x
+    use x
     dsimp
     constructor
     · apply hx
@@ -108,7 +108,7 @@ example {f : X → Y} : Bijective f ↔ ∀ y, ∃! x, f x = y := by
     · -- `f` is surjective
       intro y
       obtain ⟨x, hx, hx'⟩ := h y
-      take x
+      use x
       apply hx
 
 
@@ -127,9 +127,9 @@ example : ∀ f : Celestial → Celestial, Injective f → Bijective f := by
   | sun, moon => 
     intro y
     cases y
-    · take sun
+    · use sun
       apply h_sun
-    · take moon
+    · use moon
       apply h_moon 
   | moon, sun => sorry
   | moon, moon => sorry
@@ -137,7 +137,7 @@ example : ∀ f : Celestial → Celestial, Injective f → Bijective f := by
 
 example : ¬ ∀ f : ℕ → ℕ, Injective f → Bijective f := by
   push_neg
-  take fun n ↦ n + 1
+  use fun n ↦ n + 1
   constructor
   · -- the function is injective
     intro n1 n2 hn
@@ -149,7 +149,7 @@ example : ¬ ∀ f : ℕ → ℕ, Injective f → Bijective f := by
     -- specifically, it's not surjective
     dsimp [Surjective]
     push_neg
-    take 0
+    use 0
     intro n
     apply ne_of_gt
     extra

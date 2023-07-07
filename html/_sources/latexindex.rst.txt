@@ -1,0 +1,19 @@
+header for testing
+==================
+
+.. toctree::
+   :maxdepth: 2
+
+   00_Introduction
+   01_Proofs_by_Calculation
+   02_Proofs_with_Structure
+   03_Parity_and_Divisibility
+   04_Proofs_with_Structure_II
+   05_Logic
+   06_Induction
+   07_Number_Theory
+   08_Functions
+   09_Sets
+   10_Relations 
+   Index_of_Tactics
+   Mainstream_Lean

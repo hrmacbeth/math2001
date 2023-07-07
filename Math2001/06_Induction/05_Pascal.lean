@@ -1,5 +1,4 @@
 /- Copyright (c) Heather Macbeth, 2023.  All rights reserved. -/
-import Library.Theory.Factorial
 import Library.Tactic.Induction
 import Library.Tactic.Extra
 import Mathlib.Tactic.FieldSimp

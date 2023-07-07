@@ -5,7 +5,7 @@ import Library.Tactic.Addarith
 import Library.Tactic.Cancel
 import Library.Tactic.Numbers
 import Library.Tactic.Extra
-import Library.Tactic.Take
+import Library.Tactic.Use
 
 attribute [-instance] Int.instDivInt_1 Int.instDivInt EuclideanDomain.instDiv Nat.instDivNat
 
@@ -29,12 +29,12 @@ example {t : ℝ} (h : ∃ a : ℝ, a * t < 0) : t ≠ 0 := by
   · sorry
 
 example : ∃ n : ℤ, 12 * n = 84 := by
-  take 7
+  use 7
   numbers
 
 
 example (x : ℝ) : ∃ y : ℝ, y > x := by
-  take x + 1
+  use x + 1
   extra
 
 
@@ -47,8 +47,9 @@ example (a : ℤ) : ∃ m n : ℤ, m ^ 2 - n ^ 2 = 2 * a + 1 := by
 example {p q : ℝ} (h : p < q) : ∃ x, p < x ∧ x < q := by
   sorry
 
-example : ∃ a b c d : ℕ, a ^ 3 + b ^ 3 = 1729 ∧ c ^ 3 + d ^ 3 = 1729 ∧ a ≠ c ∧ a ≠ d := by
-  take 1, 12, 9, 10
+example : ∃ a b c d : ℕ,
+    a ^ 3 + b ^ 3 = 1729 ∧ c ^ 3 + d ^ 3 = 1729 ∧ a ≠ c ∧ a ≠ d := by
+  use 1, 12, 9, 10
   constructor
   numbers
   constructor

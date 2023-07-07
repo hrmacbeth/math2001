@@ -5,7 +5,7 @@ import Library.Tactic.ExistsDelaborator
 import Library.Tactic.FiniteInductive
 import Library.Tactic.Numbers
 import Library.Tactic.Rel
-import Library.Tactic.Take
+import Library.Tactic.Use
 
 
 attribute [-instance] Int.instDivInt_1 Int.instDivInt EuclideanDomain.instDiv Nat.instDivNat
@@ -73,7 +73,7 @@ theorem exists_inverse_of_bijective {f : X → Y} (hf : Bijective f) :
   obtain ⟨h_inj, h_surj⟩ := hf
   dsimp [Surjective] at h_surj
   choose g hg using h_surj
-  take g
+  use g
   dsimp [Inverse]
   constructor
   · -- prove `g ∘ f = id` 
@@ -88,7 +88,8 @@ theorem exists_inverse_of_bijective {f : X → Y} (hf : Bijective f) :
     apply hg
 
 
-theorem bijective_of_inverse {f : X → Y} {g : Y → X} (h : Inverse f g) : Bijective f := by
+theorem bijective_of_inverse {f : X → Y} {g : Y → X} (h : Inverse f g) :
+    Bijective f := by
   dsimp [Inverse] at h
   obtain ⟨hgf, hfg⟩ := h
   constructor
@@ -103,7 +104,7 @@ theorem bijective_of_inverse {f : X → Y} {g : Y → X} (h : Inverse f g) : Bij
       _ = x2 := by rfl
   · -- `f` is surjective
     intro y
-    take g y
+    use g y
     calc f (g y) = (f ∘ g) y := by rfl
       _ = id y := by rw [hfg]
       _ = y := by rfl
@@ -165,5 +166,6 @@ example {f : X → Y} (hf : Surjective f) : ∃ g : Y → X, f ∘ g = id := by
 example {f : X → Y} {g : Y → X} (h : Inverse f g) : Inverse g f := by
   sorry
 
-example {f : X → Y} {g1 g2 : Y → X} (h1 : Inverse f g1) (h2 : Inverse f g2) : g1 = g2 := by
+example {f : X → Y} {g1 g2 : Y → X} (h1 : Inverse f g1) (h2 : Inverse f g2) :
+    g1 = g2 := by
   sorry

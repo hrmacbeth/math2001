@@ -8,7 +8,7 @@ import Library.Tactic.ModCases
 import Library.Tactic.Numbers
 import Library.Tactic.Product
 import Library.Tactic.Extra
-import Library.Tactic.Take
+import Library.Tactic.Use
 
 attribute [-instance] Int.instDivInt_1 Int.instDivInt EuclideanDomain.instDiv Nat.instDivNat
 set_option push_neg.use_distrib true
@@ -31,7 +31,7 @@ example : Injective q := by
 example : ¬ Surjective q := by
   dsimp [Surjective]
   push_neg
-  take (0, 1)
+  use (0, 1)
   intro m hm
   dsimp [q] at hm
   obtain ⟨hm1, hm2⟩ := hm
@@ -41,7 +41,7 @@ example : ¬ Surjective q := by
 
 example : Bijective (fun ((m, n) : ℤ × ℤ) ↦ (m + n, m + 2 * n)) := by
   rw [bijective_iff_exists_inverse]
-  take fun (a, b) ↦ (2 * a - b, b - a)
+  use fun (a, b) ↦ (2 * a - b, b - a)
   constructor
   · funext (m, n)
     dsimp
@@ -58,7 +58,7 @@ example : ¬ Bijective (fun ((m, n) : ℤ × ℤ) ↦ (m + n, m - n)) := by
   dsimp [Bijective, Injective, Surjective]
   push_neg
   right
-  take (0, 1)
+  use (0, 1)
   intro (m, n) h
   dsimp at h
   obtain ⟨h1, h2⟩ := h
@@ -82,7 +82,7 @@ example : Injective (fun ((x, y) : ℝ × ℝ) ↦ (x + y, x - y, y)) := by
 example : ¬ Injective (fun ((x, y) : ℝ × ℝ) ↦ x + y) := by
   dsimp [Injective]
   push_neg
-  take (0, 0), (1, -1)
+  use (0, 0), (1, -1)
   dsimp
   constructor
   · numbers
@@ -90,7 +90,7 @@ example : ¬ Injective (fun ((x, y) : ℝ × ℝ) ↦ x + y) := by
     
 example : Surjective (fun ((x, y) : ℝ × ℝ) ↦ x + y) := by
   intro a
-  take (a, 0)
+  use (a, 0)
   dsimp
   ring
 
@@ -98,14 +98,14 @@ example : Surjective (fun ((x, y) : ℝ × ℝ) ↦ x + y) := by
 example : ¬ Injective (fun ((m, n) : ℤ × ℤ) ↦ 5 * m + 8 * n) := by
   dsimp [Injective]
   push_neg
-  take (0, 0), (8, -5)
+  use (0, 0), (8, -5)
   constructor
   · numbers
   · numbers
 
 example : Surjective (fun ((m, n) : ℤ × ℤ) ↦ 5 * m + 8 * n) := by
   intro a
-  take (-3 * a, 2 * a)
+  use (-3 * a, 2 * a)
   dsimp
   ring
 
@@ -116,7 +116,7 @@ example : ¬ Injective (fun ((m, n) : ℤ × ℤ) ↦ 5 * m + 10 * n) := by
 example : ¬ Surjective (fun ((m, n) : ℤ × ℤ) ↦ 5 * m + 10 * n) := by
   dsimp [Surjective]
   push_neg
-  take 1
+  use 1
   intro (m, n) h
   dsimp at h
   have :=
@@ -234,7 +234,8 @@ example : Surjective (fun ((x, y) : ℚ × ℚ) ↦ x ^ 2 - y ^ 2) := by
 example : Surjective (fun ((a, b) : ℚ × ℕ) ↦ a ^ b) := by
   sorry
 
-example : ¬ Injective (fun ((x, y, z) : ℝ × ℝ × ℝ) ↦ (x + y + z, x + 2 * y + 3 * z)) := by
+example : ¬ Injective
+    (fun ((x, y, z) : ℝ × ℝ × ℝ) ↦ (x + y + z, x + 2 * y + 3 * z)) := by
   sorry
 
 example : Injective (fun ((x, y) : ℝ × ℝ) ↦ (x + y, x + 2 * y, x + 3 * y)) := by

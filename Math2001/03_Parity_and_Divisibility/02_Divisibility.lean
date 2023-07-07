@@ -4,14 +4,14 @@ import Library.Tactic.Cancel
 import Library.Theory.Division
 import Library.Tactic.Extra
 import Library.Tactic.Numbers
-import Library.Tactic.Take
+import Library.Tactic.Use
 
 attribute [-instance] Int.instDivInt_1 Int.instDivInt Nat.instDivNat
 
 
 example : (11 : ℕ) ∣ 88 := by
   dsimp [(· ∣ ·)]
-  take 8
+  use 8
   numbers
 
 
@@ -20,7 +20,7 @@ example : (-2 : ℤ) ∣ 6 := by
 
 example {a b : ℤ} (hab : a ∣ b) : a ∣ b ^ 2 + 2 * b := by
   obtain ⟨k, hk⟩ := hab
-  take k * (a * k + 2)
+  use k * (a * k + 2)
   calc
     b ^ 2 + 2 * b = (a * k) ^ 2 + 2 * (a * k) := by rw [hk]
     _ = a * (k * (a * k + 2)) := by ring
@@ -35,7 +35,7 @@ example {x y z : ℕ} (h : x * y ∣ z) : x ∣ z := by
 example : ¬(5 : ℤ) ∣ 12 := by
   apply Int.not_dvd_of_exists_lt_and_lt
   · numbers -- show `0 < 5`
-  take 2
+  use 2
   constructor
   · numbers -- show `5 * 2 < 12`
   · numbers -- show `12 < 5 * (2 + 1)`

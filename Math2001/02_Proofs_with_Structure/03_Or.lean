@@ -1,6 +1,5 @@
 /- Copyright (c) Heather Macbeth, 2022.  All rights reserved. -/
 import Mathlib.Data.Real.Basic
-import Library.Theory.Arithmetic
 import Library.Theory.Comparison
 import Library.Tactic.Addarith
 import Library.Tactic.Cancel

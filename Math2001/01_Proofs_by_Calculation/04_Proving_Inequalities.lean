@@ -78,7 +78,8 @@ example {x y : ℝ} (h : x ^ 2 + y ^ 2 ≤ 1) : (x + y) ^ 2 < 3 :=
 
 -- Example 1.4.9
 -- Exercise: replace the words "sorry" with the correct Lean justification.
-example {a b : ℚ} (h1 : a ≥ 0) (h2 : b ≥ 0) (h3 : a + b ≤ 8) : 3 * a * b + a ≤ 7 * b + 72 :=
+example {a b : ℚ} (h1 : a ≥ 0) (h2 : b ≥ 0) (h3 : a + b ≤ 8) :
+    3 * a * b + a ≤ 7 * b + 72 :=
   calc
     3 * a * b + a
       ≤ 2 * b ^ 2 + a ^ 2 + (3 * a * b + a) := by sorry
@@ -89,7 +90,8 @@ example {a b : ℚ} (h1 : a ≥ 0) (h2 : b ≥ 0) (h3 : a + b ≤ 8) : 3 * a * b
     _ = 7 * b + 72 := by sorry
 
 -- Example 1.4.10
-example {a b c : ℝ} : a ^ 2 * (a ^ 6 + 8 * b ^ 3 * c ^ 3) ≤ (a ^ 4 + b ^ 4 + c ^ 4) ^ 2 :=
+example {a b c : ℝ} :
+    a ^ 2 * (a ^ 6 + 8 * b ^ 3 * c ^ 3) ≤ (a ^ 4 + b ^ 4 + c ^ 4) ^ 2 :=
   calc
     a ^ 2 * (a ^ 6 + 8 * b ^ 3 * c ^ 3)
       ≤ 2 * (a ^ 2 * (b ^ 2 - c ^ 2)) ^ 2 + (b ^ 4 - c ^ 4) ^ 2

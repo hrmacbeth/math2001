@@ -5,7 +5,7 @@ import Library.Tactic.Define
 import Library.Tactic.ExistsDelaborator
 import Library.Tactic.Numbers
 import Library.Tactic.Extra
-import Library.Tactic.Take
+import Library.Tactic.Use
 
 set_option push_neg.use_distrib true
 set_option quotPrecheck false

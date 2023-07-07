@@ -2,7 +2,7 @@
 import Library.Tactic.ModCases
 import Library.Tactic.Numbers
 import Library.Tactic.Extra
-import Library.Tactic.Take
+import Library.Tactic.Use
 
 attribute [-instance] Int.instDivInt_1 Int.instDivInt Nat.instDivNat
 
@@ -22,7 +22,7 @@ example {a b : ℤ} (ha : a ≡ 4 [ZMOD 5]) (hb : b ≡ 3 [ZMOD 5]) :
 
 
 example : ∃ a : ℤ, 6 * a ≡ 4 [ZMOD 11] := by
-  take 8
+  use 8
   calc
     (6:ℤ) * 8 = 4 + 4 * 11 := by numbers
     _ ≡ 4 [ZMOD 11] := by extra

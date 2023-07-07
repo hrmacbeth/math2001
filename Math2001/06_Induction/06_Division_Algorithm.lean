@@ -5,7 +5,7 @@ import Library.Tactic.Cancel
 import Library.Tactic.Induction
 import Library.Tactic.Numbers
 import Library.Tactic.Extra
-import Library.Tactic.Take
+import Library.Tactic.Use
 
 attribute [-instance] Int.instDivInt_1 Int.instDivInt Nat.instDivNat
 
@@ -99,12 +99,12 @@ termination_by _ n d hd => 2 * n - d
 
 
 example (a b : ℤ) (h : 0 < b) : ∃ r : ℤ, 0 ≤ r ∧ r < b ∧ a ≡ r [ZMOD b] := by
-  take fmod a b
+  use fmod a b
   constructor
   · apply fmod_nonneg_of_pos a h
   constructor
   · apply fmod_lt_of_pos a h
-  · take fdiv a b
+  · use fdiv a b
     have Hab : fmod a b + b * fdiv a b = a := fmod_add_fdiv a b
     addarith [Hab]
 
@@ -126,9 +126,9 @@ termination_by T n => 3 * n - 1
 theorem T_eq (n : ℤ) : T n = n ^ 2 := by    
   sorry
 
-theorem uniqueness (a b : ℤ) (h : 0 < b) {r s : ℤ} (hr : 0 ≤ r ∧ r < b ∧ a ≡ r [ZMOD b]) 
-    (hs : 0 ≤ s ∧ s < b ∧ a ≡ s [ZMOD b]) :
-    r = s := by
+theorem uniqueness (a b : ℤ) (h : 0 < b) {r s : ℤ}
+    (hr : 0 ≤ r ∧ r < b ∧ a ≡ r [ZMOD b])
+    (hs : 0 ≤ s ∧ s < b ∧ a ≡ s [ZMOD b]) : r = s := by
   sorry
 
 example (a b : ℤ) (h : 0 < b) : ∃! r : ℤ, 0 ≤ r ∧ r < b ∧ a ≡ r [ZMOD b] := by
