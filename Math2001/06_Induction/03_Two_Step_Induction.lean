@@ -132,11 +132,10 @@ example : forall_sufficiently_large n : ℕ, d n ≥ 4 ^ n := by
       _ ≥ 4 ^ 4 := by numbers
   · calc d 5 = 1096 := by rfl
       _ ≥ 4 ^ 5 := by numbers
-  have H : (17:ℤ) ≥ 16 := by numbers
   calc d (k + 2) = 3 * d (k + 1) + 5 * d k := by rw [d]
     _ ≥ 3 * 4 ^ (k + 1) + 5 * 4 ^ k := by rel [IH1, IH2]
-    _ = 17 * 4 ^ k := by ring
-    _ ≥ 16 * 4 ^ k := by rel [H] 
+    _ = 16 * 4 ^ k + 4 ^ k := by ring
+    _ ≥ 16 * 4 ^ k := by extra
     _ = 4 ^ (k + 2) := by ring
 
 /-! # Exercises -/

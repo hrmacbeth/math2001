@@ -82,7 +82,6 @@ example : Prime 5 := by
   · numbers
   intro m hm_left hm_right
   apply Nat.not_dvd_of_exists_lt_and_lt
-  · extra
   interval_cases m
   · use 2
     constructor <;> numbers

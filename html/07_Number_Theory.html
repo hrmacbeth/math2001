@@ -116,7 +116,7 @@ first known proof written in Euclid&#8217;s <em>Elements</em> in about 300 BC.</
 factor of <span class="math notranslate nohighlight">\(N! + 1\)</span>.</p>
 <p>Let <span class="math notranslate nohighlight">\(k\)</span> be a natural number such that <span class="math notranslate nohighlight">\(N! + 1=pk\)</span>. Then we have that</p>
 <div class="math notranslate nohighlight">
-\[\begin{split}0&amp;&lt;N! + 1\\
+\[\begin{split}0&amp;&lt; N! + 1\\
 &amp;=pk,\end{split}\]</div>
 <p>so <span class="math notranslate nohighlight">\(k&gt;0\)</span>, so there exists a natural number <span class="math notranslate nohighlight">\(l\)</span> such that <span class="math notranslate nohighlight">\(k=l+1\)</span>.  This
 <span class="math notranslate nohighlight">\(l\)</span> satisfies that <span class="math notranslate nohighlight">\(N! + 1=p(l+1)\)</span>.</p>
@@ -126,10 +126,10 @@ the consecutive multiples <span class="math notranslate nohighlight">\(pl\)</spa
 <div class="math notranslate nohighlight">
 \[\begin{split}pl+p&amp;=p(l+1)\\
 &amp;=N!+1\\
-&amp;&lt;N!+p,\end{split}\]</div>
-<p>so <span class="math notranslate nohighlight">\(pl&lt;N!\)</span>, and</p>
+&amp;&lt; N!+p,\end{split}\]</div>
+<p>so <span class="math notranslate nohighlight">\(pl&lt; N!\)</span>, and</p>
 <div class="math notranslate nohighlight">
-\[\begin{split}N!&amp;&lt;N!+1\\
+\[\begin{split}N!&amp;&lt; N!+1\\
 &amp;=p(l+1).\end{split}\]</div>
 <p>If <span class="math notranslate nohighlight">\(p\le N\)</span>, then by <a class="reference internal" href="06_Induction.html#factorial"><span class="std std-numref">Example 6.2.5</span></a>, <span class="math notranslate nohighlight">\(p\)</span> would be a factor of
 <span class="math notranslate nohighlight">\(N!\)</span>, which contradicts what we just proved.  Therefore  <span class="math notranslate nohighlight">\(p &gt; N\)</span>. This gives the
@@ -148,10 +148,9 @@ required prime number greater than or equal to <span class="math notranslate noh
   <span class="k">have</span> <span class="n">hp2</span> <span class="o">:</span> <span class="mi">2</span> <span class="bp">&#8804;</span> <span class="n">p</span>
   <span class="bp">&#183;</span> <span class="n">obtain</span> <span class="o">&#10216;</span><span class="n">hp&#39;</span><span class="o">,</span> <span class="n">hp&#39;&#39;</span><span class="o">&#10217;</span> <span class="o">:=</span> <span class="n">hp</span>
     <span class="n">apply</span> <span class="n">hp&#39;</span>
-  <span class="k">have</span> <span class="n">hp_pos</span> <span class="o">:</span> <span class="mi">0</span> <span class="bp">&lt;</span> <span class="n">p</span> <span class="o">:=</span> <span class="kd">by</span> <span class="n">extra</span>
   <span class="c1">-- the key fact: `p` is not a factor of `N!`</span>
   <span class="k">have</span> <span class="n">key</span> <span class="o">:</span> <span class="bp">&#172;</span> <span class="n">p</span> <span class="bp">&#8739;</span> <span class="o">(</span><span class="n">N</span> <span class="bp">!</span><span class="o">)</span>
-  <span class="bp">&#183;</span> <span class="n">apply</span> <span class="n">Nat.not_dvd_of_exists_lt_and_lt</span> <span class="o">(</span><span class="n">N</span> <span class="bp">!</span><span class="o">)</span> <span class="n">hp_pos</span>
+  <span class="bp">&#183;</span> <span class="n">apply</span> <span class="n">Nat.not_dvd_of_exists_lt_and_lt</span> <span class="o">(</span><span class="n">N</span> <span class="bp">!</span><span class="o">)</span>
     <span class="k">have</span> <span class="n">hk&#39;</span> <span class="o">:=</span>
       <span class="k">calc</span> <span class="mi">0</span> <span class="bp">&lt;</span> <span class="n">N</span> <span class="bp">!</span> <span class="bp">+</span> <span class="mi">1</span> <span class="o">:=</span> <span class="kd">by</span> <span class="n">extra</span>
         <span class="n">_</span> <span class="bp">=</span> <span class="n">p</span> <span class="bp">*</span> <span class="n">k</span> <span class="o">:=</span> <span class="n">hk</span>
@@ -175,8 +174,9 @@ required prime number greater than or equal to <span class="math notranslate noh
   <span class="n">constructor</span>
   <span class="bp">&#183;</span> <span class="n">obtain</span> <span class="n">h_le</span> <span class="bp">|</span> <span class="n">h_gt</span> <span class="o">:</span> <span class="n">p</span> <span class="bp">&#8804;</span> <span class="n">N</span> <span class="bp">&#8744;</span> <span class="n">N</span> <span class="bp">&lt;</span> <span class="n">p</span> <span class="o">:=</span> <span class="n">le_or_lt</span> <span class="n">p</span> <span class="n">N</span>
     <span class="bp">&#183;</span> <span class="k">have</span> <span class="o">:</span> <span class="n">p</span> <span class="bp">&#8739;</span> <span class="o">(</span><span class="n">N</span> <span class="bp">!</span><span class="o">)</span>
-      <span class="bp">&#183;</span> <span class="n">apply</span> <span class="n">dvd_factorial</span> <span class="n">hp_pos</span>
-        <span class="n">addarith</span> <span class="o">[</span><span class="n">h_le</span><span class="o">]</span>
+      <span class="bp">&#183;</span> <span class="n">apply</span> <span class="n">dvd_factorial</span>
+        <span class="bp">&#183;</span> <span class="n">extra</span>
+        <span class="bp">&#183;</span> <span class="n">addarith</span> <span class="o">[</span><span class="n">h_le</span><span class="o">]</span>
       <span class="n">contradiction</span>
     <span class="bp">&#183;</span> <span class="n">addarith</span> <span class="o">[</span><span class="n">h_gt</span><span class="o">]</span>
   <span class="bp">&#183;</span> <span class="n">apply</span> <span class="n">hp</span>
@@ -424,12 +424,12 @@ By <a class="reference internal" href="06_Induction.html#common-divisor"><span c
 <span class="math notranslate nohighlight">\(y\)</span> such that <span class="math notranslate nohighlight">\(xa+yb=d\)</span>.</p>
 <p>The key calculation is the following  (<span class="math notranslate nohighlight">\(\dagger\)</span>).:</p>
 <div class="math notranslate nohighlight">
-\[\begin{split}(2k y + lx) ^ 2 \cdot d \cdot d
+\[\begin{split}(2k y + lx) ^ 2 \cdot d^2
   &amp;= (2(dk) y + (d l) x) ^ 2 \\
   &amp;= (2 a y + b x) ^ 2 \\
   &amp;= 2  (x a + y b) ^ 2 + (x ^ 2 - 2  y ^ 2) (b ^ 2 - 2  a ^ 2) \\
   &amp;= 2  d ^ 2 + (x ^ 2 - 2  y ^ 2)  (b ^ 2 - b ^ 2) \\
-  &amp;= 2 \cdot d \cdot d \\\end{split}\]</div>
+  &amp;= 2 \cdot d^2 \\\end{split}\]</div>
 <p>We have that <span class="math notranslate nohighlight">\(d\ne 0\)</span>, since if not,</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}b &amp;=dl\\

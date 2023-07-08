@@ -53,19 +53,21 @@ theorem Nat.exists_quotient_remainder (a b : ℕ) (h : 0 < b) :
   exact ⟨q, r, h₁, h₂⟩
 
 /-- Criterion for an integer not to divide another. -/
-theorem Int.not_dvd_of_exists_lt_and_lt (a : ℤ) {b : ℤ} (hb : 0 < b)
+theorem Int.not_dvd_of_exists_lt_and_lt (a b : ℤ)
     (h : ∃ q, b * q < a ∧ a < b * (q + 1)) : ¬b ∣ a := by
   rintro ⟨q₀, rfl⟩
   obtain ⟨q, hq₁, hq₂⟩ := h
+  have hb : 0 < b := by linarith
   have h₁ : q + 1 ≤ q₀ := lt_of_mul_lt_mul_left hq₁ hb.le
   have h₂ : q₀ + 1 ≤ q + 1 := lt_of_mul_lt_mul_left hq₂ hb.le
   linarith
 
 /-- Criterion for a natural number not to divide another. -/
-theorem Nat.not_dvd_of_exists_lt_and_lt (a : ℕ) {b : ℕ} (hb : 0 < b)
+theorem Nat.not_dvd_of_exists_lt_and_lt (a b : ℕ)
     (h : ∃ q, b * q < a ∧ a < b * (q + 1)) : ¬b ∣ a := by
   rintro ⟨q₀, rfl⟩
   obtain ⟨q, hq₁, hq₂⟩ := h
+  have hb : 0 < b := by linarith
   have h₁ : q + 1 ≤ q₀ := lt_of_mul_lt_mul_left hq₁ hb.le
   have h₂ : q₀ + 1 ≤ q + 1 := lt_of_mul_lt_mul_left hq₂ hb.le
   linarith

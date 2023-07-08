@@ -20,10 +20,9 @@ example (N : ℕ) : ∃ p ≥ N, Prime p := by
   have hp2 : 2 ≤ p
   · obtain ⟨hp', hp''⟩ := hp
     apply hp'
-  have hp_pos : 0 < p := by extra
   -- the key fact: `p` is not a factor of `N!`
   have key : ¬ p ∣ (N !)
-  · apply Nat.not_dvd_of_exists_lt_and_lt (N !) hp_pos
+  · apply Nat.not_dvd_of_exists_lt_and_lt (N !)
     have hk' :=
       calc 0 < N ! + 1 := by extra
         _ = p * k := hk
@@ -47,8 +46,9 @@ example (N : ℕ) : ∃ p ≥ N, Prime p := by
   constructor
   · obtain h_le | h_gt : p ≤ N ∨ N < p := le_or_lt p N
     · have : p ∣ (N !)
-      · apply dvd_factorial hp_pos
-        addarith [h_le]
+      · apply dvd_factorial
+        · extra
+        · addarith [h_le]
       contradiction
     · addarith [h_gt]
   · apply hp 

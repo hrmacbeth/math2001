@@ -31,7 +31,6 @@ example : ¬ Symmetric ((·:ℕ) ∣ ·) := by
   · use 2
     numbers
   · apply Nat.not_dvd_of_exists_lt_and_lt
-    · numbers
     use 0
     constructor
     · numbers

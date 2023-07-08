@@ -73,7 +73,6 @@ example : { a : ℕ | 4 ∣ a } ≠ { b : ℕ | 2 ∣ b } := by
   right
   constructor
   · apply Nat.not_dvd_of_exists_lt_and_lt
-    · numbers
     use 1
     constructor <;> numbers
   · use 3
@@ -107,7 +106,7 @@ example : { x : ℝ | x ^ 2 - x - 2 = 0 } = {-1, 2} := by
     calc
       (x + 1) * (x - 2) = x ^ 2 - x - 2 := by ring
         _ = 0 := by rw [h]
-    rw [_root_.mul_eq_zero] at hx   
+    rw [mul_eq_zero] at hx   
     obtain hx | hx := hx
     · left
       addarith [hx]

@@ -34,7 +34,6 @@ example {x y z : ℕ} (h : x * y ∣ z) : x ∣ z := by
 
 example : ¬(5 : ℤ) ∣ 12 := by
   apply Int.not_dvd_of_exists_lt_and_lt
-  · numbers -- show `0 < 5`
   use 2
   constructor
   · numbers -- show `5 * 2 < 12`

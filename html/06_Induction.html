@@ -1216,11 +1216,11 @@ let&#8217;s try an induction starting at 4.</p>
 \[\begin{split}d_5&amp;=1096\\
 &amp;\ge 4^5.\end{split}\]</div>
 <p>Let <span class="math notranslate nohighlight">\(k\)</span> be a natural number and suppose that <span class="math notranslate nohighlight">\(d_k\ge 4^k\)</span> and
-<span class="math notranslate nohighlight">\(d_{k+1}\ge 4^{k+1}\)</span>.  Then (noting that <span class="math notranslate nohighlight">\(17 \geq 16\)</span>) we have that</p>
+<span class="math notranslate nohighlight">\(d_{k+1}\ge 4^{k+1}\)</span>.  Then we have that</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}d_{k+2}&amp;=3d_{k+1}+5d_k\\
 &amp;\ge 3 \cdot 4^{k+1}+5 \cdot 4^k\\
-&amp;= 17 \cdot 4^k\\
+&amp;= 16 \cdot 4^k + 4 ^ k\\
 &amp;\geq 16 \cdot 4^k\\
 &amp;= 4^{k+2}.\end{split}\]</div>
 </div>
@@ -1235,11 +1235,10 @@ argument.</p>
       <span class="n">_</span> <span class="bp">&#8805;</span> <span class="mi">4</span> <span class="bp">^</span> <span class="mi">4</span> <span class="o">:=</span> <span class="kd">by</span> <span class="n">numbers</span>
   <span class="bp">&#183;</span> <span class="k">calc</span> <span class="n">d</span> <span class="mi">5</span> <span class="bp">=</span> <span class="mi">1096</span> <span class="o">:=</span> <span class="kd">by</span> <span class="n">rfl</span>
       <span class="n">_</span> <span class="bp">&#8805;</span> <span class="mi">4</span> <span class="bp">^</span> <span class="mi">5</span> <span class="o">:=</span> <span class="kd">by</span> <span class="n">numbers</span>
-  <span class="k">have</span> <span class="n">H</span> <span class="o">:</span> <span class="o">(</span><span class="mi">17</span><span class="o">:</span><span class="n">&#8484;</span><span class="o">)</span> <span class="bp">&#8805;</span> <span class="mi">16</span> <span class="o">:=</span> <span class="kd">by</span> <span class="n">numbers</span>
   <span class="k">calc</span> <span class="n">d</span> <span class="o">(</span><span class="n">k</span> <span class="bp">+</span> <span class="mi">2</span><span class="o">)</span> <span class="bp">=</span> <span class="mi">3</span> <span class="bp">*</span> <span class="n">d</span> <span class="o">(</span><span class="n">k</span> <span class="bp">+</span> <span class="mi">1</span><span class="o">)</span> <span class="bp">+</span> <span class="mi">5</span> <span class="bp">*</span> <span class="n">d</span> <span class="n">k</span> <span class="o">:=</span> <span class="kd">by</span> <span class="n">rw</span> <span class="o">[</span><span class="n">d</span><span class="o">]</span>
     <span class="n">_</span> <span class="bp">&#8805;</span> <span class="mi">3</span> <span class="bp">*</span> <span class="mi">4</span> <span class="bp">^</span> <span class="o">(</span><span class="n">k</span> <span class="bp">+</span> <span class="mi">1</span><span class="o">)</span> <span class="bp">+</span> <span class="mi">5</span> <span class="bp">*</span> <span class="mi">4</span> <span class="bp">^</span> <span class="n">k</span> <span class="o">:=</span> <span class="kd">by</span> <span class="n">rel</span> <span class="o">[</span><span class="n">IH1</span><span class="o">,</span> <span class="n">IH2</span><span class="o">]</span>
-    <span class="n">_</span> <span class="bp">=</span> <span class="mi">17</span> <span class="bp">*</span> <span class="mi">4</span> <span class="bp">^</span> <span class="n">k</span> <span class="o">:=</span> <span class="kd">by</span> <span class="n">ring</span>
-    <span class="n">_</span> <span class="bp">&#8805;</span> <span class="mi">16</span> <span class="bp">*</span> <span class="mi">4</span> <span class="bp">^</span> <span class="n">k</span> <span class="o">:=</span> <span class="kd">by</span> <span class="n">rel</span> <span class="o">[</span><span class="n">H</span><span class="o">]</span>
+    <span class="n">_</span> <span class="bp">=</span> <span class="mi">16</span> <span class="bp">*</span> <span class="mi">4</span> <span class="bp">^</span> <span class="n">k</span> <span class="bp">+</span> <span class="mi">4</span> <span class="bp">^</span> <span class="n">k</span> <span class="o">:=</span> <span class="kd">by</span> <span class="n">ring</span>
+    <span class="n">_</span> <span class="bp">&#8805;</span> <span class="mi">16</span> <span class="bp">*</span> <span class="mi">4</span> <span class="bp">^</span> <span class="n">k</span> <span class="o">:=</span> <span class="kd">by</span> <span class="n">extra</span>
     <span class="n">_</span> <span class="bp">=</span> <span class="mi">4</span> <span class="bp">^</span> <span class="o">(</span><span class="n">k</span> <span class="bp">+</span> <span class="mi">2</span><span class="o">)</span> <span class="o">:=</span> <span class="kd">by</span> <span class="n">ring</span>
 </pre></div>
 </div>
@@ -1384,87 +1383,62 @@ induction principles like &#8220;two-step induction from a specified starting po
 principles as our problems become yet more complicated, let&#8217;s explain a more general method: <em>strong
 induction</em>.  This method lets us prove a proposition for the natural numbers one by one, relying at
 each step not just on the immediately previous step, but on <em>any</em> previous step.</p>
-<p>Let&#8217;s re-do <a class="reference internal" href="#two-step-starting-point"><span class="std std-numref">Example 6.3.5</span></a> using strong induction.  The differences
+<p>Let&#8217;s re-do <a class="reference internal" href="#fibonacci"><span class="std std-numref">Example 6.3.3</span></a> using strong induction.  The differences
 will be more apparent in Lean, but we start with a text proof, where the difference amounts to a
 change of emphasis.</p>
 <div class="admonition-problem admonition">
 <p class="admonition-title">Problem</p>
-<p>Show that for all sufficiently large natural numbers <span class="math notranslate nohighlight">\(n\)</span>, <span class="math notranslate nohighlight">\(d_n \ge 4^n\)</span>.</p>
+<p>Show that for all natural numbers <span class="math notranslate nohighlight">\(n\)</span>, <span class="math notranslate nohighlight">\(F_n \le 2^n\)</span>.</p>
 </div>
 <div class="admonition-solution admonition">
 <p class="admonition-title">Solution</p>
-<p>We will show that for all natural numbers <span class="math notranslate nohighlight">\(n\)</span>, if <span class="math notranslate nohighlight">\(n\geq 4\)</span> then <span class="math notranslate nohighlight">\(d_n \ge 4^n\)</span>.</p>
 <p>We prove this by strong induction on <span class="math notranslate nohighlight">\(n\)</span>. Let <span class="math notranslate nohighlight">\(n\)</span> be a natural number and suppose that
-for all natural numbers <span class="math notranslate nohighlight">\(m &lt; n\)</span>, if <span class="math notranslate nohighlight">\(m\geq 4\)</span> then <span class="math notranslate nohighlight">\(d_m \ge 4^m\)</span>
-<span class="math notranslate nohighlight">\((\star)\)</span></p>
-<p>We consider cases according to whether <span class="math notranslate nohighlight">\(n&lt; 6\)</span> or <span class="math notranslate nohighlight">\(6 \le n\)</span>.</p>
-<p><strong>Case 1</strong> (<span class="math notranslate nohighlight">\(n&lt; 6\)</span>): In this case <span class="math notranslate nohighlight">\(n\)</span> is 4 or 5.  For <span class="math notranslate nohighlight">\(n=4\)</span>, we have that</p>
+for all natural numbers <span class="math notranslate nohighlight">\(m &lt; n\)</span>, <span class="math notranslate nohighlight">\(F_m \le 2^m\)</span>. <span class="math notranslate nohighlight">\((\star)\)</span></p>
+<p>We consider cases according to whether <span class="math notranslate nohighlight">\(n\)</span> is 0, 1, or <span class="math notranslate nohighlight">\(k + 2\)</span> for some
+natural number <span class="math notranslate nohighlight">\(k\)</span>.</p>
+<p>For <span class="math notranslate nohighlight">\(n=0\)</span>, we have that</p>
 <div class="math notranslate nohighlight">
-\[\begin{split}d_4&amp;=267\\
-&amp;\ge 4^4.\end{split}\]</div>
-<p>For <span class="math notranslate nohighlight">\(n=5\)</span>, we have that</p>
+\[\begin{split}F_0&amp;=1\\
+&amp;\le 2^0.\end{split}\]</div>
+<p>For <span class="math notranslate nohighlight">\(n=1\)</span>, we have that</p>
 <div class="math notranslate nohighlight">
-\[\begin{split}d_5&amp;=1096\\
-&amp;\ge 4^5.\end{split}\]</div>
-<p><strong>Case 2</strong> (<span class="math notranslate nohighlight">\(6 \le n\)</span>):  Since <span class="math notranslate nohighlight">\(2 \le n\)</span>, there exists a natural number <span class="math notranslate nohighlight">\(k\)</span> such
-that <span class="math notranslate nohighlight">\(n=k+2\)</span>.</p>
-<p>We have that <span class="math notranslate nohighlight">\(4 \le k &lt; n\)</span> and <span class="math notranslate nohighlight">\(4 \le k + 1 &lt; n\)</span>, so by the inductive hypothesis
-<span class="math notranslate nohighlight">\((\star)\)</span>, <span class="math notranslate nohighlight">\(d_k \ge 4^k\)</span> and <span class="math notranslate nohighlight">\(d_{k+1} \ge 4^{k +1}\)</span>.</p>
-<p>Then (noting that <span class="math notranslate nohighlight">\(17 \geq 16\)</span>) we have that</p>
+\[\begin{split}F_1&amp;=1\\
+&amp;\le 2^1.\end{split}\]</div>
+<p>For <span class="math notranslate nohighlight">\(n=k+2\)</span>, we have that <span class="math notranslate nohighlight">\(k&lt;k+2\)</span> and <span class="math notranslate nohighlight">\(k+1&lt;k+2\)</span>, so by the inductive hypothesis
+<span class="math notranslate nohighlight">\(F_k\le 2^k\)</span> and <span class="math notranslate nohighlight">\(F_{k+1}\le 2^{k+1}\)</span>.  Thus</p>
 <div class="math notranslate nohighlight">
-\[\begin{split}d_n&amp;=d_{k+2}\\
-&amp;=3d_{k+1}+5d_k\\
-&amp;\ge 3 \cdot 4^{k+1}+5 \cdot 4^k\\
-&amp;= 17 \cdot 4^k\\
-&amp;\geq 16 \cdot 4^k\\
-&amp;= 4^{k+2}\\
-&amp;=4^n.\end{split}\]</div>
+\[\begin{split}F_{k+2}&amp;=F_{k+1}+F_k\\
+&amp;\le 2^{k+1}+2^k\\
+&amp;\le 2^{k+1}+2^k+2^k\\
+&amp;= 2^{k+1}+2^{k+1}\\
+&amp;= 2^{k+2}.\end{split}\]</div>
 </div>
-<p>In Lean, strong induction can be used in a proof almost silently.  We set up a stand-alone theorem
+<p>In Lean, strong induction can be used in a proof almost silently.  We set up a theorem
 stating the result we want to prove by strong induction (here the statement</p>
 <blockquote>
-<div><p>for all natural numbers <span class="math notranslate nohighlight">\(n\)</span>, if <span class="math notranslate nohighlight">\(n\geq 4\)</span> then <span class="math notranslate nohighlight">\(d_n \ge 4^n\)</span></p>
+<div><p>for all natural numbers <span class="math notranslate nohighlight">\(n\)</span>, <span class="math notranslate nohighlight">\(F_n \le 2^n\)</span></p>
 </div></blockquote>
-<p>which I have named <code class="docutils literal notranslate"><span class="pre">d_bound</span></code> in Lean).  Then within the proof of that theorem we can refer to the
+<p>which I have named <code class="docutils literal notranslate"><span class="pre">F_bound</span></code> in Lean).  Then within the proof of that theorem we can refer to the
 theorem itself!  Lean will attempt to check for us that we are using the theorem only for input
 values smaller than the value currently being studied.</p>
 <p>You might find this suspicious, or in danger of becoming circular.  Check for yourself that if you
-try to invoke the lemma <code class="docutils literal notranslate"><span class="pre">d_bound</span></code> at the value <span class="math notranslate nohighlight">\(n\)</span> itself, or at a larger value like
+try to invoke the lemma <code class="docutils literal notranslate"><span class="pre">F_bound</span></code> at the value <span class="math notranslate nohighlight">\(n\)</span> itself, or at a larger value like
 <span class="math notranslate nohighlight">\(n + 17\)</span>, then Lean gives an error.</p>
-<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">theorem</span> <span class="n">d_bound</span> <span class="o">(</span><span class="n">n</span> <span class="o">:</span> <span class="n">&#8469;</span><span class="o">)</span> <span class="o">(</span><span class="n">hn</span> <span class="o">:</span> <span class="n">n</span> <span class="bp">&#8805;</span> <span class="mi">4</span><span class="o">)</span> <span class="o">:</span> <span class="n">d</span> <span class="n">n</span> <span class="bp">&#8805;</span> <span class="mi">4</span> <span class="bp">^</span> <span class="n">n</span> <span class="o">:=</span> <span class="kd">by</span>
-  <span class="n">obtain</span> <span class="n">h</span> <span class="bp">|</span> <span class="n">h</span> <span class="o">:=</span> <span class="n">lt_or_le</span> <span class="n">n</span> <span class="mi">6</span>
-  <span class="bp">&#183;</span> <span class="c1">-- Case 1: `n &lt; 6`</span>
-    <span class="n">interval_cases</span> <span class="n">n</span>
-    <span class="bp">&#183;</span> <span class="c1">-- if `n = 4`</span>
-      <span class="k">calc</span> <span class="n">d</span> <span class="mi">4</span> <span class="bp">=</span> <span class="mi">267</span> <span class="o">:=</span> <span class="kd">by</span> <span class="n">rfl</span>
-        <span class="n">_</span> <span class="bp">&#8805;</span> <span class="mi">4</span> <span class="bp">^</span> <span class="mi">4</span> <span class="o">:=</span> <span class="kd">by</span> <span class="n">numbers</span>
-    <span class="bp">&#183;</span> <span class="c1">-- if `n = 5`</span>
-      <span class="k">calc</span> <span class="n">d</span> <span class="mi">5</span> <span class="bp">=</span> <span class="mi">1096</span> <span class="o">:=</span> <span class="kd">by</span> <span class="n">rfl</span>
-        <span class="n">_</span> <span class="bp">&#8805;</span> <span class="mi">4</span> <span class="bp">^</span> <span class="mi">5</span> <span class="o">:=</span> <span class="kd">by</span> <span class="n">numbers</span>
-  <span class="bp">&#183;</span> <span class="c1">-- Case 2: `6 &#8804; n`</span>
-    <span class="k">have</span> <span class="n">H</span> <span class="o">:</span> <span class="bp">&#8707;</span> <span class="n">k</span><span class="o">,</span> <span class="n">n</span> <span class="bp">=</span> <span class="n">k</span> <span class="bp">+</span> <span class="mi">2</span>
-    <span class="bp">&#183;</span> <span class="n">apply</span> <span class="n">Nat.exists_eq_add_of_le&#39;</span>
-      <span class="n">addarith</span> <span class="o">[</span><span class="n">h</span><span class="o">]</span>
-    <span class="n">obtain</span> <span class="o">&#10216;</span><span class="n">k</span><span class="o">,</span> <span class="n">hk</span><span class="o">&#10217;</span> <span class="o">:=</span> <span class="n">H</span>
-    <span class="k">have</span> <span class="n">IH1</span> <span class="o">:</span> <span class="n">d</span> <span class="n">k</span> <span class="bp">&#8805;</span> <span class="mi">4</span> <span class="bp">^</span> <span class="n">k</span>
-    <span class="bp">&#183;</span> <span class="n">apply</span> <span class="n">d_bound</span> <span class="n">k</span> <span class="c1">-- first inductive hypothesis</span>
-      <span class="n">addarith</span> <span class="o">[</span><span class="n">hk</span><span class="o">,</span> <span class="n">h</span><span class="o">]</span>
-    <span class="k">have</span> <span class="n">IH2</span> <span class="o">:</span> <span class="n">d</span> <span class="o">(</span><span class="n">k</span> <span class="bp">+</span> <span class="mi">1</span><span class="o">)</span> <span class="bp">&#8805;</span> <span class="mi">4</span> <span class="bp">^</span> <span class="o">(</span><span class="n">k</span> <span class="bp">+</span> <span class="mi">1</span><span class="o">)</span> <span class="c1">-- second inductive hypothesis</span>
-    <span class="bp">&#183;</span> <span class="n">apply</span> <span class="n">d_bound</span> <span class="o">(</span><span class="n">k</span> <span class="bp">+</span> <span class="mi">1</span><span class="o">)</span>
-      <span class="n">addarith</span> <span class="o">[</span><span class="n">hk</span><span class="o">,</span> <span class="n">h</span><span class="o">]</span>
-    <span class="k">have</span> <span class="n">H</span> <span class="o">:</span> <span class="o">(</span><span class="mi">17</span><span class="o">:</span><span class="n">&#8484;</span><span class="o">)</span> <span class="bp">&#8805;</span> <span class="mi">16</span> <span class="o">:=</span> <span class="kd">by</span> <span class="n">numbers</span>
-    <span class="k">calc</span> <span class="n">d</span> <span class="n">n</span> <span class="bp">=</span> <span class="n">d</span> <span class="o">(</span><span class="n">k</span> <span class="bp">+</span> <span class="mi">2</span><span class="o">)</span> <span class="o">:=</span> <span class="kd">by</span> <span class="n">rw</span> <span class="o">[</span><span class="n">hk</span><span class="o">]</span>
-      <span class="n">_</span> <span class="bp">=</span> <span class="mi">3</span> <span class="bp">*</span> <span class="n">d</span> <span class="o">(</span><span class="n">k</span> <span class="bp">+</span> <span class="mi">1</span><span class="o">)</span> <span class="bp">+</span> <span class="mi">5</span> <span class="bp">*</span> <span class="n">d</span> <span class="n">k</span> <span class="o">:=</span> <span class="kd">by</span> <span class="n">rw</span> <span class="o">[</span><span class="n">d</span><span class="o">]</span>
-      <span class="n">_</span> <span class="bp">&#8805;</span> <span class="mi">3</span> <span class="bp">*</span> <span class="mi">4</span> <span class="bp">^</span> <span class="o">(</span><span class="n">k</span> <span class="bp">+</span> <span class="mi">1</span><span class="o">)</span> <span class="bp">+</span> <span class="mi">5</span> <span class="bp">*</span> <span class="mi">4</span> <span class="bp">^</span> <span class="n">k</span> <span class="o">:=</span> <span class="kd">by</span> <span class="n">rel</span> <span class="o">[</span><span class="n">IH1</span><span class="o">,</span> <span class="n">IH2</span><span class="o">]</span>
-      <span class="n">_</span> <span class="bp">=</span> <span class="mi">17</span> <span class="bp">*</span> <span class="mi">4</span> <span class="bp">^</span> <span class="n">k</span> <span class="o">:=</span> <span class="kd">by</span> <span class="n">ring</span>
-      <span class="n">_</span> <span class="bp">&#8805;</span> <span class="mi">16</span> <span class="bp">*</span> <span class="mi">4</span> <span class="bp">^</span> <span class="n">k</span> <span class="o">:=</span> <span class="kd">by</span> <span class="n">rel</span> <span class="o">[</span><span class="n">H</span><span class="o">]</span>
-      <span class="n">_</span> <span class="bp">=</span> <span class="mi">4</span> <span class="bp">^</span> <span class="o">(</span><span class="n">k</span> <span class="bp">+</span> <span class="mi">2</span><span class="o">)</span> <span class="o">:=</span> <span class="kd">by</span> <span class="n">ring</span>
-      <span class="n">_</span> <span class="bp">=</span> <span class="mi">4</span> <span class="bp">^</span> <span class="n">n</span> <span class="o">:=</span> <span class="kd">by</span> <span class="n">rw</span> <span class="o">[</span><span class="n">hk</span><span class="o">]</span>
-
-<span class="kd">example</span> <span class="o">:</span> <span class="n">forall_sufficiently_large</span> <span class="n">n</span> <span class="o">:</span> <span class="n">&#8469;</span><span class="o">,</span> <span class="n">d</span> <span class="n">n</span> <span class="bp">&#8805;</span> <span class="mi">4</span> <span class="bp">^</span> <span class="n">n</span> <span class="o">:=</span> <span class="kd">by</span>
-  <span class="n">dsimp</span>
-  <span class="n">use</span> <span class="mi">4</span>
-  <span class="n">apply</span> <span class="n">d_bound</span>
+<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">theorem</span> <span class="n">F_bound</span> <span class="o">(</span><span class="n">n</span> <span class="o">:</span> <span class="n">&#8469;</span><span class="o">)</span> <span class="o">:</span> <span class="n">F</span> <span class="n">n</span> <span class="bp">&#8804;</span> <span class="mi">2</span> <span class="bp">^</span> <span class="n">n</span> <span class="o">:=</span> <span class="kd">by</span>
+  <span class="k">match</span> <span class="n">n</span> <span class="k">with</span>
+  <span class="bp">|</span> <span class="mi">0</span> <span class="bp">=&gt;</span>
+      <span class="k">calc</span> <span class="n">F</span> <span class="mi">0</span> <span class="bp">=</span> <span class="mi">1</span> <span class="o">:=</span> <span class="kd">by</span> <span class="n">rw</span> <span class="o">[</span><span class="n">F</span><span class="o">]</span>
+        <span class="n">_</span> <span class="bp">&#8804;</span> <span class="mi">2</span> <span class="bp">^</span> <span class="mi">0</span> <span class="o">:=</span> <span class="kd">by</span> <span class="n">numbers</span>
+  <span class="bp">|</span> <span class="mi">1</span> <span class="bp">=&gt;</span>
+      <span class="k">calc</span> <span class="n">F</span> <span class="mi">1</span> <span class="bp">=</span> <span class="mi">1</span> <span class="o">:=</span> <span class="kd">by</span> <span class="n">rw</span> <span class="o">[</span><span class="n">F</span><span class="o">]</span>
+        <span class="n">_</span> <span class="bp">&#8804;</span> <span class="mi">2</span> <span class="bp">^</span> <span class="mi">1</span> <span class="o">:=</span> <span class="kd">by</span> <span class="n">numbers</span>
+  <span class="bp">|</span> <span class="n">k</span> <span class="bp">+</span> <span class="mi">2</span>  <span class="bp">=&gt;</span>
+      <span class="k">have</span> <span class="n">IH1</span> <span class="o">:=</span> <span class="n">F_bound</span> <span class="n">k</span> <span class="c1">-- first inductive hypothesis</span>
+      <span class="k">have</span> <span class="n">IH2</span> <span class="o">:=</span> <span class="n">F_bound</span> <span class="o">(</span><span class="n">k</span> <span class="bp">+</span> <span class="mi">1</span><span class="o">)</span> <span class="c1">-- second inductive hypothesis</span>
+      <span class="k">calc</span> <span class="n">F</span> <span class="o">(</span><span class="n">k</span> <span class="bp">+</span> <span class="mi">2</span><span class="o">)</span> <span class="bp">=</span> <span class="n">F</span> <span class="o">(</span><span class="n">k</span> <span class="bp">+</span> <span class="mi">1</span><span class="o">)</span> <span class="bp">+</span> <span class="n">F</span> <span class="n">k</span> <span class="o">:=</span> <span class="kd">by</span> <span class="n">rw</span> <span class="o">[</span><span class="n">F</span><span class="o">]</span>
+        <span class="n">_</span> <span class="bp">&#8804;</span> <span class="mi">2</span> <span class="bp">^</span> <span class="o">(</span><span class="n">k</span> <span class="bp">+</span> <span class="mi">1</span><span class="o">)</span> <span class="bp">+</span> <span class="mi">2</span> <span class="bp">^</span> <span class="n">k</span> <span class="o">:=</span> <span class="kd">by</span> <span class="n">rel</span> <span class="o">[</span><span class="n">IH1</span><span class="o">,</span> <span class="n">IH2</span><span class="o">]</span>
+        <span class="n">_</span> <span class="bp">&#8804;</span> <span class="mi">2</span> <span class="bp">^</span> <span class="o">(</span><span class="n">k</span> <span class="bp">+</span> <span class="mi">1</span><span class="o">)</span> <span class="bp">+</span> <span class="mi">2</span> <span class="bp">^</span> <span class="n">k</span> <span class="bp">+</span> <span class="mi">2</span> <span class="bp">^</span> <span class="n">k</span> <span class="o">:=</span> <span class="kd">by</span> <span class="n">extra</span>
+        <span class="n">_</span> <span class="bp">=</span> <span class="mi">2</span> <span class="bp">^</span> <span class="o">(</span><span class="n">k</span> <span class="bp">+</span> <span class="mi">2</span><span class="o">)</span> <span class="o">:=</span> <span class="kd">by</span> <span class="n">ring</span>
 </pre></div>
 </div>
 </section>

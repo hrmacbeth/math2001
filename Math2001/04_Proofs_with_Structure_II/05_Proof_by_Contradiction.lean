@@ -81,11 +81,14 @@ example {p : ℕ} (k : ℕ) (hk1 : k ≠ 1) (hkp : k ≠ p) (hk : k ∣ p) : ¬ 
   · contradiction  
 
 
-example (a : ℤ) {b : ℤ} (hb : 0 < b)
-    (h : ∃ q, b * q < a ∧ a < b * (q + 1)) : ¬b ∣ a := by
+example (a b : ℤ) (h : ∃ q, b * q < a ∧ a < b * (q + 1)) : ¬b ∣ a := by
   intro H
   obtain ⟨k, hk⟩ := H
   obtain ⟨q, hq₁, hq₂⟩ := h
+  have hb :=
+  calc 0 = a - a := by ring
+    _ < b * (q + 1) - b * q := by rel [hq₁, hq₂]
+    _ = b := by ring
   have h1 :=
   calc b * k = a := by rw [hk]
     _ < b * (q + 1) := hq₂
@@ -120,7 +123,6 @@ example : Prime 79 := by
   · numbers
   intro m hm1 hm2
   apply Nat.not_dvd_of_exists_lt_and_lt
-  · extra
   interval_cases m
   · use 39
     constructor <;> numbers

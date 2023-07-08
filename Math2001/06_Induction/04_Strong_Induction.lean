@@ -1,9 +1,11 @@
 /- Copyright (c) Heather Macbeth, 2023.  All rights reserved. -/
 import Mathlib.Tactic.GCongr
+import Library.Theory.Comparison
 import Library.Theory.Parity
 import Library.Theory.Prime
 import Library.Tactic.Addarith
 import Library.Tactic.Cancel
+import Library.Tactic.Extra
 import Library.Tactic.Induction
 import Library.Tactic.Numbers
 import Library.Tactic.Use
@@ -15,45 +17,26 @@ set_option linter.unusedVariables false
 open Nat
 
 
-def d : ℕ → ℤ
-  | 0 => 3
+def F : ℕ → ℤ 
+  | 0 => 1
   | 1 => 1
-  | k + 2 => 3 * d (k + 1) + 5 * d k
+  | n + 2 => F (n + 1) + F n 
 
-theorem d_bound (n : ℕ) (hn : n ≥ 4) : d n ≥ 4 ^ n := by
-  obtain h | h := lt_or_le n 6
-  · -- Case 1: `n < 6`
-    interval_cases n
-    · -- if `n = 4`
-      calc d 4 = 267 := by rfl
-        _ ≥ 4 ^ 4 := by numbers
-    · -- if `n = 5`
-      calc d 5 = 1096 := by rfl
-        _ ≥ 4 ^ 5 := by numbers
-  · -- Case 2: `6 ≤ n`
-    have H : ∃ k, n = k + 2
-    · apply Nat.exists_eq_add_of_le'
-      addarith [h]
-    obtain ⟨k, hk⟩ := H
-    have IH1 : d k ≥ 4 ^ k
-    · apply d_bound k -- first inductive hypothesis
-      addarith [hk, h]
-    have IH2 : d (k + 1) ≥ 4 ^ (k + 1) -- second inductive hypothesis
-    · apply d_bound (k + 1)
-      addarith [hk, h]
-    have H : (17:ℤ) ≥ 16 := by numbers
-    calc d n = d (k + 2) := by rw [hk]
-      _ = 3 * d (k + 1) + 5 * d k := by rw [d]
-      _ ≥ 3 * 4 ^ (k + 1) + 5 * 4 ^ k := by rel [IH1, IH2]
-      _ = 17 * 4 ^ k := by ring
-      _ ≥ 16 * 4 ^ k := by rel [H] 
-      _ = 4 ^ (k + 2) := by ring
-      _ = 4 ^ n := by rw [hk]
-
-example : forall_sufficiently_large n : ℕ, d n ≥ 4 ^ n := by
-  dsimp
-  use 4
-  apply d_bound
+theorem F_bound (n : ℕ) : F n ≤ 2 ^ n := by
+  match n with
+  | 0 =>
+      calc F 0 = 1 := by rw [F]
+        _ ≤ 2 ^ 0 := by numbers
+  | 1 =>
+      calc F 1 = 1 := by rw [F]
+        _ ≤ 2 ^ 1 := by numbers
+  | k + 2  =>
+      have IH1 := F_bound k -- first inductive hypothesis
+      have IH2 := F_bound (k + 1) -- second inductive hypothesis
+      calc F (k + 2) = F (k + 1) + F k := by rw [F]
+        _ ≤ 2 ^ (k + 1) + 2 ^ k := by rel [IH1, IH2]
+        _ ≤ 2 ^ (k + 1) + 2 ^ k + 2 ^ k := by extra
+        _ = 2 ^ (k + 2) := by ring
 
 
 namespace Nat
