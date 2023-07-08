@@ -323,7 +323,6 @@ element of the other.</p>
   <span class="n">right</span>
   <span class="n">constructor</span>
   <span class="bp">&#183;</span> <span class="n">apply</span> <span class="n">Nat.not_dvd_of_exists_lt_and_lt</span>
-    <span class="bp">&#183;</span> <span class="n">numbers</span>
     <span class="n">use</span> <span class="mi">1</span>
     <span class="n">constructor</span> <span class="bp">&lt;;&gt;</span> <span class="n">numbers</span>
   <span class="bp">&#183;</span> <span class="n">use</span> <span class="mi">3</span>
@@ -420,7 +419,7 @@ listed, here 1, 2 and 3.  By definition, <span class="math notranslate nohighlig
     <span class="k">calc</span>
       <span class="o">(</span><span class="n">x</span> <span class="bp">+</span> <span class="mi">1</span><span class="o">)</span> <span class="bp">*</span> <span class="o">(</span><span class="n">x</span> <span class="bp">-</span> <span class="mi">2</span><span class="o">)</span> <span class="bp">=</span> <span class="n">x</span> <span class="bp">^</span> <span class="mi">2</span> <span class="bp">-</span> <span class="n">x</span> <span class="bp">-</span> <span class="mi">2</span> <span class="o">:=</span> <span class="kd">by</span> <span class="n">ring</span>
         <span class="n">_</span> <span class="bp">=</span> <span class="mi">0</span> <span class="o">:=</span> <span class="kd">by</span> <span class="n">rw</span> <span class="o">[</span><span class="n">h</span><span class="o">]</span>
-    <span class="n">rw</span> <span class="o">[</span><span class="n">_root_.mul_eq_zero</span><span class="o">]</span> <span class="n">at</span> <span class="n">hx</span>
+    <span class="n">rw</span> <span class="o">[</span><span class="n">mul_eq_zero</span><span class="o">]</span> <span class="n">at</span> <span class="n">hx</span>
     <span class="n">obtain</span> <span class="n">hx</span> <span class="bp">|</span> <span class="n">hx</span> <span class="o">:=</span> <span class="n">hx</span>
     <span class="bp">&#183;</span> <span class="n">left</span>
       <span class="n">addarith</span> <span class="o">[</span><span class="n">hx</span><span class="o">]</span>

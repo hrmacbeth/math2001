@@ -642,7 +642,7 @@ Show that <span class="math notranslate nohighlight">\(x \mid z\)</span>.</p>
 <p>You might wonder how to show that a number is <em>not</em> divisible by another number.  A convenient test
 here is a theorem which we will prove later in the book, in
 <a class="reference internal" href="04_Proofs_with_Structure_II.html#not-divisible-proof"><span class="std std-numref">Example 4.5.8</span></a>: if an integer <span class="math notranslate nohighlight">\(a\)</span> is strictly between two
-consecutive multiples of a positive integer <span class="math notranslate nohighlight">\(b\)</span>, then it is not a multiple of
+consecutive multiples of an integer <span class="math notranslate nohighlight">\(b\)</span>, then it is not a multiple of
 <span class="math notranslate nohighlight">\(b\)</span>.  More formally, if there exists an integer <span class="math notranslate nohighlight">\(q\)</span> such that
 <span class="math notranslate nohighlight">\(bq&lt;a&lt;b(q + 1)\)</span>, then <span class="math notranslate nohighlight">\(a\)</span> is not a multiple of <span class="math notranslate nohighlight">\(b\)</span>.  Here is an
 example applying this test:</p>
@@ -652,10 +652,10 @@ example applying this test:</p>
 </div>
 <div class="admonition-solution admonition">
 <p class="admonition-title">Solution</p>
-<p>5 is positive and <span class="math notranslate nohighlight">\(5 \cdot 2 &lt; 12 &lt; 5 \cdot (2 + 1)\)</span>.</p>
+<p><span class="math notranslate nohighlight">\(5 \cdot 2 &lt; 12 &lt; 5 \cdot (2 + 1)\)</span>.</p>
 </div>
 <p>In Lean, this test is available as the lemma <code class="docutils literal notranslate"><span class="pre">Int.not_dvd_of_exists_lt_and_lt</span></code>:</p>
-<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">lemma</span> <span class="n">Int.not_dvd_of_exists_lt_and_lt</span> <span class="o">(</span><span class="n">a</span> <span class="o">:</span> <span class="n">&#8484;</span><span class="o">)</span> <span class="o">{</span><span class="n">b</span> <span class="o">:</span> <span class="n">&#8484;</span><span class="o">}</span> <span class="o">(</span><span class="n">hb</span> <span class="o">:</span> <span class="mi">0</span> <span class="bp">&lt;</span> <span class="n">b</span><span class="o">)</span>
+<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">lemma</span> <span class="n">Int.not_dvd_of_exists_lt_and_lt</span> <span class="o">(</span><span class="n">a</span> <span class="n">b</span> <span class="o">:</span> <span class="n">&#8484;</span><span class="o">)</span>
   <span class="o">(</span><span class="n">h</span> <span class="o">:</span> <span class="bp">&#8707;</span> <span class="n">q</span><span class="o">,</span> <span class="n">b</span> <span class="bp">*</span> <span class="n">q</span> <span class="bp">&lt;</span> <span class="n">a</span> <span class="bp">&#8743;</span> <span class="n">a</span> <span class="bp">&lt;</span> <span class="n">b</span> <span class="bp">*</span> <span class="o">(</span><span class="n">q</span> <span class="bp">+</span> <span class="mi">1</span><span class="o">))</span> <span class="o">:</span>
   <span class="bp">&#172;</span><span class="n">b</span> <span class="bp">&#8739;</span> <span class="n">a</span> <span class="o">:=</span>
 </pre></div>
@@ -663,7 +663,6 @@ example applying this test:</p>
 <p>And here is the same solution written up in Lean.</p>
 <div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">:</span> <span class="bp">&#172;</span><span class="o">(</span><span class="mi">5</span> <span class="o">:</span> <span class="n">&#8484;</span><span class="o">)</span> <span class="bp">&#8739;</span> <span class="mi">12</span> <span class="o">:=</span> <span class="kd">by</span>
   <span class="n">apply</span> <span class="n">Int.not_dvd_of_exists_lt_and_lt</span>
-  <span class="bp">&#183;</span> <span class="n">numbers</span> <span class="c1">-- show `0 &lt; 5`</span>
   <span class="n">use</span> <span class="mi">2</span>
   <span class="n">constructor</span>
   <span class="bp">&#183;</span> <span class="n">numbers</span> <span class="c1">-- show `5 * 2 &lt; 12`</span>
@@ -1264,7 +1263,7 @@ Show that <span class="math notranslate nohighlight">\(n^3+7n\equiv 2\mod 3\)</s
 </pre></div>
 </div>
 </li>
-<li><p>Let <span class="math notranslate nohighlight">\(x\)</span> be an integer.  Show that <span class="math notranslate nohighlight">\(x^5\equiv 1\mod 5\)</span>.</p>
+<li><p>Let <span class="math notranslate nohighlight">\(x\)</span> be an integer.  Show that <span class="math notranslate nohighlight">\(x^5\equiv x\mod 5\)</span>.</p>
 <div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">{</span><span class="n">x</span> <span class="o">:</span> <span class="n">&#8484;</span><span class="o">}</span> <span class="o">:</span> <span class="n">x</span> <span class="bp">^</span> <span class="mi">5</span> <span class="bp">&#8801;</span> <span class="n">x</span> <span class="o">[</span><span class="n">ZMOD</span> <span class="mi">5</span><span class="o">]</span> <span class="o">:=</span> <span class="kd">by</span>
   <span class="gr">sorry</span>
 </pre></div>

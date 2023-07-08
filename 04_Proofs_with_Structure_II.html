@@ -1266,11 +1266,11 @@ proved in <a class="reference internal" href="03_Parity_and_Divisibility.html#dv
 <p class="admonition-title">Solution</p>
 <p>Clearly <span class="math notranslate nohighlight">\(2 &#8804; 5\)</span>.  Let <span class="math notranslate nohighlight">\(m\)</span> be a natural number with <span class="math notranslate nohighlight">\(1&lt;m&lt;5\)</span>.  We must show that
 5 is not a multiple of <span class="math notranslate nohighlight">\(m\)</span>. There are three cases to check:</p>
-<p><strong>Case 1</strong> (<span class="math notranslate nohighlight">\(m=2\)</span>):  Since 5 is positive and lies between the consecutive multiples
+<p><strong>Case 1</strong> (<span class="math notranslate nohighlight">\(m=2\)</span>):  Since 5 lies between the consecutive multiples
 <span class="math notranslate nohighlight">\(2\cdot 2\)</span> and <span class="math notranslate nohighlight">\(2 \cdot 3\)</span> of 2, it is not a multiple of 2.</p>
-<p><strong>Case 2</strong> (<span class="math notranslate nohighlight">\(m=3\)</span>):  Since 5 is positive and lies between the consecutive multiples
+<p><strong>Case 2</strong> (<span class="math notranslate nohighlight">\(m=3\)</span>):  Since 5 lies between the consecutive multiples
 <span class="math notranslate nohighlight">\(3\cdot 1\)</span> and <span class="math notranslate nohighlight">\(3 \cdot 2\)</span> of 3, it is not a multiple of 3.</p>
-<p><strong>Case 3</strong> (<span class="math notranslate nohighlight">\(m=4\)</span>):  Since 5 is positive and lies between the consecutive multiples
+<p><strong>Case 3</strong> (<span class="math notranslate nohighlight">\(m=4\)</span>):  Since 5 lies between the consecutive multiples
 <span class="math notranslate nohighlight">\(4\cdot 1\)</span> and <span class="math notranslate nohighlight">\(4 \cdot 2\)</span> of 4, it is not a multiple of 4.</p>
 </div>
 <div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">:</span> <span class="n">Prime</span> <span class="mi">5</span> <span class="o">:=</span> <span class="kd">by</span>
@@ -1278,7 +1278,6 @@ proved in <a class="reference internal" href="03_Parity_and_Divisibility.html#dv
   <span class="bp">&#183;</span> <span class="n">numbers</span>
   <span class="n">intro</span> <span class="n">m</span> <span class="n">hm_left</span> <span class="n">hm_right</span>
   <span class="n">apply</span> <span class="n">Nat.not_dvd_of_exists_lt_and_lt</span>
-  <span class="bp">&#183;</span> <span class="n">extra</span>
   <span class="n">interval_cases</span> <span class="n">m</span>
   <span class="bp">&#183;</span> <span class="n">use</span> <span class="mi">2</span>
     <span class="n">constructor</span> <span class="bp">&lt;;&gt;</span> <span class="n">numbers</span>
@@ -1623,7 +1622,7 @@ contradicts a hypothesis.</p>
 <p>Secondly, there is this theorem, first mentioned in <a class="reference internal" href="03_Parity_and_Divisibility.html#not-divisible"><span class="std std-numref">Example 3.2.6</span></a>:</p>
 <div class="admonition-theorem admonition">
 <p class="admonition-title">Theorem</p>
-<p>Let <span class="math notranslate nohighlight">\(a\)</span> be an integer and let <span class="math notranslate nohighlight">\(b\)</span> be a positive integer.  If there exists an
+<p>Let <span class="math notranslate nohighlight">\(a\)</span> and <span class="math notranslate nohighlight">\(b\)</span> be integers.  If there exists an
 integer <span class="math notranslate nohighlight">\(q\)</span> such that <span class="math notranslate nohighlight">\(bq&lt;a&lt;b(q + 1)\)</span>, then <span class="math notranslate nohighlight">\(a\)</span> is not a multiple
 of <span class="math notranslate nohighlight">\(b\)</span>.</p>
 </div>
@@ -1633,23 +1632,31 @@ of <span class="math notranslate nohighlight">\(b\)</span>.</p>
 <p>Suppose for the sake of contradiction that <span class="math notranslate nohighlight">\(a\)</span> is a multiple of <span class="math notranslate nohighlight">\(b\)</span>. Then there exists
 an integer <span class="math notranslate nohighlight">\(k\)</span> such that <span class="math notranslate nohighlight">\(a=bk\)</span>.  Also, let <span class="math notranslate nohighlight">\(q\)</span> be an integer such that
 <span class="math notranslate nohighlight">\(b q&lt;a&lt;b(q + 1)\)</span>.</p>
-<p>We first observe that</p>
+<p>We first note that</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}0 &amp;= a - a\\
+&amp;&lt; b(q+1)-bq\\
+&amp;=b.\end{split}\]</div>
+<p>Now let us reason from the two known inequalities separately. We first observe that</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}bk &amp;=a \\
   &amp; &lt; b(q+1),\end{split}\]</div>
-<p>and so <span class="math notranslate nohighlight">\(k &lt; q+1\)</span>.</p>
+<p>and so (since <span class="math notranslate nohighlight">\(b&gt;0\)</span>) we have <span class="math notranslate nohighlight">\(k &lt; q+1\)</span>.</p>
 <p>We next observe that</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}bq &amp;&lt; a \\
   &amp; =bk,\end{split}\]</div>
-<p>and so <span class="math notranslate nohighlight">\(q &lt; k\)</span>, thus <span class="math notranslate nohighlight">\(q+1 \le k\)</span>.</p>
+<p>and so  (since <span class="math notranslate nohighlight">\(b&gt;0\)</span>) we have <span class="math notranslate nohighlight">\(q &lt; k\)</span>, thus <span class="math notranslate nohighlight">\(q+1 \le k\)</span>.</p>
 <p>These two facts contradict each other, so <span class="math notranslate nohighlight">\(a\)</span> must be a multiple of <span class="math notranslate nohighlight">\(b\)</span> after all.</p>
 </div>
-<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">(</span><span class="n">a</span> <span class="o">:</span> <span class="n">&#8484;</span><span class="o">)</span> <span class="o">{</span><span class="n">b</span> <span class="o">:</span> <span class="n">&#8484;</span><span class="o">}</span> <span class="o">(</span><span class="n">hb</span> <span class="o">:</span> <span class="mi">0</span> <span class="bp">&lt;</span> <span class="n">b</span><span class="o">)</span>
-    <span class="o">(</span><span class="n">h</span> <span class="o">:</span> <span class="bp">&#8707;</span> <span class="n">q</span><span class="o">,</span> <span class="n">b</span> <span class="bp">*</span> <span class="n">q</span> <span class="bp">&lt;</span> <span class="n">a</span> <span class="bp">&#8743;</span> <span class="n">a</span> <span class="bp">&lt;</span> <span class="n">b</span> <span class="bp">*</span> <span class="o">(</span><span class="n">q</span> <span class="bp">+</span> <span class="mi">1</span><span class="o">))</span> <span class="o">:</span> <span class="bp">&#172;</span><span class="n">b</span> <span class="bp">&#8739;</span> <span class="n">a</span> <span class="o">:=</span> <span class="kd">by</span>
+<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">(</span><span class="n">a</span> <span class="n">b</span> <span class="o">:</span> <span class="n">&#8484;</span><span class="o">)</span> <span class="o">(</span><span class="n">h</span> <span class="o">:</span> <span class="bp">&#8707;</span> <span class="n">q</span><span class="o">,</span> <span class="n">b</span> <span class="bp">*</span> <span class="n">q</span> <span class="bp">&lt;</span> <span class="n">a</span> <span class="bp">&#8743;</span> <span class="n">a</span> <span class="bp">&lt;</span> <span class="n">b</span> <span class="bp">*</span> <span class="o">(</span><span class="n">q</span> <span class="bp">+</span> <span class="mi">1</span><span class="o">))</span> <span class="o">:</span> <span class="bp">&#172;</span><span class="n">b</span> <span class="bp">&#8739;</span> <span class="n">a</span> <span class="o">:=</span> <span class="kd">by</span>
   <span class="n">intro</span> <span class="n">H</span>
   <span class="n">obtain</span> <span class="o">&#10216;</span><span class="n">k</span><span class="o">,</span> <span class="n">hk</span><span class="o">&#10217;</span> <span class="o">:=</span> <span class="n">H</span>
   <span class="n">obtain</span> <span class="o">&#10216;</span><span class="n">q</span><span class="o">,</span> <span class="n">hq&#8321;</span><span class="o">,</span> <span class="n">hq&#8322;</span><span class="o">&#10217;</span> <span class="o">:=</span> <span class="n">h</span>
+  <span class="k">have</span> <span class="n">hb</span> <span class="o">:=</span>
+  <span class="k">calc</span> <span class="mi">0</span> <span class="bp">=</span> <span class="n">a</span> <span class="bp">-</span> <span class="n">a</span> <span class="o">:=</span> <span class="kd">by</span> <span class="n">ring</span>
+    <span class="n">_</span> <span class="bp">&lt;</span> <span class="n">b</span> <span class="bp">*</span> <span class="o">(</span><span class="n">q</span> <span class="bp">+</span> <span class="mi">1</span><span class="o">)</span> <span class="bp">-</span> <span class="n">b</span> <span class="bp">*</span> <span class="n">q</span> <span class="o">:=</span> <span class="kd">by</span> <span class="n">rel</span> <span class="o">[</span><span class="n">hq&#8321;</span><span class="o">,</span> <span class="n">hq&#8322;</span><span class="o">]</span>
+    <span class="n">_</span> <span class="bp">=</span> <span class="n">b</span> <span class="o">:=</span> <span class="kd">by</span> <span class="n">ring</span>
   <span class="k">have</span> <span class="n">h1</span> <span class="o">:=</span>
   <span class="k">calc</span> <span class="n">b</span> <span class="bp">*</span> <span class="n">k</span> <span class="bp">=</span> <span class="n">a</span> <span class="o">:=</span> <span class="kd">by</span> <span class="n">rw</span> <span class="o">[</span><span class="n">hk</span><span class="o">]</span>
     <span class="n">_</span> <span class="bp">&lt;</span> <span class="n">b</span> <span class="bp">*</span> <span class="o">(</span><span class="n">q</span> <span class="bp">+</span> <span class="mi">1</span><span class="o">)</span> <span class="o">:=</span> <span class="n">hq&#8322;</span>
@@ -1727,11 +1734,11 @@ for you to check.</p>
 <p>Clearly <span class="math notranslate nohighlight">\(2 &#8804; 79\)</span>.  Also notice that <span class="math notranslate nohighlight">\(79&lt;9^2\)</span>. Let <span class="math notranslate nohighlight">\(m\)</span> be a natural number with
 <span class="math notranslate nohighlight">\(1&lt;m&lt;9\)</span>.  We will show that 79 is not a multiple of <span class="math notranslate nohighlight">\(m\)</span>. There are seven cases to
 check:</p>
-<p><strong>Case 1</strong> (<span class="math notranslate nohighlight">\(m=2\)</span>):  Since 79 is positive and lies between the consecutive multiples
+<p><strong>Case 1</strong> (<span class="math notranslate nohighlight">\(m=2\)</span>):  Since 79 lies between the consecutive multiples
 <span class="math notranslate nohighlight">\(2\cdot 39\)</span> and <span class="math notranslate nohighlight">\(2 \cdot 40\)</span> of 2, it is not a multiple of 2.</p>
-<p><strong>Case 2</strong> (<span class="math notranslate nohighlight">\(m=3\)</span>):  Since 79 is positive and lies between the consecutive multiples
+<p><strong>Case 2</strong> (<span class="math notranslate nohighlight">\(m=3\)</span>):  Since 79 lies between the consecutive multiples
 <span class="math notranslate nohighlight">\(3\cdot 26\)</span> and <span class="math notranslate nohighlight">\(3 \cdot 27\)</span> of 3, it is not a multiple of 3.</p>
-<p><strong>Case 3</strong> (<span class="math notranslate nohighlight">\(m=4\)</span>):  Since 79 is positive and lies between the consecutive multiples
+<p><strong>Case 3</strong> (<span class="math notranslate nohighlight">\(m=4\)</span>):  Since 79 lies between the consecutive multiples
 <span class="math notranslate nohighlight">\(4\cdot 19\)</span> and <span class="math notranslate nohighlight">\(4 \cdot 20\)</span> of 4, it is not a multiple of 4.</p>
 <p>(etc. for 5, 6, 7 and 8)</p>
 </div>
@@ -1741,7 +1748,6 @@ check:</p>
   <span class="bp">&#183;</span> <span class="n">numbers</span>
   <span class="n">intro</span> <span class="n">m</span> <span class="n">hm1</span> <span class="n">hm2</span>
   <span class="n">apply</span> <span class="n">Nat.not_dvd_of_exists_lt_and_lt</span>
-  <span class="bp">&#183;</span> <span class="n">extra</span>
   <span class="n">interval_cases</span> <span class="n">m</span>
   <span class="bp">&#183;</span> <span class="n">use</span> <span class="mi">39</span>
     <span class="n">constructor</span> <span class="bp">&lt;;&gt;</span> <span class="n">numbers</span>
