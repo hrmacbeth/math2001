@@ -77,6 +77,15 @@
 <li class="toctree-l3"><a class="reference internal" href="#id18">9.2.8. Exercises</a></li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="#the-type-of-sets">9.3. The type of sets</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#definition">9.3.1. Definition</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id20">9.3.2. Example</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id21">9.3.3. Example</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id22">9.3.4. Example</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id23">9.3.5. Example</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id24">9.3.6. Exercises</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="10_Relations.html">10. Relations</a></li>
@@ -885,10 +894,178 @@ will work.</p>
 </pre></div>
 </div>
 </li>
+</ol>
+</section>
+</section>
+<section id="the-type-of-sets">
+<span id="powerset"></span><h2><span class="section-number">9.3. </span>The type of sets<a class="headerlink" href="#the-type-of-sets" title="Permalink to this headline">&#61633;</a></h2>
+<section id="definition">
+<h3><span class="section-number">9.3.1. </span>Definition<a class="headerlink" href="#definition" title="Permalink to this headline">&#61633;</a></h3>
+<p>Let <span class="math notranslate nohighlight">\(X\)</span> be a type.  The collection of all sets in <span class="math notranslate nohighlight">\(X\)</span> can itself be
+considered as a type.  This type is sometimes denoted <span class="math notranslate nohighlight">\(\mathcal{P}(X)\)</span>. <a class="footnote-reference brackets" href="#id25" id="id19">1</a>  For
+example, <span class="math notranslate nohighlight">\(\{3,4,5\}\)</span>, <span class="math notranslate nohighlight">\(\{n:\mathbb{N}\mid 8&lt;n\}\)</span>, and
+<span class="math notranslate nohighlight">\(\{k:\mathbb{N}\mid\exists \ a, a^2=k\}\)</span> are all sets of natural numbers, which
+means they are all of type <span class="math notranslate nohighlight">\(\mathcal{P}(\mathbb{N})\)</span>.</p>
+<p>In Lean, for a type <code class="docutils literal notranslate"><span class="pre">X</span></code>, the type of sets in <code class="docutils literal notranslate"><span class="pre">X</span></code> is denoted <code class="docutils literal notranslate"><span class="pre">Set</span> <span class="pre">X</span></code>.  Lean
+will confirm that the three objects described above all have type <code class="docutils literal notranslate"><span class="pre">Set</span> <span class="pre">&#8469;</span></code>:</p>
+<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="k">#check</span> <span class="o">{</span><span class="mi">3</span><span class="o">,</span> <span class="mi">4</span><span class="o">,</span> <span class="mi">5</span><span class="o">}</span> <span class="c1">-- `{3, 4, 5} : Set &#8469;`</span>
+<span class="k">#check</span> <span class="o">{</span><span class="n">n</span> <span class="o">:</span> <span class="n">&#8469;</span> <span class="bp">|</span> <span class="mi">8</span> <span class="bp">&lt;</span> <span class="n">n</span><span class="o">}</span> <span class="c1">-- `{n | 8 &lt; n} : Set &#8469;`</span>
+<span class="k">#check</span> <span class="o">{</span><span class="n">k</span> <span class="o">:</span> <span class="n">&#8469;</span> <span class="bp">|</span> <span class="bp">&#8707;</span> <span class="n">a</span><span class="o">,</span> <span class="n">a</span> <span class="bp">^</span> <span class="mi">2</span> <span class="bp">=</span> <span class="n">k</span><span class="o">}</span> <span class="c1">-- `{k | &#8707; a, a ^ 2 = k} : Set &#8469;`</span>
+</pre></div>
+</div>
+<p>This operation can be iterated: you can have sets in the type of sets, and so on.</p>
+<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="k">#check</span> <span class="o">{{</span><span class="mi">3</span><span class="o">,</span> <span class="mi">4</span><span class="o">},</span> <span class="o">{</span><span class="mi">4</span><span class="o">,</span> <span class="mi">5</span><span class="o">,</span> <span class="mi">6</span><span class="o">}}</span> <span class="c1">-- `{{3, 4}, {4, 5, 6}} : Set (Set &#8469;)`</span>
+<span class="k">#check</span> <span class="o">{</span><span class="n">s</span> <span class="o">:</span> <span class="n">Set</span> <span class="n">&#8469;</span> <span class="bp">|</span> <span class="mi">3</span> <span class="bp">&#8712;</span> <span class="n">s</span><span class="o">}</span> <span class="c1">-- `{s | 3 &#8712; s} : Set (Set &#8469;)`</span>
+</pre></div>
+</div>
+<p>Exercise: write down an object of type <code class="docutils literal notranslate"><span class="pre">Set</span> <span class="pre">(Set</span> <span class="pre">(Set</span> <span class="pre">&#8469;))</span></code>.</p>
+</section>
+<section id="id20">
+<h3><span class="section-number">9.3.2. </span>Example<a class="headerlink" href="#id20" title="Permalink to this headline">&#61633;</a></h3>
+<div class="admonition-problem admonition">
+<p class="admonition-title">Problem</p>
+<p>Show that
+<span class="math notranslate nohighlight">\(\{n:\mathbb{N}\mid n\text{ is even}\}\notin\{s:\mathcal{P}(\mathbb{N})\mid 3 &#8712;s\}\)</span>.</p>
+</div>
+<div class="admonition-solution admonition">
+<p class="admonition-title">Solution</p>
+<p>We must show 3 is not even.  It suffices to show that 3 is odd.  Indeed, <span class="math notranslate nohighlight">\(3=2\cdot 1+1\)</span>.</p>
+</div>
+<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">:</span> <span class="o">{</span><span class="n">n</span> <span class="o">:</span> <span class="n">&#8469;</span> <span class="bp">|</span> <span class="n">Nat.Even</span> <span class="n">n</span><span class="o">}</span> <span class="bp">&#8713;</span> <span class="o">{</span><span class="n">s</span> <span class="o">:</span> <span class="n">Set</span> <span class="n">&#8469;</span> <span class="bp">|</span> <span class="mi">3</span> <span class="bp">&#8712;</span> <span class="n">s</span><span class="o">}</span> <span class="o">:=</span> <span class="kd">by</span>
+  <span class="n">dsimp</span>
+  <span class="n">rw</span> <span class="o">[</span><span class="bp">&#8592;</span> <span class="n">Nat.odd_iff_not_even</span><span class="o">]</span>
+  <span class="n">use</span> <span class="mi">1</span>
+  <span class="n">numbers</span>
+</pre></div>
+</div>
+</section>
+<section id="id21">
+<h3><span class="section-number">9.3.3. </span>Example<a class="headerlink" href="#id21" title="Permalink to this headline">&#61633;</a></h3>
+<p>Since <span class="math notranslate nohighlight">\(\mathcal{P}(X)\)</span>, the type of sets in <span class="math notranslate nohighlight">\(X\)</span>, is itself a type, we can consider
+functions to and from it.</p>
+<p>For example, given a set <span class="math notranslate nohighlight">\(s\)</span> of natural numbers, we can build a new set
+<span class="math notranslate nohighlight">\(\{n:\mathbb{N}\mid n+1 \in s\}\)</span>.  Lean confirms that this operation (let us call it
+<span class="math notranslate nohighlight">\(p\)</span>) is a function from <span class="math notranslate nohighlight">\(\mathcal{P}(\mathbb{N})\)</span> to <span class="math notranslate nohighlight">\(\mathcal{P}(\mathbb{N})\)</span>.</p>
+<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">def</span> <span class="n">p</span> <span class="o">(</span><span class="n">s</span> <span class="o">:</span> <span class="n">Set</span> <span class="n">&#8469;</span><span class="o">)</span> <span class="o">:</span> <span class="n">Set</span> <span class="n">&#8469;</span> <span class="o">:=</span> <span class="o">{</span><span class="n">n</span> <span class="o">:</span> <span class="n">&#8469;</span> <span class="bp">|</span> <span class="n">n</span> <span class="bp">+</span> <span class="mi">1</span> <span class="bp">&#8712;</span> <span class="n">s</span><span class="o">}</span>
+
+<span class="k">#check</span> <span class="bp">@</span><span class="n">p</span> <span class="c1">-- `p : Set &#8469; &#8594; Set &#8469;`</span>
+</pre></div>
+</div>
+<div class="admonition-problem admonition">
+<p class="admonition-title">Problem</p>
+<p>Show that the function <span class="math notranslate nohighlight">\(p\)</span> is not injective.</p>
+</div>
+<div class="admonition-solution admonition">
+<p class="admonition-title">Solution</p>
+<p>We must show that there exist sets <span class="math notranslate nohighlight">\(s\)</span> and <span class="math notranslate nohighlight">\(t\)</span>, such that (i) for all natural numbers
+<span class="math notranslate nohighlight">\(n\)</span>, it is true that <span class="math notranslate nohighlight">\(n+1\in s\)</span> if and only if <span class="math notranslate nohighlight">\(n+ 1\in t\)</span>, and, (ii) there
+exists a natural number <span class="math notranslate nohighlight">\(k\)</span> which is in one of <span class="math notranslate nohighlight">\(s\)</span>, <span class="math notranslate nohighlight">\(t\)</span> but not the other.</p>
+<p>Indeed, let us show that the sets <span class="math notranslate nohighlight">\(\{0\}\)</span> and <span class="math notranslate nohighlight">\(\emptyset\)</span> have this property.  We must
+show, (i) for all natural numbers <span class="math notranslate nohighlight">\(n\)</span>, it is true that <span class="math notranslate nohighlight">\(n+1 \ne 0\)</span>, and, (ii) there
+exists a natural number <span class="math notranslate nohighlight">\(k\)</span> which is equal to 0.</p>
+<p>The first statement is true because for any natural number  <span class="math notranslate nohighlight">\(n\)</span>, the number <span class="math notranslate nohighlight">\(n+1\)</span> is
+strictly positive, and the second is true by taking <span class="math notranslate nohighlight">\(k\)</span> to be 0.</p>
+</div>
+<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">:</span> <span class="bp">&#172;</span> <span class="n">Injective</span> <span class="n">p</span> <span class="o">:=</span> <span class="kd">by</span>
+  <span class="n">dsimp</span> <span class="o">[</span><span class="n">Injective</span><span class="o">,</span> <span class="n">p</span><span class="o">]</span>
+  <span class="n">push_neg</span>
+  <span class="n">use</span> <span class="o">{</span><span class="mi">0</span><span class="o">},</span> <span class="bp">&#8709;</span>
+  <span class="n">dsimp</span>
+  <span class="n">constructor</span>
+  <span class="bp">&#183;</span> <span class="n">intro</span> <span class="n">x</span>
+    <span class="n">apply</span> <span class="n">ne_of_gt</span>
+    <span class="n">extra</span>
+  <span class="bp">&#183;</span> <span class="n">use</span> <span class="mi">0</span>
+    <span class="n">numbers</span>
+</pre></div>
+</div>
+</section>
+<section id="id22">
+<h3><span class="section-number">9.3.4. </span>Example<a class="headerlink" href="#id22" title="Permalink to this headline">&#61633;</a></h3>
+<div class="admonition-problem admonition">
+<p class="admonition-title">Problem</p>
+<p>Consider the function  <span class="math notranslate nohighlight">\(q : \mathcal{P}(\mathbb{Z})\to \mathcal{P}(\mathbb{Z})\)</span> defined by,
+<span class="math notranslate nohighlight">\(q(s)=\{n:\mathbb{Z}\mid n+1\in s\}\)</span>. Show that the function <span class="math notranslate nohighlight">\(q\)</span> is injective.</p>
+</div>
+<div class="admonition-solution admonition">
+<p class="admonition-title">Solution</p>
+<p>We must show that for all sets <span class="math notranslate nohighlight">\(s\)</span> and <span class="math notranslate nohighlight">\(t\)</span>, if for all natural numbers
+<span class="math notranslate nohighlight">\(m\)</span>, it is true that <span class="math notranslate nohighlight">\(m+1\in s\)</span> if and only if <span class="math notranslate nohighlight">\(m+ 1\in t\)</span>, then for all natural
+numbers <span class="math notranslate nohighlight">\(n\)</span>, it is true that <span class="math notranslate nohighlight">\(n\in s\)</span> if and only if <span class="math notranslate nohighlight">\(n\in t\)</span>.</p>
+<p>Indeed, let <span class="math notranslate nohighlight">\(s\)</span> and <span class="math notranslate nohighlight">\(t\)</span> be sets and suppose that for all natural numbers
+<span class="math notranslate nohighlight">\(m\)</span>, it is true that <span class="math notranslate nohighlight">\(m+1\in s\)</span> if and only if <span class="math notranslate nohighlight">\(m+ 1\in t\)</span>.  Let <span class="math notranslate nohighlight">\(n\)</span> be a
+natural number.  Applying the hypothesis with <span class="math notranslate nohighlight">\(m\)</span> taken to be <span class="math notranslate nohighlight">\(n-1\)</span>, we see that
+<span class="math notranslate nohighlight">\((n-1)+1\in s\)</span> if and only if <span class="math notranslate nohighlight">\((n-1)+ 1\in t\)</span>. Simplifying, <span class="math notranslate nohighlight">\(n\in s\)</span> if and only
+if <span class="math notranslate nohighlight">\(n\in t\)</span>, as desired.</p>
+</div>
+<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">def</span> <span class="n">q</span> <span class="o">(</span><span class="n">s</span> <span class="o">:</span> <span class="n">Set</span> <span class="n">&#8484;</span><span class="o">)</span> <span class="o">:</span> <span class="n">Set</span> <span class="n">&#8484;</span> <span class="o">:=</span> <span class="o">{</span><span class="n">n</span> <span class="o">:</span> <span class="n">&#8484;</span> <span class="bp">|</span> <span class="n">n</span> <span class="bp">+</span> <span class="mi">1</span> <span class="bp">&#8712;</span> <span class="n">s</span><span class="o">}</span>
+
+<span class="kd">example</span> <span class="o">:</span> <span class="n">Injective</span> <span class="n">q</span> <span class="o">:=</span> <span class="kd">by</span>
+  <span class="n">dsimp</span> <span class="o">[</span><span class="n">Injective</span><span class="o">,</span> <span class="n">q</span><span class="o">]</span>
+  <span class="n">intro</span> <span class="n">s</span> <span class="n">t</span> <span class="n">hst</span> <span class="n">n</span>
+  <span class="k">have</span> <span class="n">hn</span> <span class="o">:</span> <span class="o">(</span><span class="n">n</span> <span class="bp">-</span> <span class="mi">1</span><span class="o">)</span> <span class="bp">+</span> <span class="mi">1</span> <span class="bp">&#8712;</span> <span class="n">s</span> <span class="bp">&#8596;</span> <span class="o">(</span><span class="n">n</span> <span class="bp">-</span> <span class="mi">1</span><span class="o">)</span> <span class="bp">+</span> <span class="mi">1</span> <span class="bp">&#8712;</span> <span class="n">t</span> <span class="o">:=</span> <span class="n">hst</span> <span class="o">(</span><span class="n">n</span> <span class="bp">-</span> <span class="mi">1</span><span class="o">)</span>
+  <span class="n">conv</span> <span class="n">at</span> <span class="n">hn</span> <span class="bp">=&gt;</span> <span class="n">ring</span>
+  <span class="n">apply</span> <span class="n">hn</span>
+</pre></div>
+</div>
+</section>
+<section id="id23">
+<h3><span class="section-number">9.3.5. </span>Example<a class="headerlink" href="#id23" title="Permalink to this headline">&#61633;</a></h3>
+<div class="admonition-problem admonition">
+<p class="admonition-title">Problem</p>
+<p>Let <span class="math notranslate nohighlight">\(X\)</span> be a type.  Prove that there does not exist a surjective function from  <span class="math notranslate nohighlight">\(X\)</span> to
+<span class="math notranslate nohighlight">\(\mathcal{P}(X)\)</span>.</p>
+</div>
+<div class="admonition-solution admonition">
+<p class="admonition-title">Solution</p>
+<p>Suppose for the sake of contradiction that some function <span class="math notranslate nohighlight">\(f:X\to\mathcal{P}(X)\)</span> were
+surjective.  We introduce the
+following set in <span class="math notranslate nohighlight">\(X\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[s :=\{x:X\mid x\notin f(x)\}.\]</div>
+<p>Since <span class="math notranslate nohighlight">\(f\)</span> is surjective, there exists some <span class="math notranslate nohighlight">\(x\)</span> of type <span class="math notranslate nohighlight">\(X\)</span> such that
+<span class="math notranslate nohighlight">\(f(x)=s\)</span>. We consider cases according to whether <span class="math notranslate nohighlight">\(x\in s\)</span>.</p>
+<p><strong>Case 1</strong> (<span class="math notranslate nohighlight">\(x\in s\)</span>):  Then by the definition of <span class="math notranslate nohighlight">\(s\)</span>, it is true that
+<span class="math notranslate nohighlight">\(x\notin f(x)\)</span>, so since <span class="math notranslate nohighlight">\(f(x)=s\)</span>, we have <span class="math notranslate nohighlight">\(x\notin s\)</span>, contradiction.</p>
+<p><strong>Case 2</strong> (<span class="math notranslate nohighlight">\(x\notin s\)</span>):  Then by the definition of <span class="math notranslate nohighlight">\(s\)</span>, it is false that
+<span class="math notranslate nohighlight">\(x\notin f(x)\)</span>, so since <span class="math notranslate nohighlight">\(f(x)=s\)</span>, we have that it is false that <span class="math notranslate nohighlight">\(x\notin s\)</span>,
+contradiction.</p>
+</div>
+<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">:</span> <span class="bp">&#172;</span> <span class="bp">&#8707;</span> <span class="n">f</span> <span class="o">:</span> <span class="n">X</span> <span class="bp">&#8594;</span> <span class="n">Set</span> <span class="n">X</span><span class="o">,</span> <span class="n">Surjective</span> <span class="n">f</span> <span class="o">:=</span> <span class="kd">by</span>
+  <span class="n">intro</span> <span class="n">h</span>
+  <span class="n">obtain</span> <span class="o">&#10216;</span><span class="n">f</span><span class="o">,</span> <span class="n">hf</span><span class="o">&#10217;</span> <span class="o">:=</span> <span class="n">h</span>
+  <span class="k">let</span> <span class="n">s</span> <span class="o">:</span> <span class="n">Set</span> <span class="n">X</span> <span class="o">:=</span> <span class="o">{</span><span class="n">x</span> <span class="bp">|</span> <span class="n">x</span> <span class="bp">&#8713;</span> <span class="n">f</span> <span class="n">x</span><span class="o">}</span>
+  <span class="n">obtain</span> <span class="o">&#10216;</span><span class="n">x</span><span class="o">,</span> <span class="n">hx</span><span class="o">&#10217;</span> <span class="o">:=</span> <span class="n">hf</span> <span class="n">s</span>
+  <span class="n">by_cases</span> <span class="n">hxs</span> <span class="o">:</span> <span class="n">x</span> <span class="bp">&#8712;</span> <span class="n">s</span>
+  <span class="bp">&#183;</span> <span class="k">have</span> <span class="n">hfx</span> <span class="o">:</span> <span class="n">x</span> <span class="bp">&#8713;</span> <span class="n">f</span> <span class="n">x</span> <span class="o">:=</span> <span class="n">hxs</span>
+    <span class="n">rw</span> <span class="o">[</span><span class="n">hx</span><span class="o">]</span> <span class="n">at</span> <span class="n">hfx</span>
+    <span class="n">contradiction</span>
+  <span class="bp">&#183;</span> <span class="k">have</span> <span class="n">hfx</span> <span class="o">:</span> <span class="bp">&#172;</span> <span class="n">x</span> <span class="bp">&#8713;</span> <span class="n">f</span> <span class="n">x</span> <span class="o">:=</span> <span class="n">hxs</span>
+    <span class="n">rw</span> <span class="o">[</span><span class="n">hx</span><span class="o">]</span> <span class="n">at</span> <span class="n">hfx</span>
+    <span class="n">contradiction</span>
+</pre></div>
+</div>
+<p>The idea behind this twisty proof is sometimes called the
+<a class="reference external" href="https://en.wikipedia.org/wiki/Barber_paradox">barber paradox</a>.  Here is the version featuring
+barbers.  There is a town with a barber, and in this town, the barber shaves all men who don&#8217;t shave
+themselves.  Paradox: does the barber shave himself?</p>
+</section>
+<section id="id24">
+<h3><span class="section-number">9.3.6. </span>Exercises<a class="headerlink" href="#id24" title="Permalink to this headline">&#61633;</a></h3>
+<ol class="arabic">
+<li><p>Consider the function <span class="math notranslate nohighlight">\(r : \mathcal{P}(\mathbb{N})\to \mathcal{P}(\mathbb{N})\)</span> defined by,
+<span class="math notranslate nohighlight">\(r(s)=s\cup \{3\}\)</span>.  Show that <span class="math notranslate nohighlight">\(r\)</span> is not injective.</p>
+<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">def</span> <span class="n">r</span> <span class="o">(</span><span class="n">s</span> <span class="o">:</span> <span class="n">Set</span> <span class="n">&#8469;</span><span class="o">)</span> <span class="o">:</span> <span class="n">Set</span> <span class="n">&#8469;</span> <span class="o">:=</span> <span class="n">s</span> <span class="bp">&#8746;</span> <span class="o">{</span><span class="mi">3</span><span class="o">}</span>
+
+<span class="kd">example</span> <span class="o">:</span> <span class="bp">&#172;</span> <span class="n">Injective</span> <span class="n">r</span> <span class="o">:=</span> <span class="kd">by</span>
+  <span class="gr">sorry</span>
+</pre></div>
+</div>
+</li>
 <li><p>Consider the sequence <span class="math notranslate nohighlight">\(U_n\)</span> of sets of integers defined recursively by,</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}U_0&amp;=\mathbb{Z} \\
-\text{for }n:\mathbb{N},\quad U_{n+1} &amp;=\{x:\mathbb{Z}\mid \exists y\in U_n, x = 2y \}\end{split}\]</div>
+\text{for }n:\mathbb{N},\quad U_{n+1} &amp;=\{x:\mathbb{Z}\mid \exists \ y\in U_n, x = 2y \}\end{split}\]</div>
 <p>Show that for all natural numbers <span class="math notranslate nohighlight">\(n\)</span>, <span class="math notranslate nohighlight">\(U_n=\{x:\mathbb{Z}\mid 2^n\mid x\}\)</span>.</p>
 <div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">def</span> <span class="n">U</span> <span class="o">:</span> <span class="n">&#8469;</span> <span class="bp">&#8594;</span> <span class="n">Set</span> <span class="n">&#8484;</span>
   <span class="bp">|</span> <span class="mi">0</span> <span class="bp">=&gt;</span> <span class="n">univ</span>
@@ -906,6 +1083,15 @@ will work.</p>
 </div>
 </li>
 </ol>
+<p class="rubric">Footnotes</p>
+<dl class="footnote brackets">
+<dt class="label" id="id25"><span class="brackets"><a class="fn-backref" href="#id19">1</a></span></dt>
+<dd><p>In set theory, which we <em>don&#8217;t</em> use as the logical foundation of this book,
+<span class="math notranslate nohighlight">\(\mathcal{P}(X)\)</span> is referred to as
+the <em>power set</em> of <span class="math notranslate nohighlight">\(X\)</span>.  Maybe in type theory we should refer to it as the &#8220;power type&#8221; of
+<span class="math notranslate nohighlight">\(X\)</span> &#8230;?</p>
+</dd>
+</dl>
 </section>
 </section>
 </section>

@@ -4,7 +4,6 @@ import Mathlib.Tactic.IntervalCases
 import Library.Theory.ParityModular
 import Library.Tactic.Addarith
 import Library.Tactic.Define
-import Library.Tactic.Induction
 import Library.Tactic.ModCases
 import Library.Tactic.Numbers
 import Library.Tactic.Extra
@@ -133,18 +132,3 @@ example : { n : ℤ | 5 ∣ n } ∩ { n : ℤ | 8 ∣ n } ⊆ { n : ℤ | 40 ∣
 example :
     { n : ℤ | 3 ∣ n } ∪ { n : ℤ | 2 ∣ n } ⊆ { n : ℤ | n ^ 2 ≡ 1 [ZMOD 6] }ᶜ := by
   sorry
-
-namespace Int
-
-def U : ℕ → Set ℤ 
-  | 0 => univ
-  | n + 1 => { x : ℤ | ∃ y ∈ U n, x = 2 * y }
-
-example (n : ℕ) : U n = { x : ℤ | (2:ℤ) ^ n ∣ x } := by
-  simple_induction n with k hk
-  · rw [U]
-    dsimp
-    sorry
-  · rw [U]
-    dsimp at *
-    sorry

@@ -8,6 +8,7 @@ attribute [default_instance] Set.instEmptyCollectionSet
 
 attribute [set_simps] ne_eq iff_false false_iff true_iff iff_true
   imp_false true_imp_iff not_false_iff false_imp_iff imp_true_iff
+  or_false false_or and_false false_and or_true true_or and_true true_and
   Set.mem_setOf_eq Set.subset_def Set.ext_iff Set.singleton_def' Set.mem_insert_iff
   Set.mem_union Set.mem_inter_iff Set.mem_compl_iff Set.mem_empty_iff_false Set.mem_univ  
 
