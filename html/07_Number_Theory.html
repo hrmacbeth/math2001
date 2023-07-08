@@ -114,12 +114,14 @@ first known proof written in Euclid&#8217;s <em>Elements</em> in about 300 BC.</
 <a class="reference internal" href="06_Induction.html#recurrences"><span class="std std-numref">Section 6.2</span></a>, <span class="math notranslate nohighlight">\(0&lt;N!\)</span>, so <span class="math notranslate nohighlight">\(2 \le N! + 1\)</span>. Therefore, by
 <a class="reference internal" href="06_Induction.html#exists-prime-factor"><span class="std std-numref">Example 6.4.2</span></a>, there exists a prime number <span class="math notranslate nohighlight">\(p\)</span> which is a
 factor of <span class="math notranslate nohighlight">\(N! + 1\)</span>.</p>
-<p>Let <span class="math notranslate nohighlight">\(k\)</span> be a natural number such that <span class="math notranslate nohighlight">\(N! + 1=pk\)</span>. Then we have that</p>
+<p>Let <span class="math notranslate nohighlight">\(k\)</span> be a natural number such that <span class="math notranslate nohighlight">\(N! + 1=pk\)</span>. This number <span class="math notranslate nohighlight">\(k\)</span> cannot be
+zero, since if it were, we would have</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}0&amp;&lt; N! + 1\\
-&amp;=pk,\end{split}\]</div>
-<p>so <span class="math notranslate nohighlight">\(k&gt;0\)</span>, so there exists a natural number <span class="math notranslate nohighlight">\(l\)</span> such that <span class="math notranslate nohighlight">\(k=l+1\)</span>.  This
-<span class="math notranslate nohighlight">\(l\)</span> satisfies that <span class="math notranslate nohighlight">\(N! + 1=p(l+1)\)</span>.</p>
+&amp;=p \cdot 0\\
+&amp;=0,\end{split}\]</div>
+<p>contradiction.  Thus <span class="math notranslate nohighlight">\(k&gt;0\)</span>, so <span class="math notranslate nohighlight">\(k\)</span> is of the form <span class="math notranslate nohighlight">\(l+1\)</span> for some natural number
+<span class="math notranslate nohighlight">\(l\)</span>, and <span class="math notranslate nohighlight">\(N! + 1=p(l+1)\)</span>.</p>
 <p>We now show that <span class="math notranslate nohighlight">\(p\)</span> is not a factor of <span class="math notranslate nohighlight">\(N!\)</span>, by showing that <span class="math notranslate nohighlight">\(N!\)</span> lies between
 the consecutive multiples <span class="math notranslate nohighlight">\(pl\)</span> and <span class="math notranslate nohighlight">\(p(l+1)\)</span> of <span class="math notranslate nohighlight">\(p\)</span>.  (This is the test from
 <a class="reference internal" href="04_Proofs_with_Structure_II.html#not-divisible-proof"><span class="std std-numref">Example 4.5.8</span></a>.) Indeed,</p>
@@ -144,42 +146,41 @@ required prime number greater than or equal to <span class="math notranslate noh
   <span class="k">have</span> <span class="n">hN2</span> <span class="o">:</span> <span class="mi">2</span> <span class="bp">&#8804;</span> <span class="n">N</span> <span class="bp">!</span> <span class="bp">+</span> <span class="mi">1</span> <span class="o">:=</span> <span class="kd">by</span> <span class="n">addarith</span> <span class="o">[</span><span class="n">hN0</span><span class="o">]</span>
   <span class="c1">-- `N! + 1` has a prime factor, `p`</span>
   <span class="n">obtain</span> <span class="o">&#10216;</span><span class="n">p</span><span class="o">,</span> <span class="n">hp</span><span class="o">,</span> <span class="n">hpN</span><span class="o">&#10217;</span> <span class="o">:</span> <span class="bp">&#8707;</span> <span class="n">p</span> <span class="o">:</span> <span class="n">&#8469;</span><span class="o">,</span> <span class="n">Prime</span> <span class="n">p</span> <span class="bp">&#8743;</span> <span class="n">p</span> <span class="bp">&#8739;</span> <span class="n">N</span> <span class="bp">!</span> <span class="bp">+</span> <span class="mi">1</span> <span class="o">:=</span> <span class="n">exists_prime_factor</span> <span class="n">hN2</span>
-  <span class="n">obtain</span> <span class="o">&#10216;</span><span class="n">k</span><span class="o">,</span> <span class="n">hk</span><span class="o">&#10217;</span> <span class="o">:=</span> <span class="n">hpN</span>
   <span class="k">have</span> <span class="n">hp2</span> <span class="o">:</span> <span class="mi">2</span> <span class="bp">&#8804;</span> <span class="n">p</span>
   <span class="bp">&#183;</span> <span class="n">obtain</span> <span class="o">&#10216;</span><span class="n">hp&#39;</span><span class="o">,</span> <span class="n">hp&#39;&#39;</span><span class="o">&#10217;</span> <span class="o">:=</span> <span class="n">hp</span>
     <span class="n">apply</span> <span class="n">hp&#39;</span>
-  <span class="c1">-- the key fact: `p` is not a factor of `N!`</span>
-  <span class="k">have</span> <span class="n">key</span> <span class="o">:</span> <span class="bp">&#172;</span> <span class="n">p</span> <span class="bp">&#8739;</span> <span class="o">(</span><span class="n">N</span> <span class="bp">!</span><span class="o">)</span>
-  <span class="bp">&#183;</span> <span class="n">apply</span> <span class="n">Nat.not_dvd_of_exists_lt_and_lt</span> <span class="o">(</span><span class="n">N</span> <span class="bp">!</span><span class="o">)</span>
-    <span class="k">have</span> <span class="n">hk&#39;</span> <span class="o">:=</span>
-      <span class="k">calc</span> <span class="mi">0</span> <span class="bp">&lt;</span> <span class="n">N</span> <span class="bp">!</span> <span class="bp">+</span> <span class="mi">1</span> <span class="o">:=</span> <span class="kd">by</span> <span class="n">extra</span>
-        <span class="n">_</span> <span class="bp">=</span> <span class="n">p</span> <span class="bp">*</span> <span class="n">k</span> <span class="o">:=</span> <span class="n">hk</span>
-    <span class="n">cancel</span> <span class="n">p</span> <span class="n">at</span> <span class="n">hk&#39;</span>
-    <span class="k">have</span> <span class="o">:</span> <span class="n">k</span> <span class="bp">&#8800;</span> <span class="mi">0</span> <span class="o">:=</span> <span class="n">ne_of_gt</span> <span class="n">hk&#39;</span>
-    <span class="n">obtain</span> <span class="o">&#10216;</span><span class="n">l</span><span class="o">,</span> <span class="n">hlk</span><span class="o">&#10217;</span> <span class="o">:</span> <span class="bp">&#8707;</span> <span class="n">l</span><span class="o">,</span> <span class="n">k</span> <span class="bp">=</span> <span class="n">l</span> <span class="bp">+</span> <span class="mi">1</span> <span class="o">:=</span> <span class="n">Nat.exists_eq_succ_of_ne_zero</span> <span class="n">this</span>
-    <span class="n">use</span> <span class="n">l</span>
-    <span class="k">have</span> <span class="n">hl</span> <span class="o">:=</span>
-    <span class="k">calc</span> <span class="n">N</span> <span class="bp">!</span> <span class="bp">+</span> <span class="mi">1</span> <span class="bp">=</span> <span class="n">p</span> <span class="bp">*</span> <span class="n">k</span> <span class="o">:=</span> <span class="n">hk</span>
-      <span class="n">_</span> <span class="bp">=</span> <span class="n">p</span> <span class="bp">*</span> <span class="o">(</span><span class="n">l</span> <span class="bp">+</span> <span class="mi">1</span><span class="o">)</span> <span class="o">:=</span> <span class="kd">by</span> <span class="n">rw</span> <span class="o">[</span><span class="n">hlk</span><span class="o">]</span>
+  <span class="n">obtain</span> <span class="o">&#10216;</span><span class="n">k</span><span class="o">,</span> <span class="n">hk</span><span class="o">&#10217;</span> <span class="o">:=</span> <span class="n">hpN</span>
+  <span class="k">match</span> <span class="n">k</span> <span class="k">with</span>
+  <span class="bp">|</span> <span class="mi">0</span> <span class="bp">=&gt;</span> <span class="c1">-- if `k` is zero, contradiction</span>
+    <span class="k">have</span> <span class="n">k_contra</span> <span class="o">:=</span>
+    <span class="k">calc</span> <span class="mi">0</span> <span class="bp">&lt;</span> <span class="n">N</span> <span class="bp">!</span> <span class="bp">+</span> <span class="mi">1</span> <span class="o">:=</span> <span class="kd">by</span> <span class="n">extra</span>
+      <span class="n">_</span> <span class="bp">=</span> <span class="n">p</span> <span class="bp">*</span> <span class="mi">0</span> <span class="o">:=</span> <span class="n">hk</span>
+      <span class="n">_</span> <span class="bp">=</span> <span class="mi">0</span> <span class="o">:=</span> <span class="kd">by</span> <span class="n">ring</span>
+    <span class="n">numbers</span> <span class="n">at</span> <span class="n">k_contra</span>
+  <span class="bp">|</span> <span class="n">l</span> <span class="bp">+</span> <span class="mi">1</span> <span class="bp">=&gt;</span> <span class="c1">-- so `k = l + 1` for some `l`</span>
+    <span class="c1">-- the key fact: `p` is not a factor of `N!`</span>
+    <span class="k">have</span> <span class="n">key</span> <span class="o">:</span> <span class="bp">&#172;</span> <span class="n">p</span> <span class="bp">&#8739;</span> <span class="o">(</span><span class="n">N</span> <span class="bp">!</span><span class="o">)</span>
+    <span class="bp">&#183;</span> <span class="n">apply</span> <span class="n">Nat.not_dvd_of_exists_lt_and_lt</span> <span class="o">(</span><span class="n">N</span> <span class="bp">!</span><span class="o">)</span>
+      <span class="n">use</span> <span class="n">l</span>
+      <span class="n">constructor</span>
+      <span class="bp">&#183;</span> <span class="k">have</span> <span class="o">:=</span>
+        <span class="k">calc</span> <span class="n">p</span> <span class="bp">*</span> <span class="n">l</span> <span class="bp">+</span> <span class="n">p</span> <span class="bp">=</span> <span class="n">p</span> <span class="bp">*</span> <span class="o">(</span><span class="n">l</span> <span class="bp">+</span> <span class="mi">1</span><span class="o">)</span> <span class="o">:=</span> <span class="kd">by</span> <span class="n">ring</span>
+          <span class="n">_</span> <span class="bp">=</span> <span class="n">N</span> <span class="bp">!</span> <span class="bp">+</span> <span class="mi">1</span> <span class="o">:=</span> <span class="kd">by</span> <span class="n">rw</span> <span class="o">[</span><span class="n">hk</span><span class="o">]</span>
+          <span class="n">_</span> <span class="bp">&lt;</span> <span class="n">N</span> <span class="bp">!</span> <span class="bp">+</span> <span class="n">p</span> <span class="o">:=</span> <span class="kd">by</span> <span class="n">addarith</span> <span class="o">[</span><span class="n">hp2</span><span class="o">]</span>
+        <span class="n">addarith</span> <span class="o">[</span><span class="n">this</span><span class="o">]</span>
+      <span class="bp">&#183;</span> <span class="k">calc</span> <span class="n">N</span> <span class="bp">!</span> <span class="bp">&lt;</span> <span class="n">N</span> <span class="bp">!</span> <span class="bp">+</span> <span class="mi">1</span> <span class="o">:=</span> <span class="kd">by</span> <span class="n">extra</span>
+          <span class="n">_</span> <span class="bp">=</span> <span class="n">p</span> <span class="bp">*</span> <span class="o">(</span><span class="n">l</span> <span class="bp">+</span> <span class="mi">1</span><span class="o">)</span> <span class="o">:=</span> <span class="kd">by</span> <span class="n">rw</span> <span class="o">[</span><span class="n">hk</span><span class="o">]</span>
+    <span class="c1">-- so `p` is a prime number greater than or equal to `N`, as we sought</span>
+    <span class="n">use</span> <span class="n">p</span>
     <span class="n">constructor</span>
-    <span class="bp">&#183;</span> <span class="k">have</span> <span class="o">:=</span>
-      <span class="k">calc</span> <span class="n">p</span> <span class="bp">*</span> <span class="n">l</span> <span class="bp">+</span> <span class="n">p</span> <span class="bp">=</span> <span class="n">p</span> <span class="bp">*</span> <span class="o">(</span><span class="n">l</span> <span class="bp">+</span> <span class="mi">1</span><span class="o">)</span> <span class="o">:=</span> <span class="kd">by</span> <span class="n">ring</span>
-        <span class="n">_</span> <span class="bp">=</span> <span class="n">N</span> <span class="bp">!</span> <span class="bp">+</span> <span class="mi">1</span> <span class="o">:=</span> <span class="kd">by</span> <span class="n">rw</span> <span class="o">[</span><span class="n">hl</span><span class="o">]</span>
-        <span class="n">_</span> <span class="bp">&lt;</span> <span class="n">N</span> <span class="bp">!</span> <span class="bp">+</span> <span class="n">p</span> <span class="o">:=</span> <span class="kd">by</span> <span class="n">addarith</span> <span class="o">[</span><span class="n">hp2</span><span class="o">]</span>
-      <span class="n">addarith</span> <span class="o">[</span><span class="n">this</span><span class="o">]</span>
-    <span class="bp">&#183;</span> <span class="k">calc</span> <span class="n">N</span> <span class="bp">!</span> <span class="bp">&lt;</span> <span class="n">N</span> <span class="bp">!</span> <span class="bp">+</span> <span class="mi">1</span> <span class="o">:=</span> <span class="kd">by</span> <span class="n">extra</span>
-        <span class="n">_</span> <span class="bp">=</span> <span class="n">p</span> <span class="bp">*</span> <span class="o">(</span><span class="n">l</span> <span class="bp">+</span> <span class="mi">1</span><span class="o">)</span> <span class="o">:=</span> <span class="kd">by</span> <span class="n">rw</span> <span class="o">[</span><span class="n">hl</span><span class="o">]</span>
-  <span class="c1">-- so `p` is a prime number greater than or equal to `N`, as we sought</span>
-  <span class="n">use</span> <span class="n">p</span>
-  <span class="n">constructor</span>
-  <span class="bp">&#183;</span> <span class="n">obtain</span> <span class="n">h_le</span> <span class="bp">|</span> <span class="n">h_gt</span> <span class="o">:</span> <span class="n">p</span> <span class="bp">&#8804;</span> <span class="n">N</span> <span class="bp">&#8744;</span> <span class="n">N</span> <span class="bp">&lt;</span> <span class="n">p</span> <span class="o">:=</span> <span class="n">le_or_lt</span> <span class="n">p</span> <span class="n">N</span>
-    <span class="bp">&#183;</span> <span class="k">have</span> <span class="o">:</span> <span class="n">p</span> <span class="bp">&#8739;</span> <span class="o">(</span><span class="n">N</span> <span class="bp">!</span><span class="o">)</span>
-      <span class="bp">&#183;</span> <span class="n">apply</span> <span class="n">dvd_factorial</span>
-        <span class="bp">&#183;</span> <span class="n">extra</span>
-        <span class="bp">&#183;</span> <span class="n">addarith</span> <span class="o">[</span><span class="n">h_le</span><span class="o">]</span>
-      <span class="n">contradiction</span>
-    <span class="bp">&#183;</span> <span class="n">addarith</span> <span class="o">[</span><span class="n">h_gt</span><span class="o">]</span>
-  <span class="bp">&#183;</span> <span class="n">apply</span> <span class="n">hp</span>
+    <span class="bp">&#183;</span> <span class="n">obtain</span> <span class="n">h_le</span> <span class="bp">|</span> <span class="n">h_gt</span> <span class="o">:</span> <span class="n">p</span> <span class="bp">&#8804;</span> <span class="n">N</span> <span class="bp">&#8744;</span> <span class="n">N</span> <span class="bp">&lt;</span> <span class="n">p</span> <span class="o">:=</span> <span class="n">le_or_lt</span> <span class="n">p</span> <span class="n">N</span>
+      <span class="bp">&#183;</span> <span class="k">have</span> <span class="o">:</span> <span class="n">p</span> <span class="bp">&#8739;</span> <span class="o">(</span><span class="n">N</span> <span class="bp">!</span><span class="o">)</span>
+        <span class="bp">&#183;</span> <span class="n">apply</span> <span class="n">dvd_factorial</span>
+          <span class="bp">&#183;</span> <span class="n">extra</span>
+          <span class="bp">&#183;</span> <span class="n">addarith</span> <span class="o">[</span><span class="n">h_le</span><span class="o">]</span>
+        <span class="n">contradiction</span>
+      <span class="bp">&#183;</span> <span class="n">addarith</span> <span class="o">[</span><span class="n">h_gt</span><span class="o">]</span>
+    <span class="bp">&#183;</span> <span class="n">apply</span> <span class="n">hp</span>
 </pre></div>
 </div>
 </section>
