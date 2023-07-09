@@ -65,16 +65,16 @@
 <li class="toctree-l3"><a class="reference internal" href="#id9">5.2.3. Example</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#id10">5.2.4. Example</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#lem-problem">5.2.5. Example</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id12">5.2.6. Example</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id13">5.2.7. Exercises</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id13">5.2.6. Example</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id14">5.2.7. Exercises</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#normal-form-for-negations">5.3. Normal form for negations</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#negation-normalize-intro">5.3.1. Example</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id15">5.3.2. Example</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id16">5.3.3. Example</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id17">5.3.4. Example</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id18">5.3.5. Example</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id17">5.3.2. Example</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id18">5.3.3. Example</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id19">5.3.4. Example</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id20">5.3.5. Example</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#negation-normalize-exercises">5.3.6. Exercises</a></li>
 </ul>
 </li>
@@ -120,6 +120,23 @@
              
   <section id="logic">
 <span id="id1"></span><h1><span class="section-number">5. </span>Logic<a class="headerlink" href="#logic" title="Permalink to this headline">&#61633;</a></h1>
+<p>In the course of <a class="reference internal" href="02_Proofs_with_Structure.html#proofs-with-structure"><span class="std std-numref">Chapter 2</span></a> and
+<a class="reference internal" href="04_Proofs_with_Structure_II.html#proofs-with-structure-ii"><span class="std std-numref">Chapter 4</span></a> we learned the &#8220;grammar&#8221; of the
+various logical symbols, like <span class="math notranslate nohighlight">\(\land\)</span>, <span class="math notranslate nohighlight">\(\forall\)</span> and <span class="math notranslate nohighlight">\(\to\)</span>.
+In those chapters, logical reasoning took place in fairly concrete mathematical
+situations: problems about equalities and inequalities in the natural
+numbers, the rational numbers, and so on.</p>
+<p>In this chapter, we take a more abstract point of view, studying the process of
+logical reasoning in its own right.  The central concept is the concept of <em>logical
+equivalence</em>: transformations to the logical structure of a statement which are
+always valid, because the &#8220;before&#8221; and &#8220;after&#8221; can be deduced from each other
+using only abstract logical reasoning, not anything specific to the mathematical
+situation at hand.</p>
+<p>The most important logical equivalences are those covered in the final section of
+the chapter, <a class="reference internal" href="#negation-normalize"><span class="std std-numref">Section 5.3</span></a>.  These are logical
+equivalences which move a negation symbol (<span class="math notranslate nohighlight">\(\lnot\)</span>) to a deeper position in a
+logical statement.  Taken together, these transformations give us a way to delay and
+minimize our encounters with <span class="math notranslate nohighlight">\(\lnot\)</span>, the most awkward logical symbol.</p>
 <section id="logical-equivalence">
 <span id="id2"></span><h2><span class="section-number">5.1. </span>Logical equivalence<a class="headerlink" href="#logical-equivalence" title="Permalink to this headline">&#61633;</a></h2>
 <section id="example">
@@ -526,7 +543,7 @@ factor for it.</p>
 <p>If 2 is superpowered, then <span class="math notranslate nohighlight">\(k=2\)</span> has the desired property, since 2 is superpowered and 3
 is not superpowered.</p>
 <p>If not, then <span class="math notranslate nohighlight">\(k=1\)</span> has the desired property, since 1 is superpowered and 2 is not
-superpowered.</p>
+superpowered. <a class="footnote-reference brackets" href="#id15" id="id12">1</a></p>
 </div>
 <p>The point about this proof is that it works even though we don&#8217;t know whether 2 is superpowered or
 not.  Either way, we have a way of solving the problem.</p>
@@ -561,8 +578,8 @@ h2 : &#172; Superpowered 2
 </pre></div>
 </div>
 </section>
-<section id="id12">
-<h3><span class="section-number">5.2.6. </span>Example<a class="headerlink" href="#id12" title="Permalink to this headline">&#61633;</a></h3>
+<section id="id13">
+<h3><span class="section-number">5.2.6. </span>Example<a class="headerlink" href="#id13" title="Permalink to this headline">&#61633;</a></h3>
 <p>As noted above, it&#8217;s relatively rare to need to use the law of the excluded middle in a proof.  But
 here is one more example where it&#8217;s needed, this time from propositional logic: &#8220;two wrongs make a
 right&#8221;.</p>
@@ -573,8 +590,8 @@ right&#8221;.</p>
 </pre></div>
 </div>
 </section>
-<section id="id13">
-<h3><span class="section-number">5.2.7. </span>Exercises<a class="headerlink" href="#id13" title="Permalink to this headline">&#61633;</a></h3>
+<section id="id14">
+<h3><span class="section-number">5.2.7. </span>Exercises<a class="headerlink" href="#id14" title="Permalink to this headline">&#61633;</a></h3>
 <ol class="arabic">
 <li><p>Let us call a real number <span class="math notranslate nohighlight">\(x\)</span> <em>tribalanced</em>, if for every natural number <span class="math notranslate nohighlight">\(n\)</span>, the
 inequality <span class="math notranslate nohighlight">\(\left(1+\frac{x}{n}\right)^n&lt;3\)</span> holds.  Show that there exists a real number
@@ -607,12 +624,19 @@ prime. It was settled in 1732, when Leonhard Euler showed that the next number i
 </div>
 </li>
 </ol>
+<p class="rubric">Footnotes</p>
+<dl class="footnote brackets">
+<dt class="label" id="id15"><span class="brackets"><a class="fn-backref" href="#id12">1</a></span></dt>
+<dd><p>Experts will notice that this proof adapts the idea from a more famous
+problem: show that there exists an irrational power of an irrational number which is rational.</p>
+</dd>
+</dl>
 </section>
 </section>
 <section id="normal-form-for-negations">
 <span id="negation-normalize"></span><h2><span class="section-number">5.3. </span>Normal form for negations<a class="headerlink" href="#normal-form-for-negations" title="Permalink to this headline">&#61633;</a></h2>
 <section id="negation-normalize-intro">
-<span id="id14"></span><h3><span class="section-number">5.3.1. </span>Example<a class="headerlink" href="#negation-normalize-intro" title="Permalink to this headline">&#61633;</a></h3>
+<span id="id16"></span><h3><span class="section-number">5.3.1. </span>Example<a class="headerlink" href="#negation-normalize-intro" title="Permalink to this headline">&#61633;</a></h3>
 <p>An important family of logical equivalences allows us to &#8220;push&#8221; negations inwards in a logical
 statement.  For example, we proved a rule for negating <span class="math notranslate nohighlight">\(\exists\)</span> in
 <a class="reference internal" href="#quantifier-logical-equivalence"><span class="std std-numref">Example 5.1.6</span></a> (that <span class="math notranslate nohighlight">\(\lnot\exists x, P(x)\)</span> is
@@ -643,8 +667,8 @@ the law of the excluded middle.  I have done the first half and left the second 
 </div>
 <p>Here is the full set of rules, together with their Lean lemma names.  The remaining proofs have been
 left for the exercises to this section.</p>
-<span id="negation-rule-table"></span><table class="colwidths-given docutils align-default" id="id20">
-<caption><span class="caption-number">Table 5.1 </span><span class="caption-text">Logical equivalences for negations</span><a class="headerlink" href="#id20" title="Permalink to this table">&#61633;</a></caption>
+<span id="negation-rule-table"></span><table class="colwidths-given docutils align-default" id="id22">
+<caption><span class="caption-number">Table 5.1 </span><span class="caption-text">Logical equivalences for negations</span><a class="headerlink" href="#id22" title="Permalink to this table">&#61633;</a></caption>
 <colgroup>
 <col style="width: 8%" />
 <col style="width: 20%" />
@@ -700,8 +724,8 @@ left for the exercises to this section.</p>
 </tbody>
 </table>
 </section>
-<section id="id15">
-<h3><span class="section-number">5.3.2. </span>Example<a class="headerlink" href="#id15" title="Permalink to this headline">&#61633;</a></h3>
+<section id="id17">
+<h3><span class="section-number">5.3.2. </span>Example<a class="headerlink" href="#id17" title="Permalink to this headline">&#61633;</a></h3>
 <p>By applying these rules in sequence, any mathematical statement can be brought to a form with
 &#8220;negations on the inside&#8221;.  This is generally the most convenient form for proofs (compare the
 relative awkwardness of the contradiction proofs in <a class="reference internal" href="04_Proofs_with_Structure_II.html#contradiction-hyp"><span class="std std-numref">Section 4.4</span></a> and
@@ -724,8 +748,8 @@ one of the rules in <a class="reference internal" href="#negation-rule-table"><s
 </pre></div>
 </div>
 </section>
-<section id="id16">
-<h3><span class="section-number">5.3.3. </span>Example<a class="headerlink" href="#id16" title="Permalink to this headline">&#61633;</a></h3>
+<section id="id18">
+<h3><span class="section-number">5.3.3. </span>Example<a class="headerlink" href="#id18" title="Permalink to this headline">&#61633;</a></h3>
 <p>Try it yourself!</p>
 <div class="admonition-problem admonition">
 <p class="admonition-title">Problem</p>
@@ -743,8 +767,8 @@ We have encountered this point before, in <a class="reference internal" href="01
 </pre></div>
 </div>
 </section>
-<section id="id17">
-<h3><span class="section-number">5.3.4. </span>Example<a class="headerlink" href="#id17" title="Permalink to this headline">&#61633;</a></h3>
+<section id="id19">
+<h3><span class="section-number">5.3.4. </span>Example<a class="headerlink" href="#id19" title="Permalink to this headline">&#61633;</a></h3>
 <p>This process is clearly very formulaic.  You should learn to do it in your head.
 And as usual, when a proof process is formulaic, there is a Lean tactic to do it for us.  The tactic
 is called <code class="docutils literal notranslate"><span class="pre">push_neg</span></code>.  Here it is, with output, on the last two examples:</p>
@@ -763,8 +787,8 @@ is called <code class="docutils literal notranslate"><span class="pre">push_neg<
 </div>
 <p>There are more exercises of this style at the end of the section.</p>
 </section>
-<section id="id18">
-<h3><span class="section-number">5.3.5. </span>Example<a class="headerlink" href="#id18" title="Permalink to this headline">&#61633;</a></h3>
+<section id="id20">
+<h3><span class="section-number">5.3.5. </span>Example<a class="headerlink" href="#id20" title="Permalink to this headline">&#61633;</a></h3>
 <p>Let&#8217;s show how the process of pushing negations inwards is useful in regular proofs.  We return to
 the problem from <a class="reference internal" href="04_Proofs_with_Structure_II.html#sq-ne-two"><span class="std std-numref">Example 4.5.4</span></a>.</p>
 <div class="admonition-problem admonition">
@@ -811,7 +835,7 @@ and then writing out <a class="reference internal" href="02_Proofs_with_Structur
 </div>
 </section>
 <section id="negation-normalize-exercises">
-<span id="id19"></span><h3><span class="section-number">5.3.6. </span>Exercises<a class="headerlink" href="#negation-normalize-exercises" title="Permalink to this headline">&#61633;</a></h3>
+<span id="id21"></span><h3><span class="section-number">5.3.6. </span>Exercises<a class="headerlink" href="#negation-normalize-exercises" title="Permalink to this headline">&#61633;</a></h3>
 <ol class="arabic">
 <li><p>Show that <span class="math notranslate nohighlight">\(\lnot(\lnot P)\)</span> is logically equivalent to <span class="math notranslate nohighlight">\(P\)</span>.</p>
 <p>The point of this exercise is that you are proving the lemma <code class="docutils literal notranslate"><span class="pre">not_not</span></code>, from

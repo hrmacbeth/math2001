@@ -3,6 +3,16 @@
 Sets
 ====
 
+This chapter introduces the language of *sets*, a convenient way to reason about the
+objects in a type which have some property.  This language includes
+the concept of *membership* in a set, the property of a set being a *subset* of
+another set, and a whole zoo of set operations, such as *intersection*, *union* and
+*complement*, each of which is a wrapper for a logical symbol relating
+the underlying properties.
+
+In the last section of the chapter, :numref:`Section %s <powerset>`, we study the
+collection of sets in a type as a type in its own right.
+
 .. include:: ch09_Sets/01_Sets.inc
 .. include:: ch09_Sets/02_Set_Operations.inc
 .. include:: ch09_Sets/03_Powerset.inc

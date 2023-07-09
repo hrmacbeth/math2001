@@ -3,6 +3,19 @@
 Induction
 =========
 
+This chapter introduces *induction*, a proof method which applies to the natural numbers
+and to other discrete types such as integers or pairs of natural numbers.
+We also introduce *recursion*, a method for defining sequences (and, more generally,
+functions from discrete types); induction is the canonical method for proving results about
+recursively-defined objects.
+
+In :numref:`Section %s <induction_intro>` - :numref:`Section %s <two_step_induction>`,
+we use only the most traditional form of induction, proving a result for a natural number by
+relating it to the result for the previous natural number, and small variants on this form
+of induction.  In :numref:`Section %s <strong_induction>` -
+:numref:`Section %s <euclidean_algorithm>`, we introduce *strong induction*, and, even more
+generally, *well-founded induction*. These induction principles are more flexible.
+
 .. include:: ch06_Induction/01_Induction.inc
 .. include:: ch06_Induction/02_Recurrence_Relations.inc
 .. include:: ch06_Induction/03_Two_Step_Induction.inc

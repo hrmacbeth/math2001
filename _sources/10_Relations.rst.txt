@@ -3,5 +3,17 @@
 Relations
 =========
 
+Just as sets provide a convenient language for properties of the objects in a type,
+*relations* provide a convenient language for the properties of the pairs of objects
+in a type.  This might sound dry and abstract, but such properties turn up all over
+mathematics: the property of one real
+number being less than another; the property of one integer being congruent to
+another modulo 5; the property of one set being a subset of another; the property
+of one function being inverse to another.
+
+In this chapter we introduce some of the important properties which relations
+themselves can have: they can be *reflexive*, *symmetric*, *antisymmetric* or
+*transitive*, or any combination of these.
+
 .. include:: ch10_Relations/01_Introduction.inc
 .. include:: ch10_Relations/02_Equivalence_Relations.inc

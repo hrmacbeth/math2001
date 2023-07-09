@@ -3,6 +3,17 @@
 Parity and divisibility
 =======================
 
+The problems in this chapter concern some elementary properties of natural numbers
+and integers: *parity* (whether a number is *even* or *odd*), *divisibility*, and
+*congruence modulo* :math:`n`.
+
+There are no new logical symbols like :math:`\lor` or :math:`\exists` in this
+chapter, and no major additions (such as the use of intermediate steps or lemmas)
+to our reasoning toolkit.  Thus this chapter functions as a breather between the
+hard work of :numref:`Chapter %s <proofs_with_structure>` and  
+:numref:`Chapter %s <proofs_with_structure_ii>`, a chance to consolidate what you
+have learned.
+
 .. include:: ch03_Parity_and_Divisibility/01_Parity.inc
 .. include:: ch03_Parity_and_Divisibility/02_Divisibility.inc
 .. include:: ch03_Parity_and_Divisibility/03_Modular_Arithmetic_Theory.inc

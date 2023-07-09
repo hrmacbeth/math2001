@@ -3,6 +3,26 @@
 Logic
 =====
 
+In the course of :numref:`Chapter %s <proofs_with_structure>` and
+:numref:`Chapter %s <proofs_with_structure_ii>` we learned the "grammar" of the
+various logical symbols, like :math:`\land`, :math:`\forall` and :math:`\to`.
+In those chapters, logical reasoning took place in fairly concrete mathematical
+situations: problems about equalities and inequalities in the natural
+numbers, the rational numbers, and so on.
+
+In this chapter, we take a more abstract point of view, studying the process of
+logical reasoning in its own right.  The central concept is the concept of *logical
+equivalence*: transformations to the logical structure of a statement which are
+always valid, because the "before" and "after" can be deduced from each other 
+using only abstract logical reasoning, not anything specific to the mathematical
+situation at hand.
+
+The most important logical equivalences are those covered in the final section of
+the chapter, :numref:`Section %s <negation_normalize>`.  These are logical
+equivalences which move a negation symbol (:math:`\lnot`) to a deeper position in a
+logical statement.  Taken together, these transformations give us a way to delay and
+minimize our encounters with :math:`\lnot`, the most awkward logical symbol.
+
 .. include:: ch05_Logic/01_Logical_Equivalence.inc
 .. include:: ch05_Logic/02_Excluded_Middle.inc
 .. include:: ch05_Logic/03_Negation_Algorithm.inc

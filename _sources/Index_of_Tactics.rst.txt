@@ -7,102 +7,102 @@
 Index of Lean tactics
 =====================
 
-Italicized tactics are specific to this book, so you will not be able to get help with them by
+Tactics marked \* are specific to this book, so you will not be able to get help with them by
 googling/consulting internet forums/etc.  Reread the indicated part of the lecture notes or ask
 your instructor!
 
-.. rubric:: *addarith* (first use: :numref:`Section %s <shortcut>`)
+.. rubric:: \* ``addarith`` (first use: :numref:`Section %s <shortcut>`)
 
 Attempts to solve an equality or inequality by moving terms from the left-hand side to the
 right-hand side, or vice versa.
 
-.. rubric:: apply (first use: :numref:`Section %s <lemmas>`; for :math:`\forall` and :math:`\to` hypotheses, :numref:`Section %s <forall_implies>`)
+.. rubric:: ``apply`` (first use: :numref:`Section %s <lemmas>`; for :math:`\forall` and :math:`\to` hypotheses, :numref:`Section %s <forall_implies>`)
 
 Invokes a specified lemma or hypothesis to modify the goal.
 
-.. rubric:: by_cases (first use: :numref:`Section %s <lem>`)
+.. rubric:: ``by_cases`` (first use: :numref:`Section %s <lem>`)
 
 Case-splits on whether a given statement is true or false.
 
-.. rubric:: *cancel* (first use: :numref:`Section %s <tactic_mode>`)
+.. rubric:: \* ``cancel`` (first use: :numref:`Section %s <tactic_mode>`)
     
 Cancels a common factor from LHS/RHS of equality/inequality, cancels an exponentiation common to both sides, etc.
 
-.. rubric:: constructor (first use: :numref:`Section %s <and>`; for ``↔`` goals: :numref:`Section %s <iff>`)
+.. rubric:: ``constructor`` (first use: :numref:`Section %s <and>`; for ``↔`` goals: :numref:`Section %s <iff>`)
 
 Splits an "and" goal (:math:`\land`) into sub-goals for its left and right parts.
 
-.. rubric:: contradiction (first use: :numref:`Section %s <contradiction_hyp>`)
+.. rubric:: ``contradiction`` (first use: :numref:`Section %s <contradiction_hyp>`)
 
 If there are two contradictory hypotheses available, this concludes the proof.
 
-.. rubric:: dsimp (first use: :numref:`Section %s <parity>`)
+.. rubric:: ``dsimp`` (first use: :numref:`Section %s <parity>`)
 
 Unfolds a definition.  Typically used while working on a proof rather than in the final version; it
 is useful for inspecting a goal or hypothesis more carefully, but in most cases the proof will still
 work after a ``dsimp`` line is deleted.
 
-.. rubric:: *extra* (first use: :numref:`Section %s <proving_inequalities>`; for congruences: :numref:`Section %s <using_modular>`)
+.. rubric:: \* ``extra`` (first use: :numref:`Section %s <proving_inequalities>`; for congruences: :numref:`Section %s <using_modular>`)
 
 A comparison tactic for inequalities, or other relations such as congruences: checks an inequality
 whose two sides differ by the addition of a positive quantity, a congruence mod 3 whose two sides
 differ by a multiple of 3, etc.
 
-.. rubric:: interval_cases (first use: :numref:`Section %s <forall_implies>`)
+.. rubric:: ``interval_cases`` (first use: :numref:`Section %s <forall_implies>`)
 
 Given a natural-number or integer variable :math:`n` for which numeric upper and lower bounds are
 available, produce cases for each of the numeric possibilities for :math:`n`.
 
-.. rubric:: intro (first use: :numref:`Section %s <forall_implies>`; for :math:`\lnot` goals: :numref:`Section %s <contradiction>`)
+.. rubric:: ``intro`` (first use: :numref:`Section %s <forall_implies>`; for :math:`\lnot` goals: :numref:`Section %s <contradiction>`)
 
 Introduces a universally quantified variable (:math:`\forall`) or the antecedent of an implication
 (:math:`\to`) from the goal, or assumes (for the sake of contradiction) the positive version of a
 negation (:math:`\lnot`) goal.
 
-.. rubric:: left (first use: :numref:`Section %s <or>`)
+.. rubric:: ``left`` (first use: :numref:`Section %s <or>`)
 
 Selects the left alternative of an "or" goal (:math:`\lor`).
 
-.. rubric:: have (first use: :numref:`Section %s <tactic_mode>`)
+.. rubric:: ``have`` (first use: :numref:`Section %s <tactic_mode>`; with a lemma: :numref:`Section %s <or>`; introducing a new goal: :numref:`Section %s <and>`)
 
-Sets up an intermediate goal, so that, after that's proved, you have that fact available as an
+Records a fact (followed by the proof of that fact), which then becomes available as an
 extra hypothesis.
 
-.. rubric:: mod_cases (first use: :numref:`Section %s <using_modular>`)
+.. rubric:: ``mod_cases`` (first use: :numref:`Section %s <using_modular>`)
 
 Introduces cases for a variable according to its residue modulo a specified number.
 
-.. rubric:: *numbers* (first use: :numref:`Section %s <proving_inequalities>`; with ``at`` for contradictions: :numref:`Section %s <contradiction_hyp>`)
+.. rubric:: \* ``numbers`` (first use: :numref:`Section %s <proving_inequalities>`; with ``at`` for contradictions: :numref:`Section %s <contradiction_hyp>`)
 
 Proves numeric facts, like :math:`3\cdot 12 < 13 + 25` or :math:`3\cdot 5+1=4\cdot 4`.
 
-.. rubric:: obtain (first use for :math:`\lor`: :numref:`Section %s <or>`; for :math:`\land`: :numref:`Section %s <and>`; for :math:`\exists`: :numref:`Section %s <exists>`)
+.. rubric:: ``obtain`` (first use for :math:`\lor`: :numref:`Section %s <or>`; for :math:`\land`: :numref:`Section %s <and>`; for :math:`\exists`: :numref:`Section %s <exists>`)
 
 Takes apart a hypothesis of the form "or" (:math:`\lor`), "and" (:math:`\land`) or "there exists"
 (:math:`\exists`).
 
-.. rubric:: push_neg (first use: :numref:`Section %s <negation_normalize>`)
+.. rubric:: ``push_neg`` (first use: :numref:`Section %s <negation_normalize>`)
 
 Converts a hypothesis or goal to a logically equivalent form with negations pushed inwards as far
 as possible.
 
-.. rubric:: rel (first use: :numref:`Section %s <proving_inequalities>`; for congruences: :numref:`Section %s <using_modular>`; for logical equivalences: :numref:`Section %s <negation_normalize>`)
+.. rubric:: ``rel`` (first use: :numref:`Section %s <proving_inequalities>`; for congruences: :numref:`Section %s <using_modular>`; for logical equivalences: :numref:`Section %s <negation_normalize>`)
 
 A "substitution-like" tactic for inequalities, or other relations such as congruences: looks for
 the left-hand side of a specified inequality (or congruence, ...) fact in the goal, and replaces it
 with the right-hand side of that fact, if that replacement is "obviously" a valid inequality
-(or modular arithmetic, ...) deduction.
+(or modular arithmetic, ...) deduction.  Compare with ``rw``.
 
-.. rubric:: right (first use: :numref:`Section %s <or>`)
+.. rubric:: ``right`` (first use: :numref:`Section %s <or>`)
 
 Selects the right alternative of an "or" goal (:math:`\lor`).
 
-.. rubric:: ring (first use: :numref:`Section %s <proving_equalities_in_lean>`)
+.. rubric:: ``ring`` (first use: :numref:`Section %s <proving_equalities_in_lean>`)
 
 Solves algebraic equality goals such as :math:`(x + y) ^ 2 = x ^ 2 + 2xy + y ^ 2`, when the proof
 is effectively "expand out both sides and rearrange".
 
-.. rubric:: rw (first use: :numref:`Section %s <proving_equalities_in_lean>`; for ``↔`` hypotheses/lemmas: :numref:`Section %s <iff>`)
+.. rubric:: ``rw`` (first use: :numref:`Section %s <proving_equalities_in_lean>`; for ``↔`` hypotheses/lemmas: :numref:`Section %s <iff>`)
 
 Substitution: looks for the left-hand side of a specified equality fact in the goal, and replaces it with
 the right-hand side of that fact.
@@ -110,6 +110,6 @@ the right-hand side of that fact.
 With ``↔`` hypotheses/lemmas, replaces the left-hand side of the specified ``↔`` fact with
 the right-hand side of that fact.
 
-.. rubric:: use (first use: :numref:`Section %s <exists>`)
+.. rubric:: ``use`` (first use: :numref:`Section %s <exists>`)
 
 Provides a witness to an existential goal (:math:`\exists`).
