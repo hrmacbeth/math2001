@@ -152,6 +152,17 @@
              
   <section id="induction">
 <span id="id1"></span><h1><span class="section-number">6. </span>Induction<a class="headerlink" href="#induction" title="Permalink to this headline">&#61633;</a></h1>
+<p>This chapter introduces <em>induction</em>, a proof method which applies to the natural numbers
+and to other discrete types such as integers or pairs of natural numbers.
+We also introduce <em>recursion</em>, a method for defining sequences (and, more generally,
+functions from discrete types); induction is the canonical method for proving results about
+recursively-defined objects.</p>
+<p>In <a class="reference internal" href="#induction-intro"><span class="std std-numref">Section 6.1</span></a> - <a class="reference internal" href="#two-step-induction"><span class="std std-numref">Section 6.3</span></a>,
+we use only the most traditional form of induction, proving a result for a natural number by
+relating it to the result for the previous natural number, and small variants on this form
+of induction.  In <a class="reference internal" href="#strong-induction"><span class="std std-numref">Section 6.4</span></a> -
+<a class="reference internal" href="#euclidean-algorithm"><span class="std std-numref">Section 6.7</span></a>, we introduce <em>strong induction</em>, and, even more
+generally, <em>well-founded induction</em>. These induction principles are more flexible.</p>
 <section id="introduction">
 <span id="induction-intro"></span><h2><span class="section-number">6.1. </span>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">&#61633;</a></h2>
 <section id="example">
@@ -1405,7 +1416,7 @@ natural number <span class="math notranslate nohighlight">\(k\)</span>.</p>
 \[\begin{split}F_1&amp;=1\\
 &amp;\le 2^1.\end{split}\]</div>
 <p>For <span class="math notranslate nohighlight">\(n=k+2\)</span>, we have that <span class="math notranslate nohighlight">\(k&lt;k+2\)</span> and <span class="math notranslate nohighlight">\(k+1&lt;k+2\)</span>, so by the inductive hypothesis
-<span class="math notranslate nohighlight">\(F_k\le 2^k\)</span> and <span class="math notranslate nohighlight">\(F_{k+1}\le 2^{k+1}\)</span>.  Thus</p>
+<span class="math notranslate nohighlight">\((\star)\)</span>, <span class="math notranslate nohighlight">\(F_k\le 2^k\)</span> and <span class="math notranslate nohighlight">\(F_{k+1}\le 2^{k+1}\)</span>.  Thus</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}F_{k+2}&amp;=F_{k+1}+F_k\\
 &amp;\le 2^{k+1}+2^k\\

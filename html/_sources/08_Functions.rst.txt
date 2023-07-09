@@ -3,6 +3,20 @@
 Functions
 =========
 
+So far in the book, we have studied properties of numbers (whether a number is odd, 
+positive, prime; whether one number is divisible by another) and operations on
+numbers (addition, greatest common divisor).
+
+In this chapter we go up a level of abstraction, and study properties of and
+operations on functions.  These new properties include: whether a function is
+*injective*, *surjective*, *bijective*; whether one function is *inverse* to
+another; and the operation of *composition*.
+
+We also expand our horizon beyond the numeric types (:math:`\mathbb{N}`,
+:math:`\mathbb{Z}`, :math:`\mathbb{Q}`, :math:`\mathbb{R}`) which have formed the
+setting of the early part of the book.  We now start to work with a broader range
+of types, including function types, finite inductive types, and product types.
+
 .. include:: ch08_Functions/01_Injective_Surjective.inc
 .. include:: ch08_Functions/02_Bijective.inc
 .. include:: ch08_Functions/03_Composition.inc

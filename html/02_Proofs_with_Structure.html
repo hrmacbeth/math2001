@@ -139,6 +139,17 @@
              
   <section id="proofs-with-structure">
 <span id="id1"></span><h1><span class="section-number">2. </span>Proofs with structure<a class="headerlink" href="#proofs-with-structure" title="Permalink to this headline">&#61633;</a></h1>
+<p>The proofs by calculation of <a class="reference internal" href="01_Proofs_by_Calculation.html#proofs-by-calculation"><span class="std std-numref">Chapter 1</span></a> were all,
+from a certain point of view, one-step proofs.  In this chapter we gradually
+introduce the ingredients for multi-step proofs.  These include establishing
+&#8220;intermediate&#8221; facts which get referred back to later, invoking named lemmas
+previously proved by yourself or other people, and taking apart complicated
+mathematical statements which have been built up from simpler ones using the
+logical symbols <span class="math notranslate nohighlight">\(\lor\)</span>, <span class="math notranslate nohighlight">\(\land\)</span> and <span class="math notranslate nohighlight">\(\exists\)</span>.</p>
+<p>This chapter also introduces the key interactivity feature of the Lean language:
+the live-updating <em>infoview</em> keeping track of your current hypotheses and goals.</p>
+<p>The work of this chapter continues (after a break) in
+<a class="reference internal" href="04_Proofs_with_Structure_II.html#proofs-with-structure-ii"><span class="std std-numref">Chapter 4</span></a>.</p>
 <section id="intermediate-steps">
 <span id="tactic-mode"></span><h2><span class="section-number">2.1. </span>Intermediate steps<a class="headerlink" href="#intermediate-steps" title="Permalink to this headline">&#61633;</a></h2>
 <section id="example">
@@ -768,7 +779,7 @@ hy : y = -1
 <span id="id18"></span><h3><span class="section-number">2.3.2. </span>Example<a class="headerlink" href="#sq-ne-two" title="Permalink to this headline">&#61633;</a></h3>
 <p>More commonly, you will give a proof by cases for a problem in which there is no hypothesis
 directly structured as an &#8220;or&#8221;-statement. Instead, you will create such a hypothesis yourself, by
-setting up and proving an intermediate goal which is an &#8220;or&#8221;-statement.</p>
+setting up and proving an intermediate statement which is an &#8220;or&#8221;-statement.</p>
 <div class="admonition-problem admonition">
 <p class="admonition-title">Problem</p>
 <p>Let <span class="math notranslate nohighlight">\(n\)</span> be any natural number.  Show that <span class="math notranslate nohighlight">\(n ^ 2 \ne 2\)</span>.</p>
@@ -1548,7 +1559,7 @@ this section consists of practice coming up with witnesses.</p>
 <section id="id34">
 <h3><span class="section-number">2.5.6. </span>Example<a class="headerlink" href="#id34" title="Permalink to this headline">&#61633;</a></h3>
 <p>Sometime you may wish to leave out the sentence &#8220;We can take &#8230;&#8221; explicitly stating what the
-witness is.  In this case you should be extra pendantic about verifying the desired properties
+witness is.  In this case you should be extra pedantic about verifying the desired properties
 exactly in the form they are stated.</p>
 <div class="admonition-problem admonition">
 <p class="admonition-title">Problem</p>

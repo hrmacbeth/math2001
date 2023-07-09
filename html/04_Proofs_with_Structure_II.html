@@ -147,6 +147,17 @@
              
   <section id="proofs-with-structure-ii">
 <span id="id1"></span><h1><span class="section-number">4. </span>Proofs with structure, II<a class="headerlink" href="#proofs-with-structure-ii" title="Permalink to this headline">&#61633;</a></h1>
+<p>In the course of <a class="reference internal" href="02_Proofs_with_Structure.html#proofs-with-structure"><span class="std std-numref">Chapter 2</span></a>, we studied the
+logical symbols <span class="math notranslate nohighlight">\(\lor\)</span>, <span class="math notranslate nohighlight">\(\land\)</span> and <span class="math notranslate nohighlight">\(\exists\)</span>, which allow
+complicated mathematical statements to be built up from simpler ones.  For each
+such symbol, we learned its &#8220;grammar&#8221;: the rule for using it when it appears in a
+hypothesis and the rule for using it when it appears in the goal.  This grammar is
+called <a class="reference external" href="https://en.wikipedia.org/wiki/Natural_deduction">natural deduction</a>.</p>
+<p>This chapter finishes the work started in <a class="reference internal" href="02_Proofs_with_Structure.html#proofs-with-structure"><span class="std std-numref">Chapter 2</span></a>.
+We learn the grammar of the remaining logical symbols: <span class="math notranslate nohighlight">\(\forall\)</span>,
+<span class="math notranslate nohighlight">\(\to\)</span>, and <span class="math notranslate nohighlight">\(\lnot\)</span>.  We also learn the grammar of two other logical
+symbols, <span class="math notranslate nohighlight">\(\leftrightarrow\)</span> and <span class="math notranslate nohighlight">\(\exists!\)</span>, which are less fundamental
+because they can be defined in terms of the other ones.</p>
 <section id="for-all-and-implication">
 <span id="forall-implies"></span><h2><span class="section-number">4.1. </span>&#8220;For all&#8221; and implication<a class="headerlink" href="#for-all-and-implication" title="Permalink to this headline">&#61633;</a></h2>
 <section id="example">
@@ -196,11 +207,15 @@ that <span class="math notranslate nohighlight">\(1\)</span> is positive. So we 
 <a class="reference internal" href="03_Parity_and_Divisibility.html#dvd-bd-1"><span class="std std-numref">Example 3.2.7</span></a> and <a class="reference internal" href="03_Parity_and_Divisibility.html#dvd-bd-2"><span class="std std-numref">Example 3.2.8</span></a>: <span class="math notranslate nohighlight">\(n\le 1\)</span> and
 <span class="math notranslate nohighlight">\(1 \le n\)</span>.  Therefore <span class="math notranslate nohighlight">\(n=1\)</span>.</p>
 </div>
-<p>For the Lean proof, remember that the bound from <a class="reference internal" href="03_Parity_and_Divisibility.html#dvd-bd-1"><span class="std std-numref">Example 3.2.7</span></a> is in Lean as
+<p>For the Lean proof, we recall that the bound from <a class="reference internal" href="03_Parity_and_Divisibility.html#dvd-bd-1"><span class="std std-numref">Example 3.2.7</span></a> is in Lean as
 <code class="docutils literal notranslate"><span class="pre">Nat.le_of_dvd</span></code>, and the bound from <a class="reference internal" href="03_Parity_and_Divisibility.html#dvd-bd-2"><span class="std std-numref">Example 3.2.8</span></a> is in Lean as
 <code class="docutils literal notranslate"><span class="pre">Nat.pos_of_dvd_of_pos</span></code>.</p>
 <div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">{</span><span class="n">n</span> <span class="o">:</span> <span class="n">&#8469;</span><span class="o">}</span> <span class="o">(</span><span class="n">hn</span> <span class="o">:</span> <span class="bp">&#8704;</span> <span class="n">m</span><span class="o">,</span> <span class="n">n</span> <span class="bp">&#8739;</span> <span class="n">m</span><span class="o">)</span> <span class="o">:</span> <span class="n">n</span> <span class="bp">=</span> <span class="mi">1</span> <span class="o">:=</span> <span class="kd">by</span>
-  <span class="gr">sorry</span>
+  <span class="k">have</span> <span class="n">h1</span> <span class="o">:</span> <span class="n">n</span> <span class="bp">&#8739;</span> <span class="mi">1</span> <span class="o">:=</span> <span class="kd">by</span> <span class="n">apply</span> <span class="n">hn</span>
+  <span class="k">have</span> <span class="n">h2</span> <span class="o">:</span> <span class="mi">0</span> <span class="bp">&lt;</span> <span class="mi">1</span> <span class="o">:=</span> <span class="kd">by</span> <span class="n">numbers</span>
+  <span class="n">apply</span> <span class="n">le_antisymm</span>
+  <span class="bp">&#183;</span> <span class="n">apply</span> <span class="n">Nat.le_of_dvd</span> <span class="n">h2</span> <span class="n">h1</span>
+  <span class="bp">&#183;</span> <span class="n">apply</span> <span class="n">Nat.pos_of_dvd_of_pos</span> <span class="n">h1</span> <span class="n">h2</span>
 </pre></div>
 </div>
 </section>
@@ -810,7 +825,7 @@ modulo 2.</p>
 </div>
 <p>Write this in Lean using the lemmas <code class="docutils literal notranslate"><span class="pre">Int.odd_iff_modEq</span></code> and <code class="docutils literal notranslate"><span class="pre">Int.even_iff_modEq</span></code> from
 <a class="reference internal" href="#odd-iff-modeq"><span class="std std-numref">Example 4.2.3</span></a> and <a class="reference internal" href="#even-iff-modeq"><span class="std std-numref">Example 4.2.4</span></a>, together with the
-tactic <code class="docutils literal notranslate"><span class="pre">mod_cases</span></code>.  I have written the beginnning.</p>
+tactic <code class="docutils literal notranslate"><span class="pre">mod_cases</span></code>.  I have written the beginning.</p>
 <div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">(</span><span class="n">n</span> <span class="o">:</span> <span class="n">&#8484;</span><span class="o">)</span> <span class="o">:</span> <span class="n">Even</span> <span class="n">n</span> <span class="bp">&#8744;</span> <span class="n">Odd</span> <span class="n">n</span> <span class="o">:=</span> <span class="kd">by</span>
   <span class="n">mod_cases</span> <span class="n">hn</span> <span class="o">:</span> <span class="n">n</span> <span class="bp">%</span> <span class="mi">2</span>
   <span class="bp">&#183;</span> <span class="n">left</span>

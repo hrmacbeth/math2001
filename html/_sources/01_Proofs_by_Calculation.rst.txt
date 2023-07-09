@@ -7,6 +7,14 @@
 Proofs by calculation
 =====================
 
+This book begins in the familiar world of numbers: :math:`\mathbb{N}`, the natural
+numbers; :math:`\mathbb{Z}`, the integers; :math:`\mathbb{Q}`, the rational numbers;
+and :math:`\mathbb{R}`, the real numbers.  We solve problems which feel pretty close
+to high school algebra -- deducing equalities/inequalities from other
+equalities/inequalities -- using a technique which is not usually taught in high
+school algebra: building a single chain of expressions connecting the left-hand
+side with the right.
+
 .. include:: ch01_Proofs_by_Calculation/01_Proving_Equalities.inc
 .. include:: ch01_Proofs_by_Calculation/02_Proving_Equalities_in_Lean.inc
 .. include:: ch01_Proofs_by_Calculation/03_Tips_and_Tricks.inc

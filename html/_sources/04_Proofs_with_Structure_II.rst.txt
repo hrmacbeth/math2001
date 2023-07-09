@@ -3,6 +3,19 @@
 Proofs with structure, II
 =========================
 
+In the course of :numref:`Chapter %s <proofs_with_structure>`, we studied the
+logical symbols :math:`\lor`, :math:`\land` and :math:`\exists`, which allow
+complicated mathematical statements to be built up from simpler ones.  For each
+such symbol, we learned its "grammar": the rule for using it when it appears in a
+hypothesis and the rule for using it when it appears in the goal.  This grammar is
+called `natural deduction <https://en.wikipedia.org/wiki/Natural_deduction>`_.
+
+This chapter finishes the work started in :numref:`Chapter %s <proofs_with_structure>`.
+We learn the grammar of the remaining logical symbols: :math:`\forall`,
+:math:`\to`, and :math:`\lnot`.  We also learn the grammar of two other logical
+symbols, :math:`\leftrightarrow` and :math:`\exists!`, which are less fundamental
+because they can be defined in terms of the other ones.
+
 .. include:: ch04_Proofs_with_Structure_II/01_Forall_Implies.inc
 .. include:: ch04_Proofs_with_Structure_II/02_Iff.inc
 .. include:: ch04_Proofs_with_Structure_II/03_Exists_Unique.inc

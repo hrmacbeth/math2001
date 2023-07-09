@@ -3,6 +3,20 @@
 Proofs with structure
 =====================
 
+The proofs by calculation of :numref:`Chapter %s <proofs_by_calculation>` were all,
+from a certain point of view, one-step proofs.  In this chapter we gradually
+introduce the ingredients for multi-step proofs.  These include establishing
+"intermediate" facts which get referred back to later, invoking named lemmas
+previously proved by yourself or other people, and taking apart complicated
+mathematical statements which have been built up from simpler ones using the
+logical symbols :math:`\lor`, :math:`\land` and :math:`\exists`.
+
+This chapter also introduces the key interactivity feature of the Lean language:
+the live-updating *infoview* keeping track of your current hypotheses and goals.
+
+The work of this chapter continues (after a break) in
+:numref:`Chapter %s <proofs_with_structure_ii>`.
+
 .. include:: ch02_Proofs_with_Structure/01_Intermediate_Steps.inc
 .. include:: ch02_Proofs_with_Structure/02_Invoking_Lemmas.inc
 .. include:: ch02_Proofs_with_Structure/03_Or.inc

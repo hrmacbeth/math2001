@@ -16,7 +16,12 @@ example {a : ℝ} (h : ∀ x, a ≤ x ^ 2 - 2 * x) : a ≤ -1 :=
 
 
 example {n : ℕ} (hn : ∀ m, n ∣ m) : n = 1 := by
-  sorry
+  have h1 : n ∣ 1 := by apply hn
+  have h2 : 0 < 1 := by numbers
+  apply le_antisymm
+  · apply Nat.le_of_dvd h2 h1
+  · apply Nat.pos_of_dvd_of_pos h1 h2
+
 
 example {a b : ℝ} (h : ∀ x, x ≥ a ∨ x ≤ b) : a ≤ b := by
   sorry

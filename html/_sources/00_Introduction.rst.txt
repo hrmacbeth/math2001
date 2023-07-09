@@ -31,7 +31,7 @@ is actually used in this book.
 The main novelty of this text is the "bilingual" presentation, juxtaposing prose mathematics with 
 Lean code.  But the design choices enforced by this presentation have shaped the text in other ways.
 
-The :ref:`first chapter <proofs_by_calculation>` of the book contains an unusually careful treatment
+:numref:`Chapter %s <proofs_by_calculation>` contains an unusually careful treatment
 of "calculational proofs".  These proofs are a natural starting point for the book because they
 translate easily to Lean, but they are also worthy of attention as a topic which students at this
 level often struggle with. (It's in fact quite possible to get through the *equality*-heavy
@@ -40,8 +40,8 @@ without really mastering this mode of reasoning, but it's nearly impossible to r
 *inequalities* without mastering calculational proofs, and students who don't pick up the skill in
 an intro-to-proof course will find it come back to haunt them when they reach real analysis.)
 
-The :ref:`second <proofs_with_structure>` and :ref:`fourth chapters <proofs_with_structure_ii>` of
-the book constitute a slow march through the rules of
+:numref:`Chapter %s <proofs_with_structure>` and :numref:`Chapter %s <proofs_with_structure_ii>`
+constitute a slow march through the rules of
 `natural deduction <https://en.wikipedia.org/wiki/Natural_deduction>`_, solving problems about
 :math:`\mathbb{N}`, :math:`\mathbb{Z}`, :math:`\mathbb{Q}` and :math:`\mathbb{R}` which feature
 increasingly many of the logical connectives and quantifiers.  The requirement to translate
@@ -50,15 +50,36 @@ textbook does not have this guardrail, and will commonly make minor abuses here 
 presenting a good example of a proof by cases which implicitly also uses a not-yet-covered proof
 technique such as filling a witness to an existential.
 
-Logic is not taught explicitly until the :ref:`fifth chapter <logic>` of the book, by which stage
+Logic is not taught explicitly until :numref:`Chapter %s <logic>`, by which stage
 readers will already be comfortable with the various logical connectives/quantifiers and with
 translating mathematical statements back and forth between words and symbols.  This permits the
 logic chapter to be relatively brief, with a focus on the concept of logical equivalence (presented
-primarily using natural deduction, to link with Chapters 2 and 4, rather than using truth tables).
+primarily using natural deduction, to link with :numref:`Chapters %s <proofs_with_structure>` and
+:numref:`%s <proofs_with_structure_ii>`, rather than using truth tables).  The expert reader may
+enjoy the problems in :numref:`Section %s <lem>`, which introduces classical reasoning; they are
+new (to my knowledge), and more elementary than the usual textbook examples.
 
 The other chapters of the book are more recognizable as the "normal mathematics" for a book of this
 type.  Sufficient familiarity with Lean has been established, and the mathematical presentation is
-no longer constrained.
+no longer constrained. 
+
+:numref:`Chapter %s <parity_and_divisibility>` covers the basic notions of elementary number theory.
+This chapter uses only a limited toolbox of 
+reasoning techniques, to permit it to be placed as a break between
+:numref:`Chapter %s <proofs_with_structure>` and :numref:`Chapter %s <proofs_with_structure_ii>`.
+Number-theoretic definitions and theorems continue to appear as examples in subsequent
+chapters, and the presentation of the subject concludes in :numref:`Chapter %s <number_theory>` with
+the big results of Greek mathematics: infinitude of primes, Euclid's lemma, and the irrationality of
+the square root of two.
+
+:numref:`Chapter %s <induction>` covers induction.  The treatment is fairly comprehensive, including
+induction and recursion relative to various nontrivial well-founded relations on :math:`\mathbb{Z}`,
+:math:`\mathbb{N}\times \mathbb{N}` and :math:`\mathbb{Z}\times \mathbb{Z}`.
+
+Finally, :numref:`Chapters %s <functions>`, :numref:`%s <sets>` and :numref:`%s <relations>` cover
+functions, sets, and relations, in that order -- we take the type-theoretic point of view that
+functions are the primitive notion and sets and relations are defined as functions into
+:math:`\left[\operatorname{true}/\operatorname{false}\right]`.
 
 
 About Lean
@@ -131,13 +152,13 @@ programming.)
 The course had 75-minute classes, twice a week for 13 weeks, and in this time covered about 80% of
 the material in this book.  A typical class structure might look like this:
 
-* 25 minutes traditional blackboard lecture
-* 5 minutes screenshare lecture doing the same problems in Lean
-* 20 minutes working in Lean in pairs, instructor circulating
-* 25 minutes traditional blackboard lecture, perhaps on a more theoretical topic which doesn't
-  translate directly into a "machine to generate homework problems"
+* 25 minutes traditional blackboard lecture;
+* 5 minutes screenshare lecture doing the same problems in Lean;
+* 20 minutes working in Lean in pairs, instructor circulating;
+* 25 minutes traditional blackboard lecture, perhaps more theoretical than the first.
 
-The homework assignments for the course are included :ref:`at the end of the book <homework>`. They
+The homework assignments for the course are
+`available online <https://hrmacbeth.github.io/math2001/Homework.html>`_. They
 are relatively short (5-7 problems per week), but students were required to submit almost all
 problems both in writing and in Lean.  Most students required support in office hours or by email
 to complete the homework assignments (I was fairly careful to keep this support "spoiler-free").
@@ -172,20 +193,20 @@ Acknowledgements
 My heartfelt thanks to
 
 * Microsoft Research, for a `grant <https://www.microsoft.com/en-us/research/academic-program/microsoft-research-lean-award-program/>`_
-  which supported the writing of the book
-* My department at Fordham, for letting me teach the experimental course which this book grew from
+  which supported the writing of the book;
+* My department at Fordham, for letting me teach the experimental course which this book grew from;
 * The intrepid students in that course, Math 2001 L01 Spring 2023, for their enthusiasm and
-  resourcefulness
+  resourcefulness;
 * Matthew Hertz, for setting up the Sphinx infrastructure for the book and typesetting the first
-  chapters
+  chapters;
 * The `mathlib community <https://leanprover-community.github.io/>`_, and particularly Mario
   Carneiro, Gabriel Ebner, Scott Morrison, Thomas Murrills and David Renshaw, for their work on the
   Lean 3 to Lean 4 port in fall 2022 and winter 2023 prioritizing the parts of the library I needed
-  for the course
+  for the course;
 * Mario Carneiro (also) for marathon hacking sessions which produced the most interesting custom
-  tactics used in the book
+  tactics used in the book;
 * Jeremy Avigad, Rob Lewis and Patrick Massot, for sharing technical infrastructure for Lean-based
-  courses and for many conversations about the dream of teaching mathematics with Lean
+  courses and for many conversations about the dream of teaching mathematics with Lean.
 
 .. rubric:: Footnotes
 

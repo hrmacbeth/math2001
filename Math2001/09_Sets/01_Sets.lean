@@ -15,16 +15,16 @@ notation:50 a:50 " ⊈ " b:50 => ¬ (a ⊆ b)
 
 
 
-#check { n : ℤ | n ≤ 3 }
+#check {n : ℤ | n ≤ 3}
 
 
-example : 1 ∈ { n : ℤ | n ≤ 3 } := by
+example : 1 ∈ {n : ℤ | n ≤ 3} := by
   dsimp
   numbers
 
 
 namespace Nat
-example : 10 ∉ { n : ℕ | Odd n } := by
+example : 10 ∉ {n : ℕ | Odd n} := by
   dsimp
   rw [← even_iff_not_odd]
   use 5
@@ -32,7 +32,7 @@ example : 10 ∉ { n : ℕ | Odd n } := by
 end Nat
 
 
-example : { a : ℕ | 4 ∣ a } ⊆ { b : ℕ | 2 ∣ b } := by
+example : {a : ℕ | 4 ∣ a} ⊆ {b : ℕ | 2 ∣ b} := by
   dsimp
   intro a ha
   obtain ⟨k, hk⟩ := ha
@@ -41,7 +41,7 @@ example : { a : ℕ | 4 ∣ a } ⊆ { b : ℕ | 2 ∣ b } := by
     _ = 2 * (2 * k) := by ring
 
 
-example : { x : ℝ | 0 ≤ x ^ 2 } ⊈ { t : ℝ | 0 ≤ t } := by
+example : {x : ℝ | 0 ≤ x ^ 2} ⊈ {t : ℝ | 0 ≤ t} := by
   dsimp
   push_neg
   use -3
@@ -50,7 +50,7 @@ example : { x : ℝ | 0 ≤ x ^ 2 } ⊈ { t : ℝ | 0 ≤ t } := by
   · numbers  
 
 
-example : { x : ℤ | Int.Odd x } = { a : ℤ | ∃ k, a = 2 * k - 1 } := by
+example : {x : ℤ | Int.Odd x} = {a : ℤ | ∃ k, a = 2 * k - 1} := by
   dsimp
   intro x
   constructor
@@ -66,7 +66,7 @@ example : { x : ℤ | Int.Odd x } = { a : ℤ | ∃ k, a = 2 * k - 1 } := by
       _ = 2 * (k - 1) + 1 := by ring
 
 
-example : { a : ℕ | 4 ∣ a } ≠ { b : ℕ | 2 ∣ b } := by
+example : {a : ℕ | 4 ∣ a} ≠ {b : ℕ | 2 ∣ b} := by
   dsimp
   push_neg
   use 6
@@ -79,7 +79,7 @@ example : { a : ℕ | 4 ∣ a } ≠ { b : ℕ | 2 ∣ b } := by
     numbers
 
 
-example : { k : ℤ | 8 ∣ 5 * k } = { l : ℤ | 8 ∣ l } := by
+example : {k : ℤ | 8 ∣ 5 * k} = {l : ℤ | 8 ∣ l} := by
   dsimp
   intro n
   constructor
@@ -97,7 +97,7 @@ example : { k : ℤ | 8 ∣ 5 * k } = { l : ℤ | 8 ∣ l } := by
       _ = 8 * (5 * a) := by ring
 
 
-example : { x : ℝ | x ^ 2 - x - 2 = 0 } = {-1, 2} := by
+example : {x : ℝ | x ^ 2 - x - 2 = 0} = {-1, 2} := by
   dsimp
   intro x
   constructor
@@ -120,7 +120,7 @@ example : { x : ℝ | x ^ 2 - x - 2 = 0 } = {-1, 2} := by
         _ = 0 := by numbers
 
 
-example : {1, 3, 6} ⊆ { t : ℚ | t < 10 } := by
+example : {1, 3, 6} ⊆ {t : ℚ | t < 10} := by
   dsimp
   intro t ht
   obtain h1 | h3 | h6 := ht
@@ -131,90 +131,90 @@ example : {1, 3, 6} ⊆ { t : ℚ | t < 10 } := by
 /-! # Exercises -/
 
 
-example : 4 ∈ { a : ℚ | a < 3 } := by
+example : 4 ∈ {a : ℚ | a < 3} := by
   sorry
 
-example : 4 ∉ { a : ℚ | a < 3 } := by
+example : 4 ∉ {a : ℚ | a < 3} := by
   sorry
 
-example : 6 ∈ { n : ℕ | n ∣ 42 } := by
+example : 6 ∈ {n : ℕ | n ∣ 42} := by
   sorry
 
-example : 6 ∉ { n : ℕ | n ∣ 42 } := by
+example : 6 ∉ {n : ℕ | n ∣ 42} := by
   sorry
 
 
-example : 8 ∈ { k : ℤ | 5 ∣ k } := by
+example : 8 ∈ {k : ℤ | 5 ∣ k} := by
   sorry  
 
-example : 8 ∉ { k : ℤ | 5 ∣ k } := by
+example : 8 ∉ {k : ℤ | 5 ∣ k} := by
   sorry
 
-example : 11 ∈ { n : ℕ | Odd n } := by
+example : 11 ∈ {n : ℕ | Odd n} := by
   sorry
 
-example : 11 ∉ { n : ℕ | Odd n } := by
-  sorry
-
-
-example : -3 ∈ { x : ℝ | ∀ y : ℝ, x ≤ y ^ 2 } := by
-  sorry
-
-example : -3 ∉ { x : ℝ | ∀ y : ℝ, x ≤ y ^ 2 } := by
+example : 11 ∉ {n : ℕ | Odd n} := by
   sorry
 
 
-example : { a : ℕ | 20 ∣ a } ⊆ { x : ℕ | 5 ∣ x } := by
+example : -3 ∈ {x : ℝ | ∀ y : ℝ, x ≤ y ^ 2} := by
   sorry
 
-example : { a : ℕ | 20 ∣ a } ⊈ { x : ℕ | 5 ∣ x } := by
+example : -3 ∉ {x : ℝ | ∀ y : ℝ, x ≤ y ^ 2} := by
   sorry
 
 
-example : { a : ℕ | 5 ∣ a } ⊆ { x : ℕ | 20 ∣ x } := by
+example : {a : ℕ | 20 ∣ a} ⊆ {x : ℕ | 5 ∣ x} := by
   sorry
 
-example : { a : ℕ | 5 ∣ a } ⊈ { x : ℕ | 20 ∣ x } := by
+example : {a : ℕ | 20 ∣ a} ⊈ {x : ℕ | 5 ∣ x} := by
   sorry
 
-example : { r : ℤ | 3 ∣ r } ⊆ { s : ℤ | 0 ≤ s } := by
+
+example : {a : ℕ | 5 ∣ a} ⊆ {x : ℕ | 20 ∣ x} := by
   sorry
 
-example : { r : ℤ | 3 ∣ r } ⊈ { s : ℤ | 0 ≤ s } := by
+example : {a : ℕ | 5 ∣ a} ⊈ {x : ℕ | 20 ∣ x} := by
   sorry
 
-example : { m : ℤ | m ≥ 10 } ⊆ { n : ℤ | n ^ 3 - 7 * n ^ 2 ≥ 4 * n } := by
+example : {r : ℤ | 3 ∣ r} ⊆ {s : ℤ | 0 ≤ s} := by
   sorry
 
-example : { m : ℤ | m ≥ 10 } ⊈ { n : ℤ | n ^ 3 - 7 * n ^ 2 ≥ 4 * n } := by
+example : {r : ℤ | 3 ∣ r} ⊈ {s : ℤ | 0 ≤ s} := by
+  sorry
+
+example : {m : ℤ | m ≥ 10} ⊆ {n : ℤ | n ^ 3 - 7 * n ^ 2 ≥ 4 * n} := by
+  sorry
+
+example : {m : ℤ | m ≥ 10} ⊈ {n : ℤ | n ^ 3 - 7 * n ^ 2 ≥ 4 * n} := by
   sorry
 
 
 namespace Int
-example : { n : ℤ | Even n } = { a : ℤ | a ≡ 6 [ZMOD 2] } := by
+example : {n : ℤ | Even n} = {a : ℤ | a ≡ 6 [ZMOD 2]} := by
   sorry
 
-example : { n : ℤ | Even n } ≠ { a : ℤ | a ≡ 6 [ZMOD 2] } := by
+example : {n : ℤ | Even n} ≠ {a : ℤ | a ≡ 6 [ZMOD 2]} := by
   sorry
 end Int
 
 
-example : { t : ℝ | t ^ 2 - 5 * t + 4 = 0 } = {4} := by
+example : {t : ℝ | t ^ 2 - 5 * t + 4 = 0} = {4} := by
   sorry
 
-example : { t : ℝ | t ^ 2 - 5 * t + 4 = 0 } ≠ {4} := by
+example : {t : ℝ | t ^ 2 - 5 * t + 4 = 0} ≠ {4} := by
   sorry
 
-example : { k : ℤ | 8 ∣ 6 * k } = { l : ℤ | 8 ∣ l } := by
+example : {k : ℤ | 8 ∣ 6 * k} = {l : ℤ | 8 ∣ l} := by
   sorry
 
-example : { k : ℤ | 8 ∣ 6 * k } ≠ { l : ℤ | 8 ∣ l } := by
+example : {k : ℤ | 8 ∣ 6 * k} ≠ {l : ℤ | 8 ∣ l} := by
   sorry
 
-example : { k : ℤ | 7 ∣ 9 * k } = { l : ℤ | 7 ∣ l } := by
+example : {k : ℤ | 7 ∣ 9 * k} = {l : ℤ | 7 ∣ l} := by
   sorry
 
-example : { k : ℤ | 7 ∣ 9 * k } ≠ { l : ℤ | 7 ∣ l } := by
+example : {k : ℤ | 7 ∣ 9 * k} ≠ {l : ℤ | 7 ∣ l} := by
   sorry
 
 
@@ -224,5 +224,5 @@ example : {1, 2, 3} = {1, 2} := by
 example : {1, 2, 3} ≠ {1, 2} := by
   sorry
 
-example : { x : ℝ | x ^ 2 + 3 * x + 2 = 0 } = {-1, -2} := by
+example : {x : ℝ | x ^ 2 + 3 * x + 2 = 0} = {-1, -2} := by
   sorry

@@ -88,9 +88,9 @@ namespace Int
 
 def U : ℕ → Set ℤ 
   | 0 => univ
-  | n + 1 => { x : ℤ | ∃ y ∈ U n, x = 2 * y }
+  | n + 1 => {x : ℤ | ∃ y ∈ U n, x = 2 * y}
 
-example (n : ℕ) : U n = { x : ℤ | (2:ℤ) ^ n ∣ x } := by
+example (n : ℕ) : U n = {x : ℤ | (2:ℤ) ^ n ∣ x} := by
   simple_induction n with k hk
   · rw [U]
     dsimp
