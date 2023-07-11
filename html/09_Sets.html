@@ -240,7 +240,7 @@ the goal state is simplified to</p>
 </section>
 <section id="id4">
 <h3><span class="section-number">9.1.4. </span>Example<a class="headerlink" href="#id4" title="Permalink to this headline">&#61633;</a></h3>
-<p>The notation <span class="math notranslate nohighlight">\(\not\subseteq\)</span> (in Lean, <code class="docutils literal notranslate"><span class="pre">&#8840;</span></code>) stands for &#8220;not a subset of&#8221;.</p>
+<p>The notation <span class="math notranslate nohighlight">\(\not\subseteq\)</span> stands for &#8220;not a subset of&#8221;.</p>
 <div class="admonition-problem admonition">
 <p class="admonition-title">Problem</p>
 <p>Prove that <span class="math notranslate nohighlight">\(\{x:\mathbb{R} \mid 0 \le x^2\}\not\subseteq \{t:\mathbb{R} \mid 0\le t\}\)</span>.</p>
@@ -718,15 +718,13 @@ This is precisely <a class="reference internal" href="04_Proofs_with_Structure_I
 description: here&#8217;s the strict definition.</p>
 <div class="admonition-definition admonition">
 <p class="admonition-title">Definition</p>
-<p>The <em>empty set</em> in a type <span class="math notranslate nohighlight">\(X\)</span>, denoted <span class="math notranslate nohighlight">\(\emptyset\)</span>, is <span class="math notranslate nohighlight">\(\{x : X \mid False\}\)</span>.</p>
+<p>The <em>empty set</em> in a type <span class="math notranslate nohighlight">\(X\)</span>, denoted <span class="math notranslate nohighlight">\(\emptyset\)</span>, is <span class="math notranslate nohighlight">\(\{x : X \mid \operatorname{False}\}\)</span>.</p>
 </div>
 <p>It is true by definition that no element of type <span class="math notranslate nohighlight">\(X\)</span> belongs to the empty set in <span class="math notranslate nohighlight">\(X\)</span>,
 and that the empty set in <span class="math notranslate nohighlight">\(X\)</span> is a subset of every set in <span class="math notranslate nohighlight">\(X\)</span>.</p>
-<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">(</span><span class="n">x</span> <span class="o">:</span> <span class="n">&#8484;</span><span class="o">)</span> <span class="o">:</span> <span class="n">x</span> <span class="bp">&#8713;</span> <span class="bp">&#8709;</span> <span class="o">:=</span> <span class="kd">by</span>
-  <span class="n">dsimp</span>
+<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">(</span><span class="n">x</span> <span class="o">:</span> <span class="n">&#8484;</span><span class="o">)</span> <span class="o">:</span> <span class="n">x</span> <span class="bp">&#8713;</span> <span class="bp">&#8709;</span> <span class="o">:=</span> <span class="kd">by</span> <span class="n">dsimp</span>
 
-<span class="kd">example</span> <span class="o">(</span><span class="n">U</span> <span class="o">:</span> <span class="n">Set</span> <span class="n">&#8484;</span><span class="o">)</span> <span class="o">:</span> <span class="bp">&#8709;</span> <span class="bp">&#8838;</span> <span class="n">U</span> <span class="o">:=</span> <span class="kd">by</span>
-  <span class="n">dsimp</span>
+<span class="kd">example</span> <span class="o">(</span><span class="n">U</span> <span class="o">:</span> <span class="n">Set</span> <span class="n">&#8484;</span><span class="o">)</span> <span class="o">:</span> <span class="bp">&#8709;</span> <span class="bp">&#8838;</span> <span class="n">U</span> <span class="o">:=</span> <span class="kd">by</span> <span class="n">dsimp</span>
 </pre></div>
 </div>
 <p>To show a set <span class="math notranslate nohighlight">\(U\)</span> in <span class="math notranslate nohighlight">\(X\)</span> is equal to the empty set, you must show that <span class="math notranslate nohighlight">\(U\)</span> has
@@ -764,21 +762,19 @@ no elements.</p>
 That&#8217;s again a slightly informal description: here&#8217;s the strict definition.</p>
 <div class="admonition-definition admonition">
 <p class="admonition-title">Definition</p>
-<p>The <em>universe set</em> in a type <span class="math notranslate nohighlight">\(X\)</span> is <span class="math notranslate nohighlight">\(\{x : X \mid True\}\)</span>.</p>
+<p>The <em>universe set</em> in a type <span class="math notranslate nohighlight">\(X\)</span> is <span class="math notranslate nohighlight">\(\{x : X \mid \operatorname{True}\}\)</span>.</p>
 </div>
-<p>It is true by definition that all elements of type <span class="math notranslate nohighlight">\(X\)</span> belongs to the universe set in
+<p>It is true by definition that all elements of type <span class="math notranslate nohighlight">\(X\)</span> belong to the universe set in
 <span class="math notranslate nohighlight">\(X\)</span>, and that every set in <span class="math notranslate nohighlight">\(X\)</span> is a subset of the universe set in <span class="math notranslate nohighlight">\(X\)</span>.</p>
-<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">(</span><span class="n">x</span> <span class="o">:</span> <span class="n">&#8484;</span><span class="o">)</span> <span class="o">:</span> <span class="n">x</span> <span class="bp">&#8712;</span> <span class="n">univ</span> <span class="o">:=</span> <span class="kd">by</span>
-  <span class="n">dsimp</span>
+<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">(</span><span class="n">x</span> <span class="o">:</span> <span class="n">&#8484;</span><span class="o">)</span> <span class="o">:</span> <span class="n">x</span> <span class="bp">&#8712;</span> <span class="n">univ</span> <span class="o">:=</span> <span class="kd">by</span> <span class="n">dsimp</span>
 
-<span class="kd">example</span> <span class="o">(</span><span class="n">U</span> <span class="o">:</span> <span class="n">Set</span> <span class="n">&#8484;</span><span class="o">)</span> <span class="o">:</span> <span class="n">U</span> <span class="bp">&#8838;</span> <span class="n">univ</span> <span class="o">:=</span> <span class="kd">by</span>
-  <span class="n">dsimp</span>
+<span class="kd">example</span> <span class="o">(</span><span class="n">U</span> <span class="o">:</span> <span class="n">Set</span> <span class="n">&#8484;</span><span class="o">)</span> <span class="o">:</span> <span class="n">U</span> <span class="bp">&#8838;</span> <span class="n">univ</span> <span class="o">:=</span> <span class="kd">by</span> <span class="n">dsimp</span>
 </pre></div>
 </div>
 <p>Note that in Lean the universe set is denoted <code class="docutils literal notranslate"><span class="pre">univ</span></code>.  On paper we often refer to the universe
 set of <span class="math notranslate nohighlight">\(X\)</span> as <span class="math notranslate nohighlight">\(X\)</span>, too (even though this is not strictly correct).</p>
 <p>To show a set <span class="math notranslate nohighlight">\(U\)</span> in <span class="math notranslate nohighlight">\(X\)</span> is equal to the universe set, you must show that <span class="math notranslate nohighlight">\(U\)</span>
-contains all elements of elements.  Here we adapt <a class="reference internal" href="#union"><span class="std std-numref">Example 9.2.1</span></a> to be a problem about
+contains all elements of <span class="math notranslate nohighlight">\(X\)</span>.  Here we adapt <a class="reference internal" href="#union"><span class="std std-numref">Example 9.2.1</span></a> to be a problem about
 the universe set.</p>
 <div class="admonition-problem admonition">
 <p class="admonition-title">Problem</p>
@@ -903,7 +899,7 @@ will work.</p>
 </div>
 </li>
 <li><p>Let us define that a set <span class="math notranslate nohighlight">\(s\)</span> in a type <span class="math notranslate nohighlight">\(X\)</span> has <em>size at least two</em>, if there exist
-<span class="math notranslate nohighlight">\(x_1\)</span> and <span class="math notranslate nohighlight">\(x_2\)</span> in <span class="math notranslate nohighlight">\(s\)</span> which are different, and to have <em>size at least
+<span class="math notranslate nohighlight">\(x_1\)</span> and <span class="math notranslate nohighlight">\(x_2\)</span> in <span class="math notranslate nohighlight">\(s\)</span> which are different, and has <em>size at least
 three</em>, if there exist <span class="math notranslate nohighlight">\(x_1\)</span>, <span class="math notranslate nohighlight">\(x_2\)</span> and <span class="math notranslate nohighlight">\(x_3\)</span> in <span class="math notranslate nohighlight">\(s\)</span> which are all
 different.</p>
 <p>Let <span class="math notranslate nohighlight">\(s\)</span> and <span class="math notranslate nohighlight">\(t\)</span> be sets of size at least two in some type <span class="math notranslate nohighlight">\(X\)</span>, and suppose
@@ -991,7 +987,7 @@ functions to and from it.</p>
 <span class="math notranslate nohighlight">\(n\)</span>, it is true that <span class="math notranslate nohighlight">\(n+1\in s\)</span> if and only if <span class="math notranslate nohighlight">\(n+ 1\in t\)</span>, and, (ii) there
 exists a natural number <span class="math notranslate nohighlight">\(k\)</span> which is in one of <span class="math notranslate nohighlight">\(s\)</span>, <span class="math notranslate nohighlight">\(t\)</span> but not the other.</p>
 <p>Indeed, let us show that the sets <span class="math notranslate nohighlight">\(\{0\}\)</span> and <span class="math notranslate nohighlight">\(\emptyset\)</span> have this property.  We must
-show, (i) for all natural numbers <span class="math notranslate nohighlight">\(n\)</span>, it is true that <span class="math notranslate nohighlight">\(n+1 \ne 0\)</span>, and, (ii) there
+show, (i) for all natural numbers <span class="math notranslate nohighlight">\(n\)</span>, it is not true that <span class="math notranslate nohighlight">\(n+1 = 0\)</span>, and, (ii) there
 exists a natural number <span class="math notranslate nohighlight">\(k\)</span> which is equal to 0.</p>
 <p>The first statement is true because for any natural number  <span class="math notranslate nohighlight">\(n\)</span>, the number <span class="math notranslate nohighlight">\(n+1\)</span> is
 strictly positive, and the second is true by taking <span class="math notranslate nohighlight">\(k\)</span> to be 0.</p>

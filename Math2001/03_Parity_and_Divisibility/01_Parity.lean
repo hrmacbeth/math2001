@@ -50,18 +50,18 @@ example {m : ℤ} (hm : Odd m) : Even (3 * m - 5) := by
 example {n : ℤ} (hn : Even n) : Odd (n ^ 2 + 2 * n - 5) := by
   sorry
 
-example (n : ℤ) : Even (n ^ 2 + 3 * n + 4) := by
+example (n : ℤ) : Even (n ^ 2 + n + 4) := by
   obtain hn | hn := Int.even_or_odd n
   · obtain ⟨x, hx⟩ := hn
-    use 2 * x ^ 2 + 3 * x + 2
+    use 2 * x ^ 2 + x + 2
     calc
-      n ^ 2 + 3 * n + 4 = (2 * x) ^ 2 + 3 * (2 * x) + 4 := by rw [hx]
-      _ = 2 * (2 * x ^ 2 + 3 * x + 2) := by ring
+      n ^ 2 + n + 4 = (2 * x) ^ 2 + 2 * x + 4 := by rw [hx]
+      _ = 2 * (2 * x ^ 2 + x + 2) := by ring
   · obtain ⟨x, hx⟩ := hn
-    use 2 * x ^ 2 + 5 * x + 4
+    use 2 * x ^ 2 + 3 * x + 3
     calc
-      n ^ 2 + 3 * n + 4 = (2 * x + 1) ^ 2 + 3 * (2 * x + 1) + 4 := by rw [hx]
-      _ = 2 * (2 * x ^ 2 + 5 * x + 4) := by ring
+      n ^ 2 + n + 4 = (2 * x + 1) ^ 2 + (2 * x + 1) + 4 := by rw [hx]
+      _ = 2 * (2 * x ^ 2 + 3 * x + 3) := by ring
 
 /-! # Exercises -/
 
@@ -99,7 +99,7 @@ example {p : ℤ} (hp : Odd p) : Odd (p ^ 2 + 3 * p - 5) := by
 example {x y : ℤ} (hx : Odd x) (hy : Odd y) : Odd (x * y) := by
   sorry
 
-example (n : ℤ) : Odd (5 * n ^ 2 + 3 * n + 7) := by
+example (n : ℤ) : Odd (3 * n ^ 2 + 3 * n - 1) := by
   sorry
 
 example (n : ℤ) : ∃ m ≥ n, Odd m := by

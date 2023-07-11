@@ -257,10 +257,10 @@ and <span class="math notranslate nohighlight">\(b\mid c\)</span> then <span cla
 <p class="admonition-title">Problem</p>
 <p>Determine which of these properties hold for the relation <span class="math notranslate nohighlight">\(=\)</span> on <span class="math notranslate nohighlight">\(\mathbb{R}\)</span>:</p>
 <ol class="lowerroman simple">
-<li><p>reflexive</p></li>
-<li><p>symmetric</p></li>
-<li><p>antisymmetric</p></li>
-<li><p>transitive</p></li>
+<li><p>reflexive;</p></li>
+<li><p>symmetric;</p></li>
+<li><p>antisymmetric;</p></li>
+<li><p>transitive.</p></li>
 </ol>
 </div>
 <div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">:</span> <span class="n">Reflexive</span> <span class="o">((</span><span class="bp">&#183;</span><span class="o">:</span><span class="n">&#8477;</span><span class="o">)</span> <span class="bp">=</span> <span class="bp">&#183;</span><span class="o">)</span> <span class="o">:=</span> <span class="kd">by</span>
@@ -289,10 +289,10 @@ and <span class="math notranslate nohighlight">\(b\mid c\)</span> then <span cla
 <p class="admonition-title">Problem</p>
 <p>Determine which of these properties hold for the relation <span class="math notranslate nohighlight">\(\sim\)</span> on <span class="math notranslate nohighlight">\(\mathbb{R}\)</span>, defined by, <span class="math notranslate nohighlight">\(x\sim y\)</span> if <span class="math notranslate nohighlight">\((x-y)^2\leq 1\)</span>:</p>
 <ol class="lowerroman simple">
-<li><p>reflexive</p></li>
-<li><p>symmetric</p></li>
-<li><p>antisymmetric</p></li>
-<li><p>transitive</p></li>
+<li><p>reflexive;</p></li>
+<li><p>symmetric;</p></li>
+<li><p>antisymmetric;</p></li>
+<li><p>transitive.</p></li>
 </ol>
 </div>
 <div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kn">local</span> <span class="kd">infix</span><span class="o">:</span><span class="mi">50</span> <span class="s2">&quot;&#8764;&quot;</span> <span class="bp">=&gt;</span> <span class="k">fun</span> <span class="o">(</span><span class="n">x</span> <span class="n">y</span> <span class="o">:</span> <span class="n">&#8477;</span><span class="o">)</span> <span class="bp">&#8614;</span> <span class="o">(</span><span class="n">x</span> <span class="bp">-</span> <span class="n">y</span><span class="o">)</span> <span class="bp">^</span> <span class="mi">2</span> <span class="bp">&#8804;</span> <span class="mi">1</span>
@@ -361,10 +361,10 @@ and <span class="math notranslate nohighlight">\(b\mid c\)</span> then <span cla
 <p class="admonition-title">Problem</p>
 <p>Determine which of these properties hold for the relation <span class="math notranslate nohighlight">\(\prec\)</span>:</p>
 <ol class="lowerroman simple">
-<li><p>reflexive</p></li>
-<li><p>symmetric</p></li>
-<li><p>antisymmetric</p></li>
-<li><p>transitive</p></li>
+<li><p>reflexive;</p></li>
+<li><p>symmetric;</p></li>
+<li><p>antisymmetric;</p></li>
+<li><p>transitive.</p></li>
 </ol>
 </div>
 <div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">:</span> <span class="bp">&#172;</span> <span class="n">Reflexive</span> <span class="o">(</span><span class="bp">&#183;</span> <span class="bp">&#8826;</span> <span class="bp">&#183;</span><span class="o">)</span> <span class="o">:=</span> <span class="kd">by</span>
@@ -417,10 +417,10 @@ and <span class="math notranslate nohighlight">\(b\mid c\)</span> then <span cla
 <li><p>Consider the following finite inductive type Little, and the following relation <span class="math notranslate nohighlight">\(\sim\)</span> on
 the Little type. Determine which of these properties hold for the relation <span class="math notranslate nohighlight">\(\sim\)</span>:</p>
 <ol class="lowerroman simple">
-<li><p>reflexive</p></li>
-<li><p>symmetric</p></li>
-<li><p>antisymmetric</p></li>
-<li><p>transitive</p></li>
+<li><p>reflexive;</p></li>
+<li><p>symmetric;</p></li>
+<li><p>antisymmetric;</p></li>
+<li><p>transitive.</p></li>
 </ol>
 <div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kn">section</span>
 <span class="kd">inductive</span> <span class="n">Little</span>
@@ -483,10 +483,10 @@ the Little type. Determine which of these properties hold for the relation <span
 <li><p>Determine which of these properties hold for the relation <span class="math notranslate nohighlight">\(\sim\)</span> on <span class="math notranslate nohighlight">\(\mathbb{Z}\)</span>,
 defined by, <span class="math notranslate nohighlight">\(x\sim y\)</span> if <span class="math notranslate nohighlight">\(y\equiv x+1\mod 5\)</span>:</p>
 <ol class="lowerroman simple">
-<li><p>reflexive</p></li>
-<li><p>symmetric</p></li>
-<li><p>antisymmetric</p></li>
-<li><p>transitive</p></li>
+<li><p>reflexive;</p></li>
+<li><p>symmetric;</p></li>
+<li><p>antisymmetric;</p></li>
+<li><p>transitive.</p></li>
 </ol>
 <p>Also sketch (a representative portion of) this relation as a directed graph.</p>
 <div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kn">local</span> <span class="kd">infix</span><span class="o">:</span><span class="mi">50</span> <span class="s2">&quot;&#8764;&quot;</span> <span class="bp">=&gt;</span> <span class="k">fun</span> <span class="o">(</span><span class="n">x</span> <span class="n">y</span> <span class="o">:</span> <span class="n">&#8484;</span><span class="o">)</span> <span class="bp">&#8614;</span> <span class="n">y</span> <span class="bp">&#8801;</span> <span class="n">x</span> <span class="bp">+</span> <span class="mi">1</span> <span class="o">[</span><span class="n">ZMOD</span> <span class="mi">5</span><span class="o">]</span>
@@ -520,10 +520,10 @@ defined by, <span class="math notranslate nohighlight">\(x\sim y\)</span> if <sp
 <li><p>Determine which of these properties hold for the relation <span class="math notranslate nohighlight">\(\sim\)</span> on <span class="math notranslate nohighlight">\(\mathbb{Z}\)</span>,
 defined by, <span class="math notranslate nohighlight">\(x\sim y\)</span> if <span class="math notranslate nohighlight">\(x+y\equiv 0\mod 3\)</span>:</p>
 <ol class="lowerroman simple">
-<li><p>reflexive</p></li>
-<li><p>symmetric</p></li>
-<li><p>antisymmetric</p></li>
-<li><p>transitive</p></li>
+<li><p>reflexive;</p></li>
+<li><p>symmetric;</p></li>
+<li><p>antisymmetric;</p></li>
+<li><p>transitive.</p></li>
 </ol>
 <p>Also sketch (a representative portion of) this relation as a directed graph.</p>
 <div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kn">local</span> <span class="kd">infix</span><span class="o">:</span><span class="mi">50</span> <span class="s2">&quot;&#8764;&quot;</span> <span class="bp">=&gt;</span> <span class="k">fun</span> <span class="o">(</span><span class="n">x</span> <span class="n">y</span> <span class="o">:</span> <span class="n">&#8484;</span><span class="o">)</span> <span class="bp">&#8614;</span> <span class="n">x</span> <span class="bp">+</span> <span class="n">y</span> <span class="bp">&#8801;</span> <span class="mi">0</span> <span class="o">[</span><span class="n">ZMOD</span> <span class="mi">3</span><span class="o">]</span>
@@ -557,10 +557,10 @@ defined by, <span class="math notranslate nohighlight">\(x\sim y\)</span> if <sp
 <li><p>Determine which of these properties hold for the relation <span class="math notranslate nohighlight">\(\subseteq\)</span> on
 <span class="math notranslate nohighlight">\(\mathcal{P}(\mathbb{N})\)</span>, the type of sets of natural numbers.</p>
 <ol class="lowerroman simple">
-<li><p>reflexive</p></li>
-<li><p>symmetric</p></li>
-<li><p>antisymmetric</p></li>
-<li><p>transitive</p></li>
+<li><p>reflexive;</p></li>
+<li><p>symmetric;</p></li>
+<li><p>antisymmetric;</p></li>
+<li><p>transitive.</p></li>
 </ol>
 <p>Also sketch (a representative portion of) this relation as a directed graph.</p>
 <div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">:</span> <span class="n">Reflexive</span> <span class="o">((</span><span class="bp">&#183;</span> <span class="o">:</span> <span class="n">Set</span> <span class="n">&#8469;</span><span class="o">)</span> <span class="bp">&#8838;</span> <span class="bp">&#183;</span><span class="o">)</span> <span class="o">:=</span> <span class="kd">by</span>
@@ -592,10 +592,10 @@ defined by, <span class="math notranslate nohighlight">\(x\sim y\)</span> if <sp
 <li><p>Determine which of these properties hold for the relation <span class="math notranslate nohighlight">\(\prec\)</span> on <span class="math notranslate nohighlight">\(\mathbb{R}^2\)</span>,
 defined by, <span class="math notranslate nohighlight">\((x_1, y_1) \prec (x_2,y_2)\)</span> if <span class="math notranslate nohighlight">\(x_1\le x_2\)</span> and <span class="math notranslate nohighlight">\(y_1\le y_2\)</span>:</p>
 <ol class="lowerroman simple">
-<li><p>reflexive</p></li>
-<li><p>symmetric</p></li>
-<li><p>antisymmetric</p></li>
-<li><p>transitive</p></li>
+<li><p>reflexive;</p></li>
+<li><p>symmetric;</p></li>
+<li><p>antisymmetric;</p></li>
+<li><p>transitive.</p></li>
 </ol>
 <div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kn">local</span> <span class="kd">infix</span><span class="o">:</span><span class="mi">50</span> <span class="s2">&quot;&#8826;&quot;</span> <span class="bp">=&gt;</span> <span class="k">fun</span> <span class="o">((</span><span class="n">x1</span><span class="o">,</span> <span class="n">y1</span><span class="o">)</span> <span class="o">:</span> <span class="n">&#8477;</span> <span class="bp">&#215;</span> <span class="n">&#8477;</span><span class="o">)</span> <span class="o">(</span><span class="n">x2</span><span class="o">,</span> <span class="n">y2</span><span class="o">)</span> <span class="bp">&#8614;</span> <span class="o">(</span><span class="n">x1</span> <span class="bp">&#8804;</span> <span class="n">x2</span> <span class="bp">&#8743;</span> <span class="n">y1</span> <span class="bp">&#8804;</span> <span class="n">y2</span><span class="o">)</span>
 
@@ -779,13 +779,10 @@ of reflexivity.</p>
 </section>
 <section id="id9">
 <h3><span class="section-number">10.2.4. </span>Example<a class="headerlink" href="#id9" title="Permalink to this headline">&#61633;</a></h3>
-<div class="admonition-problem admonition">
-<p class="admonition-title">Problem</p>
 <p>Consider the relation <span class="math notranslate nohighlight">\(=\)</span> on <span class="math notranslate nohighlight">\(\mathbb{Z}\)</span>.  It is an equivalence relation, by
 <a class="reference internal" href="#equals-relation"><span class="std std-numref">Example 10.1.2</span></a>.</p>
-<p>Sketch this relation, by drawing (a portion of) the underlying type
+<p>Exercise: Sketch this relation, by drawing (a portion of) the underlying type
 <span class="math notranslate nohighlight">\(\mathbb{Z}\)</span> along a line, then colouring each equivalence class in a different colour.</p>
-</div>
 </section>
 <section id="id10">
 <h3><span class="section-number">10.2.5. </span>Example<a class="headerlink" href="#id10" title="Permalink to this headline">&#61633;</a></h3>
@@ -852,9 +849,9 @@ different colour.</p>
 <h3><span class="section-number">10.2.6. </span>Example<a class="headerlink" href="#id11" title="Permalink to this headline">&#61633;</a></h3>
 <div class="admonition-theorem admonition">
 <p class="admonition-title">Theorem</p>
-<p>Consider the relation <span class="math notranslate nohighlight">\(\sim\)</span> on the type of level-0 types defined by,
-<span class="math notranslate nohighlight">\(\alpha\sim\beta\)</span> if there exists a bijective function <span class="math notranslate nohighlight">\(f:\alpha\to\beta\)</span>.</p>
-<p>Show that <span class="math notranslate nohighlight">\(\sim\)</span> is an equivalence relation.</p>
+<p>The relation <span class="math notranslate nohighlight">\(\sim\)</span> on the type of level-0 types defined by,
+<span class="math notranslate nohighlight">\(\alpha\sim\beta\)</span> if there exists a bijective function <span class="math notranslate nohighlight">\(f:\alpha\to\beta\)</span>,
+is an equivalence relation.</p>
 </div>
 <div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kn">local</span> <span class="kd">infix</span><span class="o">:</span><span class="mi">50</span> <span class="s2">&quot;&#8764;&quot;</span> <span class="bp">=&gt;</span> <span class="k">fun</span> <span class="o">(</span><span class="n">&#945;</span> <span class="n">&#946;</span> <span class="o">:</span> <span class="kt">Type</span><span class="o">)</span> <span class="bp">&#8614;</span> <span class="bp">&#8707;</span> <span class="n">f</span> <span class="o">:</span> <span class="n">&#945;</span> <span class="bp">&#8594;</span> <span class="n">&#946;</span><span class="o">,</span> <span class="n">Bijective</span> <span class="n">f</span>
 

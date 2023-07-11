@@ -75,11 +75,10 @@ example : Prime 2 := by
 
 
 example : ¬ Prime 6 := by
-  apply not_prime 2
+  apply not_prime 2 3
   · numbers -- show `2 ≠ 1` 
   · numbers -- show `2 ≠ 6` 
-  · use 3
-    numbers -- show `6 = 2 * 3`
+  · numbers -- show `6 = 2 * 3`
 
 /-! # Exercises -/
 

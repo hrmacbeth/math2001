@@ -45,11 +45,9 @@ example : {n : ℤ | Even n}ᶜ = {n : ℤ | Odd n} := by
 end Int
 
 
-example (x : ℤ) : x ∉ ∅ := by
-  dsimp
+example (x : ℤ) : x ∉ ∅ := by dsimp
 
-example (U : Set ℤ) : ∅ ⊆ U := by
-  dsimp
+example (U : Set ℤ) : ∅ ⊆ U := by dsimp
 
 
 example : {n : ℤ | n ≡ 1 [ZMOD 5]} ∩ {n : ℤ | n ≡ 2 [ZMOD 5]} = ∅ := by
@@ -62,11 +60,9 @@ example : {n : ℤ | n ≡ 1 [ZMOD 5]} ∩ {n : ℤ | n ≡ 2 [ZMOD 5]} = ∅ :=
   numbers at this
 
 
-example (x : ℤ) : x ∈ univ := by
-  dsimp
+example (x : ℤ) : x ∈ univ := by dsimp
 
-example (U : Set ℤ) : U ⊆ univ := by
-  dsimp
+example (U : Set ℤ) : U ⊆ univ := by dsimp
 
 
 example : {x : ℝ | -1 < x} ∪ {x : ℝ | x < 1} = univ := by

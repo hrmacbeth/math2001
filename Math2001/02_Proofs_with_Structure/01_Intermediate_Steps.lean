@@ -68,5 +68,5 @@ example {x : ℚ} (h1 : x ^ 2 = 4) (h2 : 1 < x) : x = 2 := by
 example {n : ℤ} (hn : n ^ 2 + 4 = 4 * n) : n = 2 := by
   sorry
 
-example (x y : ℚ) (h : x * y = 1) (h2 : 1 ≤ x) : 1 ≥ y := by
+example (x y : ℚ) (h : x * y = 1) (h2 : x ≥ 1) : y ≤ 1 := by
   sorry

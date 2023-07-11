@@ -49,9 +49,9 @@ lemma prime_two : Prime 2 := by
   intro m hm1 hm2
   interval_cases m
 
-lemma not_prime {p : ℕ} (k : ℕ) (hk1 : k ≠ 1) (hkp : k ≠ p) (hk : k ∣ p) : ¬(Prime p) := by
+lemma not_prime {p : ℕ} (k l : ℕ) (hk1 : k ≠ 1) (hkp : k ≠ p) (hkl : p = k * l) : ¬(Prime p) := by
   rintro ⟨_, hfact⟩
-  obtain hk1' | hkp' := hfact k hk
+  obtain hk1' | hkp' := hfact k ⟨_, hkl⟩
   · exact hk1 hk1'
   · exact hkp hkp'
 

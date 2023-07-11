@@ -53,14 +53,14 @@
 <li class="toctree-l3"><a class="reference internal" href="#id4">2.1.4. Example</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#id5">2.1.5. Example</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#id6">2.1.6. Example</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id7">2.1.7. Example</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#prove-sq-le-sq">2.1.7. Example</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#cube-inequality">2.1.8. Example</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#exercises">2.1.9. Exercises</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#invoking-lemmas">2.2. Invoking lemmas</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#id9">2.2.1. Example</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id12">2.2.2. Example</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#ne-of-gt">2.2.2. Example</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#sum-sq-eq-zero1">2.2.3. Example</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#id14">2.2.4. Exercises</a></li>
 </ul>
@@ -91,7 +91,7 @@
 <li class="toctree-l3"><a class="reference internal" href="#id34">2.5.6. Example</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#between">2.5.7. Example</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#id36">2.5.8. Example</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id37">2.5.9. Exercises</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id38">2.5.9. Exercises</a></li>
 </ul>
 </li>
 </ul>
@@ -153,7 +153,7 @@ the live-updating <em>infoview</em> keeping track of your current hypotheses and
 <section id="intermediate-steps">
 <span id="tactic-mode"></span><h2><span class="section-number">2.1. </span>Intermediate steps<a class="headerlink" href="#intermediate-steps" title="Permalink to this headline">&#61633;</a></h2>
 <section id="example">
-<h3><span class="section-number">2.1.1. </span>Example<a class="headerlink" href="#example" title="Permalink to this headline">&#61633;</a></h3>
+<span id="therefore-discussion"></span><h3><span class="section-number">2.1.1. </span>Example<a class="headerlink" href="#example" title="Permalink to this headline">&#61633;</a></h3>
 <p>Every proof we&#8217;ve seen so far has been a single calculation.  More typically, though, a proof will
 have a more complex structure, with facts established at an early stage which are not used immediately,
 but instead brought in later.</p>
@@ -189,7 +189,7 @@ in to help solve for <span class="math notranslate nohighlight">\(a\)</span>.</p
 deduced from the hypothesis <span class="math notranslate nohighlight">\(b+2=3\)</span> by mentally subtracting 2 from both sides, and this is
 considered sufficiently obvious that we don&#8217;t explain the reasoning apart from indicating which of
 the hypotheses is being invoked.</p>
-<p id="therefore-discussion">We have now added one more fact, <span class="math notranslate nohighlight">\(b=1\)</span>, to our toolbox of known facts in this problem, and
+<p>We have now added one more fact, <span class="math notranslate nohighlight">\(b=1\)</span>, to our list of known facts in this problem, and
 we carry out a calculational proof in which this fact is used (it is substituted, together with
 <span class="math notranslate nohighlight">\(a-5b=4\)</span>, at the step <span class="math notranslate nohighlight">\((a - 5b) + 5b = 4 + 5 \cdot 1\)</span>).  The word &#8220;Therefore&#8221;
 (synonyms: &#8220;Thus&#8221;, &#8220;So&#8221;) introduces this calculational proof; its meaning is that the fact just
@@ -235,8 +235,8 @@ h2 : b + 2 = 3
   <span class="n">a</span> <span class="bp">=</span> <span class="o">(</span><span class="n">a</span> <span class="bp">-</span> <span class="mi">5</span> <span class="bp">*</span> <span class="n">b</span><span class="o">)</span> <span class="bp">+</span> <span class="mi">5</span> <span class="bp">*</span> <span class="n">b</span> <span class="o">:=</span> <span class="kd">by</span> <span class="n">ring</span>
 </pre></div>
 </div>
-<p>The newly-proved fact <code class="docutils literal notranslate"><span class="pre">hb</span></code>, that <code class="docutils literal notranslate"><span class="pre">b</span> <span class="pre">=</span> <span class="pre">1</span></code>, has been added to the list of hypotheses (known
-facts) in the infoview.</p>
+<p>The newly-proved fact <code class="docutils literal notranslate"><span class="pre">hb</span></code>, that <code class="docutils literal notranslate"><span class="pre">b</span> <span class="pre">=</span> <span class="pre">1</span></code>, has been added to the list of hypotheses in the
+infoview.</p>
 <div class="highlight-text notranslate"><div class="highlight"><pre><span></span>a b : &#8477;
 h1 : a - 5 * b = 4
 h2 : b + 2 = 3
@@ -284,7 +284,7 @@ calculational proof following the text</p>
 <p>The top left expression in the calculation is <span class="math notranslate nohighlight">\(m+3\)</span>, the bottom right expression is
 <span class="math notranslate nohighlight">\(9\)</span>, and the sequence of relations <span class="math notranslate nohighlight">\(\le\)</span>, <span class="math notranslate nohighlight">\(\le\)</span>, <span class="math notranslate nohighlight">\(=\)</span> at the steps in
 between together establish the relation <span class="math notranslate nohighlight">\(\le\)</span> between <span class="math notranslate nohighlight">\(m+3\)</span> and <span class="math notranslate nohighlight">\(9\)</span>.</p>
-<p>We <a class="reference internal" href="#therefore-discussion"><span class="std std-ref">previously discussed</span></a> the meaning of &#8220;therefore&#8221;/&#8221;thus&#8221;/&#8221;so&#8221;. Here
+<p>We discussed in <a class="reference internal" href="#therefore-discussion"><span class="std std-numref">Example 2.1.1</span></a> the meaning of &#8220;therefore&#8221;/&#8221;thus&#8221;/&#8221;so&#8221;. Here
 the text</p>
 <blockquote>
 <div><p>so <span class="math notranslate nohighlight">\(m \le 6\)</span>.</p>
@@ -457,8 +457,8 @@ are.</p>
 </pre></div>
 </div>
 </section>
-<section id="id7">
-<h3><span class="section-number">2.1.7. </span>Example<a class="headerlink" href="#id7" title="Permalink to this headline">&#61633;</a></h3>
+<section id="prove-sq-le-sq">
+<span id="id7"></span><h3><span class="section-number">2.1.7. </span>Example<a class="headerlink" href="#prove-sq-le-sq" title="Permalink to this headline">&#61633;</a></h3>
 <p>This next one is mathematically a little harder.</p>
 <div class="admonition-problem admonition">
 <p class="admonition-title">Problem</p>
@@ -529,10 +529,10 @@ then finish off.</p>
 </div>
 </li>
 <li><p>Let <span class="math notranslate nohighlight">\(x\)</span> and <span class="math notranslate nohighlight">\(y\)</span> be rational numbers, and suppose that <span class="math notranslate nohighlight">\(xy=1\)</span> and
-<span class="math notranslate nohighlight">\(1 \le x\)</span>.  Show that <span class="math notranslate nohighlight">\(1 \ge y\)</span>.</p>
+<span class="math notranslate nohighlight">\(x \ge 1\)</span>.  Show that <span class="math notranslate nohighlight">\(y \le 1\)</span>.</p>
 <p>Suggested steps:  Prove that <span class="math notranslate nohighlight">\(0&lt;xy\)</span>, cancel <span class="math notranslate nohighlight">\(x\)</span> to deduce that <span class="math notranslate nohighlight">\(0&lt;y\)</span>, then
 give a calculation to prove the goal.</p>
-<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">(</span><span class="n">x</span> <span class="n">y</span> <span class="o">:</span> <span class="n">&#8474;</span><span class="o">)</span> <span class="o">(</span><span class="n">h</span> <span class="o">:</span> <span class="n">x</span> <span class="bp">*</span> <span class="n">y</span> <span class="bp">=</span> <span class="mi">1</span><span class="o">)</span> <span class="o">(</span><span class="n">h2</span> <span class="o">:</span> <span class="mi">1</span> <span class="bp">&#8804;</span> <span class="n">x</span><span class="o">)</span> <span class="o">:</span> <span class="mi">1</span> <span class="bp">&#8805;</span> <span class="n">y</span> <span class="o">:=</span> <span class="kd">by</span>
+<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">(</span><span class="n">x</span> <span class="n">y</span> <span class="o">:</span> <span class="n">&#8474;</span><span class="o">)</span> <span class="o">(</span><span class="n">h</span> <span class="o">:</span> <span class="n">x</span> <span class="bp">*</span> <span class="n">y</span> <span class="bp">=</span> <span class="mi">1</span><span class="o">)</span> <span class="o">(</span><span class="n">h2</span> <span class="o">:</span> <span class="n">x</span> <span class="bp">&#8805;</span> <span class="mi">1</span><span class="o">)</span> <span class="o">:</span> <span class="n">y</span> <span class="bp">&#8804;</span> <span class="mi">1</span> <span class="o">:=</span> <span class="kd">by</span>
   <span class="gr">sorry</span>
 </pre></div>
 </div>
@@ -616,8 +616,8 @@ But I do need to explicitly mention the name of the lemma,</p>
 </div>
 <p>because &#8220;it&#8217;s general knowledge!&#8221; is not a precise enough justification for Lean to find it.</p>
 </section>
-<section id="id12">
-<h3><span class="section-number">2.2.2. </span>Example<a class="headerlink" href="#id12" title="Permalink to this headline">&#61633;</a></h3>
+<section id="ne-of-gt">
+<span id="id12"></span><h3><span class="section-number">2.2.2. </span>Example<a class="headerlink" href="#ne-of-gt" title="Permalink to this headline">&#61633;</a></h3>
 <p>Here&#8217;s a similar problem, in which I will prove a disequality by showing the left-hand side is
 <em>larger</em>, rather than (as in the previous problem) <em>smaller</em>.</p>
 <div class="admonition-problem admonition">
@@ -634,7 +634,7 @@ But I do need to explicitly mention the name of the lemma,</p>
 </pre></div>
 </div>
 <p>Use the lemma <code class="docutils literal notranslate"><span class="pre">ne_of_gt</span></code>:</p>
-<div class="highlight-lean notranslate" id="ne-of-gt"><div class="highlight"><pre><span></span><span class="kd">lemma</span> <span class="n">ne_of_gt</span> <span class="o">{</span><span class="n">a</span> <span class="n">b</span> <span class="o">:</span> <span class="n">&#8477;</span><span class="o">}</span> <span class="o">(</span><span class="n">h</span> <span class="o">:</span> <span class="n">a</span> <span class="bp">&gt;</span> <span class="n">b</span><span class="o">)</span> <span class="o">:</span> <span class="n">a</span> <span class="bp">&#8800;</span> <span class="n">b</span> <span class="o">:=</span>
+<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">lemma</span> <span class="n">ne_of_gt</span> <span class="o">{</span><span class="n">a</span> <span class="n">b</span> <span class="o">:</span> <span class="n">&#8477;</span><span class="o">}</span> <span class="o">(</span><span class="n">h</span> <span class="o">:</span> <span class="n">a</span> <span class="bp">&gt;</span> <span class="n">b</span><span class="o">)</span> <span class="o">:</span> <span class="n">a</span> <span class="bp">&#8800;</span> <span class="n">b</span> <span class="o">:=</span>
 </pre></div>
 </div>
 </section>
@@ -689,7 +689,7 @@ it&#8217;s resolved, then work starts on the second goal, etc).</p>
 <ol class="arabic">
 <li><p>Let <span class="math notranslate nohighlight">\(m\)</span> be an integer for which <span class="math notranslate nohighlight">\(m + 1=5\)</span>.  Show that <span class="math notranslate nohighlight">\(3m\ne 6\)</span>.</p>
 <p>You may wish to use the fact that two numbers are not equal if the first is greater than the
-second (this is recorded in Lean as the lemma <a class="reference internal" href="#ne-of-gt"><span class="std std-ref">ne_of_gt</span></a>).</p>
+second (you&#8217;ll need the lemma <code class="docutils literal notranslate"><span class="pre">ne_of_gt</span></code>, as in <a class="reference internal" href="#ne-of-gt"><span class="std std-numref">Example 2.2.2</span></a>).</p>
 <div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">{</span><span class="n">m</span> <span class="o">:</span> <span class="n">&#8484;</span><span class="o">}</span> <span class="o">(</span><span class="n">hm</span> <span class="o">:</span> <span class="n">m</span> <span class="bp">+</span> <span class="mi">1</span> <span class="bp">=</span> <span class="mi">5</span><span class="o">)</span> <span class="o">:</span> <span class="mi">3</span> <span class="bp">*</span> <span class="n">m</span> <span class="bp">&#8800;</span> <span class="mi">6</span> <span class="o">:=</span> <span class="kd">by</span>
   <span class="gr">sorry</span>
 </pre></div>
@@ -752,7 +752,7 @@ h : x = 1 &#8744; y = -1
 <p>To consider in turn the two cases represented by an &#8220;or&#8221;-statement, we use the tactic <code class="docutils literal notranslate"><span class="pre">obtain</span></code>.
 After applying this tactic, the infoview now displays two simpler tasks.  The goal in each task is
 still to prove that <span class="math notranslate nohighlight">\(xy+x=y + 1\)</span>, but the hypothesis has changed: to the left alternative,
-<code class="docutils literal notranslate"><span class="pre">x</span> <span class="pre">=</span> <span class="pre">1</span></code>, in the first task, and to the right alternative, <code class="docutils literal notranslate"><span class="pre">y</span> <span class="pre">=</span> <span class="pre">-1</span></code> in the second task.</p>
+<code class="docutils literal notranslate"><span class="pre">x</span> <span class="pre">=</span> <span class="pre">1</span></code>, in the first task, and to the right alternative, <code class="docutils literal notranslate"><span class="pre">y</span> <span class="pre">=</span> <span class="pre">-1</span></code>, in the second task.</p>
 <div class="highlight-text notranslate"><div class="highlight"><pre><span></span>x y : &#8477;
 hx : x = 1
 &#8866; x * y + x = y + 1
@@ -1265,7 +1265,7 @@ goal is an &#8220;and&#8221; statement,</p>
   <span class="bp">&#183;</span> <span class="n">addarith</span> <span class="o">[</span><span class="n">h2</span><span class="o">]</span>
 </pre></div>
 </div>
-<p>Alternatively, there might be an intermediate step which you wish to establish and then use in both
+<p>Alternatively, there might be an intermediate fact which you wish to note and then use in both
 parts of the proof.  For example, you might want to first solve for <span class="math notranslate nohighlight">\(b\)</span>, and then use that to
 shorten the work of solving for <span class="math notranslate nohighlight">\(a\)</span>.</p>
 <div class="admonition-solution admonition">
@@ -1612,7 +1612,7 @@ expressible as the sum of two cubes in two different ways.&#8221;</p>
 <div class="admonition-problem admonition">
 <p class="admonition-title">Problem</p>
 <p>Show that there exist natural numbers <span class="math notranslate nohighlight">\(a\)</span>, <span class="math notranslate nohighlight">\(b\)</span>, <span class="math notranslate nohighlight">\(c\)</span> and <span class="math notranslate nohighlight">\(d\)</span>, such that
-<span class="math notranslate nohighlight">\(a^3+b^3=1729=c^3+d^3\)</span>, but <span class="math notranslate nohighlight">\(a\ne c\)</span> and <span class="math notranslate nohighlight">\(a\ne d\)</span>.</p>
+<span class="math notranslate nohighlight">\(a^3+b^3=1729=c^3+d^3\)</span>, but <span class="math notranslate nohighlight">\(a\ne c\)</span> and <span class="math notranslate nohighlight">\(a\ne d\)</span>. <a class="footnote-reference brackets" href="#id39" id="id37">3</a></p>
 </div>
 <div class="admonition-solution admonition">
 <p class="admonition-title">Solution</p>
@@ -1631,8 +1631,8 @@ expressible as the sum of two cubes in two different ways.&#8221;</p>
 </pre></div>
 </div>
 </section>
-<section id="id37">
-<h3><span class="section-number">2.5.9. </span>Exercises<a class="headerlink" href="#id37" title="Permalink to this headline">&#61633;</a></h3>
+<section id="id38">
+<h3><span class="section-number">2.5.9. </span>Exercises<a class="headerlink" href="#id38" title="Permalink to this headline">&#61633;</a></h3>
 <ol class="arabic">
 <li><p>Show that there exists a rational number <span class="math notranslate nohighlight">\(t\)</span>, such that <span class="math notranslate nohighlight">\(t^2=1.69\)</span>.</p>
 <div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">:</span> <span class="bp">&#8707;</span> <span class="n">t</span> <span class="o">:</span> <span class="n">&#8474;</span><span class="o">,</span> <span class="n">t</span> <span class="bp">^</span> <span class="mi">2</span> <span class="bp">=</span> <span class="mi">1</span><span class="bp">.</span><span class="mi">69</span> <span class="o">:=</span> <span class="kd">by</span>
@@ -1694,6 +1694,13 @@ real numbers <span class="math notranslate nohighlight">\(x\)</span>, <span clas
 </div>
 </li>
 </ol>
+<p class="rubric">Footnotes</p>
+<dl class="footnote brackets">
+<dt class="label" id="id39"><span class="brackets"><a class="fn-backref" href="#id37">3</a></span></dt>
+<dd><p>Example adapted from Hammack,
+<a class="reference external" href="https://www.people.vcu.edu/~rhammack/BookOfProof/">Book of Proof</a>, Section 7.3.</p>
+</dd>
+</dl>
 </section>
 </section>
 </section>

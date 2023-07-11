@@ -53,11 +53,10 @@ theorem not_superpowered_three : ¬ Superpowered 3 := by
   have four_prime : Prime (3 ^ 3 ^ 0 + 1) := h 0
   conv at four_prime => numbers -- simplifies that statement to `Prime 4`
   have four_not_prime : ¬ Prime 4
-  · apply not_prime 2
+  · apply not_prime 2 2
     · numbers -- show `2 ≠ 1` 
     · numbers -- show `2 ≠ 4` 
-    use 2
-    numbers -- show `4 = 2 * 2`
+    · numbers -- show `4 = 2 * 2`
   contradiction
 
 

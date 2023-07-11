@@ -279,7 +279,8 @@ depending on whether or not <span class="math notranslate nohighlight">\(d=0\)</
 calculation avoids these case splits.</p>
 <div class="admonition-problem admonition">
 <p class="admonition-title">Problem</p>
-<p>Let <span class="math notranslate nohighlight">\(a\)</span>, <cite>b</cite>, <cite>c</cite>, <cite>d</cite>, <cite>e</cite> and <cite>f</cite> be integers, and suppose that
+<p>Let <span class="math notranslate nohighlight">\(a\)</span>, <span class="math notranslate nohighlight">\(b\)</span>, <span class="math notranslate nohighlight">\(c\)</span>, <span class="math notranslate nohighlight">\(d\)</span>, <span class="math notranslate nohighlight">\(e\)</span> and <span class="math notranslate nohighlight">\(f\)</span> be
+integers, and suppose that
 <span class="math notranslate nohighlight">\(ad = bc\)</span> and <span class="math notranslate nohighlight">\(cf=de\)</span>.  Show that <span class="math notranslate nohighlight">\(d(af - be) = 0\)</span>.</p>
 </div>
 <div class="admonition-solution admonition">
@@ -296,21 +297,23 @@ calculation avoids these case splits.</p>
 </section>
 <section id="proving-equalities-in-lean">
 <span id="id10"></span><h2><span class="section-number">1.2. </span>Proving equalities in Lean<a class="headerlink" href="#proving-equalities-in-lean" title="Permalink to this headline">&#61633;</a></h2>
-<p>In these lecture notes, we will learn to write every proof in two ways: on paper, as humans have
+<p>In this book, we will learn to write every proof in two ways: in words, as humans have
 done for thousands of years, and in a computer system called a <em>proof assistant</em>, an approach which
 was <a class="reference external" href="https://en.wikipedia.org/wiki/Automath">first experimented with in the 1960s</a> and is still
 quite unusual.  We will be using the proof assistant
-<a class="reference external" href="https://leanprover.github.io/">Lean 4</a>, developed since 2014 at Microsoft Research by a
-team led by Leonardo de Moura, and its standard mathematical library
+<a class="reference external" href="https://leanprover.github.io/">Lean 4</a>, developed since 2014 at Microsoft Research and elsewhere
+by a team led by Leonardo de Moura, and its standard mathematical library
 <a class="reference external" href="https://github.com/leanprover-community/mathlib4">Mathlib</a>.</p>
-<p>In this and all following sections of the lecture notes, there is an associated Lean file, which you
+<p>In this and all following sections of the book, there is an associated Lean file, which you
 should have open to experiment with at the same time as you are reading.  Head over now to the
-GitHub repository, <a class="reference external" href="https://github.com/hrmacbeth/math2001">https://github.com/hrmacbeth/math2001</a>, to download this code to your own
-computer or to open it in the cloud on Gitpod.  The Gitpod option is ready-to-use, but you will
-need to make an account with GitHub to access it.  If you want to download the code to your own
-computer and use it there, you will need also to install Lean; contact the instructor for help with
-this.</p>
-<p>Then, navigate in Visual Studio Code to the file which corresponds to this section,
+GitHub repository, <a class="reference external" href="https://github.com/hrmacbeth/math2001">https://github.com/hrmacbeth/math2001</a>, to get instructions for downloading this
+code to your own computer or opening it in the cloud on Gitpod.  The Gitpod option is recommended
+for beginners &#8211; just make an account and you will be ready to start work, no Lean installation
+necessary.</p>
+<p>Lean code is designed to be written in an <em>interactive development environment</em> (IDE) so that you
+get live feedback as you work.  In this book I assume that you are running the IDE <em>Visual Studio
+Code</em> &#8211; this will open automatically when you start Gitpod.</p>
+<p>To get started, navigate in Visual Studio Code to the file which corresponds to this section,
 <code class="docutils literal notranslate"><span class="pre">Math2001/01_Proofs_by_Calculation/02_Proving_Equalities_in_Lean</span></code>.  When you open this file, you may
 see a second panel pop up called the &#8220;Lean Infoview&#8221;.  You can ignore this for now, or even close
 it.  We will start using the Lean Infoview in <a class="reference internal" href="02_Proofs_with_Structure.html#proofs-with-structure"><span class="std std-numref">Chapter 2</span></a>.</p>
@@ -718,44 +721,31 @@ big algebraic calculation, one substitution step, then one more algebra step.</p
 </section>
 <section id="id28">
 <h3><span class="section-number">1.3.10. </span>Example<a class="headerlink" href="#id28" title="Permalink to this headline">&#61633;</a></h3>
-<p>Here&#8217;s another example where the principle of successively hunting down a match
-for the highest-degree remaining term is useful.</p>
+<p>Here&#8217;s another example with terms of degree greater than one.</p>
 <div class="admonition-problem admonition">
 <p class="admonition-title">Problem</p>
-<p>Let <span class="math notranslate nohighlight">\(z\)</span> be a complex number and suppose that <span class="math notranslate nohighlight">\(z^2+1=0\)</span>.
-Show that <span class="math notranslate nohighlight">\(z^4+z^3+2z^2+z+3=2\)</span>.</p>
+<p>Let <span class="math notranslate nohighlight">\(z\)</span> be a real number and suppose that <span class="math notranslate nohighlight">\(z^2-2=0\)</span>.
+Show that <span class="math notranslate nohighlight">\(z ^ 4 - z ^ 3 - z ^ 2 + 2 z + 1=3\)</span>.</p>
 </div>
 <div class="admonition-solution admonition">
 <p class="admonition-title">Solution</p>
 <div class="math notranslate nohighlight">
-\[\begin{split}z^4+z^3+2z^2+z+3&amp;=\left[z^2(z^2+1)-z^2\right]+z^3+2z^2+z+3\\
-&amp;=z^2(z^2+1)^2+z^3+z^2+z+3\\
-&amp;=z^2(z^2+1)+\left[z(z^2+1)-z\right]+z^2+z+3\\
-&amp;=z^2(z^2+1)+z(z^2+1)+z^2+3\\
-&amp;=z^2(z^2+1)+z(z^2+1)+(z^2+1)+2\\
-&amp;=z^2\cdot 0^2+z\cdot 0+0+2\\
-&amp;=2.\end{split}\]</div>
+\[\begin{split}z ^ 4 - z ^ 3 - z ^ 2 + 2 z + 1
+&amp;=(z ^ 2 - z + 1) (z ^ 2 - 2)+3\\
+&amp;=(z^2-z+1)\cdot 0+3\\
+&amp;=3.\end{split}\]</div>
 </div>
-<p>Again, this can be compressed, while remaining easily checkable, by combining steps
-of the same type.</p>
-<div class="admonition-solution admonition">
-<p class="admonition-title">Solution</p>
+<p>That seems almost too slick, right?  In my scratch work, I came up with this solution
+using the method of <a class="reference external" href="https://en.wikipedia.org/wiki/Polynomial_long_division">polynomial long division</a>,
+which you may have been taught before:
+when <span class="math notranslate nohighlight">\(z ^ 4 - z ^ 3 - z ^ 2 + 2 z + 1\)</span> is divided by <span class="math notranslate nohighlight">\(z^2-2\)</span> it gives a quotient of
+<span class="math notranslate nohighlight">\(z ^ 2 - z + 1\)</span> and remainder of <span class="math notranslate nohighlight">\(3\)</span>.
+But in the proof, it doesn&#8217;t matter what method was used to discover the fact that</p>
 <div class="math notranslate nohighlight">
-\[\begin{split}z^4+z^3+2z^2+z+3
-&amp;=z^2(z^2+1)+z(z^2+1)+(z^2+1)+2\\
-&amp;=z^2\cdot 0^2+z\cdot 0+0+2\\
-&amp;=2.\end{split}\]</div>
-</div>
-<p>You may have been taught this idea under the name of &#8220;polynomial long division&#8221;:
-when <span class="math notranslate nohighlight">\(z^4+z^3+2z^2+z+3\)</span> is divided by <span class="math notranslate nohighlight">\(z^2+1\)</span> it gives a quotient of
-<span class="math notranslate nohighlight">\(z^2+z+1\)</span> and remainder of <span class="math notranslate nohighlight">\(2\)</span>.  But it doesn&#8217;t matter here what method
-you use to discover the fact that</p>
-<div class="math notranslate nohighlight">
-\[z^4+z^3+2z^2+z+3=(z^2+z+1)(z^2+1)+2,\]</div>
-<p>be it polynomial long division, &#8220;successively hunting down a match,&#8221; or something
-else.  This is a purely algebraic identity which can be easily checked by expanding
+\[z ^ 4 - z ^ 3 - z ^ 2 + 2 z + 1=(z ^ 2 - z + 1) (z ^ 2 - 2)+3.\]</div>
+<p>This is a purely algebraic identity which can be easily checked by expanding
 and simplifying, so you can state the result without writing out the method.</p>
-<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">{</span><span class="n">z</span> <span class="o">:</span> <span class="n">&#8477;</span><span class="o">}</span> <span class="o">(</span><span class="n">h1</span> <span class="o">:</span> <span class="n">z</span> <span class="bp">^</span> <span class="mi">2</span> <span class="bp">+</span> <span class="mi">1</span> <span class="bp">=</span> <span class="mi">0</span><span class="o">)</span> <span class="o">:</span> <span class="n">z</span> <span class="bp">^</span> <span class="mi">4</span> <span class="bp">+</span> <span class="n">z</span> <span class="bp">^</span> <span class="mi">3</span> <span class="bp">+</span> <span class="mi">2</span> <span class="bp">*</span> <span class="n">z</span> <span class="bp">^</span> <span class="mi">2</span> <span class="bp">+</span> <span class="n">z</span> <span class="bp">+</span> <span class="mi">3</span> <span class="bp">=</span> <span class="mi">2</span> <span class="o">:=</span>
+<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">{</span><span class="n">z</span> <span class="o">:</span> <span class="n">&#8477;</span><span class="o">}</span> <span class="o">(</span><span class="n">h1</span> <span class="o">:</span> <span class="n">z</span> <span class="bp">^</span> <span class="mi">2</span> <span class="bp">-</span> <span class="mi">2</span> <span class="bp">=</span> <span class="mi">0</span><span class="o">)</span> <span class="o">:</span> <span class="n">z</span> <span class="bp">^</span> <span class="mi">4</span> <span class="bp">-</span> <span class="n">z</span> <span class="bp">^</span> <span class="mi">3</span> <span class="bp">-</span> <span class="n">z</span> <span class="bp">^</span> <span class="mi">2</span> <span class="bp">+</span> <span class="mi">2</span> <span class="bp">*</span> <span class="n">z</span> <span class="bp">+</span> <span class="mi">1</span> <span class="bp">=</span> <span class="mi">3</span> <span class="o">:=</span>
   <span class="gr">sorry</span>
 </pre></div>
 </div>
