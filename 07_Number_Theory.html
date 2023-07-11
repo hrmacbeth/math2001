@@ -351,7 +351,7 @@ such that <span class="math notranslate nohighlight">\(a=2k\)</span>.  Then</p>
 <p>so <span class="math notranslate nohighlight">\(k&gt;0\)</span>, so <span class="math notranslate nohighlight">\(k\ne 0\)</span>.</p>
 <p>We therefore invoke the inductive hypothesis with <span class="math notranslate nohighlight">\(r=b\)</span>, <span class="math notranslate nohighlight">\(s=k\)</span>.  (Note that</p>
 <div class="math notranslate nohighlight">
-\[\begin{split}k^2&amp;&lt;k^2+k^2\\
+\[\begin{split}k^2&amp;&lt; k^2+k^2\\
   &amp;=2k^2\\
   &amp;=b^2,\end{split}\]</div>
 <p>so <span class="math notranslate nohighlight">\(k&lt;b\)</span>, so the induction is well-founded.)  The inductive hypothesis gives that
@@ -371,7 +371,8 @@ justification for the well-foundedness of the strong induction.  Like in
 </pre></div>
 </div>
 <p>The lemma <code class="docutils literal notranslate"><span class="pre">irrat_aux</span></code> is the claim which is proved by strong induction.  It contains the central
-argument of the proof.</p>
+argument of the proof.  In Lean, the exercise to <a class="reference internal" href="06_Induction.html#induction-intro"><span class="std std-numref">Section 6.1</span></a> which is used
+in this step has the name <code class="docutils literal notranslate"><span class="pre">Nat.even_of_pow_even</span></code>.</p>
 <div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">theorem</span> <span class="n">irrat_aux</span> <span class="o">(</span><span class="n">a</span> <span class="n">b</span> <span class="o">:</span> <span class="n">&#8469;</span><span class="o">)</span> <span class="o">(</span><span class="n">hb</span> <span class="o">:</span> <span class="n">b</span> <span class="bp">&#8800;</span> <span class="mi">0</span><span class="o">)</span> <span class="o">:</span> <span class="n">a</span> <span class="bp">^</span> <span class="mi">2</span> <span class="bp">&#8800;</span> <span class="mi">2</span> <span class="bp">*</span> <span class="n">b</span> <span class="bp">^</span> <span class="mi">2</span> <span class="o">:=</span> <span class="kd">by</span>
   <span class="n">intro</span> <span class="n">hab</span>
   <span class="k">have</span> <span class="n">H</span> <span class="o">:</span> <span class="n">Nat.Even</span> <span class="n">a</span>

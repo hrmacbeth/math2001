@@ -324,7 +324,7 @@ is not surjective.</p>
 <p>Indeed, let us show that -1 has this property.  Let <span class="math notranslate nohighlight">\(x\)</span> be a real number.  Then</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}-1&amp;&lt;0\\
-&amp;\le x^2\end{split}\]</div>
+&amp;\le x^2,\end{split}\]</div>
 <p>so <span class="math notranslate nohighlight">\(x^2\ne -1\)</span>.</p>
 </div>
 <p>As in <a class="reference internal" href="#not-injective-example"><span class="std std-numref">Example 8.1.4</span></a>, the first sentence constitutes a
@@ -1463,8 +1463,8 @@ to <span class="math notranslate nohighlight">\(f\)</span>.  Show that <span cla
 <p>Consider the function <span class="math notranslate nohighlight">\(q:\mathbb{Z}\to\mathbb{Z}^2\)</span> defined by, <span class="math notranslate nohighlight">\(q(m)=(m + 1, 2 - m)\)</span>.
 Show that <span class="math notranslate nohighlight">\(q\)</span> is</p>
 <ol class="arabic simple">
-<li><p>injective</p></li>
-<li><p>not surjective</p></li>
+<li><p>injective;</p></li>
+<li><p>not surjective.</p></li>
 </ol>
 </div>
 <div class="admonition-solution admonition">
@@ -1577,9 +1577,9 @@ function.</p>
 <p>In Lean, note</p>
 <ul class="simple">
 <li><p>the lemma <code class="docutils literal notranslate"><span class="pre">bijective_iff_exists_inverse</span></code>, which is the Lean name for the theorem from
-<a class="reference internal" href="#bijective-iff-inverse"><span class="std std-numref">Example 8.3.9</span></a></p></li>
+<a class="reference internal" href="#bijective-iff-inverse"><span class="std std-numref">Example 8.3.9</span></a>;</p></li>
 <li><p>the use of the tactic <code class="docutils literal notranslate"><span class="pre">funext</span></code> (recall <a class="reference internal" href="#funext"><span class="std std-numref">Example 8.3.2</span></a>) to show that two functions
-are equal by showing that they are equal on arbitrary input</p></li>
+are equal by showing that they are equal on arbitrary input.</p></li>
 </ul>
 <div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">:</span> <span class="n">Bijective</span> <span class="o">(</span><span class="k">fun</span> <span class="o">((</span><span class="n">m</span><span class="o">,</span> <span class="n">n</span><span class="o">)</span> <span class="o">:</span> <span class="n">&#8484;</span> <span class="bp">&#215;</span> <span class="n">&#8484;</span><span class="o">)</span> <span class="bp">&#8614;</span> <span class="o">(</span><span class="n">m</span> <span class="bp">+</span> <span class="n">n</span><span class="o">,</span> <span class="n">m</span> <span class="bp">+</span> <span class="mi">2</span> <span class="bp">*</span> <span class="n">n</span><span class="o">))</span> <span class="o">:=</span> <span class="kd">by</span>
   <span class="n">rw</span> <span class="o">[</span><span class="n">bijective_iff_exists_inverse</span><span class="o">]</span>
@@ -1673,8 +1673,7 @@ y_1&amp;=y_2\end{split}\]</div>
 <span class="math notranslate nohighlight">\((x_1,y_1)=(x_2,y_2)\)</span>.</p>
 </div>
 <p>In Lean, note the use of the tactic <code class="docutils literal notranslate"><span class="pre">constructor</span></code> to reduce a goal of equality in a product type,</p>
-<blockquote>
-<div><div class="highlight-text notranslate"><div class="highlight"><pre><span></span>&#8866; (x1, y1) = (x2, y2)
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>&#8866; (x1, y1) = (x2, y2)
 </pre></div>
 </div>
 <p>to two simpler goals, one for each co-ordinate:</p>
@@ -1685,7 +1684,6 @@ y_1&amp;=y_2\end{split}\]</div>
 <p>As with the use of <code class="docutils literal notranslate"><span class="pre">obtain</span></code> for hypotheses of equality in a product type  (recall
 <a class="reference internal" href="#obtain-product"><span class="std std-numref">Example 8.4.1</span></a>), the point is that an equality in a product type is
 effectively an &#8220;and&#8221; statement about equality in the first and the second co-ordinates.</p>
-</div></blockquote>
 <div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">:</span> <span class="n">Injective</span> <span class="o">(</span><span class="k">fun</span> <span class="o">((</span><span class="n">x</span><span class="o">,</span> <span class="n">y</span><span class="o">)</span> <span class="o">:</span> <span class="n">&#8477;</span> <span class="bp">&#215;</span> <span class="n">&#8477;</span><span class="o">)</span> <span class="bp">&#8614;</span> <span class="o">(</span><span class="n">x</span> <span class="bp">+</span> <span class="n">y</span><span class="o">,</span> <span class="n">x</span> <span class="bp">-</span> <span class="n">y</span><span class="o">,</span> <span class="n">y</span><span class="o">))</span> <span class="o">:=</span> <span class="kd">by</span>
   <span class="n">intro</span> <span class="o">(</span><span class="n">x1</span><span class="o">,</span> <span class="n">y1</span><span class="o">)</span> <span class="o">(</span><span class="n">x2</span><span class="o">,</span> <span class="n">y2</span><span class="o">)</span> <span class="n">h</span>
   <span class="n">dsimp</span> <span class="n">at</span> <span class="n">h</span>
@@ -1703,8 +1701,8 @@ effectively an &#8220;and&#8221; statement about equality in the first and the s
 <p>Consider the function <span class="math notranslate nohighlight">\((x,y)\mapsto x + y\)</span> from <span class="math notranslate nohighlight">\(\mathbb{R}^2\)</span> to <span class="math notranslate nohighlight">\(\mathbb{R}\)</span>.
 Show that this function is</p>
 <ol class="arabic simple">
-<li><p>not injective</p></li>
-<li><p>surjective</p></li>
+<li><p>not injective;</p></li>
+<li><p>surjective.</p></li>
 </ol>
 </div>
 <div class="admonition-solution admonition">
@@ -1741,8 +1739,8 @@ property.</p>
 <p>Consider the function <span class="math notranslate nohighlight">\((m,n)\mapsto 5m+8n\)</span> from <span class="math notranslate nohighlight">\(\mathbb{Z}^2\)</span> to <span class="math notranslate nohighlight">\(\mathbb{Z}\)</span>.
 Show that this function is</p>
 <ol class="arabic simple">
-<li><p>not injective</p></li>
-<li><p>surjective</p></li>
+<li><p>not injective;</p></li>
+<li><p>surjective.</p></li>
 </ol>
 </div>
 <div class="admonition-solution admonition">
@@ -1781,14 +1779,14 @@ Indeed, consider the pairs <span class="math notranslate nohighlight">\((0,0)\)<
 <p>Consider the function <span class="math notranslate nohighlight">\((m,n)\mapsto 5m+10n\)</span> from <span class="math notranslate nohighlight">\(\mathbb{Z}^2\)</span> to <span class="math notranslate nohighlight">\(\mathbb{Z}\)</span>.
 Show that this function is</p>
 <ol class="arabic simple">
-<li><p>not injective</p></li>
-<li><p>not surjective</p></li>
+<li><p>not injective;</p></li>
+<li><p>not surjective.</p></li>
 </ol>
 </div>
-<p>We leave the non-injectivity proof as an exercise; it is similar to in the previous two problems.</p>
+<p>We leave the non-injectivity proof as an exercise; it is similar to that in the previous two problems.</p>
 <div class="admonition-solution admonition">
 <p class="admonition-title">Solution</p>
-<p>2. We will show that there exists an integer <span class="math notranslate nohighlight">\(x\)</span> such that for all pairs <span class="math notranslate nohighlight">\((m,n)\)</span>
+<p>(Non-surjectivity) We will show that there exists an integer <span class="math notranslate nohighlight">\(x\)</span> such that for all pairs <span class="math notranslate nohighlight">\((m,n)\)</span>
 of integers, <span class="math notranslate nohighlight">\(5m+10n\ne x\)</span>.  Indeed, let us show that 1 has this property.  Let
 <span class="math notranslate nohighlight">\((m,n)\)</span> be a pair of integers and suppose that <span class="math notranslate nohighlight">\(5m+10n=1\)</span>.  Then</p>
 <div class="math notranslate nohighlight">
@@ -1882,7 +1880,9 @@ will be the bijection we seek:  <span class="math notranslate nohighlight">\(p(a
   <span class="bp">|</span> <span class="o">(</span><span class="n">a</span><span class="o">,</span> <span class="n">b</span><span class="o">)</span> <span class="bp">=&gt;</span> <span class="n">A</span> <span class="o">(</span><span class="n">a</span> <span class="bp">+</span> <span class="n">b</span><span class="o">)</span> <span class="bp">+</span> <span class="n">b</span>
 </pre></div>
 </div>
-<p>Finally we prove that this function <span class="math notranslate nohighlight">\(p\)</span> is indeed bijective.</p>
+<p>Finally we prove that this function <span class="math notranslate nohighlight">\(p\)</span> is indeed bijective.  We set up an &#8220;intertwining&#8221;
+map <span class="math notranslate nohighlight">\(i\)</span> for <span class="math notranslate nohighlight">\(p\)</span>, and invoke the lemma <code class="docutils literal notranslate"><span class="pre">surjective_of_intertwining</span></code> proved in the exercises
+to <a class="reference internal" href="#inj-surj"><span class="std std-numref">Section 8.1</span></a>.</p>
 <div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">def</span> <span class="n">i</span> <span class="o">:</span> <span class="n">&#8469;</span> <span class="bp">&#215;</span> <span class="n">&#8469;</span> <span class="bp">&#8594;</span> <span class="n">&#8469;</span> <span class="bp">&#215;</span> <span class="n">&#8469;</span>
   <span class="bp">|</span> <span class="o">(</span><span class="mi">0</span><span class="o">,</span> <span class="n">b</span><span class="o">)</span> <span class="bp">=&gt;</span> <span class="o">(</span><span class="n">b</span> <span class="bp">+</span> <span class="mi">1</span><span class="o">,</span> <span class="mi">0</span><span class="o">)</span>
   <span class="bp">|</span> <span class="o">(</span><span class="n">a</span> <span class="bp">+</span> <span class="mi">1</span><span class="o">,</span> <span class="n">b</span><span class="o">)</span> <span class="bp">=&gt;</span> <span class="o">(</span><span class="n">a</span><span class="o">,</span> <span class="n">b</span> <span class="bp">+</span> <span class="mi">1</span><span class="o">)</span>
@@ -1946,8 +1946,8 @@ Show that this function is bijective.</p>
 <span class="math notranslate nohighlight">\(\mathbb{Z}\)</span>.
 Show that this function is</p>
 <ol class="arabic simple">
-<li><p>not injective</p></li>
-<li><p>surjective</p></li>
+<li><p>not injective;</p></li>
+<li><p>surjective.</p></li>
 </ol>
 <div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">:</span> <span class="bp">&#172;</span> <span class="n">Injective</span> <span class="o">(</span><span class="k">fun</span> <span class="o">((</span><span class="n">x</span><span class="o">,</span> <span class="n">y</span><span class="o">)</span> <span class="o">:</span> <span class="n">&#8484;</span> <span class="bp">&#215;</span> <span class="n">&#8484;</span><span class="o">)</span> <span class="bp">&#8614;</span> <span class="n">x</span> <span class="bp">-</span> <span class="mi">2</span> <span class="bp">*</span> <span class="n">y</span> <span class="bp">-</span> <span class="mi">1</span><span class="o">)</span> <span class="o">:=</span> <span class="kd">by</span>
   <span class="gr">sorry</span>

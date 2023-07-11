@@ -101,12 +101,13 @@
 The book is paired with code in the computer formalization language
 <a class="reference external" href="https://leanprover.github.io/about/">Lean</a>.</p>
 <p>The book&#8217;s focus is on technique, not on theory-building: rather few theorems are proved and then
-relied on later.  Instead, the core of the book is in examples.  Over two hundred problems (most
-very easy) appear as examples in the text.  Each solution is presented both in standard mathematical
-prose and in Lean, and since these two &#8220;languages&#8221; are almost equally foreign for students who are
-new to proofs, most solutions are annotated with informal commentary.</p>
-<p>Several hundred more problems are included as exercises for the reader.  These exercises are also
-presented both in prose and in Lean.</p>
+referred back to later.  Instead, the core of the book is in examples.  Over two hundred problems
+appear with solutions as examples in the text, and several hundred more problems appear without
+solution as exercises for the reader.  Each problem and each solution is presented both in standard
+mathematical prose and in Lean (the book should be read with a computer open to the corresponding
+file of Lean code),
+and since these two &#8220;languages&#8221; are almost equally foreign for
+students who are new to proofs, most solutions are annotated with informal commentary.</p>
 <p>You are ready to read this book if (1) you know high school algebra inside out and (2) you have
 experience learning to carry out complicated mathematical algorithms.  I have in mind, as a typical
 reader, a first- or second-year university student who has just taken Calculus II.  But no calculus
@@ -116,11 +117,7 @@ Lean code.  But the design choices enforced by this presentation have shaped the
 <p><a class="reference internal" href="01_Proofs_by_Calculation.html#proofs-by-calculation"><span class="std std-numref">Chapter 1</span></a> contains an unusually careful treatment
 of &#8220;calculational proofs&#8221;.  These proofs are a natural starting point for the book because they
 translate easily to Lean, but they are also worthy of attention as a topic which students at this
-level often struggle with. (It&#8217;s in fact quite possible to get through the <em>equality</em>-heavy
-reasoning of many intro-to-proof courses
-without really mastering this mode of reasoning, but it&#8217;s nearly impossible to reason about
-<em>inequalities</em> without mastering calculational proofs, and students who don&#8217;t pick up the skill in
-an intro-to-proof course will find it come back to haunt them when they reach real analysis.)</p>
+level often struggle with. <a class="footnote-reference brackets" href="#id7" id="id2">1</a></p>
 <p><a class="reference internal" href="02_Proofs_with_Structure.html#proofs-with-structure"><span class="std std-numref">Chapter 2</span></a> and <a class="reference internal" href="04_Proofs_with_Structure_II.html#proofs-with-structure-ii"><span class="std std-numref">Chapter 4</span></a>
 constitute a slow march through the rules of
 <a class="reference external" href="https://en.wikipedia.org/wiki/Natural_deduction">natural deduction</a>, solving problems about
@@ -135,12 +132,10 @@ readers will already be comfortable with the various logical connectives/quantif
 translating mathematical statements back and forth between words and symbols.  This permits the
 logic chapter to be relatively brief, with a focus on the concept of logical equivalence (presented
 primarily using natural deduction, to link with <a class="reference internal" href="02_Proofs_with_Structure.html#proofs-with-structure"><span class="std std-numref">Chapters 2</span></a> and
-<a class="reference internal" href="04_Proofs_with_Structure_II.html#proofs-with-structure-ii"><span class="std std-numref">4</span></a>, rather than using truth tables).  The expert reader may
-enjoy the problems in <a class="reference internal" href="05_Logic.html#lem"><span class="std std-numref">Section 5.2</span></a>, which introduces classical reasoning; they are
-new (to my knowledge), and more elementary than the usual textbook examples.</p>
-<p>The other chapters of the book are more recognizable as the &#8220;normal mathematics&#8221; for a book of this
-type.  Sufficient familiarity with Lean has been established, and the mathematical presentation is
-no longer constrained.</p>
+<a class="reference internal" href="04_Proofs_with_Structure_II.html#proofs-with-structure-ii"><span class="std std-numref">4</span></a>, rather than using truth tables). <a class="footnote-reference brackets" href="#id8" id="id3">2</a></p>
+<p>The other chapters of the book are more recognizable as the usual subject matter of a first
+course on proofs.  Sufficient familiarity with Lean has been established, and the mathematical presentation
+is no longer constrained.</p>
 <p><a class="reference internal" href="03_Parity_and_Divisibility.html#parity-and-divisibility"><span class="std std-numref">Chapter 3</span></a> covers the basic notions of elementary number theory.
 This chapter uses only a limited toolbox of
 reasoning techniques, to permit it to be placed as a break between
@@ -168,9 +163,6 @@ for <em>formalization</em>) offer an alternative way to express a mathematical a
 <a class="reference external" href="https://leanprover.github.io/">Lean</a>, an open-source project developed at Microsoft Research and
 elsewhere since 2013, is one such system, but they have existed since
 <a class="reference external" href="https://en.wikipedia.org/wiki/Automath">the early days of computing</a>.</p>
-<p>This book is bilingual: mathematical arguments are presented both in prose and in Lean. You should
-read the book with a computer open to the corresponding file of Lean code, and jump back and forth
-between them.</p>
 <p>Interactive theorem-proving systems such as Lean have become steadily easier to use over the
 years, but they are not yet actually <em>easy</em> to use: they can be fussy and unforgiving, just like any
 other computer programming language.  So why does this book propose that you use such
@@ -183,7 +175,7 @@ distinguish hypotheses from goals on paper after a few steps alternating between
 backward reasoning, or how easily you lose track of one case in a case division.
 Lean&#8217;s live-updating visual representation of the proof state frees you from needing to keep this
 in your working memory.</p>
-<p>Second: Computer formalization systems, fussy unforgiving programming languages that they are, give
+<p>Second: Computer formalization systems, fussy unforgiving programming languages that they are, throw
 syntax errors when you make a mistake.  Feedback is instant and you can keep iterating until you
 have something that works. Writing a solution in Lean ensures that it is completely correct:
 no substitutions of an inequality under a minus sign, no divisions by zero, no terms dropped in
@@ -195,24 +187,24 @@ of reasoning.  The tactics which are taught in this textbook (some custom-writte
 each constitute a single permissible &#8220;atom&#8221; of reasoning in the mental world of the book.
 This makes objective something which in a prose-only textbook can be subjective: what constitutes a
 fully-detailed proof.  What&#8217;s more, the &#8220;atoms&#8221; I offer you are designed to nudge you toward
-certain styles of mathematical argument structure <a class="footnote-reference brackets" href="#id3" id="id2">1</a> which are conventional in standard
+certain styles of mathematical argument structure <a class="footnote-reference brackets" href="#id9" id="id4">3</a> which are conventional in standard
 mathematical prose but which students are often slow to adopt.</p>
-<p>This is a book about mathematics which uses Lean as a tool. It is not optimized as an introduction
-to Lean, or even to mathematical Lean. (If you are looking for such a book, you&#8217;re in luck &#8211; refer
-to the excellent
-<a class="reference external" href="https://leanprover-community.github.io/mathematics_in_lean/">Mathematics in Lean</a>, but note that
-that book expects more mathematical experience than this one does: writing idiomatic Lean code, even
-to prove elementary statements, requires some mathematical maturity.) For pedagogical purposes, the
-Lean code of this book is written in a &#8220;dialect&#8221; of my own, featuring many modifications from the
-usual vernacular.  A summary of the differences can be found in the appendix
-<a class="reference internal" href="Mainstream_Lean.html#transitioning-to-regular-lean"><span class="std std-ref">Transitioning to mainstream Lean</span></a>.</p>
+<p>This is a book about mathematics which uses Lean as a tool. It is designed so that the learning
+curve is flatter for the Lean than it is for the mathematics <a class="footnote-reference brackets" href="#id10" id="id5">4</a> &#8211; partly by a careful
+choice of exercises, and partly by writing in a
+Lean &#8220;dialect&#8221; of my own, with a limited Lean vocabulary <a class="footnote-reference brackets" href="#id11" id="id6">5</a> which is just flexible enough for the
+mathematical needs of the book.  (A summary of the major differences can be
+found in the appendix
+<a class="reference internal" href="Mainstream_Lean.html#transitioning-to-regular-lean"><span class="std std-ref">Transitioning to mainstream Lean</span></a>.) My hope is that most of your intellectual effort in solving
+the problems will be devoted to the mathematics, not to Lean&#8217;s implementation details or
+quirks of syntax.</p>
 </section>
 <section id="note-for-instructors">
 <h2>Note for instructors<a class="headerlink" href="#note-for-instructors" title="Permalink to this headline">&#61633;</a></h2>
 <p>This book is based on lecture notes from a course I taught in Spring 2023 at Fordham University.
 There were 20 students in the course, mostly first- and second-year students, with a median
-background of Calculus II.  (Many but not all had also taken a first course in computer
-programming.)</p>
+background of Calculus II.  Many but not all had also taken a first course in computer
+programming.</p>
 <p>The course had 75-minute classes, twice a week for 13 weeks, and in this time covered about 80% of
 the material in this book.  A typical class structure might look like this:</p>
 <ul class="simple">
@@ -225,7 +217,7 @@ the material in this book.  A typical class structure might look like this:</p>
 <a class="reference external" href="https://hrmacbeth.github.io/math2001/Homework.html">available online</a>. They
 are relatively short (5-7 problems per week), but students were required to submit almost all
 problems both in writing and in Lean.  Most students required support in office hours or by email
-to complete the homework assignments (I was fairly careful to keep this support &#8220;spoiler-free&#8221;).</p>
+to complete the homework assignments. (I was fairly careful to keep this support &#8220;spoiler-free&#8221;.)</p>
 <p>The course also featured oral examinations at the 5- and 10-week marks.  These were 20-minute
 one-on-one interviews assessing Lean fluency: students solved previously-unseen Lean exercises
 (different exercises for each student), explaining their reasoning aloud. The grade breakdown for
@@ -269,9 +261,41 @@ courses and for many conversations about the dream of teaching mathematics with 
 </ul>
 <p class="rubric">Footnotes</p>
 <dl class="footnote brackets">
-<dt class="label" id="id3"><span class="brackets"><a class="fn-backref" href="#id2">1</a></span></dt>
+<dt class="label" id="id7"><span class="brackets"><a class="fn-backref" href="#id2">1</a></span></dt>
+<dd><p>It&#8217;s in fact quite possible to get through the <em>equality</em>-heavy
+reasoning of many intro-to-proof courses
+without really mastering this mode of reasoning, but it&#8217;s nearly impossible to reason about
+<em>inequalities</em> without mastering calculational proofs, and students who don&#8217;t pick up the skill in
+an intro-to-proof course will find it come back to haunt them when they reach real analysis.</p>
+</dd>
+<dt class="label" id="id8"><span class="brackets"><a class="fn-backref" href="#id3">2</a></span></dt>
+<dd><p>The expert reader may enjoy the problems in <a class="reference internal" href="05_Logic.html#lem"><span class="std std-numref">Section 5.2</span></a>, which introduces
+classical reasoning; they are new (to my knowledge), and more elementary than the usual textbook
+examples.</p>
+</dd>
+<dt class="label" id="id9"><span class="brackets"><a class="fn-backref" href="#id4">3</a></span></dt>
 <dd><p>For example, the uses of calculation blocks for most algebraic reasoning, and a preference
 for forward over backward reasoning.</p>
+</dd>
+<dt class="label" id="id10"><span class="brackets"><a class="fn-backref" href="#id5">4</a></span></dt>
+<dd><p>If you are looking for the reverse,
+<a class="reference external" href="https://leanprover-community.github.io/mathematics_in_lean/">Mathematics in Lean</a> is
+the canonical introduction to mathematical Lean. But note that
+that book expects more mathematical experience than this one does: writing idiomatic Lean code, even
+to prove elementary statements, requires some mathematical maturity.</p>
+</dd>
+<dt class="label" id="id11"><span class="brackets"><a class="fn-backref" href="#id6">5</a></span></dt>
+<dd><p>The algebraic-reasoning tactic vocabulary of <code class="docutils literal notranslate"><span class="pre">ring</span></code>, <code class="docutils literal notranslate"><span class="pre">rw</span></code>,
+<code class="docutils literal notranslate"><span class="pre">numbers</span></code> (AKA <code class="docutils literal notranslate"><span class="pre">norm_num</span></code>), <code class="docutils literal notranslate"><span class="pre">rel</span></code> (custom-written for this book but now in mathlib proper),
+<code class="docutils literal notranslate"><span class="pre">extra</span></code> (custom-written) and <code class="docutils literal notranslate"><span class="pre">cancel</span></code> (custom-written) suffices for pretty much all algebraic
+reasoning over the integers, including nonlinear inequalities.  The training in this vernacular
+presented over the course of
+<a class="reference internal" href="01_Proofs_by_Calculation.html#proving-equalities-in-lean"><span class="std std-numref">Sections 1.2</span></a> - <a class="reference internal" href="02_Proofs_with_Structure.html#tactic-mode"><span class="std std-numref">2.1</span></a> pays off later,
+by avoiding the need to invoke the endless lemmas such as
+<code class="docutils literal notranslate"><span class="pre">mul_le_mul_of_nonneg_left</span></code>, <code class="docutils literal notranslate"><span class="pre">pow_pos</span></code> or <code class="docutils literal notranslate"><span class="pre">le_of_pow_le_pow</span></code> by name.  Other custom
+automation lightly streamlines work with induction principles, well-foundedness justifications,
+product types, and sets.
+In total, fewer than fifty lemmas are invoked by name in the book.</p>
 </dd>
 </dl>
 </section>
