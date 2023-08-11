@@ -786,38 +786,38 @@ Prove that <span class="math notranslate nohighlight">\(f\)</span> is injective.
 <h3><span class="section-number">8.2.2. </span>Example<a class="headerlink" href="#id13" title="Permalink to this headline">&#61633;</a></h3>
 <div class="admonition-problem admonition">
 <p class="admonition-title">Problem</p>
-<p>Let <span class="math notranslate nohighlight">\(h:\mathbb{R}\to\mathbb{R}\)</span> be the function defined by, <span class="math notranslate nohighlight">\(h(x)=2x-5\)</span>.
-Show that <span class="math notranslate nohighlight">\(h\)</span> is bijective.</p>
+<p>Let <span class="math notranslate nohighlight">\(p:\mathbb{R}\to\mathbb{R}\)</span> be the function defined by, <span class="math notranslate nohighlight">\(p(x)=2x-5\)</span>.
+Show that <span class="math notranslate nohighlight">\(p\)</span> is bijective.</p>
 </div>
 <div class="admonition-solution admonition">
 <p class="admonition-title">Solution</p>
-<p>We must show that <span class="math notranslate nohighlight">\(h\)</span> is injective and surjective.</p>
+<p>We must show that <span class="math notranslate nohighlight">\(p\)</span> is injective and surjective.</p>
 <p>For the injectivity, let <span class="math notranslate nohighlight">\(x_1\)</span> and <span class="math notranslate nohighlight">\(x_2\)</span> be real numbers and suppose that
-<span class="math notranslate nohighlight">\(h(x_1)=h(x_2)\)</span>.  This means that <span class="math notranslate nohighlight">\(2x_1-5=2x_2-5\)</span>.  So</p>
+<span class="math notranslate nohighlight">\(p(x_1)=p(x_2)\)</span>.  This means that <span class="math notranslate nohighlight">\(2x_1-5=2x_2-5\)</span>.  So</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}x_1&amp;= \frac{(2x_1-5)+5}{2}\\
 &amp;= \frac{(2x_2-5)+5}{2}\\
 &amp;=x_2.\end{split}\]</div>
 <p>For the surjectivity, let <span class="math notranslate nohighlight">\(y\)</span> be a real number.  Then</p>
 <div class="math notranslate nohighlight">
-\[\begin{split}h \left(\frac{y+5}{2}\right)&amp;=2\left(\frac{y+5}{2}\right)-5\\
+\[\begin{split}p \left(\frac{y+5}{2}\right)&amp;=2\left(\frac{y+5}{2}\right)-5\\
 &amp;=y.\end{split}\]</div>
 </div>
-<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">def</span> <span class="n">h</span> <span class="o">(</span><span class="n">x</span> <span class="o">:</span> <span class="n">&#8477;</span><span class="o">)</span> <span class="o">:</span> <span class="n">&#8477;</span> <span class="o">:=</span> <span class="mi">2</span> <span class="bp">*</span> <span class="n">x</span> <span class="bp">-</span> <span class="mi">5</span>
+<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">def</span> <span class="n">p</span> <span class="o">(</span><span class="n">x</span> <span class="o">:</span> <span class="n">&#8477;</span><span class="o">)</span> <span class="o">:</span> <span class="n">&#8477;</span> <span class="o">:=</span> <span class="mi">2</span> <span class="bp">*</span> <span class="n">x</span> <span class="bp">-</span> <span class="mi">5</span>
 
-<span class="kd">example</span> <span class="o">:</span> <span class="n">Bijective</span> <span class="n">h</span> <span class="o">:=</span> <span class="kd">by</span>
+<span class="kd">example</span> <span class="o">:</span> <span class="n">Bijective</span> <span class="n">p</span> <span class="o">:=</span> <span class="kd">by</span>
   <span class="n">dsimp</span> <span class="o">[</span><span class="n">Bijective</span><span class="o">]</span>
   <span class="n">constructor</span>
   <span class="bp">&#183;</span> <span class="n">dsimp</span> <span class="o">[</span><span class="n">Injective</span><span class="o">]</span>
     <span class="n">intro</span> <span class="n">x1</span> <span class="n">x2</span> <span class="n">hx</span>
-    <span class="n">dsimp</span> <span class="o">[</span><span class="n">h</span><span class="o">]</span> <span class="n">at</span> <span class="n">hx</span>
+    <span class="n">dsimp</span> <span class="o">[</span><span class="n">p</span><span class="o">]</span> <span class="n">at</span> <span class="n">hx</span>
     <span class="k">calc</span> <span class="n">x1</span> <span class="bp">=</span> <span class="o">((</span><span class="mi">2</span> <span class="bp">*</span> <span class="n">x1</span> <span class="bp">-</span> <span class="mi">5</span><span class="o">)</span> <span class="bp">+</span> <span class="mi">5</span><span class="o">)</span> <span class="bp">/</span> <span class="mi">2</span> <span class="o">:=</span> <span class="kd">by</span> <span class="n">ring</span>
       <span class="n">_</span> <span class="bp">=</span> <span class="o">((</span><span class="mi">2</span> <span class="bp">*</span> <span class="n">x2</span> <span class="bp">-</span> <span class="mi">5</span><span class="o">)</span> <span class="bp">+</span> <span class="mi">5</span><span class="o">)</span> <span class="bp">/</span> <span class="mi">2</span> <span class="o">:=</span> <span class="kd">by</span> <span class="n">rw</span> <span class="o">[</span><span class="n">hx</span><span class="o">]</span>
       <span class="n">_</span> <span class="bp">=</span> <span class="n">x2</span> <span class="o">:=</span> <span class="kd">by</span> <span class="n">ring</span>
   <span class="bp">&#183;</span> <span class="n">dsimp</span> <span class="o">[</span><span class="n">Surjective</span><span class="o">]</span>
     <span class="n">intro</span> <span class="n">y</span>
     <span class="n">use</span> <span class="o">(</span><span class="n">y</span> <span class="bp">+</span> <span class="mi">5</span><span class="o">)</span> <span class="bp">/</span> <span class="mi">2</span>
-    <span class="k">calc</span> <span class="n">h</span> <span class="o">((</span><span class="n">y</span> <span class="bp">+</span> <span class="mi">5</span><span class="o">)</span> <span class="bp">/</span> <span class="mi">2</span><span class="o">)</span> <span class="bp">=</span> <span class="mi">2</span> <span class="bp">*</span> <span class="o">((</span><span class="n">y</span> <span class="bp">+</span> <span class="mi">5</span><span class="o">)</span> <span class="bp">/</span> <span class="mi">2</span><span class="o">)</span> <span class="bp">-</span> <span class="mi">5</span> <span class="o">:=</span> <span class="kd">by</span> <span class="n">rfl</span>
+    <span class="k">calc</span> <span class="n">p</span> <span class="o">((</span><span class="n">y</span> <span class="bp">+</span> <span class="mi">5</span><span class="o">)</span> <span class="bp">/</span> <span class="mi">2</span><span class="o">)</span> <span class="bp">=</span> <span class="mi">2</span> <span class="bp">*</span> <span class="o">((</span><span class="n">y</span> <span class="bp">+</span> <span class="mi">5</span><span class="o">)</span> <span class="bp">/</span> <span class="mi">2</span><span class="o">)</span> <span class="bp">-</span> <span class="mi">5</span> <span class="o">:=</span> <span class="kd">by</span> <span class="n">rfl</span>
       <span class="n">_</span> <span class="bp">=</span> <span class="n">y</span> <span class="o">:=</span> <span class="kd">by</span> <span class="n">ring</span>
 </pre></div>
 </div>
@@ -941,7 +941,7 @@ unique) <span class="math notranslate nohighlight">\(x\)</span> of type <span cl
       <span class="n">obtain</span> <span class="o">&#10216;</span><span class="n">x</span><span class="o">,</span> <span class="n">hx</span><span class="o">,</span> <span class="n">hx&#39;</span><span class="o">&#10217;</span> <span class="o">:=</span> <span class="n">h</span> <span class="o">(</span><span class="n">f</span> <span class="n">x1</span><span class="o">)</span>
       <span class="k">have</span> <span class="n">hxx1</span> <span class="o">:</span> <span class="n">x1</span> <span class="bp">=</span> <span class="n">x</span>
       <span class="bp">&#183;</span> <span class="n">apply</span> <span class="n">hx&#39;</span>
-        <span class="n">rfl</span>
+        <span class="n">ring</span>
       <span class="k">have</span> <span class="n">hxx2</span> <span class="o">:</span> <span class="n">x2</span> <span class="bp">=</span> <span class="n">x</span>
       <span class="bp">&#183;</span> <span class="n">apply</span> <span class="n">hx&#39;</span>
         <span class="n">rw</span> <span class="o">[</span><span class="n">hx1x2</span><span class="o">]</span>

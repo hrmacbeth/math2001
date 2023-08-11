@@ -14,21 +14,21 @@ set_option linter.unusedVariables false
 open Function
 
 
-def h (x : ℝ) : ℝ := 2 * x - 5
+def p (x : ℝ) : ℝ := 2 * x - 5
 
-example : Bijective h := by
+example : Bijective p := by
   dsimp [Bijective]
   constructor
   · dsimp [Injective]
     intro x1 x2 hx
-    dsimp [h] at hx
+    dsimp [p] at hx
     calc x1 = ((2 * x1 - 5) + 5) / 2 := by ring
       _ = ((2 * x2 - 5) + 5) / 2 := by rw [hx]
       _ = x2 := by ring
   · dsimp [Surjective]
     intro y
     use (y + 5) / 2
-    calc h ((y + 5) / 2) = 2 * ((y + 5) / 2) - 5 := by rfl
+    calc p ((y + 5) / 2) = 2 * ((y + 5) / 2) - 5 := by rfl
       _ = y := by ring
 
 
@@ -99,7 +99,7 @@ example {f : X → Y} : Bijective f ↔ ∀ y, ∃! x, f x = y := by
       obtain ⟨x, hx, hx'⟩ := h (f x1) 
       have hxx1 : x1 = x
       · apply hx'
-        rfl
+        ring
       have hxx2 : x2 = x
       · apply hx'
         rw [hx1x2]
