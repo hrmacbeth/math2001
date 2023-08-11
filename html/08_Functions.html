@@ -941,7 +941,7 @@ unique) <span class="math notranslate nohighlight">\(x\)</span> of type <span cl
       <span class="n">obtain</span> <span class="o">&#10216;</span><span class="n">x</span><span class="o">,</span> <span class="n">hx</span><span class="o">,</span> <span class="n">hx&#39;</span><span class="o">&#10217;</span> <span class="o">:=</span> <span class="n">h</span> <span class="o">(</span><span class="n">f</span> <span class="n">x1</span><span class="o">)</span>
       <span class="k">have</span> <span class="n">hxx1</span> <span class="o">:</span> <span class="n">x1</span> <span class="bp">=</span> <span class="n">x</span>
       <span class="bp">&#183;</span> <span class="n">apply</span> <span class="n">hx&#39;</span>
-        <span class="n">ring</span>
+        <span class="n">rfl</span>
       <span class="k">have</span> <span class="n">hxx2</span> <span class="o">:</span> <span class="n">x2</span> <span class="bp">=</span> <span class="n">x</span>
       <span class="bp">&#183;</span> <span class="n">apply</span> <span class="n">hx&#39;</span>
         <span class="n">rw</span> <span class="o">[</span><span class="n">hx1x2</span><span class="o">]</span>

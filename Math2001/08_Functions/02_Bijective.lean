@@ -99,7 +99,7 @@ example {f : X → Y} : Bijective f ↔ ∀ y, ∃! x, f x = y := by
       obtain ⟨x, hx, hx'⟩ := h (f x1) 
       have hxx1 : x1 = x
       · apply hx'
-        ring
+        rfl
       have hxx2 : x2 = x
       · apply hx'
         rw [hx1x2]
