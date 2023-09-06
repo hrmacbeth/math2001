@@ -147,11 +147,10 @@ the material in this book.  A typical class structure might look like this:
 * 20 minutes working in Lean in pairs, instructor circulating;
 * 25 minutes traditional blackboard lecture, perhaps more theoretical than the first.
 
-The homework assignments for the course are
-`available online <https://hrmacbeth.github.io/math2001/Homework.html>`_. They
+The homework assignments for the course are available on request. They
 are relatively short (5-7 problems per week), but students were required to submit almost all
 problems both in writing and in Lean.  Most students required support in office hours or by email
-to complete the homework assignments. (I was fairly careful to keep this support "spoiler-free".)
+to complete the homework assignments.
 
 The course also featured oral examinations at the 5- and 10-week marks.  These were 20-minute
 one-on-one interviews assessing Lean fluency: students solved previously-unseen Lean exercises
