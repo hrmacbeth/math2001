@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Homework (Spring 2023) &mdash; The Mechanics of Proof, by Heather Macbeth</title>
+  <title>Homework &mdash; The Mechanics of Proof, by Heather Macbeth</title>
       <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
       <link rel="stylesheet" href="_static/css/custom.css" type="text/css" />
@@ -59,17 +59,9 @@
 <li class="toctree-l1"><a class="reference internal" href="Mainstream_Lean.html">Transitioning to mainstream Lean</a></li>
 </ul>
 <ul class="current">
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Homework (Spring 2023)</a><ul>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Homework</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#homework-0">Homework 0</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#homework-1">Homework 1</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#homework-2">Homework 2</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#homework-3">Homework 3</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#homework-4">Homework 4</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#homework-5">Homework 5</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#homework-6">Homework 6</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#homework-7">Homework 7</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#homework-8">Homework 8</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#homework-9">Homework 9</a></li>
 </ul>
 </li>
 </ul>
@@ -88,7 +80,7 @@
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
       <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
-      <li>Homework (Spring 2023)</li>
+      <li>Homework</li>
       <li class="wy-breadcrumbs-aside">
             <a href="_sources/Homework.rst.txt" rel="nofollow"> View page source</a>
       </li>
@@ -98,8 +90,8 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <section id="homework-spring-2023">
-<span id="homework"></span><h1>Homework (Spring 2023)<a class="headerlink" href="#homework-spring-2023" title="Permalink to this headline">&#61633;</a></h1>
+  <section id="homework">
+<span id="id1"></span><h1>Homework<a class="headerlink" href="#homework" title="Permalink to this headline">&#61633;</a></h1>
 <section id="homework-0">
 <span id="hw0"></span><h2>Homework 0<a class="headerlink" href="#homework-0" title="Permalink to this headline">&#61633;</a></h2>
 <p>This homework is not for credit.  It is just to get you used to the Gradescope system.</p>
@@ -119,7 +111,7 @@
 <span class="math notranslate nohighlight">\(q-1=2\)</span>.  Show that <span class="math notranslate nohighlight">\(p=-11\)</span>.</p></li>
 </ol>
 <div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="c">/-</span><span class="cm"> 5 points -/</span>
-<span class="kd">theorem</span> <span class="n">problem1</span> <span class="o">{</span><span class="n">p</span> <span class="n">q</span> <span class="o">:</span> <span class="n">&#8484;</span><span class="o">}</span> <span class="o">(</span><span class="n">h1</span> <span class="o">:</span> <span class="n">p</span> <span class="bp">+</span> <span class="mi">4</span> <span class="bp">*</span> <span class="n">q</span> <span class="bp">=</span> <span class="mi">1</span><span class="o">)</span> <span class="o">(</span><span class="n">h2</span> <span class="o">:</span> <span class="n">q</span> <span class="bp">-</span> <span class="mi">1</span> <span class="bp">=</span> <span class="mi">2</span><span class="o">)</span> <span class="o">:</span> <span class="n">p</span> <span class="bp">=</span> <span class="bp">-</span><span class="mi">11</span> <span class="o">:=</span>
+<span class="kd">theorem</span> <span class="n">problem1</span> <span class="o">{</span><span class="n">p</span> <span class="n">q</span> <span class="o">:</span> <span class="n">&#8484;</span><span class="o">}</span> <span class="o">(</span><span class="n">h1</span> <span class="o">:</span> <span class="n">p</span> <span class="bp">+</span> <span class="mi">4</span> <span class="bp">*</span> <span class="n">q</span> <span class="bp">=</span> <span class="mi">1</span><span class="o">)</span> <span class="o">(</span><span class="n">h2</span> <span class="o">:</span> <span class="n">q</span> <span class="bp">-</span> <span class="mi">1</span> <span class="bp">=</span> <span class="mi">2</span><span class="o">)</span> <span class="o">:</span> <span class="n">p</span> <span class="bp">=</span> <span class="bp">-</span><span class="mi">11</span> <span class="o">:=</span> <span class="kd">by</span>
   <span class="gr">sorry</span>
 </pre></div>
 </div>
@@ -128,7 +120,7 @@
 <span class="math notranslate nohighlight">\(a + 2  b = 4\)</span> and <span class="math notranslate nohighlight">\(a - b = 1\)</span>. Show that <span class="math notranslate nohighlight">\(a = 2\)</span>.</p></li>
 </ol>
 <div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="c">/-</span><span class="cm"> 5 points -/</span>
-<span class="kd">theorem</span> <span class="n">problem2</span> <span class="o">{</span><span class="n">a</span> <span class="n">b</span> <span class="o">:</span> <span class="n">&#8477;</span><span class="o">}</span> <span class="o">(</span><span class="n">h1</span> <span class="o">:</span> <span class="n">a</span> <span class="bp">+</span> <span class="mi">2</span> <span class="bp">*</span> <span class="n">b</span> <span class="bp">=</span> <span class="mi">4</span><span class="o">)</span> <span class="o">(</span><span class="n">h2</span> <span class="o">:</span> <span class="n">a</span> <span class="bp">-</span> <span class="n">b</span> <span class="bp">=</span> <span class="mi">1</span><span class="o">)</span> <span class="o">:</span> <span class="n">a</span> <span class="bp">=</span> <span class="mi">2</span> <span class="o">:=</span>
+<span class="kd">theorem</span> <span class="n">problem2</span> <span class="o">{</span><span class="n">a</span> <span class="n">b</span> <span class="o">:</span> <span class="n">&#8477;</span><span class="o">}</span> <span class="o">(</span><span class="n">h1</span> <span class="o">:</span> <span class="n">a</span> <span class="bp">+</span> <span class="mi">2</span> <span class="bp">*</span> <span class="n">b</span> <span class="bp">=</span> <span class="mi">4</span><span class="o">)</span> <span class="o">(</span><span class="n">h2</span> <span class="o">:</span> <span class="n">a</span> <span class="bp">-</span> <span class="n">b</span> <span class="bp">=</span> <span class="mi">1</span><span class="o">)</span> <span class="o">:</span> <span class="n">a</span> <span class="bp">=</span> <span class="mi">2</span> <span class="o">:=</span> <span class="kd">by</span>
   <span class="gr">sorry</span>
 </pre></div>
 </div>
@@ -137,7 +129,7 @@
 <span class="math notranslate nohighlight">\(x ^ 3 - 8x ^ 2 + 2x \geq 3\)</span>.</p></li>
 </ol>
 <div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="c">/-</span><span class="cm"> 5 points -/</span>
-<span class="kd">theorem</span> <span class="n">problem3</span> <span class="o">{</span><span class="n">x</span> <span class="o">:</span> <span class="n">&#8484;</span><span class="o">}</span> <span class="o">(</span><span class="n">hx</span> <span class="o">:</span> <span class="n">x</span> <span class="bp">&#8805;</span> <span class="mi">9</span><span class="o">)</span> <span class="o">:</span> <span class="n">x</span> <span class="bp">^</span> <span class="mi">3</span> <span class="bp">-</span> <span class="mi">8</span> <span class="bp">*</span> <span class="n">x</span> <span class="bp">^</span> <span class="mi">2</span> <span class="bp">+</span> <span class="mi">2</span> <span class="bp">*</span> <span class="n">x</span> <span class="bp">&#8805;</span> <span class="mi">3</span> <span class="o">:=</span>
+<span class="kd">theorem</span> <span class="n">problem3</span> <span class="o">{</span><span class="n">x</span> <span class="o">:</span> <span class="n">&#8484;</span><span class="o">}</span> <span class="o">(</span><span class="n">hx</span> <span class="o">:</span> <span class="n">x</span> <span class="bp">&#8805;</span> <span class="mi">9</span><span class="o">)</span> <span class="o">:</span> <span class="n">x</span> <span class="bp">^</span> <span class="mi">3</span> <span class="bp">-</span> <span class="mi">8</span> <span class="bp">*</span> <span class="n">x</span> <span class="bp">^</span> <span class="mi">2</span> <span class="bp">+</span> <span class="mi">2</span> <span class="bp">*</span> <span class="n">x</span> <span class="bp">&#8805;</span> <span class="mi">3</span> <span class="o">:=</span> <span class="kd">by</span>
   <span class="gr">sorry</span>
 </pre></div>
 </div>
@@ -146,649 +138,22 @@
 <span class="math notranslate nohighlight">\(x ^ 2 - 2  x \ge -1\)</span>.</p></li>
 </ol>
 <div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="c">/-</span><span class="cm"> 5 points -/</span>
-<span class="kd">theorem</span> <span class="n">problem4</span> <span class="o">{</span><span class="n">x</span> <span class="o">:</span> <span class="n">&#8474;</span><span class="o">}</span> <span class="o">:</span> <span class="n">x</span> <span class="bp">^</span> <span class="mi">2</span> <span class="bp">-</span> <span class="mi">2</span> <span class="bp">*</span> <span class="n">x</span> <span class="bp">&#8805;</span> <span class="bp">-</span><span class="mi">1</span> <span class="o">:=</span>
+<span class="kd">theorem</span> <span class="n">problem4</span> <span class="o">{</span><span class="n">x</span> <span class="o">:</span> <span class="n">&#8474;</span><span class="o">}</span> <span class="o">:</span> <span class="n">x</span> <span class="bp">^</span> <span class="mi">2</span> <span class="bp">-</span> <span class="mi">2</span> <span class="bp">*</span> <span class="n">x</span> <span class="bp">&#8805;</span> <span class="bp">-</span><span class="mi">1</span> <span class="o">:=</span> <span class="kd">by</span>
   <span class="gr">sorry</span>
 </pre></div>
 </div>
 <ol class="arabic" start="5">
-<li><p>Let <span class="math notranslate nohighlight">\(a\)</span> and <span class="math notranslate nohighlight">\(b\)</span> be real numbers and suppose that <span class="math notranslate nohighlight">\(a \le b\)</span>.
-Show that <span class="math notranslate nohighlight">\(a ^ 3 \le b ^ 3\)</span>.</p>
-<p>This problem is solved in words in the text in <a class="reference internal" href="02_Proofs_with_Structure.html#cube-inequality"><span class="std std-numref">Example 2.1.8</span></a>, so don&#8217;t
+<li><p>Let <span class="math notranslate nohighlight">\(a\)</span> and <span class="math notranslate nohighlight">\(b\)</span> be real numbers and suppose that <span class="math notranslate nohighlight">\(-b \le a \le b\)</span>.
+Show that <span class="math notranslate nohighlight">\(a ^ 2 \le b ^ 2\)</span>.</p>
+<p>This problem is solved in words in the text in <a class="reference internal" href="02_Proofs_with_Structure.html#prove-sq-le-sq"><span class="std std-numref">Example 2.1.7</span></a>, so don&#8217;t
 submit a solution in words, only in Lean.</p>
 </li>
 </ol>
 <div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="c">/-</span><span class="cm"> 5 points -/</span>
-<span class="kd">theorem</span> <span class="n">problem5</span> <span class="o">(</span><span class="n">a</span> <span class="n">b</span> <span class="o">:</span> <span class="n">&#8477;</span><span class="o">)</span> <span class="o">(</span><span class="n">h</span> <span class="o">:</span> <span class="n">a</span> <span class="bp">&#8804;</span> <span class="n">b</span><span class="o">)</span> <span class="o">:</span> <span class="n">a</span> <span class="bp">^</span> <span class="mi">3</span> <span class="bp">&#8804;</span> <span class="n">b</span> <span class="bp">^</span> <span class="mi">3</span> <span class="o">:=</span> <span class="kd">by</span>
+<span class="kd">theorem</span> <span class="n">problem5</span> <span class="o">(</span><span class="n">a</span> <span class="n">b</span> <span class="o">:</span> <span class="n">&#8477;</span><span class="o">)</span> <span class="o">(</span><span class="n">h1</span> <span class="o">:</span> <span class="bp">-</span><span class="n">b</span> <span class="bp">&#8804;</span> <span class="n">a</span><span class="o">)</span> <span class="o">(</span><span class="n">h2</span> <span class="o">:</span> <span class="n">a</span> <span class="bp">&#8804;</span> <span class="n">b</span><span class="o">)</span> <span class="o">:</span> <span class="n">a</span> <span class="bp">^</span> <span class="mi">2</span> <span class="bp">&#8804;</span> <span class="n">b</span> <span class="bp">^</span> <span class="mi">2</span> <span class="o">:=</span> <span class="kd">by</span>
   <span class="gr">sorry</span>
 </pre></div>
 </div>
-</section>
-<section id="homework-2">
-<span id="hw2"></span><h2>Homework 2<a class="headerlink" href="#homework-2" title="Permalink to this headline">&#61633;</a></h2>
-<ol class="arabic">
-<li><p>Let <span class="math notranslate nohighlight">\(x\)</span> be a real number for which <span class="math notranslate nohighlight">\(x^2+2x-3=0\)</span>.  Show that either <span class="math notranslate nohighlight">\(x=-3\)</span> or
-<span class="math notranslate nohighlight">\(x=1\)</span>.</p>
-<p>You will probably use the lemma <code class="docutils literal notranslate"><span class="pre">eq_zero_or_eq_zero_of_mul_eq_zero</span></code>, stating that if
-<span class="math notranslate nohighlight">\(ab=0\)</span> then either <span class="math notranslate nohighlight">\(a=0\)</span> or <span class="math notranslate nohighlight">\(b=0\)</span>.</p>
-</li>
-</ol>
-<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="c">/-</span><span class="cm"> 5 points -/</span>
-<span class="kd">theorem</span> <span class="n">problem1</span> <span class="o">{</span><span class="n">x</span> <span class="o">:</span> <span class="n">&#8477;</span><span class="o">}</span> <span class="o">(</span><span class="n">hx</span> <span class="o">:</span> <span class="n">x</span> <span class="bp">^</span> <span class="mi">2</span> <span class="bp">+</span> <span class="mi">2</span> <span class="bp">*</span> <span class="n">x</span> <span class="bp">-</span> <span class="mi">3</span> <span class="bp">=</span> <span class="mi">0</span><span class="o">)</span> <span class="o">:</span> <span class="n">x</span> <span class="bp">=</span> <span class="bp">-</span><span class="mi">3</span> <span class="bp">&#8744;</span> <span class="n">x</span> <span class="bp">=</span> <span class="mi">1</span> <span class="o">:=</span> <span class="kd">by</span>
-  <span class="gr">sorry</span>
-</pre></div>
-</div>
-<ol class="arabic" start="2">
-<li><p>Let <span class="math notranslate nohighlight">\(a\)</span> be a real number and suppose that <span class="math notranslate nohighlight">\(a ^ 3 = 0\)</span>.
-Show that <span class="math notranslate nohighlight">\(a = 0\)</span>.</p>
-<p>[Note, June 2023: this problem was based on material which has since been deleted from the book.]</p>
-</li>
-</ol>
-<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="c">/-</span><span class="cm"> 5 points -/</span>
-<span class="kd">theorem</span> <span class="n">problem2</span> <span class="o">{</span><span class="n">a</span> <span class="o">:</span> <span class="n">&#8477;</span><span class="o">}</span> <span class="o">(</span><span class="n">ha</span> <span class="o">:</span> <span class="n">a</span> <span class="bp">^</span> <span class="mi">3</span> <span class="bp">=</span> <span class="mi">0</span><span class="o">)</span> <span class="o">:</span> <span class="n">a</span> <span class="bp">=</span> <span class="mi">0</span> <span class="o">:=</span> <span class="kd">by</span>
-  <span class="gr">sorry</span>
-</pre></div>
-</div>
-<p>3. Let <span class="math notranslate nohighlight">\(x\)</span> and <span class="math notranslate nohighlight">\(y\)</span> be rational numbers and suppose that <span class="math notranslate nohighlight">\(x + y = 5\)</span> and
-<span class="math notranslate nohighlight">\(x + 2y = 7\)</span>.  Show that <span class="math notranslate nohighlight">\(x=3\)</span> and <span class="math notranslate nohighlight">\(y=2\)</span>.</p>
-<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="c">/-</span><span class="cm"> 5 points -/</span>
-<span class="kd">theorem</span> <span class="n">problem3</span> <span class="o">{</span><span class="n">x</span> <span class="n">y</span> <span class="o">:</span> <span class="n">&#8474;</span><span class="o">}</span> <span class="o">(</span><span class="n">h</span> <span class="o">:</span> <span class="n">x</span> <span class="bp">+</span> <span class="n">y</span> <span class="bp">=</span> <span class="mi">5</span> <span class="bp">&#8743;</span> <span class="n">x</span> <span class="bp">+</span> <span class="mi">2</span> <span class="bp">*</span> <span class="n">y</span> <span class="bp">=</span> <span class="mi">7</span><span class="o">)</span> <span class="o">:</span> <span class="n">x</span> <span class="bp">=</span> <span class="mi">3</span> <span class="bp">&#8743;</span> <span class="n">y</span> <span class="bp">=</span> <span class="mi">2</span> <span class="o">:=</span> <span class="kd">by</span>
-  <span class="gr">sorry</span>
-</pre></div>
-</div>
-<ol class="arabic simple" start="4">
-<li><p>Show that there exist integers <span class="math notranslate nohighlight">\(m\)</span> and <span class="math notranslate nohighlight">\(n\)</span>, such that <span class="math notranslate nohighlight">\(m^2+n^2=85\)</span>.</p></li>
-</ol>
-<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="c">/-</span><span class="cm"> 3 points -/</span>
-<span class="kd">theorem</span> <span class="n">problem4</span> <span class="o">:</span> <span class="bp">&#8707;</span> <span class="n">m</span> <span class="n">n</span> <span class="o">:</span> <span class="n">&#8484;</span><span class="o">,</span> <span class="n">m</span> <span class="bp">^</span> <span class="mi">2</span> <span class="bp">+</span> <span class="n">n</span> <span class="bp">^</span> <span class="mi">2</span> <span class="bp">=</span> <span class="mi">85</span> <span class="o">:=</span> <span class="kd">by</span>
-  <span class="gr">sorry</span>
-</pre></div>
-</div>
-<ol class="arabic simple" start="5">
-<li><p>Show that there exists a real number <span class="math notranslate nohighlight">\(x\)</span>, such that <span class="math notranslate nohighlight">\(x&lt;0\)</span> and <span class="math notranslate nohighlight">\(x^2&lt;1\)</span>.</p></li>
-</ol>
-<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="c">/-</span><span class="cm"> 3 points -/</span>
-<span class="kd">theorem</span> <span class="n">problem5</span> <span class="o">:</span> <span class="bp">&#8707;</span> <span class="n">x</span> <span class="o">:</span> <span class="n">&#8477;</span><span class="o">,</span> <span class="n">x</span> <span class="bp">&lt;</span> <span class="mi">0</span> <span class="bp">&#8743;</span> <span class="n">x</span> <span class="bp">^</span> <span class="mi">2</span> <span class="bp">&lt;</span> <span class="mi">1</span> <span class="o">:=</span> <span class="kd">by</span>
-  <span class="gr">sorry</span>
-</pre></div>
-</div>
-<ol class="arabic" start="6">
-<li><p>Let <span class="math notranslate nohighlight">\(p\)</span> and <span class="math notranslate nohighlight">\(q\)</span> be real numbers, and suppose <span class="math notranslate nohighlight">\(p&lt;q\)</span>.  Show that there exists a
-real number <span class="math notranslate nohighlight">\(x\)</span>, such that <span class="math notranslate nohighlight">\(p&lt;x&lt;q\)</span>.</p>
-<p>This problem is solved in words in the text in <a class="reference internal" href="02_Proofs_with_Structure.html#between"><span class="std std-numref">Example 2.5.7</span></a>, so don&#8217;t
-submit a solution in words, only in Lean.</p>
-</li>
-</ol>
-<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="c">/-</span><span class="cm"> 4 points -/</span>
-<span class="kd">theorem</span> <span class="n">problem6</span> <span class="o">{</span><span class="n">p</span> <span class="n">q</span> <span class="o">:</span> <span class="n">&#8477;</span><span class="o">}</span> <span class="o">(</span><span class="n">h</span> <span class="o">:</span> <span class="n">p</span> <span class="bp">&lt;</span> <span class="n">q</span><span class="o">)</span> <span class="o">:</span> <span class="bp">&#8707;</span> <span class="n">x</span><span class="o">,</span> <span class="n">p</span> <span class="bp">&lt;</span> <span class="n">x</span> <span class="bp">&#8743;</span> <span class="n">x</span> <span class="bp">&lt;</span> <span class="n">q</span> <span class="o">:=</span> <span class="kd">by</span>
-  <span class="gr">sorry</span>
-</pre></div>
-</div>
-</section>
-<section id="homework-3">
-<span id="hw3"></span><h2>Homework 3<a class="headerlink" href="#homework-3" title="Permalink to this headline">&#61633;</a></h2>
-<ol class="arabic simple">
-<li><p>Let <span class="math notranslate nohighlight">\(x\)</span> be an integer.  Show that if <span class="math notranslate nohighlight">\(x\)</span> is odd then so is <span class="math notranslate nohighlight">\(x^3\)</span>.</p></li>
-</ol>
-<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="c">/-</span><span class="cm"> 4 points -/</span>
-<span class="kd">theorem</span> <span class="n">problem1</span> <span class="o">{</span><span class="n">x</span> <span class="o">:</span> <span class="n">&#8484;</span><span class="o">}</span> <span class="o">(</span><span class="n">hx</span> <span class="o">:</span> <span class="n">Odd</span> <span class="n">x</span><span class="o">)</span> <span class="o">:</span> <span class="n">Odd</span> <span class="o">(</span><span class="n">x</span> <span class="bp">^</span> <span class="mi">3</span><span class="o">)</span> <span class="o">:=</span> <span class="kd">by</span>
-  <span class="gr">sorry</span>
-</pre></div>
-</div>
-<ol class="arabic" start="2">
-<li><p>Let <span class="math notranslate nohighlight">\(n\)</span> be an integer.  Show that <span class="math notranslate nohighlight">\(5n^2+3n+7\)</span> is odd.</p>
-<p>You will probably use the lemma <code class="docutils literal notranslate"><span class="pre">Int.even_or_odd</span></code>, stating that an integer is either even or
-odd.</p>
-</li>
-</ol>
-<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="c">/-</span><span class="cm"> 5 points -/</span>
-<span class="kd">theorem</span> <span class="n">problem2</span> <span class="o">(</span><span class="n">n</span> <span class="o">:</span> <span class="n">&#8484;</span><span class="o">)</span> <span class="o">:</span> <span class="n">Odd</span> <span class="o">(</span><span class="mi">5</span> <span class="bp">*</span> <span class="n">n</span> <span class="bp">^</span> <span class="mi">2</span> <span class="bp">+</span> <span class="mi">3</span> <span class="bp">*</span> <span class="n">n</span> <span class="bp">+</span> <span class="mi">7</span><span class="o">)</span> <span class="o">:=</span> <span class="kd">by</span>
-  <span class="gr">sorry</span>
-</pre></div>
-</div>
-<ol class="arabic" start="3">
-<li><p>Show that -10 is not divisible by 3.</p>
-<p>You will probably use the lemma <code class="docutils literal notranslate"><span class="pre">Int.not_dvd_of_exists_lt_and_lt</span></code>, stating that if an integer
-lies strictly between <span class="math notranslate nohighlight">\(bq\)</span> and <span class="math notranslate nohighlight">\(b(q+1)\)</span> then it is not a multiple of <span class="math notranslate nohighlight">\(b\)</span>.</p>
-</li>
-</ol>
-<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="c">/-</span><span class="cm"> 4 points -/</span>
-<span class="kd">theorem</span> <span class="n">problem3</span> <span class="o">:</span> <span class="bp">&#172;</span><span class="o">(</span><span class="mi">3</span> <span class="o">:</span> <span class="n">&#8484;</span><span class="o">)</span> <span class="bp">&#8739;</span> <span class="bp">-</span><span class="mi">10</span> <span class="o">:=</span> <span class="kd">by</span>
-  <span class="gr">sorry</span>
-</pre></div>
-</div>
-<ol class="arabic simple" start="4">
-<li><p>Let <span class="math notranslate nohighlight">\(a\)</span>, <span class="math notranslate nohighlight">\(b\)</span> and <span class="math notranslate nohighlight">\(c\)</span> be integers and suppose that <span class="math notranslate nohighlight">\(a^2\)</span> divides <span class="math notranslate nohighlight">\(b\)</span>
-and <span class="math notranslate nohighlight">\(b^3\)</span> divides <span class="math notranslate nohighlight">\(c\)</span>.  Show that <span class="math notranslate nohighlight">\(a^6\)</span> divides <span class="math notranslate nohighlight">\(c\)</span>.</p></li>
-</ol>
-<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="c">/-</span><span class="cm"> 4 points -/</span>
-<span class="kd">theorem</span> <span class="n">problem4</span> <span class="o">{</span><span class="n">a</span> <span class="n">b</span> <span class="n">c</span> <span class="o">:</span> <span class="n">&#8484;</span><span class="o">}</span> <span class="o">(</span><span class="n">hab</span> <span class="o">:</span> <span class="n">a</span> <span class="bp">^</span> <span class="mi">2</span> <span class="bp">&#8739;</span> <span class="n">b</span><span class="o">)</span> <span class="o">(</span><span class="n">hbc</span> <span class="o">:</span> <span class="n">b</span> <span class="bp">^</span> <span class="mi">3</span> <span class="bp">&#8739;</span> <span class="n">c</span><span class="o">)</span> <span class="o">:</span> <span class="n">a</span> <span class="bp">^</span> <span class="mi">6</span> <span class="bp">&#8739;</span> <span class="n">c</span> <span class="o">:=</span> <span class="kd">by</span>
-  <span class="gr">sorry</span>
-</pre></div>
-</div>
-<ol class="arabic simple" start="5">
-<li><p>(transitivity rule for modular arithmetic) Let <span class="math notranslate nohighlight">\(a\)</span>, <span class="math notranslate nohighlight">\(b\)</span>, <span class="math notranslate nohighlight">\(c\)</span> and <span class="math notranslate nohighlight">\(n\)</span> be
-integers, and suppose that <span class="math notranslate nohighlight">\(a\equiv b \mod n\)</span> and <span class="math notranslate nohighlight">\(b\equiv c \mod n\)</span>.  Show that
-<span class="math notranslate nohighlight">\(a\equiv c \mod n\)</span>.</p></li>
-</ol>
-<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="c">/-</span><span class="cm"> 4 points -/</span>
-<span class="kd">theorem</span> <span class="n">problem5</span> <span class="o">(</span><span class="n">h1</span> <span class="o">:</span> <span class="n">a</span> <span class="bp">&#8801;</span> <span class="n">b</span> <span class="o">[</span><span class="n">ZMOD</span> <span class="n">n</span><span class="o">])</span> <span class="o">(</span><span class="n">h2</span> <span class="o">:</span> <span class="n">b</span> <span class="bp">&#8801;</span> <span class="n">c</span> <span class="o">[</span><span class="n">ZMOD</span> <span class="n">n</span><span class="o">])</span> <span class="o">:</span> <span class="n">a</span> <span class="bp">&#8801;</span> <span class="n">c</span> <span class="o">[</span><span class="n">ZMOD</span> <span class="n">n</span><span class="o">]</span> <span class="o">:=</span> <span class="kd">by</span>
-  <span class="gr">sorry</span>
-</pre></div>
-</div>
-<ol class="arabic" start="6">
-<li><p>Let <span class="math notranslate nohighlight">\(a\)</span> and <span class="math notranslate nohighlight">\(b\)</span> be natural numbers, with <span class="math notranslate nohighlight">\(b\)</span> positive, and suppose that
-<span class="math notranslate nohighlight">\(a\)</span> divides <span class="math notranslate nohighlight">\(b\)</span>.  Show that <span class="math notranslate nohighlight">\(a\)</span> is positive.</p>
-<p>This problem is solved in words in the text in <a class="reference internal" href="03_Parity_and_Divisibility.html#dvd-bd-2"><span class="std std-numref">Example 3.2.8</span></a>, so don&#8217;t
-submit a solution in words, only in Lean.</p>
-</li>
-</ol>
-<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="c">/-</span><span class="cm"> 4 points -/</span>
-<span class="kd">theorem</span> <span class="n">problem6</span> <span class="o">{</span><span class="n">a</span> <span class="n">b</span> <span class="o">:</span> <span class="n">&#8469;</span><span class="o">}</span> <span class="o">(</span><span class="n">hab</span> <span class="o">:</span> <span class="n">a</span> <span class="bp">&#8739;</span> <span class="n">b</span><span class="o">)</span> <span class="o">(</span><span class="n">hb</span> <span class="o">:</span> <span class="mi">0</span> <span class="bp">&lt;</span> <span class="n">b</span><span class="o">)</span> <span class="o">:</span> <span class="mi">0</span> <span class="bp">&lt;</span> <span class="n">a</span> <span class="o">:=</span> <span class="kd">by</span>
-  <span class="gr">sorry</span>
-</pre></div>
-</div>
-</section>
-<section id="homework-4">
-<span id="hw4"></span><h2>Homework 4<a class="headerlink" href="#homework-4" title="Permalink to this headline">&#61633;</a></h2>
-<ol class="arabic simple">
-<li><p>Show that there exists a natural number <span class="math notranslate nohighlight">\(n\)</span> such that every natural number <span class="math notranslate nohighlight">\(m\)</span> is at
-least <span class="math notranslate nohighlight">\(n\)</span>.</p></li>
-</ol>
-<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="c">/-</span><span class="cm"> 2 points -/</span>
-<span class="kd">theorem</span> <span class="n">problem1</span> <span class="o">:</span> <span class="bp">&#8707;</span> <span class="n">n</span> <span class="o">:</span> <span class="n">&#8469;</span><span class="o">,</span> <span class="bp">&#8704;</span> <span class="n">m</span> <span class="o">:</span> <span class="n">&#8469;</span><span class="o">,</span> <span class="n">n</span> <span class="bp">&#8804;</span> <span class="n">m</span> <span class="o">:=</span> <span class="kd">by</span>
-  <span class="gr">sorry</span>
-</pre></div>
-</div>
-<ol class="arabic simple" start="2">
-<li><p>Show that for all sufficiently large real numbers <span class="math notranslate nohighlight">\(x\)</span>,
-<span class="math notranslate nohighlight">\(x ^ 3 &#8805; 7 x ^ 2 + 12\)</span>.</p></li>
-</ol>
-<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="c">/-</span><span class="cm"> 4 points -/</span>
-<span class="kd">theorem</span> <span class="n">problem2</span> <span class="o">:</span> <span class="n">forall_sufficiently_large</span> <span class="n">x</span> <span class="o">:</span> <span class="n">&#8477;</span><span class="o">,</span> <span class="n">x</span> <span class="bp">^</span> <span class="mi">3</span> <span class="bp">&#8805;</span> <span class="mi">7</span> <span class="bp">*</span> <span class="n">x</span> <span class="bp">^</span> <span class="mi">2</span> <span class="bp">+</span> <span class="mi">12</span> <span class="o">:=</span> <span class="kd">by</span>
-  <span class="n">dsimp</span>
-  <span class="gr">sorry</span>
-</pre></div>
-</div>
-<ol class="arabic simple" start="3">
-<li><p>Let <span class="math notranslate nohighlight">\(x\)</span> be a real number.  Show that <span class="math notranslate nohighlight">\(2x-1=11\)</span> if and only if <span class="math notranslate nohighlight">\(x=6\)</span>.</p></li>
-</ol>
-<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="c">/-</span><span class="cm"> 3 points -/</span>
-<span class="kd">theorem</span> <span class="n">problem3</span> <span class="o">{</span><span class="n">x</span> <span class="o">:</span> <span class="n">&#8477;</span><span class="o">}</span> <span class="o">:</span> <span class="mi">2</span> <span class="bp">*</span> <span class="n">x</span> <span class="bp">-</span> <span class="mi">1</span> <span class="bp">=</span> <span class="mi">11</span> <span class="bp">&#8596;</span> <span class="n">x</span> <span class="bp">=</span> <span class="mi">6</span> <span class="o">:=</span> <span class="kd">by</span>
-  <span class="gr">sorry</span>
-</pre></div>
-</div>
-<ol class="arabic" start="4">
-<li><p>Let <span class="math notranslate nohighlight">\(x\)</span> be an integer.  Show that if <span class="math notranslate nohighlight">\(x\)</span> is odd then so is <span class="math notranslate nohighlight">\(x^3\)</span>.</p>
-<p>This problem appeared on Homework 3, but this time, re-do it by converting it to a modular
-arithmetic problem and then using the techniques of <a class="reference internal" href="03_Parity_and_Divisibility.html#using-modular"><span class="std std-numref">Section 3.4</span></a>, as
-indicated in the first line.</p>
-</li>
-</ol>
-<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="c">/-</span><span class="cm"> 3 points -/</span>
-<span class="kd">theorem</span> <span class="n">problem4</span> <span class="o">{</span><span class="n">x</span> <span class="o">:</span> <span class="n">&#8484;</span><span class="o">}</span> <span class="o">(</span><span class="n">hx</span> <span class="o">:</span> <span class="n">Int.Odd</span> <span class="n">x</span><span class="o">)</span> <span class="o">:</span> <span class="n">Int.Odd</span> <span class="o">(</span><span class="n">x</span> <span class="bp">^</span> <span class="mi">3</span><span class="o">)</span> <span class="o">:=</span> <span class="kd">by</span>
-  <span class="n">rw</span> <span class="o">[</span><span class="n">Int.odd_iff_modEq</span><span class="o">]</span> <span class="n">at</span> <span class="bp">*</span>
-  <span class="gr">sorry</span>
-</pre></div>
-</div>
-<ol class="arabic simple" start="5">
-<li><p>Show that there does not exist a real number <span class="math notranslate nohighlight">\(a\)</span>, such that <span class="math notranslate nohighlight">\(a^2 \le 8\)</span> and
-<span class="math notranslate nohighlight">\(a^3\geq 30\)</span>.</p></li>
-</ol>
-<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="c">/-</span><span class="cm"> 4 points -/</span>
-<span class="kd">theorem</span> <span class="n">problem5</span> <span class="o">:</span> <span class="bp">&#172;</span> <span class="o">(</span><span class="bp">&#8707;</span> <span class="n">a</span> <span class="o">:</span> <span class="n">&#8477;</span><span class="o">,</span> <span class="n">a</span> <span class="bp">^</span> <span class="mi">2</span> <span class="bp">&#8804;</span> <span class="mi">8</span> <span class="bp">&#8743;</span> <span class="n">a</span> <span class="bp">^</span> <span class="mi">3</span> <span class="bp">&#8805;</span> <span class="mi">30</span><span class="o">)</span> <span class="o">:=</span> <span class="kd">by</span>
-  <span class="gr">sorry</span>
-</pre></div>
-</div>
-<ol class="arabic simple" start="6">
-<li><p>Let <span class="math notranslate nohighlight">\(n\)</span> be an integer.  Show that <span class="math notranslate nohighlight">\(n^2\not\equiv 2 \mod 4\)</span>.</p></li>
-</ol>
-<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="c">/-</span><span class="cm"> 5 points -/</span>
-<span class="kd">theorem</span> <span class="n">problem6</span> <span class="o">(</span><span class="n">n</span> <span class="o">:</span> <span class="n">&#8484;</span><span class="o">)</span> <span class="o">:</span> <span class="bp">&#172;</span><span class="o">(</span><span class="n">n</span> <span class="bp">^</span> <span class="mi">2</span> <span class="bp">&#8801;</span> <span class="mi">2</span> <span class="o">[</span><span class="n">ZMOD</span> <span class="mi">4</span><span class="o">])</span> <span class="o">:=</span> <span class="kd">by</span>
-  <span class="gr">sorry</span>
-</pre></div>
-</div>
-<ol class="arabic" start="7">
-<li><p>Show that 97 is prime.</p>
-<p>You can follow the model of the proof for 79 in <a class="reference internal" href="04_Proofs_with_Structure_II.html#better-prime-test"><span class="std std-numref">Example 4.5.9</span></a>,
-including the use of the lemmas <code class="docutils literal notranslate"><span class="pre">better_prime_test</span></code> and <code class="docutils literal notranslate"><span class="pre">Nat.not_dvd_of_exists_lt_and_lt</span></code>.</p>
-</li>
-</ol>
-<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="c">/-</span><span class="cm"> 4 points -/</span>
-<span class="kd">theorem</span> <span class="n">problem7</span> <span class="o">:</span> <span class="n">Prime</span> <span class="mi">97</span> <span class="o">:=</span> <span class="kd">by</span>
-  <span class="gr">sorry</span>
-</pre></div>
-</div>
-</section>
-<section id="homework-5">
-<span id="hw5"></span><h2>Homework 5<a class="headerlink" href="#homework-5" title="Permalink to this headline">&#61633;</a></h2>
-<ol class="arabic">
-<li><p>Show that <span class="math notranslate nohighlight">\((\exists x, P(x)) \land Q\)</span> is logically equivalent to
-<span class="math notranslate nohighlight">\(\exists x, (P(x) \land Q)\)</span>.</p>
-<p>Write this problem only in Lean, not on paper.</p>
-</li>
-</ol>
-<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="c">/-</span><span class="cm"> 4 points -/</span>
-<span class="kd">theorem</span> <span class="n">problem1</span> <span class="o">(</span><span class="n">P</span> <span class="o">:</span> <span class="n">&#945;</span> <span class="bp">&#8594;</span> <span class="kt">Prop</span><span class="o">)</span> <span class="o">(</span><span class="n">Q</span> <span class="o">:</span> <span class="kt">Prop</span><span class="o">)</span> <span class="o">:</span> <span class="o">((</span><span class="bp">&#8707;</span> <span class="n">x</span><span class="o">,</span> <span class="n">P</span> <span class="n">x</span><span class="o">)</span> <span class="bp">&#8743;</span> <span class="n">Q</span><span class="o">)</span> <span class="bp">&#8596;</span> <span class="bp">&#8707;</span> <span class="n">x</span><span class="o">,</span> <span class="o">(</span><span class="n">P</span> <span class="n">x</span> <span class="bp">&#8743;</span> <span class="n">Q</span><span class="o">)</span> <span class="o">:=</span> <span class="kd">by</span>
-  <span class="gr">sorry</span>
-</pre></div>
-</div>
-<ol class="arabic" start="2">
-<li><p>Show that <span class="math notranslate nohighlight">\(\lnot\forall x, P(x)\)</span> is logically equivalent to <span class="math notranslate nohighlight">\(\exists x, \lnot P(x)\)</span>.</p>
-<p>You will need to use the law of the excluded middle (the tactic <code class="docutils literal notranslate"><span class="pre">by_cases</span></code>).</p>
-<p>The point of this exercise is that you are proving the lemma <code class="docutils literal notranslate"><span class="pre">not_forall</span></code>, from
-<a class="reference internal" href="05_Logic.html#negation-rule-table"><span class="std std-numref">Table 5.1</span></a>.  So don&#8217;t use that lemma or the tactic <code class="docutils literal notranslate"><span class="pre">push_neg</span></code>
-which depends on it; instead prove this from scratch.  You will need to use the law of the
-excluded middle.</p>
-<p>Write this problem only in Lean, not on paper.</p>
-</li>
-</ol>
-<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="c">/-</span><span class="cm"> 5 points -/</span>
-<span class="kd">theorem</span> <span class="n">problem2</span> <span class="o">(</span><span class="n">P</span> <span class="o">:</span> <span class="n">&#945;</span> <span class="bp">&#8594;</span> <span class="kt">Prop</span><span class="o">)</span> <span class="o">:</span> <span class="bp">&#172;</span> <span class="o">(</span><span class="bp">&#8704;</span> <span class="n">x</span><span class="o">,</span> <span class="n">P</span> <span class="n">x</span><span class="o">)</span> <span class="bp">&#8596;</span> <span class="bp">&#8707;</span> <span class="n">x</span><span class="o">,</span> <span class="bp">&#172;</span> <span class="n">P</span> <span class="n">x</span> <span class="o">:=</span> <span class="kd">by</span>
-  <span class="gr">sorry</span>
-</pre></div>
-</div>
-<ol class="arabic" start="3">
-<li><p>Let <span class="math notranslate nohighlight">\(p\)</span> and <span class="math notranslate nohighlight">\(k\)</span> be natural numbers, with <span class="math notranslate nohighlight">\(k\ne 1\)</span>, <span class="math notranslate nohighlight">\(k\ne p\)</span>, and
-<span class="math notranslate nohighlight">\(k\mid p\)</span>.  Show that <span class="math notranslate nohighlight">\(p\)</span> is not prime.</p>
-<p>Give a proof which begins with restating the problem in a logically equivalent
-negation-inward form (the Lean tactic <code class="docutils literal notranslate"><span class="pre">push_neg</span></code>).</p>
-<p>This problem has been solved in the text (<a class="reference internal" href="04_Proofs_with_Structure_II.html#not-prime-proof"><span class="std std-numref">Example 4.5.7</span></a>) using a proof
-by contradiction instead of negation-normalization; notice how the negation-normalization
-solution is more intuitive.</p>
-</li>
-</ol>
-<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="c">/-</span><span class="cm"> 4 points -/</span>
-<span class="kd">theorem</span> <span class="n">problem3</span> <span class="o">{</span><span class="n">p</span> <span class="o">:</span> <span class="n">&#8469;</span><span class="o">}</span> <span class="o">(</span><span class="n">k</span> <span class="o">:</span> <span class="n">&#8469;</span><span class="o">)</span> <span class="o">(</span><span class="n">hk1</span> <span class="o">:</span> <span class="n">k</span> <span class="bp">&#8800;</span> <span class="mi">1</span><span class="o">)</span> <span class="o">(</span><span class="n">hkp</span> <span class="o">:</span> <span class="n">k</span> <span class="bp">&#8800;</span> <span class="n">p</span><span class="o">)</span> <span class="o">(</span><span class="n">hk</span> <span class="o">:</span> <span class="n">k</span> <span class="bp">&#8739;</span> <span class="n">p</span><span class="o">)</span> <span class="o">:</span> <span class="bp">&#172;</span> <span class="n">Prime</span> <span class="n">p</span> <span class="o">:=</span> <span class="kd">by</span>
-  <span class="n">dsimp</span> <span class="o">[</span><span class="n">Prime</span><span class="o">]</span>
-  <span class="n">push_neg</span>
-  <span class="gr">sorry</span>
-</pre></div>
-</div>
-<ol class="arabic simple" start="4">
-<li><p>Let <span class="math notranslate nohighlight">\(n\)</span> be a natural number.  Show that <span class="math notranslate nohighlight">\(5^n\)</span> is congruent to either <span class="math notranslate nohighlight">\(1\)</span> or
-<span class="math notranslate nohighlight">\(5\)</span> modulo 8.</p></li>
-</ol>
-<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="c">/-</span><span class="cm"> 4 points -/</span>
-<span class="kd">theorem</span> <span class="n">problem4</span> <span class="o">(</span><span class="n">n</span> <span class="o">:</span> <span class="n">&#8469;</span><span class="o">)</span> <span class="o">:</span> <span class="mi">5</span> <span class="bp">^</span> <span class="n">n</span> <span class="bp">&#8801;</span> <span class="mi">1</span> <span class="o">[</span><span class="n">ZMOD</span> <span class="mi">8</span><span class="o">]</span> <span class="bp">&#8744;</span> <span class="mi">5</span> <span class="bp">^</span> <span class="n">n</span> <span class="bp">&#8801;</span> <span class="mi">5</span> <span class="o">[</span><span class="n">ZMOD</span> <span class="mi">8</span><span class="o">]</span> <span class="o">:=</span> <span class="kd">by</span>
-  <span class="gr">sorry</span>
-</pre></div>
-</div>
-<ol class="arabic simple" start="5">
-<li><p>Show that for all natural numbers <span class="math notranslate nohighlight">\(n\)</span> sufficiently large, <span class="math notranslate nohighlight">\(3^n\geq 2^n+100\)</span>.</p></li>
-</ol>
-<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="c">/-</span><span class="cm"> 4 points -/</span>
-<span class="kd">theorem</span> <span class="n">problem5</span> <span class="o">:</span> <span class="n">forall_sufficiently_large</span> <span class="n">n</span> <span class="o">:</span> <span class="n">&#8469;</span><span class="o">,</span> <span class="o">(</span><span class="mi">3</span><span class="o">:</span><span class="n">&#8484;</span><span class="o">)</span> <span class="bp">^</span> <span class="n">n</span> <span class="bp">&#8805;</span> <span class="mi">2</span> <span class="bp">^</span> <span class="n">n</span> <span class="bp">+</span> <span class="mi">100</span> <span class="o">:=</span> <span class="kd">by</span>
-  <span class="n">dsimp</span>
-  <span class="gr">sorry</span>
-</pre></div>
-</div>
-<ol class="arabic" start="6">
-<li><p>Consider the sequence <span class="math notranslate nohighlight">\((y_n)\)</span> defined recursively by,</p>
-<div class="math notranslate nohighlight">
-\[\begin{split}y_0&amp;=2 \\
-\text{for }n\geq 0,\quad y_{n+1} &amp;= y_n{}^2.\end{split}\]</div>
-<p>Show that for all natural numbers <span class="math notranslate nohighlight">\(n\)</span>, <span class="math notranslate nohighlight">\(y_n=2^{2^n}\)</span>.</p>
-</li>
-</ol>
-<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">def</span> <span class="n">y</span> <span class="o">:</span> <span class="n">&#8469;</span> <span class="bp">&#8594;</span> <span class="n">&#8469;</span>
-  <span class="bp">|</span> <span class="mi">0</span> <span class="bp">=&gt;</span> <span class="mi">2</span>
-  <span class="bp">|</span> <span class="n">n</span> <span class="bp">+</span> <span class="mi">1</span> <span class="bp">=&gt;</span> <span class="o">(</span><span class="n">y</span> <span class="n">n</span><span class="o">)</span> <span class="bp">^</span> <span class="mi">2</span>
-
-<span class="c">/-</span><span class="cm"> 4 points -/</span>
-<span class="kd">theorem</span> <span class="n">problem6</span> <span class="o">(</span><span class="n">n</span> <span class="o">:</span> <span class="n">&#8469;</span><span class="o">)</span> <span class="o">:</span> <span class="n">y</span> <span class="n">n</span> <span class="bp">=</span> <span class="mi">2</span> <span class="bp">^</span> <span class="o">(</span><span class="mi">2</span> <span class="bp">^</span> <span class="n">n</span><span class="o">)</span> <span class="o">:=</span> <span class="kd">by</span>
-  <span class="gr">sorry</span>
-</pre></div>
-</div>
-</section>
-<section id="homework-6">
-<span id="hw6"></span><h2>Homework 6<a class="headerlink" href="#homework-6" title="Permalink to this headline">&#61633;</a></h2>
-<ol class="arabic">
-<li><p>Consider the sequence <span class="math notranslate nohighlight">\((B_n)\)</span> defined recursively by,</p>
-<div class="math notranslate nohighlight">
-\[\begin{split}B_0&amp;=0 \\
-\text{for }n:\mathbb{N},\quad B_{n+1} &amp;= B_n+(n+1)^2.\end{split}\]</div>
-<p>Thus <span class="math notranslate nohighlight">\(B_n\)</span> represents the sum <span class="math notranslate nohighlight">\(1^2+2^2+3^2+\cdots+n^2\)</span>.
-Show that for all natural numbers <span class="math notranslate nohighlight">\(n\)</span>,</p>
-<div class="math notranslate nohighlight">
-\[B_n=\frac{n(n+1)(2n+1)}{6}.\]</div>
-</li>
-</ol>
-<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">def</span> <span class="n">B</span> <span class="o">:</span> <span class="n">&#8469;</span> <span class="bp">&#8594;</span> <span class="n">&#8474;</span>
-  <span class="bp">|</span> <span class="mi">0</span> <span class="bp">=&gt;</span> <span class="mi">0</span>
-  <span class="bp">|</span> <span class="n">n</span> <span class="bp">+</span> <span class="mi">1</span> <span class="bp">=&gt;</span> <span class="n">B</span> <span class="n">n</span> <span class="bp">+</span> <span class="o">(</span><span class="n">n</span> <span class="bp">+</span> <span class="mi">1</span> <span class="o">:</span> <span class="n">&#8474;</span><span class="o">)</span> <span class="bp">^</span> <span class="mi">2</span>
-
-<span class="c">/-</span><span class="cm"> 4 points -/</span>
-<span class="kd">theorem</span> <span class="n">problem1</span> <span class="o">(</span><span class="n">n</span> <span class="o">:</span> <span class="n">&#8469;</span><span class="o">)</span> <span class="o">:</span> <span class="n">B</span> <span class="n">n</span> <span class="bp">=</span> <span class="n">n</span> <span class="bp">*</span> <span class="o">(</span><span class="n">n</span> <span class="bp">+</span> <span class="mi">1</span><span class="o">)</span> <span class="bp">*</span> <span class="o">(</span><span class="mi">2</span> <span class="bp">*</span> <span class="n">n</span> <span class="bp">+</span> <span class="mi">1</span><span class="o">)</span> <span class="bp">/</span> <span class="mi">6</span> <span class="o">:=</span> <span class="kd">by</span>
-  <span class="gr">sorry</span>
-</pre></div>
-</div>
-<ol class="arabic" start="2">
-<li><p>Consider the sequence <span class="math notranslate nohighlight">\((b_n)\)</span> defined recursively by,</p>
-<div class="math notranslate nohighlight">
-\[\begin{split}b_0&amp;=0\\
-b_1&amp;=1\\
-\text{for }n:\mathbb{N},\quad b_{n+2}&amp;=5b_{n+1}-6b_n.\end{split}\]</div>
-<p>Prove that for all natural numbers <span class="math notranslate nohighlight">\(n\)</span>, <span class="math notranslate nohighlight">\(b_n=3^n - 2 ^ n\)</span>.</p>
-</li>
-</ol>
-<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">def</span> <span class="n">b</span> <span class="o">:</span> <span class="n">&#8469;</span> <span class="bp">&#8594;</span> <span class="n">&#8484;</span>
-  <span class="bp">|</span> <span class="mi">0</span> <span class="bp">=&gt;</span> <span class="mi">0</span>
-  <span class="bp">|</span> <span class="mi">1</span> <span class="bp">=&gt;</span> <span class="mi">1</span>
-  <span class="bp">|</span> <span class="n">n</span> <span class="bp">+</span> <span class="mi">2</span> <span class="bp">=&gt;</span> <span class="mi">5</span> <span class="bp">*</span> <span class="n">b</span> <span class="o">(</span><span class="n">n</span> <span class="bp">+</span> <span class="mi">1</span><span class="o">)</span> <span class="bp">-</span> <span class="mi">6</span> <span class="bp">*</span> <span class="n">b</span> <span class="n">n</span>
-
-<span class="c">/-</span><span class="cm"> 4 points -/</span>
-<span class="kd">theorem</span> <span class="n">problem2</span> <span class="o">(</span><span class="n">n</span> <span class="o">:</span> <span class="n">&#8469;</span><span class="o">)</span> <span class="o">:</span> <span class="n">b</span> <span class="n">n</span> <span class="bp">=</span> <span class="mi">3</span> <span class="bp">^</span> <span class="n">n</span> <span class="bp">-</span> <span class="mi">2</span> <span class="bp">^</span> <span class="n">n</span> <span class="o">:=</span> <span class="kd">by</span>
-  <span class="gr">sorry</span>
-</pre></div>
-</div>
-<ol class="arabic" start="3">
-<li><p>Consider the sequence <span class="math notranslate nohighlight">\((s_n)\)</span> defined recursively by,</p>
-<div class="math notranslate nohighlight">
-\[\begin{split}s_0&amp;=2\\
-s_1&amp;=3\\
-\text{for }n:\mathbb{N},\quad s_{n+2}&amp;=2s_{n+1}+3s_n.\end{split}\]</div>
-<p>Prove that for all natural numbers <span class="math notranslate nohighlight">\(m\)</span>, <span class="math notranslate nohighlight">\(s_m\)</span> is congruent to either 2 or 3
-modulo 5.</p>
-</li>
-</ol>
-<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">def</span> <span class="n">s</span> <span class="o">:</span> <span class="n">&#8469;</span> <span class="bp">&#8594;</span> <span class="n">&#8484;</span>
-  <span class="bp">|</span> <span class="mi">0</span> <span class="bp">=&gt;</span> <span class="mi">2</span>
-  <span class="bp">|</span> <span class="mi">1</span> <span class="bp">=&gt;</span> <span class="mi">3</span>
-  <span class="bp">|</span> <span class="n">n</span> <span class="bp">+</span> <span class="mi">2</span> <span class="bp">=&gt;</span> <span class="mi">2</span> <span class="bp">*</span> <span class="n">s</span> <span class="o">(</span><span class="n">n</span> <span class="bp">+</span> <span class="mi">1</span><span class="o">)</span> <span class="bp">+</span> <span class="mi">3</span> <span class="bp">*</span> <span class="n">s</span> <span class="n">n</span>
-
-<span class="c">/-</span><span class="cm"> 5 points -/</span>
-<span class="kd">theorem</span> <span class="n">problem3</span> <span class="o">(</span><span class="n">m</span> <span class="o">:</span> <span class="n">&#8469;</span><span class="o">)</span> <span class="o">:</span> <span class="n">s</span> <span class="n">m</span> <span class="bp">&#8801;</span> <span class="mi">2</span> <span class="o">[</span><span class="n">ZMOD</span> <span class="mi">5</span><span class="o">]</span> <span class="bp">&#8744;</span> <span class="n">s</span> <span class="n">m</span> <span class="bp">&#8801;</span> <span class="mi">3</span> <span class="o">[</span><span class="n">ZMOD</span> <span class="mi">5</span><span class="o">]</span> <span class="o">:=</span> <span class="kd">by</span>
-  <span class="gr">sorry</span>
-</pre></div>
-</div>
-<ol class="arabic" start="4">
-<li><p>Consider the sequence <span class="math notranslate nohighlight">\((r_n)\)</span> defined recursively by,</p>
-<div class="math notranslate nohighlight">
-\[\begin{split}r_0&amp;=2\\
-r_1&amp;=0\\
-\text{for }n:\mathbb{N},\quad r_{n+2}&amp;=2r_{n+1}+r_n.\end{split}\]</div>
-<p>Prove that for all sufficiently large natural numbers <span class="math notranslate nohighlight">\(n\)</span>, it is true that
-<span class="math notranslate nohighlight">\(r_n\geq 2^n\)</span>.</p>
-</li>
-</ol>
-<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">def</span> <span class="n">r</span> <span class="o">:</span> <span class="n">&#8469;</span> <span class="bp">&#8594;</span> <span class="n">&#8484;</span>
-  <span class="bp">|</span> <span class="mi">0</span> <span class="bp">=&gt;</span> <span class="mi">2</span>
-  <span class="bp">|</span> <span class="mi">1</span> <span class="bp">=&gt;</span> <span class="mi">0</span>
-  <span class="bp">|</span> <span class="n">n</span> <span class="bp">+</span> <span class="mi">2</span> <span class="bp">=&gt;</span> <span class="mi">2</span> <span class="bp">*</span> <span class="n">r</span> <span class="o">(</span><span class="n">n</span> <span class="bp">+</span> <span class="mi">1</span><span class="o">)</span> <span class="bp">+</span> <span class="n">r</span> <span class="n">n</span>
-
-<span class="c">/-</span><span class="cm"> 4 points -/</span>
-<span class="kd">theorem</span> <span class="n">problem4</span> <span class="o">:</span> <span class="n">forall_sufficiently_large</span> <span class="n">n</span> <span class="o">:</span> <span class="n">&#8469;</span><span class="o">,</span> <span class="n">r</span> <span class="n">n</span> <span class="bp">&#8805;</span> <span class="mi">2</span> <span class="bp">^</span> <span class="n">n</span> <span class="o">:=</span> <span class="kd">by</span>
-  <span class="gr">sorry</span>
-</pre></div>
-</div>
-<ol class="arabic" start="5">
-<li><p>Consider the function <span class="math notranslate nohighlight">\(T\)</span> defined recursively on the integers by,</p>
-<div class="math notranslate nohighlight">
-\[\begin{split}T(n)=
-\begin{cases}
-T(1-n)+2n-1,&amp;0&lt; n\\
-T(-n),&amp;n&lt; 0\\
-0&amp;n=0.
-\end{cases}\end{split}\]</div>
-<p>This recursive definition is well-founded, since its self-references are strictly decreasing in
-<span class="math notranslate nohighlight">\(|3n-1|\)</span>.</p>
-<p>Prove that for all integers <span class="math notranslate nohighlight">\(n\)</span>, <span class="math notranslate nohighlight">\(T(n)=n^2\)</span>.</p>
-</li>
-</ol>
-<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">def</span> <span class="n">T</span> <span class="o">(</span><span class="n">n</span> <span class="o">:</span> <span class="n">&#8484;</span><span class="o">)</span> <span class="o">:</span> <span class="n">&#8484;</span> <span class="o">:=</span>
-  <span class="k">if</span> <span class="mi">0</span> <span class="bp">&lt;</span> <span class="n">n</span> <span class="k">then</span>
-    <span class="n">T</span> <span class="o">(</span><span class="mi">1</span> <span class="bp">-</span> <span class="n">n</span><span class="o">)</span> <span class="bp">+</span> <span class="mi">2</span> <span class="bp">*</span> <span class="n">n</span> <span class="bp">-</span> <span class="mi">1</span>
-  <span class="k">else</span> <span class="k">if</span> <span class="n">n</span> <span class="bp">&lt;</span> <span class="mi">0</span> <span class="k">then</span>
-    <span class="n">T</span> <span class="o">(</span><span class="bp">-</span><span class="n">n</span><span class="o">)</span>
-  <span class="k">else</span>
-    <span class="mi">0</span>
-<span class="n">termination_by</span> <span class="n">T</span> <span class="n">n</span> <span class="bp">=&gt;</span> <span class="mi">3</span> <span class="bp">*</span> <span class="n">n</span> <span class="bp">-</span> <span class="mi">1</span>
-
-<span class="c">/-</span><span class="cm"> 4 points -/</span>
-<span class="kd">theorem</span> <span class="n">problem5</span> <span class="o">(</span><span class="n">n</span> <span class="o">:</span> <span class="n">&#8484;</span><span class="o">)</span> <span class="o">:</span> <span class="n">T</span> <span class="n">n</span> <span class="bp">=</span> <span class="n">n</span> <span class="bp">^</span> <span class="mi">2</span> <span class="o">:=</span> <span class="kd">by</span>
-  <span class="gr">sorry</span>
-</pre></div>
-</div>
-<ol class="arabic" start="6">
-<li><p>Compute <span class="math notranslate nohighlight">\(\operatorname{gcd}(-15,25)\)</span> and <span class="math notranslate nohighlight">\(\operatorname{gcd}(15,25)\)</span> using the
-Euclidean algorithm (<a class="reference internal" href="06_Induction.html#euclidean-algorithm-def"><span class="std std-numref">Example 6.7.1</span></a>), showing your work.</p>
-<p>Write this solution only on paper, not in Lean (but you are free to check your work using Lean).</p>
-</li>
-</ol>
-</section>
-<section id="homework-7">
-<span id="hw7"></span><h2>Homework 7<a class="headerlink" href="#homework-7" title="Permalink to this headline">&#61633;</a></h2>
-<ol class="arabic">
-<li><p>Using the extended Euclidean algorithm, find</p>
-<ol class="loweralpha simple">
-<li><p>integers <span class="math notranslate nohighlight">\(m\)</span> and <span class="math notranslate nohighlight">\(n\)</span> such that <span class="math notranslate nohighlight">\((-66)m+38n=\operatorname{gcd}(-66,38)\)</span>;</p></li>
-<li><p>integers <span class="math notranslate nohighlight">\(m\)</span> and <span class="math notranslate nohighlight">\(n\)</span> such that <span class="math notranslate nohighlight">\(33m+(-23)n=\operatorname{gcd}(33,-23)\)</span>.</p></li>
-</ol>
-<p>Write this solution only on paper, not in Lean (but you are free to check your work using Lean).</p>
-</li>
-<li><p>Prove or disprove that the function <span class="math notranslate nohighlight">\(x \mapsto 2x\)</span> from <span class="math notranslate nohighlight">\(\mathbb{R}\)</span> to
-<span class="math notranslate nohighlight">\(\mathbb{R}\)</span> is surjective.</p>
-<p>(If you think it&#8217;s true, prove it, by solving the first version below.  If you think it&#8217;s false,
-solve the second version.)</p>
-</li>
-</ol>
-<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="c">/-</span><span class="cm"> 4 points -/</span>
-<span class="kd">theorem</span> <span class="n">problem2a</span> <span class="o">:</span> <span class="n">Surjective</span> <span class="o">(</span><span class="k">fun</span> <span class="o">(</span><span class="n">x</span> <span class="o">:</span> <span class="n">&#8477;</span><span class="o">)</span> <span class="bp">&#8614;</span> <span class="mi">2</span> <span class="bp">*</span> <span class="n">x</span><span class="o">)</span> <span class="o">:=</span> <span class="kd">by</span>
-  <span class="gr">sorry</span>
-
-<span class="c">/-</span><span class="cm"> 4 points -/</span>
-<span class="kd">theorem</span> <span class="n">problem2b</span> <span class="o">:</span> <span class="bp">&#172;</span> <span class="n">Surjective</span> <span class="o">(</span><span class="k">fun</span> <span class="o">(</span><span class="n">x</span> <span class="o">:</span> <span class="n">&#8477;</span><span class="o">)</span> <span class="bp">&#8614;</span> <span class="mi">2</span> <span class="bp">*</span> <span class="n">x</span><span class="o">)</span> <span class="o">:=</span> <span class="kd">by</span>
-  <span class="gr">sorry</span>
-</pre></div>
-</div>
-<ol class="arabic" start="3">
-<li><p>Prove or disprove that the function <span class="math notranslate nohighlight">\(x \mapsto 2x\)</span> from <span class="math notranslate nohighlight">\(\mathbb{Z}\)</span> to
-<span class="math notranslate nohighlight">\(\mathbb{Z}\)</span> is surjective.</p>
-<p>(If you think it&#8217;s true, prove it, by solving the first version below.  If you think it&#8217;s false,
-solve the second version.)</p>
-</li>
-</ol>
-<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="c">/-</span><span class="cm"> 4 points -/</span>
-<span class="kd">theorem</span> <span class="n">problem3a</span> <span class="o">:</span> <span class="n">Surjective</span> <span class="o">(</span><span class="k">fun</span> <span class="o">(</span><span class="n">x</span> <span class="o">:</span> <span class="n">&#8484;</span><span class="o">)</span> <span class="bp">&#8614;</span> <span class="mi">2</span> <span class="bp">*</span> <span class="n">x</span><span class="o">)</span> <span class="o">:=</span> <span class="kd">by</span>
-  <span class="gr">sorry</span>
-
-<span class="c">/-</span><span class="cm"> 4 points -/</span>
-<span class="kd">theorem</span> <span class="n">problem3b</span> <span class="o">:</span> <span class="bp">&#172;</span> <span class="n">Surjective</span> <span class="o">(</span><span class="k">fun</span> <span class="o">(</span><span class="n">x</span> <span class="o">:</span> <span class="n">&#8484;</span><span class="o">)</span> <span class="bp">&#8614;</span> <span class="mi">2</span> <span class="bp">*</span> <span class="n">x</span><span class="o">)</span> <span class="o">:=</span> <span class="kd">by</span>
-  <span class="gr">sorry</span>
-</pre></div>
-</div>
-<ol class="arabic" start="4">
-<li><p>Prove or disprove that for all functions <span class="math notranslate nohighlight">\(f:\mathbb{Q}\to \mathbb{Q}\)</span>, if <span class="math notranslate nohighlight">\(f\)</span> is
-injective, then the function <span class="math notranslate nohighlight">\(x \mapsto f(x)+1\)</span> from <span class="math notranslate nohighlight">\(\mathbb{Q}\)</span> to
-<span class="math notranslate nohighlight">\(\mathbb{Q}\)</span> is also injective.</p>
-<p>(If you think it&#8217;s true, prove it, by solving the first version below.  If you think it&#8217;s false,
-solve the second version.)</p>
-</li>
-</ol>
-<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="c">/-</span><span class="cm"> 5 points -/</span>
-<span class="kd">theorem</span> <span class="n">problem4a</span> <span class="o">:</span> <span class="bp">&#8704;</span> <span class="o">(</span><span class="n">f</span> <span class="o">:</span> <span class="n">&#8474;</span> <span class="bp">&#8594;</span> <span class="n">&#8474;</span><span class="o">),</span> <span class="n">Injective</span> <span class="n">f</span> <span class="bp">&#8594;</span> <span class="n">Injective</span> <span class="o">(</span><span class="k">fun</span> <span class="n">x</span> <span class="bp">&#8614;</span> <span class="n">f</span> <span class="n">x</span> <span class="bp">+</span> <span class="mi">1</span><span class="o">)</span> <span class="o">:=</span> <span class="kd">by</span>
-  <span class="gr">sorry</span>
-
-<span class="c">/-</span><span class="cm"> 5 points -/</span>
-<span class="kd">theorem</span> <span class="n">problem4b</span> <span class="o">:</span> <span class="bp">&#172;</span> <span class="bp">&#8704;</span> <span class="o">(</span><span class="n">f</span> <span class="o">:</span> <span class="n">&#8474;</span> <span class="bp">&#8594;</span> <span class="n">&#8474;</span><span class="o">),</span> <span class="n">Injective</span> <span class="n">f</span> <span class="bp">&#8594;</span> <span class="n">Injective</span> <span class="o">(</span><span class="k">fun</span> <span class="n">x</span> <span class="bp">&#8614;</span> <span class="n">f</span> <span class="n">x</span> <span class="bp">+</span> <span class="mi">1</span><span class="o">)</span> <span class="o">:=</span> <span class="kd">by</span>
-  <span class="gr">sorry</span>
-</pre></div>
-</div>
-<ol class="arabic" start="5">
-<li><p>Prove or disprove that the function <span class="math notranslate nohighlight">\(x \mapsto 4-3x\)</span> from <span class="math notranslate nohighlight">\(\mathbb{R}\)</span> to
-<span class="math notranslate nohighlight">\(\mathbb{R}\)</span> is bijective.</p>
-<p>(If you think it&#8217;s true, prove it, by solving the first version below.  If you think it&#8217;s false,
-solve the second version.)</p>
-</li>
-</ol>
-<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="c">/-</span><span class="cm"> 4 points -/</span>
-<span class="kd">theorem</span> <span class="n">problem5a</span> <span class="o">:</span> <span class="n">Bijective</span> <span class="o">(</span><span class="k">fun</span> <span class="o">(</span><span class="n">x</span> <span class="o">:</span> <span class="n">&#8477;</span><span class="o">)</span> <span class="bp">&#8614;</span> <span class="mi">4</span> <span class="bp">-</span> <span class="mi">3</span> <span class="bp">*</span> <span class="n">x</span><span class="o">)</span> <span class="o">:=</span> <span class="kd">by</span>
-  <span class="gr">sorry</span>
-
-<span class="c">/-</span><span class="cm"> 4 points -/</span>
-<span class="kd">theorem</span> <span class="n">problem5b</span> <span class="o">:</span> <span class="bp">&#172;</span> <span class="n">Bijective</span> <span class="o">(</span><span class="k">fun</span> <span class="o">(</span><span class="n">x</span> <span class="o">:</span> <span class="n">&#8477;</span><span class="o">)</span> <span class="bp">&#8614;</span> <span class="mi">4</span> <span class="bp">-</span> <span class="mi">3</span> <span class="bp">*</span> <span class="n">x</span><span class="o">)</span> <span class="o">:=</span> <span class="kd">by</span>
-  <span class="gr">sorry</span>
-</pre></div>
-</div>
-<ol class="arabic simple" start="6">
-<li><p>Let <span class="math notranslate nohighlight">\(f : X \to Y\)</span> and <span class="math notranslate nohighlight">\(g : Y \to Z\)</span> be surjective functions.  Show that
-<span class="math notranslate nohighlight">\(g \circ f\)</span> is also surjective.</p></li>
-</ol>
-<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="c">/-</span><span class="cm"> 4 points -/</span>
-<span class="kd">theorem</span> <span class="n">problem6</span> <span class="o">{</span><span class="n">f</span> <span class="o">:</span> <span class="n">X</span> <span class="bp">&#8594;</span> <span class="n">Y</span><span class="o">}</span> <span class="o">(</span><span class="n">hf</span> <span class="o">:</span> <span class="n">Surjective</span> <span class="n">f</span><span class="o">)</span> <span class="o">{</span><span class="n">g</span> <span class="o">:</span> <span class="n">Y</span> <span class="bp">&#8594;</span> <span class="n">Z</span><span class="o">}</span> <span class="o">(</span><span class="n">hg</span> <span class="o">:</span> <span class="n">Surjective</span> <span class="n">g</span><span class="o">)</span> <span class="o">:</span>
-    <span class="n">Surjective</span> <span class="o">(</span><span class="n">g</span> <span class="bp">&#8728;</span> <span class="n">f</span><span class="o">)</span> <span class="o">:=</span> <span class="kd">by</span>
-  <span class="gr">sorry</span>
-</pre></div>
-</div>
-</section>
-<section id="homework-8">
-<span id="hw8"></span><h2>Homework 8<a class="headerlink" href="#homework-8" title="Permalink to this headline">&#61633;</a></h2>
-<ol class="arabic simple">
-<li><p>Consider the function <span class="math notranslate nohighlight">\((a,b)\mapsto a^b\)</span> from <span class="math notranslate nohighlight">\(\mathbb{Q}&#215; \mathbb{N}\)</span> to
-<span class="math notranslate nohighlight">\(\mathbb{Q}\)</span>. Show that this function is surjective.</p></li>
-</ol>
-<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="c">/-</span><span class="cm"> 4 points -/</span>
-<span class="kd">theorem</span> <span class="n">problem1</span> <span class="o">:</span> <span class="n">Surjective</span> <span class="o">(</span><span class="k">fun</span> <span class="o">((</span><span class="n">a</span><span class="o">,</span> <span class="n">b</span><span class="o">)</span> <span class="o">:</span> <span class="n">&#8474;</span> <span class="bp">&#215;</span> <span class="n">&#8469;</span><span class="o">)</span> <span class="bp">&#8614;</span> <span class="n">a</span> <span class="bp">^</span> <span class="n">b</span><span class="o">)</span> <span class="o">:=</span> <span class="kd">by</span>
-  <span class="gr">sorry</span>
-</pre></div>
-</div>
-<ol class="arabic simple" start="2">
-<li><p>Consider the function <span class="math notranslate nohighlight">\((x,y,z)\mapsto (x+y+z,x+2y+3z)\)</span> from  <span class="math notranslate nohighlight">\(\mathbb{R}^3\)</span> to
-<span class="math notranslate nohighlight">\(\mathbb{R}^2\)</span>. Show that this function is not injective.</p></li>
-</ol>
-<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="c">/-</span><span class="cm"> 4 points -/</span>
-<span class="kd">theorem</span> <span class="n">problem2</span> <span class="o">:</span> <span class="bp">&#172;</span> <span class="n">Injective</span> <span class="o">(</span><span class="k">fun</span> <span class="o">((</span><span class="n">x</span><span class="o">,</span> <span class="n">y</span><span class="o">,</span> <span class="n">z</span><span class="o">)</span> <span class="o">:</span> <span class="n">&#8477;</span> <span class="bp">&#215;</span> <span class="n">&#8477;</span> <span class="bp">&#215;</span> <span class="n">&#8477;</span><span class="o">)</span> <span class="bp">&#8614;</span> <span class="o">(</span><span class="n">x</span> <span class="bp">+</span> <span class="n">y</span> <span class="bp">+</span> <span class="n">z</span><span class="o">,</span> <span class="n">x</span> <span class="bp">+</span> <span class="mi">2</span> <span class="bp">*</span> <span class="n">y</span> <span class="bp">+</span> <span class="mi">3</span> <span class="bp">*</span> <span class="n">z</span><span class="o">))</span> <span class="o">:=</span> <span class="kd">by</span>
-  <span class="gr">sorry</span>
-</pre></div>
-</div>
-<ol class="arabic simple" start="3">
-<li><p>Prove or disprove that
-<span class="math notranslate nohighlight">\(\{m:\mathbb{Z} \mid m\ge 10\}\subseteq \{n:\mathbb{Z} \mid n^3-7n^2\geq 4n\}\)</span>.</p></li>
-</ol>
-<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="c">/-</span><span class="cm"> 4 points -/</span>
-<span class="kd">theorem</span> <span class="n">problem3a</span> <span class="o">:</span> <span class="o">{</span> <span class="n">m</span> <span class="o">:</span> <span class="n">&#8484;</span> <span class="bp">|</span> <span class="n">m</span> <span class="bp">&#8805;</span> <span class="mi">10</span> <span class="o">}</span> <span class="bp">&#8838;</span> <span class="o">{</span> <span class="n">n</span> <span class="o">:</span> <span class="n">&#8484;</span> <span class="bp">|</span> <span class="n">n</span> <span class="bp">^</span> <span class="mi">3</span> <span class="bp">-</span> <span class="mi">7</span> <span class="bp">*</span> <span class="n">n</span> <span class="bp">^</span> <span class="mi">2</span> <span class="bp">&#8805;</span> <span class="mi">4</span> <span class="bp">*</span> <span class="n">n</span> <span class="o">}</span> <span class="o">:=</span> <span class="kd">by</span>
-  <span class="gr">sorry</span>
-
-<span class="c">/-</span><span class="cm"> 4 points -/</span>
-<span class="kd">theorem</span> <span class="n">problem3b</span> <span class="o">:</span> <span class="o">{</span> <span class="n">m</span> <span class="o">:</span> <span class="n">&#8484;</span> <span class="bp">|</span> <span class="n">m</span> <span class="bp">&#8805;</span> <span class="mi">10</span> <span class="o">}</span> <span class="bp">&#8840;</span> <span class="o">{</span> <span class="n">n</span> <span class="o">:</span> <span class="n">&#8484;</span> <span class="bp">|</span> <span class="n">n</span> <span class="bp">^</span> <span class="mi">3</span> <span class="bp">-</span> <span class="mi">7</span> <span class="bp">*</span> <span class="n">n</span> <span class="bp">^</span> <span class="mi">2</span> <span class="bp">&#8805;</span> <span class="mi">4</span> <span class="bp">*</span> <span class="n">n</span> <span class="o">}</span> <span class="o">:=</span> <span class="kd">by</span>
-  <span class="gr">sorry</span>
-</pre></div>
-</div>
-<ol class="arabic simple" start="4">
-<li><p>Prove or disprove that
-<span class="math notranslate nohighlight">\(\{t:\mathbb{R} \mid t^2-5t+4=0\}=\{s:\mathbb{R} \mid s=4\}\)</span>.</p></li>
-</ol>
-<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="c">/-</span><span class="cm"> 4 points -/</span>
-<span class="kd">theorem</span> <span class="n">problem4a</span> <span class="o">:</span> <span class="o">{</span> <span class="n">t</span> <span class="o">:</span> <span class="n">&#8477;</span> <span class="bp">|</span> <span class="n">t</span> <span class="bp">^</span> <span class="mi">2</span> <span class="bp">-</span> <span class="mi">5</span> <span class="bp">*</span> <span class="n">t</span> <span class="bp">+</span> <span class="mi">4</span> <span class="bp">=</span> <span class="mi">0</span> <span class="o">}</span> <span class="bp">=</span> <span class="o">{</span> <span class="n">s</span> <span class="o">:</span> <span class="n">&#8477;</span> <span class="bp">|</span> <span class="n">s</span> <span class="bp">=</span> <span class="mi">4</span> <span class="o">}</span> <span class="o">:=</span> <span class="kd">by</span>
-  <span class="gr">sorry</span>
-
-<span class="c">/-</span><span class="cm"> 4 points -/</span>
-<span class="kd">theorem</span> <span class="n">problem4b</span> <span class="o">:</span> <span class="o">{</span> <span class="n">t</span> <span class="o">:</span> <span class="n">&#8477;</span> <span class="bp">|</span> <span class="n">t</span> <span class="bp">^</span> <span class="mi">2</span> <span class="bp">-</span> <span class="mi">5</span> <span class="bp">*</span> <span class="n">t</span> <span class="bp">+</span> <span class="mi">4</span> <span class="bp">=</span> <span class="mi">0</span> <span class="o">}</span> <span class="bp">&#8800;</span> <span class="o">{</span> <span class="n">s</span> <span class="o">:</span> <span class="n">&#8477;</span> <span class="bp">|</span> <span class="n">s</span> <span class="bp">=</span> <span class="mi">4</span> <span class="o">}</span> <span class="o">:=</span> <span class="kd">by</span>
-  <span class="gr">sorry</span>
-</pre></div>
-</div>
-<ol class="arabic simple" start="5">
-<li><p>Prove or disprove that <span class="math notranslate nohighlight">\(\{k:\mathbb{Z} \mid 7\mid 9k\}=\{l:\mathbb{Z} \mid 7\mid l\}\)</span>.</p></li>
-</ol>
-<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="c">/-</span><span class="cm"> 5 points -/</span>
-<span class="kd">theorem</span> <span class="n">problem5a</span> <span class="o">:</span> <span class="o">{</span> <span class="n">k</span> <span class="o">:</span> <span class="n">&#8484;</span> <span class="bp">|</span> <span class="mi">7</span> <span class="bp">&#8739;</span> <span class="mi">9</span> <span class="bp">*</span> <span class="n">k</span> <span class="o">}</span> <span class="bp">=</span> <span class="o">{</span> <span class="n">l</span> <span class="o">:</span> <span class="n">&#8484;</span> <span class="bp">|</span> <span class="mi">7</span> <span class="bp">&#8739;</span> <span class="n">l</span> <span class="o">}</span> <span class="o">:=</span> <span class="kd">by</span>
-  <span class="gr">sorry</span>
-
-<span class="c">/-</span><span class="cm"> 5 points -/</span>
-<span class="kd">theorem</span> <span class="n">problem5b</span> <span class="o">:</span> <span class="o">{</span> <span class="n">k</span> <span class="o">:</span> <span class="n">&#8484;</span> <span class="bp">|</span> <span class="mi">7</span> <span class="bp">&#8739;</span> <span class="mi">9</span> <span class="bp">*</span> <span class="n">k</span> <span class="o">}</span> <span class="bp">&#8800;</span> <span class="o">{</span> <span class="n">l</span> <span class="o">:</span> <span class="n">&#8484;</span> <span class="bp">|</span> <span class="mi">7</span> <span class="bp">&#8739;</span> <span class="n">l</span> <span class="o">}</span> <span class="o">:=</span> <span class="kd">by</span>
-  <span class="gr">sorry</span>
-</pre></div>
-</div>
-<ol class="arabic simple" start="6">
-<li><p>Prove or disprove that <span class="math notranslate nohighlight">\(\{1,2,3\}=\{1,2\}\)</span>.</p></li>
-</ol>
-<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="c">/-</span><span class="cm"> 4 points -/</span>
-<span class="kd">theorem</span> <span class="n">problem6a</span> <span class="o">:</span> <span class="o">{</span><span class="mi">1</span><span class="o">,</span> <span class="mi">2</span><span class="o">,</span> <span class="mi">3</span><span class="o">}</span> <span class="bp">=</span> <span class="o">{</span><span class="mi">1</span><span class="o">,</span> <span class="mi">2</span><span class="o">}</span> <span class="o">:=</span> <span class="kd">by</span>
-  <span class="gr">sorry</span>
-
-<span class="c">/-</span><span class="cm"> 4 points -/</span>
-<span class="kd">theorem</span> <span class="n">problem6b</span> <span class="o">:</span> <span class="o">{</span><span class="mi">1</span><span class="o">,</span> <span class="mi">2</span><span class="o">,</span> <span class="mi">3</span><span class="o">}</span> <span class="bp">&#8800;</span> <span class="o">{</span><span class="mi">1</span><span class="o">,</span> <span class="mi">2</span><span class="o">}</span> <span class="o">:=</span> <span class="kd">by</span>
-  <span class="gr">sorry</span>
-</pre></div>
-</div>
-</section>
-<section id="homework-9">
-<span id="hw9"></span><h2>Homework 9<a class="headerlink" href="#homework-9" title="Permalink to this headline">&#61633;</a></h2>
-<ol class="arabic simple">
-<li><p>Prove that
-<span class="math notranslate nohighlight">\(\{r:\mathbb{Z}\mid r\equiv 7\mod 10\}\subseteq \{s:\mathbb{Z}\mid s\equiv 1\mod 2\}\cap\{t:\mathbb{Z}\mid t\equiv 2\mod 5\}\)</span>.</p></li>
-</ol>
-<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="c">/-</span><span class="cm"> 4 points -/</span>
-<span class="kd">theorem</span> <span class="n">problem1</span> <span class="o">:</span> <span class="o">{</span> <span class="n">r</span> <span class="o">:</span> <span class="n">&#8484;</span> <span class="bp">|</span> <span class="n">r</span> <span class="bp">&#8801;</span> <span class="mi">7</span> <span class="o">[</span><span class="n">ZMOD</span> <span class="mi">10</span><span class="o">]</span> <span class="o">}</span>
-    <span class="bp">&#8838;</span> <span class="o">{</span> <span class="n">s</span> <span class="o">:</span> <span class="n">&#8484;</span> <span class="bp">|</span> <span class="n">s</span> <span class="bp">&#8801;</span> <span class="mi">1</span> <span class="o">[</span><span class="n">ZMOD</span> <span class="mi">2</span><span class="o">]</span> <span class="o">}</span> <span class="bp">&#8745;</span> <span class="o">{</span> <span class="n">t</span> <span class="o">:</span> <span class="n">&#8484;</span> <span class="bp">|</span> <span class="n">t</span> <span class="bp">&#8801;</span> <span class="mi">2</span> <span class="o">[</span><span class="n">ZMOD</span> <span class="mi">5</span><span class="o">]</span> <span class="o">}</span> <span class="o">:=</span> <span class="kd">by</span>
-  <span class="gr">sorry</span>
-</pre></div>
-</div>
-<ol class="arabic" start="2">
-<li><p>Determine which of these properties hold for the relation <span class="math notranslate nohighlight">\(\sim\)</span> on <span class="math notranslate nohighlight">\(\mathbb{Z}\)</span>,
-defined by, <span class="math notranslate nohighlight">\(x\sim y\)</span> if <span class="math notranslate nohighlight">\(y\equiv x+1\mod 5\)</span>:</p>
-<ol class="arabic simple">
-<li><p>reflexive</p></li>
-<li><p>symmetric</p></li>
-<li><p>antisymmetric</p></li>
-<li><p>transitive</p></li>
-</ol>
-<p>Also (for submission only on paper, not in Lean)</p>
-<ol class="arabic simple" start="5">
-<li><p>Sketch (a representative portion of) this relation as a directed graph.</p></li>
-</ol>
-</li>
-</ol>
-<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kn">local</span> <span class="kd">infix</span><span class="o">:</span><span class="mi">50</span> <span class="s2">&quot;&#8764;&quot;</span> <span class="bp">=&gt;</span> <span class="k">fun</span> <span class="o">(</span><span class="n">x</span> <span class="n">y</span> <span class="o">:</span> <span class="n">&#8484;</span><span class="o">)</span> <span class="bp">&#8614;</span> <span class="n">y</span> <span class="bp">&#8801;</span> <span class="n">x</span> <span class="bp">+</span> <span class="mi">1</span> <span class="o">[</span><span class="n">ZMOD</span> <span class="mi">5</span><span class="o">]</span>
-
-<span class="c">/-</span><span class="cm"> 2 points -/</span>
-<span class="kd">theorem</span> <span class="n">problem21a</span> <span class="o">:</span> <span class="n">Reflexive</span> <span class="o">(</span><span class="bp">&#183;</span> <span class="bp">&#8764;</span> <span class="bp">&#183;</span><span class="o">)</span> <span class="o">:=</span> <span class="kd">by</span>
-  <span class="gr">sorry</span>
-
-<span class="c">/-</span><span class="cm"> 2 points -/</span>
-<span class="kd">theorem</span> <span class="n">problem21b</span> <span class="o">:</span> <span class="bp">&#172;</span> <span class="n">Reflexive</span> <span class="o">(</span><span class="bp">&#183;</span> <span class="bp">&#8764;</span> <span class="bp">&#183;</span><span class="o">)</span> <span class="o">:=</span> <span class="kd">by</span>
-  <span class="gr">sorry</span>
-
-<span class="c">/-</span><span class="cm"> 2 points -/</span>
-<span class="kd">theorem</span> <span class="n">problem22a</span> <span class="o">:</span> <span class="n">Symmetric</span> <span class="o">(</span><span class="bp">&#183;</span> <span class="bp">&#8764;</span> <span class="bp">&#183;</span><span class="o">)</span> <span class="o">:=</span> <span class="kd">by</span>
-  <span class="gr">sorry</span>
-
-<span class="c">/-</span><span class="cm"> 2 points -/</span>
-<span class="kd">theorem</span> <span class="n">problem22b</span> <span class="o">:</span> <span class="bp">&#172;</span> <span class="n">Symmetric</span> <span class="o">(</span><span class="bp">&#183;</span> <span class="bp">&#8764;</span> <span class="bp">&#183;</span><span class="o">)</span> <span class="o">:=</span> <span class="kd">by</span>
-  <span class="gr">sorry</span>
-
-<span class="c">/-</span><span class="cm"> 3 points -/</span>
-<span class="kd">theorem</span> <span class="n">problem23a</span> <span class="o">:</span> <span class="n">AntiSymmetric</span> <span class="o">(</span><span class="bp">&#183;</span> <span class="bp">&#8764;</span> <span class="bp">&#183;</span><span class="o">)</span> <span class="o">:=</span> <span class="kd">by</span>
-  <span class="gr">sorry</span>
-
-<span class="c">/-</span><span class="cm"> 3 points -/</span>
-<span class="kd">theorem</span> <span class="n">problem23b</span> <span class="o">:</span> <span class="bp">&#172;</span> <span class="n">AntiSymmetric</span> <span class="o">(</span><span class="bp">&#183;</span> <span class="bp">&#8764;</span> <span class="bp">&#183;</span><span class="o">)</span> <span class="o">:=</span> <span class="kd">by</span>
-  <span class="gr">sorry</span>
-
-<span class="c">/-</span><span class="cm"> 3 points -/</span>
-<span class="kd">theorem</span> <span class="n">problem24a</span> <span class="o">:</span> <span class="n">Transitive</span> <span class="o">(</span><span class="bp">&#183;</span> <span class="bp">&#8764;</span> <span class="bp">&#183;</span><span class="o">)</span> <span class="o">:=</span> <span class="kd">by</span>
-  <span class="gr">sorry</span>
-
-<span class="c">/-</span><span class="cm"> 3 points -/</span>
-<span class="kd">theorem</span> <span class="n">problem24b</span> <span class="o">:</span> <span class="bp">&#172;</span> <span class="n">Transitive</span> <span class="o">(</span><span class="bp">&#183;</span> <span class="bp">&#8764;</span> <span class="bp">&#183;</span><span class="o">)</span> <span class="o">:=</span> <span class="kd">by</span>
-  <span class="gr">sorry</span>
-</pre></div>
-</div>
-<ol class="arabic" start="3">
-<li><p>The relation <span class="math notranslate nohighlight">\(\sim\)</span> on <span class="math notranslate nohighlight">\(\mathbb{N}^2\)</span> defined by, <span class="math notranslate nohighlight">\((a,b)\sim(c,d)\)</span> if
-<span class="math notranslate nohighlight">\(a+d=b+c\)</span>, is an equivalence relation.  (You do not need to prove this.)</p>
-<p>Sketch the relation <span class="math notranslate nohighlight">\(\sim\)</span>, by drawing  (a portion of) the underlying type
-<span class="math notranslate nohighlight">\(\mathbb{N}^2\)</span> in the plane, then colouring each equivalence class in a different colour.</p>
-<p>Do this problem only on paper, not in Lean.</p>
-</li>
-<li><p>The relation <span class="math notranslate nohighlight">\(\sim\)</span> on <span class="math notranslate nohighlight">\(\mathbb{Z}^2\)</span> defined by, <span class="math notranslate nohighlight">\((a,b)\sim(c,d)\)</span> if
-there exist positive integers <span class="math notranslate nohighlight">\(m\)</span> and <span class="math notranslate nohighlight">\(n\)</span> with <span class="math notranslate nohighlight">\(mb(b^2-3a^2)=nd(d^2-3c^2)\)</span>,
-is an equivalence relation.  (You do not need to prove this.)</p>
-<p>Sketch the relation <span class="math notranslate nohighlight">\(\sim\)</span>, by drawing (a portion of) the underlying type
-<span class="math notranslate nohighlight">\(\mathbb{Z}^2\)</span> in the plane, then colouring each equivalence class in a different colour.</p>
-<p>Do this problem only on paper, not in Lean.</p>
-</li>
-</ol>
 </section>
 </section>
 
