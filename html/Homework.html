@@ -63,6 +63,7 @@
 <li class="toctree-l2"><a class="reference internal" href="#homework-0">Homework 0</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#homework-1">Homework 1</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#homework-2">Homework 2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#homework-3">Homework 3</a></li>
 </ul>
 </li>
 </ul>
@@ -207,6 +208,58 @@ Show that either <span class="math notranslate nohighlight">\(a + b = 2\)</span>
 the <code class="docutils literal notranslate"><span class="pre">cancel</span></code> tactic.</p>
 <div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="c">/-</span><span class="cm"> 5 points -/</span>
 <span class="kd">theorem</span> <span class="n">problem6</span> <span class="o">{</span><span class="n">t</span> <span class="o">:</span> <span class="n">&#8477;</span><span class="o">}</span> <span class="o">(</span><span class="n">ht</span> <span class="o">:</span> <span class="n">t</span> <span class="bp">^</span> <span class="mi">3</span> <span class="bp">=</span> <span class="n">t</span> <span class="bp">^</span> <span class="mi">2</span><span class="o">)</span> <span class="o">:</span> <span class="n">t</span> <span class="bp">=</span> <span class="mi">1</span> <span class="bp">&#8744;</span> <span class="n">t</span> <span class="bp">=</span> <span class="mi">0</span> <span class="o">:=</span> <span class="kd">by</span>
+  <span class="gr">sorry</span>
+</pre></div>
+</div>
+</li>
+</ol>
+</section>
+<section id="homework-3">
+<span id="hw3"></span><h2>Homework 3<a class="headerlink" href="#homework-3" title="Permalink to this headline">&#61633;</a></h2>
+<ol class="arabic">
+<li><p>Show that there exists a real number <span class="math notranslate nohighlight">\(x\)</span>, such that <span class="math notranslate nohighlight">\(x&lt;0\)</span> and <span class="math notranslate nohighlight">\(x^2&lt;1\)</span>.</p>
+<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="c">/-</span><span class="cm"> 4 points -/</span>
+<span class="kd">theorem</span> <span class="n">problem1</span> <span class="o">:</span> <span class="bp">&#8707;</span> <span class="n">x</span> <span class="o">:</span> <span class="n">&#8477;</span><span class="o">,</span> <span class="n">x</span> <span class="bp">&lt;</span> <span class="mi">0</span> <span class="bp">&#8743;</span> <span class="n">x</span> <span class="bp">^</span> <span class="mi">2</span> <span class="bp">&lt;</span> <span class="mi">1</span> <span class="o">:=</span> <span class="kd">by</span>
+  <span class="gr">sorry</span>
+</pre></div>
+</div>
+</li>
+<li><p>Let <span class="math notranslate nohighlight">\(x\)</span> be a rational number. Show that there exists a rational number <span class="math notranslate nohighlight">\(y\)</span>, such
+that <span class="math notranslate nohighlight">\(y^2&gt;x\)</span>.</p>
+<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="c">/-</span><span class="cm"> 5 points -/</span>
+<span class="kd">theorem</span> <span class="n">problem2</span> <span class="o">(</span><span class="n">x</span> <span class="o">:</span> <span class="n">&#8474;</span><span class="o">)</span> <span class="o">:</span> <span class="bp">&#8707;</span> <span class="n">y</span> <span class="o">:</span> <span class="n">&#8474;</span><span class="o">,</span> <span class="n">y</span> <span class="bp">^</span> <span class="mi">2</span> <span class="bp">&gt;</span> <span class="n">x</span> <span class="o">:=</span> <span class="kd">by</span>
+  <span class="gr">sorry</span>
+</pre></div>
+</div>
+</li>
+<li><p>Let <span class="math notranslate nohighlight">\(x\)</span> be an integer.  Show that if <span class="math notranslate nohighlight">\(x\)</span> is odd then so is <span class="math notranslate nohighlight">\(x^3\)</span>.</p>
+<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="c">/-</span><span class="cm"> 5 points -/</span>
+<span class="kd">theorem</span> <span class="n">problem3</span> <span class="o">{</span><span class="n">x</span> <span class="o">:</span> <span class="n">&#8484;</span><span class="o">}</span> <span class="o">(</span><span class="n">hx</span> <span class="o">:</span> <span class="n">Odd</span> <span class="n">x</span><span class="o">)</span> <span class="o">:</span> <span class="n">Odd</span> <span class="o">(</span><span class="n">x</span> <span class="bp">^</span> <span class="mi">3</span><span class="o">)</span> <span class="o">:=</span> <span class="kd">by</span>
+  <span class="gr">sorry</span>
+</pre></div>
+</div>
+</li>
+<li><p>Let <span class="math notranslate nohighlight">\(n\)</span> be an integer.  Show that <span class="math notranslate nohighlight">\(5n^2+3n+7\)</span> is odd.</p>
+<p>You will probably use the lemma <code class="docutils literal notranslate"><span class="pre">Int.even_or_odd</span></code>, stating that an integer is either even or
+odd.</p>
+<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="c">/-</span><span class="cm"> 6 points -/</span>
+<span class="kd">theorem</span> <span class="n">problem4</span> <span class="o">(</span><span class="n">n</span> <span class="o">:</span> <span class="n">&#8484;</span><span class="o">)</span> <span class="o">:</span> <span class="n">Odd</span> <span class="o">(</span><span class="mi">5</span> <span class="bp">*</span> <span class="n">n</span> <span class="bp">^</span> <span class="mi">2</span> <span class="bp">+</span> <span class="mi">3</span> <span class="bp">*</span> <span class="n">n</span> <span class="bp">+</span> <span class="mi">7</span><span class="o">)</span> <span class="o">:=</span> <span class="kd">by</span>
+  <span class="gr">sorry</span>
+</pre></div>
+</div>
+</li>
+<li><p>Show that -9 is divisible by 3.</p>
+<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="c">/-</span><span class="cm"> 2 points -/</span>
+<span class="kd">theorem</span> <span class="n">problem5</span> <span class="o">:</span> <span class="o">(</span><span class="mi">3</span> <span class="o">:</span> <span class="n">&#8484;</span><span class="o">)</span> <span class="bp">&#8739;</span> <span class="bp">-</span><span class="mi">9</span> <span class="o">:=</span> <span class="kd">by</span>
+  <span class="gr">sorry</span>
+</pre></div>
+</div>
+</li>
+<li><p>Show that -10 is not divisible by 3.</p>
+<p>You will probably use the lemma <code class="docutils literal notranslate"><span class="pre">Int.not_dvd_of_exists_lt_and_lt</span></code>, stating that if an integer
+lies strictly between <span class="math notranslate nohighlight">\(bq\)</span> and <span class="math notranslate nohighlight">\(b(q+1)\)</span> then it is not a multiple of <span class="math notranslate nohighlight">\(b\)</span>.</p>
+<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="c">/-</span><span class="cm"> 3 points -/</span>
+<span class="kd">theorem</span> <span class="n">problem6</span> <span class="o">:</span> <span class="bp">&#172;</span><span class="o">(</span><span class="mi">3</span> <span class="o">:</span> <span class="n">&#8484;</span><span class="o">)</span> <span class="bp">&#8739;</span> <span class="bp">-</span><span class="mi">10</span> <span class="o">:=</span> <span class="kd">by</span>
   <span class="gr">sorry</span>
 </pre></div>
 </div>
