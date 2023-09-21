@@ -15,6 +15,8 @@ for clearer statements and any special instructions. -/
 
 attribute [-instance] Int.instDivInt_1 Int.instDivInt Nat.instDivNat
 
+namespace Int
+
 
 /- 4 points -/
 theorem problem1 : ∃ x : ℝ, x < 0 ∧ x ^ 2 < 1 := by
@@ -23,8 +25,6 @@ theorem problem1 : ∃ x : ℝ, x < 0 ∧ x ^ 2 < 1 := by
 /- 5 points -/
 theorem problem2 (x : ℚ) : ∃ y : ℚ, y ^ 2 > x := by
   sorry
-
-namespace Int
 
 /- 5 points -/
 theorem problem3 {x : ℤ} (hx : Odd x) : Odd (x ^ 3) := by
