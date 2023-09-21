@@ -6,3 +6,4 @@ Homework
 .. include:: Homework/hw0.inc
 .. include:: Homework/hw1.inc
 .. include:: Homework/hw2.inc
+.. include:: Homework/hw3.inc
