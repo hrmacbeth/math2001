@@ -64,6 +64,7 @@
 <li class="toctree-l2"><a class="reference internal" href="#homework-1">Homework 1</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#homework-2">Homework 2</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#homework-3">Homework 3</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#homework-4">Homework 4</a></li>
 </ul>
 </li>
 </ul>
@@ -260,6 +261,73 @@ odd.</p>
 lies strictly between <span class="math notranslate nohighlight">\(bq\)</span> and <span class="math notranslate nohighlight">\(b(q+1)\)</span> then it is not a multiple of <span class="math notranslate nohighlight">\(b\)</span>.</p>
 <div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="c">/-</span><span class="cm"> 3 points -/</span>
 <span class="kd">theorem</span> <span class="n">problem6</span> <span class="o">:</span> <span class="bp">&#172;</span><span class="o">(</span><span class="mi">3</span> <span class="o">:</span> <span class="n">&#8484;</span><span class="o">)</span> <span class="bp">&#8739;</span> <span class="bp">-</span><span class="mi">10</span> <span class="o">:=</span> <span class="kd">by</span>
+  <span class="gr">sorry</span>
+</pre></div>
+</div>
+</li>
+</ol>
+</section>
+<section id="homework-4">
+<span id="hw4"></span><h2>Homework 4<a class="headerlink" href="#homework-4" title="Permalink to this headline">&#61633;</a></h2>
+<ol class="arabic">
+<li><p>Let <span class="math notranslate nohighlight">\(a\)</span>, <span class="math notranslate nohighlight">\(b\)</span> and <span class="math notranslate nohighlight">\(c\)</span> be integers and suppose that <span class="math notranslate nohighlight">\(a^2\)</span> divides <span class="math notranslate nohighlight">\(b\)</span>
+and <span class="math notranslate nohighlight">\(b^3\)</span> divides <span class="math notranslate nohighlight">\(c\)</span>.  Show that <span class="math notranslate nohighlight">\(a^6\)</span> divides <span class="math notranslate nohighlight">\(c\)</span>.</p>
+<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="c">/-</span><span class="cm"> 4 points -/</span>
+<span class="kd">theorem</span> <span class="n">problem1</span> <span class="o">{</span><span class="n">a</span> <span class="n">b</span> <span class="n">c</span> <span class="o">:</span> <span class="n">&#8484;</span><span class="o">}</span> <span class="o">(</span><span class="n">hab</span> <span class="o">:</span> <span class="n">a</span> <span class="bp">^</span> <span class="mi">2</span> <span class="bp">&#8739;</span> <span class="n">b</span><span class="o">)</span> <span class="o">(</span><span class="n">hbc</span> <span class="o">:</span> <span class="n">b</span> <span class="bp">^</span> <span class="mi">3</span> <span class="bp">&#8739;</span> <span class="n">c</span><span class="o">)</span> <span class="o">:</span> <span class="n">a</span> <span class="bp">^</span> <span class="mi">6</span> <span class="bp">&#8739;</span> <span class="n">c</span> <span class="o">:=</span> <span class="kd">by</span>
+  <span class="gr">sorry</span>
+</pre></div>
+</div>
+</li>
+<li><p>(transitivity rule for modular arithmetic) Let <span class="math notranslate nohighlight">\(a\)</span>, <span class="math notranslate nohighlight">\(b\)</span>, <span class="math notranslate nohighlight">\(c\)</span> and <span class="math notranslate nohighlight">\(n\)</span> be
+integers, and suppose that <span class="math notranslate nohighlight">\(a\equiv b \mod n\)</span> and <span class="math notranslate nohighlight">\(b\equiv c \mod n\)</span>.
+Show that  that <span class="math notranslate nohighlight">\(a\equiv c \mod n\)</span>.</p>
+<p>Do this directly in the style of <a class="reference internal" href="03_Parity_and_Divisibility.html#modeq-add"><span class="std std-numref">Example 3.3.3</span></a>,
+<a class="reference internal" href="03_Parity_and_Divisibility.html#modeq-mul"><span class="std std-numref">Example 3.3.6</span></a>, etc., that is, directly from the definitions.</p>
+<p>Note: the problem can also be solved in two lines as</p>
+<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="k">calc</span> <span class="n">a</span> <span class="bp">&#8801;</span> <span class="n">b</span> <span class="o">[</span><span class="n">ZMOD</span> <span class="n">n</span><span class="o">]</span> <span class="o">:=</span> <span class="n">h1</span>
+  <span class="n">_</span> <span class="bp">&#8801;</span> <span class="n">c</span> <span class="o">[</span><span class="n">ZMOD</span> <span class="n">n</span><span class="o">]</span> <span class="o">:=</span> <span class="n">h2</span>
+</pre></div>
+</div>
+<p>The idea is <em>not</em> to do this.</p>
+<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="c">/-</span><span class="cm"> 4 points -/</span>
+<span class="kd">theorem</span> <span class="n">problem2</span> <span class="o">(</span><span class="n">h1</span> <span class="o">:</span> <span class="n">a</span> <span class="bp">&#8801;</span> <span class="n">b</span> <span class="o">[</span><span class="n">ZMOD</span> <span class="n">n</span><span class="o">])</span> <span class="o">(</span><span class="n">h2</span> <span class="o">:</span> <span class="n">b</span> <span class="bp">&#8801;</span> <span class="n">c</span> <span class="o">[</span><span class="n">ZMOD</span> <span class="n">n</span><span class="o">])</span> <span class="o">:</span> <span class="n">a</span> <span class="bp">&#8801;</span> <span class="n">c</span> <span class="o">[</span><span class="n">ZMOD</span> <span class="n">n</span><span class="o">]</span> <span class="o">:=</span> <span class="kd">by</span>
+  <span class="gr">sorry</span>
+</pre></div>
+</div>
+</li>
+<li><p>Let <span class="math notranslate nohighlight">\(x\)</span> be an integer for which <span class="math notranslate nohighlight">\(x\equiv 2\mod 5\)</span>.
+Show that <span class="math notranslate nohighlight">\((2  x + 3) ^ 2 \equiv (2 \cdot 2 + 3) ^ 2\mod 5\)</span>.</p>
+<p>Do this in the style
+of <a class="reference internal" href="03_Parity_and_Divisibility.html#apply-mod-lemmas-example"><span class="std std-numref">Example 3.3.11</span></a>, that is by applying the
+relevant lemmas from <a class="reference internal" href="03_Parity_and_Divisibility.html#theory-modular"><span class="std std-numref">Section 3.3</span></a> one by one.</p>
+<p>Note: the problem can also be solved in one line as <code class="docutils literal notranslate"><span class="pre">rel</span> <span class="pre">[h]</span></code>.  The idea is
+<em>not</em> to do this.</p>
+<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="c">/-</span><span class="cm"> 4 points -/</span>
+<span class="kd">theorem</span> <span class="n">problem3</span> <span class="o">{</span><span class="n">x</span> <span class="o">:</span> <span class="n">&#8484;</span><span class="o">}</span> <span class="o">(</span><span class="n">h</span> <span class="o">:</span> <span class="n">x</span> <span class="bp">&#8801;</span> <span class="mi">2</span> <span class="o">[</span><span class="n">ZMOD</span> <span class="mi">5</span><span class="o">])</span> <span class="o">:</span>
+    <span class="o">(</span><span class="mi">2</span> <span class="bp">*</span> <span class="n">x</span> <span class="bp">+</span> <span class="mi">3</span><span class="o">)</span> <span class="bp">^</span> <span class="mi">2</span> <span class="bp">&#8801;</span> <span class="o">(</span><span class="mi">2</span> <span class="bp">*</span> <span class="mi">2</span> <span class="bp">+</span> <span class="mi">3</span><span class="o">)</span> <span class="bp">^</span> <span class="mi">2</span> <span class="o">[</span><span class="n">ZMOD</span> <span class="mi">5</span><span class="o">]</span> <span class="o">:=</span> <span class="kd">by</span>
+  <span class="gr">sorry</span>
+</pre></div>
+</div>
+</li>
+<li><p>Let <span class="math notranslate nohighlight">\(a\)</span> be an integer for which <span class="math notranslate nohighlight">\(a\equiv 3\mod 4\)</span>.
+Show that <span class="math notranslate nohighlight">\(a^3+4a^2+2\equiv 1\mod 4\)</span>.</p>
+<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="c">/-</span><span class="cm"> 4 points -/</span>
+<span class="kd">theorem</span> <span class="n">problem4</span> <span class="o">{</span><span class="n">a</span> <span class="o">:</span> <span class="n">&#8484;</span><span class="o">}</span> <span class="o">(</span><span class="n">ha</span> <span class="o">:</span> <span class="n">a</span> <span class="bp">&#8801;</span> <span class="mi">3</span> <span class="o">[</span><span class="n">ZMOD</span> <span class="mi">4</span><span class="o">])</span> <span class="o">:</span>
+    <span class="n">a</span> <span class="bp">^</span> <span class="mi">3</span> <span class="bp">+</span> <span class="mi">4</span> <span class="bp">*</span> <span class="n">a</span> <span class="bp">^</span> <span class="mi">2</span> <span class="bp">+</span> <span class="mi">2</span> <span class="bp">&#8801;</span> <span class="mi">1</span> <span class="o">[</span><span class="n">ZMOD</span> <span class="mi">4</span><span class="o">]</span> <span class="o">:=</span>
+  <span class="gr">sorry</span>
+</pre></div>
+</div>
+</li>
+<li><p>Show that there exists an integer <span class="math notranslate nohighlight">\(k\)</span>, such that <span class="math notranslate nohighlight">\(5k\equiv 6\mod 8\)</span>.</p>
+<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="c">/-</span><span class="cm"> 3 points -/</span>
+<span class="kd">theorem</span> <span class="n">problem5</span> <span class="o">:</span> <span class="bp">&#8707;</span> <span class="n">k</span> <span class="o">:</span> <span class="n">&#8484;</span><span class="o">,</span> <span class="mi">5</span> <span class="bp">*</span> <span class="n">k</span> <span class="bp">&#8801;</span> <span class="mi">6</span> <span class="o">[</span><span class="n">ZMOD</span> <span class="mi">8</span><span class="o">]</span> <span class="o">:=</span> <span class="kd">by</span>
+  <span class="gr">sorry</span>
+</pre></div>
+</div>
+</li>
+<li><p>Let <span class="math notranslate nohighlight">\(x\)</span> be an integer.  Show that <span class="math notranslate nohighlight">\(x^5\equiv x\mod 5\)</span>.</p>
+<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="c">/-</span><span class="cm"> 5 points -/</span>
+<span class="kd">theorem</span> <span class="n">problem6</span> <span class="o">{</span><span class="n">x</span> <span class="o">:</span> <span class="n">&#8484;</span><span class="o">}</span> <span class="o">:</span> <span class="n">x</span> <span class="bp">^</span> <span class="mi">5</span> <span class="bp">&#8801;</span> <span class="n">x</span> <span class="o">[</span><span class="n">ZMOD</span> <span class="mi">5</span><span class="o">]</span> <span class="o">:=</span> <span class="kd">by</span>
   <span class="gr">sorry</span>
 </pre></div>
 </div>
