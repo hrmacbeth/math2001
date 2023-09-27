@@ -33,7 +33,7 @@ theorem problem4 {a : ℤ} (ha : a ≡ 3 [ZMOD 4]) :
     a ^ 3 + 4 * a ^ 2 + 2 ≡ 1 [ZMOD 4] :=
   sorry
 
-/- 3 points -/
+/- 4 points -/
 theorem problem5 : ∃ k : ℤ, 5 * k ≡ 6 [ZMOD 8] := by
   sorry
 
