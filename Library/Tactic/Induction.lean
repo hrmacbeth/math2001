@@ -22,10 +22,10 @@ theorem Nat.induction {P : ℕ → Prop} (base_case : P 0)
 def Nat.two_step_induction' {P : ℕ → Sort u} (base_case_0 : P 0) (base_case_1 : P 1)
     (inductive_step : ∀ (k : ℕ), (IH0 : P k) → (IH1 : P (k + 1)) → P (k + 1 + 1)) (a : ℕ) :
     P a :=
-  Nat.two_step_induction base_case_0 base_case_1 inductive_step a
+  Nat.twoStepInduction base_case_0 base_case_1 inductive_step a
 
 @[elab_as_elim]
-def Nat.two_step_le_induction {s : ℕ} {P : ∀ (n : ℕ), s ≤ n → Sort u} 
+def Nat.two_step_le_induction {s : ℕ} {P : ∀ (n : ℕ), s ≤ n → Sort u}
     (base_case_0 : P s (le_refl s)) (base_case_1 : P (s + 1) (Nat.le_succ s))
     (inductive_step : ∀ (k : ℕ) (hk : s ≤ k), (IH0 : P k hk) → (IH1 : P (k + 1) (le_step hk))
         → P (k + 1 + 1) (le_step (le_step hk)))
@@ -35,7 +35,7 @@ def Nat.two_step_le_induction {s : ℕ} {P : ∀ (n : ℕ), s ≤ n → Sort u}
   · intro m
     induction' m using Nat.two_step_induction' with k IH1 IH2
     · exact base_case_0
-    · exact base_case_1 
+    · exact base_case_1
     · exact inductive_step _ _ IH1 IH2
   convert key (a - s)
   rw [add_comm, ← Nat.eq_add_of_sub_eq ha]
@@ -105,7 +105,7 @@ theorem lem1 (a : ℤ) {b : ℤ} (hb : 0 < b) : abs a < abs b ↔ -b < a ∧ a <
     left
     constructor <;> linarith
 
-theorem lem2 (a : ℤ) {b : ℤ} (hb : b < 0) : abs a < abs b ↔ b < a ∧ a < -b := by 
+theorem lem2 (a : ℤ) {b : ℤ} (hb : b < 0) : abs a < abs b ↔ b < a ∧ a < -b := by
   rw [abs_lt_abs_iff]
   constructor
   · intro h
@@ -143,5 +143,5 @@ macro_rules
       simp only [Int.sizeOf_lt_sizeOf_iff, ←sq_lt_sq,  Nat.succ_eq_add_one] ;
       nlinarith)
 
-theorem Int.fmod_nonneg_of_pos (a : ℤ) (hb : 0 < b) : 0 ≤ Int.fmod a b := 
+theorem Int.fmod_nonneg_of_pos (a : ℤ) (hb : 0 < b) : 0 ≤ Int.fmod a b :=
   Int.fmod_eq_emod _ hb.le ▸ emod_nonneg _ hb.ne'

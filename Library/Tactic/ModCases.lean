@@ -35,7 +35,7 @@ The actual mathematical content of the proof is here.
   refine ⟨Nat.zero_le _, ?_, ?_⟩
   · rw [Int.toNat_lt nonneg]; exact Int.emod_lt_of_pos _ this
   · rw [Int.ModEq, Int.toNat_of_nonneg nonneg]
-    exact ⟨a / n, by linear_combination - a.emod_add_ediv n⟩ 
+    exact ⟨a / n, by linear_combination - a.emod_add_ediv n⟩
 
 /--
 The end point is that once we have reduced to `∃ z, n ≤ z < n ∧ a ≡ z (mod n)`
@@ -64,7 +64,7 @@ partial def proveOnModCases (n : Q(ℕ)) (a : Q(ℤ)) (b : Q(ℕ)) (p : Q(Sort u
     pure ((q(onModCases_stop $p $n $a) : Expr), [])
   else
     let ty := q($a ≡ OfNat.ofNat $b [ZMOD OfNat.ofNat $n] → $p)
-    let g : QQ ty ← mkFreshExprMVar ty
+    let g : Quoted ty ← mkFreshExprMVar ty
     let ((pr : Q(OnModCases $n $a (Nat.add $b 1) $p)), acc) ←
       proveOnModCases n a (mkRawNatLit (b.natLit! + 1)) p
     pure ((q(onModCases_succ $b $g $pr) : Expr), g.mvarId! :: acc)

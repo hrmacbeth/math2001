@@ -10,7 +10,7 @@ namespace Mathlib.Meta.NormNum
 
 theorem isInt_ModEq_true : {a b a' b' n : ℤ} → IsInt a a' → IsInt b b' → decide (a' = b') = true →
     Int.ModEq n a b
-  | _, _, a', b', n, ⟨rfl⟩, ⟨rfl⟩, hab => 
+  | _, _, a', b', n, ⟨rfl⟩, ⟨rfl⟩, hab =>
     by
       dsimp
       replace hab := of_decide_eq_true hab
@@ -18,13 +18,13 @@ theorem isInt_ModEq_true : {a b a' b' n : ℤ} → IsInt a a' → IsInt b b' →
       use 0
       ring
 
-theorem isInt_ModEq_false : {a b a' b' n : ℤ} → IsInt a a' → IsInt b b' → decide (0 < n) = true → 
+theorem isInt_ModEq_false : {a b a' b' n : ℤ} → IsInt a a' → IsInt b b' → decide (0 < n) = true →
     decide (a' < n) = true → decide (b' < n) = true → decide (0 ≤ a') = true →
     decide (0 ≤ b') = true → decide (a' ≠ b') = true → ¬ Int.ModEq n a b
-  | _, _, a', b', n, ⟨rfl⟩, ⟨rfl⟩, hn, han, hbn, ha, hb, hab => 
+  | _, _, a', b', n, ⟨rfl⟩, ⟨rfl⟩, hn, han, hbn, ha, hb, hab =>
     by
       dsimp
-      change ¬ n ∣ _ 
+      change ¬ n ∣ _
       replace hn := of_decide_eq_true hn
       replace han := of_decide_eq_true han
       replace hbn := of_decide_eq_true hbn
@@ -45,15 +45,17 @@ such that `norm_num` successfully recognises both `a` and `b` and they are small
   guard <|← withNewMCtxDepth <| isDefEq f q(Int.ModEq)
   let ra : Result a ← derive a
   let rb : Result b ← derive b
-  let rn : Result q($n) ← derive n
+  let rn : Result n ← derive n
   let i : Q(Ring ℤ) := q(Int.instRingInt)
   let ⟨za, na, pa⟩ ← ra.toInt
   let ⟨zb, nb, pb⟩ ← rb.toInt
+  let pa' : Q(IsInt «$a» «$na») := pa
+  let pb' : Q(IsInt «$b» «$nb») := pb
   let ⟨zn, _, _⟩ ← rn.toInt i
   if za = zb then
     -- reduce `a ≡ b [ZMOD n]` to `true` if `a` and `b` reduce to the same integer
     let pab : Q(decide ($na = $nb) = true) := (q(Eq.refl true) : Expr)
-    let r : Q(Int.ModEq $n $a $b) := q(isInt_ModEq_true $pa $pb $pab)
+    let r : Q($a ≡ $b [ZMOD $n]) := q(isInt_ModEq_true $pa' $pb' $pab)
     return (.isTrue r : Result q(Int.ModEq $n $a $b))
   else
     -- reduce `a ≡ b [ZMOD n]` to `false` if `0 < n`, `a` reduces to `a'` with `0 ≤ a' < n`,
@@ -69,8 +71,9 @@ such that `norm_num` successfully recognises both `a` and `b` and they are small
     let pa0 : Q(decide (0 ≤ $na) = true) := (q(Eq.refl true) : Expr)
     if zb < 0 then failure
     let pb0 : Q(decide (0 ≤ $nb) = true) := (q(Eq.refl true) : Expr)
-    let r : Q(¬Int.ModEq $n $a $b) := q(isInt_ModEq_false $pa $pb $pn $pan $pbn $pa0 $pb0 $pab)
+    let r : Q(¬Int.ModEq $n $a $b) := q(isInt_ModEq_false $pa' $pb' $pn $pan $pbn $pa0 $pb0 $pab)
     return (.isFalse r : Result q(¬Int.ModEq $n $a $b))
+
 
 /--
 Normalize numerical expressions. Supports the operations `+` `-` `*` `/` `⁻¹` and `^`
