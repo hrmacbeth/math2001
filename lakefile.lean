@@ -26,6 +26,6 @@ want also
 but currently only Lean core options can be set in lakefile
 -/
 
-require mathlib from git "https://github.com/leanprover-community/mathlib4" @ "750b7536599c7b0924e12fe79d0522b8554125c9"
-require autograder from git "https://github.com/robertylewis/cs22-lean-autograder" @ "1c6119111649e9c18594be3b3722836025a96e86"
+require mathlib from git "https://github.com/leanprover-community/mathlib4" @ "master"
+require autograder from git "https://github.com/robertylewis/cs22-lean-autograder" @ "master"
 
