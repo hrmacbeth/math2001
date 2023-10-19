@@ -66,6 +66,7 @@
 <li class="toctree-l2"><a class="reference internal" href="#homework-3">Homework 3</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#homework-4">Homework 4</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#homework-5">Homework 5</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#homework-6">Homework 6</a></li>
 </ul>
 </li>
 </ul>
@@ -383,6 +384,72 @@ exists a real number <span class="math notranslate nohighlight">\(c\)</span>, su
 including the use of the lemmas <code class="docutils literal notranslate"><span class="pre">better_prime_test</span></code> and <code class="docutils literal notranslate"><span class="pre">Nat.not_dvd_of_exists_lt_and_lt</span></code>.</p>
 <div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="c">/-</span><span class="cm"> 4 points -/</span>
 <span class="kd">theorem</span> <span class="n">problem6</span> <span class="o">:</span> <span class="n">Prime</span> <span class="mi">97</span> <span class="o">:=</span> <span class="kd">by</span>
+  <span class="gr">sorry</span>
+</pre></div>
+</div>
+</li>
+</ol>
+</section>
+<section id="homework-6">
+<span id="hw6"></span><h2>Homework 6<a class="headerlink" href="#homework-6" title="Permalink to this headline">&#61633;</a></h2>
+<ol class="arabic">
+<li><p>Let <span class="math notranslate nohighlight">\(x\)</span> be a real number.  Show that <span class="math notranslate nohighlight">\(x^2-3x+2=0\)</span> if and only if
+<span class="math notranslate nohighlight">\(x=1\)</span> or <span class="math notranslate nohighlight">\(x=2\)</span>.</p>
+<p>(Compare with <a class="reference internal" href="02_Proofs_with_Structure.html#solve-quadratic"><span class="std std-numref">Example 2.3.4</span></a>.)</p>
+<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="c">/-</span><span class="cm"> 4 points -/</span>
+<span class="kd">theorem</span> <span class="n">problem1</span> <span class="o">{</span><span class="n">x</span> <span class="o">:</span> <span class="n">&#8477;</span><span class="o">}</span> <span class="o">:</span> <span class="n">x</span> <span class="bp">^</span> <span class="mi">2</span> <span class="bp">-</span> <span class="mi">3</span> <span class="bp">*</span> <span class="n">x</span> <span class="bp">+</span> <span class="mi">2</span> <span class="bp">=</span> <span class="mi">0</span> <span class="bp">&#8596;</span> <span class="o">(</span><span class="n">x</span> <span class="bp">=</span> <span class="mi">1</span> <span class="bp">&#8744;</span> <span class="n">x</span> <span class="bp">=</span> <span class="mi">2</span><span class="o">)</span> <span class="o">:=</span> <span class="kd">by</span>
+  <span class="gr">sorry</span>
+</pre></div>
+</div>
+</li>
+<li><p>Let <span class="math notranslate nohighlight">\(x\)</span> be an integer.  Show that if <span class="math notranslate nohighlight">\(x\)</span> is odd then so is <span class="math notranslate nohighlight">\(x^3\)</span>.</p>
+<p>This problem appeared on Homework 3, but this time, re-do it by converting it to a modular
+arithmetic problem and then using the techniques of <a class="reference internal" href="03_Parity_and_Divisibility.html#using-modular"><span class="std std-numref">Section 3.4</span></a>, as
+indicated in the first line.</p>
+<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="c">/-</span><span class="cm"> 3 points -/</span>
+<span class="kd">theorem</span> <span class="n">problem2</span> <span class="o">{</span><span class="n">x</span> <span class="o">:</span> <span class="n">&#8484;</span><span class="o">}</span> <span class="o">(</span><span class="n">hx</span> <span class="o">:</span> <span class="n">Int.Odd</span> <span class="n">x</span><span class="o">)</span> <span class="o">:</span> <span class="n">Int.Odd</span> <span class="o">(</span><span class="n">x</span> <span class="bp">^</span> <span class="mi">3</span><span class="o">)</span> <span class="o">:=</span> <span class="kd">by</span>
+  <span class="n">rw</span> <span class="o">[</span><span class="n">Int.odd_iff_modEq</span><span class="o">]</span> <span class="n">at</span> <span class="bp">*</span>
+  <span class="gr">sorry</span>
+</pre></div>
+</div>
+</li>
+<li><p>Prove that <span class="math notranslate nohighlight">\(P \lor Q\)</span> is logically equivalent to <span class="math notranslate nohighlight">\(Q \lor P\)</span>.</p>
+<p>Write this problem only in Lean, not on paper.</p>
+<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="c">/-</span><span class="cm"> 4 points -/</span>
+<span class="kd">theorem</span> <span class="n">problem3</span> <span class="o">(</span><span class="n">P</span> <span class="n">Q</span> <span class="o">:</span> <span class="kt">Prop</span><span class="o">)</span> <span class="o">:</span> <span class="o">(</span><span class="n">P</span> <span class="bp">&#8744;</span> <span class="n">Q</span><span class="o">)</span> <span class="bp">&#8596;</span> <span class="o">(</span><span class="n">Q</span> <span class="bp">&#8744;</span> <span class="n">P</span><span class="o">)</span> <span class="o">:=</span> <span class="kd">by</span>
+  <span class="gr">sorry</span>
+</pre></div>
+</div>
+</li>
+<li><p>Show that <span class="math notranslate nohighlight">\((\exists x, P(x)) \land Q\)</span> is logically equivalent to
+<span class="math notranslate nohighlight">\(\exists x, (P(x) \land Q)\)</span>.</p>
+<p>Write this problem only in Lean, not on paper.</p>
+<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="c">/-</span><span class="cm"> 5 points -/</span>
+<span class="kd">theorem</span> <span class="n">problem4</span> <span class="o">(</span><span class="n">P</span> <span class="o">:</span> <span class="n">&#945;</span> <span class="bp">&#8594;</span> <span class="kt">Prop</span><span class="o">)</span> <span class="o">(</span><span class="n">Q</span> <span class="o">:</span> <span class="kt">Prop</span><span class="o">)</span> <span class="o">:</span> <span class="o">((</span><span class="bp">&#8707;</span> <span class="n">x</span><span class="o">,</span> <span class="n">P</span> <span class="n">x</span><span class="o">)</span> <span class="bp">&#8743;</span> <span class="n">Q</span><span class="o">)</span> <span class="bp">&#8596;</span> <span class="bp">&#8707;</span> <span class="n">x</span><span class="o">,</span> <span class="o">(</span><span class="n">P</span> <span class="n">x</span> <span class="bp">&#8743;</span> <span class="n">Q</span><span class="o">)</span> <span class="o">:=</span> <span class="kd">by</span>
+  <span class="gr">sorry</span>
+</pre></div>
+</div>
+</li>
+<li><p>(<strong>hard</strong>) Show that <span class="math notranslate nohighlight">\(\lnot\forall x, P(x)\)</span> is logically equivalent to <span class="math notranslate nohighlight">\(\exists x, \lnot P(x)\)</span>.</p>
+<p>You will need to use the law of the excluded middle (the tactic <code class="docutils literal notranslate"><span class="pre">by_cases</span></code>).</p>
+<p>The point of this exercise is that you are proving the lemma <code class="docutils literal notranslate"><span class="pre">not_forall</span></code>, from
+<a class="reference internal" href="05_Logic.html#negation-rule-table"><span class="std std-numref">Table 5.1</span></a>.  So don&#8217;t use that lemma or the tactic <code class="docutils literal notranslate"><span class="pre">push_neg</span></code>
+which depends on it; instead prove this from scratch.  You will need to use the law of the
+excluded middle.</p>
+<p>Write this problem only in Lean, not on paper.</p>
+<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="c">/-</span><span class="cm"> 5 points -/</span>
+<span class="kd">theorem</span> <span class="n">problem5</span> <span class="o">(</span><span class="n">P</span> <span class="o">:</span> <span class="n">&#945;</span> <span class="bp">&#8594;</span> <span class="kt">Prop</span><span class="o">)</span> <span class="o">:</span> <span class="bp">&#172;</span> <span class="o">(</span><span class="bp">&#8704;</span> <span class="n">x</span><span class="o">,</span> <span class="n">P</span> <span class="n">x</span><span class="o">)</span> <span class="bp">&#8596;</span> <span class="bp">&#8707;</span> <span class="n">x</span><span class="o">,</span> <span class="bp">&#172;</span> <span class="n">P</span> <span class="n">x</span> <span class="o">:=</span> <span class="kd">by</span>
+  <span class="gr">sorry</span>
+</pre></div>
+</div>
+</li>
+<li><p>Show step by step using the rules in <a class="reference internal" href="05_Logic.html#negation-rule-table"><span class="std std-numref">Table 5.1</span></a> that
+<span class="math notranslate nohighlight">\(\lnot(\forall a b :\mathbb{Z}, ab=1 \to a = 1 \lor b = 1)\)</span> is logically equivalent to
+<span class="math notranslate nohighlight">\(\exists a b :\mathbb{Z},  ab = 1\land a \ne 1 \land b \ne 1\)</span>.</p>
+<p>Write this problem only in Lean, not on paper.</p>
+<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="c">/-</span><span class="cm"> 4 points -/</span>
+<span class="kd">theorem</span> <span class="n">problem6</span> <span class="o">:</span> <span class="o">(</span><span class="bp">&#172;</span> <span class="bp">&#8704;</span> <span class="n">a</span> <span class="n">b</span> <span class="o">:</span> <span class="n">&#8484;</span><span class="o">,</span> <span class="n">a</span> <span class="bp">*</span> <span class="n">b</span> <span class="bp">=</span> <span class="mi">1</span> <span class="bp">&#8594;</span> <span class="n">a</span> <span class="bp">=</span> <span class="mi">1</span> <span class="bp">&#8744;</span> <span class="n">b</span> <span class="bp">=</span> <span class="mi">1</span><span class="o">)</span>
+    <span class="bp">&#8596;</span> <span class="bp">&#8707;</span> <span class="n">a</span> <span class="n">b</span> <span class="o">:</span> <span class="n">&#8484;</span><span class="o">,</span> <span class="n">a</span> <span class="bp">*</span> <span class="n">b</span> <span class="bp">=</span> <span class="mi">1</span> <span class="bp">&#8743;</span> <span class="n">a</span> <span class="bp">&#8800;</span> <span class="mi">1</span> <span class="bp">&#8743;</span> <span class="n">b</span> <span class="bp">&#8800;</span> <span class="mi">1</span> <span class="o">:=</span>
   <span class="gr">sorry</span>
 </pre></div>
 </div>
