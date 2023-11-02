@@ -67,6 +67,7 @@
 <li class="toctree-l2"><a class="reference internal" href="#homework-4">Homework 4</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#homework-5">Homework 5</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#homework-6">Homework 6</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#homework-7">Homework 7</a></li>
 </ul>
 </li>
 </ul>
@@ -450,6 +451,95 @@ excluded middle.</p>
 <div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="c">/-</span><span class="cm"> 4 points -/</span>
 <span class="kd">theorem</span> <span class="n">problem6</span> <span class="o">:</span> <span class="o">(</span><span class="bp">&#172;</span> <span class="bp">&#8704;</span> <span class="n">a</span> <span class="n">b</span> <span class="o">:</span> <span class="n">&#8484;</span><span class="o">,</span> <span class="n">a</span> <span class="bp">*</span> <span class="n">b</span> <span class="bp">=</span> <span class="mi">1</span> <span class="bp">&#8594;</span> <span class="n">a</span> <span class="bp">=</span> <span class="mi">1</span> <span class="bp">&#8744;</span> <span class="n">b</span> <span class="bp">=</span> <span class="mi">1</span><span class="o">)</span>
     <span class="bp">&#8596;</span> <span class="bp">&#8707;</span> <span class="n">a</span> <span class="n">b</span> <span class="o">:</span> <span class="n">&#8484;</span><span class="o">,</span> <span class="n">a</span> <span class="bp">*</span> <span class="n">b</span> <span class="bp">=</span> <span class="mi">1</span> <span class="bp">&#8743;</span> <span class="n">a</span> <span class="bp">&#8800;</span> <span class="mi">1</span> <span class="bp">&#8743;</span> <span class="n">b</span> <span class="bp">&#8800;</span> <span class="mi">1</span> <span class="o">:=</span>
+  <span class="gr">sorry</span>
+</pre></div>
+</div>
+</li>
+</ol>
+</section>
+<section id="homework-7">
+<span id="hw7"></span><h2>Homework 7<a class="headerlink" href="#homework-7" title="Permalink to this headline">&#61633;</a></h2>
+<ol class="arabic">
+<li><p>Let <span class="math notranslate nohighlight">\(n\)</span> be a natural number.  Show that <span class="math notranslate nohighlight">\(5^n\)</span> is congruent to either <span class="math notranslate nohighlight">\(1\)</span> or
+<span class="math notranslate nohighlight">\(5\)</span> modulo 8.</p>
+<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="c">/-</span><span class="cm"> 4 points -/</span>
+<span class="kd">theorem</span> <span class="n">problem1</span> <span class="o">(</span><span class="n">n</span> <span class="o">:</span> <span class="n">&#8469;</span><span class="o">)</span> <span class="o">:</span> <span class="mi">5</span> <span class="bp">^</span> <span class="n">n</span> <span class="bp">&#8801;</span> <span class="mi">1</span> <span class="o">[</span><span class="n">ZMOD</span> <span class="mi">8</span><span class="o">]</span> <span class="bp">&#8744;</span> <span class="mi">5</span> <span class="bp">^</span> <span class="n">n</span> <span class="bp">&#8801;</span> <span class="mi">5</span> <span class="o">[</span><span class="n">ZMOD</span> <span class="mi">8</span><span class="o">]</span> <span class="o">:=</span> <span class="kd">by</span>
+  <span class="gr">sorry</span>
+</pre></div>
+</div>
+</li>
+<li><p>Show that for all natural numbers <span class="math notranslate nohighlight">\(n\)</span> sufficiently large, <span class="math notranslate nohighlight">\(3^n\geq 2^n+100\)</span>.</p>
+<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="c">/-</span><span class="cm"> 4 points -/</span>
+<span class="kd">theorem</span> <span class="n">problem2</span> <span class="o">:</span> <span class="n">forall_sufficiently_large</span> <span class="n">n</span> <span class="o">:</span> <span class="n">&#8469;</span><span class="o">,</span> <span class="o">(</span><span class="mi">3</span><span class="o">:</span><span class="n">&#8484;</span><span class="o">)</span> <span class="bp">^</span> <span class="n">n</span> <span class="bp">&#8805;</span> <span class="mi">2</span> <span class="bp">^</span> <span class="n">n</span> <span class="bp">+</span> <span class="mi">100</span> <span class="o">:=</span> <span class="kd">by</span>
+  <span class="n">dsimp</span>
+  <span class="gr">sorry</span>
+</pre></div>
+</div>
+</li>
+<li><p>Consider the sequence <span class="math notranslate nohighlight">\((y_n)\)</span> defined recursively by,</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}y_0&amp;=2 \\
+\text{for }n\geq 0,\quad y_{n+1} &amp;= y_n{}^2.\end{split}\]</div>
+<p>Show that for all natural numbers <span class="math notranslate nohighlight">\(n\)</span>, <span class="math notranslate nohighlight">\(y_n=2^{2^n}\)</span>.</p>
+<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">def</span> <span class="n">y</span> <span class="o">:</span> <span class="n">&#8469;</span> <span class="bp">&#8594;</span> <span class="n">&#8469;</span>
+  <span class="bp">|</span> <span class="mi">0</span> <span class="bp">=&gt;</span> <span class="mi">2</span>
+  <span class="bp">|</span> <span class="n">n</span> <span class="bp">+</span> <span class="mi">1</span> <span class="bp">=&gt;</span> <span class="o">(</span><span class="n">y</span> <span class="n">n</span><span class="o">)</span> <span class="bp">^</span> <span class="mi">2</span>
+
+<span class="c">/-</span><span class="cm"> 4 points -/</span>
+<span class="kd">theorem</span> <span class="n">problem3</span> <span class="o">(</span><span class="n">n</span> <span class="o">:</span> <span class="n">&#8469;</span><span class="o">)</span> <span class="o">:</span> <span class="n">y</span> <span class="n">n</span> <span class="bp">=</span> <span class="mi">2</span> <span class="bp">^</span> <span class="o">(</span><span class="mi">2</span> <span class="bp">^</span> <span class="n">n</span><span class="o">)</span> <span class="o">:=</span> <span class="kd">by</span>
+  <span class="gr">sorry</span>
+</pre></div>
+</div>
+</li>
+<li><p>Consider the sequence <span class="math notranslate nohighlight">\((B_n)\)</span> defined recursively by,</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}B_0&amp;=0 \\
+\text{for }n:\mathbb{N},\quad B_{n+1} &amp;= B_n+(n+1)^2.\end{split}\]</div>
+<p>Thus <span class="math notranslate nohighlight">\(B_n\)</span> represents the sum <span class="math notranslate nohighlight">\(1^2+2^2+3^2+\cdots+n^2\)</span>.
+Show that for all natural numbers <span class="math notranslate nohighlight">\(n\)</span>,</p>
+<div class="math notranslate nohighlight">
+\[B_n=\frac{n(n+1)(2n+1)}{6}.\]</div>
+<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">def</span> <span class="n">B</span> <span class="o">:</span> <span class="n">&#8469;</span> <span class="bp">&#8594;</span> <span class="n">&#8474;</span>
+  <span class="bp">|</span> <span class="mi">0</span> <span class="bp">=&gt;</span> <span class="mi">0</span>
+  <span class="bp">|</span> <span class="n">n</span> <span class="bp">+</span> <span class="mi">1</span> <span class="bp">=&gt;</span> <span class="n">B</span> <span class="n">n</span> <span class="bp">+</span> <span class="o">(</span><span class="n">n</span> <span class="bp">+</span> <span class="mi">1</span> <span class="o">:</span> <span class="n">&#8474;</span><span class="o">)</span> <span class="bp">^</span> <span class="mi">2</span>
+
+<span class="c">/-</span><span class="cm"> 4 points -/</span>
+<span class="kd">theorem</span> <span class="n">problem4</span> <span class="o">(</span><span class="n">n</span> <span class="o">:</span> <span class="n">&#8469;</span><span class="o">)</span> <span class="o">:</span> <span class="n">B</span> <span class="n">n</span> <span class="bp">=</span> <span class="n">n</span> <span class="bp">*</span> <span class="o">(</span><span class="n">n</span> <span class="bp">+</span> <span class="mi">1</span><span class="o">)</span> <span class="bp">*</span> <span class="o">(</span><span class="mi">2</span> <span class="bp">*</span> <span class="n">n</span> <span class="bp">+</span> <span class="mi">1</span><span class="o">)</span> <span class="bp">/</span> <span class="mi">6</span> <span class="o">:=</span> <span class="kd">by</span>
+  <span class="gr">sorry</span>
+</pre></div>
+</div>
+</li>
+<li><p>Consider the sequence <span class="math notranslate nohighlight">\((b_n)\)</span> defined recursively by,</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}b_0&amp;=0\\
+b_1&amp;=1\\
+\text{for }n:\mathbb{N},\quad b_{n+2}&amp;=5b_{n+1}-6b_n.\end{split}\]</div>
+<p>Prove that for all natural numbers <span class="math notranslate nohighlight">\(n\)</span>, <span class="math notranslate nohighlight">\(b_n=3^n - 2 ^ n\)</span>.</p>
+<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">def</span> <span class="n">b</span> <span class="o">:</span> <span class="n">&#8469;</span> <span class="bp">&#8594;</span> <span class="n">&#8484;</span>
+  <span class="bp">|</span> <span class="mi">0</span> <span class="bp">=&gt;</span> <span class="mi">0</span>
+  <span class="bp">|</span> <span class="mi">1</span> <span class="bp">=&gt;</span> <span class="mi">1</span>
+  <span class="bp">|</span> <span class="n">n</span> <span class="bp">+</span> <span class="mi">2</span> <span class="bp">=&gt;</span> <span class="mi">5</span> <span class="bp">*</span> <span class="n">b</span> <span class="o">(</span><span class="n">n</span> <span class="bp">+</span> <span class="mi">1</span><span class="o">)</span> <span class="bp">-</span> <span class="mi">6</span> <span class="bp">*</span> <span class="n">b</span> <span class="n">n</span>
+
+<span class="c">/-</span><span class="cm"> 4 points -/</span>
+<span class="kd">theorem</span> <span class="n">problem5</span> <span class="o">(</span><span class="n">n</span> <span class="o">:</span> <span class="n">&#8469;</span><span class="o">)</span> <span class="o">:</span> <span class="n">b</span> <span class="n">n</span> <span class="bp">=</span> <span class="mi">3</span> <span class="bp">^</span> <span class="n">n</span> <span class="bp">-</span> <span class="mi">2</span> <span class="bp">^</span> <span class="n">n</span> <span class="o">:=</span> <span class="kd">by</span>
+  <span class="gr">sorry</span>
+</pre></div>
+</div>
+</li>
+<li><p>Consider the sequence <span class="math notranslate nohighlight">\((r_n)\)</span> defined recursively by,</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}r_0&amp;=2\\
+r_1&amp;=0\\
+\text{for }n:\mathbb{N},\quad r_{n+2}&amp;=2r_{n+1}+r_n.\end{split}\]</div>
+<p>Prove that for all sufficiently large natural numbers <span class="math notranslate nohighlight">\(n\)</span>, it is true that
+<span class="math notranslate nohighlight">\(r_n\geq 2^n\)</span>.</p>
+<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">def</span> <span class="n">r</span> <span class="o">:</span> <span class="n">&#8469;</span> <span class="bp">&#8594;</span> <span class="n">&#8484;</span>
+  <span class="bp">|</span> <span class="mi">0</span> <span class="bp">=&gt;</span> <span class="mi">2</span>
+  <span class="bp">|</span> <span class="mi">1</span> <span class="bp">=&gt;</span> <span class="mi">0</span>
+  <span class="bp">|</span> <span class="n">n</span> <span class="bp">+</span> <span class="mi">2</span> <span class="bp">=&gt;</span> <span class="mi">2</span> <span class="bp">*</span> <span class="n">r</span> <span class="o">(</span><span class="n">n</span> <span class="bp">+</span> <span class="mi">1</span><span class="o">)</span> <span class="bp">+</span> <span class="n">r</span> <span class="n">n</span>
+
+<span class="c">/-</span><span class="cm"> 5 points -/</span>
+<span class="kd">theorem</span> <span class="n">problem6</span> <span class="o">:</span> <span class="n">forall_sufficiently_large</span> <span class="n">n</span> <span class="o">:</span> <span class="n">&#8469;</span><span class="o">,</span> <span class="n">r</span> <span class="n">n</span> <span class="bp">&#8805;</span> <span class="mi">2</span> <span class="bp">^</span> <span class="n">n</span> <span class="o">:=</span> <span class="kd">by</span>
   <span class="gr">sorry</span>
 </pre></div>
 </div>
