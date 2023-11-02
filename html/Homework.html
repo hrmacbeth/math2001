@@ -479,7 +479,7 @@ excluded middle.</p>
 <li><p>Consider the sequence <span class="math notranslate nohighlight">\((y_n)\)</span> defined recursively by,</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}y_0&amp;=2 \\
-\text{for }n\geq 0,\quad y_{n+1} &amp;= y_n{}^2.\end{split}\]</div>
+\text{for }n:\mathbb{N},\quad y_{n+1} &amp;= y_n{}^2.\end{split}\]</div>
 <p>Show that for all natural numbers <span class="math notranslate nohighlight">\(n\)</span>, <span class="math notranslate nohighlight">\(y_n=2^{2^n}\)</span>.</p>
 <div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">def</span> <span class="n">y</span> <span class="o">:</span> <span class="n">&#8469;</span> <span class="bp">&#8594;</span> <span class="n">&#8469;</span>
   <span class="bp">|</span> <span class="mi">0</span> <span class="bp">=&gt;</span> <span class="mi">2</span>
