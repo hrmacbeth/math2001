@@ -20,10 +20,10 @@
   {"git":
    {"url": "https://github.com/robertylewis/cs22-lean-autograder",
     "subDir?": null,
-    "rev": "1c6119111649e9c18594be3b3722836025a96e86",
+    "rev": "d29084f86176500452c7bc9b9e27ad55342d687c",
     "opts": {},
     "name": "autograder",
-    "inputRev?": "1c6119111649e9c18594be3b3722836025a96e86",
+    "inputRev?": "d29084f86176500452c7bc9b9e27ad55342d687c",
     "inherited": false}},
   {"git":
    {"url": "https://github.com/leanprover/std4",

@@ -9,6 +9,7 @@ import Library.Tactic.Extra
 import Library.Tactic.Induction
 import Library.Tactic.Numbers
 import Library.Tactic.Use
+import AutograderLib
 
 set_option linter.unusedVariables false
 set_option pp.unicode.fun true
@@ -26,9 +27,12 @@ for clearer statements and any special instructions. -/
 
 namespace Nat
 
-/- 5 points -/
+@[autograded 5]
 theorem problem1 (n : ℕ) (hn : 0 < n) : ∃ a x, Odd x ∧ n = 2 ^ a * x := by
   sorry
+
+end Nat
+
 
 def pascal : ℕ → ℕ → ℕ
   | a, 0 => 1
@@ -36,7 +40,7 @@ def pascal : ℕ → ℕ → ℕ
   | a + 1, b + 1 => pascal (a + 1) b + pascal a (b + 1)
 termination_by _ a b => a + b
 
-/- 5 points -/
+@[autograded 5]
 theorem problem2 (m n : ℕ) : pascal m n = pascal n m := by
   match m, n with
   | 0, 0 => rw [pascal]
@@ -47,28 +51,32 @@ theorem problem2 (m n : ℕ) : pascal m n = pascal n m := by
 termination_by _ a b => a + b
 
 
-
-/- 4 points -/
+@[autograded 4]
 theorem problem4a : Surjective (fun (x : ℝ) ↦ 2 * x) := by
   sorry
 
-/- 4 points -/
+@[autograded 4]
 theorem problem4b : ¬ Surjective (fun (x : ℝ) ↦ 2 * x) := by
   sorry
 
 
-/- 5 points -/
+namespace Int
+
+@[autograded 5]
 theorem problem5a : Surjective (fun (x : ℤ) ↦ 2 * x) := by
   sorry
 
-/- 5 points -/
+@[autograded 5]
 theorem problem5b : ¬ Surjective (fun (x : ℤ) ↦ 2 * x) := by
   sorry
 
-/- 5 points -/
+end Int
+
+
+@[autograded 5]
 theorem problem6a : ∀ (f : ℚ → ℚ), Injective f → Injective (fun x ↦ f x + 1) := by
   sorry
 
-/- 5 points -/
+@[autograded 5]
 theorem problem6b : ¬ ∀ (f : ℚ → ℚ), Injective f → Injective (fun x ↦ f x + 1) := by
   sorry
