@@ -26,6 +26,7 @@ for clearer statements and any special instructions. -/
 
 namespace Nat
 
+/- 5 points -/
 theorem problem1 (n : ℕ) (hn : 0 < n) : ∃ a x, Odd x ∧ n = 2 ^ a * x := by
   sorry
 
@@ -35,6 +36,7 @@ def pascal : ℕ → ℕ → ℕ
   | a + 1, b + 1 => pascal (a + 1) b + pascal a (b + 1)
 termination_by _ a b => a + b
 
+/- 5 points -/
 theorem problem2 (m n : ℕ) : pascal m n = pascal n m := by
   match m, n with
   | 0, 0 => rw [pascal]
@@ -55,11 +57,11 @@ theorem problem4b : ¬ Surjective (fun (x : ℝ) ↦ 2 * x) := by
   sorry
 
 
-/- 4 points -/
+/- 5 points -/
 theorem problem5a : Surjective (fun (x : ℤ) ↦ 2 * x) := by
   sorry
 
-/- 4 points -/
+/- 5 points -/
 theorem problem5b : ¬ Surjective (fun (x : ℤ) ↦ 2 * x) := by
   sorry
 
