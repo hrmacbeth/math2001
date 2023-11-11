@@ -7,6 +7,6 @@ vscode:
 
 tasks:
   - init: |
-      lake exe cache get && lake build Library
+      lake exe cache get && lake build Library && lake build AutograderLib
     command: |
       PATH="$PATH:/workspace/math2001/scripts"
