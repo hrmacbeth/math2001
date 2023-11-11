@@ -4,36 +4,37 @@ import Library.Theory.Comparison
 import Library.Theory.ParityModular
 import Library.Tactic.Addarith
 import Library.Tactic.Cancel
+import Library.Tactic.Exhaust
 import Library.Tactic.ExistsDelaborator
-import Library.Tactic.FiniteInductive
 import Library.Tactic.Induction
 import Library.Tactic.Numbers
 import Library.Tactic.Extra
 import Library.Tactic.Use
 
 attribute [-instance] Int.instDivInt_1 Int.instDivInt EuclideanDomain.instDiv Nat.instDivNat
+attribute [-simp] ne_eq
 open Function
 namespace Int
 
 
-def F : ℕ → ℤ 
+def F : ℕ → ℤ
   | 0 => 1
   | 1 => 1
-  | n + 2 => F (n + 1) + F n 
+  | n + 2 => F (n + 1) + F n
 
-#eval F 5 -- infoview displays `8`  
+#eval F 5 -- infoview displays `8`
 
 
-#check @F -- infoview displays `F : ℕ → ℤ`  
+#check @F -- infoview displays `F : ℕ → ℤ`
 
 
 def q (x : ℝ) : ℝ := x + 3
 
 
-#check @q -- infoview displays `q : ℝ → ℝ`  
+#check @q -- infoview displays `q : ℝ → ℝ`
 
 
-#check fun (x : ℝ) ↦ x ^ 2 -- infoview displays `fun x ↦ x ^ 2 : ℝ → ℝ`  
+#check fun (x : ℝ) ↦ x ^ 2 -- infoview displays `fun x ↦ x ^ 2 : ℝ → ℝ`
 
 
 example : Injective q := by
@@ -49,7 +50,7 @@ example : ¬ Injective (fun x : ℝ ↦ x ^ 2) := by
   use -1, 1
   constructor
   · numbers
-  · numbers  
+  · numbers
 
 
 def s (a : ℚ) : ℚ := 3 * a + 2
@@ -76,6 +77,7 @@ inductive Musketeer
   | athos
   | porthos
   | aramis
+  deriving DecidableEq
 
 open Musketeer
 
@@ -90,9 +92,8 @@ example : ¬ Injective f := by
   dsimp [Injective]
   push_neg
   use athos, porthos
-  constructor
-  · inductive_type
-  · inductive_type
+  dsimp [f] -- optional
+  tauto
 
 
 example : ¬ Surjective f := by
@@ -101,9 +102,9 @@ example : ¬ Surjective f := by
   use porthos
   intro a
   cases a
-  · inductive_type
-  · inductive_type
-  · inductive_type
+  · tauto
+  · tauto
+  · tauto
 
 
 -- better (more automated) version of the previous proof
@@ -112,7 +113,7 @@ example : ¬ Surjective f := by
   push_neg
   use porthos
   intro a
-  cases a <;> inductive_type
+  cases a <;> tauto
 
 
 def g : Musketeer → Musketeer
@@ -124,16 +125,7 @@ def g : Musketeer → Musketeer
 example : Injective g := by
   dsimp [Injective]
   intro x1 x2 hx
-  cases x1 <;> cases x2
-  · inductive_type -- goal `⊢ athos = athos`
-  · contradiction -- hypothesis `hx : g athos = g porthos`
-  · contradiction 
-  · contradiction 
-  · inductive_type 
-  · contradiction 
-  · contradiction 
-  · contradiction 
-  · inductive_type 
+  cases x1 <;> cases x2 <;> tauto
 
 
 example : Surjective g := by
@@ -141,11 +133,11 @@ example : Surjective g := by
   intro y
   cases y
   · use aramis
-    inductive_type
+    tauto
   · use athos
-    inductive_type
+    tauto
   · use porthos
-    inductive_type 
+    tauto
 
 
 
@@ -169,7 +161,7 @@ example : Injective (fun (x:ℝ) ↦ x ^ 3) := by
         _ = 0 := by numbers
       cancel 3 at hx2
       calc x1 = 0 := by rw [hx1]
-        _ = x2 := by rw [hx2]    
+        _ = x2 := by rw [hx2]
     · -- case 2b: x1 ≠ 0
       have :=
       calc 0 < x1 ^ 2 + ((x1 + x2) ^ 2 + x2 ^ 2) := by extra
@@ -230,6 +222,7 @@ example : ¬ Surjective (fun (n : ℕ) ↦ n ^ 2) := by
 inductive White
   | meg
   | jack
+  deriving DecidableEq
 
 open White
 
@@ -251,7 +244,7 @@ example : ¬ Surjective h := by
   sorry
 
 
-def l : White → Musketeer 
+def l : White → Musketeer
   | meg => aramis
   | jack => porthos
 

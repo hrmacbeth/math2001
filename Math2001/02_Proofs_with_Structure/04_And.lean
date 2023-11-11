@@ -31,7 +31,7 @@ example {a b : ℝ} (h1 : a - 5 * b = 4) (h2 : b + 2 = 3) : a = 9 ∧ b = 1 := b
       a = 4 + 5 * b := by addarith [h1]
       _ = -6 + 5 * (b + 2) := by ring
       _ = -6 + 5 * 3 := by rw [h2]
-      _ = 9 := by ring   
+      _ = 9 := by ring
   · addarith [h2]
 
 
@@ -41,7 +41,7 @@ example {a b : ℝ} (h1 : a - 5 * b = 4) (h2 : b + 2 = 3) : a = 9 ∧ b = 1 := b
   · calc
       a = 4 + 5 * b := by addarith [h1]
       _ = 4 + 5 * 1 := by rw [hb]
-      _ = 9 := by ring   
+      _ = 9 := by ring
   · apply hb
 
 
@@ -50,7 +50,7 @@ example {a b : ℝ} (h1 : a ^ 2 + b ^ 2 = 0) : a = 0 ∧ b = 0 := by
   · apply le_antisymm
     calc
       a ^ 2 ≤ a ^ 2 + b ^ 2 := by extra
-      _ = 0 := by rw [h1]      
+      _ = 0 := by rw [h1]
     extra
   sorry
 

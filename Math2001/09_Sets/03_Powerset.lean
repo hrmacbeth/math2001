@@ -1,4 +1,6 @@
-import Library.Tactic.Define
+/- Copyright (c) Heather Macbeth, 2023.  All rights reserved. -/
+import Library.Tactic.Set
+import Library.Tactic.Exhaust
 import Library.Tactic.ExistsDelaborator
 import Library.Tactic.Extra
 import Library.Tactic.Induction
@@ -10,7 +12,7 @@ set_option push_neg.use_distrib true
 open Set
 
 attribute [-instance] Int.instDivInt_1 Int.instDivInt Nat.instDivNat
-attribute [-simp] Set.setOf_eq_eq_singleton
+attribute [-simp] ne_eq
 
 macro_rules | `(conv | ring) => `(conv | ring_nf)
 
@@ -45,21 +47,28 @@ example : ¬ Injective p := by
   use {0}, ∅
   dsimp
   constructor
-  · intro x
+  · ext x
+    dsimp
+    suffices x + 1 ≠ 0 by tauto
     apply ne_of_gt
     extra
-  · use 0
-    numbers
+  · ext
+    push_neg
+    use 0
+    dsimp
+    tauto
 
 
 def q (s : Set ℤ) : Set ℤ := {n : ℤ | n + 1 ∈ s}
 
 example : Injective q := by
   dsimp [Injective, q]
-  intro s t hst n
-  have hn : (n - 1) + 1 ∈ s ↔ (n - 1) + 1 ∈ t := hst (n - 1)
-  conv at hn => ring
-  apply hn
+  intro s t hst
+  ext k
+  have hk : k - 1 ∈ {n | n + 1 ∈ s} ↔ k - 1 ∈ {n | n + 1 ∈ t} := by rw [hst]
+  dsimp at hk
+  conv at hk => ring
+  apply hk
 
 
 
@@ -86,15 +95,15 @@ example : ¬ Injective r := by
 
 namespace Int
 
-def U : ℕ → Set ℤ 
+def U : ℕ → Set ℤ
   | 0 => univ
   | n + 1 => {x : ℤ | ∃ y ∈ U n, x = 2 * y}
 
 example (n : ℕ) : U n = {x : ℤ | (2:ℤ) ^ n ∣ x} := by
   simple_induction n with k hk
   · rw [U]
-    dsimp
     sorry
   · rw [U]
-    dsimp at *
+    ext x
+    dsimp
     sorry

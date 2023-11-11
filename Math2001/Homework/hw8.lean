@@ -1,0 +1,72 @@
+/- Copyright (c) Heather Macbeth, 2023.  All rights reserved. -/
+import Mathlib.Data.Real.Basic
+import Library.Theory.Comparison
+import Library.Theory.ParityModular
+import Library.Tactic.Addarith
+import Library.Tactic.Cancel
+import Library.Tactic.ExistsDelaborator
+import Library.Tactic.Extra
+import Library.Tactic.Induction
+import Library.Tactic.Numbers
+import Library.Tactic.Use
+
+set_option linter.unusedVariables false
+set_option pp.unicode.fun true
+set_option push_neg.use_distrib true
+attribute [-instance] Int.instDivInt_1 Int.instDivInt EuclideanDomain.instDiv Nat.instDivNat
+open Function
+
+
+/-! # Homework 8
+
+Don't forget to compare with the text version,
+https://hrmacbeth.github.io/math2001/Homework.html#homework-8
+for clearer statements and any special instructions. -/
+
+
+namespace Nat
+
+theorem problem1 (n : ℕ) (hn : 0 < n) : ∃ a x, Odd x ∧ n = 2 ^ a * x := by
+  sorry
+
+def pascal : ℕ → ℕ → ℕ
+  | a, 0 => 1
+  | 0, b + 1 => 1
+  | a + 1, b + 1 => pascal (a + 1) b + pascal a (b + 1)
+termination_by _ a b => a + b
+
+theorem problem2 (m n : ℕ) : pascal m n = pascal n m := by
+  match m, n with
+  | 0, 0 => rw [pascal]
+  | a + 1, 0 => rw [pascal, pascal]
+  | 0, b + 1 => rw [pascal, pascal]
+  | a + 1, b + 1 =>
+    sorry
+termination_by _ a b => a + b
+
+
+
+/- 4 points -/
+theorem problem4a : Surjective (fun (x : ℝ) ↦ 2 * x) := by
+  sorry
+
+/- 4 points -/
+theorem problem4b : ¬ Surjective (fun (x : ℝ) ↦ 2 * x) := by
+  sorry
+
+
+/- 4 points -/
+theorem problem5a : Surjective (fun (x : ℤ) ↦ 2 * x) := by
+  sorry
+
+/- 4 points -/
+theorem problem5b : ¬ Surjective (fun (x : ℤ) ↦ 2 * x) := by
+  sorry
+
+/- 5 points -/
+theorem problem6a : ∀ (f : ℚ → ℚ), Injective f → Injective (fun x ↦ f x + 1) := by
+  sorry
+
+/- 5 points -/
+theorem problem6b : ¬ ∀ (f : ℚ → ℚ), Injective f → Injective (fun x ↦ f x + 1) := by
+  sorry

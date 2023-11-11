@@ -13,6 +13,7 @@ import Library.Tactic.Use
 attribute [-instance] Int.instDivInt_1 Int.instDivInt EuclideanDomain.instDiv Nat.instDivNat
 set_option push_neg.use_distrib true
 attribute [-simp] ne_eq
+attribute [-ext] Prod.ext
 open Function
 
 macro_rules | `(tactic| ring) => `(tactic| ring_nf <;> with_reducible exact trivial)
@@ -43,10 +44,10 @@ example : Bijective (fun ((m, n) : ℤ × ℤ) ↦ (m + n, m + 2 * n)) := by
   rw [bijective_iff_exists_inverse]
   use fun (a, b) ↦ (2 * a - b, b - a)
   constructor
-  · funext (m, n)
+  · ext ⟨m, n⟩
     dsimp
     ring
-  · funext (a, b)
+  · ext ⟨a, b⟩ 
     dsimp
     ring
 
@@ -130,9 +131,8 @@ def g : ℝ × ℝ → ℝ × ℝ
   | (x, y) => (y, x)
 
 example : g ∘ g = id := by
-  funext (x, y)
+  ext ⟨x, y⟩
   dsimp [g]
-  ring
 
 
 def A : ℕ → ℕ

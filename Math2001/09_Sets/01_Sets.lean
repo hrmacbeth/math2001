@@ -2,7 +2,7 @@
 import Mathlib.Data.Real.Basic
 import Library.Theory.Parity
 import Library.Tactic.Addarith
-import Library.Tactic.Define
+import Library.Tactic.Set
 import Library.Tactic.Numbers
 import Library.Tactic.Extra
 import Library.Tactic.Use
@@ -10,8 +10,7 @@ import Library.Tactic.Use
 attribute [-instance] Int.instDivInt_1 Int.instDivInt EuclideanDomain.instDiv Nat.instDivNat
 set_option push_neg.use_distrib true
 open Set
-
-notation:50 a:50 " ⊈ " b:50 => ¬ (a ⊆ b)
+attribute [-simp] ne_eq
 
 
 
@@ -33,7 +32,7 @@ end Nat
 
 
 example : {a : ℕ | 4 ∣ a} ⊆ {b : ℕ | 2 ∣ b} := by
-  dsimp
+  dsimp [Set.subset_def] -- optional
   intro a ha
   obtain ⟨k, hk⟩ := ha
   use 2 * k
@@ -42,7 +41,7 @@ example : {a : ℕ | 4 ∣ a} ⊆ {b : ℕ | 2 ∣ b} := by
 
 
 example : {x : ℝ | 0 ≤ x ^ 2} ⊈ {t : ℝ | 0 ≤ t} := by
-  dsimp
+  dsimp [Set.subset_def]
   push_neg
   use -3
   constructor
@@ -51,8 +50,8 @@ example : {x : ℝ | 0 ≤ x ^ 2} ⊈ {t : ℝ | 0 ≤ t} := by
 
 
 example : {x : ℤ | Int.Odd x} = {a : ℤ | ∃ k, a = 2 * k - 1} := by
+  ext x
   dsimp
-  intro x
   constructor
   · intro h
     obtain ⟨l, hl⟩ := h
@@ -67,6 +66,7 @@ example : {x : ℤ | Int.Odd x} = {a : ℤ | ∃ k, a = 2 * k - 1} := by
 
 
 example : {a : ℕ | 4 ∣ a} ≠ {b : ℕ | 2 ∣ b} := by
+  ext
   dsimp
   push_neg
   use 6
@@ -80,8 +80,8 @@ example : {a : ℕ | 4 ∣ a} ≠ {b : ℕ | 2 ∣ b} := by
 
 
 example : {k : ℤ | 8 ∣ 5 * k} = {l : ℤ | 8 ∣ l} := by
+  ext n
   dsimp
-  intro n
   constructor
   · intro hn
     obtain ⟨a, ha⟩ := hn
@@ -98,15 +98,15 @@ example : {k : ℤ | 8 ∣ 5 * k} = {l : ℤ | 8 ∣ l} := by
 
 
 example : {x : ℝ | x ^ 2 - x - 2 = 0} = {-1, 2} := by
+  ext x
   dsimp
-  intro x
   constructor
   · intro h
     have hx :=
     calc
       (x + 1) * (x - 2) = x ^ 2 - x - 2 := by ring
         _ = 0 := by rw [h]
-    rw [mul_eq_zero] at hx   
+    rw [mul_eq_zero] at hx
     obtain hx | hx := hx
     · left
       addarith [hx]
@@ -121,7 +121,7 @@ example : {x : ℝ | x ^ 2 - x - 2 = 0} = {-1, 2} := by
 
 
 example : {1, 3, 6} ⊆ {t : ℚ | t < 10} := by
-  dsimp
+  dsimp [Set.subset_def]
   intro t ht
   obtain h1 | h3 | h6 := ht
   · addarith [h1]

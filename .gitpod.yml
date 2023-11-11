@@ -7,6 +7,6 @@ vscode:
 
 tasks:
   - init: |
-      lake exe cache get
+      lake exe cache get && lake build
     command: |
       PATH="$PATH:/workspace/math2001/scripts"

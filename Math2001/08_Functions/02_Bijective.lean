@@ -1,13 +1,14 @@
 /- Copyright (c) Heather Macbeth, 2023.  All rights reserved. -/
 import Mathlib.Data.Real.Basic
 import Library.Tactic.Addarith
+import Library.Tactic.Exhaust
 import Library.Tactic.ExistsDelaborator
-import Library.Tactic.FiniteInductive
 import Library.Tactic.Numbers
 import Library.Tactic.Extra
 import Library.Tactic.Use
 
 attribute [-instance] Int.instDivInt_1 Int.instDivInt EuclideanDomain.instDiv Nat.instDivNat
+attribute [-simp] ne_eq
 set_option push_neg.use_distrib true
 set_option pp.unicode.fun true
 set_option linter.unusedVariables false
@@ -52,11 +53,13 @@ example : ¬ Bijective a := by
 inductive Celestial
   | sun
   | moon
+  deriving DecidableEq
 
 inductive Subatomic
   | proton
   | neutron
   | electron
+  deriving DecidableEq
 
 open Celestial Subatomic
 
@@ -74,7 +77,7 @@ example : ¬ Bijective f := by
   push_neg
   use neutron
   intro x
-  cases x <;> inductive_type
+  cases x <;> tauto
 
 
 example {f : X → Y} : Bijective f ↔ ∀ y, ∃! x, f x = y := by
@@ -96,7 +99,7 @@ example {f : X → Y} : Bijective f ↔ ∀ y, ∃! x, f x = y := by
     constructor
     · -- `f` is injective
       intro x1 x2 hx1x2
-      obtain ⟨x, hx, hx'⟩ := h (f x1) 
+      obtain ⟨x, hx, hx'⟩ := h (f x1)
       have hxx1 : x1 = x
       · apply hx'
         rfl
@@ -116,21 +119,21 @@ example : ∀ f : Celestial → Celestial, Injective f → Bijective f := by
   intro f hf
   constructor
   · -- `f` is injective by assumption
-    apply hf 
+    apply hf
   -- show that `f` is surjective
   match h_sun : f sun, h_moon : f moon with
-  | sun, sun => 
+  | sun, sun =>
     have : sun = moon
     · apply hf
       rw [h_sun, h_moon]
     contradiction
-  | sun, moon => 
+  | sun, moon =>
     intro y
     cases y
     · use sun
       apply h_sun
     · use moon
-      apply h_moon 
+      apply h_moon
   | moon, sun => sorry
   | moon, moon => sorry
 
@@ -141,7 +144,7 @@ example : ¬ ∀ f : ℕ → ℕ, Injective f → Bijective f := by
   constructor
   · -- the function is injective
     intro n1 n2 hn
-    addarith [hn] 
+    addarith [hn]
   · -- the function is not bijective
     dsimp [Bijective]
     push_neg
@@ -175,6 +178,7 @@ inductive Element
   | water
   | earth
   | air
+  deriving DecidableEq
 
 open Element
 

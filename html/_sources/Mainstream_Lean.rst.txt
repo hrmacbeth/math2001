@@ -82,9 +82,6 @@ collection of lemmas, and in mathlib these lemmas would be invoked by name.
         
         ``positivity``
 
-    * - ``inductive_type``
-      - ``rfl``, ``nomatch``
-
     * - ``simple_induction``
 
         ``induction_from_starting_point``
@@ -93,7 +90,7 @@ collection of lemmas, and in mathlib these lemmas would be invoked by name.
 
         ``two_step_induction_from_starting_point``
 
-      - ``Nat.le_induction``, ``Nat.two_step_induction``, etc. together
+      - ``Nat.le_induction``, ``Nat.twoStepInduction``, etc. together
       
         with the tactics ``induction`` or ``induction'``
 

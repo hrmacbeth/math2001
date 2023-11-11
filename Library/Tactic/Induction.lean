@@ -19,13 +19,13 @@ theorem Nat.induction {P : ℕ → Prop} (base_case : P 0)
   Nat.rec base_case inductive_step
 
 @[elab_as_elim]
-def Nat.two_step_induction' {P : ℕ → Sort u} (base_case_0 : P 0) (base_case_1 : P 1)
+def Nat.twoStepInduction' {P : ℕ → Sort u} (base_case_0 : P 0) (base_case_1 : P 1)
     (inductive_step : ∀ (k : ℕ), (IH0 : P k) → (IH1 : P (k + 1)) → P (k + 1 + 1)) (a : ℕ) :
     P a :=
-  Nat.two_step_induction base_case_0 base_case_1 inductive_step a
+  Nat.twoStepInduction base_case_0 base_case_1 inductive_step a
 
 @[elab_as_elim]
-def Nat.two_step_le_induction {s : ℕ} {P : ∀ (n : ℕ), s ≤ n → Sort u} 
+def Nat.twoStepLeInduction {s : ℕ} {P : ∀ (n : ℕ), s ≤ n → Sort u} 
     (base_case_0 : P s (le_refl s)) (base_case_1 : P (s + 1) (Nat.le_succ s))
     (inductive_step : ∀ (k : ℕ) (hk : s ≤ k), (IH0 : P k hk) → (IH1 : P (k + 1) (le_step hk))
         → P (k + 1 + 1) (le_step (le_step hk)))
@@ -33,7 +33,7 @@ def Nat.two_step_le_induction {s : ℕ} {P : ∀ (n : ℕ), s ≤ n → Sort u}
     P a ha := by
   have key : ∀ m : ℕ, P (s + m) (Nat.le_add_right _ _)
   · intro m
-    induction' m using Nat.two_step_induction' with k IH1 IH2
+    induction' m using Nat.twoStepInduction' with k IH1 IH2
     · exact base_case_0
     · exact base_case_1 
     · exact inductive_step _ _ IH1 IH2
@@ -64,7 +64,7 @@ syntax (name := TwoStepInductionSyntax) "two_step_induction " (casesTarget,+) ("
 
 macro_rules
 | `(tactic| two_step_induction $tgts,* $[with $withArg*]?) =>
-    `(tactic| induction' $tgts,* using Nat.two_step_induction' $[with $withArg*]? <;>
+    `(tactic| induction' $tgts,* using Nat.twoStepInduction' $[with $withArg*]? <;>
       push_cast (config := { decide := false }) at *)
 
 open private getElimNameInfo generalizeTargets generalizeVars in evalInduction in
@@ -72,7 +72,7 @@ syntax (name := TwoStepStartingPointInductionSyntax) "two_step_induction_from_st
 
 macro_rules
 | `(tactic| two_step_induction_from_starting_point $tgts,* $[with $withArg*]?) =>
-    `(tactic| induction' $tgts,* using Nat.two_step_le_induction $[with $withArg*]?)
+    `(tactic| induction' $tgts,* using Nat.twoStepLeInduction $[with $withArg*]?)
       -- push_cast (config := { decide := false }) at *)
       -- Hack: only used twice, in cases where `push_cast` causes problems, so omit that step
 
@@ -131,16 +131,16 @@ elab_rules : tactic |
 macro_rules
 | `(tactic| decreasing_tactic) =>
   `(tactic| simp_wf ;
-      simp [Int.sizeOf_lt_sizeOf_iff] ;
-      (try rw [lem1 _ (by assumption)]) ;
-      (try rw [lem2 _ (by assumption)]) ;
+      (try simp [Int.sizeOf_lt_sizeOf_iff]);
+      (try rw [lem1 _ (by assumption)]);
+      (try rw [lem2 _ (by assumption)]);
       (try constructor) <;>
       apply_decreasing_rules)
 
 macro_rules
 | `(tactic| decreasing_tactic) =>
   `(tactic| simp_wf ;
-      simp only [Int.sizeOf_lt_sizeOf_iff, ←sq_lt_sq,  Nat.succ_eq_add_one] ;
+      (try simp only [Int.sizeOf_lt_sizeOf_iff, ←sq_lt_sq,  Nat.succ_eq_add_one]);
       nlinarith)
 
 theorem Int.fmod_nonneg_of_pos (a : ℤ) (hb : 0 < b) : 0 ≤ Int.fmod a b := 

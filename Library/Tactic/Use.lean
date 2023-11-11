@@ -10,4 +10,4 @@ because of a feature/bug in Lean core whereby all equalities of concrete natural
 numbers are reducibly defeq. (See https://github.com/leanprover/lean4/issues/1994.)
 -/
 
-macro_rules | `(tactic| use $es,*) => `(tactic|refine ⟨$es,*, ?_⟩)
+macro_rules | `(tactic| use_discharger) => `(tactic| skip)
