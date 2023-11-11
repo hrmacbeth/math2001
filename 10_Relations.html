@@ -265,6 +265,8 @@ and <span class="math notranslate nohighlight">\(b\mid c\)</span> then <span cla
 </div>
 <div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">:</span> <span class="n">Reflexive</span> <span class="o">((</span><span class="bp">&#183;</span><span class="o">:</span><span class="n">&#8477;</span><span class="o">)</span> <span class="bp">=</span> <span class="bp">&#183;</span><span class="o">)</span> <span class="o">:=</span> <span class="kd">by</span>
   <span class="n">dsimp</span> <span class="o">[</span><span class="n">Reflexive</span><span class="o">]</span>
+  <span class="n">intro</span> <span class="n">x</span>
+  <span class="n">ring</span>
 
 <span class="kd">example</span> <span class="o">:</span> <span class="n">Symmetric</span> <span class="o">((</span><span class="bp">&#183;</span><span class="o">:</span><span class="n">&#8477;</span><span class="o">)</span> <span class="bp">=</span> <span class="bp">&#183;</span><span class="o">)</span> <span class="o">:=</span> <span class="kd">by</span>
   <span class="n">dsimp</span> <span class="o">[</span><span class="n">Symmetric</span><span class="o">]</span>
@@ -371,28 +373,24 @@ and <span class="math notranslate nohighlight">\(b\mid c\)</span> then <span cla
   <span class="n">dsimp</span> <span class="o">[</span><span class="n">Reflexive</span><span class="o">]</span>
   <span class="n">push_neg</span>
   <span class="n">use</span> <span class="n">rock</span>
-  <span class="n">numbers</span>
+  <span class="n">tauto</span>
 
 <span class="kd">example</span> <span class="o">:</span> <span class="bp">&#172;</span> <span class="n">Symmetric</span> <span class="o">(</span><span class="bp">&#183;</span> <span class="bp">&#8826;</span> <span class="bp">&#183;</span><span class="o">)</span> <span class="o">:=</span> <span class="kd">by</span>
   <span class="n">dsimp</span> <span class="o">[</span><span class="n">Symmetric</span><span class="o">]</span>
   <span class="n">push_neg</span>
   <span class="n">use</span> <span class="n">rock</span><span class="o">,</span> <span class="n">paper</span>
-  <span class="n">constructor</span> <span class="bp">&lt;;&gt;</span> <span class="n">numbers</span>
+  <span class="n">tauto</span>
 
 <span class="kd">example</span> <span class="o">:</span> <span class="n">AntiSymmetric</span> <span class="o">(</span><span class="bp">&#183;</span> <span class="bp">&#8826;</span> <span class="bp">&#183;</span><span class="o">)</span> <span class="o">:=</span> <span class="kd">by</span>
   <span class="n">dsimp</span> <span class="o">[</span><span class="n">AntiSymmetric</span><span class="o">]</span>
-  <span class="n">intro</span> <span class="n">x</span> <span class="n">y</span> <span class="n">h</span>
-  <span class="n">cases</span> <span class="n">x</span> <span class="bp">&lt;;&gt;</span> <span class="n">cases</span> <span class="n">y</span> <span class="bp">&lt;;&gt;</span> <span class="n">intro</span> <span class="n">h</span> <span class="bp">&lt;;&gt;</span> <span class="n">contradiction</span>
+  <span class="n">intro</span> <span class="n">x</span> <span class="n">y</span>
+  <span class="n">cases</span> <span class="n">x</span> <span class="bp">&lt;;&gt;</span> <span class="n">cases</span> <span class="n">y</span> <span class="bp">&lt;;&gt;</span> <span class="n">tauto</span>
 
 <span class="kd">example</span> <span class="o">:</span> <span class="bp">&#172;</span> <span class="n">Transitive</span> <span class="o">(</span><span class="bp">&#183;</span> <span class="bp">&#8826;</span> <span class="bp">&#183;</span><span class="o">)</span> <span class="o">:=</span> <span class="kd">by</span>
   <span class="n">dsimp</span> <span class="o">[</span><span class="n">Transitive</span><span class="o">]</span>
   <span class="n">push_neg</span>
   <span class="n">use</span> <span class="n">rock</span><span class="o">,</span> <span class="n">paper</span><span class="o">,</span> <span class="n">scissors</span>
-  <span class="n">constructor</span>
-  <span class="bp">&#183;</span> <span class="n">numbers</span>
-  <span class="n">constructor</span>
-  <span class="bp">&#183;</span> <span class="n">numbers</span>
-  <span class="bp">&#183;</span> <span class="n">numbers</span>
+  <span class="n">tauto</span>
 </pre></div>
 </div>
 </section>
@@ -428,6 +426,7 @@ the Little type. Determine which of these properties hold for the relation <span
   <span class="bp">|</span> <span class="n">jo</span>
   <span class="bp">|</span> <span class="n">beth</span>
   <span class="bp">|</span> <span class="n">amy</span>
+  <span class="n">deriving</span> <span class="n">DecidableEq</span>
 
 <span class="kn">open</span> <span class="n">Little</span>
 
@@ -703,6 +702,8 @@ Therefore the relation <span class="math notranslate nohighlight">\(\sim\)</span
 
 <span class="kd">example</span> <span class="o">:</span> <span class="n">Reflexive</span> <span class="o">(</span><span class="bp">&#183;</span> <span class="bp">&#8764;</span> <span class="bp">&#183;</span><span class="o">)</span> <span class="o">:=</span> <span class="kd">by</span>
   <span class="n">dsimp</span> <span class="o">[</span><span class="n">Reflexive</span><span class="o">]</span>
+  <span class="n">intro</span> <span class="n">x</span>
+  <span class="n">ring</span>
 
 <span class="kd">example</span> <span class="o">:</span> <span class="n">Symmetric</span> <span class="o">(</span><span class="bp">&#183;</span> <span class="bp">&#8764;</span> <span class="bp">&#183;</span><span class="o">)</span> <span class="o">:=</span> <span class="kd">by</span>
   <span class="n">dsimp</span> <span class="o">[</span><span class="n">Symmetric</span><span class="o">]</span>
@@ -749,8 +750,8 @@ if <span class="math notranslate nohighlight">\(a_1\sim a_2\)</span>, then <span
 <span class="kd">theorem</span> <span class="n">EquivalenceClass.eq_of_rel</span> <span class="o">(</span><span class="n">h_symm</span> <span class="o">:</span> <span class="bp">@</span><span class="n">Symmetric</span> <span class="n">&#945;</span> <span class="n">r</span><span class="o">)</span> <span class="o">(</span><span class="n">h_trans</span> <span class="o">:</span> <span class="bp">@</span><span class="n">Transitive</span> <span class="n">&#945;</span> <span class="n">r</span><span class="o">)</span>
     <span class="o">{</span><span class="n">a1</span> <span class="n">a2</span> <span class="o">:</span> <span class="n">&#945;</span><span class="o">}</span> <span class="o">(</span><span class="n">ha</span> <span class="o">:</span> <span class="n">a1</span> <span class="bp">&#8764;</span> <span class="n">a2</span><span class="o">)</span> <span class="o">:</span>
     <span class="bp">&#10637;</span><span class="n">a1</span><span class="bp">&#10640;</span> <span class="bp">=</span> <span class="bp">&#10637;</span><span class="n">a2</span><span class="bp">&#10640;</span> <span class="o">:=</span> <span class="kd">by</span>
+  <span class="n">ext</span> <span class="n">b</span>
   <span class="n">dsimp</span>
-  <span class="n">intro</span> <span class="n">b</span>
   <span class="n">constructor</span>
   <span class="bp">&#183;</span> <span class="n">intro</span> <span class="n">ha1b</span>
     <span class="n">apply</span> <span class="n">h_trans</span> <span class="o">(</span><span class="n">y</span> <span class="o">:=</span> <span class="n">a1</span><span class="o">)</span>
@@ -818,6 +819,8 @@ of reflexivity.</p>
 
 <span class="kd">example</span> <span class="o">:</span> <span class="n">Reflexive</span> <span class="o">(</span><span class="bp">&#183;</span> <span class="bp">&#8764;</span> <span class="bp">&#183;</span><span class="o">)</span> <span class="o">:=</span> <span class="kd">by</span>
   <span class="n">dsimp</span> <span class="o">[</span><span class="n">Reflexive</span><span class="o">]</span>
+  <span class="n">intro</span> <span class="o">(</span><span class="n">a</span><span class="o">,</span> <span class="n">b</span><span class="o">)</span>
+  <span class="n">dsimp</span>
 
 <span class="kd">example</span> <span class="o">:</span> <span class="n">Symmetric</span> <span class="o">(</span><span class="bp">&#183;</span> <span class="bp">&#8764;</span> <span class="bp">&#183;</span><span class="o">)</span> <span class="o">:=</span> <span class="kd">by</span>
   <span class="n">dsimp</span> <span class="o">[</span><span class="n">Symmetric</span><span class="o">]</span>

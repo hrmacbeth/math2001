@@ -68,6 +68,7 @@
 <li class="toctree-l2"><a class="reference internal" href="#homework-5">Homework 5</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#homework-6">Homework 6</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#homework-7">Homework 7</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#homework-8">Homework 8</a></li>
 </ul>
 </li>
 </ul>
@@ -540,6 +541,87 @@ r_1&amp;=0\\
 
 <span class="c">/-</span><span class="cm"> 5 points -/</span>
 <span class="kd">theorem</span> <span class="n">problem6</span> <span class="o">:</span> <span class="n">forall_sufficiently_large</span> <span class="n">n</span> <span class="o">:</span> <span class="n">&#8469;</span><span class="o">,</span> <span class="n">r</span> <span class="n">n</span> <span class="bp">&#8805;</span> <span class="mi">2</span> <span class="bp">^</span> <span class="n">n</span> <span class="o">:=</span> <span class="kd">by</span>
+  <span class="gr">sorry</span>
+</pre></div>
+</div>
+</li>
+</ol>
+</section>
+<section id="homework-8">
+<span id="hw8"></span><h2>Homework 8<a class="headerlink" href="#homework-8" title="Permalink to this headline">&#61633;</a></h2>
+<ol class="arabic">
+<li><p>Show that for all natural numbers <span class="math notranslate nohighlight">\(n&gt;0\)</span>, there exist natural numbers <span class="math notranslate nohighlight">\(a\)</span> and
+<span class="math notranslate nohighlight">\(x\)</span>, with <span class="math notranslate nohighlight">\(x\)</span> odd, such that <span class="math notranslate nohighlight">\(n=2^ax\)</span>.</p>
+<p>Suggested approach: strong induction; start with a case split on the parity of <span class="math notranslate nohighlight">\(n\)</span>,
+using the lemma <code class="docutils literal notranslate"><span class="pre">even_or_odd</span></code>.</p>
+<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">theorem</span> <span class="n">problem1</span> <span class="o">(</span><span class="n">n</span> <span class="o">:</span> <span class="n">&#8469;</span><span class="o">)</span> <span class="o">(</span><span class="n">hn</span> <span class="o">:</span> <span class="mi">0</span> <span class="bp">&lt;</span> <span class="n">n</span><span class="o">)</span> <span class="o">:</span> <span class="bp">&#8707;</span> <span class="n">a</span> <span class="n">x</span><span class="o">,</span> <span class="n">Odd</span> <span class="n">x</span> <span class="bp">&#8743;</span> <span class="n">n</span> <span class="bp">=</span> <span class="mi">2</span> <span class="bp">^</span> <span class="n">a</span> <span class="bp">*</span> <span class="n">x</span> <span class="o">:=</span> <span class="kd">by</span>
+  <span class="gr">sorry</span>
+</pre></div>
+</div>
+</li>
+<li><p>Prove that Pascal&#8217;s triangle (see <a class="reference internal" href="06_Induction.html#pascal"><span class="std std-numref">Section 6.5</span></a>) is symmetric:
+for all natural numbers <span class="math notranslate nohighlight">\(a\)</span> and <span class="math notranslate nohighlight">\(b\)</span>, <span class="math notranslate nohighlight">\(P_{a,b} =P_{b,a}\)</span>.</p>
+<p>Suggested approach: well-founded induction, following the Lean template provided below.
+(I have filled in everything except for the main inductive step.)</p>
+<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">theorem</span> <span class="n">problem2</span> <span class="o">(</span><span class="n">m</span> <span class="n">n</span> <span class="o">:</span> <span class="n">&#8469;</span><span class="o">)</span> <span class="o">:</span> <span class="n">pascal</span> <span class="n">m</span> <span class="n">n</span> <span class="bp">=</span> <span class="n">pascal</span> <span class="n">n</span> <span class="n">m</span> <span class="o">:=</span> <span class="kd">by</span>
+  <span class="k">match</span> <span class="n">m</span><span class="o">,</span> <span class="n">n</span> <span class="k">with</span>
+  <span class="bp">|</span> <span class="mi">0</span><span class="o">,</span> <span class="mi">0</span> <span class="bp">=&gt;</span> <span class="n">rw</span> <span class="o">[</span><span class="n">pascal</span><span class="o">]</span>
+  <span class="bp">|</span> <span class="n">a</span> <span class="bp">+</span> <span class="mi">1</span><span class="o">,</span> <span class="mi">0</span> <span class="bp">=&gt;</span> <span class="n">rw</span> <span class="o">[</span><span class="n">pascal</span><span class="o">,</span> <span class="n">pascal</span><span class="o">]</span>
+  <span class="bp">|</span> <span class="mi">0</span><span class="o">,</span> <span class="n">b</span> <span class="bp">+</span> <span class="mi">1</span> <span class="bp">=&gt;</span> <span class="n">rw</span> <span class="o">[</span><span class="n">pascal</span><span class="o">,</span> <span class="n">pascal</span><span class="o">]</span>
+  <span class="bp">|</span> <span class="n">a</span> <span class="bp">+</span> <span class="mi">1</span><span class="o">,</span> <span class="n">b</span> <span class="bp">+</span> <span class="mi">1</span> <span class="bp">=&gt;</span>
+    <span class="gr">sorry</span>
+<span class="n">termination_by</span> <span class="n">_</span> <span class="n">a</span> <span class="n">b</span> <span class="bp">=&gt;</span> <span class="n">a</span> <span class="bp">+</span> <span class="n">b</span>
+</pre></div>
+</div>
+</li>
+<li><p><strong>Using the extended Euclidean algorithm</strong> (as in
+<a class="reference internal" href="06_Induction.html#euclidean-algorithm-def"><span class="std std-numref">Definition 6.7.1</span></a> and <a class="reference internal" href="06_Induction.html#bezout-def"><span class="std std-numref">Definition 6.7.4</span></a>),
+find</p>
+<ol class="loweralpha simple">
+<li><p><span class="math notranslate nohighlight">\(\operatorname{gcd}(-66,38)\)</span> and integers <span class="math notranslate nohighlight">\(m\)</span> and <span class="math notranslate nohighlight">\(n\)</span> such that <span class="math notranslate nohighlight">\((-66)m+38n=\operatorname{gcd}(-66,38)\)</span>;</p></li>
+<li><p><span class="math notranslate nohighlight">\(\operatorname{gcd}(33,-23)\)</span> and integers <span class="math notranslate nohighlight">\(m\)</span> and <span class="math notranslate nohighlight">\(n\)</span> such that <span class="math notranslate nohighlight">\(33m+(-23)n=\operatorname{gcd}(33,-23)\)</span>.</p></li>
+</ol>
+<p>Write this solution only on paper, not in Lean (but you are free to check your work using Lean).</p>
+</li>
+<li><p>Prove or disprove that the function <span class="math notranslate nohighlight">\(x \mapsto 2x\)</span> from <span class="math notranslate nohighlight">\(\mathbb{R}\)</span> to
+<span class="math notranslate nohighlight">\(\mathbb{R}\)</span> is surjective.</p>
+<p>(If you think it&#8217;s true, prove it, by solving the first version below.  If you think it&#8217;s false,
+solve the second version.)</p>
+<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="c">/-</span><span class="cm"> 4 points -/</span>
+<span class="kd">theorem</span> <span class="n">problem4a</span> <span class="o">:</span> <span class="n">Surjective</span> <span class="o">(</span><span class="k">fun</span> <span class="o">(</span><span class="n">x</span> <span class="o">:</span> <span class="n">&#8477;</span><span class="o">)</span> <span class="bp">&#8614;</span> <span class="mi">2</span> <span class="bp">*</span> <span class="n">x</span><span class="o">)</span> <span class="o">:=</span> <span class="kd">by</span>
+  <span class="gr">sorry</span>
+
+<span class="c">/-</span><span class="cm"> 4 points -/</span>
+<span class="kd">theorem</span> <span class="n">problem4b</span> <span class="o">:</span> <span class="bp">&#172;</span> <span class="n">Surjective</span> <span class="o">(</span><span class="k">fun</span> <span class="o">(</span><span class="n">x</span> <span class="o">:</span> <span class="n">&#8477;</span><span class="o">)</span> <span class="bp">&#8614;</span> <span class="mi">2</span> <span class="bp">*</span> <span class="n">x</span><span class="o">)</span> <span class="o">:=</span> <span class="kd">by</span>
+  <span class="gr">sorry</span>
+</pre></div>
+</div>
+</li>
+<li><p>Prove or disprove that the function <span class="math notranslate nohighlight">\(x \mapsto 2x\)</span> from <span class="math notranslate nohighlight">\(\mathbb{Z}\)</span> to
+<span class="math notranslate nohighlight">\(\mathbb{Z}\)</span> is surjective.</p>
+<p>(If you think it&#8217;s true, prove it, by solving the first version below.  If you think it&#8217;s false,
+solve the second version.)</p>
+<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="c">/-</span><span class="cm"> 4 points -/</span>
+<span class="kd">theorem</span> <span class="n">problem5a</span> <span class="o">:</span> <span class="n">Surjective</span> <span class="o">(</span><span class="k">fun</span> <span class="o">(</span><span class="n">x</span> <span class="o">:</span> <span class="n">&#8484;</span><span class="o">)</span> <span class="bp">&#8614;</span> <span class="mi">2</span> <span class="bp">*</span> <span class="n">x</span><span class="o">)</span> <span class="o">:=</span> <span class="kd">by</span>
+  <span class="gr">sorry</span>
+
+<span class="c">/-</span><span class="cm"> 4 points -/</span>
+<span class="kd">theorem</span> <span class="n">problem5b</span> <span class="o">:</span> <span class="bp">&#172;</span> <span class="n">Surjective</span> <span class="o">(</span><span class="k">fun</span> <span class="o">(</span><span class="n">x</span> <span class="o">:</span> <span class="n">&#8484;</span><span class="o">)</span> <span class="bp">&#8614;</span> <span class="mi">2</span> <span class="bp">*</span> <span class="n">x</span><span class="o">)</span> <span class="o">:=</span> <span class="kd">by</span>
+  <span class="gr">sorry</span>
+</pre></div>
+</div>
+</li>
+<li><p>Prove or disprove that for all functions <span class="math notranslate nohighlight">\(f:\mathbb{Q}\to \mathbb{Q}\)</span>, if <span class="math notranslate nohighlight">\(f\)</span> is
+injective, then the function <span class="math notranslate nohighlight">\(x \mapsto f(x)+1\)</span> from <span class="math notranslate nohighlight">\(\mathbb{Q}\)</span> to
+<span class="math notranslate nohighlight">\(\mathbb{Q}\)</span> is also injective.</p>
+<p>(If you think it&#8217;s true, prove it, by solving the first version below.  If you think it&#8217;s false,
+solve the second version.)</p>
+<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="c">/-</span><span class="cm"> 5 points -/</span>
+<span class="kd">theorem</span> <span class="n">problem6a</span> <span class="o">:</span> <span class="bp">&#8704;</span> <span class="o">(</span><span class="n">f</span> <span class="o">:</span> <span class="n">&#8474;</span> <span class="bp">&#8594;</span> <span class="n">&#8474;</span><span class="o">),</span> <span class="n">Injective</span> <span class="n">f</span> <span class="bp">&#8594;</span> <span class="n">Injective</span> <span class="o">(</span><span class="k">fun</span> <span class="n">x</span> <span class="bp">&#8614;</span> <span class="n">f</span> <span class="n">x</span> <span class="bp">+</span> <span class="mi">1</span><span class="o">)</span> <span class="o">:=</span> <span class="kd">by</span>
+  <span class="gr">sorry</span>
+
+<span class="c">/-</span><span class="cm"> 5 points -/</span>
+<span class="kd">theorem</span> <span class="n">problem6b</span> <span class="o">:</span> <span class="bp">&#172;</span> <span class="bp">&#8704;</span> <span class="o">(</span><span class="n">f</span> <span class="o">:</span> <span class="n">&#8474;</span> <span class="bp">&#8594;</span> <span class="n">&#8474;</span><span class="o">),</span> <span class="n">Injective</span> <span class="n">f</span> <span class="bp">&#8594;</span> <span class="n">Injective</span> <span class="o">(</span><span class="k">fun</span> <span class="n">x</span> <span class="bp">&#8614;</span> <span class="n">f</span> <span class="n">x</span> <span class="bp">+</span> <span class="mi">1</span><span class="o">)</span> <span class="o">:=</span> <span class="kd">by</span>
   <span class="gr">sorry</span>
 </pre></div>
 </div>
