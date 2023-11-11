@@ -553,7 +553,7 @@ r_1&amp;=0\\
 <li><p>Show that for all natural numbers <span class="math notranslate nohighlight">\(n&gt;0\)</span>, there exist natural numbers <span class="math notranslate nohighlight">\(a\)</span> and
 <span class="math notranslate nohighlight">\(x\)</span>, with <span class="math notranslate nohighlight">\(x\)</span> odd, such that <span class="math notranslate nohighlight">\(n=2^ax\)</span>.</p>
 <p>Suggested approach: strong induction; start with a case split on the parity of <span class="math notranslate nohighlight">\(n\)</span>,
-using the lemma <code class="docutils literal notranslate"><span class="pre">Nat.even_or_odd</span></code>.</p>
+using the lemma <code class="docutils literal notranslate"><span class="pre">even_or_odd</span></code>.</p>
 <div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">@[autograded 5]</span>
 <span class="kd">theorem</span> <span class="n">problem1</span> <span class="o">(</span><span class="n">n</span> <span class="o">:</span> <span class="n">&#8469;</span><span class="o">)</span> <span class="o">(</span><span class="n">hn</span> <span class="o">:</span> <span class="mi">0</span> <span class="bp">&lt;</span> <span class="n">n</span><span class="o">)</span> <span class="o">:</span> <span class="bp">&#8707;</span> <span class="n">a</span> <span class="n">x</span><span class="o">,</span> <span class="n">Odd</span> <span class="n">x</span> <span class="bp">&#8743;</span> <span class="n">n</span> <span class="bp">=</span> <span class="mi">2</span> <span class="bp">^</span> <span class="n">a</span> <span class="bp">*</span> <span class="n">x</span> <span class="o">:=</span> <span class="kd">by</span>
   <span class="gr">sorry</span>
