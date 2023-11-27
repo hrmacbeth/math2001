@@ -24,7 +24,7 @@ lemma IneqExtra.neg_le_sub_self_of_nonneg [LinearOrderedAddCommGroup G] {a b : G
   rw [sub_eq_add_neg]
   apply le_add_of_nonneg_left h
 
-attribute [aesop safe (rule_sets [extra]) apply]
+attribute [aesop safe (rule_sets [extra]) (apply (transparency := reducible))]
   le_add_of_nonneg_right le_add_of_nonneg_left
   lt_add_of_pos_right lt_add_of_pos_left
   IneqExtra.neg_le_sub_self_of_nonneg
