@@ -69,6 +69,7 @@
 <li class="toctree-l2"><a class="reference internal" href="#homework-6">Homework 6</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#homework-7">Homework 7</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#homework-8">Homework 8</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#homework-9">Homework 9</a></li>
 </ul>
 </li>
 </ul>
@@ -624,6 +625,73 @@ solve the second version.)</p>
 
 <span class="kd">@[autograded 5]</span>
 <span class="kd">theorem</span> <span class="n">problem6b</span> <span class="o">:</span> <span class="bp">&#172;</span> <span class="bp">&#8704;</span> <span class="o">(</span><span class="n">f</span> <span class="o">:</span> <span class="n">&#8474;</span> <span class="bp">&#8594;</span> <span class="n">&#8474;</span><span class="o">),</span> <span class="n">Injective</span> <span class="n">f</span> <span class="bp">&#8594;</span> <span class="n">Injective</span> <span class="o">(</span><span class="k">fun</span> <span class="n">x</span> <span class="bp">&#8614;</span> <span class="n">f</span> <span class="n">x</span> <span class="bp">+</span> <span class="mi">1</span><span class="o">)</span> <span class="o">:=</span> <span class="kd">by</span>
+  <span class="gr">sorry</span>
+</pre></div>
+</div>
+</li>
+</ol>
+</section>
+<section id="homework-9">
+<span id="hw9"></span><h2>Homework 9<a class="headerlink" href="#homework-9" title="Permalink to this headline">&#61633;</a></h2>
+<ol class="arabic">
+<li><p>Let <span class="math notranslate nohighlight">\(f : X \to Y\)</span> and <span class="math notranslate nohighlight">\(g : Y \to Z\)</span> be surjective functions.  Show that
+<span class="math notranslate nohighlight">\(g \circ f\)</span> is also surjective.</p>
+<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">@[autograded 5]</span>
+<span class="kd">theorem</span> <span class="n">problem1</span> <span class="o">{</span><span class="n">f</span> <span class="o">:</span> <span class="n">X</span> <span class="bp">&#8594;</span> <span class="n">Y</span><span class="o">}</span> <span class="o">(</span><span class="n">hf</span> <span class="o">:</span> <span class="n">Surjective</span> <span class="n">f</span><span class="o">)</span> <span class="o">{</span><span class="n">g</span> <span class="o">:</span> <span class="n">Y</span> <span class="bp">&#8594;</span> <span class="n">Z</span><span class="o">}</span> <span class="o">(</span><span class="n">hg</span> <span class="o">:</span> <span class="n">Surjective</span> <span class="n">g</span><span class="o">)</span> <span class="o">:</span>
+    <span class="n">Surjective</span> <span class="o">(</span><span class="n">g</span> <span class="bp">&#8728;</span> <span class="n">f</span><span class="o">)</span> <span class="o">:=</span> <span class="kd">by</span>
+  <span class="gr">sorry</span>
+</pre></div>
+</div>
+</li>
+<li><p>Prove or disprove that the function <span class="math notranslate nohighlight">\(x \mapsto 4-3x\)</span> from <span class="math notranslate nohighlight">\(\mathbb{R}\)</span> to
+<span class="math notranslate nohighlight">\(\mathbb{R}\)</span> is bijective.</p>
+<p>(If you think it&#8217;s true, prove it, by solving the first version below.  If you think it&#8217;s false,
+solve the second version.)</p>
+<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">@[autograded 4]</span>
+<span class="kd">theorem</span> <span class="n">problem2a</span> <span class="o">:</span> <span class="n">Bijective</span> <span class="o">(</span><span class="k">fun</span> <span class="o">(</span><span class="n">x</span> <span class="o">:</span> <span class="n">&#8477;</span><span class="o">)</span> <span class="bp">&#8614;</span> <span class="mi">4</span> <span class="bp">-</span> <span class="mi">3</span> <span class="bp">*</span> <span class="n">x</span><span class="o">)</span> <span class="o">:=</span> <span class="kd">by</span>
+  <span class="gr">sorry</span>
+
+<span class="c">/-</span><span class="cm"> 4 points -/</span>
+<span class="kd">@[autograded 4]</span>
+<span class="kd">theorem</span> <span class="n">problem2b</span> <span class="o">:</span> <span class="bp">&#172;</span> <span class="n">Bijective</span> <span class="o">(</span><span class="k">fun</span> <span class="o">(</span><span class="n">x</span> <span class="o">:</span> <span class="n">&#8477;</span><span class="o">)</span> <span class="bp">&#8614;</span> <span class="mi">4</span> <span class="bp">-</span> <span class="mi">3</span> <span class="bp">*</span> <span class="n">x</span><span class="o">)</span> <span class="o">:=</span> <span class="kd">by</span>
+  <span class="gr">sorry</span>
+</pre></div>
+</div>
+</li>
+<li><p>Consider the function <span class="math notranslate nohighlight">\((a,b)\mapsto a^b\)</span> from <span class="math notranslate nohighlight">\(\mathbb{Q}&#215; \mathbb{N}\)</span> to
+<span class="math notranslate nohighlight">\(\mathbb{Q}\)</span>. Show that this function is surjective.</p>
+<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">@[autograded 4]</span>
+<span class="kd">theorem</span> <span class="n">problem3</span> <span class="o">:</span> <span class="n">Surjective</span> <span class="o">(</span><span class="k">fun</span> <span class="o">((</span><span class="n">a</span><span class="o">,</span> <span class="n">b</span><span class="o">)</span> <span class="o">:</span> <span class="n">&#8474;</span> <span class="bp">&#215;</span> <span class="n">&#8469;</span><span class="o">)</span> <span class="bp">&#8614;</span> <span class="n">a</span> <span class="bp">^</span> <span class="n">b</span><span class="o">)</span> <span class="o">:=</span> <span class="kd">by</span>
+  <span class="gr">sorry</span>
+</pre></div>
+</div>
+</li>
+<li><p>Consider the function <span class="math notranslate nohighlight">\((x,y,z)\mapsto (x+y+z,x+2y+3z)\)</span> from  <span class="math notranslate nohighlight">\(\mathbb{R}^3\)</span> to
+<span class="math notranslate nohighlight">\(\mathbb{R}^2\)</span>. Show that this function is not injective.</p>
+<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">@[autograded 4]</span>
+<span class="kd">theorem</span> <span class="n">problem4</span> <span class="o">:</span>
+    <span class="bp">&#172;</span><span class="n">Injective</span> <span class="o">(</span><span class="k">fun</span> <span class="o">((</span><span class="n">x</span><span class="o">,</span> <span class="n">y</span><span class="o">,</span> <span class="n">z</span><span class="o">)</span> <span class="o">:</span> <span class="n">&#8477;</span> <span class="bp">&#215;</span> <span class="n">&#8477;</span> <span class="bp">&#215;</span> <span class="n">&#8477;</span><span class="o">)</span> <span class="bp">&#8614;</span> <span class="o">(</span><span class="n">x</span> <span class="bp">+</span> <span class="n">y</span> <span class="bp">+</span> <span class="n">z</span><span class="o">,</span> <span class="n">x</span> <span class="bp">+</span> <span class="mi">2</span> <span class="bp">*</span> <span class="n">y</span> <span class="bp">+</span> <span class="mi">3</span> <span class="bp">*</span> <span class="n">z</span><span class="o">))</span> <span class="o">:=</span> <span class="kd">by</span>
+  <span class="gr">sorry</span>
+</pre></div>
+</div>
+</li>
+<li><p>Consider the function <span class="math notranslate nohighlight">\((x,y)\mapsto x^2+y^2\)</span> from <span class="math notranslate nohighlight">\(\mathbb{Q}^2\)</span> to
+<span class="math notranslate nohighlight">\(\mathbb{Q}\)</span>.
+Show that this function is not surjective.</p>
+<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">@[autograded 4]</span>
+<span class="kd">theorem</span> <span class="n">problem5</span> <span class="o">:</span> <span class="bp">&#172;</span> <span class="n">Surjective</span> <span class="o">(</span><span class="k">fun</span> <span class="o">((</span><span class="n">x</span><span class="o">,</span> <span class="n">y</span><span class="o">)</span> <span class="o">:</span> <span class="n">&#8474;</span> <span class="bp">&#215;</span> <span class="n">&#8474;</span><span class="o">)</span> <span class="bp">&#8614;</span> <span class="n">x</span> <span class="bp">^</span> <span class="mi">2</span> <span class="bp">+</span> <span class="n">y</span> <span class="bp">^</span> <span class="mi">2</span><span class="o">)</span> <span class="o">:=</span> <span class="kd">by</span>
+  <span class="gr">sorry</span>
+</pre></div>
+</div>
+</li>
+<li><p>Consider the function <span class="math notranslate nohighlight">\((r,s)\mapsto (s, r-s)\)</span> from <span class="math notranslate nohighlight">\(\mathbb{Q}^2\)</span> to
+<span class="math notranslate nohighlight">\(\mathbb{Q}^2\)</span>.
+Show that this function is bijective.</p>
+<p>Do this following the structure below, by providing an inverse for the function.</p>
+<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">@[autograded 4]</span>
+<span class="kd">theorem</span> <span class="n">problem6</span> <span class="o">:</span> <span class="n">Bijective</span> <span class="o">(</span><span class="k">fun</span> <span class="o">((</span><span class="n">r</span><span class="o">,</span> <span class="n">s</span><span class="o">)</span> <span class="o">:</span> <span class="n">&#8474;</span> <span class="bp">&#215;</span> <span class="n">&#8474;</span><span class="o">)</span> <span class="bp">&#8614;</span> <span class="o">(</span><span class="n">s</span><span class="o">,</span> <span class="n">r</span> <span class="bp">-</span> <span class="n">s</span><span class="o">))</span> <span class="o">:=</span> <span class="kd">by</span>
+  <span class="n">rw</span> <span class="o">[</span><span class="n">bijective_iff_exists_inverse</span><span class="o">]</span>
+  <span class="n">use</span> <span class="k">fun</span> <span class="o">(</span><span class="n">a</span><span class="o">,</span> <span class="n">b</span><span class="o">)</span> <span class="bp">&#8614;</span> <span class="o">(</span><span class="gr">sorry</span><span class="o">,</span> <span class="gr">sorry</span><span class="o">)</span>
   <span class="gr">sorry</span>
 </pre></div>
 </div>
