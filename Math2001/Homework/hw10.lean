@@ -9,6 +9,7 @@ import Library.Tactic.Extra
 import Library.Tactic.Use
 import AutograderLib
 
+set_option quotPrecheck false
 set_option linter.unusedVariables false
 set_option pp.unicode.fun true
 set_option push_neg.use_distrib true
