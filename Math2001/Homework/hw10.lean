@@ -2,6 +2,7 @@
 import Mathlib.Data.Real.Basic
 import Library.Tactic.Addarith
 import Library.Tactic.Set
+import Library.Tactic.Exhaust
 import Library.Tactic.ExistsDelaborator
 import Library.Tactic.Numbers
 import Library.Tactic.Extra
