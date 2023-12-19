@@ -6,7 +6,7 @@ import Library.Tactic.Rel
 import Library.Tactic.Numbers
 import Library.Tactic.Use
 
-attribute [-instance] Int.instDivInt_1 Int.instDivInt EuclideanDomain.instDiv Nat.instDivNat
+attribute [-instance] Int.instDivInt_1 Int.instDivInt Nat.instDivNat
 set_option push_neg.use_distrib true
 
 

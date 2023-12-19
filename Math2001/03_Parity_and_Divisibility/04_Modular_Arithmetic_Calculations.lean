@@ -33,7 +33,7 @@ example {x : ℤ} : x ^ 3 ≡ x [ZMOD 3] := by
   calc
     x ^ 3 ≡ 0 ^ 3 [ZMOD 3] := by rel [hx]
     _ = 0 := by numbers
-    _ ≡ x [ZMOD 3] := by rel [hx]    
+    _ ≡ x [ZMOD 3] := by rel [hx]
   calc
     x ^ 3 ≡ 1 ^ 3 [ZMOD 3] := by rel [hx]
     _ = 1 := by numbers
@@ -50,10 +50,19 @@ example {x : ℤ} : x ^ 3 ≡ x [ZMOD 3] := by
 example {n : ℤ} (hn : n ≡ 1 [ZMOD 3]) : n ^ 3 + 7 * n ≡ 2 [ZMOD 3] :=
   sorry
 
+/- 4 points -/
+theorem problem4 {a : ℤ} (ha : a ≡ 3 [ZMOD 4]) :
+    a ^ 3 + 4 * a ^ 2 + 2 ≡ 1 [ZMOD 4] :=
+  sorry
+
 example (a b : ℤ) : (a + b) ^ 3 ≡ a ^ 3 + b ^ 3 [ZMOD 3] :=
   sorry
 
 example : ∃ a : ℤ, 4 * a ≡ 1 [ZMOD 7] := by
+  sorry
+
+/- 4 points -/
+theorem problem5 : ∃ k : ℤ, 5 * k ≡ 6 [ZMOD 8] := by
   sorry
 
 example (n : ℤ) : 5 * n ^ 2 + 3 * n + 7 ≡ 1 [ZMOD 2] := by

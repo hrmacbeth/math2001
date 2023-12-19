@@ -30,7 +30,7 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
         <div class="wy-side-nav-search" >
-            <a href="index.html" class="icon icon-home"> The mechanics of proof
+            <a href="index.html" class="icon icon-home"> The Mechanics of Proof
           </a>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
@@ -41,7 +41,7 @@
 </div>
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <ul>
-<li class="toctree-l1"><a class="reference internal" href="00_Introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="00_Introduction.html">Preface</a></li>
 </ul>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="01_Proofs_by_Calculation.html">1. Proofs by calculation</a></li>
@@ -127,7 +127,7 @@
 
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="index.html">The mechanics of proof</a>
+          <a href="index.html">The Mechanics of Proof</a>
       </nav>
 
       <div class="wy-nav-content">
@@ -509,6 +509,14 @@ least <span class="math notranslate nohighlight">\(n\)</span>.</p>
 </pre></div>
 </div>
 </li>
+<li><p>Show that there exists a real number <span class="math notranslate nohighlight">\(a\)</span>, such that for all real numbers <span class="math notranslate nohighlight">\(b\)</span>, there
+exists a real number <span class="math notranslate nohighlight">\(c\)</span>, such that <span class="math notranslate nohighlight">\(a + b &lt; c\)</span>.</p>
+<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="c">/-</span><span class="cm"> 3 points -/</span>
+<span class="kd">theorem</span> <span class="n">problem1</span> <span class="o">:</span> <span class="bp">&#8707;</span> <span class="n">a</span> <span class="o">:</span> <span class="n">&#8477;</span><span class="o">,</span> <span class="bp">&#8704;</span> <span class="n">b</span> <span class="o">:</span> <span class="n">&#8477;</span><span class="o">,</span> <span class="bp">&#8707;</span> <span class="n">c</span> <span class="o">:</span> <span class="n">&#8477;</span><span class="o">,</span> <span class="n">a</span> <span class="bp">+</span> <span class="n">b</span> <span class="bp">&lt;</span> <span class="n">c</span> <span class="o">:=</span> <span class="kd">by</span>
+  <span class="gr">sorry</span>
+</pre></div>
+</div>
+</li>
 <li><p>Show that for all sufficiently large real numbers <span class="math notranslate nohighlight">\(x\)</span>,
 <span class="math notranslate nohighlight">\(x ^ 3 + 3 x &#8805; 7 x ^ 2 + 12\)</span>.</p>
 <div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">:</span> <span class="n">forall_sufficiently_large</span> <span class="n">x</span> <span class="o">:</span> <span class="n">&#8477;</span><span class="o">,</span> <span class="n">x</span> <span class="bp">^</span> <span class="mi">3</span> <span class="bp">+</span> <span class="mi">3</span> <span class="bp">*</span> <span class="n">x</span> <span class="bp">&#8805;</span> <span class="mi">7</span> <span class="bp">*</span> <span class="n">x</span> <span class="bp">^</span> <span class="mi">2</span> <span class="bp">+</span> <span class="mi">12</span> <span class="o">:=</span> <span class="kd">by</span>
@@ -562,7 +570,7 @@ least <span class="math notranslate nohighlight">\(n\)</span>.</p>
 <p><span class="math notranslate nohighlight">\(\Leftarrow\)</span> Suppose that <span class="math notranslate nohighlight">\(a\le 2\)</span>.  Then &#8230;</p>
 </div>
 <p>This is recommended for homework, tests, writing on the blackboard, etc.  In more formal writing
-(such as these lecture notes) we omit such symbols and instead use words like &#8220;First&#8221; and
+(such as this book) we omit such symbols and instead use words like &#8220;First&#8221; and
 &#8220;Conversely&#8221; to signal the different parts of the proof.</p>
 <p>In Lean, an &#8220;if and only if&#8221; is stated with the bi-implication symbol <code class="docutils literal notranslate"><span class="pre">&#8596;</span></code>.  Since, under the hood,
 an &#8220;if and only if&#8221; is an &#8220;and&#8221; statement, we use the same tactic as for &#8220;and&#8221; goals:
@@ -1786,6 +1794,14 @@ check:</p>
 <section id="id42">
 <h3><span class="section-number">4.5.10. </span>Exercises<a class="headerlink" href="#id42" title="Permalink to this headline">&#61633;</a></h3>
 <ol class="arabic">
+<li><p>Show that there does not exist a real number <span class="math notranslate nohighlight">\(t\)</span>, such that <span class="math notranslate nohighlight">\(t \le 4\)</span> and
+<span class="math notranslate nohighlight">\(t\geq 5\)</span>.</p>
+<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="c">/-</span><span class="cm"> 4 points -/</span>
+<span class="kd">theorem</span> <span class="n">problem3</span> <span class="o">:</span> <span class="bp">&#172;</span> <span class="o">(</span><span class="bp">&#8707;</span> <span class="n">t</span> <span class="o">:</span> <span class="n">&#8477;</span><span class="o">,</span> <span class="n">t</span> <span class="bp">&#8804;</span> <span class="mi">4</span> <span class="bp">&#8743;</span> <span class="n">t</span> <span class="bp">&#8805;</span> <span class="mi">5</span><span class="o">)</span> <span class="o">:=</span> <span class="kd">by</span>
+  <span class="gr">sorry</span>
+</pre></div>
+</div>
+</li>
 <li><p>Show that there does not exist a real number <span class="math notranslate nohighlight">\(a\)</span>, such that <span class="math notranslate nohighlight">\(a^2 \le 8\)</span> and
 <span class="math notranslate nohighlight">\(a^3\geq 30\)</span>.</p>
 <div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">:</span> <span class="bp">&#172;</span> <span class="o">(</span><span class="bp">&#8707;</span> <span class="n">a</span> <span class="o">:</span> <span class="n">&#8477;</span><span class="o">,</span> <span class="n">a</span> <span class="bp">^</span> <span class="mi">2</span> <span class="bp">&#8804;</span> <span class="mi">8</span> <span class="bp">&#8743;</span> <span class="n">a</span> <span class="bp">^</span> <span class="mi">3</span> <span class="bp">&#8805;</span> <span class="mi">30</span><span class="o">)</span> <span class="o">:=</span> <span class="kd">by</span>

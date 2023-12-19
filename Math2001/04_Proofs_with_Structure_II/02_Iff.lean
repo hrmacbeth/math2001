@@ -8,7 +8,7 @@ import Library.Tactic.Numbers
 import Library.Tactic.Extra
 import Library.Tactic.Use
 
-attribute [-instance] Int.instDivInt_1 Int.instDivInt EuclideanDomain.instDiv Nat.instDivNat
+attribute [-instance] Int.instDivInt_1 Int.instDivInt Nat.instDivNat
 namespace Int
 
 
@@ -83,7 +83,7 @@ example {x y : ℤ} (hx : Odd x) (hy : Odd y) : Odd (x + y + 1) := by
   rw [Int.odd_iff_modEq] at *
   calc x + y + 1 ≡ 1 + 1 + 1 [ZMOD 2] := by rel [hx, hy]
     _ = 2 * 1 + 1 := by ring
-    _ ≡ 1 [ZMOD 2] := by extra  
+    _ ≡ 1 [ZMOD 2] := by extra
 
 
 example (n : ℤ) : Even n ∨ Odd n := by

@@ -6,7 +6,7 @@ import Library.Tactic.Numbers
 import Library.Tactic.Extra
 import Library.Tactic.Use
 
-attribute [-instance] Int.instDivInt_1 Int.instDivInt EuclideanDomain.instDiv Nat.instDivNat
+attribute [-instance] Int.instDivInt_1 Int.instDivInt Nat.instDivNat
 
 
 example {a : ℝ} (h : ∀ x, a ≤ x ^ 2 - 2 * x) : a ≤ -1 :=
@@ -76,8 +76,8 @@ example : Prime 2 := by
 
 example : ¬ Prime 6 := by
   apply not_prime 2 3
-  · numbers -- show `2 ≠ 1` 
-  · numbers -- show `2 ≠ 6` 
+  · numbers -- show `2 ≠ 1`
+  · numbers -- show `2 ≠ 6`
   · numbers -- show `6 = 2 * 3`
 
 /-! # Exercises -/
@@ -90,6 +90,10 @@ example {n : ℤ} (hn : ∀ m, 1 ≤ m → m ≤ 5 → m ∣ n) : 15 ∣ n := by
   sorry
 
 example : ∃ n : ℕ, ∀ m : ℕ, n ≤ m := by
+  sorry
+
+/- 3 points -/
+theorem problem1 : ∃ a : ℝ, ∀ b : ℝ, ∃ c : ℝ, a + b < c := by
   sorry
 
 example : forall_sufficiently_large x : ℝ, x ^ 3 + 3 * x ≥ 7 * x ^ 2 + 12 := by

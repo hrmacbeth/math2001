@@ -11,7 +11,7 @@ import Library.Tactic.Numbers
 import Library.Tactic.Extra
 import Library.Tactic.Use
 
-attribute [-instance] Int.instDivInt_1 Int.instDivInt EuclideanDomain.instDiv Nat.instDivNat
+attribute [-instance] Int.instDivInt_1 Int.instDivInt Nat.instDivNat
 open Int
 
 
@@ -55,7 +55,7 @@ example (n : ℤ) : Int.Even n ↔ ¬ Int.Odd n := by
   · intro h
     obtain h1 | h2 := Int.even_or_odd n
     · apply h1
-    · contradiction   
+    · contradiction
 
 
 example (n : ℤ) : Int.Odd n ↔ ¬ Int.Even n := by
@@ -82,7 +82,7 @@ example {p : ℕ} (k l : ℕ) (hk1 : k ≠ 1) (hkp : k ≠ p) (hkl : p = k * l) 
   have : k = 1 ∨ k = p := hfact k hk
   obtain hk1' | hkp' := this
   · contradiction
-  · contradiction  
+  · contradiction
 
 
 example (a b : ℤ) (h : ∃ q, b * q < a ∧ a < b * (q + 1)) : ¬b ∣ a := by
@@ -99,7 +99,7 @@ example (a b : ℤ) (h : ∃ q, b * q < a ∧ a < b * (q + 1)) : ¬b ∣ a := by
   cancel b at h1
   sorry
 
-example {p : ℕ} (hp : 2 ≤ p)  (T : ℕ) (hTp : p < T ^ 2) 
+example {p : ℕ} (hp : 2 ≤ p)  (T : ℕ) (hTp : p < T ^ 2)
     (H : ∀ (m : ℕ), 1 < m → m < T → ¬ (m ∣ p)) :
     Prime p := by
   apply prime_test hp
@@ -141,6 +141,10 @@ example : Prime 79 := by
 
 /-! # Exercises -/
 
+
+/- 4 points -/
+theorem problem3 : ¬ (∃ t : ℝ, t ≤ 4 ∧ t ≥ 5) := by
+  sorry
 
 example : ¬ (∃ a : ℝ, a ^ 2 ≤ 8 ∧ a ^ 3 ≥ 30) := by
   sorry

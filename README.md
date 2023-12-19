@@ -1,6 +1,6 @@
-# The mechanics of proof
+# The Mechanics of Proof
 
-This repository contains the Lean code for the lecture notes [The mechanics of proof](https://hrmacbeth.github.io/math2001), by [Heather Macbeth](https://faculty.fordham.edu/hmacbeth1), developed for the course Math 2001 at Fordham University.
+This repository contains the Lean code for the lecture notes [The Mechanics of Proof](https://hrmacbeth.github.io/math2001), by [Heather Macbeth](https://faculty.fordham.edu/hmacbeth1), developed for the course Math 2001 at Fordham University.
 
 The Lean files corresponding to each chapter of the lecture notes are in the folder [`Math2001`](https://github.com/hrmacbeth/math2001/tree/main/Math2001).
 

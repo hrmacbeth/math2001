@@ -10,7 +10,7 @@ import Library.Tactic.Extra
 import Library.Tactic.Use
 
 set_option push_neg.use_distrib true
-attribute [-instance] Int.instDivInt_1 Int.instDivInt EuclideanDomain.instDiv Nat.instDivNat
+attribute [-instance] Int.instDivInt_1 Int.instDivInt Nat.instDivNat
 
 
 example : Reflexive ((·:ℕ) ∣ ·) := by
@@ -152,24 +152,24 @@ example : ¬ Reflexive (· ≺ ·) := by
   dsimp [Reflexive]
   push_neg
   use rock
-  tauto
+  exhaust
 
 example : ¬ Symmetric (· ≺ ·) := by
   dsimp [Symmetric]
   push_neg
   use rock, paper
-  tauto
+  exhaust
 
 example : AntiSymmetric (· ≺ ·) := by
   dsimp [AntiSymmetric]
   intro x y
-  cases x <;> cases y <;> tauto
+  cases x <;> cases y <;> exhaust
 
 example : ¬ Transitive (· ≺ ·) := by
   dsimp [Transitive]
   push_neg
   use rock, paper, scissors
-  tauto
+  exhaust
 
 end
 

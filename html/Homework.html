@@ -29,7 +29,7 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
         <div class="wy-side-nav-search" >
-            <a href="index.html" class="icon icon-home"> The mechanics of proof
+            <a href="index.html" class="icon icon-home"> The Mechanics of Proof
           </a>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
@@ -40,7 +40,7 @@
 </div>
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <ul>
-<li class="toctree-l1"><a class="reference internal" href="00_Introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="00_Introduction.html">Preface</a></li>
 </ul>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="01_Proofs_by_Calculation.html">1. Proofs by calculation</a></li>
@@ -81,7 +81,7 @@
 
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="index.html">The mechanics of proof</a>
+          <a href="index.html">The Mechanics of Proof</a>
       </nav>
 
       <div class="wy-nav-content">
@@ -435,11 +435,10 @@ indicated in the first line.</p>
 </div>
 </li>
 <li><p>(<strong>hard</strong>) Show that <span class="math notranslate nohighlight">\(\lnot\forall x, P(x)\)</span> is logically equivalent to <span class="math notranslate nohighlight">\(\exists x, \lnot P(x)\)</span>.</p>
-<p>You will need to use the law of the excluded middle (the tactic <code class="docutils literal notranslate"><span class="pre">by_cases</span></code>).</p>
 <p>The point of this exercise is that you are proving the lemma <code class="docutils literal notranslate"><span class="pre">not_forall</span></code>, from
 <a class="reference internal" href="05_Logic.html#negation-rule-table"><span class="std std-numref">Table 5.1</span></a>.  So don&#8217;t use that lemma or the tactic <code class="docutils literal notranslate"><span class="pre">push_neg</span></code>
 which depends on it; instead prove this from scratch.  You will need to use the law of the
-excluded middle.</p>
+excluded middle (the tactic <code class="docutils literal notranslate"><span class="pre">by_cases</span></code>).</p>
 <p>Write this problem only in Lean, not on paper.</p>
 <div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="c">/-</span><span class="cm"> 5 points -/</span>
 <span class="kd">theorem</span> <span class="n">problem5</span> <span class="o">(</span><span class="n">P</span> <span class="o">:</span> <span class="n">&#945;</span> <span class="bp">&#8594;</span> <span class="kt">Prop</span><span class="o">)</span> <span class="o">:</span> <span class="bp">&#172;</span> <span class="o">(</span><span class="bp">&#8704;</span> <span class="n">x</span><span class="o">,</span> <span class="n">P</span> <span class="n">x</span><span class="o">)</span> <span class="bp">&#8596;</span> <span class="bp">&#8707;</span> <span class="n">x</span><span class="o">,</span> <span class="bp">&#172;</span> <span class="n">P</span> <span class="n">x</span> <span class="o">:=</span> <span class="kd">by</span>
@@ -727,6 +726,7 @@ Show that this function is bijective.</p>
 </div>
 </li>
 <li><p>Prove or disprove that <span class="math notranslate nohighlight">\(\{1,2,3\}=\{1,2\}\)</span>.</p>
+<p>Write this problem only in Lean, not on paper.</p>
 <div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">@[autograded 4]</span>
 <span class="kd">theorem</span> <span class="n">problem3a</span> <span class="o">:</span> <span class="o">{</span><span class="mi">1</span><span class="o">,</span> <span class="mi">2</span><span class="o">,</span> <span class="mi">3</span><span class="o">}</span> <span class="bp">=</span> <span class="o">{</span><span class="mi">1</span><span class="o">,</span> <span class="mi">2</span><span class="o">}</span> <span class="o">:=</span> <span class="kd">by</span>
   <span class="gr">sorry</span>

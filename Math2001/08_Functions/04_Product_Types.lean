@@ -10,7 +10,7 @@ import Library.Tactic.Product
 import Library.Tactic.Extra
 import Library.Tactic.Use
 
-attribute [-instance] Int.instDivInt_1 Int.instDivInt EuclideanDomain.instDiv Nat.instDivNat
+attribute [-instance] Int.instDivInt_1 Int.instDivInt Nat.instDivNat
 set_option push_neg.use_distrib true
 attribute [-simp] ne_eq
 attribute [-ext] Prod.ext
@@ -47,7 +47,7 @@ example : Bijective (fun ((m, n) : ℤ × ℤ) ↦ (m + n, m + 2 * n)) := by
   · ext ⟨m, n⟩
     dsimp
     ring
-  · ext ⟨a, b⟩ 
+  · ext ⟨a, b⟩
     dsimp
     ring
 
@@ -88,7 +88,7 @@ example : ¬ Injective (fun ((x, y) : ℝ × ℝ) ↦ x + y) := by
   constructor
   · numbers
   · numbers
-    
+
 example : Surjective (fun ((x, y) : ℝ × ℝ) ↦ x + y) := by
   intro a
   use (a, 0)

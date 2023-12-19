@@ -5,7 +5,7 @@ import Library.Tactic.Cancel
 import Library.Tactic.Numbers
 import Library.Tactic.Extra
 
-attribute [-instance] Int.instDivInt_1 Int.instDivInt EuclideanDomain.instDiv Nat.instDivNat
+attribute [-instance] Int.instDivInt_1 Int.instDivInt Nat.instDivNat
 
 
 example {x y : ℤ} (h : 2 * x - y = 4 ∧ y - x + 1 = 2) : x = 5 := by

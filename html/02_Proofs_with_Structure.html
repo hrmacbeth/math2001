@@ -30,7 +30,7 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
         <div class="wy-side-nav-search" >
-            <a href="index.html" class="icon icon-home"> The mechanics of proof
+            <a href="index.html" class="icon icon-home"> The Mechanics of Proof
           </a>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
@@ -41,7 +41,7 @@
 </div>
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <ul>
-<li class="toctree-l1"><a class="reference internal" href="00_Introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="00_Introduction.html">Preface</a></li>
 </ul>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="01_Proofs_by_Calculation.html">1. Proofs by calculation</a></li>
@@ -119,7 +119,7 @@
 
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="index.html">The mechanics of proof</a>
+          <a href="index.html">The Mechanics of Proof</a>
       </nav>
 
       <div class="wy-nav-content">
@@ -157,7 +157,7 @@ the live-updating <em>infoview</em> keeping track of your current hypotheses and
 <p>Every proof we&#8217;ve seen so far has been a single calculation.  More typically, though, a proof will
 have a more complex structure, with facts established at an early stage which are not used immediately,
 but instead brought in later.</p>
-<p>For example, here&#8217;s the algebra problem from <a class="reference internal" href="01_Proofs_by_Calculation.html#id20"><span class="std std-numref">Example 1.3.3</span></a>.</p>
+<p>For example, here&#8217;s the algebra problem from <a class="reference internal" href="01_Proofs_by_Calculation.html#id22"><span class="std std-numref">Example 1.3.3</span></a>.</p>
 <div class="admonition-problem admonition">
 <p class="admonition-title">Problem</p>
 <p>Let <span class="math notranslate nohighlight">\(a\)</span> and <span class="math notranslate nohighlight">\(b\)</span> be real numbers and suppose that <span class="math notranslate nohighlight">\(a-5b=4\)</span>
@@ -321,7 +321,7 @@ now available as an additional fact to use in future steps, and indeed it is use
 </section>
 <section id="id3">
 <h3><span class="section-number">2.1.3. </span>Example<a class="headerlink" href="#id3" title="Permalink to this headline">&#61633;</a></h3>
-<p>Let&#8217;s redo another example, this time <a class="reference internal" href="01_Proofs_by_Calculation.html#id33"><span class="std std-numref">Example 1.4.2</span></a>.  The problem was:</p>
+<p>Let&#8217;s redo another example, this time <a class="reference internal" href="01_Proofs_by_Calculation.html#id35"><span class="std std-numref">Example 1.4.2</span></a>.  The problem was:</p>
 <div class="admonition-problem admonition">
 <p class="admonition-title">Problem</p>
 <p>Let <span class="math notranslate nohighlight">\(r\)</span> and <span class="math notranslate nohighlight">\(s\)</span> be rational numbers, and suppose that
@@ -436,7 +436,7 @@ cancellation step fails in Lean.</p>
 <p>We conclude the section with some exercises translating prose proofs into Lean proofs.  The
 difficult part with these problems is to pick out, from the text, what the intermediate statements
 are.</p>
-<p>First, we redo one more example, this time <a class="reference internal" href="01_Proofs_by_Calculation.html#id31"><span class="std std-numref">Example 1.4.1</span></a>.  The problem was:</p>
+<p>First, we redo one more example, this time <a class="reference internal" href="01_Proofs_by_Calculation.html#id33"><span class="std std-numref">Example 1.4.1</span></a>.  The problem was:</p>
 <div class="admonition-problem admonition">
 <p class="admonition-title">Problem</p>
 <p>Let <span class="math notranslate nohighlight">\(x\)</span> and <span class="math notranslate nohighlight">\(y\)</span> be integers, and suppose that
@@ -691,6 +691,16 @@ it&#8217;s resolved, then work starts on the second goal, etc).</p>
 <p>You may wish to use the fact that two numbers are not equal if the first is greater than the
 second (you&#8217;ll need the lemma <code class="docutils literal notranslate"><span class="pre">ne_of_gt</span></code>, as in <a class="reference internal" href="#ne-of-gt"><span class="std std-numref">Example 2.2.2</span></a>).</p>
 <div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">{</span><span class="n">m</span> <span class="o">:</span> <span class="n">&#8484;</span><span class="o">}</span> <span class="o">(</span><span class="n">hm</span> <span class="o">:</span> <span class="n">m</span> <span class="bp">+</span> <span class="mi">1</span> <span class="bp">=</span> <span class="mi">5</span><span class="o">)</span> <span class="o">:</span> <span class="mi">3</span> <span class="bp">*</span> <span class="n">m</span> <span class="bp">&#8800;</span> <span class="mi">6</span> <span class="o">:=</span> <span class="kd">by</span>
+  <span class="gr">sorry</span>
+</pre></div>
+</div>
+</li>
+<li><p>Let <span class="math notranslate nohighlight">\(s\)</span> be a rational number for which <span class="math notranslate nohighlight">\(3s &#8804; -6\)</span> and
+<span class="math notranslate nohighlight">\(2s \ge -4\)</span>. Show that <span class="math notranslate nohighlight">\(s=-2\)</span>.</p>
+<p>You will probably use the lemma <code class="docutils literal notranslate"><span class="pre">le_antisymm</span></code>, stating if <span class="math notranslate nohighlight">\(x\le y\)</span> and
+<span class="math notranslate nohighlight">\(x\ge y\)</span> then <span class="math notranslate nohighlight">\(x = y\)</span>.</p>
+<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="c">/-</span><span class="cm"> 5 points -/</span>
+<span class="kd">theorem</span> <span class="n">problem2</span> <span class="o">{</span><span class="n">s</span> <span class="o">:</span> <span class="n">&#8474;</span><span class="o">}</span> <span class="o">(</span><span class="n">h1</span> <span class="o">:</span> <span class="mi">3</span> <span class="bp">*</span> <span class="n">s</span> <span class="bp">&#8804;</span> <span class="bp">-</span><span class="mi">6</span><span class="o">)</span> <span class="o">(</span><span class="n">h2</span> <span class="o">:</span> <span class="mi">2</span> <span class="bp">*</span> <span class="n">s</span> <span class="bp">&#8805;</span> <span class="bp">-</span><span class="mi">4</span><span class="o">)</span> <span class="o">:</span> <span class="n">s</span> <span class="bp">=</span> <span class="bp">-</span><span class="mi">2</span> <span class="o">:=</span> <span class="kd">by</span>
   <span class="gr">sorry</span>
 </pre></div>
 </div>
@@ -1215,7 +1225,7 @@ intermediate fact, available for use.</p>
 <p>It also sometimes happens that the goal of a problem features an &#8220;and&#8221; statement.  For example, you
 might be given a system of simultaneous equations, and asked to determine the values of all the
 variables appearing.  Here&#8217;s a system of simultaneous equations we saw before in
-<a class="reference internal" href="01_Proofs_by_Calculation.html#id20"><span class="std std-numref">Example 1.3.3</span></a>, but the problem statement has been tweaked to ask us to find the
+<a class="reference internal" href="01_Proofs_by_Calculation.html#id22"><span class="std std-numref">Example 1.3.3</span></a>, but the problem statement has been tweaked to ask us to find the
 values of both <span class="math notranslate nohighlight">\(a\)</span> and <span class="math notranslate nohighlight">\(b\)</span>.</p>
 <div class="admonition-problem admonition">
 <p class="admonition-title">Problem</p>
@@ -1682,12 +1692,18 @@ such that <span class="math notranslate nohighlight">\(2a=m\)</span>.  Show that
 </pre></div>
 </div>
 </li>
-<li><p>Let <span class="math notranslate nohighlight">\(a\)</span>, <span class="math notranslate nohighlight">\(b\)</span> and <span class="math notranslate nohighlight">\(c\)</span> be nonnegative real numbers, and suppose that
+<li><p>Let <span class="math notranslate nohighlight">\(n\)</span> be an integer.
+Show that there exists an integer <span class="math notranslate nohighlight">\(a\)</span>, such that <span class="math notranslate nohighlight">\(2a^3 &#8805; na+7\)</span>.</p>
+<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">{</span><span class="n">n</span> <span class="o">:</span> <span class="n">&#8484;</span><span class="o">}</span> <span class="o">:</span> <span class="bp">&#8707;</span> <span class="n">a</span><span class="o">,</span> <span class="mi">2</span> <span class="bp">*</span> <span class="n">a</span> <span class="bp">^</span> <span class="mi">3</span> <span class="bp">&#8805;</span> <span class="n">n</span> <span class="bp">*</span> <span class="n">a</span> <span class="bp">+</span> <span class="mi">7</span> <span class="o">:=</span> <span class="kd">by</span>
+  <span class="gr">sorry</span>
+</pre></div>
+</div>
+</li>
+<li><p>Let <span class="math notranslate nohighlight">\(a\)</span>, <span class="math notranslate nohighlight">\(b\)</span> and <span class="math notranslate nohighlight">\(c\)</span> be real numbers, and suppose that
 <span class="math notranslate nohighlight">\(a\le b+c\)</span>, <span class="math notranslate nohighlight">\(b\le a+c\)</span> and <span class="math notranslate nohighlight">\(c\le a+b\)</span>.  Show that there exist nonnegative
 real numbers <span class="math notranslate nohighlight">\(x\)</span>, <span class="math notranslate nohighlight">\(y\)</span> and <span class="math notranslate nohighlight">\(z\)</span> such that <span class="math notranslate nohighlight">\(a=y+z\)</span>, <span class="math notranslate nohighlight">\(b=x+z\)</span> and
 <span class="math notranslate nohighlight">\(c=x+y\)</span>.</p>
-<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">{</span><span class="n">a</span> <span class="n">b</span> <span class="n">c</span> <span class="o">:</span> <span class="n">&#8477;</span><span class="o">}</span> <span class="o">(</span><span class="n">ha</span> <span class="o">:</span> <span class="n">a</span> <span class="bp">&#8804;</span> <span class="n">b</span> <span class="bp">+</span> <span class="n">c</span><span class="o">)</span> <span class="o">(</span><span class="n">hb</span> <span class="o">:</span> <span class="n">b</span> <span class="bp">&#8804;</span> <span class="n">a</span> <span class="bp">+</span> <span class="n">c</span><span class="o">)</span> <span class="o">(</span><span class="n">hc</span> <span class="o">:</span> <span class="n">c</span> <span class="bp">&#8804;</span> <span class="n">a</span> <span class="bp">+</span> <span class="n">b</span><span class="o">)</span>
-    <span class="o">(</span><span class="n">ha&#39;</span> <span class="o">:</span> <span class="mi">0</span> <span class="bp">&#8804;</span> <span class="n">a</span><span class="o">)</span> <span class="o">(</span><span class="n">hb&#39;</span> <span class="o">:</span> <span class="mi">0</span> <span class="bp">&#8804;</span> <span class="n">b</span><span class="o">)</span> <span class="o">(</span><span class="n">hc&#39;</span> <span class="o">:</span> <span class="mi">0</span> <span class="bp">&#8804;</span> <span class="n">c</span><span class="o">)</span> <span class="o">:</span>
+<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">{</span><span class="n">a</span> <span class="n">b</span> <span class="n">c</span> <span class="o">:</span> <span class="n">&#8477;</span><span class="o">}</span> <span class="o">(</span><span class="n">ha</span> <span class="o">:</span> <span class="n">a</span> <span class="bp">&#8804;</span> <span class="n">b</span> <span class="bp">+</span> <span class="n">c</span><span class="o">)</span> <span class="o">(</span><span class="n">hb</span> <span class="o">:</span> <span class="n">b</span> <span class="bp">&#8804;</span> <span class="n">a</span> <span class="bp">+</span> <span class="n">c</span><span class="o">)</span> <span class="o">(</span><span class="n">hc</span> <span class="o">:</span> <span class="n">c</span> <span class="bp">&#8804;</span> <span class="n">a</span> <span class="bp">+</span> <span class="n">b</span><span class="o">)</span> <span class="o">:</span>
     <span class="bp">&#8707;</span> <span class="n">x</span> <span class="n">y</span> <span class="n">z</span><span class="o">,</span> <span class="n">x</span> <span class="bp">&#8805;</span> <span class="mi">0</span> <span class="bp">&#8743;</span> <span class="n">y</span> <span class="bp">&#8805;</span> <span class="mi">0</span> <span class="bp">&#8743;</span> <span class="n">z</span> <span class="bp">&#8805;</span> <span class="mi">0</span> <span class="bp">&#8743;</span> <span class="n">a</span> <span class="bp">=</span> <span class="n">y</span> <span class="bp">+</span> <span class="n">z</span> <span class="bp">&#8743;</span> <span class="n">b</span> <span class="bp">=</span> <span class="n">x</span> <span class="bp">+</span> <span class="n">z</span> <span class="bp">&#8743;</span> <span class="n">c</span> <span class="bp">=</span> <span class="n">x</span> <span class="bp">+</span> <span class="n">y</span> <span class="o">:=</span> <span class="kd">by</span>
   <span class="gr">sorry</span>
 </pre></div>

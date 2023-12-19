@@ -8,10 +8,9 @@ import Library.Tactic.Rel
 import Library.Tactic.Use
 
 
-attribute [-instance] Int.instDivInt_1 Int.instDivInt EuclideanDomain.instDiv Nat.instDivNat
+attribute [-instance] Int.instDivInt_1 Int.instDivInt Nat.instDivNat
 attribute [-simp] ne_eq
 set_option push_neg.use_distrib true
-set_option pp.unicode.fun true
 open Function
 
 
@@ -64,9 +63,9 @@ def q : Humour → Humour
 example : Inverse p q := by
   constructor
   · ext x
-    cases x <;> tauto
+    cases x <;> exhaust
   · ext x
-    cases x <;> tauto
+    cases x <;> exhaust
 
 
 theorem exists_inverse_of_bijective {f : X → Y} (hf : Bijective f) :
@@ -144,7 +143,7 @@ def c : Humour → Humour
 
 example : b ∘ a = c := by
   ext x
-  cases x <;> tauto
+  cases x <;> exhaust
 
 
 def u (x : ℝ) : ℝ := 5 * x + 1

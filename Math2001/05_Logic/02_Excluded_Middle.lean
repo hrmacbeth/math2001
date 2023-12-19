@@ -5,7 +5,7 @@ import Library.Tactic.Numbers
 import Library.Tactic.Use
 import Library.Tactic.TruthTable
 
-attribute [-instance] Int.instDivInt_1 Int.instDivInt EuclideanDomain.instDiv Nat.instDivNat
+attribute [-instance] Int.instDivInt_1 Int.instDivInt Nat.instDivNat
 
 
 def Superpowered (k : ℕ) : Prop := ∀ n : ℕ, Prime (k ^ k ^ n + 1)
@@ -54,8 +54,8 @@ theorem not_superpowered_three : ¬ Superpowered 3 := by
   conv at four_prime => numbers -- simplifies that statement to `Prime 4`
   have four_not_prime : ¬ Prime 4
   · apply not_prime 2 2
-    · numbers -- show `2 ≠ 1` 
-    · numbers -- show `2 ≠ 4` 
+    · numbers -- show `2 ≠ 1`
+    · numbers -- show `2 ≠ 4`
     · numbers -- show `4 = 2 * 2`
   contradiction
 
@@ -69,7 +69,7 @@ example : ∃ k : ℕ, Superpowered k ∧ ¬ Superpowered (k + 1) := by
   · use 1
     constructor
     · apply superpowered_one
-    · apply h2      
+    · apply h2
 
 
 example {P : Prop} (hP : ¬¬P) : P := by

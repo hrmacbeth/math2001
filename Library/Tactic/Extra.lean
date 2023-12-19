@@ -24,7 +24,7 @@ lemma IneqExtra.neg_le_sub_self_of_nonneg [LinearOrderedAddCommGroup G] {a b : G
   rw [sub_eq_add_neg]
   apply le_add_of_nonneg_left h
 
-attribute [aesop safe (rule_sets [extra]) (apply (transparency := reducible))]
+attribute [aesop safe (rule_sets [extra]) (apply (transparency := instances))]
   le_add_of_nonneg_right le_add_of_nonneg_left
   lt_add_of_pos_right lt_add_of_pos_left
   IneqExtra.neg_le_sub_self_of_nonneg
@@ -32,7 +32,7 @@ attribute [aesop safe (rule_sets [extra]) (apply (transparency := reducible))]
   sub_le_sub_left sub_le_sub_right sub_lt_sub_left sub_lt_sub_right
   le_refl
 
-attribute [aesop safe (rule_sets [extra]) apply]
+attribute [aesop safe (rule_sets [extra]) (apply (transparency := instances))]
   Int.modEq_fac_zero Int.modEq_fac_zero' Int.modEq_zero_fac Int.modEq_zero_fac'
   Int.modEq_add_fac_self Int.modEq_add_fac_self' Int.modEq_add_fac_self'' Int.modEq_add_fac_self'''
   Int.modEq_sub_fac_self Int.modEq_sub_fac_self' Int.modEq_sub_fac_self'' Int.modEq_sub_fac_self'''

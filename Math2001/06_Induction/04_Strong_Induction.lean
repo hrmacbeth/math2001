@@ -13,14 +13,13 @@ import Library.Tactic.Use
 notation3 (prettyPrint := false) "forall_sufficiently_large "(...)", "r:(scoped P => ∃ C, ∀ x ≥ C, P x) => r
 attribute [-instance] Int.instDivInt_1 Int.instDivInt Nat.instDivNat
 set_option push_neg.use_distrib true
-set_option linter.unusedVariables false
 open Nat
 
 
-def F : ℕ → ℤ 
+def F : ℕ → ℤ
   | 0 => 1
   | 1 => 1
-  | n + 2 => F (n + 1) + F n 
+  | n + 2 => F (n + 1) + F n
 
 theorem F_bound (n : ℕ) : F n ≤ 2 ^ n := by
   match n with
@@ -42,7 +41,7 @@ theorem F_bound (n : ℕ) : F n ≤ 2 ^ n := by
 namespace Nat
 
 theorem exists_prime_factor {n : ℕ} (hn2 : 2 ≤ n) : ∃ p : ℕ, Prime p ∧ p ∣ n := by
-  by_cases hn : Prime n 
+  by_cases hn : Prime n
   . -- case 1: `n` is prime
     use n
     constructor

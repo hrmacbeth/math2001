@@ -11,9 +11,8 @@ import Library.Tactic.Extra
 import Library.Tactic.Use
 
 set_option push_neg.use_distrib true
-attribute [-instance] Int.instDivInt_1 Int.instDivInt EuclideanDomain.instDiv Nat.instDivNat
+attribute [-instance] Int.instDivInt_1 Int.instDivInt Nat.instDivNat
 open Function
-macro_rules | `(tactic| ring) => `(tactic| ring_nf <;> with_reducible exact trivial)
 
 
 section

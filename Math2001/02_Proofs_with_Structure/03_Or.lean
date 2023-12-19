@@ -6,14 +6,14 @@ import Library.Tactic.Cancel
 import Library.Tactic.Numbers
 import Library.Tactic.Extra
 
-attribute [-instance] Int.instDivInt_1 Int.instDivInt EuclideanDomain.instDiv Nat.instDivNat
+attribute [-instance] Int.instDivInt_1 Int.instDivInt Nat.instDivNat
 
 
 example {x y : ℝ} (h : x = 1 ∨ y = -1) : x * y + x = y + 1 := by
   obtain hx | hy := h
   calc
     x * y + x = 1 * y + 1 := by rw [hx]
-    _ = y + 1 := by ring    
+    _ = y + 1 := by ring
   calc
     x * y + x = x * -1 + x := by rw [hy]
     _ = -1 + 1 := by ring

@@ -5,7 +5,7 @@ import Library.Tactic.Cancel
 import Library.Tactic.Numbers
 import Library.Tactic.Extra
 
-attribute [-instance] Int.instDivInt_1 Int.instDivInt EuclideanDomain.instDiv Nat.instDivNat
+attribute [-instance] Int.instDivInt_1 Int.instDivInt Nat.instDivNat
 
 /-! # Homework 1 -/
 

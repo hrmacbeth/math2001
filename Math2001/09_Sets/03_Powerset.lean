@@ -49,14 +49,14 @@ example : ¬ Injective p := by
   constructor
   · ext x
     dsimp
-    suffices x + 1 ≠ 0 by tauto
+    suffices x + 1 ≠ 0 by exhaust
     apply ne_of_gt
     extra
   · ext
     push_neg
     use 0
     dsimp
-    tauto
+    exhaust
 
 
 def q (s : Set ℤ) : Set ℤ := {n : ℤ | n + 1 ∈ s}

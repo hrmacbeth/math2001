@@ -4,7 +4,7 @@ import Library.Tactic.Addarith
 import Library.Tactic.Numbers
 import Library.Tactic.Extra
 
-attribute [-instance] Int.instDivInt_1 Int.instDivInt EuclideanDomain.instDiv Nat.instDivNat
+attribute [-instance] Int.instDivInt_1 Int.instDivInt Nat.instDivNat
 
 example {x : ℚ} (hx : 3 * x = 2) : x ≠ 1 := by
   apply ne_of_lt
@@ -28,4 +28,8 @@ example {a b : ℝ} (h1 : a ^ 2 + b ^ 2 = 0) : a ^ 2 = 0 := by
 
 
 example {m : ℤ} (hm : m + 1 = 5) : 3 * m ≠ 6 := by
+  sorry
+
+/- 5 points -/
+theorem problem2 {s : ℚ} (h1 : 3 * s ≤ -6) (h2 : 2 * s ≥ -4) : s = -2 := by
   sorry

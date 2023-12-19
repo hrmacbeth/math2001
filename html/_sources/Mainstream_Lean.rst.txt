@@ -56,6 +56,12 @@ would typically write out the details in full. These deliberately weakened tacti
         
         you are using
 
+    * - ``duper``
+      - ``exhaust``
+      - ``duper`` can handle logical tasks involving quantifiers, not just the
+      
+        quantifier-free ones
+        
 Some tactics used in this book have no mathlib analogues.  They are typically wrappers for a small
 collection of lemmas, and in mathlib these lemmas would be invoked by name.
 
@@ -117,8 +123,8 @@ aware of:
       - ``polyrith``
       - ``rw``, ``ring``
 
-    * - best-first search
-      - ``aesop``
+    * - `superposition calculus <https://en.wikipedia.org/wiki/Superposition_calculus>`_
+      - ``duper``
       - logic tactics at the end of a proof or sub-proof
 
 Another point not covered in this book is how to interact with the library.  Since mathlib contains

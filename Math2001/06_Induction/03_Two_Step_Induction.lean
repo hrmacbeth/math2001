@@ -11,35 +11,34 @@ open Int
 
 notation3 (prettyPrint := false) "forall_sufficiently_large "(...)", "r:(scoped P => ∃ C, ∀ x ≥ C, P x) => r
 attribute [-instance] Int.instDivInt_1 Int.instDivInt Nat.instDivNat
-set_option linter.unusedVariables false
 
 
-def a : ℕ → ℤ 
+def a : ℕ → ℤ
   | 0 => 2
   | 1 => 1
-  | n + 2 => a (n + 1) + 2 * a n 
+  | n + 2 => a (n + 1) + 2 * a n
 
 
 #eval a 5 -- infoview displays `31`
 
 
-example (n : ℕ) : a n = 2 ^ n + (-1) ^ n := by 
+example (n : ℕ) : a n = 2 ^ n + (-1) ^ n := by
   two_step_induction n with k IH1 IH2
   . calc a 0 = 2 := by rw [a]
       _ = 2 ^ 0 + (-1) ^ 0 := by numbers
   . calc a 1 = 1 := by rw [a]
       _ = 2 ^ 1 + (-1) ^ 1 := by numbers
   calc
-    a (k + 2) 
+    a (k + 2)
       = a (k + 1) + 2 * a k := by rw [a]
     _ = (2 ^ (k + 1) + (-1) ^ (k + 1)) + 2 * (2 ^ k + (-1) ^ k) := by rw [IH1, IH2]
     _ = (2 : ℤ) ^ (k + 2) + (-1) ^ (k + 2) := by ring
 
 
 example {m : ℕ} (hm : 1 ≤ m) : a m ≡ 1 [ZMOD 6] ∨ a m ≡ 5 [ZMOD 6] := by
-  have H : ∀ n : ℕ, 1 ≤ n → 
+  have H : ∀ n : ℕ, 1 ≤ n →
       (a n ≡ 1 [ZMOD 6] ∧ a (n + 1) ≡ 5 [ZMOD 6])
-    ∨ (a n ≡ 5 [ZMOD 6] ∧ a (n + 1) ≡ 1 [ZMOD 6]) 
+    ∨ (a n ≡ 5 [ZMOD 6] ∧ a (n + 1) ≡ 1 [ZMOD 6])
   · intro n hn
     induction_from_starting_point n, hn with k hk IH
     · left
@@ -52,16 +51,16 @@ example {m : ℕ} (hm : 1 ≤ m) : a m ≡ 1 [ZMOD 6] ∨ a m ≡ 5 [ZMOD 6] := 
     · obtain ⟨IH1, IH2⟩ | ⟨IH1, IH2⟩ := IH
       · right
         constructor
-        · apply IH2 
+        · apply IH2
         calc a (k + 1 + 1) = a (k + 1) + 2 * a k := by rw [a]
-          _ ≡ 5 + 2 * 1 [ZMOD 6] := by rel [IH1, IH2] 
+          _ ≡ 5 + 2 * 1 [ZMOD 6] := by rel [IH1, IH2]
           _ = 6 * 1 + 1 := by numbers
           _ ≡ 1 [ZMOD 6] := by extra
       · left
         constructor
-        · apply IH2 
+        · apply IH2
         calc a (k + 1 + 1) = a (k + 1) + 2 * a k := by rw [a]
-          _ ≡ 1 + 2 * 5 [ZMOD 6] := by rel [IH1, IH2] 
+          _ ≡ 1 + 2 * 5 [ZMOD 6] := by rel [IH1, IH2]
           _ = 6 * 1 + 5 := by numbers
           _ ≡ 5 [ZMOD 6] := by extra
   obtain ⟨H1, H2⟩ | ⟨H1, H2⟩ := H m hm
@@ -71,10 +70,10 @@ example {m : ℕ} (hm : 1 ≤ m) : a m ≡ 1 [ZMOD 6] ∨ a m ≡ 5 [ZMOD 6] := 
     apply H1
 
 
-def F : ℕ → ℤ 
+def F : ℕ → ℤ
   | 0 => 1
   | 1 => 1
-  | n + 2 => F (n + 1) + F n 
+  | n + 2 => F (n + 1) + F n
 
 
 example (n : ℕ) : F n ≤ 2 ^ n := by
@@ -141,12 +140,12 @@ example : forall_sufficiently_large n : ℕ, d n ≥ 4 ^ n := by
 /-! # Exercises -/
 
 
-def b : ℕ → ℤ 
+def b : ℕ → ℤ
   | 0 => 0
   | 1 => 1
-  | n + 2 => 5 * b (n + 1) - 6 * b n 
+  | n + 2 => 5 * b (n + 1) - 6 * b n
 
-example (n : ℕ) : b n = 3 ^ n - 2 ^ n := by 
+example (n : ℕ) : b n = 3 ^ n - 2 ^ n := by
   sorry
 
 def c : ℕ → ℤ
@@ -160,7 +159,7 @@ example (n : ℕ) : c n = 2 * 2 ^ n + (-2) ^ n := by
 def t : ℕ → ℤ
   | 0 => 5
   | 1 => 7
-  | n + 2 => 2 * t (n + 1) - t n 
+  | n + 2 => 2 * t (n + 1) - t n
 
 example (n : ℕ) : t n = 2 * n + 5 := by
   sorry
@@ -176,27 +175,27 @@ example (n : ℕ) : q n = (n:ℤ) ^ 3 + 1 := by
 def s : ℕ → ℤ
   | 0 => 2
   | 1 => 3
-  | n + 2 => 2 * s (n + 1) + 3 * s n 
+  | n + 2 => 2 * s (n + 1) + 3 * s n
 
 example (m : ℕ) : s m ≡ 2 [ZMOD 5] ∨ s m ≡ 3 [ZMOD 5] := by
   sorry
-  
+
 def p : ℕ → ℤ
   | 0 => 2
   | 1 => 3
-  | n + 2 => 6 * p (n + 1) - p n 
+  | n + 2 => 6 * p (n + 1) - p n
 
 example (m : ℕ) : p m ≡ 2 [ZMOD 7] ∨ p m ≡ 3 [ZMOD 7] := by
   sorry
 
-def r : ℕ → ℤ 
+def r : ℕ → ℤ
   | 0 => 2
   | 1 => 0
-  | n + 2 => 2 * r (n + 1) + r n 
+  | n + 2 => 2 * r (n + 1) + r n
 
 example : forall_sufficiently_large n : ℕ, r n ≥ 2 ^ n := by
   sorry
-  
+
 example : forall_sufficiently_large n : ℕ,
     (0.4:ℚ) * 1.6 ^ n < F n ∧ F n < (0.5:ℚ) * 1.7 ^ n := by
   sorry

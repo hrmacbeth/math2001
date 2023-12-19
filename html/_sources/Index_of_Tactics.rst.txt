@@ -8,7 +8,7 @@ Index of Lean tactics
 =====================
 
 Tactics marked \* are specific to this book, so you will not be able to get help with them by
-googling/consulting internet forums/etc.  Reread the indicated part of the lecture notes or ask
+googling/consulting internet forums/etc.  Reread the indicated part of the book or ask
 your instructor!
 
 .. rubric:: \* ``addarith`` (first use: :numref:`Section %s <shortcut>`)

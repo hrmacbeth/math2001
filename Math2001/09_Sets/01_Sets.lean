@@ -7,7 +7,7 @@ import Library.Tactic.Numbers
 import Library.Tactic.Extra
 import Library.Tactic.Use
 
-attribute [-instance] Int.instDivInt_1 Int.instDivInt EuclideanDomain.instDiv Nat.instDivNat
+attribute [-instance] Int.instDivInt_1 Int.instDivInt Nat.instDivNat
 set_option push_neg.use_distrib true
 open Set
 attribute [-simp] ne_eq
@@ -46,7 +46,7 @@ example : {x : ℝ | 0 ≤ x ^ 2} ⊈ {t : ℝ | 0 ≤ t} := by
   use -3
   constructor
   · numbers
-  · numbers  
+  · numbers
 
 
 example : {x : ℤ | Int.Odd x} = {a : ℤ | ∃ k, a = 2 * k - 1} := by
@@ -145,7 +145,7 @@ example : 6 ∉ {n : ℕ | n ∣ 42} := by
 
 
 example : 8 ∈ {k : ℤ | 5 ∣ k} := by
-  sorry  
+  sorry
 
 example : 8 ∉ {k : ℤ | 5 ∣ k} := by
   sorry

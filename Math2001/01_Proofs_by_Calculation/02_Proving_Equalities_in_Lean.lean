@@ -1,14 +1,14 @@
 /- Copyright (c) Heather Macbeth, 2022.  All rights reserved. -/
 import Mathlib.Data.Real.Basic
 
-attribute [-instance] Int.instDivInt_1 Int.instDivInt EuclideanDomain.instDiv Nat.instDivNat
+attribute [-instance] Int.instDivInt_1 Int.instDivInt Nat.instDivNat
 
 /-! # Section 1.2: Proving equalities in Lean
 
-This file should be worked through in parallel with the corresponding section of the lecture notes:
+This file should be worked through in parallel with the corresponding section of the book:
 https://hrmacbeth.github.io/math2001/01_Proofs_by_Calculation.html#proving-equalities-in-lean
 
-I recommend splitting your screen to display the code and the lecture notes side by side! -/
+I recommend splitting your screen to display the code and the book side by side! -/
 
 
 -- Example 1.2.1

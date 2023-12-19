@@ -7,11 +7,9 @@ import Library.Tactic.Numbers
 import Library.Tactic.Extra
 import Library.Tactic.Use
 
-attribute [-instance] Int.instDivInt_1 Int.instDivInt EuclideanDomain.instDiv Nat.instDivNat
+attribute [-instance] Int.instDivInt_1 Int.instDivInt Nat.instDivNat
 attribute [-simp] ne_eq
 set_option push_neg.use_distrib true
-set_option pp.unicode.fun true
-set_option linter.unusedVariables false
 open Function
 
 
@@ -77,7 +75,7 @@ example : ¬ Bijective f := by
   push_neg
   use neutron
   intro x
-  cases x <;> tauto
+  cases x <;> exhaust
 
 
 example {f : X → Y} : Bijective f ↔ ∀ y, ∃! x, f x = y := by

@@ -34,5 +34,3 @@ elab "exhaust" : tactic => withMainContext do
       trace[Prover.saturate] "Final Active Set: {state.activeSet.toArray}"
       throwError "Failed, can't rule out other cases"
     | Duper.ProverM.Result.unknown => throwError "Failed, case checking timed out"
-
-macro_rules | `(tactic | tauto) => `(tactic | exhaust)

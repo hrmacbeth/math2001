@@ -7,8 +7,7 @@ import Library.Tactic.Numbers
 import Library.Tactic.Extra
 import Library.Tactic.Use
 
-attribute [-instance] Int.instDivInt_1 Int.instDivInt EuclideanDomain.instDiv Nat.instDivNat
-set_option linter.unusedVariables false
+attribute [-instance] Int.instDivInt_1 Int.instDivInt Nat.instDivNat
 
 namespace Nat
 
@@ -38,7 +37,7 @@ example (n : ℕ) : Even n ∨ Odd n := by
 example {a b d : ℤ} (h : a ≡ b [ZMOD d]) (n : ℕ) : a ^ n ≡ b ^ n [ZMOD d] := by
   sorry
 
-example (n : ℕ) : 4 ^ n ≡ 1 [ZMOD 15] ∨ 4 ^ n ≡ 4 [ZMOD 15] := by  
+example (n : ℕ) : 4 ^ n ≡ 1 [ZMOD 15] ∨ 4 ^ n ≡ 4 [ZMOD 15] := by
   simple_induction n with k IH
   · -- base case
     left
@@ -48,7 +47,7 @@ example (n : ℕ) : 4 ^ n ≡ 1 [ZMOD 15] ∨ 4 ^ n ≡ 4 [ZMOD 15] := by
     · right
       calc (4:ℤ) ^ (k + 1) = 4 * 4 ^ k := by ring
         _ ≡ 4 * 1 [ZMOD 15] := by rel [hk]
-        _ = 4 := by numbers 
+        _ = 4 := by numbers
     · left
       calc (4:ℤ) ^ (k + 1) = 4 * 4 ^ k := by ring
         _ ≡ 4 * 4 [ZMOD 15] := by rel [hk]
@@ -87,14 +86,14 @@ example (n : ℕ) : 3 ^ n ≥ n ^ 2 + n + 1 := by
 example {a : ℝ} (ha : -1 ≤ a) (n : ℕ) : (1 + a) ^ n ≥ 1 + n * a := by
   sorry
 
-example (n : ℕ) : 5 ^ n ≡ 1 [ZMOD 8] ∨ 5 ^ n ≡ 5 [ZMOD 8] := by  
+example (n : ℕ) : 5 ^ n ≡ 1 [ZMOD 8] ∨ 5 ^ n ≡ 5 [ZMOD 8] := by
   sorry
 
-example (n : ℕ) : 6 ^ n ≡ 1 [ZMOD 7] ∨ 6 ^ n ≡ 6 [ZMOD 7] := by  
+example (n : ℕ) : 6 ^ n ≡ 1 [ZMOD 7] ∨ 6 ^ n ≡ 6 [ZMOD 7] := by
   sorry
 
 example (n : ℕ) :
-    4 ^ n ≡ 1 [ZMOD 7] ∨ 4 ^ n ≡ 2 [ZMOD 7] ∨ 4 ^ n ≡ 4 [ZMOD 7] := by  
+    4 ^ n ≡ 1 [ZMOD 7] ∨ 4 ^ n ≡ 2 [ZMOD 7] ∨ 4 ^ n ≡ 4 [ZMOD 7] := by
   sorry
 
 example : forall_sufficiently_large n : ℕ, (3:ℤ) ^ n ≥ 2 ^ n + 100 := by

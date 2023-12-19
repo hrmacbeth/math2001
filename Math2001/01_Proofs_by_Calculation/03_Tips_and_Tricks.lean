@@ -1,9 +1,9 @@
 /- Copyright (c) Heather Macbeth, 2022.  All rights reserved. -/
 import Mathlib.Data.Real.Basic
 
-attribute [-instance] Int.instDivInt_1 Int.instDivInt EuclideanDomain.instDiv Nat.instDivNat
+attribute [-instance] Int.instDivInt_1 Int.instDivInt Nat.instDivNat
 
-/-! # Section 1.3: Tips and tricks 
+/-! # Section 1.3: Tips and tricks
 
 Exercise: choose some of these examples and type out the whole proofs printed in the text as Lean
 proofs. -/

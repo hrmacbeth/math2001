@@ -11,7 +11,7 @@ import Library.Tactic.Numbers
 import Library.Tactic.Extra
 import Library.Tactic.Use
 
-attribute [-instance] Int.instDivInt_1 Int.instDivInt EuclideanDomain.instDiv Nat.instDivNat
+attribute [-instance] Int.instDivInt_1 Int.instDivInt Nat.instDivNat
 attribute [-simp] ne_eq
 open Function
 namespace Int
@@ -93,7 +93,7 @@ example : ¬ Injective f := by
   push_neg
   use athos, porthos
   dsimp [f] -- optional
-  tauto
+  exhaust
 
 
 example : ¬ Surjective f := by
@@ -102,9 +102,9 @@ example : ¬ Surjective f := by
   use porthos
   intro a
   cases a
-  · tauto
-  · tauto
-  · tauto
+  · exhaust
+  · exhaust
+  · exhaust
 
 
 -- better (more automated) version of the previous proof
@@ -113,7 +113,7 @@ example : ¬ Surjective f := by
   push_neg
   use porthos
   intro a
-  cases a <;> tauto
+  cases a <;> exhaust
 
 
 def g : Musketeer → Musketeer
@@ -125,7 +125,7 @@ def g : Musketeer → Musketeer
 example : Injective g := by
   dsimp [Injective]
   intro x1 x2 hx
-  cases x1 <;> cases x2 <;> tauto
+  cases x1 <;> cases x2 <;> exhaust
 
 
 example : Surjective g := by
@@ -133,11 +133,11 @@ example : Surjective g := by
   intro y
   cases y
   · use aramis
-    tauto
+    exhaust
   · use athos
-    tauto
+    exhaust
   · use porthos
-    tauto
+    exhaust
 
 
 
