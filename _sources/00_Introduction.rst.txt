@@ -4,8 +4,8 @@
 
 .. _introduction:
     
-Introduction
-============
+Preface
+=======
 
 About this book
 ---------------
@@ -22,6 +22,64 @@ mathematical prose and in Lean (the book should be read with a computer open to 
 file of Lean code),
 and since these two "languages" are almost equally foreign for
 students who are new to proofs, most solutions are annotated with informal commentary.
+
+
+Why Lean?
+---------
+
+People have been expressing mathematical arguments in words for thousands of years, and mathematical
+language is by now very standardized, with many conventions to let mathematicians communicate with
+each other efficiently and unambiguously.  The primary goal of this book is to teach you to read and
+write standard mathematical English prose.
+
+Computer systems called *interactive theorem provers* (also known as *proof assistants* or systems
+for *formalization*) offer an alternative way to express a mathematical argument.
+`Lean <https://leanprover.github.io/>`_, an open-source project developed at Microsoft Research and
+elsewhere since 2013, is one such system, but they have existed since
+`the early days of computing <https://en.wikipedia.org/wiki/Automath>`_.
+
+Interactive theorem-proving systems such as Lean have become steadily easier to use over the
+years, but they are not yet actually *easy* to use: they can be fussy and unforgiving, just like any
+other computer programming language.  So why does this book propose that you use such
+a system in your first encounter with proofs? 
+
+First: Like it says on the tin, writing proofs in an interactive theorem prover is interactive.  At
+each point in your proof, you can see a visual representation of the *proof state*: what you know
+(your *hypotheses*) and what you are currently working towards (your *goal(s)*).
+If you are new to writing mathematical proofs, you may be surprised at how hard you find it to
+distinguish hypotheses from goals on paper after a few steps alternating between forward and
+backward reasoning, or how easily you lose track of one case in a case division.
+Lean's live-updating visual representation of the proof state frees you from needing to keep this
+in your working memory.
+
+Second: Computer formalization systems, fussy unforgiving programming languages that they are, throw
+syntax errors when you make a mistake.  Feedback is instant and you can keep iterating until you
+have something that works. Writing a solution in Lean ensures that it is completely correct:
+no substitutions of an inequality under a minus sign, no divisions by zero, no terms dropped in
+the algebra.  This is especially useful in doing proof-based mathematics: make a small error
+halfway through a calculus problem and the rest of the solution probably won't change much, but
+make a small error halfway through a proof and the rest of the solution may be useless.
+
+Finally: You interact with Lean using *tactics* which each perform a single step of a certain mode
+of reasoning.  The tactics which are taught in this textbook (some custom-written for this book)
+each constitute a single permissible "atom" of reasoning in the mental world of the book.
+This makes objective something which in a prose-only textbook can be subjective: what constitutes a
+fully-detailed proof.  What's more, the "atoms" I offer you are designed to nudge you toward
+certain styles of mathematical argument structure [#]_ which are conventional in standard
+mathematical prose but which students are often slow to adopt.
+
+This is a book about mathematics which uses Lean as a tool. It is designed so that the learning
+curve is flatter for the Lean than it is for the mathematics [#]_ -- partly by a careful
+choice of exercises, and partly by writing in a
+Lean "dialect" of my own, with a limited Lean vocabulary [#]_ which is just flexible enough for the
+mathematical needs of the book.  (A summary of the major differences can be
+found in the appendix
+:ref:`transitioning_to_regular_lean`.) My hope is that most of your intellectual effort in solving
+the problems will be devoted to the mathematics, not to Lean's implementation details or
+quirks of syntax. 
+
+Contents and prerequisites
+--------------------------
 
 You are ready to read this book if (1) you know high school algebra inside out and (2) you have
 experience learning to carry out complicated mathematical algorithms.  I have in mind, as a typical
@@ -75,62 +133,6 @@ functions, sets, and relations, in that order -- we take the type-theoretic poin
 functions are the primitive notion and sets and relations are defined as functions into
 :math:`\left[\operatorname{true}/\operatorname{false}\right]`.
 
-
-About Lean
-----------
-
-People have been expressing mathematical arguments in words for thousands of years, and mathematical
-language is by now very standardized, with many conventions to let mathematicians communicate with
-each other efficiently and unambiguously.  The primary goal of this book is to teach you to read and
-write standard mathematical English prose.
-
-Computer systems called *interactive theorem provers* (also known as *proof assistants* or systems
-for *formalization*) offer an alternative way to express a mathematical argument.
-`Lean <https://leanprover.github.io/>`_, an open-source project developed at Microsoft Research and
-elsewhere since 2013, is one such system, but they have existed since
-`the early days of computing <https://en.wikipedia.org/wiki/Automath>`_.
-
-Interactive theorem-proving systems such as Lean have become steadily easier to use over the
-years, but they are not yet actually *easy* to use: they can be fussy and unforgiving, just like any
-other computer programming language.  So why does this book propose that you use such
-a system in your first encounter with proofs? 
-
-First: Like it says on the tin, writing proofs in an interactive theorem prover is interactive.  At
-each point in your proof, you can see a visual representation of the *proof state*: what you know
-(your *hypotheses*) and what you are currently working towards (your *goal(s)*).
-If you are new to writing mathematical proofs, you may be surprised at how hard you find it to
-distinguish hypotheses from goals on paper after a few steps alternating between forward and
-backward reasoning, or how easily you lose track of one case in a case division.
-Lean's live-updating visual representation of the proof state frees you from needing to keep this
-in your working memory.
-
-Second: Computer formalization systems, fussy unforgiving programming languages that they are, throw
-syntax errors when you make a mistake.  Feedback is instant and you can keep iterating until you
-have something that works. Writing a solution in Lean ensures that it is completely correct:
-no substitutions of an inequality under a minus sign, no divisions by zero, no terms dropped in
-the algebra.  This is especially useful in doing proof-based mathematics: make a small error
-halfway through a calculus problem and the rest of the solution probably won't change much, but
-make a small error halfway through a proof and the rest of the solution may be useless.
-
-Finally: You interact with Lean using *tactics* which each perform a single step of a certain mode
-of reasoning.  The tactics which are taught in this textbook (some custom-written for this book)
-each constitute a single permissible "atom" of reasoning in the mental world of the book.
-This makes objective something which in a prose-only textbook can be subjective: what constitutes a
-fully-detailed proof.  What's more, the "atoms" I offer you are designed to nudge you toward
-certain styles of mathematical argument structure [#]_ which are conventional in standard
-mathematical prose but which students are often slow to adopt.
-
-This is a book about mathematics which uses Lean as a tool. It is designed so that the learning
-curve is flatter for the Lean than it is for the mathematics [#]_ -- partly by a careful
-choice of exercises, and partly by writing in a
-Lean "dialect" of my own, with a limited Lean vocabulary [#]_ which is just flexible enough for the
-mathematical needs of the book.  (A summary of the major differences can be
-found in the appendix
-:ref:`transitioning_to_regular_lean`.) My hope is that most of your intellectual effort in solving
-the problems will be devoted to the mathematics, not to Lean's implementation details or
-quirks of syntax. 
-
-
 Note for instructors
 ---------------------
 
@@ -147,8 +149,8 @@ the material in this book.  A typical class structure might look like this:
 * 20 minutes working in Lean in pairs, instructor circulating;
 * 25 minutes traditional blackboard lecture, perhaps more theoretical than the first.
 
-The homework assignments for the course are available on request. They
-are relatively short (5-7 problems per week), but students were required to submit almost all
+The homework assignments for the course are available on request.
+They are relatively short (5-7 problems per week), but students were required to submit almost all
 problems both in writing and in Lean.  Most students required support in office hours or by email
 to complete the homework assignments.
 
@@ -171,10 +173,6 @@ own computers.  I used `Gitpod <https://www.gitpod.io/>`_ for this (an alternati
 using Gitpod.  The students' Lean homework was automatically graded using a
 `Gradescope <https://www.gradescope.com/>`_ auto-grader (an alternative is
 `GitHub Classroom <https://classroom.github.com/>`_).
-
-The book is currently being updated for future semesters.  Please email
-`me <https://faculty.fordham.edu/hmacbeth1/>`_ if you would like to be kept apprised of major
-changes.
 
 Acknowledgements
 ----------------
@@ -199,16 +197,6 @@ My heartfelt thanks to
 
 .. rubric:: Footnotes
 
-.. [#] It's in fact quite possible to get through the *equality*-heavy
-  reasoning of many intro-to-proof courses
-  without really mastering this mode of reasoning, but it's nearly impossible to reason about
-  *inequalities* without mastering calculational proofs, and students who don't pick up the skill in
-  an intro-to-proof course will find it come back to haunt them when they reach real analysis.
-
-.. [#]  The expert reader may enjoy the problems in :numref:`Section %s <lem>`, which introduces
-  classical reasoning; they are new (to my knowledge), and more elementary than the usual textbook
-  examples.
-
 .. [#] For example, the uses of calculation blocks for most algebraic reasoning, and a preference
     for forward over backward reasoning.
 
@@ -229,3 +217,13 @@ My heartfelt thanks to
   automation lightly streamlines work with induction principles, well-foundedness justifications,
   product types, and sets.
   In total, fewer than fifty lemmas are invoked by name in the book.
+
+.. [#] It's in fact quite possible to get through the *equality*-heavy
+  reasoning of many intro-to-proof courses
+  without really mastering this mode of reasoning, but it's nearly impossible to reason about
+  *inequalities* without mastering calculational proofs, and students who don't pick up the skill in
+  an intro-to-proof course will find it come back to haunt them when they reach real analysis.
+
+.. [#]  The expert reader may enjoy the problems in :numref:`Section %s <lem>`, which introduces
+  classical reasoning; they are new (to my knowledge), and more elementary than the usual textbook
+  examples.

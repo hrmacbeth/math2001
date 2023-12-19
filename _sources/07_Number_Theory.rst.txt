@@ -3,7 +3,7 @@
 Number theory
 =============
 
-This chapter is different in style from the other chapters of the lecture notes.  The facts here are
+This chapter is different in style from the other chapters of the book.  The facts here are
 famous theorems, and their proofs require one-off, clever ideas.  These particular ideas will not
 turn up again on homework or exams.  Think of this chapter instead as a capstone: we explore what
 kinds of mathematical statements are in reach with the reasoning tools and theory we have developed

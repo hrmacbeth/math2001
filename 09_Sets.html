@@ -30,7 +30,7 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
         <div class="wy-side-nav-search" >
-            <a href="index.html" class="icon icon-home"> The mechanics of proof
+            <a href="index.html" class="icon icon-home"> The Mechanics of Proof
           </a>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
@@ -41,7 +41,7 @@
 </div>
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <ul>
-<li class="toctree-l1"><a class="reference internal" href="00_Introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="00_Introduction.html">Preface</a></li>
 </ul>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="01_Proofs_by_Calculation.html">1. Proofs by calculation</a></li>
@@ -104,7 +104,7 @@
 
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="index.html">The mechanics of proof</a>
+          <a href="index.html">The Mechanics of Proof</a>
       </nav>
 
       <div class="wy-nav-content">
@@ -685,12 +685,12 @@ is <span class="math notranslate nohighlight">\(\{x : X \mid x \in U \lor x \in 
   <span class="bp">&#183;</span> <span class="gr">sorry</span>
 </pre></div>
 </div>
-<p>But there&#8217;s a better way: this is pure propositional logic, the situation the tactic <code class="docutils literal notranslate"><span class="pre">tauto</span></code> (see
+<p>But there&#8217;s a better way: this is pure propositional logic, the situation the tactic <code class="docutils literal notranslate"><span class="pre">exhaust</span></code> (see
 <a class="reference internal" href="08_Functions.html#musketeer"><span class="std std-numref">Example 8.1.8</span></a>) was designed for.</p>
 <div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">:</span> <span class="o">{</span><span class="mi">2</span><span class="o">,</span> <span class="mi">1</span><span class="o">}</span> <span class="bp">&#8746;</span> <span class="o">{</span><span class="mi">2</span><span class="o">,</span> <span class="mi">4</span><span class="o">}</span> <span class="bp">=</span> <span class="o">{</span><span class="mi">1</span><span class="o">,</span> <span class="mi">2</span><span class="o">,</span> <span class="mi">4</span><span class="o">}</span> <span class="o">:=</span> <span class="kd">by</span>
   <span class="n">ext</span> <span class="n">n</span>
   <span class="n">dsimp</span>
-  <span class="n">tauto</span>
+  <span class="n">exhaust</span>
 </pre></div>
 </div>
 </section>
@@ -742,7 +742,7 @@ is <span class="math notranslate nohighlight">\(\{x : X \mid x \in U \land x \in
   <span class="n">dsimp</span> <span class="o">[</span><span class="n">Set.subset_def</span><span class="o">]</span>
   <span class="n">intro</span> <span class="n">n</span> <span class="n">h</span>
   <span class="n">obtain</span> <span class="o">&#10216;</span><span class="n">h1</span><span class="o">,</span> <span class="n">h2</span><span class="o">&#10217;</span> <span class="o">:=</span> <span class="n">h</span>
-  <span class="n">interval_cases</span> <span class="n">n</span> <span class="bp">&lt;;&gt;</span> <span class="n">tauto</span>
+  <span class="n">interval_cases</span> <span class="n">n</span> <span class="bp">&lt;;&gt;</span> <span class="n">exhaust</span>
 </pre></div>
 </div>
 </section>
@@ -782,12 +782,12 @@ description: here&#8217;s the strict definition.</p>
 and that the empty set in <span class="math notranslate nohighlight">\(X\)</span> is a subset of every set in <span class="math notranslate nohighlight">\(X\)</span>.</p>
 <div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">(</span><span class="n">x</span> <span class="o">:</span> <span class="n">&#8484;</span><span class="o">)</span> <span class="o">:</span> <span class="n">x</span> <span class="bp">&#8713;</span> <span class="bp">&#8709;</span> <span class="o">:=</span> <span class="kd">by</span>
   <span class="n">dsimp</span>
-  <span class="n">tauto</span>
+  <span class="n">exhaust</span>
 
 <span class="kd">example</span> <span class="o">(</span><span class="n">U</span> <span class="o">:</span> <span class="n">Set</span> <span class="n">&#8484;</span><span class="o">)</span> <span class="o">:</span> <span class="bp">&#8709;</span> <span class="bp">&#8838;</span> <span class="n">U</span> <span class="o">:=</span> <span class="kd">by</span>
   <span class="n">dsimp</span> <span class="o">[</span><span class="n">Set.subset_def</span><span class="o">]</span>
   <span class="n">intro</span> <span class="n">x</span>
-  <span class="n">tauto</span>
+  <span class="n">exhaust</span>
 </pre></div>
 </div>
 <p>To show a set <span class="math notranslate nohighlight">\(U\)</span> in <span class="math notranslate nohighlight">\(X\)</span> is equal to the empty set, you must show that <span class="math notranslate nohighlight">\(U\)</span> has
@@ -814,7 +814,7 @@ no elements.</p>
 </div>
 <p>But a certain amount of that proof (the <code class="docutils literal notranslate"><span class="pre">constructor</span></code>, and the <code class="docutils literal notranslate"><span class="pre">intro</span></code>/<code class="docutils literal notranslate"><span class="pre">contradiction</span></code> in the
 second branch of the proof) is just logical messing-around.  Now that we are familiar with the full
-power of the <code class="docutils literal notranslate"><span class="pre">tauto</span></code> tactic it is possible to streamline proofs like this.  Have a look at the
+power of the <code class="docutils literal notranslate"><span class="pre">exhaust</span></code> tactic it is possible to streamline proofs like this.  Have a look at the
 goal state after the <code class="docutils literal notranslate"><span class="pre">dsimp</span></code>: it is</p>
 <div class="highlight-text notranslate"><div class="highlight"><pre><span></span>&#8866; x &#8801; 1 [ZMOD 5] &#8743; x &#8801; 2 [ZMOD 5] &#8596; False
 </pre></div>
@@ -824,14 +824,14 @@ goal state after the <code class="docutils literal notranslate"><span class="pre
 </pre></div>
 </div>
 <p>This reformulation can be carried out in Lean using the incantation</p>
-<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="k">suffices</span> <span class="bp">&#172;</span><span class="o">(</span><span class="n">x</span> <span class="bp">&#8801;</span> <span class="mi">1</span> <span class="o">[</span><span class="n">ZMOD</span> <span class="mi">5</span><span class="o">]</span> <span class="bp">&#8743;</span> <span class="n">x</span> <span class="bp">&#8801;</span> <span class="mi">2</span> <span class="o">[</span><span class="n">ZMOD</span> <span class="mi">5</span><span class="o">])</span> <span class="kd">by</span> <span class="n">tauto</span>
+<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="k">suffices</span> <span class="bp">&#172;</span><span class="o">(</span><span class="n">x</span> <span class="bp">&#8801;</span> <span class="mi">1</span> <span class="o">[</span><span class="n">ZMOD</span> <span class="mi">5</span><span class="o">]</span> <span class="bp">&#8743;</span> <span class="n">x</span> <span class="bp">&#8801;</span> <span class="mi">2</span> <span class="o">[</span><span class="n">ZMOD</span> <span class="mi">5</span><span class="o">])</span> <span class="kd">by</span> <span class="n">exhaust</span>
 </pre></div>
 </div>
 <p>Here is a full proof in Lean using this approach.</p>
 <div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">:</span> <span class="o">{</span><span class="n">n</span> <span class="o">:</span> <span class="n">&#8484;</span> <span class="bp">|</span> <span class="n">n</span> <span class="bp">&#8801;</span> <span class="mi">1</span> <span class="o">[</span><span class="n">ZMOD</span> <span class="mi">5</span><span class="o">]}</span> <span class="bp">&#8745;</span> <span class="o">{</span><span class="n">n</span> <span class="o">:</span> <span class="n">&#8484;</span> <span class="bp">|</span> <span class="n">n</span> <span class="bp">&#8801;</span> <span class="mi">2</span> <span class="o">[</span><span class="n">ZMOD</span> <span class="mi">5</span><span class="o">]}</span> <span class="bp">=</span> <span class="bp">&#8709;</span> <span class="o">:=</span> <span class="kd">by</span>
   <span class="n">ext</span> <span class="n">x</span>
   <span class="n">dsimp</span>
-  <span class="k">suffices</span> <span class="bp">&#172;</span><span class="o">(</span><span class="n">x</span> <span class="bp">&#8801;</span> <span class="mi">1</span> <span class="o">[</span><span class="n">ZMOD</span> <span class="mi">5</span><span class="o">]</span> <span class="bp">&#8743;</span> <span class="n">x</span> <span class="bp">&#8801;</span> <span class="mi">2</span> <span class="o">[</span><span class="n">ZMOD</span> <span class="mi">5</span><span class="o">])</span> <span class="kd">by</span> <span class="n">tauto</span>
+  <span class="k">suffices</span> <span class="bp">&#172;</span><span class="o">(</span><span class="n">x</span> <span class="bp">&#8801;</span> <span class="mi">1</span> <span class="o">[</span><span class="n">ZMOD</span> <span class="mi">5</span><span class="o">]</span> <span class="bp">&#8743;</span> <span class="n">x</span> <span class="bp">&#8801;</span> <span class="mi">2</span> <span class="o">[</span><span class="n">ZMOD</span> <span class="mi">5</span><span class="o">])</span> <span class="kd">by</span> <span class="n">exhaust</span>
   <span class="n">intro</span> <span class="n">hx</span>
   <span class="n">obtain</span> <span class="o">&#10216;</span><span class="n">hx1</span><span class="o">,</span> <span class="n">hx2</span><span class="o">&#10217;</span> <span class="o">:=</span> <span class="n">hx</span>
   <span class="k">have</span> <span class="o">:=</span>
@@ -868,7 +868,7 @@ That&#8217;s again a slightly informal description: here&#8217;s the strict defi
 <span class="kd">example</span> <span class="o">(</span><span class="n">U</span> <span class="o">:</span> <span class="n">Set</span> <span class="n">&#8484;</span><span class="o">)</span> <span class="o">:</span> <span class="n">U</span> <span class="bp">&#8838;</span> <span class="n">univ</span> <span class="o">:=</span> <span class="kd">by</span>
   <span class="n">dsimp</span> <span class="o">[</span><span class="n">Set.subset_def</span><span class="o">]</span>
   <span class="n">intro</span> <span class="n">x</span>
-  <span class="n">tauto</span>
+  <span class="n">exhaust</span>
 </pre></div>
 </div>
 <p>Note that in Lean the universe set is denoted <code class="docutils literal notranslate"><span class="pre">univ</span></code>.  On paper we often refer to the universe
@@ -889,7 +889,7 @@ the universe set.</p>
 <div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">:</span> <span class="o">{</span><span class="n">x</span> <span class="o">:</span> <span class="n">&#8477;</span> <span class="bp">|</span> <span class="bp">-</span><span class="mi">1</span> <span class="bp">&lt;</span> <span class="n">x</span><span class="o">}</span> <span class="bp">&#8746;</span> <span class="o">{</span><span class="n">x</span> <span class="o">:</span> <span class="n">&#8477;</span> <span class="bp">|</span> <span class="n">x</span> <span class="bp">&lt;</span> <span class="mi">1</span><span class="o">}</span> <span class="bp">=</span> <span class="n">univ</span> <span class="o">:=</span> <span class="kd">by</span>
   <span class="n">ext</span> <span class="n">t</span>
   <span class="n">dsimp</span>
-  <span class="k">suffices</span> <span class="bp">-</span><span class="mi">1</span> <span class="bp">&lt;</span> <span class="n">t</span> <span class="bp">&#8744;</span> <span class="n">t</span> <span class="bp">&lt;</span> <span class="mi">1</span> <span class="kd">by</span> <span class="n">tauto</span>
+  <span class="k">suffices</span> <span class="bp">-</span><span class="mi">1</span> <span class="bp">&lt;</span> <span class="n">t</span> <span class="bp">&#8744;</span> <span class="n">t</span> <span class="bp">&lt;</span> <span class="mi">1</span> <span class="kd">by</span> <span class="n">exhaust</span>
   <span class="n">obtain</span> <span class="n">h</span> <span class="bp">|</span> <span class="n">h</span> <span class="o">:=</span> <span class="n">le_or_lt</span> <span class="n">t</span> <span class="mi">0</span>
   <span class="bp">&#183;</span> <span class="n">right</span>
     <span class="n">addarith</span> <span class="o">[</span><span class="n">h</span><span class="o">]</span>
@@ -902,8 +902,8 @@ the universe set.</p>
 <h3><span class="section-number">9.2.8. </span>Exercises<a class="headerlink" href="#id18" title="Permalink to this headline">&#61633;</a></h3>
 <p>For the first five problems, I provide a tactic <code class="docutils literal notranslate"><span class="pre">check_equality_of_explicit_sets</span></code> which will prove
 the statement if you have formulated it correctly.  This tactic simply runs <code class="docutils literal notranslate"><span class="pre">ext</span></code>, then <code class="docutils literal notranslate"><span class="pre">dsimp</span></code>,
-then <code class="docutils literal notranslate"><span class="pre">tauto</span></code>:</p>
-<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="n">macro</span> <span class="s2">&quot;check_equality_of_explicit_sets&quot;</span> <span class="o">:</span> <span class="n">tactic</span> <span class="bp">=&gt;</span> <span class="bp">`</span><span class="o">(</span><span class="n">tactic</span><span class="bp">|</span> <span class="o">(</span><span class="n">ext</span><span class="bp">;</span> <span class="n">dsimp</span><span class="bp">;</span> <span class="n">tauto</span><span class="o">))</span>
+then <code class="docutils literal notranslate"><span class="pre">exhaust</span></code>:</p>
+<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="n">macro</span> <span class="s2">&quot;check_equality_of_explicit_sets&quot;</span> <span class="o">:</span> <span class="n">tactic</span> <span class="bp">=&gt;</span> <span class="bp">`</span><span class="o">(</span><span class="n">tactic</span><span class="bp">|</span> <span class="o">(</span><span class="n">ext</span><span class="bp">;</span> <span class="n">dsimp</span><span class="bp">;</span> <span class="n">exhaust</span><span class="o">))</span>
 </pre></div>
 </div>
 <ol class="arabic">
@@ -966,7 +966,7 @@ different.</p>
 <p>Let <span class="math notranslate nohighlight">\(s\)</span> and <span class="math notranslate nohighlight">\(t\)</span> be sets of size at least two in some type <span class="math notranslate nohighlight">\(X\)</span>, and suppose
 that <span class="math notranslate nohighlight">\(s \cap t\)</span> does not have size at least two.  Show that <span class="math notranslate nohighlight">\(s\cup t\)</span> has size at
 least three.</p>
-<p>This problem features a ton of different cases.  Use <code class="docutils literal notranslate"><span class="pre">tauto</span></code> liberally to knock off sub-cases.</p>
+<p>This problem features a ton of different cases.  Use <code class="docutils literal notranslate"><span class="pre">exhaust</span></code> liberally to knock off sub-cases.</p>
 <div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">def</span> <span class="n">SizeAtLeastTwo</span> <span class="o">(</span><span class="n">s</span> <span class="o">:</span> <span class="n">Set</span> <span class="n">X</span><span class="o">)</span> <span class="o">:</span> <span class="kt">Prop</span> <span class="o">:=</span> <span class="bp">&#8707;</span> <span class="n">x1</span> <span class="n">x2</span> <span class="o">:</span> <span class="n">X</span><span class="o">,</span> <span class="n">x1</span> <span class="bp">&#8800;</span> <span class="n">x2</span> <span class="bp">&#8743;</span> <span class="n">x1</span> <span class="bp">&#8712;</span> <span class="n">s</span> <span class="bp">&#8743;</span> <span class="n">x2</span> <span class="bp">&#8712;</span> <span class="n">s</span>
 <span class="kd">def</span> <span class="n">SizeAtLeastThree</span> <span class="o">(</span><span class="n">s</span> <span class="o">:</span> <span class="n">Set</span> <span class="n">X</span><span class="o">)</span> <span class="o">:</span> <span class="kt">Prop</span> <span class="o">:=</span>
   <span class="bp">&#8707;</span> <span class="n">x1</span> <span class="n">x2</span> <span class="n">x3</span> <span class="o">:</span> <span class="n">X</span><span class="o">,</span> <span class="n">x1</span> <span class="bp">&#8800;</span> <span class="n">x2</span> <span class="bp">&#8743;</span> <span class="n">x1</span> <span class="bp">&#8800;</span> <span class="n">x3</span> <span class="bp">&#8743;</span> <span class="n">x2</span> <span class="bp">&#8800;</span> <span class="n">x3</span> <span class="bp">&#8743;</span> <span class="n">x1</span> <span class="bp">&#8712;</span> <span class="n">s</span> <span class="bp">&#8743;</span> <span class="n">x2</span> <span class="bp">&#8712;</span> <span class="n">s</span> <span class="bp">&#8743;</span> <span class="n">x3</span> <span class="bp">&#8712;</span> <span class="n">s</span>
@@ -1062,14 +1062,14 @@ property.</p>
   <span class="n">constructor</span>
   <span class="bp">&#183;</span> <span class="n">ext</span> <span class="n">x</span>
     <span class="n">dsimp</span>
-    <span class="k">suffices</span> <span class="n">x</span> <span class="bp">+</span> <span class="mi">1</span> <span class="bp">&#8800;</span> <span class="mi">0</span> <span class="kd">by</span> <span class="n">tauto</span>
+    <span class="k">suffices</span> <span class="n">x</span> <span class="bp">+</span> <span class="mi">1</span> <span class="bp">&#8800;</span> <span class="mi">0</span> <span class="kd">by</span> <span class="n">exhaust</span>
     <span class="n">apply</span> <span class="n">ne_of_gt</span>
     <span class="n">extra</span>
   <span class="bp">&#183;</span> <span class="n">ext</span>
     <span class="n">push_neg</span>
     <span class="n">use</span> <span class="mi">0</span>
     <span class="n">dsimp</span>
-    <span class="n">tauto</span>
+    <span class="n">exhaust</span>
 </pre></div>
 </div>
 </section>

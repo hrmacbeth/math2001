@@ -8,7 +8,8 @@ Proofs by calculation
 =====================
 
 This book begins in the familiar world of numbers: :math:`\mathbb{N}`, the natural
-numbers; :math:`\mathbb{Z}`, the integers; :math:`\mathbb{Q}`, the rational numbers;
+numbers (which in this book include 0);
+:math:`\mathbb{Z}`, the integers; :math:`\mathbb{Q}`, the rational numbers;
 and :math:`\mathbb{R}`, the real numbers.  We solve problems which feel pretty close
 to high school algebra -- deducing equalities/inequalities from other
 equalities/inequalities -- using a technique which is not usually taught in high
