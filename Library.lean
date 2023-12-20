@@ -1,3 +1,4 @@
+import Library.Basic
 import Library.Theory.Comparison
 import Library.Theory.Division
 import Library.Theory.InjectiveSurjective
@@ -17,6 +18,7 @@ import Library.Tactic.Extra.Basic
 import Library.Tactic.Extra.ModEq
 import Library.Tactic.Induction
 import Library.Tactic.ModCases
+import Library.Tactic.ModEq
 import Library.Tactic.Numbers.Basic
 import Library.Tactic.Numbers.ModEq
 import Library.Tactic.Product
