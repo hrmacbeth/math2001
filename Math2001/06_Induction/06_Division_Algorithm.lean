@@ -1,11 +1,6 @@
 /- Copyright (c) Heather Macbeth, 2023.  All rights reserved. -/
-import Mathlib.Tactic.IntervalCases
-import Library.Tactic.Addarith
-import Library.Tactic.Cancel
-import Library.Tactic.Induction
-import Library.Tactic.Numbers
-import Library.Tactic.Extra
-import Library.Tactic.Use
+import Library.Basic
+import Library.Theory.ModEq.Defs
 
 attribute [-instance] Int.instDivInt_1 Int.instDivInt Nat.instDivNat
 
@@ -123,7 +118,7 @@ def T (n : ℤ) : ℤ :=
     0
 termination_by T n => 3 * n - 1
 
-theorem T_eq (n : ℤ) : T n = n ^ 2 := by    
+theorem T_eq (n : ℤ) : T n = n ^ 2 := by
   sorry
 
 theorem uniqueness (a b : ℤ) (h : 0 < b) {r s : ℤ}

@@ -1,11 +1,7 @@
 /- Copyright (c) Heather Macbeth, 2023.  All rights reserved. -/
-import Mathlib.Mathport.Notation
 import Mathlib.Tactic.GCongr
-import Library.Tactic.Addarith
-import Library.Tactic.Induction
-import Library.Tactic.Numbers
-import Library.Tactic.Extra
-import Library.Tactic.Use
+import Library.Basic
+import Library.Tactic.ModEq
 import AutograderLib
 
 notation3 (prettyPrint := false) "forall_sufficiently_large "(...)", "r:(scoped P => ∃ C, ∀ x ≥ C, P x) => r

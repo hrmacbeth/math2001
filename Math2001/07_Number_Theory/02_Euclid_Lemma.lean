@@ -1,9 +1,6 @@
 /- Copyright (c) Heather Macbeth, 2023.  All rights reserved. -/
+import Library.Basic
 import Library.Theory.GCD
-import Library.Theory.Prime
-import Library.Tactic.Numbers
-import Library.Tactic.Rel
-import Library.Tactic.Use
 
 attribute [-instance] Int.instDivInt_1 Int.instDivInt Nat.instDivNat
 
@@ -53,4 +50,4 @@ theorem euclid_lemma_pow (a k p : ℕ) (hp : Prime p) (hk : 1 ≤ k) (H : p ∣ 
   obtain h1 | h2 := key
   · apply h1
   · apply IH
-    apply h2 
+    apply h2

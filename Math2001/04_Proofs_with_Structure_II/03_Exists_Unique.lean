@@ -1,11 +1,7 @@
 /- Copyright (c) Heather Macbeth, 2022.  All rights reserved. -/
 import Mathlib.Data.Real.Basic
-import Library.Theory.Parity
-import Library.Tactic.Addarith
-import Library.Tactic.Cancel
-import Library.Tactic.Numbers
-import Library.Tactic.Extra
-import Library.Tactic.Use
+import Library.Basic
+import Library.Theory.ModEq.Defs
 
 attribute [-instance] Int.instDivInt_1 Int.instDivInt Nat.instDivNat
 namespace Int

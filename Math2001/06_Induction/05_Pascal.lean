@@ -1,8 +1,6 @@
 /- Copyright (c) Heather Macbeth, 2023.  All rights reserved. -/
-import Library.Tactic.Induction
-import Library.Tactic.Extra
-import Mathlib.Tactic.FieldSimp
 import Mathlib.Tactic.GCongr
+import Library.Basic
 
 attribute [-instance] Int.instDivInt_1 Int.instDivInt Nat.instDivNat
 attribute [field_simps] LT.lt.ne'
@@ -11,9 +9,9 @@ open Nat
 
 
 
-def pascal : ℕ → ℕ → ℕ 
+def pascal : ℕ → ℕ → ℕ
   | a, 0 => 1
-  | 0, b + 1 => 1 
+  | 0, b + 1 => 1
   | a + 1, b + 1 => pascal (a + 1) b + pascal a (b + 1)
 termination_by _ a b => a + b
 
@@ -55,7 +53,7 @@ theorem pascal_eq (a b : ℕ) : pascal a b * a ! * b ! = (a + b)! := by
     have IH1 := pascal_eq (a + 1) b -- inductive hypothesis
     have IH2 := pascal_eq a (b + 1) -- inductive hypothesis
     calc
-      pascal (a + 1) (b + 1) * (a + 1)! * (b + 1)! 
+      pascal (a + 1) (b + 1) * (a + 1)! * (b + 1)!
         = (pascal (a + 1) b + pascal a (b + 1)) * (a + 1)! * (b + 1)! := by rw [pascal]
       _ = pascal (a + 1) b * (a + 1)! * (b + 1)!
           + pascal a (b + 1) * (a + 1)! * (b + 1)! := by ring

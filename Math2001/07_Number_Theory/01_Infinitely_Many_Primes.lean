@@ -1,10 +1,5 @@
 /- Copyright (c) Heather Macbeth, 2023.  All rights reserved. -/
-import Library.Theory.Prime
-import Library.Tactic.Addarith
-import Library.Tactic.Cancel
-import Library.Tactic.Numbers
-import Library.Tactic.Extra
-import Library.Tactic.Use
+import Library.Basic
 
 attribute [-instance] Int.instDivInt_1 Int.instDivInt Nat.instDivNat
 
@@ -13,7 +8,7 @@ namespace Nat
 
 example (N : ℕ) : ∃ p ≥ N, Prime p := by
   have hN0 : 0 < N ! := by apply factorial_pos
-  have hN2 : 2 ≤ N ! + 1 := by addarith [hN0] 
+  have hN2 : 2 ≤ N ! + 1 := by addarith [hN0]
   -- `N! + 1` has a prime factor, `p`
   obtain ⟨p, hp, hpN⟩ : ∃ p : ℕ, Prime p ∧ p ∣ N ! + 1 := exists_prime_factor hN2
   have hp2 : 2 ≤ p
@@ -33,7 +28,7 @@ example (N : ℕ) : ∃ p ≥ N, Prime p := by
     · apply Nat.not_dvd_of_exists_lt_and_lt (N !)
       use l
       constructor
-      · have := 
+      · have :=
         calc p * l + p = p * (l + 1) := by ring
           _ = N ! + 1 := by rw [hk]
           _ < N ! + p := by addarith [hp2]
@@ -50,4 +45,4 @@ example (N : ℕ) : ∃ p ≥ N, Prime p := by
           · addarith [h_le]
         contradiction
       · addarith [h_gt]
-    · apply hp 
+    · apply hp

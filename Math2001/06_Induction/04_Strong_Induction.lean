@@ -1,14 +1,6 @@
 /- Copyright (c) Heather Macbeth, 2023.  All rights reserved. -/
 import Mathlib.Tactic.GCongr
-import Library.Theory.Comparison
-import Library.Theory.Parity
-import Library.Theory.Prime
-import Library.Tactic.Addarith
-import Library.Tactic.Cancel
-import Library.Tactic.Extra
-import Library.Tactic.Induction
-import Library.Tactic.Numbers
-import Library.Tactic.Use
+import Library.Basic
 
 notation3 (prettyPrint := false) "forall_sufficiently_large "(...)", "r:(scoped P => ∃ C, ∀ x ≥ C, P x) => r
 attribute [-instance] Int.instDivInt_1 Int.instDivInt Nat.instDivNat

@@ -1,12 +1,7 @@
 /- Copyright (c) Heather Macbeth, 2023.  All rights reserved. -/
+import Library.Basic
 import Library.Theory.GCD
 import Library.Theory.NumberTheory
-import Library.Tactic.Addarith
-import Library.Tactic.Cancel
-import Library.Tactic.Induction
-import Library.Tactic.Numbers
-import Library.Tactic.Extra
-import Library.Tactic.Use
 
 attribute [-instance] Int.instDivInt_1 Int.instDivInt Nat.instDivNat
 
@@ -38,7 +33,7 @@ theorem irrat_aux (a b : ℕ) (hb : b ≠ 0) : a ^ 2 ≠ 2 * b ^ 2 := by
       _ = 2 * k ^ 2 := by rw [hbk]
       _ = k * (2 * k) := by ring
   cancel 2 * k at hk'
-  have hk'' : k ≠ 0 := ne_of_gt hk' 
+  have hk'' : k ≠ 0 := ne_of_gt hk'
   have IH := irrat_aux b k -- inductive hypothesis
   have : b ^ 2 ≠ 2 * k ^ 2 := IH hk''
   contradiction

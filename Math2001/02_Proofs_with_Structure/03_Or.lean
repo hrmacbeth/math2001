@@ -1,10 +1,6 @@
 /- Copyright (c) Heather Macbeth, 2022.  All rights reserved. -/
 import Mathlib.Data.Real.Basic
-import Library.Theory.Comparison
-import Library.Tactic.Addarith
-import Library.Tactic.Cancel
-import Library.Tactic.Numbers
-import Library.Tactic.Extra
+import Library.Basic
 
 attribute [-instance] Int.instDivInt_1 Int.instDivInt Nat.instDivNat
 

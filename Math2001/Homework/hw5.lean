@@ -1,12 +1,7 @@
 /- Copyright (c) Heather Macbeth, 2023.  All rights reserved. -/
 import Mathlib.Data.Real.Basic
-import Mathlib.Tactic.IntervalCases
-import Library.Theory.Prime
-import Library.Tactic.Addarith
-import Library.Tactic.Extra
-import Library.Tactic.ModCases
-import Library.Tactic.Numbers
-import Library.Tactic.Use
+import Library.Basic
+import Library.Tactic.ModEq
 import AutograderLib
 
 attribute [-instance] Int.instDivInt_1 Int.instDivInt Nat.instDivNat

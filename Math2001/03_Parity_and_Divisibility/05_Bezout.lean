@@ -1,6 +1,5 @@
 /- Copyright (c) Heather Macbeth, 2022.  All rights reserved. -/
-import Mathlib.Tactic.Ring
-import Library.Tactic.Use
+import Library.Basic
 
 attribute [-instance] Int.instDivInt_1 Int.instDivInt Nat.instDivNat
 

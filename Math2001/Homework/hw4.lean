@@ -1,9 +1,6 @@
 /- Copyright (c) Heather Macbeth, 2023.  All rights reserved. -/
-import Library.Tactic.Addarith
-import Library.Tactic.Extra
-import Library.Tactic.ModCases
-import Library.Tactic.Numbers
-import Library.Tactic.Use
+import Library.Basic
+import Library.Tactic.ModEq
 import AutograderLib
 
 /-! # Homework 4

@@ -1,9 +1,5 @@
 /- Copyright (c) Heather Macbeth, 2023.  All rights reserved. -/
-import Mathlib.Tactic.Set
-import Library.Tactic.Addarith
-import Library.Tactic.Induction
-import Library.Tactic.Numbers
-import Library.Tactic.Use
+import Library.Basic
 
 attribute [-instance] Int.instDivInt_1 Int.instDivInt Nat.instDivNat
 
@@ -12,14 +8,14 @@ open Int
 
 
 @[decreasing] theorem lower_bound_fmod1 (a b : ℤ) (h1 : 0 < b) : -b < fmod a b := by
-  have H : 0 ≤ fmod a b 
+  have H : 0 ≤ fmod a b
   · apply fmod_nonneg_of_pos
     apply h1
   calc -b < 0 := by addarith [h1]
     _ ≤ _ := H
 
 @[decreasing] theorem lower_bound_fmod2 (a b : ℤ) (h1 : b < 0) : b < fmod a (-b) := by
-  have H : 0 ≤ fmod a (-b) 
+  have H : 0 ≤ fmod a (-b)
   · apply fmod_nonneg_of_pos
     addarith [h1]
   have h2 : 0 < -b := by addarith [h1]
@@ -73,7 +69,7 @@ theorem gcd_dvd (a b : ℤ) : gcd a b ∣ b ∧ gcd a b ∣ a := by
     obtain ⟨IH_right, IH_left⟩ := IH
     constructor
     · -- prove that `gcd a b ∣ b`
-      sorry 
+      sorry
     · -- prove that `gcd a b ∣ a`
       sorry
   · -- case `b < 0`
@@ -81,19 +77,19 @@ theorem gcd_dvd (a b : ℤ) : gcd a b ∣ b ∧ gcd a b ∣ a := by
     obtain ⟨IH_right, IH_left⟩ := IH
     constructor
     · -- prove that `gcd a b ∣ b`
-      sorry 
+      sorry
     · -- prove that `gcd a b ∣ a`
       sorry
   · -- case `b = 0`, `0 ≤ a`
     constructor
     · -- prove that `gcd a b ∣ b`
-      sorry 
+      sorry
     · -- prove that `gcd a b ∣ a`
       sorry
   · -- case `b = 0`, `a < 0`
     constructor
     · -- prove that `gcd a b ∣ b`
-      sorry 
+      sorry
     · -- prove that `gcd a b ∣ a`
       sorry
 termination_by gcd_dvd a b => b
@@ -162,8 +158,8 @@ def L (a b : ℤ) : ℤ :=
   if 0 < b then
     R b (fmod a b)
   else if b < 0 then
-    R b (fmod a (-b)) 
-  else if 0 ≤ a then 
+    R b (fmod a (-b))
+  else if 0 ≤ a then
     1
   else
     -1
@@ -201,7 +197,7 @@ theorem L_mul_add_R_mul (a b : ℤ) : L a b * a + R a b * b = gcd a b := by
     have H : fmod a (-b) + (-b) * fdiv a (-b) = a := fmod_add_fdiv a (-b)
     set q := fdiv a (-b)
     set r := fmod a (-b)
-    calc  R b r * a + (L b r + q * R b r) * b 
+    calc  R b r * a + (L b r + q * R b r) * b
         =  R b r * (r + -b * q) + (L b r + q * R b r) * b := by rw [H]
       _ = L b r * b + R b r * r := by ring
       _ = gcd b r := IH

@@ -1,7 +1,6 @@
 /- Copyright (c) Heather Macbeth, 2023.  All rights reserved. -/
 import Mathlib.Tactic.GCongr
-import Library.Tactic.Numbers
-import Library.Tactic.Extra
+import Library.Basic
 import AutograderLib
 
 attribute [-instance] Int.instDivInt_1 Int.instDivInt Nat.instDivNat

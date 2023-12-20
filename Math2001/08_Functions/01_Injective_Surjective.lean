@@ -1,15 +1,9 @@
 /- Copyright (c) Heather Macbeth, 2023.  All rights reserved. -/
 import Mathlib.Data.Real.Basic
-import Library.Theory.Comparison
-import Library.Theory.ParityModular
-import Library.Tactic.Addarith
-import Library.Tactic.Cancel
+import Library.Basic
 import Library.Tactic.Exhaust
-import Library.Tactic.ExistsDelaborator
-import Library.Tactic.Induction
-import Library.Tactic.Numbers
-import Library.Tactic.Extra
-import Library.Tactic.Use
+import Library.Tactic.ModEq
+import Library.Theory.ParityModular
 
 attribute [-instance] Int.instDivInt_1 Int.instDivInt Nat.instDivNat
 attribute [-simp] ne_eq

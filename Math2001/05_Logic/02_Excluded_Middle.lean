@@ -1,9 +1,6 @@
 /- Copyright (c) Heather Macbeth, 2023.  All rights reserved. -/
 import Mathlib.Data.Real.Basic
-import Library.Theory.Prime
-import Library.Tactic.Numbers
-import Library.Tactic.Use
-import Library.Tactic.TruthTable
+import Library.Basic
 
 attribute [-instance] Int.instDivInt_1 Int.instDivInt Nat.instDivNat
 

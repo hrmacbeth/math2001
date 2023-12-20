@@ -1,13 +1,8 @@
 /- Copyright (c) Heather Macbeth, 2023.  All rights reserved. -/
 import Mathlib.Data.Real.Basic
-import Library.Tactic.Addarith
-import Library.Tactic.Set
+import Library.Basic
 import Library.Tactic.Exhaust
-import Library.Tactic.ExistsDelaborator
-import Library.Tactic.Numbers
-import Library.Tactic.Product
-import Library.Tactic.Extra
-import Library.Tactic.Use
+import Library.Tactic.ModEq
 
 set_option push_neg.use_distrib true
 attribute [-instance] Int.instDivInt_1 Int.instDivInt Nat.instDivNat

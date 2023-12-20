@@ -1,8 +1,6 @@
 /- Copyright (c) Heather Macbeth, 2022.  All rights reserved. -/
-import Mathlib.Tactic.IntervalCases
-import Library.Theory.Division
-import Library.Tactic.Numbers
-import Library.Tactic.Use
+import Library.Basic
+import Library.Theory.ModEq.Defs
 
 attribute [-instance] Int.instDivInt_1 Int.instDivInt Nat.instDivNat
 

@@ -1,14 +1,9 @@
 /- Copyright (c) Heather Macbeth, 2023.  All rights reserved. -/
 import Mathlib.Data.Real.Basic
-import Mathlib.Tactic.IntervalCases
 import Library.Theory.ParityModular
-import Library.Tactic.Addarith
-import Library.Tactic.Set
-import Library.Tactic.ModCases
-import Library.Tactic.Numbers
+import Library.Basic
 import Library.Tactic.Exhaust
-import Library.Tactic.Extra
-import Library.Tactic.Use
+import Library.Tactic.ModEq
 
 set_option push_neg.use_distrib true
 open Set

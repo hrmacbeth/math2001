@@ -1,12 +1,7 @@
 /- Copyright (c) Heather Macbeth, 2023.  All rights reserved. -/
 import Mathlib.Data.Real.Basic
 import Library.Theory.InjectiveSurjective
-import Library.Tactic.Addarith
-import Library.Tactic.Cancel
-import Library.Tactic.ExistsDelaborator
-import Library.Tactic.Extra
-import Library.Tactic.Numbers
-import Library.Tactic.Use
+import Library.Basic
 import AutograderLib
 
 set_option push_neg.use_distrib true

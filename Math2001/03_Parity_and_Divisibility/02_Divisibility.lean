@@ -1,10 +1,6 @@
 /- Copyright (c) Heather Macbeth, 2022.  All rights reserved. -/
 import Mathlib.Tactic.GCongr
-import Library.Tactic.Cancel
-import Library.Theory.Division
-import Library.Tactic.Extra
-import Library.Tactic.Numbers
-import Library.Tactic.Use
+import Library.Basic
 
 attribute [-instance] Int.instDivInt_1 Int.instDivInt Nat.instDivNat
 

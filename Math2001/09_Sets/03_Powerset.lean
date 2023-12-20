@@ -1,12 +1,6 @@
 /- Copyright (c) Heather Macbeth, 2023.  All rights reserved. -/
-import Library.Tactic.Set
+import Library.Basic
 import Library.Tactic.Exhaust
-import Library.Tactic.ExistsDelaborator
-import Library.Tactic.Extra
-import Library.Tactic.Induction
-import Library.Tactic.Numbers
-import Library.Tactic.Use
-import Library.Theory.Parity
 
 set_option push_neg.use_distrib true
 open Set

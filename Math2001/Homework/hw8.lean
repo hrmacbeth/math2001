@@ -1,14 +1,8 @@
 /- Copyright (c) Heather Macbeth, 2023.  All rights reserved. -/
 import Mathlib.Data.Real.Basic
-import Library.Theory.Comparison
+import Library.Basic
+import Library.Tactic.ModEq
 import Library.Theory.ParityModular
-import Library.Tactic.Addarith
-import Library.Tactic.Cancel
-import Library.Tactic.ExistsDelaborator
-import Library.Tactic.Extra
-import Library.Tactic.Induction
-import Library.Tactic.Numbers
-import Library.Tactic.Use
 import AutograderLib
 
 set_option push_neg.use_distrib true

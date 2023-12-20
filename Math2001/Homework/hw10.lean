@@ -1,12 +1,8 @@
 /- Copyright (c) Heather Macbeth, 2023.  All rights reserved. -/
 import Mathlib.Data.Real.Basic
-import Library.Tactic.Addarith
-import Library.Tactic.Set
+import Library.Basic
 import Library.Tactic.Exhaust
-import Library.Tactic.ExistsDelaborator
-import Library.Tactic.Numbers
-import Library.Tactic.Extra
-import Library.Tactic.Use
+import Library.Tactic.ModEq
 import AutograderLib
 
 set_option quotPrecheck false

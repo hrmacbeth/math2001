@@ -1,11 +1,7 @@
 /- Copyright (c) Heather Macbeth, 2023.  All rights reserved. -/
 import Mathlib.Tactic.GCongr
-import Library.Theory.Parity
-import Library.Tactic.Addarith
-import Library.Tactic.Induction
-import Library.Tactic.Numbers
-import Library.Tactic.Extra
-import Library.Tactic.Use
+import Library.Basic
+import Library.Tactic.ModEq
 
 attribute [-instance] Int.instDivInt_1 Int.instDivInt Nat.instDivNat
 
@@ -40,7 +36,7 @@ example (n : ℕ) : Odd (b n) := by
       _ = 2 * (2 * x ^ 2 + 2 * x - 1) + 1 := by ring
 
 
-def x : ℕ → ℤ 
+def x : ℕ → ℤ
   | 0 => 5
   | n + 1 => 2 * x n - 1
 
@@ -120,7 +116,7 @@ example (n : ℕ) : c n = 2 * 3 ^ n + 5 := by
 
 def y : ℕ → ℕ
   | 0 => 2
-  | n + 1 => (y n) ^ 2 
+  | n + 1 => (y n) ^ 2
 
 example (n : ℕ) : y n = 2 ^ (2 ^ n) := by
   sorry

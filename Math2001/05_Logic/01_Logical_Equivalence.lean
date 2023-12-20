@@ -1,9 +1,5 @@
 /- Copyright (c) Heather Macbeth, 2023.  All rights reserved. -/
-import Std.Tactic.LeftRight
-import Mathlib.Tactic.Have
-import Std.Tactic.RCases
-import Library.Tactic.Use
-import Library.Tactic.TruthTable
+import Library.Basic
 
 
 example {P Q : Prop} (h1 : P ∨ Q) (h2 : ¬ Q) : P := by
