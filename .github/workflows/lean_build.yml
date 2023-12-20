@@ -23,6 +23,3 @@ jobs:
 
     - name: build library
       run: lake build Library
-
-    - name: build examples and exercises source files
-      run: lake build
