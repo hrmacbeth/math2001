@@ -32,7 +32,6 @@ theorem problem1 {f : X → Y} (hf : Surjective f) {g : Y → Z} (hg : Surjectiv
 theorem problem2a : Bijective (fun (x : ℝ) ↦ 4 - 3 * x) := by
   sorry
 
-/- 4 points -/
 @[autograded 4]
 theorem problem2b : ¬ Bijective (fun (x : ℝ) ↦ 4 - 3 * x) := by
   sorry

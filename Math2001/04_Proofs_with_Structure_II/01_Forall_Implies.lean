@@ -92,7 +92,6 @@ example {n : ℤ} (hn : ∀ m, 1 ≤ m → m ≤ 5 → m ∣ n) : 15 ∣ n := by
 example : ∃ n : ℕ, ∀ m : ℕ, n ≤ m := by
   sorry
 
-/- 3 points -/
 theorem problem1 : ∃ a : ℝ, ∀ b : ℝ, ∃ c : ℝ, a + b < c := by
   sorry
 

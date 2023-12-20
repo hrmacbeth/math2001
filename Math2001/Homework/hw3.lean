@@ -6,8 +6,9 @@ import Library.Tactic.Cancel
 import Library.Tactic.Numbers
 import Library.Tactic.Extra
 import Library.Tactic.Use
+import AutograderLib
 
-/-! # Homework 3 
+/-! # Homework 3
 
 Don't forget to compare with the text version,
 https://hrmacbeth.github.io/math2001/Homework.html#homework-3
@@ -18,26 +19,26 @@ attribute [-instance] Int.instDivInt_1 Int.instDivInt Nat.instDivNat
 namespace Int
 
 
-/- 4 points -/
+@[autograded 4]
 theorem problem1 : ∃ x : ℝ, x < 0 ∧ x ^ 2 < 1 := by
   sorry
 
-/- 5 points -/
+@[autograded 5]
 theorem problem2 (x : ℚ) : ∃ y : ℚ, y ^ 2 > x := by
   sorry
 
-/- 5 points -/
+@[autograded 5]
 theorem problem3 {x : ℤ} (hx : Odd x) : Odd (x ^ 3) := by
   sorry
 
-/- 6 points -/
+@[autograded 6]
 theorem problem4 (n : ℤ) : Odd (5 * n ^ 2 + 3 * n + 7) := by
   sorry
 
-/- 2 points -/
+@[autograded 2]
 theorem problem5 : (3 : ℤ) ∣ -9 := by
   sorry
 
-/- 3 points -/
+@[autograded 3]
 theorem problem6 : ¬(3 : ℤ) ∣ -10 := by
   sorry

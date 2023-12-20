@@ -142,7 +142,6 @@ example : Prime 79 := by
 /-! # Exercises -/
 
 
-/- 4 points -/
 theorem problem3 : ¬ (∃ t : ℝ, t ≤ 4 ∧ t ≥ 5) := by
   sorry
 
