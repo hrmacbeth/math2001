@@ -15,3 +15,5 @@ import Library.Tactic.Rel
 import Library.Tactic.Set
 import Library.Tactic.TruthTable
 import Library.Tactic.Use
+
+notation3 (prettyPrint := false) "forall_sufficiently_large "(...)", "r:(scoped P => ∃ C, ∀ x ≥ C, P x) => r

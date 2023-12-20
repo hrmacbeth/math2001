@@ -4,7 +4,6 @@ import Library.Basic
 import Library.Tactic.ModEq
 import AutograderLib
 
-notation3 (prettyPrint := false) "forall_sufficiently_large "(...)", "r:(scoped P => ∃ C, ∀ x ≥ C, P x) => r
 attribute [-instance] Int.instDivInt_1 Int.instDivInt Nat.instDivNat
 
 

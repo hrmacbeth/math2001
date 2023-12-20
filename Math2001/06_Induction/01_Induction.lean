@@ -7,8 +7,6 @@ attribute [-instance] Int.instDivInt_1 Int.instDivInt Nat.instDivNat
 
 namespace Nat
 
-notation3 (prettyPrint := false) "forall_sufficiently_large "(...)", "r:(scoped P => ∃ C, ∀ x ≥ C, P x) => r
-
 
 example (n : ℕ) : 2 ^ n ≥ n + 1 := by
   simple_induction n with k IH
