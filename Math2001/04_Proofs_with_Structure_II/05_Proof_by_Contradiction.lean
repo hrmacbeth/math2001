@@ -135,7 +135,7 @@ example : Prime 79 := by
 /-! # Exercises -/
 
 
-theorem problem3 : ¬ (∃ t : ℝ, t ≤ 4 ∧ t ≥ 5) := by
+example : ¬ (∃ t : ℝ, t ≤ 4 ∧ t ≥ 5) := by
   sorry
 
 example : ¬ (∃ a : ℝ, a ^ 2 ≤ 8 ∧ a ^ 3 ≥ 30) := by

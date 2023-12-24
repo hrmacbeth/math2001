@@ -5,7 +5,11 @@ import AutograderLib
 
 attribute [-instance] Int.instDivInt_1 Int.instDivInt Nat.instDivNat
 
-/-! # Homework 2 -/
+/-! # Homework 2
+
+Don't forget to compare with the text version,
+https://hrmacbeth.github.io/math2001/Homework.html#homework-2
+for clearer statements and any special instructions. -/
 
 
 @[autograded 4]
