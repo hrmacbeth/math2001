@@ -1,6 +1,8 @@
 /- Copyright (c) Heather Macbeth, 2023.  All rights reserved. -/
 import Library.Basic
 
+set_option pp.funBinderTypes true
+
 
 example {P Q : Prop} (h1 : P ∨ Q) (h2 : ¬ Q) : P := by
   obtain hP | hQ := h1

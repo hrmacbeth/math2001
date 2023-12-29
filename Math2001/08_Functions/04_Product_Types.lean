@@ -6,11 +6,11 @@ import Library.Tactic.ModEq
 
 attribute [-instance] Int.instDivInt_1 Int.instDivInt Nat.instDivNat
 set_option push_neg.use_distrib true
+set_option pp.funBinderTypes true
 attribute [-simp] ne_eq
 attribute [-ext] Prod.ext
 open Function
 
-macro_rules | `(tactic| ring) => `(tactic| ring_nf <;> with_reducible exact trivial)
 
 
 def q (m : ℤ) : ℤ × ℤ := (m + 1, 2 - m)

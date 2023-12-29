@@ -6,6 +6,7 @@ import Library.Theory.ParityModular
 import AutograderLib
 
 set_option push_neg.use_distrib true
+set_option pp.funBinderTypes true
 attribute [-instance] Int.instDivInt_1 Int.instDivInt Nat.instDivNat
 open Function
 

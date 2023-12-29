@@ -7,6 +7,7 @@ import Library.Tactic.Exhaust
 attribute [-instance] Int.instDivInt_1 Int.instDivInt Nat.instDivNat
 attribute [-simp] ne_eq
 set_option push_neg.use_distrib true
+set_option pp.funBinderTypes true
 open Function
 
 

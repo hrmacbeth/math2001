@@ -11,11 +11,14 @@ A tactic which proves goals such as
 
 -- See https://leanprover.zulipchat.com/#narrow/stream/270676-lean4/topic/hygiene.20question.3F/near/313556764
 set_option hygiene false in
-/-- A thin wrapper for `aesop`, which adds the `extra` rule set. -/
+/-- The `extra` tactic proves relations between a LHS and a RHS differing by some neutral quantity
+for the relation. For example, it proves `⊢ m + 68 * n ^ 2 ≥ m`, because the "extra" quantity on the
+LHS, `68 * n ^ 2`, is nonnegative (i.e. neutral for the relation `≥`). -/
 macro (name := extra) "extra" : tactic =>
   `(tactic
     | first
-    | focus (aesop (rule_sets [extra, -default]) (simp_options := { enabled := false }); done)
+    | aesop (rule_sets [extra, -builtin, -default]) (simp_options := { enabled := false })
+        (options := { terminal := true })
     | fail "out of scope: extra proves relations between a LHS and a RHS differing by some neutral quantity for the relation")
 
 lemma IneqExtra.neg_le_sub_self_of_nonneg [LinearOrderedAddCommGroup G] {a b : G} (h : 0 ≤ a) :

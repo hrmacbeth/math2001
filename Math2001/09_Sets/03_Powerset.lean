@@ -8,8 +8,6 @@ open Set
 attribute [-instance] Int.instDivInt_1 Int.instDivInt Nat.instDivNat
 attribute [-simp] ne_eq
 
-macro_rules | `(conv | ring) => `(conv | ring_nf)
-
 open Function
 
 
