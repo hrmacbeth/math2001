@@ -142,6 +142,9 @@ example : ¬ (∃ t : ℝ, t ≤ 4 ∧ t ≥ 5) := by
 example : ¬ (∃ a : ℝ, a ^ 2 ≤ 8 ∧ a ^ 3 ≥ 30) := by
   sorry
 
+example : ¬ Int.Even 7 := by
+  sorry
+
 example {n : ℤ} (hn : n + 3 = 7) : ¬ (Int.Even n ∧ n ^ 2 = 10) := by
   sorry
 

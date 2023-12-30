@@ -1,9 +1,9 @@
+/- Copyright (c) Heather Macbeth, 2023.  All rights reserved. -/
 import Library.Theory.ModEq.Defs
 import Mathlib.Tactic.Linarith
 
 open Lean hiding Rat mkRat
-open Lean.Meta Qq Lean.Elab Term
-open Lean.Parser.Tactic Mathlib.Meta.NormNum
+open Meta Qq Mathlib.Meta.NormNum
 
 namespace Mathlib.Meta.NormNum
 

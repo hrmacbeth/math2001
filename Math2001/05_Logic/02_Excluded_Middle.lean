@@ -8,9 +8,9 @@ math2001_init
 def Superpowered (k : ℕ) : Prop := ∀ n : ℕ, Prime (k ^ k ^ n + 1)
 
 
-#numbers 0 ^ 0 ^ 0 + 1 -- 1
-#numbers 0 ^ 0 ^ 1 + 1 -- 2
-#numbers 0 ^ 0 ^ 2 + 1 -- 2
+#eval 0 ^ 0 ^ 0 + 1 -- 1
+#eval 0 ^ 0 ^ 1 + 1 -- 2
+#eval 0 ^ 0 ^ 2 + 1 -- 2
 
 
 theorem not_superpowered_zero : ¬ Superpowered 0 := by
@@ -21,9 +21,9 @@ theorem not_superpowered_zero : ¬ Superpowered 0 := by
   contradiction
 
 
-#numbers 1 ^ 1 ^ 0 + 1 -- 2
-#numbers 1 ^ 1 ^ 1 + 1 -- 2
-#numbers 1 ^ 1 ^ 2 + 1 -- 2
+#eval 1 ^ 1 ^ 0 + 1 -- 2
+#eval 1 ^ 1 ^ 1 + 1 -- 2
+#eval 1 ^ 1 ^ 2 + 1 -- 2
 
 
 theorem superpowered_one : Superpowered 1 := by
@@ -32,16 +32,16 @@ theorem superpowered_one : Superpowered 1 := by
   apply prime_two
 
 
-#numbers 2 ^ 2 ^ 0 + 1 -- 3
-#numbers 2 ^ 2 ^ 1 + 1 -- 5
-#numbers 2 ^ 2 ^ 2 + 1 -- 17
-#numbers 2 ^ 2 ^ 3 + 1 -- 257
-#numbers 2 ^ 2 ^ 4 + 1 -- 65537
+#eval 2 ^ 2 ^ 0 + 1 -- 3
+#eval 2 ^ 2 ^ 1 + 1 -- 5
+#eval 2 ^ 2 ^ 2 + 1 -- 17
+#eval 2 ^ 2 ^ 3 + 1 -- 257
+#eval 2 ^ 2 ^ 4 + 1 -- 65537
 
 
-#numbers 3 ^ 3 ^ 0 + 1 -- 4
-#numbers 3 ^ 3 ^ 1 + 1 -- 28
-#numbers 3 ^ 3 ^ 2 + 1 -- 19684
+#eval 3 ^ 3 ^ 0 + 1 -- 4
+#eval 3 ^ 3 ^ 1 + 1 -- 28
+#eval 3 ^ 3 ^ 2 + 1 -- 19684
 
 
 theorem not_superpowered_three : ¬ Superpowered 3 := by

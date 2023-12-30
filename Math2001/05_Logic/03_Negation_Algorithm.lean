@@ -88,9 +88,21 @@ example : ¬ (∀ x : ℝ, x ^ 2 ≥ x) := by
   push_neg
   sorry
 
+example : ¬ (∃ t : ℝ, t ≤ 4 ∧ t ≥ 5) := by
+  push_neg
+  sorry
+
+example : ¬ Int.Even 7 := by
+  dsimp [Int.Even]
+  push_neg
+  sorry
+
 example {p : ℕ} (k : ℕ) (hk1 : k ≠ 1) (hkp : k ≠ p) (hk : k ∣ p) : ¬ Prime p := by
   dsimp [Prime]
   push_neg
+  sorry
+
+example : ¬ ∃ a : ℤ, ∀ n : ℤ, 2 * a ^ 3 ≥ n * a + 7 := by
   sorry
 
 example {p : ℕ} (hp : ¬ Prime p) (hp2 : 2 ≤ p) : ∃ m, 2 ≤ m ∧ m < p ∧ m ∣ p := by
