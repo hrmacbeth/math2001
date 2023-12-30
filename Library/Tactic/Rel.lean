@@ -13,6 +13,11 @@ The Mathlib `rel` and `gcongr` tactics don't work for the relation `↔` because
 for `∃`, `∀` and `→` can't be tagged `@[gcongr]`.  (It is possible to write a suitable variant for
 `∃` but apparently not for the others.)  So this is a quick-and-dirty implementation in that
 setting.
+
+This extension to the `rel` tactic becomes, in case of failure, the *last*-tried implementation of
+the `rel` tactic, and therefore it masks the (more useful) error message provided by `rel` in the
+main implementation.  For this reason we omit this import from `Library.Basic` and instead import it
+only where needed.
 -/
 
 

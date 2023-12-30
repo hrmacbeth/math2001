@@ -2,6 +2,7 @@
 import Mathlib.Data.Real.Basic
 import Library.Theory.ParityModular
 import Library.Basic
+import Library.Tactic.Rel
 import Library.Tactic.ModEq
 import AutograderLib
 

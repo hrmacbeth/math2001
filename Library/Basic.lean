@@ -15,7 +15,6 @@ import Library.Tactic.Extra.Basic
 import Library.Tactic.Induction
 import Library.Tactic.Numbers.Basic
 import Library.Tactic.Product
-import Library.Tactic.Rel
 import Library.Tactic.TruthTable
 
 notation3 (prettyPrint := false) "forall_sufficiently_large "(...)", "r:(scoped P => ∃ C, ∀ x ≥ C, P x) => r
