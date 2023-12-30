@@ -425,9 +425,9 @@ numbers!</p>
 <h3><span class="section-number">5.2.1. </span>Example<a class="headerlink" href="#id7" title="Permalink to this headline">&#61633;</a></h3>
 <p>Is 0 superpowered?  <span class="math notranslate nohighlight">\(0^{0^0}+1=1\)</span>, <span class="math notranslate nohighlight">\(0^{0^1}+1=2\)</span>, <span class="math notranslate nohighlight">\(0^{0^2}+1=2\)</span>,
 <span class="math notranslate nohighlight">\(0^{0^3}+1=2\)</span>.  We can also do these calculations in Lean:</p>
-<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="bp">#</span><span class="n">numbers</span> <span class="mi">0</span> <span class="bp">^</span> <span class="mi">0</span> <span class="bp">^</span> <span class="mi">0</span> <span class="bp">+</span> <span class="mi">1</span> <span class="c1">-- 1</span>
-<span class="bp">#</span><span class="n">numbers</span> <span class="mi">0</span> <span class="bp">^</span> <span class="mi">0</span> <span class="bp">^</span> <span class="mi">1</span> <span class="bp">+</span> <span class="mi">1</span> <span class="c1">-- 2</span>
-<span class="bp">#</span><span class="n">numbers</span> <span class="mi">0</span> <span class="bp">^</span> <span class="mi">0</span> <span class="bp">^</span> <span class="mi">2</span> <span class="bp">+</span> <span class="mi">1</span> <span class="c1">-- 2</span>
+<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="k">#eval</span> <span class="mi">0</span> <span class="bp">^</span> <span class="mi">0</span> <span class="bp">^</span> <span class="mi">0</span> <span class="bp">+</span> <span class="mi">1</span> <span class="c1">-- 1</span>
+<span class="k">#eval</span> <span class="mi">0</span> <span class="bp">^</span> <span class="mi">0</span> <span class="bp">^</span> <span class="mi">1</span> <span class="bp">+</span> <span class="mi">1</span> <span class="c1">-- 2</span>
+<span class="k">#eval</span> <span class="mi">0</span> <span class="bp">^</span> <span class="mi">0</span> <span class="bp">^</span> <span class="mi">2</span> <span class="bp">+</span> <span class="mi">1</span> <span class="c1">-- 2</span>
 </pre></div>
 </div>
 <p>The first is not prime, the others are, but taking them together, the &#8220;for all&#8221; in the definition is
@@ -458,9 +458,9 @@ tactic and check that you agree intuitively with the transformation which occurr
 <section id="id8">
 <h3><span class="section-number">5.2.2. </span>Example<a class="headerlink" href="#id8" title="Permalink to this headline">&#61633;</a></h3>
 <p>Is 1 superpowered?</p>
-<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="bp">#</span><span class="n">numbers</span> <span class="mi">1</span> <span class="bp">^</span> <span class="mi">1</span> <span class="bp">^</span> <span class="mi">0</span> <span class="bp">+</span> <span class="mi">1</span> <span class="c1">-- 2</span>
-<span class="bp">#</span><span class="n">numbers</span> <span class="mi">1</span> <span class="bp">^</span> <span class="mi">1</span> <span class="bp">^</span> <span class="mi">1</span> <span class="bp">+</span> <span class="mi">1</span> <span class="c1">-- 2</span>
-<span class="bp">#</span><span class="n">numbers</span> <span class="mi">1</span> <span class="bp">^</span> <span class="mi">1</span> <span class="bp">^</span> <span class="mi">2</span> <span class="bp">+</span> <span class="mi">1</span> <span class="c1">-- 2</span>
+<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="k">#eval</span> <span class="mi">1</span> <span class="bp">^</span> <span class="mi">1</span> <span class="bp">^</span> <span class="mi">0</span> <span class="bp">+</span> <span class="mi">1</span> <span class="c1">-- 2</span>
+<span class="k">#eval</span> <span class="mi">1</span> <span class="bp">^</span> <span class="mi">1</span> <span class="bp">^</span> <span class="mi">1</span> <span class="bp">+</span> <span class="mi">1</span> <span class="c1">-- 2</span>
+<span class="k">#eval</span> <span class="mi">1</span> <span class="bp">^</span> <span class="mi">1</span> <span class="bp">^</span> <span class="mi">2</span> <span class="bp">+</span> <span class="mi">1</span> <span class="c1">-- 2</span>
 </pre></div>
 </div>
 <div class="admonition-lemma admonition">
@@ -482,11 +482,11 @@ tactic and check that you agree intuitively with the transformation which occurr
 <section id="id9">
 <h3><span class="section-number">5.2.3. </span>Example<a class="headerlink" href="#id9" title="Permalink to this headline">&#61633;</a></h3>
 <p>Is 2 superpowered?</p>
-<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="bp">#</span><span class="n">numbers</span> <span class="mi">2</span> <span class="bp">^</span> <span class="mi">2</span> <span class="bp">^</span> <span class="mi">0</span> <span class="bp">+</span> <span class="mi">1</span> <span class="c1">-- 3</span>
-<span class="bp">#</span><span class="n">numbers</span> <span class="mi">2</span> <span class="bp">^</span> <span class="mi">2</span> <span class="bp">^</span> <span class="mi">1</span> <span class="bp">+</span> <span class="mi">1</span> <span class="c1">-- 5</span>
-<span class="bp">#</span><span class="n">numbers</span> <span class="mi">2</span> <span class="bp">^</span> <span class="mi">2</span> <span class="bp">^</span> <span class="mi">2</span> <span class="bp">+</span> <span class="mi">1</span> <span class="c1">-- 17</span>
-<span class="bp">#</span><span class="n">numbers</span> <span class="mi">2</span> <span class="bp">^</span> <span class="mi">2</span> <span class="bp">^</span> <span class="mi">3</span> <span class="bp">+</span> <span class="mi">1</span> <span class="c1">-- 257</span>
-<span class="bp">#</span><span class="n">numbers</span> <span class="mi">2</span> <span class="bp">^</span> <span class="mi">2</span> <span class="bp">^</span> <span class="mi">4</span> <span class="bp">+</span> <span class="mi">1</span> <span class="c1">-- 65537</span>
+<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="k">#eval</span> <span class="mi">2</span> <span class="bp">^</span> <span class="mi">2</span> <span class="bp">^</span> <span class="mi">0</span> <span class="bp">+</span> <span class="mi">1</span> <span class="c1">-- 3</span>
+<span class="k">#eval</span> <span class="mi">2</span> <span class="bp">^</span> <span class="mi">2</span> <span class="bp">^</span> <span class="mi">1</span> <span class="bp">+</span> <span class="mi">1</span> <span class="c1">-- 5</span>
+<span class="k">#eval</span> <span class="mi">2</span> <span class="bp">^</span> <span class="mi">2</span> <span class="bp">^</span> <span class="mi">2</span> <span class="bp">+</span> <span class="mi">1</span> <span class="c1">-- 17</span>
+<span class="k">#eval</span> <span class="mi">2</span> <span class="bp">^</span> <span class="mi">2</span> <span class="bp">^</span> <span class="mi">3</span> <span class="bp">+</span> <span class="mi">1</span> <span class="c1">-- 257</span>
+<span class="k">#eval</span> <span class="mi">2</span> <span class="bp">^</span> <span class="mi">2</span> <span class="bp">^</span> <span class="mi">4</span> <span class="bp">+</span> <span class="mi">1</span> <span class="c1">-- 65537</span>
 </pre></div>
 </div>
 <p>All these numbers are prime, as it happens.  But checking 257 is prime using our usual lemma
@@ -497,9 +497,9 @@ certainly don&#8217;t have the patience.  The next one will be even worse.  Let&
 <section id="id10">
 <h3><span class="section-number">5.2.4. </span>Example<a class="headerlink" href="#id10" title="Permalink to this headline">&#61633;</a></h3>
 <p>Is 3 superpowered?</p>
-<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="bp">#</span><span class="n">numbers</span> <span class="mi">3</span> <span class="bp">^</span> <span class="mi">3</span> <span class="bp">^</span> <span class="mi">0</span> <span class="bp">+</span> <span class="mi">1</span> <span class="c1">-- 4</span>
-<span class="bp">#</span><span class="n">numbers</span> <span class="mi">3</span> <span class="bp">^</span> <span class="mi">3</span> <span class="bp">^</span> <span class="mi">1</span> <span class="bp">+</span> <span class="mi">1</span> <span class="c1">-- 28</span>
-<span class="bp">#</span><span class="n">numbers</span> <span class="mi">3</span> <span class="bp">^</span> <span class="mi">3</span> <span class="bp">^</span> <span class="mi">2</span> <span class="bp">+</span> <span class="mi">1</span> <span class="c1">-- 19684</span>
+<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="k">#eval</span> <span class="mi">3</span> <span class="bp">^</span> <span class="mi">3</span> <span class="bp">^</span> <span class="mi">0</span> <span class="bp">+</span> <span class="mi">1</span> <span class="c1">-- 4</span>
+<span class="k">#eval</span> <span class="mi">3</span> <span class="bp">^</span> <span class="mi">3</span> <span class="bp">^</span> <span class="mi">1</span> <span class="bp">+</span> <span class="mi">1</span> <span class="c1">-- 28</span>
+<span class="k">#eval</span> <span class="mi">3</span> <span class="bp">^</span> <span class="mi">3</span> <span class="bp">^</span> <span class="mi">2</span> <span class="bp">+</span> <span class="mi">1</span> <span class="c1">-- 19684</span>
 </pre></div>
 </div>
 <p>Nope!  It fails even at the first step.</p>
@@ -910,6 +910,26 @@ which begins with <code class="docutils literal notranslate"><span class="pre">p
 </pre></div>
 </div>
 </li>
+<li><p>Show that there does not exist a real number <span class="math notranslate nohighlight">\(t\)</span>, such that <span class="math notranslate nohighlight">\(t \le 4\)</span> and
+<span class="math notranslate nohighlight">\(t\geq 5\)</span>.</p>
+<p>(We solved this already in the exercises to <a class="reference internal" href="04_Proofs_with_Structure_II.html#contradiction"><span class="std std-numref">Section 4.5</span></a>, but this time,
+give a proof which begins with <code class="docutils literal notranslate"><span class="pre">push_neg</span></code>.)</p>
+<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">:</span> <span class="bp">&#172;</span> <span class="o">(</span><span class="bp">&#8707;</span> <span class="n">t</span> <span class="o">:</span> <span class="n">&#8477;</span><span class="o">,</span> <span class="n">t</span> <span class="bp">&#8804;</span> <span class="mi">4</span> <span class="bp">&#8743;</span> <span class="n">t</span> <span class="bp">&#8805;</span> <span class="mi">5</span><span class="o">)</span> <span class="o">:=</span> <span class="kd">by</span>
+  <span class="n">push_neg</span>
+  <span class="gr">sorry</span>
+</pre></div>
+</div>
+</li>
+<li><p>Show that 7 is not even.</p>
+<p>(We solved this already in the exercises to <a class="reference internal" href="04_Proofs_with_Structure_II.html#contradiction"><span class="std std-numref">Section 4.5</span></a>, but this time,
+give a proof which begins with <code class="docutils literal notranslate"><span class="pre">push_neg</span></code>.)</p>
+<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">:</span> <span class="bp">&#172;</span> <span class="n">Int.Even</span> <span class="mi">7</span> <span class="o">:=</span> <span class="kd">by</span>
+  <span class="n">dsimp</span> <span class="o">[</span><span class="n">Int.Even</span><span class="o">]</span>
+  <span class="n">push_neg</span>
+  <span class="gr">sorry</span>
+</pre></div>
+</div>
+</li>
 <li><p>Let <span class="math notranslate nohighlight">\(p\)</span> and <span class="math notranslate nohighlight">\(k\)</span> be natural numbers, with <span class="math notranslate nohighlight">\(k\ne 1\)</span>, <span class="math notranslate nohighlight">\(k\ne p\)</span>, and
 <span class="math notranslate nohighlight">\(k\mid p\)</span>.  Show that <span class="math notranslate nohighlight">\(p\)</span> is not prime.</p>
 <p>(We solved this already in <a class="reference internal" href="04_Proofs_with_Structure_II.html#not-prime-proof"><span class="std std-numref">Example 4.5.7</span></a>, but this time, give a proof
@@ -917,6 +937,17 @@ which begins with <code class="docutils literal notranslate"><span class="pre">p
 <div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">{</span><span class="n">p</span> <span class="o">:</span> <span class="n">&#8469;</span><span class="o">}</span> <span class="o">(</span><span class="n">k</span> <span class="o">:</span> <span class="n">&#8469;</span><span class="o">)</span> <span class="o">(</span><span class="n">hk1</span> <span class="o">:</span> <span class="n">k</span> <span class="bp">&#8800;</span> <span class="mi">1</span><span class="o">)</span> <span class="o">(</span><span class="n">hkp</span> <span class="o">:</span> <span class="n">k</span> <span class="bp">&#8800;</span> <span class="n">p</span><span class="o">)</span> <span class="o">(</span><span class="n">hk</span> <span class="o">:</span> <span class="n">k</span> <span class="bp">&#8739;</span> <span class="n">p</span><span class="o">)</span> <span class="o">:</span> <span class="bp">&#172;</span> <span class="n">Prime</span> <span class="n">p</span> <span class="o">:=</span> <span class="kd">by</span>
   <span class="n">dsimp</span> <span class="o">[</span><span class="n">Prime</span><span class="o">]</span>
   <span class="n">push_neg</span>
+  <span class="gr">sorry</span>
+</pre></div>
+</div>
+</li>
+<li><p>Show that it is not true that there exists an integer <span class="math notranslate nohighlight">\(a\)</span>,
+such that for all integers <span class="math notranslate nohighlight">\(n\)</span>, <span class="math notranslate nohighlight">\(2a^3 &#8805; na+7\)</span>.</p>
+<p>Suggested structure: Start your proof by negation-normalizing.</p>
+<p>You might find it interesting to compare this fact with Exercise 8 in
+<a class="reference internal" href="02_Proofs_with_Structure.html#exists"><span class="std std-numref">Section 2.5</span></a>.  How is it possible that this statement is false and that one is
+true?</p>
+<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">:</span> <span class="bp">&#172;</span> <span class="bp">&#8707;</span> <span class="n">a</span> <span class="o">:</span> <span class="n">&#8484;</span><span class="o">,</span> <span class="bp">&#8704;</span> <span class="n">n</span> <span class="o">:</span> <span class="n">&#8484;</span><span class="o">,</span> <span class="mi">2</span> <span class="bp">*</span> <span class="n">a</span> <span class="bp">^</span> <span class="mi">3</span> <span class="bp">&#8805;</span> <span class="n">n</span> <span class="bp">*</span> <span class="n">a</span> <span class="bp">+</span> <span class="mi">7</span> <span class="o">:=</span> <span class="kd">by</span>
   <span class="gr">sorry</span>
 </pre></div>
 </div>
