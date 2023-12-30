@@ -4,11 +4,9 @@ import Library.Theory.InjectiveSurjective
 import Library.Basic
 import AutograderLib
 
-set_option push_neg.use_distrib true
+math2001_init
 set_option pp.funBinderTypes true
-attribute [-simp] ne_eq
-attribute [-ext] Prod.ext
-attribute [-instance] Int.instDivInt_1 Int.instDivInt Nat.instDivNat
+
 open Function
 
 

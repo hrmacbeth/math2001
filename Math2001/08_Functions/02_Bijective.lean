@@ -3,9 +3,8 @@ import Mathlib.Data.Real.Basic
 import Library.Basic
 import Library.Tactic.Exhaust
 
-attribute [-instance] Int.instDivInt_1 Int.instDivInt Nat.instDivNat
-attribute [-simp] ne_eq
-set_option push_neg.use_distrib true
+math2001_init
+
 open Function
 
 

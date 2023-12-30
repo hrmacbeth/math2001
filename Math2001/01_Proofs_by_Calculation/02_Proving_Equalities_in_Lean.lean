@@ -1,7 +1,8 @@
 /- Copyright (c) Heather Macbeth, 2022.  All rights reserved. -/
 import Mathlib.Data.Real.Basic
+import Library.Basic
 
-attribute [-instance] Int.instDivInt_1 Int.instDivInt Nat.instDivNat
+math2001_init
 
 /-! # Section 1.2: Proving equalities in Lean
 

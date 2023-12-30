@@ -2,7 +2,7 @@
 import Mathlib.Data.Real.Basic
 import Library.Basic
 
-attribute [-instance] Int.instDivInt_1 Int.instDivInt Nat.instDivNat
+math2001_init
 
 
 def Superpowered (k : ℕ) : Prop := ∀ n : ℕ, Prime (k ^ k ^ n + 1)

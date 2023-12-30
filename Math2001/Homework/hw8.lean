@@ -5,9 +5,9 @@ import Library.Tactic.ModEq
 import Library.Theory.ParityModular
 import AutograderLib
 
-set_option push_neg.use_distrib true
+math2001_init
 set_option pp.funBinderTypes true
-attribute [-instance] Int.instDivInt_1 Int.instDivInt Nat.instDivNat
+
 open Function
 
 

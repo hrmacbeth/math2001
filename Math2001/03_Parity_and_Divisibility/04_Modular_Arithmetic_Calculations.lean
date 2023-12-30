@@ -2,7 +2,7 @@
 import Library.Basic
 import Library.Tactic.ModEq
 
-attribute [-instance] Int.instDivInt_1 Int.instDivInt Nat.instDivNat
+math2001_init
 
 
 example {a b : ℤ} (ha : a ≡ 2 [ZMOD 4]) :

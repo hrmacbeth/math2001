@@ -3,7 +3,7 @@ import Library.Basic
 import Library.Theory.GCD
 import Library.Theory.NumberTheory
 
-attribute [-instance] Int.instDivInt_1 Int.instDivInt Nat.instDivNat
+math2001_init
 
 
 @[decreasing] theorem irrat_aux_wf (b k : ℕ) (hb : k ≠ 0) (hab : b ^ 2 = 2 * k ^ 2) :

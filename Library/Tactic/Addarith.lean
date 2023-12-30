@@ -46,8 +46,3 @@ elab_rules : tactic | `(tactic| addarith [$args,*]) => withMainContext do
       (← args.getElems.mapM (elabTerm ·.raw none)).toList
       { discharger := addarithDischarger, splitHypotheses := false })
   <|> throwError "addarith failed to prove this"
-
--- while we're at it, this turns off the succeed-with-noise behaviour of `ring_nf` with `ring` when
--- (1) it is used in conv mode, or (2) it is used terminally
-macro_rules | `(conv | ring) => `(conv | ring_nf)
-macro_rules | `(tactic | ring) => `(tactic | (ring_nf; done))

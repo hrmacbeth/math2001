@@ -2,8 +2,8 @@
 import Mathlib.Tactic.GCongr
 import Library.Basic
 
-attribute [-instance] Int.instDivInt_1 Int.instDivInt Nat.instDivNat
-set_option push_neg.use_distrib true
+math2001_init
+
 open Nat
 
 

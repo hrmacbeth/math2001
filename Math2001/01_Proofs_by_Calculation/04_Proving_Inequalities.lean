@@ -2,7 +2,7 @@
 import Mathlib.Data.Real.Basic
 import Library.Basic
 
-attribute [-instance] Int.instDivInt_1 Int.instDivInt Nat.instDivNat
+math2001_init
 
 /-! # Section 1.4: Proving inequalities -/
 

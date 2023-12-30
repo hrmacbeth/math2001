@@ -3,7 +3,7 @@ import Mathlib.Tactic.GCongr
 import Library.Basic
 import Library.Tactic.ModEq
 
-attribute [-instance] Int.instDivInt_1 Int.instDivInt Nat.instDivNat
+math2001_init
 
 namespace Int
 

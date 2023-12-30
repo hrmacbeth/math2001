@@ -3,11 +3,9 @@ import Mathlib.Data.Real.Basic
 import Library.Basic
 import Library.Tactic.ModEq
 
-attribute [-instance] Int.instDivInt_1 Int.instDivInt Nat.instDivNat
-set_option push_neg.use_distrib true
-open Set
-attribute [-simp] ne_eq
+math2001_init
 
+open Set
 
 
 #check {n : ℤ | n ≤ 3}

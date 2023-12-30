@@ -4,7 +4,8 @@ import Library.Theory.ParityModular
 import Library.Basic
 import Library.Tactic.ModEq
 
-attribute [-instance] Int.instDivInt_1 Int.instDivInt Nat.instDivNat
+math2001_init
+
 open Int
 
 

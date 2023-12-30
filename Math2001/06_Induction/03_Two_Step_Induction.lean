@@ -3,9 +3,9 @@ import Mathlib.Tactic.GCongr
 import Library.Basic
 import Library.Tactic.ModEq
 
-open Int
+math2001_init
 
-attribute [-instance] Int.instDivInt_1 Int.instDivInt Nat.instDivNat
+open Int
 
 
 def a : ℕ → ℤ

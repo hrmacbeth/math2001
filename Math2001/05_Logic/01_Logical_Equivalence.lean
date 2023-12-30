@@ -1,6 +1,7 @@
 /- Copyright (c) Heather Macbeth, 2023.  All rights reserved. -/
 import Library.Basic
 
+math2001_init
 set_option pp.funBinderTypes true
 
 

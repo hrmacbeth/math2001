@@ -2,8 +2,7 @@
 import Mathlib.Tactic.GCongr
 import Library.Basic
 
-attribute [-instance] Int.instDivInt_1 Int.instDivInt Nat.instDivNat
-attribute [field_simps] LT.lt.ne'
+math2001_init
 
 open Nat
 

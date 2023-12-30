@@ -3,14 +3,15 @@ import Library.Basic
 import Library.Tactic.ModEq
 import AutograderLib
 
+math2001_init
+
+open Int
+
 /-! # Homework 4
 
 Don't forget to compare with the text version,
 https://hrmacbeth.github.io/math2001/Homework.html#homework-4
 for clearer statements and any special instructions. -/
-
-attribute [-instance] Int.instDivInt_1 Int.instDivInt Nat.instDivNat
-open Int
 
 
 @[autograded 4]

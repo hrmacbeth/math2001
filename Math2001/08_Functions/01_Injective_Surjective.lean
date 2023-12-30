@@ -5,9 +5,9 @@ import Library.Tactic.Exhaust
 import Library.Tactic.ModEq
 import Library.Theory.ParityModular
 
-attribute [-instance] Int.instDivInt_1 Int.instDivInt Nat.instDivNat
-attribute [-simp] ne_eq
+math2001_init
 set_option pp.funBinderTypes true
+
 open Function
 namespace Int
 

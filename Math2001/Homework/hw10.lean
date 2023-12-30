@@ -5,9 +5,9 @@ import Library.Tactic.Exhaust
 import Library.Tactic.ModEq
 import AutograderLib
 
+math2001_init
 set_option quotPrecheck false
-set_option push_neg.use_distrib true
-attribute [-instance] Int.instDivInt_1 Int.instDivInt Nat.instDivNat
+
 open Function
 
 

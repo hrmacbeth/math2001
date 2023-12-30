@@ -2,7 +2,7 @@
 import Library.Basic
 import Library.Theory.ModEq.Defs
 
-attribute [-instance] Int.instDivInt_1 Int.instDivInt Nat.instDivNat
+math2001_init
 
 
 example : 11 ≡ 3 [ZMOD 4] := by

@@ -3,15 +3,15 @@ import Mathlib.Data.Real.Basic
 import Library.Basic
 import AutograderLib
 
+math2001_init
+
+namespace Int
+
 /-! # Homework 3
 
 Don't forget to compare with the text version,
 https://hrmacbeth.github.io/math2001/Homework.html#homework-3
 for clearer statements and any special instructions. -/
-
-attribute [-instance] Int.instDivInt_1 Int.instDivInt Nat.instDivNat
-
-namespace Int
 
 
 @[autograded 4]

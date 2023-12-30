@@ -2,13 +2,9 @@
 import Library.Basic
 import Library.Tactic.Exhaust
 
-set_option push_neg.use_distrib true
-open Set
+math2001_init
 
-attribute [-instance] Int.instDivInt_1 Int.instDivInt Nat.instDivNat
-attribute [-simp] ne_eq
-
-open Function
+open Set Function
 
 
 #check {3, 4, 5} -- `{3, 4, 5} : Set ℕ`

@@ -4,8 +4,8 @@ import Library.Theory.InjectiveSurjective
 import Library.Basic
 import Library.Tactic.ModEq
 
-set_option push_neg.use_distrib true
-attribute [-instance] Int.instDivInt_1 Int.instDivInt Nat.instDivNat
+math2001_init
+
 open Function
 
 

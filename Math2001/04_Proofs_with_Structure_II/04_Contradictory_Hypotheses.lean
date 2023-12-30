@@ -3,8 +3,7 @@ import Mathlib.Data.Real.Basic
 import Library.Basic
 import Library.Tactic.ModEq
 
-attribute [-instance] Int.instDivInt_1 Int.instDivInt Nat.instDivNat
-attribute [-simp] Nat.not_two_dvd_bit1 two_dvd_bit0
+math2001_init
 
 
 example {y : ℝ} (x : ℝ) (h : 0 < x * y) (hx : 0 ≤ x) : 0 < y := by
