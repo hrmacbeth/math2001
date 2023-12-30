@@ -172,7 +172,9 @@ own computers.  I used `Gitpod <https://www.gitpod.io/>`_ for this (an alternati
 `code repository <https://github.com/hrmacbeth/math2001>`_ for brief instructions on how to start
 using Gitpod.  The students' Lean homework was automatically graded using a
 `Gradescope <https://www.gradescope.com/>`_ auto-grader (an alternative is
-`GitHub Classroom <https://classroom.github.com/>`_).
+`GitHub Classroom <https://classroom.github.com/>`_).  The Lean community's
+`teaching advice webpage <https://leanprover-community.github.io/teaching/>`_ provides instructions
+and troubleshooting for setting up this kind of course infrastructure.
 
 Acknowledgements
 ----------------

@@ -19,7 +19,7 @@ This tactic is a deliberately weakened version of the Mathlib tactic `linarith`.
 open Lean Elab Tactic
 open Parser Tactic Syntax
 
-syntax (name := addarith) "addarith" (" [" term,* "]")? : tactic
+syntax (name := addarith) "addarith" " [" term,* "]" : tactic
 
 open Elab.Tactic Parser.Tactic
 open Mathlib Tactic Abel
@@ -40,11 +40,11 @@ An example:
 example {a b : ℤ} (h : a = 10 - b) : a + b ≤ 12 := by addarith [h]
 ```
 -/
-elab_rules : tactic | `(tactic| addarith $[[$args,*]]?) => withMainContext do
+elab_rules : tactic | `(tactic| addarith [$args,*]) => withMainContext do
   (liftMetaFinishingTactic <|
-    Linarith.linarith true
-      (← ((args.map (TSepArray.getElems)).getD {}).mapM (elabTerm ·.raw none)).toList
-      { discharger := addarithDischarger })
+    Linarith.linarith (only_on := true)
+      (← args.getElems.mapM (elabTerm ·.raw none)).toList
+      { discharger := addarithDischarger, splitHypotheses := false })
   <|> throwError "addarith failed to prove this"
 
 -- while we're at it, this turns off the succeed-with-noise behaviour of `ring_nf` with `ring` when
