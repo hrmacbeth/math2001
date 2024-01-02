@@ -19,15 +19,15 @@ example {n : ℤ} (hn : 8 ∣ 5 * n) : 8 ∣ n := by
 example {n : ℤ} (h1 : 5 ∣ 3 * n) : 5 ∣ n := by
   sorry
 
-example {m : ℤ} (h2 : 5 ∣ m) (h1 : 8 ∣ m) : 40 ∣ m := by
+example {m : ℤ} (h1 : 5 ∣ m) (h2 : 8 ∣ m) : 40 ∣ m := by
   obtain ⟨a, ha⟩ := h1
   obtain ⟨b, hb⟩ := h2
-  use -3 * a + 2 * b
+  use 2 * a - 3 * b
   calc
-    m = -15 * m + 16 * m := by ring
-    _ = -15 * (8 * a) + 16 * m := by rw [ha]
-    _ = -15 * (8 * a) + 16 * (5 * b) := by rw [hb]
-    _ = 40 * (-3 * a + 2 * b) := by ring
+    m = 16 * m - 15 * m := by ring
+    _ = 16 * (5 * a) - 15 * m := by rw [ha]
+    _ = 16 * (5 * a) - 15 * (8 * b) := by rw [hb]
+    _ = 40 * (2 * a - 3 * b) := by ring
 
 /-! # Exercises -/
 
