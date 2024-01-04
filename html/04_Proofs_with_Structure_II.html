@@ -865,11 +865,11 @@ only if <span class="math notranslate nohighlight">\(a \equiv 0 \mod n\)</span>.
 </div>
 </li>
 <li><p>Let <span class="math notranslate nohighlight">\(a\)</span> and <span class="math notranslate nohighlight">\(b\)</span> be integers and suppose that <span class="math notranslate nohighlight">\(a \mid b\)</span>.  Show that
-<span class="math notranslate nohighlight">\(a \mid 3b^3-b^2+5b\)</span>.</p>
-<p>Note that this appeared already as an exercise in <a class="reference internal" href="03_Parity_and_Divisibility.html#divisibility"><span class="std std-numref">Section 3.2</span></a>.  But now,
+<span class="math notranslate nohighlight">\(a \mid 2b^3-b^2+3b\)</span>.</p>
+<p>Note that this appeared already as an exercise in <a class="reference internal" href="03_Parity_and_Divisibility.html#id21"><span class="std std-numref">Exercises 3.2.9</span></a>.  But now,
 using the lemma <code class="docutils literal notranslate"><span class="pre">Int.dvd_iff_modEq</span></code> proved in the previous exercise, this kind of problem is
 much easier.</p>
-<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">{</span><span class="n">a</span> <span class="n">b</span> <span class="o">:</span> <span class="n">&#8484;</span><span class="o">}</span> <span class="o">(</span><span class="n">hab</span> <span class="o">:</span> <span class="n">a</span> <span class="bp">&#8739;</span> <span class="n">b</span><span class="o">)</span> <span class="o">:</span> <span class="n">a</span> <span class="bp">&#8739;</span> <span class="mi">3</span> <span class="bp">*</span> <span class="n">b</span> <span class="bp">^</span> <span class="mi">3</span> <span class="bp">-</span> <span class="n">b</span> <span class="bp">^</span> <span class="mi">2</span> <span class="bp">+</span> <span class="mi">5</span> <span class="bp">*</span> <span class="n">b</span> <span class="o">:=</span> <span class="kd">by</span>
+<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">{</span><span class="n">a</span> <span class="n">b</span> <span class="o">:</span> <span class="n">&#8484;</span><span class="o">}</span> <span class="o">(</span><span class="n">hab</span> <span class="o">:</span> <span class="n">a</span> <span class="bp">&#8739;</span> <span class="n">b</span><span class="o">)</span> <span class="o">:</span> <span class="n">a</span> <span class="bp">&#8739;</span> <span class="mi">2</span> <span class="bp">*</span> <span class="n">b</span> <span class="bp">^</span> <span class="mi">3</span> <span class="bp">-</span> <span class="n">b</span> <span class="bp">^</span> <span class="mi">2</span> <span class="bp">+</span> <span class="mi">3</span> <span class="bp">*</span> <span class="n">b</span> <span class="o">:=</span> <span class="kd">by</span>
   <span class="gr">sorry</span>
 </pre></div>
 </div>
