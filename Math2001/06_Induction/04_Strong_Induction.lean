@@ -33,15 +33,15 @@ namespace Nat
 
 theorem exists_prime_factor {n : ℕ} (hn2 : 2 ≤ n) : ∃ p : ℕ, Prime p ∧ p ∣ n := by
   by_cases hn : Prime n
-  . -- case 1: `n` is prime
+  · -- case 1: `n` is prime
     use n
     constructor
     · apply hn
     · use 1
       ring
-  . -- case 2: `n` is not prime
-    obtain ⟨m, hmn, _, ⟨x, hx⟩⟩ := exists_factor_of_not_prime hn hn2
-    have IH : ∃ p, Prime p ∧ p ∣ m := exists_prime_factor hmn -- inductive hypothesis
+  · -- case 2: `n` is not prime
+    obtain ⟨m, hm2, _, ⟨x, hx⟩⟩ := exists_factor_of_not_prime hn hn2
+    have IH : ∃ p, Prime p ∧ p ∣ m := exists_prime_factor hm2 -- inductive hypothesis
     obtain ⟨p, hp, y, hy⟩ := IH
     use p
     constructor
