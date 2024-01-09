@@ -772,10 +772,10 @@ We have encountered this point before, in <a class="reference internal" href="01
 And as usual, when a proof process is formulaic, there is a Lean tactic to do it for us.  The tactic
 is called <code class="docutils literal notranslate"><span class="pre">push_neg</span></code>.  Here it is, with output, on the last two examples:</p>
 <div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="bp">#</span><span class="n">push_neg</span> <span class="bp">&#172;</span><span class="o">(</span><span class="bp">&#8704;</span> <span class="n">m</span> <span class="o">:</span> <span class="n">&#8484;</span><span class="o">,</span> <span class="n">m</span> <span class="bp">&#8800;</span> <span class="mi">2</span> <span class="bp">&#8594;</span> <span class="bp">&#8707;</span> <span class="n">n</span> <span class="o">:</span> <span class="n">&#8484;</span><span class="o">,</span> <span class="n">n</span> <span class="bp">^</span> <span class="mi">2</span> <span class="bp">=</span> <span class="n">m</span><span class="o">)</span>
-  <span class="c1">-- &#8707; m, m &#8800; 2 &#8743; &#8704; (n : &#8484;), n ^ 2 &#8800; m</span>
+  <span class="c1">-- &#8707; m : &#8484;, m &#8800; 2 &#8743; &#8704; (n : &#8484;), n ^ 2 &#8800; m</span>
 
 <span class="bp">#</span><span class="n">push_neg</span> <span class="bp">&#172;</span><span class="o">(</span><span class="bp">&#8704;</span> <span class="n">n</span> <span class="o">:</span> <span class="n">&#8484;</span><span class="o">,</span> <span class="bp">&#8707;</span> <span class="n">m</span> <span class="o">:</span> <span class="n">&#8484;</span><span class="o">,</span> <span class="n">n</span> <span class="bp">^</span> <span class="mi">2</span> <span class="bp">&lt;</span> <span class="n">m</span> <span class="bp">&#8743;</span> <span class="n">m</span> <span class="bp">&lt;</span> <span class="o">(</span><span class="n">n</span> <span class="bp">+</span> <span class="mi">1</span><span class="o">)</span> <span class="bp">^</span> <span class="mi">2</span><span class="o">)</span>
-  <span class="c1">-- &#8707; n, &#8704; (m : &#8484;), n ^ 2 &lt; m &#8594; (n + 1) ^ 2 &#8804; m</span>
+  <span class="c1">-- &#8707; n : &#8484;, &#8704; m : &#8484;, m &#8804; n ^ 2 &#8744; (n + 1) ^ 2 &#8804; m</span>
 </pre></div>
 </div>
 <p>Work out the following negations in your head, then check your work using the Lean output.</p>
@@ -955,7 +955,8 @@ true?</p>
 <li><p>Let <span class="math notranslate nohighlight">\(p \geq 2\)</span> be a natural number which is not prime.  Show that there exists a natural
 number <span class="math notranslate nohighlight">\(2 \le m &lt; p\)</span> which is a factor of <span class="math notranslate nohighlight">\(p\)</span>.</p>
 <p>We record this lemma for future use under the name <code class="docutils literal notranslate"><span class="pre">exists_factor_of_not_prime</span></code>.</p>
-<p>Suggested structure:  Set up an intermediate goal that any natural number <span class="math notranslate nohighlight">\(2 \le m &lt; p\)</span> is
+<p>Suggested structure:  Set up an intermediate goal that it is not true that any natural number
+<span class="math notranslate nohighlight">\(2 \le m &lt; p\)</span> is
 not a factor of <span class="math notranslate nohighlight">\(p\)</span>, and prove it by contradiction using the lemma <code class="docutils literal notranslate"><span class="pre">prime_test</span></code> from
 <a class="reference internal" href="04_Proofs_with_Structure_II.html#prime-test"><span class="std std-numref">Example 4.4.4</span></a>. Then negation-normalize that result.</p>
 <div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">{</span><span class="n">p</span> <span class="o">:</span> <span class="n">&#8469;</span><span class="o">}</span> <span class="o">(</span><span class="n">hp</span> <span class="o">:</span> <span class="bp">&#172;</span> <span class="n">Prime</span> <span class="n">p</span><span class="o">)</span> <span class="o">(</span><span class="n">hp2</span> <span class="o">:</span> <span class="mi">2</span> <span class="bp">&#8804;</span> <span class="n">p</span><span class="o">)</span> <span class="o">:</span> <span class="bp">&#8707;</span> <span class="n">m</span><span class="o">,</span> <span class="mi">2</span> <span class="bp">&#8804;</span> <span class="n">m</span> <span class="bp">&#8743;</span> <span class="n">m</span> <span class="bp">&lt;</span> <span class="n">p</span> <span class="bp">&#8743;</span> <span class="n">m</span> <span class="bp">&#8739;</span> <span class="n">p</span> <span class="o">:=</span> <span class="kd">by</span>
@@ -982,7 +983,7 @@ not a factor of <span class="math notranslate nohighlight">\(p\)</span>, and pro
   <hr/>
 
   <div role="contentinfo">
-    <p>&#169; Copyright 2022-2023, Heather Macbeth.  All rights reserved.</p>
+    <p>&#169; Copyright 2022-2024, Heather Macbeth.  All rights reserved.</p>
   </div>
 
   Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a

@@ -346,12 +346,12 @@ Therefore</p>
 all the sorries. Also, try to predict what the infoview will display at each position in the proof,
 and then compare your prediction with reality.</p>
 <div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">{</span><span class="n">r</span> <span class="n">s</span> <span class="o">:</span> <span class="n">&#8474;</span><span class="o">}</span> <span class="o">(</span><span class="n">h1</span> <span class="o">:</span> <span class="n">s</span> <span class="bp">+</span> <span class="mi">3</span> <span class="bp">&#8805;</span> <span class="n">r</span><span class="o">)</span> <span class="o">(</span><span class="n">h2</span> <span class="o">:</span> <span class="n">s</span> <span class="bp">+</span> <span class="n">r</span> <span class="bp">&#8804;</span> <span class="mi">3</span><span class="o">)</span> <span class="o">:</span> <span class="n">r</span> <span class="bp">&#8804;</span> <span class="mi">3</span> <span class="o">:=</span> <span class="kd">by</span>
-  <span class="k">have</span> <span class="n">h3</span> <span class="o">:</span> <span class="n">r</span> <span class="bp">&#8804;</span> <span class="mi">3</span> <span class="bp">+</span> <span class="n">s</span> <span class="o">:=</span> <span class="kd">by</span> <span class="gr">sorry</span>
-  <span class="k">have</span> <span class="n">h4</span> <span class="o">:</span> <span class="n">r</span> <span class="bp">&#8804;</span> <span class="mi">3</span> <span class="bp">-</span> <span class="n">s</span> <span class="o">:=</span> <span class="kd">by</span> <span class="gr">sorry</span>
+  <span class="k">have</span> <span class="n">h3</span> <span class="o">:</span> <span class="n">r</span> <span class="bp">&#8804;</span> <span class="mi">3</span> <span class="bp">+</span> <span class="n">s</span> <span class="o">:=</span> <span class="kd">by</span> <span class="gr">sorry</span> <span class="c1">-- justify with one tactic</span>
+  <span class="k">have</span> <span class="n">h4</span> <span class="o">:</span> <span class="n">r</span> <span class="bp">&#8804;</span> <span class="mi">3</span> <span class="bp">-</span> <span class="n">s</span> <span class="o">:=</span> <span class="kd">by</span> <span class="gr">sorry</span> <span class="c1">-- justify with one tactic</span>
   <span class="k">calc</span>
-    <span class="n">r</span> <span class="bp">=</span> <span class="o">(</span><span class="n">r</span> <span class="bp">+</span> <span class="n">r</span><span class="o">)</span> <span class="bp">/</span> <span class="mi">2</span> <span class="o">:=</span> <span class="kd">by</span> <span class="gr">sorry</span>
-    <span class="n">_</span> <span class="bp">&#8804;</span> <span class="o">(</span><span class="mi">3</span> <span class="bp">-</span> <span class="n">s</span> <span class="bp">+</span> <span class="o">(</span><span class="mi">3</span> <span class="bp">+</span> <span class="n">s</span><span class="o">))</span> <span class="bp">/</span> <span class="mi">2</span> <span class="o">:=</span> <span class="kd">by</span> <span class="gr">sorry</span>
-    <span class="n">_</span> <span class="bp">=</span> <span class="mi">3</span> <span class="o">:=</span> <span class="kd">by</span> <span class="gr">sorry</span>
+    <span class="n">r</span> <span class="bp">=</span> <span class="o">(</span><span class="n">r</span> <span class="bp">+</span> <span class="n">r</span><span class="o">)</span> <span class="bp">/</span> <span class="mi">2</span> <span class="o">:=</span> <span class="kd">by</span> <span class="gr">sorry</span> <span class="c1">-- justify with one tactic</span>
+    <span class="n">_</span> <span class="bp">&#8804;</span> <span class="o">(</span><span class="mi">3</span> <span class="bp">-</span> <span class="n">s</span> <span class="bp">+</span> <span class="o">(</span><span class="mi">3</span> <span class="bp">+</span> <span class="n">s</span><span class="o">))</span> <span class="bp">/</span> <span class="mi">2</span> <span class="o">:=</span> <span class="kd">by</span> <span class="gr">sorry</span> <span class="c1">-- justify with one tactic</span>
+    <span class="n">_</span> <span class="bp">=</span> <span class="mi">3</span> <span class="o">:=</span> <span class="kd">by</span> <span class="gr">sorry</span> <span class="c1">--justify with one tactic</span>
 </pre></div>
 </div>
 </section>
@@ -418,7 +418,7 @@ that <span class="math notranslate nohighlight">\(a\)</span> is nonnegative.  Sh
 <p>so <span class="math notranslate nohighlight">\(a\geq 1\)</span>.</p>
 </div>
 <p>The deduction from <span class="math notranslate nohighlight">\(a ^ 2 \geq 1 ^ 2\)</span> that <span class="math notranslate nohighlight">\(a \geq 1\)</span> is again something that the
-<code class="docutils literal notranslate"><span class="pre">cancel</span></code> tactic can do.  Notice that Lean is silently checking that the condition for this to be
+<code class="docutils literal notranslate"><span class="pre">cancel</span></code> tactic can do.  Notice that Lean is silently checking the condition for this to be
 valid (that <span class="math notranslate nohighlight">\(a\geq 0\)</span>).  Check that if you delete the hypothesis <code class="docutils literal notranslate"><span class="pre">h2</span> <span class="pre">:</span> <span class="pre">a</span> <span class="pre">&#8805;</span> <span class="pre">0</span></code> then the
 cancellation step fails in Lean.</p>
 <div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">{</span><span class="n">a</span> <span class="n">b</span> <span class="o">:</span> <span class="n">&#8477;</span><span class="o">}</span> <span class="o">(</span><span class="n">h1</span> <span class="o">:</span> <span class="n">a</span> <span class="bp">^</span> <span class="mi">2</span> <span class="bp">=</span> <span class="n">b</span> <span class="bp">^</span> <span class="mi">2</span> <span class="bp">+</span> <span class="mi">1</span><span class="o">)</span> <span class="o">(</span><span class="n">h2</span> <span class="o">:</span> <span class="n">a</span> <span class="bp">&#8805;</span> <span class="mi">0</span><span class="o">)</span> <span class="o">:</span> <span class="n">a</span> <span class="bp">&#8805;</span> <span class="mi">1</span> <span class="o">:=</span> <span class="kd">by</span>
@@ -953,11 +953,11 @@ We consider separately the cases <span class="math notranslate nohighlight">\(-n
 \[\begin{split}n ^ 2 &amp;= (-n) ^ 2\\
 &amp; \le 1 ^ 2\\
 &amp;&lt;2.\end{split}\]</div>
-<p><strong>Case 1(i)</strong> (<span class="math notranslate nohighlight">\(2 \le -n\)</span>):  It suffices to prove that <span class="math notranslate nohighlight">\(n ^ 2 &gt; 2\)</span>.  Indeed,</p>
+<p><strong>Case 1(ii)</strong> (<span class="math notranslate nohighlight">\(2 \le -n\)</span>):  It suffices to prove that <span class="math notranslate nohighlight">\(n ^ 2 &gt; 2\)</span>.  Indeed,</p>
 <div class="math notranslate nohighlight">
-\[\begin{split}2 &amp;= (-n) ^ 2\\
-&amp;&lt; 2 ^ 2\\
-&amp; \le n ^ 2.\end{split}\]</div>
+\[\begin{split}2 &amp;&lt; 2 ^ 2\\
+&amp;\le (-n) ^ 2\\
+&amp; = n ^ 2.\end{split}\]</div>
 <p><strong>Case 2</strong> (<span class="math notranslate nohighlight">\(1 \le n\)</span>):  We consider separately the cases <span class="math notranslate nohighlight">\(n \le 1\)</span> and <span class="math notranslate nohighlight">\(2 \le n\)</span>.</p>
 <p><strong>Case 2(i)</strong> (<span class="math notranslate nohighlight">\(n \le 1\)</span>):  It suffices to prove that <span class="math notranslate nohighlight">\(n ^ 2 &lt; 2\)</span>.  Indeed,</p>
 <div class="math notranslate nohighlight">
@@ -1385,8 +1385,8 @@ and <span class="math notranslate nohighlight">\(7 \le p\)</span>.</p>
 </pre></div>
 </div>
 </li>
-<li><p>Let <span class="math notranslate nohighlight">\(a\)</span> be a rational number and suppose that <span class="math notranslate nohighlight">\(a - 1 \ge 6\)</span>.  Show that
-<span class="math notranslate nohighlight">\(a \ge 5\)</span> and <span class="math notranslate nohighlight">\(3a \ge 10\)</span>.</p>
+<li><p>Let <span class="math notranslate nohighlight">\(a\)</span> be a rational number and suppose that <span class="math notranslate nohighlight">\(a - 1 \ge 5\)</span>.  Show that
+<span class="math notranslate nohighlight">\(a \ge 6\)</span> and <span class="math notranslate nohighlight">\(3a \ge 10\)</span>.</p>
 <div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">{</span><span class="n">a</span> <span class="o">:</span> <span class="n">&#8474;</span><span class="o">}</span> <span class="o">(</span><span class="n">h</span> <span class="o">:</span> <span class="n">a</span> <span class="bp">-</span> <span class="mi">1</span> <span class="bp">&#8805;</span> <span class="mi">5</span><span class="o">)</span> <span class="o">:</span> <span class="n">a</span> <span class="bp">&#8805;</span> <span class="mi">6</span> <span class="bp">&#8743;</span> <span class="mi">3</span> <span class="bp">*</span> <span class="n">a</span> <span class="bp">&#8805;</span> <span class="mi">10</span> <span class="o">:=</span> <span class="kd">by</span>
   <span class="gr">sorry</span>
 </pre></div>
@@ -1567,7 +1567,7 @@ this section consists of practice coming up with witnesses.</p>
 </section>
 <section id="id34">
 <h3><span class="section-number">2.5.6. </span>Example<a class="headerlink" href="#id34" title="Permalink to this headline">&#61633;</a></h3>
-<p>Sometime you may wish to leave out the sentence &#8220;We can take &#8230;&#8221; explicitly stating what the
+<p>Sometimes you may wish to leave out the sentence &#8220;We can take &#8230;&#8221; explicitly stating what the
 witness is.  In this case you should be extra pedantic about verifying the desired properties
 exactly in the form they are stated.</p>
 <div class="admonition-problem admonition">
@@ -1731,7 +1731,7 @@ real numbers <span class="math notranslate nohighlight">\(x\)</span>, <span clas
   <hr/>
 
   <div role="contentinfo">
-    <p>&#169; Copyright 2022-2023, Heather Macbeth.  All rights reserved.</p>
+    <p>&#169; Copyright 2022-2024, Heather Macbeth.  All rights reserved.</p>
   </div>
 
   Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a

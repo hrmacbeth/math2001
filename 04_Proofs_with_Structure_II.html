@@ -283,7 +283,7 @@ hb2 : &#8704; (y : &#8477;), y ^ 2 &#8804; 2 &#8594; y &#8804; b
 &#8866; a &#8804; b
 </pre></div>
 </div>
-<p>and after the goal state it is</p>
+<p>and the goal state after it is</p>
 <div class="highlight-text notranslate"><div class="highlight"><pre><span></span>a b : &#8477;
 ha1 : a ^ 2 &#8804; 2
 hb1 : b ^ 2 &#8804; 2
@@ -346,10 +346,10 @@ argument is performed by the tactic <code class="docutils literal notranslate"><
 <div class="admonition-problem admonition">
 <p class="admonition-title">Problem</p>
 <p>Show that there exists a real number <span class="math notranslate nohighlight">\(c\)</span> such that for all real numbers <span class="math notranslate nohighlight">\(x\)</span> and
-<span class="math notranslate nohighlight">\(y\)</span>, if <span class="math notranslate nohighlight">\(x^2+y^2\le 3\)</span>, then <span class="math notranslate nohighlight">\(x+y\geq c\)</span>.</p>
+<span class="math notranslate nohighlight">\(y\)</span>, if <span class="math notranslate nohighlight">\(x^2+y^2\le 4\)</span>, then <span class="math notranslate nohighlight">\(x+y\geq c\)</span>.</p>
 </div>
 <p>Here the goal contains universal quantification over <span class="math notranslate nohighlight">\(x\)</span> and <span class="math notranslate nohighlight">\(y\)</span>, as well as an
-implication: &#8220;if <span class="math notranslate nohighlight">\(x^2+y^2\le 3\)</span>, then &#8230;.&#8221;  In solving the problem, we formally introduce
+implication: &#8220;if <span class="math notranslate nohighlight">\(x^2+y^2\le 4\)</span>, then &#8230;.&#8221;  In solving the problem, we formally introduce
 the variables <span class="math notranslate nohighlight">\(x\)</span> and <span class="math notranslate nohighlight">\(y\)</span> and also the hypothesis <span class="math notranslate nohighlight">\(x^2+y^2\le 4\)</span> which they are
 assumed to satisfy:</p>
 <div class="admonition-solution admonition">
@@ -494,7 +494,7 @@ use it.  In Lean the lemma name is <code class="docutils literal notranslate"><s
 </pre></div>
 </div>
 </li>
-<li><p>Let <span class="math notranslate nohighlight">\(n\)</span> be an integer and suppose that every natural number <span class="math notranslate nohighlight">\(m\)</span> between 1 and 5 is a
+<li><p>Let <span class="math notranslate nohighlight">\(n\)</span> be an integer and suppose that every integer <span class="math notranslate nohighlight">\(m\)</span> between 1 and 5 is a
 factor of <span class="math notranslate nohighlight">\(n\)</span>. Show that 15 is a factor of <span class="math notranslate nohighlight">\(n\)</span>.  (You may need to review
 <a class="reference internal" href="03_Parity_and_Divisibility.html#bezout"><span class="std std-numref">Section 3.5</span></a>.)</p>
 <div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">{</span><span class="n">n</span> <span class="o">:</span> <span class="n">&#8484;</span><span class="o">}</span> <span class="o">(</span><span class="n">hn</span> <span class="o">:</span> <span class="bp">&#8704;</span> <span class="n">m</span><span class="o">,</span> <span class="mi">1</span> <span class="bp">&#8804;</span> <span class="n">m</span> <span class="bp">&#8594;</span> <span class="n">m</span> <span class="bp">&#8804;</span> <span class="mi">5</span> <span class="bp">&#8594;</span> <span class="n">m</span> <span class="bp">&#8739;</span> <span class="n">n</span><span class="o">)</span> <span class="o">:</span> <span class="mi">15</span> <span class="bp">&#8739;</span> <span class="n">n</span> <span class="o">:=</span> <span class="kd">by</span>
@@ -639,7 +639,7 @@ So</p>
 <p>First, suppose that <span class="math notranslate nohighlight">\(n\)</span> is odd.  Then there exists an integer <span class="math notranslate nohighlight">\(k\)</span> such that
 <span class="math notranslate nohighlight">\(n=2k+1\)</span>.  Therefore <span class="math notranslate nohighlight">\(n-1=2k\)</span>, so <span class="math notranslate nohighlight">\(n-1\)</span> is divisible by 2, so
 <span class="math notranslate nohighlight">\(n\equiv 1\mod 2\)</span>.</p>
-<p>Conversely, suppose that <span class="math notranslate nohighlight">\(n\equiv 1\mod 2\)</span>.  Then <span class="math notranslate nohighlight">\(k\mid n -1\)</span>, so there exists an
+<p>Conversely, suppose that <span class="math notranslate nohighlight">\(n\equiv 1\mod 2\)</span>.  Then <span class="math notranslate nohighlight">\(2\mid n -1\)</span>, so there exists an
 integer <span class="math notranslate nohighlight">\(k\)</span> such <span class="math notranslate nohighlight">\(n-1=2k\)</span>.  Thus <span class="math notranslate nohighlight">\(n=2k+1\)</span> and so <span class="math notranslate nohighlight">\(n\)</span> is odd.</p>
 </div>
 <p>We name this example <code class="docutils literal notranslate"><span class="pre">Int.odd_iff_modEq</span></code> for future use.</p>
@@ -715,10 +715,10 @@ or 3.</p>
 </div>
 <div class="admonition-solution admonition">
 <p class="admonition-title">Solution</p>
-<p>First suppose that <span class="math notranslate nohighlight">\(a^2-5a+5 \le -1\)</span>  Then</p>
+<p>First, suppose that <span class="math notranslate nohighlight">\(a^2-5a+5 \le -1\)</span>.  Then</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}(2 a - 5) ^ 2&amp;= 4 (a ^ 2 - 5 a + 5) + 5 \\
-&amp;\le 4 &#11037; -1 + 5 \\
+&amp;\le 4 \cdot -1 + 5 \\
 &amp;= 1^2,\end{split}\]</div>
 <p>so <span class="math notranslate nohighlight">\(-1\le 2a-5\le 1\)</span>.  Therefore <span class="math notranslate nohighlight">\(2 \cdot 2 \le 2a\)</span>, so <span class="math notranslate nohighlight">\(2 \le a\)</span>, and similarly
 <span class="math notranslate nohighlight">\(2a  &#8804; 2 \cdot 3\)</span>, so <span class="math notranslate nohighlight">\(a \le 3\)</span>.  Since <span class="math notranslate nohighlight">\(2\le a\le 3\)</span>, <span class="math notranslate nohighlight">\(a\)</span> is 2 or 3.</p>
@@ -865,11 +865,11 @@ only if <span class="math notranslate nohighlight">\(a \equiv 0 \mod n\)</span>.
 </div>
 </li>
 <li><p>Let <span class="math notranslate nohighlight">\(a\)</span> and <span class="math notranslate nohighlight">\(b\)</span> be integers and suppose that <span class="math notranslate nohighlight">\(a \mid b\)</span>.  Show that
-<span class="math notranslate nohighlight">\(a \mid 3b^3-b^2+5b\)</span>.</p>
+<span class="math notranslate nohighlight">\(a \mid 2b^3-b^2+3b\)</span>.</p>
 <p>Note that this appeared already as an exercise in <a class="reference internal" href="03_Parity_and_Divisibility.html#divisibility"><span class="std std-numref">Section 3.2</span></a>.  But now,
 using the lemma <code class="docutils literal notranslate"><span class="pre">Int.dvd_iff_modEq</span></code> proved in the previous exercise, this kind of problem is
 much easier.</p>
-<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">{</span><span class="n">a</span> <span class="n">b</span> <span class="o">:</span> <span class="n">&#8484;</span><span class="o">}</span> <span class="o">(</span><span class="n">hab</span> <span class="o">:</span> <span class="n">a</span> <span class="bp">&#8739;</span> <span class="n">b</span><span class="o">)</span> <span class="o">:</span> <span class="n">a</span> <span class="bp">&#8739;</span> <span class="mi">3</span> <span class="bp">*</span> <span class="n">b</span> <span class="bp">^</span> <span class="mi">3</span> <span class="bp">-</span> <span class="n">b</span> <span class="bp">^</span> <span class="mi">2</span> <span class="bp">+</span> <span class="mi">5</span> <span class="bp">*</span> <span class="n">b</span> <span class="o">:=</span> <span class="kd">by</span>
+<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">{</span><span class="n">a</span> <span class="n">b</span> <span class="o">:</span> <span class="n">&#8484;</span><span class="o">}</span> <span class="o">(</span><span class="n">hab</span> <span class="o">:</span> <span class="n">a</span> <span class="bp">&#8739;</span> <span class="n">b</span><span class="o">)</span> <span class="o">:</span> <span class="n">a</span> <span class="bp">&#8739;</span> <span class="mi">2</span> <span class="bp">*</span> <span class="n">b</span> <span class="bp">^</span> <span class="mi">3</span> <span class="bp">-</span> <span class="n">b</span> <span class="bp">^</span> <span class="mi">2</span> <span class="bp">+</span> <span class="mi">3</span> <span class="bp">*</span> <span class="n">b</span> <span class="o">:=</span> <span class="kd">by</span>
   <span class="gr">sorry</span>
 </pre></div>
 </div>
@@ -1001,7 +1001,8 @@ the exercises to <a class="reference internal" href="06_Induction.html#construct
 <div class="admonition-theorem-the-division-algorithm admonition">
 <p class="admonition-title">Theorem (the Division Algorithm)</p>
 <p>Let <span class="math notranslate nohighlight">\(a\)</span> and <span class="math notranslate nohighlight">\(b\)</span> be integers, with <span class="math notranslate nohighlight">\(b\)</span> positive.  Then there exists a unique
-integer <span class="math notranslate nohighlight">\(r\)</span>, such that <span class="math notranslate nohighlight">\(a\equiv r\mod b\)</span>.</p>
+integer <span class="math notranslate nohighlight">\(r\)</span> between 0 (inclusive) and <span class="math notranslate nohighlight">\(b\)</span> (exclusive), such that
+<span class="math notranslate nohighlight">\(a\equiv r\mod b\)</span>.</p>
 </div>
 <p>This lemma is what allows us to do case divisions according to congruence class modulo <span class="math notranslate nohighlight">\(b\)</span>
 (the Lean tactic <code class="docutils literal notranslate"><span class="pre">mod_cases</span></code>).  But it&#8217;s actually a bit more powerful, since the &#8220;uniqueness&#8221; part
@@ -1377,7 +1378,7 @@ We can analyze all these cases and check they don&#8217;t work:</p>
 <h3><span class="section-number">4.4.6. </span>Exercises<a class="headerlink" href="#id32" title="Permalink to this headline">&#61633;</a></h3>
 <ol class="arabic">
 <li><p>Let <span class="math notranslate nohighlight">\(x\)</span> and <span class="math notranslate nohighlight">\(y\)</span> be real numbers, with <span class="math notranslate nohighlight">\(x\)</span> nonnegative, and let
-<span class="math notranslate nohighlight">\(n\)</span> is a positive natural number.  Prove that if then <span class="math notranslate nohighlight">\(y^n \le x^n\)</span> then
+<span class="math notranslate nohighlight">\(n\)</span> be a positive natural number.  Prove that if <span class="math notranslate nohighlight">\(y^n \le x^n\)</span> then
 <span class="math notranslate nohighlight">\(y\le x\)</span>.</p>
 <p>We have used this fact before; it&#8217;s another of the lemmas which underlie the <code class="docutils literal notranslate"><span class="pre">cancel</span></code> tactic.</p>
 <div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">{</span><span class="n">x</span> <span class="n">y</span> <span class="o">:</span> <span class="n">&#8477;</span><span class="o">}</span> <span class="o">(</span><span class="n">n</span> <span class="o">:</span> <span class="n">&#8469;</span><span class="o">)</span> <span class="o">(</span><span class="n">hx</span> <span class="o">:</span> <span class="mi">0</span> <span class="bp">&#8804;</span> <span class="n">x</span><span class="o">)</span> <span class="o">(</span><span class="n">hn</span> <span class="o">:</span> <span class="mi">0</span> <span class="bp">&lt;</span> <span class="n">n</span><span class="o">)</span> <span class="o">(</span><span class="n">h</span> <span class="o">:</span> <span class="n">y</span> <span class="bp">^</span> <span class="n">n</span> <span class="bp">&#8804;</span> <span class="n">x</span> <span class="bp">^</span> <span class="n">n</span><span class="o">)</span> <span class="o">:</span>
@@ -1542,7 +1543,7 @@ possible for both <span class="math notranslate nohighlight">\(x\)</span> and <s
 but also <span class="math notranslate nohighlight">\(n\equiv 1\mod 2\)</span>.  So</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}0 &amp;\equiv n \mod 2 \\
-&amp;\equiv 1,\end{split}\]</div>
+&amp;\equiv 1\mod 2,\end{split}\]</div>
 <p>contradiction.</p>
 <p>Now, suppose that <span class="math notranslate nohighlight">\(n\)</span> is not odd.  Since <span class="math notranslate nohighlight">\(n\)</span> has to be either even or odd, it is even.</p>
 </div>
@@ -1675,7 +1676,7 @@ an integer <span class="math notranslate nohighlight">\(k\)</span> such that <sp
 \[\begin{split}bq &amp;&lt; a \\
   &amp; =bk,\end{split}\]</div>
 <p>and so  (since <span class="math notranslate nohighlight">\(b&gt;0\)</span>) we have <span class="math notranslate nohighlight">\(q &lt; k\)</span>, thus <span class="math notranslate nohighlight">\(q+1 \le k\)</span>.</p>
-<p>These two facts contradict each other, so <span class="math notranslate nohighlight">\(a\)</span> must be a multiple of <span class="math notranslate nohighlight">\(b\)</span> after all.</p>
+<p>These two facts contradict each other, so <span class="math notranslate nohighlight">\(a\)</span> must not be a multiple of <span class="math notranslate nohighlight">\(b\)</span> after all.</p>
 </div>
 <div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">(</span><span class="n">a</span> <span class="n">b</span> <span class="o">:</span> <span class="n">&#8484;</span><span class="o">)</span> <span class="o">(</span><span class="n">h</span> <span class="o">:</span> <span class="bp">&#8707;</span> <span class="n">q</span><span class="o">,</span> <span class="n">b</span> <span class="bp">*</span> <span class="n">q</span> <span class="bp">&lt;</span> <span class="n">a</span> <span class="bp">&#8743;</span> <span class="n">a</span> <span class="bp">&lt;</span> <span class="n">b</span> <span class="bp">*</span> <span class="o">(</span><span class="n">q</span> <span class="bp">+</span> <span class="mi">1</span><span class="o">))</span> <span class="o">:</span> <span class="bp">&#172;</span><span class="n">b</span> <span class="bp">&#8739;</span> <span class="n">a</span> <span class="o">:=</span> <span class="kd">by</span>
   <span class="n">intro</span> <span class="n">H</span>
@@ -1726,7 +1727,7 @@ natural number <span class="math notranslate nohighlight">\(l\)</span> such that
   &amp;&lt; T^2\\
   &amp;=T\cdot T.\end{split}\]</div>
 <p>Since we have established that <span class="math notranslate nohighlight">\(1&lt;l&lt;T\)</span>, by hypothesis <span class="math notranslate nohighlight">\(l\)</span> is not a factor of
-<span class="math notranslate nohighlight">\(p\)</span>, contradiction.  So <span class="math notranslate nohighlight">\(k\)</span> must not be a factor of <span class="math notranslate nohighlight">\(p\)</span> after all.</p>
+<span class="math notranslate nohighlight">\(p\)</span>, contradiction.  So <span class="math notranslate nohighlight">\(m\)</span> must not be a factor of <span class="math notranslate nohighlight">\(p\)</span> after all.</p>
 </div>
 <div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">{</span><span class="n">p</span> <span class="o">:</span> <span class="n">&#8469;</span><span class="o">}</span> <span class="o">(</span><span class="n">hp</span> <span class="o">:</span> <span class="mi">2</span> <span class="bp">&#8804;</span> <span class="n">p</span><span class="o">)</span>  <span class="o">(</span><span class="n">T</span> <span class="o">:</span> <span class="n">&#8469;</span><span class="o">)</span> <span class="o">(</span><span class="n">hTp</span> <span class="o">:</span> <span class="n">p</span> <span class="bp">&lt;</span> <span class="n">T</span> <span class="bp">^</span> <span class="mi">2</span><span class="o">)</span>
     <span class="o">(</span><span class="n">H</span> <span class="o">:</span> <span class="bp">&#8704;</span> <span class="o">(</span><span class="n">m</span> <span class="o">:</span> <span class="n">&#8469;</span><span class="o">),</span> <span class="mi">1</span> <span class="bp">&lt;</span> <span class="n">m</span> <span class="bp">&#8594;</span> <span class="n">m</span> <span class="bp">&lt;</span> <span class="n">T</span> <span class="bp">&#8594;</span> <span class="bp">&#172;</span> <span class="o">(</span><span class="n">m</span> <span class="bp">&#8739;</span> <span class="n">p</span><span class="o">))</span> <span class="o">:</span>
@@ -1820,7 +1821,7 @@ even and a solution to <span class="math notranslate nohighlight">\(n^2=10\)</sp
 </pre></div>
 </div>
 </li>
-<li><p>Let <span class="math notranslate nohighlight">\(x\)</span> be a real number satisfying <span class="math notranslate nohighlight">\(x^2&lt;9\)</span>.  Show that <span class="math notranslate nohighlight">\(n\)</span> cannot be either
+<li><p>Let <span class="math notranslate nohighlight">\(x\)</span> be a real number satisfying <span class="math notranslate nohighlight">\(x^2&lt;9\)</span>.  Show that <span class="math notranslate nohighlight">\(x\)</span> cannot be either
 less than or equal to -3, or greater than or equal to 3.</p>
 <div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">{</span><span class="n">x</span> <span class="o">:</span> <span class="n">&#8477;</span><span class="o">}</span> <span class="o">(</span><span class="n">hx</span> <span class="o">:</span> <span class="n">x</span> <span class="bp">^</span> <span class="mi">2</span> <span class="bp">&lt;</span> <span class="mi">9</span><span class="o">)</span> <span class="o">:</span> <span class="bp">&#172;</span> <span class="o">(</span><span class="n">x</span> <span class="bp">&#8804;</span> <span class="bp">-</span><span class="mi">3</span> <span class="bp">&#8744;</span> <span class="n">x</span> <span class="bp">&#8805;</span> <span class="mi">3</span><span class="o">)</span> <span class="o">:=</span> <span class="kd">by</span>
   <span class="gr">sorry</span>
@@ -1869,7 +1870,7 @@ greater than <span class="math notranslate nohighlight">\(N\)</span> is even.</p
   <hr/>
 
   <div role="contentinfo">
-    <p>&#169; Copyright 2022-2023, Heather Macbeth.  All rights reserved.</p>
+    <p>&#169; Copyright 2022-2024, Heather Macbeth.  All rights reserved.</p>
   </div>
 
   Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
