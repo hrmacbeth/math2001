@@ -35,10 +35,10 @@ example : ¬(∀ n : ℤ, ∃ m : ℤ, n ^ 2 < m ∧ m < (n + 1) ^ 2)
   sorry
 
 #push_neg ¬(∀ m : ℤ, m ≠ 2 → ∃ n : ℤ, n ^ 2 = m)
-  -- ∃ m, m ≠ 2 ∧ ∀ (n : ℤ), n ^ 2 ≠ m
+  -- ∃ m : ℤ, m ≠ 2 ∧ ∀ (n : ℤ), n ^ 2 ≠ m
 
 #push_neg ¬(∀ n : ℤ, ∃ m : ℤ, n ^ 2 < m ∧ m < (n + 1) ^ 2)
-  -- ∃ n, ∀ (m : ℤ), n ^ 2 < m → (n + 1) ^ 2 ≤ m
+  -- ∃ n : ℤ, ∀ m : ℤ, m ≤ n ^ 2 ∨ (n + 1) ^ 2 ≤ m
 
 
 #push_neg ¬(∃ m n : ℤ, ∀ t : ℝ, m < t ∧ t < n)

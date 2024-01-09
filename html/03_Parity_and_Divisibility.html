@@ -349,7 +349,7 @@ name when the definition &#8220;odd&#8221; is unfolded.</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}3 m-5 &amp;= 3 (2 t + 1) - 5 \\
 &amp; = 2 (3 t - 1),\end{split}\]</div>
-<p>so <span class="math notranslate nohighlight">\(3m-5\)</span> is odd.</p>
+<p>so <span class="math notranslate nohighlight">\(3m-5\)</span> is even.</p>
 </div>
 <div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">{</span><span class="n">m</span> <span class="o">:</span> <span class="n">&#8484;</span><span class="o">}</span> <span class="o">(</span><span class="n">hm</span> <span class="o">:</span> <span class="n">Odd</span> <span class="n">m</span><span class="o">)</span> <span class="o">:</span> <span class="n">Even</span> <span class="o">(</span><span class="mi">3</span> <span class="bp">*</span> <span class="n">m</span> <span class="bp">-</span> <span class="mi">5</span><span class="o">)</span> <span class="o">:=</span> <span class="kd">by</span>
   <span class="gr">sorry</span>
@@ -423,7 +423,8 @@ name when the definition &#8220;odd&#8221; is unfolded.</p>
 </pre></div>
 </div>
 </li>
-<li><p>Prove that if the integers <span class="math notranslate nohighlight">\(m\)</span> and <span class="math notranslate nohighlight">\(n\)</span> are even, then <span class="math notranslate nohighlight">\(m + n\)</span> is odd.</p>
+<li><p>Let <span class="math notranslate nohighlight">\(m\)</span> be an odd integer and <span class="math notranslate nohighlight">\(n\)</span> be an even integer.
+Prove that <span class="math notranslate nohighlight">\(n + m\)</span> is odd.</p>
 <div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">{</span><span class="n">m</span> <span class="n">n</span> <span class="o">:</span> <span class="n">&#8484;</span><span class="o">}</span> <span class="o">(</span><span class="n">hm</span> <span class="o">:</span> <span class="n">Odd</span> <span class="n">m</span><span class="o">)</span> <span class="o">(</span><span class="n">hn</span> <span class="o">:</span> <span class="n">Even</span> <span class="n">n</span><span class="o">)</span> <span class="o">:</span> <span class="n">Odd</span> <span class="o">(</span><span class="n">n</span> <span class="bp">+</span> <span class="n">m</span><span class="o">)</span> <span class="o">:=</span> <span class="kd">by</span>
   <span class="gr">sorry</span>
 </pre></div>
@@ -437,7 +438,7 @@ name when the definition &#8220;odd&#8221; is unfolded.</p>
 </div>
 </li>
 <li><p>Let <span class="math notranslate nohighlight">\(a\)</span> be an even integer and let <span class="math notranslate nohighlight">\(b\)</span> be an odd integer.  Show that
-<span class="math notranslate nohighlight">\(3a + b - 3\)</span> is odd.</p>
+<span class="math notranslate nohighlight">\(3a + b - 3\)</span> is even.</p>
 <div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">{</span><span class="n">a</span> <span class="n">b</span> <span class="o">:</span> <span class="n">&#8484;</span><span class="o">}</span> <span class="o">(</span><span class="n">ha</span> <span class="o">:</span> <span class="n">Even</span> <span class="n">a</span><span class="o">)</span> <span class="o">(</span><span class="n">hb</span> <span class="o">:</span> <span class="n">Odd</span> <span class="n">b</span><span class="o">)</span> <span class="o">:</span> <span class="n">Even</span> <span class="o">(</span><span class="mi">3</span> <span class="bp">*</span> <span class="n">a</span> <span class="bp">+</span> <span class="n">b</span> <span class="bp">-</span> <span class="mi">3</span><span class="o">)</span> <span class="o">:=</span> <span class="kd">by</span>
   <span class="gr">sorry</span>
 </pre></div>
@@ -468,7 +469,7 @@ odd.</p>
 </pre></div>
 </div>
 </li>
-<li><p>Let <span class="math notranslate nohighlight">\(p\)</span> be an odd integer.  Show that <span class="math notranslate nohighlight">\(p^2+3p-5\)</span> is even.</p>
+<li><p>Let <span class="math notranslate nohighlight">\(p\)</span> be an odd integer.  Show that <span class="math notranslate nohighlight">\(p^2+3p-5\)</span> is odd.</p>
 <div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">{</span><span class="n">p</span> <span class="o">:</span> <span class="n">&#8484;</span><span class="o">}</span> <span class="o">(</span><span class="n">hp</span> <span class="o">:</span> <span class="n">Odd</span> <span class="n">p</span><span class="o">)</span> <span class="o">:</span> <span class="n">Odd</span> <span class="o">(</span><span class="n">p</span> <span class="bp">^</span> <span class="mi">2</span> <span class="bp">+</span> <span class="mi">3</span> <span class="bp">*</span> <span class="n">p</span> <span class="bp">-</span> <span class="mi">5</span><span class="o">)</span> <span class="o">:=</span> <span class="kd">by</span>
   <span class="gr">sorry</span>
 </pre></div>
@@ -1034,7 +1035,7 @@ congruence modulo <span class="math notranslate nohighlight">\(n\)</span> of two
 like a &#8220;rewriting&#8221; by one congruence.  For example,</p>
 <div class="admonition-problem admonition">
 <p class="admonition-title">Problem</p>
-<p>Let <span class="math notranslate nohighlight">\(a\)</span>, <span class="math notranslate nohighlight">\(b\)</span> and <span class="math notranslate nohighlight">\(n\)</span> be integers, and suppose that <span class="math notranslate nohighlight">\(a\equiv 2 \mod 4\)</span>.
+<p>Let <span class="math notranslate nohighlight">\(a\)</span> and <span class="math notranslate nohighlight">\(b\)</span> be integers, and suppose that <span class="math notranslate nohighlight">\(a\equiv 2 \mod 4\)</span>.
 Show that <span class="math notranslate nohighlight">\(a b ^ 2 + a ^ 2 b + 3 a \equiv 2 b ^ 2 + 2 ^ 2 \cdot b + 3 \cdot 2 \mod 4\)</span>.</p>
 </div>
 <p>We could solve this by working directly from the definition, which is rather painful:</p>
@@ -1053,7 +1054,7 @@ Show that <span class="math notranslate nohighlight">\(a b ^ 2 + a ^ 2 b + 3 a \
 <p>Or, better, we can solve this by applying the right combination of the lemmas we already proved,
 in the right order.  This requires much less thinking:</p>
 <div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">{</span><span class="n">a</span> <span class="n">b</span> <span class="o">:</span> <span class="n">&#8484;</span><span class="o">}</span> <span class="o">(</span><span class="n">ha</span> <span class="o">:</span> <span class="n">a</span> <span class="bp">&#8801;</span> <span class="mi">2</span> <span class="o">[</span><span class="n">ZMOD</span> <span class="mi">4</span><span class="o">])</span> <span class="o">:</span>
-    <span class="n">a</span> <span class="bp">*</span> <span class="n">b</span> <span class="bp">^</span> <span class="mi">2</span> <span class="bp">+</span> <span class="n">a</span> <span class="bp">^</span> <span class="mi">2</span> <span class="bp">*</span> <span class="n">b</span> <span class="bp">+</span> <span class="mi">3</span> <span class="bp">&#8801;</span> <span class="mi">2</span> <span class="bp">*</span> <span class="n">b</span> <span class="bp">^</span> <span class="mi">2</span> <span class="bp">+</span> <span class="mi">2</span> <span class="bp">^</span> <span class="mi">2</span> <span class="bp">*</span> <span class="n">b</span> <span class="bp">+</span> <span class="mi">3</span> <span class="o">[</span><span class="n">ZMOD</span> <span class="mi">4</span><span class="o">]</span> <span class="o">:=</span> <span class="kd">by</span>
+    <span class="n">a</span> <span class="bp">*</span> <span class="n">b</span> <span class="bp">^</span> <span class="mi">2</span> <span class="bp">+</span> <span class="n">a</span> <span class="bp">^</span> <span class="mi">2</span> <span class="bp">*</span> <span class="n">b</span> <span class="bp">+</span> <span class="mi">3</span> <span class="bp">*</span> <span class="n">a</span> <span class="bp">&#8801;</span> <span class="mi">2</span> <span class="bp">*</span> <span class="n">b</span> <span class="bp">^</span> <span class="mi">2</span> <span class="bp">+</span> <span class="mi">2</span> <span class="bp">^</span> <span class="mi">2</span> <span class="bp">*</span> <span class="n">b</span> <span class="bp">+</span> <span class="mi">3</span> <span class="bp">*</span> <span class="mi">2</span> <span class="o">[</span><span class="n">ZMOD</span> <span class="mi">4</span><span class="o">]</span> <span class="o">:=</span> <span class="kd">by</span>
   <span class="n">apply</span> <span class="n">Int.ModEq.add</span>
   <span class="n">apply</span> <span class="n">Int.ModEq.add</span>
   <span class="n">apply</span> <span class="n">Int.ModEq.mul</span>
@@ -1063,7 +1064,9 @@ in the right order.  This requires much less thinking:</p>
   <span class="n">apply</span> <span class="n">Int.ModEq.pow</span>
   <span class="n">apply</span> <span class="n">ha</span>
   <span class="n">apply</span> <span class="n">Int.ModEq.refl</span>
+  <span class="n">apply</span> <span class="n">Int.ModEq.mul</span>
   <span class="n">apply</span> <span class="n">Int.ModEq.refl</span>
+  <span class="n">apply</span> <span class="n">ha</span>
 </pre></div>
 </div>
 </section>
@@ -1138,7 +1141,7 @@ integers, and suppose that <span class="math notranslate nohighlight">\(a\equiv 
 <p>Recall the problem from <a class="reference internal" href="#apply-mod-lemmas-example"><span class="std std-numref">Example 3.3.11</span></a>.</p>
 <div class="admonition-problem admonition">
 <p class="admonition-title">Problem</p>
-<p>Let <span class="math notranslate nohighlight">\(a\)</span>, <span class="math notranslate nohighlight">\(b\)</span> and <span class="math notranslate nohighlight">\(n\)</span> be integers, and suppose that <span class="math notranslate nohighlight">\(a\equiv 2 \mod 4\)</span>.
+<p>Let <span class="math notranslate nohighlight">\(a\)</span> and <span class="math notranslate nohighlight">\(b\)</span> be integers, and suppose that <span class="math notranslate nohighlight">\(a\equiv 2 \mod 4\)</span>.
 Show that <span class="math notranslate nohighlight">\(a b ^ 2 + a ^ 2 b + 3 a \equiv 2 b ^ 2 + 2 ^ 2 \cdot b + 3 \cdot 2 \mod 4\)</span>.</p>
 </div>
 <p>After solving this and the many similar problems in <a class="reference internal" href="#theory-modular"><span class="std std-numref">Section 3.3</span></a>, you
@@ -1154,7 +1157,7 @@ now throws the lemmas <code class="docutils literal notranslate"><span class="pr
 goal is solved or (b) none of these lemmas apply any more.  And that&#8217;s exactly what we&#8217;re doing in
 our heads when we check the paper statement of the problem.</p>
 <div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">{</span><span class="n">a</span> <span class="n">b</span> <span class="o">:</span> <span class="n">&#8484;</span><span class="o">}</span> <span class="o">(</span><span class="n">ha</span> <span class="o">:</span> <span class="n">a</span> <span class="bp">&#8801;</span> <span class="mi">2</span> <span class="o">[</span><span class="n">ZMOD</span> <span class="mi">4</span><span class="o">])</span> <span class="o">:</span>
-    <span class="n">a</span> <span class="bp">*</span> <span class="n">b</span> <span class="bp">^</span> <span class="mi">2</span> <span class="bp">+</span> <span class="n">a</span> <span class="bp">^</span> <span class="mi">2</span> <span class="bp">*</span> <span class="n">b</span> <span class="bp">+</span> <span class="mi">3</span> <span class="bp">&#8801;</span> <span class="mi">2</span> <span class="bp">*</span> <span class="n">b</span> <span class="bp">^</span> <span class="mi">2</span> <span class="bp">+</span> <span class="mi">2</span> <span class="bp">^</span> <span class="mi">2</span> <span class="bp">*</span> <span class="n">b</span> <span class="bp">+</span> <span class="mi">3</span> <span class="o">[</span><span class="n">ZMOD</span> <span class="mi">4</span><span class="o">]</span> <span class="o">:=</span> <span class="kd">by</span>
+    <span class="n">a</span> <span class="bp">*</span> <span class="n">b</span> <span class="bp">^</span> <span class="mi">2</span> <span class="bp">+</span> <span class="n">a</span> <span class="bp">^</span> <span class="mi">2</span> <span class="bp">*</span> <span class="n">b</span> <span class="bp">+</span> <span class="mi">3</span> <span class="bp">*</span> <span class="n">a</span> <span class="bp">&#8801;</span> <span class="mi">2</span> <span class="bp">*</span> <span class="n">b</span> <span class="bp">^</span> <span class="mi">2</span> <span class="bp">+</span> <span class="mi">2</span> <span class="bp">^</span> <span class="mi">2</span> <span class="bp">*</span> <span class="n">b</span> <span class="bp">+</span> <span class="mi">3</span> <span class="bp">*</span> <span class="mi">2</span> <span class="o">[</span><span class="n">ZMOD</span> <span class="mi">4</span><span class="o">]</span> <span class="o">:=</span> <span class="kd">by</span>
   <span class="n">rel</span> <span class="o">[</span><span class="n">ha</span><span class="o">]</span>
 </pre></div>
 </div>
@@ -1166,7 +1169,7 @@ our heads when we check the paper statement of the problem.</p>
 <div class="admonition-problem admonition">
 <p class="admonition-title">Problem</p>
 <p>Let <span class="math notranslate nohighlight">\(a\)</span> and <span class="math notranslate nohighlight">\(b\)</span> be integers, with <span class="math notranslate nohighlight">\(a \equiv 4\mod 5\)</span> and
-<span class="math notranslate nohighlight">\(b \equiv 3\mod 5\)</span>. Show that <span class="math notranslate nohighlight">\(ab+b^2+3 \equiv 2\mod 5\)</span>.</p>
+<span class="math notranslate nohighlight">\(b \equiv 3\mod 5\)</span>. Show that <span class="math notranslate nohighlight">\(ab+b^3+3 \equiv 2\mod 5\)</span>.</p>
 </div>
 <div class="admonition-solution admonition">
 <p class="admonition-title">Solution</p>
@@ -1370,13 +1373,13 @@ also divides <span class="math notranslate nohighlight">\(n\)</span>.</p>
 <span id="id40"></span><h3><span class="section-number">3.5.3. </span>Example<a class="headerlink" href="#bezout-prob3" title="Permalink to this headline">&#61633;</a></h3>
 <div class="admonition-problem admonition">
 <p class="admonition-title">Problem</p>
-<p>Let <span class="math notranslate nohighlight">\(m\)</span> be an integer which is divisible by 5 and by 8.  Show that it is also divisible by
+<p>Let <span class="math notranslate nohighlight">\(m\)</span> be an integer which is divisible by 8 and by 5.  Show that it is also divisible by
 40.</p>
 </div>
 <div class="admonition-solution admonition">
 <p class="admonition-title">Solution</p>
-<p>Since <span class="math notranslate nohighlight">\(5\mid m\)</span>, there exists an integer <span class="math notranslate nohighlight">\(a\)</span> such that <span class="math notranslate nohighlight">\(m=5a\)</span>.
-Since <span class="math notranslate nohighlight">\(8\mid m\)</span>, there exists an integer <span class="math notranslate nohighlight">\(b\)</span> such that <span class="math notranslate nohighlight">\(m=8b\)</span>.  Then</p>
+<p>Since <span class="math notranslate nohighlight">\(8\mid m\)</span>, there exists an integer <span class="math notranslate nohighlight">\(a\)</span> such that <span class="math notranslate nohighlight">\(m=8a\)</span>.
+Since <span class="math notranslate nohighlight">\(5\mid m\)</span>, there exists an integer <span class="math notranslate nohighlight">\(b\)</span> such that <span class="math notranslate nohighlight">\(m=5b\)</span>.  Then</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}m &amp;= -15 m + 16 m\\
 &amp;= -15 (8 a) + 16  m \\
@@ -1384,7 +1387,7 @@ Since <span class="math notranslate nohighlight">\(8\mid m\)</span>, there exist
 &amp; = 40 (-3  a + 2  b),\end{split}\]</div>
 <p>so <span class="math notranslate nohighlight">\(40\mid m\)</span>.</p>
 </div>
-<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">{</span><span class="n">m</span> <span class="o">:</span> <span class="n">&#8484;</span><span class="o">}</span> <span class="o">(</span><span class="n">h2</span> <span class="o">:</span> <span class="mi">5</span> <span class="bp">&#8739;</span> <span class="n">m</span><span class="o">)</span> <span class="o">(</span><span class="n">h1</span> <span class="o">:</span> <span class="mi">8</span> <span class="bp">&#8739;</span> <span class="n">m</span><span class="o">)</span> <span class="o">:</span> <span class="mi">40</span> <span class="bp">&#8739;</span> <span class="n">m</span> <span class="o">:=</span> <span class="kd">by</span>
+<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">{</span><span class="n">m</span> <span class="o">:</span> <span class="n">&#8484;</span><span class="o">}</span> <span class="o">(</span><span class="n">h1</span> <span class="o">:</span> <span class="mi">8</span> <span class="bp">&#8739;</span> <span class="n">m</span><span class="o">)</span> <span class="o">(</span><span class="n">h2</span> <span class="o">:</span> <span class="mi">5</span> <span class="bp">&#8739;</span> <span class="n">m</span><span class="o">)</span> <span class="o">:</span> <span class="mi">40</span> <span class="bp">&#8739;</span> <span class="n">m</span> <span class="o">:=</span> <span class="kd">by</span>
   <span class="n">obtain</span> <span class="o">&#10216;</span><span class="n">a</span><span class="o">,</span> <span class="n">ha</span><span class="o">&#10217;</span> <span class="o">:=</span> <span class="n">h1</span>
   <span class="n">obtain</span> <span class="o">&#10216;</span><span class="n">b</span><span class="o">,</span> <span class="n">hb</span><span class="o">&#10217;</span> <span class="o">:=</span> <span class="n">h2</span>
   <span class="n">use</span> <span class="bp">-</span><span class="mi">3</span> <span class="bp">*</span> <span class="n">a</span> <span class="bp">+</span> <span class="mi">2</span> <span class="bp">*</span> <span class="n">b</span>
@@ -1442,7 +1445,7 @@ Since <span class="math notranslate nohighlight">\(8\mid m\)</span>, there exist
   <hr/>
 
   <div role="contentinfo">
-    <p>&#169; Copyright 2022-2023, Heather Macbeth.  All rights reserved.</p>
+    <p>&#169; Copyright 2022-2024, Heather Macbeth.  All rights reserved.</p>
   </div>
 
   Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a

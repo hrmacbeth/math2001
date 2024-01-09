@@ -23,12 +23,12 @@ example {m n : ℤ} (h1 : m + 3 ≤ 2 * n - 1) (h2 : n ≤ 5) : m ≤ 6 := by
 
 
 example {r s : ℚ} (h1 : s + 3 ≥ r) (h2 : s + r ≤ 3) : r ≤ 3 := by
-  have h3 : r ≤ 3 + s := by sorry
-  have h4 : r ≤ 3 - s := by sorry
+  have h3 : r ≤ 3 + s := by sorry -- justify with one tactic
+  have h4 : r ≤ 3 - s := by sorry -- justify with one tactic
   calc
-    r = (r + r) / 2 := by sorry
-    _ ≤ (3 - s + (3 + s)) / 2 := by sorry
-    _ = 3 := by sorry
+    r = (r + r) / 2 := by sorry -- justify with one tactic
+    _ ≤ (3 - s + (3 + s)) / 2 := by sorry -- justify with one tactic
+    _ = 3 := by sorry --justify with one tactic
 
 example {t : ℝ} (h1 : t ^ 2 = 3 * t) (h2 : t ≥ 1) : t ≥ 2 := by
   have h3 :=

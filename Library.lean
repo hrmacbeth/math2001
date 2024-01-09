@@ -1,4 +1,6 @@
 import Library.Basic
+import Library.Config.Constructor
+import Library.Config.Contradiction
 import Library.Config.ExistsDelaborator
 import Library.Config.Initialize
 import Library.Config.Ring
@@ -25,7 +27,7 @@ import Library.Tactic.ModCases
 import Library.Tactic.ModEq
 import Library.Tactic.Numbers.Basic
 import Library.Tactic.Numbers.ModEq
-import Library.Tactic.Product
+import Library.Tactic.Obtain
 import Library.Tactic.Rel
 import Library.Tactic.Rel.Attr
 import Library.Tactic.TruthTable

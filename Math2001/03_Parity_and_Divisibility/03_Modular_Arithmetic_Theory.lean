@@ -76,7 +76,7 @@ example {a b : ℤ} (ha : a ≡ 2 [ZMOD 4]) :
 
 
 example {a b : ℤ} (ha : a ≡ 2 [ZMOD 4]) :
-    a * b ^ 2 + a ^ 2 * b + 3 ≡ 2 * b ^ 2 + 2 ^ 2 * b + 3 [ZMOD 4] := by
+    a * b ^ 2 + a ^ 2 * b + 3 * a ≡ 2 * b ^ 2 + 2 ^ 2 * b + 3 * 2 [ZMOD 4] := by
   apply Int.ModEq.add
   apply Int.ModEq.add
   apply Int.ModEq.mul
@@ -86,7 +86,9 @@ example {a b : ℤ} (ha : a ≡ 2 [ZMOD 4]) :
   apply Int.ModEq.pow
   apply ha
   apply Int.ModEq.refl
+  apply Int.ModEq.mul
   apply Int.ModEq.refl
+  apply ha
 
 /-! # Exercises -/
 
