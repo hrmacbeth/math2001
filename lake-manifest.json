@@ -67,7 +67,7 @@
   {"url": "https://github.com/robertylewis/lean4-autograder-main",
    "type": "git",
    "subDir": null,
-   "rev": "74523206906acc73ddc4c8a4c3cbb37dd33cc7b1",
+   "rev": "1a19d433cdcb44eac0c032c470f8bfd649214f59",
    "name": "autograder",
    "manifestFile": "lake-manifest.json",
    "inputRev": "master",
