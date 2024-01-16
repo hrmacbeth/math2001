@@ -4,13 +4,3 @@ Homework
 ========
 
 .. include:: Homework/hw0.inc
-.. include:: Homework/hw1.inc
-.. include:: Homework/hw2.inc
-.. include:: Homework/hw3.inc
-.. include:: Homework/hw4.inc
-.. include:: Homework/hw5.inc
-.. include:: Homework/hw6.inc
-.. include:: Homework/hw7.inc
-.. include:: Homework/hw8.inc
-.. include:: Homework/hw9.inc
-.. include:: Homework/hw10.inc
