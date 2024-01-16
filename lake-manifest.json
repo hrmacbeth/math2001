@@ -58,7 +58,7 @@
   {"url": "https://github.com/hrmacbeth/duper",
    "type": "git",
    "subDir": null,
-   "rev": "c7d77c614e8826cf820f542da7ccebe668b0c85d",
+   "rev": "500aecaa3bbe6818f82611c84ac4dfff64ad5b3f",
    "name": "Duper",
    "manifestFile": "lake-manifest.json",
    "inputRev": "main",

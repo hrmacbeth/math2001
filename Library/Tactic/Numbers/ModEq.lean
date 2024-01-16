@@ -44,8 +44,8 @@ such that `norm_num` successfully recognises both `a` and `b` and they are small
   let rb : Result b ← derive b
   let rn : Result n ← derive n
   let i : Q(Ring ℤ) := q(Int.instRingInt)
-  let ⟨za, na, pa⟩ ← ra.toInt
-  let ⟨zb, nb, pb⟩ ← rb.toInt
+  let ⟨za, _, _⟩ ← ra.toInt
+  let ⟨zb, _, _⟩ ← rb.toInt
   let ⟨zn, _, _⟩ ← rn.toInt i
   if za = zb then
     -- reduce `a ≡ b [ZMOD n]` to `true` if `a` and `b` reduce to the same integer
