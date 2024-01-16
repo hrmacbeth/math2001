@@ -39,5 +39,3 @@ Math 2001, at Fordham University.  Please reach out to the author,
    Index_of_Tactics
    Mainstream_Lean
 
-.. toctree::
-   Homework
