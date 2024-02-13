@@ -1,0 +1,14 @@
+{
+	"name": "Lean 4 container",
+	"build": {
+		"dockerfile": "Dockerfile"
+	},
+	"onCreateCommand": "lake exe cache get!",
+	"customizations": {
+		"vscode": {
+			"extensions": [
+				"leanprover.lean4"
+			]
+		}
+	}
+}
