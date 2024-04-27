@@ -824,7 +824,7 @@ prove the theorem from <a class="reference internal" href="03_Parity_and_Divisib
 <p>Let <span class="math notranslate nohighlight">\(n\)</span> be an integer.  We do a case division according to the residue of <span class="math notranslate nohighlight">\(n\)</span>
 modulo 2.</p>
 <p>If <span class="math notranslate nohighlight">\(n\equiv 0\mod 2\)</span>, then <span class="math notranslate nohighlight">\(n\)</span> is even, and we are done.</p>
-<p>If <span class="math notranslate nohighlight">\(n\equiv 0\mod 2\)</span>, then <span class="math notranslate nohighlight">\(n\)</span> is odd, and we are done.</p>
+<p>If <span class="math notranslate nohighlight">\(n\equiv 1\mod 2\)</span>, then <span class="math notranslate nohighlight">\(n\)</span> is odd, and we are done.</p>
 </div>
 <p>Write this in Lean using the lemmas <code class="docutils literal notranslate"><span class="pre">Int.odd_iff_modEq</span></code> and <code class="docutils literal notranslate"><span class="pre">Int.even_iff_modEq</span></code> from
 <a class="reference internal" href="#odd-iff-modeq"><span class="std std-numref">Example 4.2.3</span></a> and <a class="reference internal" href="#even-iff-modeq"><span class="std std-numref">Example 4.2.4</span></a>, together with the
