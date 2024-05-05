@@ -6,12 +6,12 @@ import Library.Theory.NumberTheory
 math2001_init
 
 
-@[decreasing] theorem irrat_aux_wf (b k : ℕ) (hb : k ≠ 0) (hab : b ^ 2 = 2 * k ^ 2) :
+@[decreasing] theorem irrat_aux_wf (b k : ℕ) (hk : k ≠ 0) (hbk : b ^ 2 = 2 * k ^ 2) :
     k < b := by
   have h :=
   calc k ^ 2 < k ^ 2 + k ^ 2 := by extra
     _ = 2 * k ^ 2 := by ring
-    _ = b ^ 2 := by rw [hab]
+    _ = b ^ 2 := by rw [hbk]
   cancel 2 at h
 
 
