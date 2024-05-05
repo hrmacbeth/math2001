@@ -45,7 +45,7 @@ example : ¬ ∃ a b : ℕ, b ≠ 0 ∧ a ^ 2 = 2 * b ^ 2 := by
   contradiction
 
 
-example : ¬ ∃ a b : ℤ, b ≠ 0 ∧ b ^ 2 = 2 * a ^ 2 := by
+example : ¬ ∃ a b : ℤ, b ≠ 0 ∧ a ^ 2 = 2 * b ^ 2 := by
   intro h
   obtain ⟨a, b, hb, hab⟩ := h
   have Ha : gcd a b ∣ a := gcd_dvd_left a b
@@ -55,11 +55,11 @@ example : ¬ ∃ a b : ℤ, b ≠ 0 ∧ b ^ 2 = 2 * a ^ 2 := by
   obtain ⟨x, y, h⟩ := bezout a b
   set d := gcd a b
   have key :=
-  calc (2 * k * y + l * x) ^ 2 * d ^ 2
-      = (2 * (d * k) * y + (d * l) * x) ^ 2 := by ring
-    _ = (2 * a * y + b * x) ^ 2 := by rw [hk, hl]
-    _ = 2 * (x * a + y * b) ^ 2 + (x ^ 2 - 2 * y ^ 2) * (b ^ 2 - 2 * a ^ 2) := by ring
-    _ = 2 * d ^ 2 + (x ^ 2 - 2 * y ^ 2) * (b ^ 2 - b ^ 2) := by rw [h, hab]
+  calc (2 * l * x + k * y) ^ 2 * d ^ 2
+      = (2 * (d * l) * x + (d * k) * y) ^ 2 := by ring
+    _ = (2 * b * x + a * y) ^ 2 := by rw [hk, hl]
+    _ = 2 * (x * a + y * b) ^ 2 + (y ^ 2 - 2 * x ^ 2) * (a ^ 2 - 2 * b ^ 2) := by ring
+    _ = 2 * d ^ 2 + (y ^ 2 - 2 * x ^ 2) * (a ^ 2 - a ^ 2) := by rw [h, hab]
     _ = 2 * d ^ 2 := by ring
   have hd : d ≠ 0
   · intro hd
@@ -69,5 +69,5 @@ example : ¬ ∃ a b : ℤ, b ≠ 0 ∧ b ^ 2 = 2 * a ^ 2 := by
       _ = 0 := by ring
     contradiction
   cancel d ^ 2 at key
-  have := sq_ne_two (2 * k * y + l * x)
+  have := sq_ne_two (2 * l * x + k * y)
   contradiction
