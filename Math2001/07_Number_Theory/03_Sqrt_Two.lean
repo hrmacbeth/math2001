@@ -34,10 +34,8 @@ theorem irrat_aux (a b : ℕ) (hb : b ≠ 0) : a ^ 2 ≠ 2 * b ^ 2 := by
       _ = k * (2 * k) := by ring
   cancel 2 * k at hk'
   have hk'' : k ≠ 0 := ne_of_gt hk'
-  have IH := irrat_aux b k -- inductive hypothesis
-  have : b ^ 2 ≠ 2 * k ^ 2 := IH hk''
+  have IH := irrat_aux b k hk'' -- inductive hypothesis
   contradiction
-termination_by _ => b
 
 
 example : ¬ ∃ a b : ℕ, b ≠ 0 ∧ a ^ 2 = 2 * b ^ 2 := by
