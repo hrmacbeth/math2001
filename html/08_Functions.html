@@ -751,13 +751,13 @@ surjective, then the function <span class="math notranslate nohighlight">\(x \ma
 </div>
 </li>
 <li><p>Let <span class="math notranslate nohighlight">\(f:\mathbb{Q}\to\mathbb{Q}\)</span> be a function which is <em>strictly monotone</em>; that is, for
-all real numbers <span class="math notranslate nohighlight">\(x\)</span> and <span class="math notranslate nohighlight">\(y\)</span> with <span class="math notranslate nohighlight">\(x&lt;y\)</span>, it is true that <span class="math notranslate nohighlight">\(f(x)&lt;f(y)\)</span>.
+all rational numbers <span class="math notranslate nohighlight">\(x\)</span> and <span class="math notranslate nohighlight">\(y\)</span> with <span class="math notranslate nohighlight">\(x&lt;y\)</span>, it is true that <span class="math notranslate nohighlight">\(f(x)&lt;f(y)\)</span>.
 Prove that <span class="math notranslate nohighlight">\(f\)</span> is injective.</p>
 <p>You may wish to use the lemma <code class="docutils literal notranslate"><span class="pre">lt_trichotomy</span></code></p>
 <div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">lemma</span> <span class="n">lt_trichotomy</span> <span class="o">(</span><span class="n">x</span> <span class="n">y</span> <span class="o">:</span> <span class="n">&#8474;</span><span class="o">)</span> <span class="o">:</span> <span class="n">x</span> <span class="bp">&lt;</span> <span class="n">y</span> <span class="bp">&#8744;</span> <span class="n">x</span> <span class="bp">=</span> <span class="n">y</span> <span class="bp">&#8744;</span> <span class="n">x</span> <span class="bp">&lt;</span> <span class="n">y</span> <span class="o">:=</span>
 </pre></div>
 </div>
-<p>which gives a case division on the relative sizes of two real numbers.</p>
+<p>which gives a case division on the relative sizes of two rational numbers.</p>
 <div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">{</span><span class="n">f</span> <span class="o">:</span> <span class="n">&#8474;</span> <span class="bp">&#8594;</span> <span class="n">&#8474;</span><span class="o">}</span> <span class="o">(</span><span class="n">hf</span> <span class="o">:</span> <span class="bp">&#8704;</span> <span class="n">x</span> <span class="n">y</span><span class="o">,</span> <span class="n">x</span> <span class="bp">&lt;</span> <span class="n">y</span> <span class="bp">&#8594;</span> <span class="n">f</span> <span class="n">x</span> <span class="bp">&lt;</span> <span class="n">f</span> <span class="n">y</span><span class="o">)</span> <span class="o">:</span> <span class="n">Injective</span> <span class="n">f</span> <span class="o">:=</span> <span class="kd">by</span>
   <span class="gr">sorry</span>
 </pre></div>
