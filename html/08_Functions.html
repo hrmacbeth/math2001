@@ -1412,11 +1412,11 @@ to itself, so that <span class="math notranslate nohighlight">\(b \circ a=c\)</s
 </pre></div>
 </div>
 </li>
-<li><p>Consider the function <span class="math notranslate nohighlight">\(u:\mathbb{R}\to\mathbb{R}\)</span> defined by, <span class="math notranslate nohighlight">\(u(x)=5x+1\)</span>. Write
-down a function <span class="math notranslate nohighlight">\(v:\mathbb{R}\to\mathbb{R}\)</span> which is inverse to <span class="math notranslate nohighlight">\(u\)</span>, and prove it.</p>
-<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">def</span> <span class="n">u</span> <span class="o">(</span><span class="n">x</span> <span class="o">:</span> <span class="n">&#8477;</span><span class="o">)</span> <span class="o">:</span> <span class="n">&#8477;</span> <span class="o">:=</span> <span class="mi">5</span> <span class="bp">*</span> <span class="n">x</span> <span class="bp">+</span> <span class="mi">1</span>
+<li><p>Consider the function <span class="math notranslate nohighlight">\(u:\mathbb{Q}\to\mathbb{Q}\)</span> defined by, <span class="math notranslate nohighlight">\(u(x)=5x+1\)</span>. Write
+down a function <span class="math notranslate nohighlight">\(v:\mathbb{Q}\to\mathbb{Q}\)</span> which is inverse to <span class="math notranslate nohighlight">\(u\)</span>, and prove it.</p>
+<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">def</span> <span class="n">u</span> <span class="o">(</span><span class="n">x</span> <span class="o">:</span> <span class="n">&#8474;</span><span class="o">)</span> <span class="o">:</span> <span class="n">&#8474;</span> <span class="o">:=</span> <span class="mi">5</span> <span class="bp">*</span> <span class="n">x</span> <span class="bp">+</span> <span class="mi">1</span>
 
-<span class="kd">noncomputable</span> <span class="kd">def</span> <span class="n">v</span> <span class="o">(</span><span class="n">x</span> <span class="o">:</span> <span class="n">&#8477;</span><span class="o">)</span> <span class="o">:</span> <span class="n">&#8477;</span> <span class="o">:=</span> <span class="gr">sorry</span>
+<span class="kd">def</span> <span class="n">v</span> <span class="o">(</span><span class="n">x</span> <span class="o">:</span> <span class="n">&#8474;</span><span class="o">)</span> <span class="o">:</span> <span class="n">&#8474;</span> <span class="o">:=</span> <span class="gr">sorry</span>
 
 <span class="kd">example</span> <span class="o">:</span> <span class="n">Inverse</span> <span class="n">u</span> <span class="n">v</span> <span class="o">:=</span> <span class="kd">by</span>
   <span class="gr">sorry</span>

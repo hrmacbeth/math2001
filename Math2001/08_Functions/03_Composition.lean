@@ -141,9 +141,9 @@ example : b ∘ a = c := by
   cases x <;> exhaust
 
 
-def u (x : ℝ) : ℝ := 5 * x + 1
+def u (x : ℚ) : ℚ := 5 * x + 1
 
-noncomputable def v (x : ℝ) : ℝ := sorry
+def v (x : ℚ) : ℚ := sorry
 
 example : Inverse u v := by
   sorry
