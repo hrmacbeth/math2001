@@ -167,14 +167,14 @@ def i : ℕ × ℕ → ℕ × ℕ
 theorem p_comp_i (x : ℕ × ℕ) : p (i x) = p x + 1 := by
   match x with
   | (0, b) =>
-    calc p (i (0, b)) = p (b + 1, 0) := by rw [i]
+    calc p (i (0, b)) = p (b + 1, 0) := by dsimp [i]
       _ = A ((b + 1) + 0) + 0 := by dsimp [p]
       _ = A (b + 1) := by ring
       _ = A b + b + 1 := by rw [A]
       _ = (A (0 + b) + b) + 1 := by ring
       _ = p (0, b) + 1 := by dsimp [p]
   | (a + 1, b) =>
-    calc p (i (a + 1, b)) = p (a, b + 1) := by rw [i] ; rfl -- FIXME
+    calc p (i (a + 1, b)) = p (a, b + 1) := by dsimp [i]
       _ = A (a + (b + 1)) + (b + 1) := by dsimp [p]
       _ = (A ((a + 1) + b) + b) + 1 := by ring
       _ = p (a + 1, b) + 1 := by rw [p]
