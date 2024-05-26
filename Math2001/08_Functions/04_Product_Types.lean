@@ -190,13 +190,10 @@ example : Bijective p := by
       · apply of_A_add_mono
         rw [hab]
     have hb : b1 = b2
-    · zify at hab ⊢
-      calc (b1:ℤ) = A (a2 + b2) + b2 - A (a1 + b1) := by addarith [hab]
-        _ = A (a2 + b2) + b2 - A (a2 + b2) := by rw [H]
-        _ = b2 := by ring
+    · rw [H] at hab
+      addarith [hab]
     constructor
-    · zify at hb H ⊢
-      addarith [H, hb]
+    · addarith [H, hb]
     · apply hb
   · apply surjective_of_intertwining (x0 := (0, 0)) (i := i)
     · calc p (0, 0) = A (0 + 0) + 0 := by dsimp [p]
