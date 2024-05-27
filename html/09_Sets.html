@@ -897,7 +897,7 @@ the universe set.</p>
 </section>
 <section id="id18">
 <h3><span class="section-number">9.2.8. </span>Exercises<a class="headerlink" href="#id18" title="Permalink to this headline">&#61633;</a></h3>
-<p>For the first five problems, I provide a tactic <code class="docutils literal notranslate"><span class="pre">check_equality_of_explicit_sets</span></code> which will prove
+<p>For the first four problems, I provide a tactic <code class="docutils literal notranslate"><span class="pre">check_equality_of_explicit_sets</span></code> which will prove
 the statement if you have formulated it correctly.  This tactic simply runs <code class="docutils literal notranslate"><span class="pre">ext</span></code>, then <code class="docutils literal notranslate"><span class="pre">dsimp</span></code>,
 then <code class="docutils literal notranslate"><span class="pre">exhaust</span></code>:</p>
 <div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="n">macro</span> <span class="s2">&quot;check_equality_of_explicit_sets&quot;</span> <span class="o">:</span> <span class="n">tactic</span> <span class="bp">=&gt;</span> <span class="bp">`</span><span class="o">(</span><span class="n">tactic</span><span class="bp">|</span> <span class="o">(</span><span class="n">ext</span><span class="bp">;</span> <span class="n">dsimp</span><span class="bp">;</span> <span class="n">exhaust</span><span class="o">))</span>
