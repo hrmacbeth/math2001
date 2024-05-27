@@ -457,11 +457,11 @@ listed, here 1, 2 and 3.  By definition, <span class="math notranslate nohighlig
 <h3><span class="section-number">9.1.9. </span>Example<a class="headerlink" href="#id9" title="Permalink to this headline">&#61633;</a></h3>
 <div class="admonition-problem admonition">
 <p class="admonition-title">Problem</p>
-<p>Prove  that <span class="math notranslate nohighlight">\(\{1,3,6\} \subseteq\{x:\mathbb{Q} \mid t&lt;10\}\)</span>.</p>
+<p>Prove  that <span class="math notranslate nohighlight">\(\{1,3,6\} \subseteq\{t:\mathbb{Q} \mid t&lt;10\}\)</span>.</p>
 </div>
 <div class="admonition-solution admonition">
 <p class="admonition-title">Solution</p>
-<p>We must show that for all real numbers <span class="math notranslate nohighlight">\(t\)</span>, if <span class="math notranslate nohighlight">\(t=1\)</span> or <span class="math notranslate nohighlight">\(t=3\)</span> or <span class="math notranslate nohighlight">\(t=6\)</span>
+<p>We must show that for all rational numbers <span class="math notranslate nohighlight">\(t\)</span>, if <span class="math notranslate nohighlight">\(t=1\)</span> or <span class="math notranslate nohighlight">\(t=3\)</span> or <span class="math notranslate nohighlight">\(t=6\)</span>
 then <span class="math notranslate nohighlight">\(t&lt;10\)</span>.  Indeed, <span class="math notranslate nohighlight">\(1&lt;10\)</span>, <span class="math notranslate nohighlight">\(3&lt;10\)</span> and <span class="math notranslate nohighlight">\(6&lt;10\)</span>.</p>
 </div>
 <div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">:</span> <span class="o">{</span><span class="mi">1</span><span class="o">,</span> <span class="mi">3</span><span class="o">,</span> <span class="mi">6</span><span class="o">}</span> <span class="bp">&#8838;</span> <span class="o">{</span><span class="n">t</span> <span class="o">:</span> <span class="n">&#8474;</span> <span class="bp">|</span> <span class="n">t</span> <span class="bp">&lt;</span> <span class="mi">10</span><span class="o">}</span> <span class="o">:=</span> <span class="kd">by</span>
