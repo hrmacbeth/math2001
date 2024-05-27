@@ -792,7 +792,7 @@ no elements.</p>
 <div class="admonition-problem admonition">
 <p class="admonition-title">Problem</p>
 <p>Show that
-<span class="math notranslate nohighlight">\(\{n:\mathbb{Z}\mid n\equiv 1\mod 5\}\cap\{n:\mathbb{N}\mid n\equiv 1\mod 5\}=\emptyset\)</span>.</p>
+<span class="math notranslate nohighlight">\(\{n:\mathbb{Z}\mid n\equiv 1\mod 5\}\cap\{n:\mathbb{Z}\mid n\equiv 2\mod 5\}=\emptyset\)</span>.</p>
 </div>
 <p>Let&#8217;s consider the Lean proof first.  We can write something like this:</p>
 <div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">:</span> <span class="o">{</span><span class="n">n</span> <span class="o">:</span> <span class="n">&#8484;</span> <span class="bp">|</span> <span class="n">n</span> <span class="bp">&#8801;</span> <span class="mi">1</span> <span class="o">[</span><span class="n">ZMOD</span> <span class="mi">5</span><span class="o">]}</span> <span class="bp">&#8745;</span> <span class="o">{</span><span class="n">n</span> <span class="o">:</span> <span class="n">&#8484;</span> <span class="bp">|</span> <span class="n">n</span> <span class="bp">&#8801;</span> <span class="mi">2</span> <span class="o">[</span><span class="n">ZMOD</span> <span class="mi">5</span><span class="o">]}</span> <span class="bp">=</span> <span class="bp">&#8709;</span> <span class="o">:=</span> <span class="kd">by</span>
