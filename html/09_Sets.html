@@ -1158,10 +1158,10 @@ themselves.  Paradox: does the barber shave himself?</p>
 </pre></div>
 </div>
 </li>
-<li><p>Consider the sequence <span class="math notranslate nohighlight">\(U_n\)</span> of sets of integers defined recursively by,</p>
+<li><p>Consider the sequence <span class="math notranslate nohighlight">\((U_n)\)</span> of sets of integers defined recursively by,</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}U_0&amp;=\mathbb{Z} \\
-\text{for }n:\mathbb{N},\quad U_{n+1} &amp;=\{x:\mathbb{Z}\mid \exists \ y\in U_n, x = 2y \}\end{split}\]</div>
+\text{for }n:\mathbb{N},\quad U_{n+1} &amp;=\{x:\mathbb{Z}\mid \exists \ y\in U_n, x = 2y \}.\end{split}\]</div>
 <p>Show that for all natural numbers <span class="math notranslate nohighlight">\(n\)</span>, <span class="math notranslate nohighlight">\(U_n=\{x:\mathbb{Z}\mid 2^n\mid x\}\)</span>.</p>
 <div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">def</span> <span class="n">U</span> <span class="o">:</span> <span class="n">&#8469;</span> <span class="bp">&#8594;</span> <span class="n">Set</span> <span class="n">&#8484;</span>
   <span class="bp">|</span> <span class="mi">0</span> <span class="bp">=&gt;</span> <span class="n">univ</span>
