@@ -110,6 +110,9 @@ work after a <code class="docutils literal notranslate"><span class="pre">dsimp<
 <p>A comparison tactic for inequalities, or other relations such as congruences: checks an inequality
 whose two sides differ by the addition of a positive quantity, a congruence mod 3 whose two sides
 differ by a multiple of 3, etc.</p>
+<p class="rubric"><code class="docutils literal notranslate"><span class="pre">have</span></code> (first use: <a class="reference internal" href="02_Proofs_with_Structure.html#tactic-mode"><span class="std std-numref">Section 2.1</span></a>; with a lemma: <a class="reference internal" href="02_Proofs_with_Structure.html#or"><span class="std std-numref">Section 2.3</span></a>; introducing a new goal: <a class="reference internal" href="02_Proofs_with_Structure.html#and"><span class="std std-numref">Section 2.4</span></a>)</p>
+<p>Records a fact (followed by the proof of that fact), which then becomes available as an
+extra hypothesis.</p>
 <p class="rubric"><code class="docutils literal notranslate"><span class="pre">interval_cases</span></code> (first use: <a class="reference internal" href="04_Proofs_with_Structure_II.html#forall-implies"><span class="std std-numref">Section 4.1</span></a>)</p>
 <p>Given a natural-number or integer variable <span class="math notranslate nohighlight">\(n\)</span> for which numeric upper and lower bounds are
 available, produce cases for each of the numeric possibilities for <span class="math notranslate nohighlight">\(n\)</span>.</p>
@@ -119,9 +122,6 @@ available, produce cases for each of the numeric possibilities for <span class="
 negation (<span class="math notranslate nohighlight">\(\lnot\)</span>) goal.</p>
 <p class="rubric"><code class="docutils literal notranslate"><span class="pre">left</span></code> (first use: <a class="reference internal" href="02_Proofs_with_Structure.html#or"><span class="std std-numref">Section 2.3</span></a>)</p>
 <p>Selects the left alternative of an &#8220;or&#8221; goal (<span class="math notranslate nohighlight">\(\lor\)</span>).</p>
-<p class="rubric"><code class="docutils literal notranslate"><span class="pre">have</span></code> (first use: <a class="reference internal" href="02_Proofs_with_Structure.html#tactic-mode"><span class="std std-numref">Section 2.1</span></a>; with a lemma: <a class="reference internal" href="02_Proofs_with_Structure.html#or"><span class="std std-numref">Section 2.3</span></a>; introducing a new goal: <a class="reference internal" href="02_Proofs_with_Structure.html#and"><span class="std std-numref">Section 2.4</span></a>)</p>
-<p>Records a fact (followed by the proof of that fact), which then becomes available as an
-extra hypothesis.</p>
 <p class="rubric"><code class="docutils literal notranslate"><span class="pre">mod_cases</span></code> (first use: <a class="reference internal" href="03_Parity_and_Divisibility.html#using-modular"><span class="std std-numref">Section 3.4</span></a>)</p>
 <p>Introduces cases for a variable according to its residue modulo a specified number.</p>
 <p class="rubric">* <code class="docutils literal notranslate"><span class="pre">numbers</span></code> (first use: <a class="reference internal" href="01_Proofs_by_Calculation.html#proving-inequalities"><span class="std std-numref">Section 1.4</span></a>; with <code class="docutils literal notranslate"><span class="pre">at</span></code> for contradictions: <a class="reference internal" href="04_Proofs_with_Structure_II.html#contradiction-hyp"><span class="std std-numref">Section 4.4</span></a>)</p>
