@@ -1,0 +1,54 @@
+- <;>
+    - first use 4.4.4
+    - for `cases` 8.1.9
+    - not sure if this is a tactic or other sort of syntax
+- by
+    - first use 1.2.1
+    -  technically a keyword for entering a mode
+- calc
+    - first use 1.2.1
+    - technically a keyword for entering a mode
+- cases
+    - first use 8.1.9
+- choose
+    - first (and only) use 8.3.7
+    - probably not necessary in index since used only in one special case
+- conv
+    - first use 5.2.1
+    - additional uses 5.2.2, 5.2.4, 9.3.4
+    - probably not worth adding to index
+- exhaust
+    - first use (finite inductive types) 8.1.8
+    - for equality proofs by set extensionality 9.2.2
+    - paired with suffices 9.2.6
+- ext:
+    - first use (function extensionality) 8.3.2
+    - syntax with product types 8.4.2
+    - with set extensionality 9.1.5
+        - special case syntax, `ext` without an argument for proof by contradiction 9.1.6
+- induction
+    - simple_induction (6.1.1)
+    - induction_from_starting_point (6.1.5)
+    - two_step_induction (6.3.1)
+    - two_step_induction_from_starting_point (6.3.5)
+- let
+    - first (and only) use 9.3.5
+    - technically a keyword
+    - probably not worth putting in index
+- match
+    - first use 6.4.1
+    - technically a keyword
+- norm_cast
+    - first use 6.5.3
+    - appears necessary to prove exercise 8 in Section 6.3, so you may want to either introduce and explain this tactic in that section, or alter the setup for that exercise to not require `norm_cast` (perhaps making `F` be type `ℕ → ℚ`?).  Or there is a way to do the proof without `norm_cast` which I was unable to figure out!
+- rfl
+    - first use 6.3.5
+    - used extensively in Chapter 8, and in 10.2.6
+- set
+    - first use 6.7.3
+    - additional uses 7.3, 10.2.5
+- split_ifs
+    - used extensively in Section 6.6 and Section 6.7
+- suffices
+    - first use 9.2.6
+    - technically a keyword
