@@ -1,5 +1,4 @@
 {
-    "workbench.colorTheme": "Default Light+",
     "editor.semanticHighlighting.enabled": true,
     "editor.semanticTokenColorCustomizations": {
             "[Default Light+]": {"rules": {"variable": "#7f197f"}}
