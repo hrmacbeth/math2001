@@ -153,7 +153,7 @@ type <span class="math notranslate nohighlight">\(X\)</span>, if <span class="ma
 <div class="admonition-solution admonition">
 <p class="admonition-title">Solution</p>
 <p>We must show that there exist natural numbers <span class="math notranslate nohighlight">\(x\)</span> and <span class="math notranslate nohighlight">\(y\)</span> such that, <span class="math notranslate nohighlight">\(x\mid y\)</span>
-and <span class="math notranslate nohighlight">\(y\mid x\)</span>.  Indeed, we have <span class="math notranslate nohighlight">\(2=1\cdot 2\)</span>, so <span class="math notranslate nohighlight">\(1\mid 2\)</span>, and
+and <span class="math notranslate nohighlight">\(y\not \mid x\)</span>.  Indeed, we have <span class="math notranslate nohighlight">\(2=1\cdot 2\)</span>, so <span class="math notranslate nohighlight">\(1\mid 2\)</span>, and
 <span class="math notranslate nohighlight">\(2\cdot 0&lt;1&lt;2\cdot 1\)</span>, so <span class="math notranslate nohighlight">\(2\not \mid 1\)</span>.</p>
 </div>
 <div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">:</span> <span class="bp">&#172;</span> <span class="n">Symmetric</span> <span class="o">((</span><span class="bp">&#183;</span><span class="o">:</span><span class="n">&#8469;</span><span class="o">)</span> <span class="bp">&#8739;</span> <span class="bp">&#183;</span><span class="o">)</span> <span class="o">:=</span> <span class="kd">by</span>
@@ -191,8 +191,8 @@ number <span class="math notranslate nohighlight">\(k\)</span> such that <span c
 &amp;=n.\end{split}\]</div>
 <p>We now return to the original problem.  We must show that for all natural numbers <span class="math notranslate nohighlight">\(x\)</span> and <span class="math notranslate nohighlight">\(y\)</span>, if <span class="math notranslate nohighlight">\(x\mid y\)</span> and <span class="math notranslate nohighlight">\(y\mid x\)</span>, then <span class="math notranslate nohighlight">\(x=y\)</span>.  Indeed, let <span class="math notranslate nohighlight">\(x\)</span> and <span class="math notranslate nohighlight">\(y\)</span> be natural numbers and suppose <span class="math notranslate nohighlight">\(x\mid y\)</span> and <span class="math notranslate nohighlight">\(y\mid x\)</span>. If
 <span class="math notranslate nohighlight">\(x=0\)</span> then by (<span class="math notranslate nohighlight">\(\star\)</span>) we are done; likewise if <span class="math notranslate nohighlight">\(y=0\)</span>.  Otherwise, <span class="math notranslate nohighlight">\(x&gt;0\)</span>,
-so since <span class="math notranslate nohighlight">\(y\mid x\)</span> we have <span class="math notranslate nohighlight">\(y\le x\)</span>, and <span class="math notranslate nohighlight">\(y&gt;0\)</span>,
-so since <span class="math notranslate nohighlight">\(x\mid y\)</span> we have <span class="math notranslate nohighlight">\(x\le y\)</span>,  Putting these together, <span class="math notranslate nohighlight">\(x=y\)</span>.</p>
+so since <span class="math notranslate nohighlight">\(y\mid x\)</span> we have <span class="math notranslate nohighlight">\(y\le x\)</span> and <span class="math notranslate nohighlight">\(y&gt;0\)</span>,
+and since <span class="math notranslate nohighlight">\(x\mid y\)</span> we have <span class="math notranslate nohighlight">\(x\le y\)</span>.  Putting these together, <span class="math notranslate nohighlight">\(x=y\)</span>.</p>
 </div>
 <div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">:</span> <span class="n">AntiSymmetric</span> <span class="o">((</span><span class="bp">&#183;</span><span class="o">:</span><span class="n">&#8469;</span><span class="o">)</span> <span class="bp">&#8739;</span> <span class="bp">&#183;</span><span class="o">)</span> <span class="o">:=</span> <span class="kd">by</span>
   <span class="k">have</span> <span class="n">H</span> <span class="o">:</span> <span class="bp">&#8704;</span> <span class="o">{</span><span class="n">m</span> <span class="n">n</span><span class="o">},</span> <span class="n">m</span> <span class="bp">=</span> <span class="mi">0</span> <span class="bp">&#8594;</span> <span class="n">m</span> <span class="bp">&#8739;</span> <span class="n">n</span> <span class="bp">&#8594;</span> <span class="n">m</span> <span class="bp">=</span> <span class="n">n</span>
@@ -686,7 +686,7 @@ bi-directionally to all nodes of that colour (including themselves) and to no ot
 <p>For all integers <span class="math notranslate nohighlight">\(x\)</span>, we have <span class="math notranslate nohighlight">\(x^2=x^2\)</span>, so <span class="math notranslate nohighlight">\(x\sim x\)</span>.  Therefore the relation
 <span class="math notranslate nohighlight">\(\sim\)</span> is reflexive.</p>
 <p>For all integers <span class="math notranslate nohighlight">\(x\)</span> and <span class="math notranslate nohighlight">\(y\)</span>, we have that if <span class="math notranslate nohighlight">\(x\sim y\)</span> then <span class="math notranslate nohighlight">\(x^2=y^2\)</span>,
-so <span class="math notranslate nohighlight">\(y^2=x^2\)</span>, so <span class="math notranslate nohighlight">\(y\sim z\)</span>.
+so <span class="math notranslate nohighlight">\(y^2=x^2\)</span>, so <span class="math notranslate nohighlight">\(y\sim x\)</span>.
 Therefore the relation <span class="math notranslate nohighlight">\(\sim\)</span> is symmetric.</p>
 <p>For all integers <span class="math notranslate nohighlight">\(x\)</span>, <span class="math notranslate nohighlight">\(y\)</span> and <span class="math notranslate nohighlight">\(z\)</span>, we have that if <span class="math notranslate nohighlight">\(x\sim y\)</span> and
 <span class="math notranslate nohighlight">\(y\sim z\)</span> then <span class="math notranslate nohighlight">\(x^2=y^2\)</span> and <span class="math notranslate nohighlight">\(y^2=z^2\)</span>, so</p>
@@ -722,7 +722,7 @@ multicoloured &#8220;clique&#8221; version.</p>
 <h3><span class="section-number">10.2.3. </span>Example<a class="headerlink" href="#id8" title="Permalink to this headline">&#61633;</a></h3>
 <p>You have probably guessed that the colouring can be made consistent in this way for any equivalence
 relation. Let&#8217;s make this mathematically rigorous.</p>
-<p>Let <span class="math notranslate nohighlight">\(r\)</span> be a relation on a type <span class="math notranslate nohighlight">\(\alpha\)</span>, denoted <span class="math notranslate nohighlight">\(\sim\)</span> in infix notation.</p>
+<p>Let <span class="math notranslate nohighlight">\(r\)</span> be an equivalence relation on a type <span class="math notranslate nohighlight">\(\alpha\)</span>, denoted <span class="math notranslate nohighlight">\(\sim\)</span> in infix notation.</p>
 <div class="admonition-definition admonition">
 <p class="admonition-title">Definition</p>
 <p>For <span class="math notranslate nohighlight">\(a\)</span> in <span class="math notranslate nohighlight">\(\alpha\)</span>, the <em>equivalence class</em> of <span class="math notranslate nohighlight">\(a\)</span> (denoted <span class="math notranslate nohighlight">\([a]\)</span>) is
@@ -730,7 +730,7 @@ relation. Let&#8217;s make this mathematically rigorous.</p>
 </div>
 <div class="admonition-theorem admonition">
 <p class="admonition-title">Theorem</p>
-<p>If the relation <span class="math notranslate nohighlight">\(r\)</span> is symmetric and transitive, then for all <span class="math notranslate nohighlight">\(a_1\)</span> and <span class="math notranslate nohighlight">\(a_2\)</span>,
+<p>Since the relation <span class="math notranslate nohighlight">\(r\)</span> is symmetric and transitive, for all <span class="math notranslate nohighlight">\(a_1\)</span> and <span class="math notranslate nohighlight">\(a_2\)</span>,
 if <span class="math notranslate nohighlight">\(a_1\sim a_2\)</span>, then <span class="math notranslate nohighlight">\([a_1]=[a_2]\)</span>.</p>
 </div>
 <div class="admonition-proof admonition">
@@ -760,7 +760,7 @@ if <span class="math notranslate nohighlight">\(a_1\sim a_2\)</span>, then <span
 </div>
 <div class="admonition-theorem admonition">
 <p class="admonition-title">Theorem</p>
-<p>If the relation <span class="math notranslate nohighlight">\(r\)</span> is reflexive, then every <span class="math notranslate nohighlight">\(a\)</span> is an element of its own equivalence
+<p>Since the relation <span class="math notranslate nohighlight">\(r\)</span> is reflexive, every <span class="math notranslate nohighlight">\(a\)</span> is an element of its own equivalence
 class: <span class="math notranslate nohighlight">\(a\in [a]\)</span>.</p>
 </div>
 <div class="admonition-proof admonition">
