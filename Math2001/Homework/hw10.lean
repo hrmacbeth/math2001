@@ -45,7 +45,7 @@ theorem problem3a : {1, 2, 3} ∩ {2, 3, 4} ⊆ {2, 3, 6} := by
 
 
 @[autograded 3]
-theorem problem3b : {1, 2, 3} ∩ {2, 3, 4} ≠ {2, 3, 6} := by
+theorem problem3b : ¬ {1, 2, 3} ∩ {2, 3, 4} ⊆ {2, 3, 6} := by
   sorry
 
 
