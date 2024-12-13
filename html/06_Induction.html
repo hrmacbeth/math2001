@@ -220,9 +220,9 @@ IH : 2 ^ k &#8805; k + 1
 <span class="math notranslate nohighlight">\(0=2\cdot 0\)</span>.</p>
 <p>Suppose now that for some natural number <span class="math notranslate nohighlight">\(k\)</span>, it is true that <span class="math notranslate nohighlight">\(k\)</span> is either even or
 odd.</p>
-<p><strong>Case 1</strong> (<span class="math notranslate nohighlight">\(k\)</span> is even): Then there exists an integer <span class="math notranslate nohighlight">\(x\)</span> such that <span class="math notranslate nohighlight">\(k=2x\)</span>, and
+<p><strong>Case 1</strong> (<span class="math notranslate nohighlight">\(k\)</span> is even): Then there exists a natural number <span class="math notranslate nohighlight">\(x\)</span> such that <span class="math notranslate nohighlight">\(k=2x\)</span>, and
 so <span class="math notranslate nohighlight">\(k+1 = 2x+1\)</span>, so <span class="math notranslate nohighlight">\(k+1\)</span> is odd.</p>
-<p><strong>Case 2</strong> (<span class="math notranslate nohighlight">\(k\)</span> is odd): Then there exists an integer <span class="math notranslate nohighlight">\(x\)</span> such that <span class="math notranslate nohighlight">\(k=2x+1\)</span>,
+<p><strong>Case 2</strong> (<span class="math notranslate nohighlight">\(k\)</span> is odd): Then there exists a natural number <span class="math notranslate nohighlight">\(x\)</span> such that <span class="math notranslate nohighlight">\(k=2x+1\)</span>,
 and</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}k+1 &amp;=  (2x+1)+1 \\
@@ -327,7 +327,7 @@ We just start the induction at that number.</p>
 <p class="admonition-title">Solution</p>
 <p>We prove this by induction on <span class="math notranslate nohighlight">\(n\)</span>, starting at 2.  The base case, <span class="math notranslate nohighlight">\(3^2\geq 2^2+5\)</span>, is
 clear.</p>
-<p>Suppose now that for some natural number <span class="math notranslate nohighlight">\(k\)</span>, it is true that <span class="math notranslate nohighlight">\(3 ^k\ge 2^k+5\)</span>.  Then</p>
+<p>Suppose now that for some natural number <span class="math notranslate nohighlight">\(k\geq 2\)</span>, it is true that <span class="math notranslate nohighlight">\(3 ^k\ge 2^k+5\)</span>.  Then</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}3^{k+1} &amp;=  2 \cdot 3^k + 3^k\\
 &amp;\ge 2(2^k+5)+3^k\\
@@ -717,7 +717,7 @@ denoted <span class="math notranslate nohighlight">\(n!\)</span>.</p>
 <blockquote>
 <div><div class="math notranslate nohighlight">
 \[\begin{split}0!&amp;=1 \\
-\text{for }n:\mathbb{N},\quad(n+1)! &amp;= (n + 1) &#11037; n!\end{split}\]</div>
+\text{for }n:\mathbb{N},\quad(n+1)! &amp;= (n + 1)\cdot n!\end{split}\]</div>
 </div></blockquote>
 <div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">def</span> <span class="n">factorial</span> <span class="o">:</span> <span class="n">&#8469;</span> <span class="bp">&#8594;</span> <span class="n">&#8469;</span>
   <span class="bp">|</span> <span class="mi">0</span> <span class="bp">=&gt;</span> <span class="mi">1</span>
@@ -739,16 +739,16 @@ denoted <span class="math notranslate nohighlight">\(n!\)</span>.</p>
 <blockquote>
 <div><div class="math notranslate nohighlight">
 \[\begin{split}0!&amp;=1 \\
-1!&amp;=1\cdot A_0 \\
+1!&amp;=1\cdot 0! \\
 &amp;=1\cdot 1 \\
 &amp;=1\\
-2!&amp;=2\cdot A_1 \\
+2!&amp;=2\cdot 1! \\
 &amp;=2\cdot 1 \\
 &amp;=2\\
-3!&amp;=3\cdot A_2 \\
+3!&amp;=3\cdot 2! \\
 &amp;=3\cdot 2 \\
 &amp;=6\\
-4!&amp;=4\cdot A_3 \\
+4!&amp;=4\cdot 3! \\
 &amp;=4\cdot 6 \\
 &amp;=24\\
 \ldots\end{split}\]</div>
@@ -770,7 +770,7 @@ vacuous, since there is no natural number <span class="math notranslate nohighli
 \[\begin{split}(k+1)!&amp;=(k+1)\cdot k!\\
 &amp;=d\cdot k!,\end{split}\]</div>
 <p>so <span class="math notranslate nohighlight">\(d\)</span> is a factor of <span class="math notranslate nohighlight">\((k+1)!\)</span>.</p>
-<p><strong>Case 1</strong> (<span class="math notranslate nohighlight">\(d&lt;k+1\)</span>): Then <span class="math notranslate nohighlight">\(d\le k\)</span>, so by the inductive hypothesis <span class="math notranslate nohighlight">\(d\)</span> is a
+<p><strong>Case 2</strong> (<span class="math notranslate nohighlight">\(d&lt;k+1\)</span>): Then <span class="math notranslate nohighlight">\(d\le k\)</span>, so by the inductive hypothesis <span class="math notranslate nohighlight">\(d\)</span> is a
 factor of <span class="math notranslate nohighlight">\(k!\)</span>.  Therefore there exists a natural number <span class="math notranslate nohighlight">\(x\)</span> such that <span class="math notranslate nohighlight">\(k!=dx\)</span>.
 We then have</p>
 <div class="math notranslate nohighlight">
@@ -1340,7 +1340,7 @@ modulo 5.</p>
 \[\begin{split}p_0&amp;=2\\
 p_1&amp;=3\\
 \text{for }n:\mathbb{N},\quad p_{n+2}&amp;=6p_{n+1}-p_n.\end{split}\]</div>
-<p>Prove that for all natural numbers <span class="math notranslate nohighlight">\(m\geq 1\)</span>, <span class="math notranslate nohighlight">\(p_m\)</span> is congruent to either 2 or 3
+<p>Prove that for all natural numbers <span class="math notranslate nohighlight">\(m\)</span>, <span class="math notranslate nohighlight">\(p_m\)</span> is congruent to either 2 or 3
 modulo 7.</p>
 <div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">def</span> <span class="n">p</span> <span class="o">:</span> <span class="n">&#8469;</span> <span class="bp">&#8594;</span> <span class="n">&#8484;</span>
   <span class="bp">|</span> <span class="mi">0</span> <span class="bp">=&gt;</span> <span class="mi">2</span>
@@ -1490,15 +1490,15 @@ for <span class="math notranslate nohighlight">\(n\)</span>.  At that point Lean
 valid.</p>
 <div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">theorem</span> <span class="n">exists_prime_factor</span> <span class="o">{</span><span class="n">n</span> <span class="o">:</span> <span class="n">&#8469;</span><span class="o">}</span> <span class="o">(</span><span class="n">hn2</span> <span class="o">:</span> <span class="mi">2</span> <span class="bp">&#8804;</span> <span class="n">n</span><span class="o">)</span> <span class="o">:</span> <span class="bp">&#8707;</span> <span class="n">p</span> <span class="o">:</span> <span class="n">&#8469;</span><span class="o">,</span> <span class="n">Prime</span> <span class="n">p</span> <span class="bp">&#8743;</span> <span class="n">p</span> <span class="bp">&#8739;</span> <span class="n">n</span> <span class="o">:=</span> <span class="kd">by</span>
   <span class="n">by_cases</span> <span class="n">hn</span> <span class="o">:</span> <span class="n">Prime</span> <span class="n">n</span>
-  <span class="bp">.</span> <span class="c1">-- case 1: `n` is prime</span>
+  <span class="bp">&#183;</span> <span class="c1">-- case 1: `n` is prime</span>
     <span class="n">use</span> <span class="n">n</span>
     <span class="n">constructor</span>
     <span class="bp">&#183;</span> <span class="n">apply</span> <span class="n">hn</span>
     <span class="bp">&#183;</span> <span class="n">use</span> <span class="mi">1</span>
       <span class="n">ring</span>
-  <span class="bp">.</span> <span class="c1">-- case 2: `n` is not prime</span>
-    <span class="n">obtain</span> <span class="o">&#10216;</span><span class="n">m</span><span class="o">,</span> <span class="n">hmn</span><span class="o">,</span> <span class="n">_</span><span class="o">,</span> <span class="o">&#10216;</span><span class="n">x</span><span class="o">,</span> <span class="n">hx</span><span class="o">&#10217;&#10217;</span> <span class="o">:=</span> <span class="n">exists_factor_of_not_prime</span> <span class="n">hn</span> <span class="n">hn2</span>
-    <span class="k">have</span> <span class="n">IH</span> <span class="o">:</span> <span class="bp">&#8707;</span> <span class="n">p</span><span class="o">,</span> <span class="n">Prime</span> <span class="n">p</span> <span class="bp">&#8743;</span> <span class="n">p</span> <span class="bp">&#8739;</span> <span class="n">m</span> <span class="o">:=</span> <span class="n">exists_prime_factor</span> <span class="n">hmn</span> <span class="c1">-- inductive hypothesis</span>
+  <span class="bp">&#183;</span> <span class="c1">-- case 2: `n` is not prime</span>
+    <span class="n">obtain</span> <span class="o">&#10216;</span><span class="n">m</span><span class="o">,</span> <span class="n">hm2</span><span class="o">,</span> <span class="n">_</span><span class="o">,</span> <span class="o">&#10216;</span><span class="n">x</span><span class="o">,</span> <span class="n">hx</span><span class="o">&#10217;&#10217;</span> <span class="o">:=</span> <span class="n">exists_factor_of_not_prime</span> <span class="n">hn</span> <span class="n">hn2</span>
+    <span class="k">have</span> <span class="n">IH</span> <span class="o">:</span> <span class="bp">&#8707;</span> <span class="n">p</span><span class="o">,</span> <span class="n">Prime</span> <span class="n">p</span> <span class="bp">&#8743;</span> <span class="n">p</span> <span class="bp">&#8739;</span> <span class="n">m</span> <span class="o">:=</span> <span class="n">exists_prime_factor</span> <span class="n">hm2</span> <span class="c1">-- inductive hypothesis</span>
     <span class="n">obtain</span> <span class="o">&#10216;</span><span class="n">p</span><span class="o">,</span> <span class="n">hp</span><span class="o">,</span> <span class="n">y</span><span class="o">,</span> <span class="n">hy</span><span class="o">&#10217;</span> <span class="o">:=</span> <span class="n">IH</span>
     <span class="n">use</span> <span class="n">p</span>
     <span class="n">constructor</span>
@@ -1702,11 +1702,11 @@ an exact formula.</p>
 <p>We prove this by strong induction relative to the expression <span class="math notranslate nohighlight">\(a+b\)</span>.</p>
 <p>For all <span class="math notranslate nohighlight">\(a\)</span>,</p>
 <div class="math notranslate nohighlight">
-\[\begin{split}P_{a,0}&amp;=1\\
+\[\begin{split}P_{a,0} \ a! \ 0! &amp;=1 \cdot a! \cdot 1\\
 &amp;= (a+0)!,\end{split}\]</div>
 <p>and for all <span class="math notranslate nohighlight">\(b\)</span>,</p>
 <div class="math notranslate nohighlight">
-\[\begin{split}P_{0,b+1}&amp;=1\\
+\[\begin{split}P_{0,b+1} \ 0! \ (b+1)! &amp;=1 \cdot 1 \cdot (b+1)!\\
 &amp;= (0+(b+1))!.\end{split}\]</div>
 <p>Now let <span class="math notranslate nohighlight">\(a\)</span> and <span class="math notranslate nohighlight">\(b\)</span> be natural numbers and suppose that for all <span class="math notranslate nohighlight">\(x\)</span> and
 <span class="math notranslate nohighlight">\(y\)</span> with <span class="math notranslate nohighlight">\(x+y&lt;(a+1)+(b+1)\)</span>, it is true that <span class="math notranslate nohighlight">\(P_{x,y} \ x! \ y! = (x+y)!\)</span>.  Then
@@ -1852,7 +1852,7 @@ places), and <span class="math notranslate nohighlight">\(\operatorname{mod}\)</
 &amp;
 &amp;\qquad
 &amp;
-&amp;=(\operatorname{div}(3,4)+1)+1\\0\le 4\cdot 3\le 4^2,4&amp;\ne 3
+&amp;=(\operatorname{div}(3,4)+1)+1\\0\le 3\cdot 4\le 4^2,3&amp;\ne 4
 &amp;
 &amp;\qquad
 &amp;
@@ -1922,7 +1922,7 @@ Now let&#8217;s make that rigorous.</p>
 <p class="admonition-title">Proof</p>
 <p>We prove this by strong induction relative to the expression <span class="math notranslate nohighlight">\(2n - d\)</span>.  Suppose that for all
 integers <span class="math notranslate nohighlight">\(m\)</span> and <span class="math notranslate nohighlight">\(c\)</span> with <span class="math notranslate nohighlight">\(|2m - c|&lt;|2n-d|\)</span>, it is true that
-<span class="math notranslate nohighlight">\(\operatorname{mod}(n, d) + d \cdot \operatorname{div}(n, d) = n\)</span>.</p>
+<span class="math notranslate nohighlight">\(\operatorname{mod}(m, c) + c \cdot \operatorname{div}(m, c) = m\)</span>.</p>
 <p><strong>Case 1</strong> (<span class="math notranslate nohighlight">\(nd&lt;0\)</span>): Then by the inductive hypothesis</p>
 <div class="math notranslate nohighlight">
 \[\operatorname{mod}(n+d, d) + d \cdot \operatorname{div}(n+d, d) = n+d,\]</div>
@@ -2036,7 +2036,7 @@ that <span class="math notranslate nohighlight">\(\operatorname{mod}(m, c)&lt;c\
 <p><strong>Case 3</strong> (<span class="math notranslate nohighlight">\(n=d\)</span>): Then <span class="math notranslate nohighlight">\(\operatorname{mod}(n, d)= 0&lt;d\)</span> by hypothesis.</p>
 <p><strong>Case 4</strong> (<span class="math notranslate nohighlight">\(0\le nd\le d^2\)</span> and <span class="math notranslate nohighlight">\(n\ne d\)</span>): We have that <span class="math notranslate nohighlight">\(n-d\le 0\)</span>, since
 <span class="math notranslate nohighlight">\(d(n-d)\le 0\)</span> and by hypothesis <span class="math notranslate nohighlight">\(0&lt;d\)</span>. Therefore <span class="math notranslate nohighlight">\(n\le d\)</span>. Also, by hypothesis,
-<span class="math notranslate nohighlight">\(n\ne d\)</span>.  Combining these, we have that <span class="math notranslate nohighlight">\(n&lt; d\)</span>.</p>
+<span class="math notranslate nohighlight">\(n\ne d\)</span>.  Combining these, we have that <span class="math notranslate nohighlight">\(\operatorname{mod}(n, d)= n&lt;d\)</span>.</p>
 </div>
 <div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">theorem</span> <span class="n">fmod_lt_of_pos</span> <span class="o">(</span><span class="n">n</span> <span class="o">:</span> <span class="n">&#8484;</span><span class="o">)</span> <span class="o">{</span><span class="n">d</span> <span class="o">:</span> <span class="n">&#8484;</span><span class="o">}</span> <span class="o">(</span><span class="n">hd</span> <span class="o">:</span> <span class="mi">0</span> <span class="bp">&lt;</span> <span class="n">d</span><span class="o">)</span> <span class="o">:</span> <span class="n">fmod</span> <span class="n">n</span> <span class="n">d</span> <span class="bp">&lt;</span> <span class="n">d</span> <span class="o">:=</span> <span class="kd">by</span>
   <span class="n">rw</span> <span class="o">[</span><span class="n">fmod</span><span class="o">]</span>
@@ -2353,7 +2353,7 @@ prove later (see the exercises) that in fact it is the <em>greatest common divis
 <p class="admonition-title">Proof</p>
 <p>We prove this by strong induction on <span class="math notranslate nohighlight">\(b\)</span>.   Suppose that for all
 integers <span class="math notranslate nohighlight">\(x\)</span> and <span class="math notranslate nohighlight">\(y\)</span> with <span class="math notranslate nohighlight">\(|y|&lt;|b|\)</span>, it is true that
-<span class="math notranslate nohighlight">\(0 \le  \operatorname{gcd}(x, y)\)</span>.</p>
+  <span class="math notranslate nohighlight">\(\operatorname{gcd}(x, y)\)</span> is a factor of both <span class="math notranslate nohighlight">\(x\)</span> and <span class="math notranslate nohighlight">\(y\)</span>.</p>
 <p><strong>Case 1</strong> (<span class="math notranslate nohighlight">\(0&lt;b\)</span>): Let <span class="math notranslate nohighlight">\(q=\operatorname{div}(a,b)\)</span> and let
 <span class="math notranslate nohighlight">\(r=\operatorname{mod}(a,b)\)</span>, so that <span class="math notranslate nohighlight">\(a=r+bq\)</span> (by <a class="reference internal" href="#mod-add-div"><span class="std std-numref">Example 6.6.2</span></a>).</p>
 <p>Then by the recursive definition <span class="math notranslate nohighlight">\(\operatorname{gcd}(a,b)\)</span> is equal to
@@ -2539,7 +2539,7 @@ termination explanation at the end, like this:</p>
 <span class="n">termination_by</span> <span class="n">gcd_dvd_right</span> <span class="n">a</span> <span class="n">b</span> <span class="bp">=&gt;</span> <span class="n">b</span> <span class="bp">;</span> <span class="n">gcd_dvd_left</span> <span class="n">a</span> <span class="n">b</span> <span class="bp">=&gt;</span> <span class="n">b</span>
 </pre></div>
 </div>
-<p>There is a new tactic in the above proof: <code class="docutils literal notranslate"><span class="pre">set</span></code>, which introduce a short name for a long
+<p>There is a new tactic in the above proof: <code class="docutils literal notranslate"><span class="pre">set</span></code>, which introduces a short name for a long
 expression (typically one which occurs frequently and you are tired of typing out in full).  Notice
 how the goal state changes before and after its use.</p>
 </section>
@@ -2663,8 +2663,9 @@ following identity.</p>
 <div class="admonition-proof admonition">
 <p class="admonition-title">Proof</p>
 <p>We prove this by strong induction on <span class="math notranslate nohighlight">\(b\)</span>.   Suppose that for all
-integers <span class="math notranslate nohighlight">\(x\)</span> and <span class="math notranslate nohighlight">\(y\)</span> with <span class="math notranslate nohighlight">\(|y|&lt;|b|\)</span>, it is true that
-<span class="math notranslate nohighlight">\(0 \le  \operatorname{gcd}(x, y)\)</span>.</p>
+integers <span class="math notranslate nohighlight">\(x\)</span> and <span class="math notranslate nohighlight">\(y\)</span> with <span class="math notranslate nohighlight">\(|y|&lt;|b|\)</span>, it is true that</p>
+<div class="math notranslate nohighlight">
+\[L(x,y)x+R(x,y)y=\operatorname{gcd}(x,y).\]</div>
 <p><strong>Case 1</strong> (<span class="math notranslate nohighlight">\(0&lt;b\)</span>): Let <span class="math notranslate nohighlight">\(q=\operatorname{div}(a,b)\)</span> and let
 <span class="math notranslate nohighlight">\(r=\operatorname{mod}(a,b)\)</span>, so that <span class="math notranslate nohighlight">\(a=r+bq\)</span> (by <a class="reference internal" href="#mod-add-div"><span class="std std-numref">Example 6.6.2</span></a>).</p>
 <p>Then by the recurrence definitions,</p>
@@ -2707,8 +2708,8 @@ R(a,b)&amp;=L(b,r)+qR(b,r)\end{split}\]</div>
 <span class="math notranslate nohighlight">\(\operatorname{gcd}(a,b)=-a\)</span>, <span class="math notranslate nohighlight">\(L(a,b)=-1\)</span> and <span class="math notranslate nohighlight">\(R(a,b)=0\)</span>, so</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}L(a,b)a+R(a,b)b
-&amp;=-1\cdot -a+0\cdot b\\
-&amp;=a\\
+&amp;=-1\cdot a+0\cdot b\\
+&amp;=-a\\
 &amp;=\operatorname{gcd}(a,b).\end{split}\]</div>
 </div>
 <p>Here is the same proof in Lean.</p>

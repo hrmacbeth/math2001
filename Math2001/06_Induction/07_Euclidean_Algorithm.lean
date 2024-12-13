@@ -18,7 +18,6 @@ open Int
   have H : 0 ≤ fmod a (-b)
   · apply fmod_nonneg_of_pos
     addarith [h1]
-  have h2 : 0 < -b := by addarith [h1]
   calc b < 0 := h1
     _ ≤ fmod a (-b) := H
 

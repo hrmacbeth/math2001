@@ -247,7 +247,7 @@ either at least <span class="math notranslate nohighlight">\(a\)</span> or at mo
 <h3><span class="section-number">4.1.4. </span>Example<a class="headerlink" href="#id4" title="Permalink to this headline">&#61633;</a></h3>
 <div class="admonition-problem admonition">
 <p class="admonition-title">Problem</p>
-<p>Let <span class="math notranslate nohighlight">\(a\)</span> be real number whose square is at most 2, and which is greater than or equal to
+<p>Let <span class="math notranslate nohighlight">\(a\)</span> be a real number whose square is at most 2, and which is greater than or equal to
 any real number whose square is at most 2. <a class="footnote-reference brackets" href="#id11" id="id5">1</a> Let <span class="math notranslate nohighlight">\(b\)</span> be another real number with the same
 two properties.  Prove that <span class="math notranslate nohighlight">\(a=b\)</span>.</p>
 </div>
@@ -636,8 +636,8 @@ So</p>
 <p>First, suppose that <span class="math notranslate nohighlight">\(n\)</span> is odd.  Then there exists an integer <span class="math notranslate nohighlight">\(k\)</span> such that
 <span class="math notranslate nohighlight">\(n=2k+1\)</span>.  Therefore <span class="math notranslate nohighlight">\(n-1=2k\)</span>, so <span class="math notranslate nohighlight">\(n-1\)</span> is divisible by 2, so
 <span class="math notranslate nohighlight">\(n\equiv 1\mod 2\)</span>.</p>
-<p>Conversely, suppose that <span class="math notranslate nohighlight">\(n\equiv 1\mod 2\)</span>.  Then <span class="math notranslate nohighlight">\(2\mid n -1\)</span>, so there exists an
-integer <span class="math notranslate nohighlight">\(k\)</span> such <span class="math notranslate nohighlight">\(n-1=2k\)</span>.  Thus <span class="math notranslate nohighlight">\(n=2k+1\)</span> and so <span class="math notranslate nohighlight">\(n\)</span> is odd.</p>
+<p>Conversely, suppose that <span class="math notranslate nohighlight">\(n\equiv 1\mod 2\)</span>.  Then there exists an
+integer <span class="math notranslate nohighlight">\(k\)</span> such that <span class="math notranslate nohighlight">\(n-1=2k\)</span>.  Thus <span class="math notranslate nohighlight">\(n=2k+1\)</span> and so <span class="math notranslate nohighlight">\(n\)</span> is odd.</p>
 </div>
 <p>We name this example <code class="docutils literal notranslate"><span class="pre">Int.odd_iff_modEq</span></code> for future use.</p>
 <div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">theorem</span> <span class="n">odd_iff_modEq</span> <span class="o">(</span><span class="n">n</span> <span class="o">:</span> <span class="n">&#8484;</span><span class="o">)</span> <span class="o">:</span> <span class="n">Odd</span> <span class="n">n</span> <span class="bp">&#8596;</span> <span class="n">n</span> <span class="bp">&#8801;</span> <span class="mi">1</span> <span class="o">[</span><span class="n">ZMOD</span> <span class="mi">2</span><span class="o">]</span> <span class="o">:=</span> <span class="kd">by</span>
@@ -824,7 +824,7 @@ prove the theorem from <a class="reference internal" href="03_Parity_and_Divisib
 <p>Let <span class="math notranslate nohighlight">\(n\)</span> be an integer.  We do a case division according to the residue of <span class="math notranslate nohighlight">\(n\)</span>
 modulo 2.</p>
 <p>If <span class="math notranslate nohighlight">\(n\equiv 0\mod 2\)</span>, then <span class="math notranslate nohighlight">\(n\)</span> is even, and we are done.</p>
-<p>If <span class="math notranslate nohighlight">\(n\equiv 0\mod 2\)</span>, then <span class="math notranslate nohighlight">\(n\)</span> is odd, and we are done.</p>
+<p>If <span class="math notranslate nohighlight">\(n\equiv 1\mod 2\)</span>, then <span class="math notranslate nohighlight">\(n\)</span> is odd, and we are done.</p>
 </div>
 <p>Write this in Lean using the lemmas <code class="docutils literal notranslate"><span class="pre">Int.odd_iff_modEq</span></code> and <code class="docutils literal notranslate"><span class="pre">Int.even_iff_modEq</span></code> from
 <a class="reference internal" href="#odd-iff-modeq"><span class="std std-numref">Example 4.2.3</span></a> and <a class="reference internal" href="#even-iff-modeq"><span class="std std-numref">Example 4.2.4</span></a>, together with the
