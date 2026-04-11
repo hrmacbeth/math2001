@@ -6,7 +6,6 @@ import Mathlib.Tactic.NormNum.Eq
 import Mathlib.Tactic.NormNum.Ineq
 import Mathlib.Tactic.NormNum.Pow
 import Mathlib.Tactic.NormNum.Inv
-import Mathlib.Tactic.SolveByElim
 
 /-! # `numbers` tactic
 
@@ -27,20 +26,21 @@ This can be done via an initializion command which is run in each file; for exam
 
 open Lean Meta Elab
 open Parser.Tactic Mathlib.Meta.NormNum
+open Lean.Meta.SolveByElim (SolveByElimConfig solveByElim)
 
 def Library.Tactic.numbersDischarger (g : MVarId): MetaM (Option (List MVarId)) :=
   Term.TermElabM.run' do
   match ← Tactic.run g <|
-    elabNormNum mkNullNode Syntax.missing (simpOnly := true) (useSimp := false) with
+    elabNormNum mkNullNode mkNullNode Syntax.missing (simpOnly := true) (useSimp := false) with
   | [] => pure (some [])
   | _ => failure
 
 theorem Prod.ne_left {a1 a2 : A} {b1 b2 : B} : a1 ≠ a2 → (a1, b1) ≠ (a2, b2) := mt <| by
-  rw [Prod.mk.inj_iff]
+  rw [Prod.mk_inj]
   exact And.left
 
 theorem Prod.ne_right {a1 a2 : A} {b1 b2 : B} : b1 ≠ b2 → (a1, b1) ≠ (a2, b2) := mt <| by
-  rw [Prod.mk.inj_iff]
+  rw [Prod.mk_inj]
   exact And.right
 
 theorem Prod.ext' {a1 a2 : A} {b1 b2 : B} (h1 : a1 = a2) (h2 : b1 = b2) : (a1, b1) = (a2, b2) :=
@@ -56,15 +56,15 @@ numerical expressions.
 -/
 elab (name := numbers) "numbers" : tactic =>
   Tactic.liftMetaTactic <| fun g => do
-    let cfg : Mathlib.Tactic.SolveByElim.Config :=
+    let cfg : SolveByElimConfig :=
       { maxDepth := 8, discharge := Library.Tactic.numbersDischarger, exfalso := false,
-        symm := false  }
+        symm := false, intro := false, constructor := false  }
     let lemmas := Library.Tactic.numbersProdLemmas.map (liftM <| mkConstWithFreshMVarLevels ·)
-    Mathlib.Tactic.SolveByElim.solveByElim cfg lemmas (ctx := pure []) [g]
+    solveByElim cfg lemmas (ctx := fun _ => pure []) [g]
       <|> throwError "Numbers tactic failed. Maybe the goal is not in scope for the tactic (i.e. the goal is not a pure numeric statement), or maybe the goal is false?"
 
 elab (name := numbersCore) "numbers_core" loc:(location ?) : tactic => do
-  elabNormNum mkNullNode loc (simpOnly := true) (useSimp := false)
+  elabNormNum mkNullNode mkNullNode loc (simpOnly := true) (useSimp := false)
   Tactic.done
 
 @[inherit_doc numbers]
@@ -79,5 +79,5 @@ open Tactic
 
 /-- Elaborator for `numbers` conv tactic. -/
 @[tactic numbersConv] def elabNormNum1Conv : Tactic := fun _ ↦ withMainContext do
-  let ctx ← getSimpContext mkNullNode true
+  let ctx ← getSimpContext mkNullNode mkNullNode true
   Conv.applySimpResult (← deriveSimp ctx (← instantiateMVars (← Conv.getLhs)) (useSimp := false))

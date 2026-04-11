@@ -25,12 +25,5 @@ example {x : Nat} (h1 : x = 0 ∨ x = 1) (h2 : x = 0 ∨ x = 2) : x = 0 := by ex
 ```
 -/
 elab "exhaust" : tactic => withMainContext do
-  evalTactic (← `(tactic| apply Classical.byContradiction _; intro))
-  withMainContext do
-    let state ← withOptions (fun o => o.set `includeHoistRules false) $ runDuper {} true #[] 0
-    match state.result with
-    | Duper.ProverM.Result.contradiction => applyProof state
-    | Duper.ProverM.Result.saturated =>
-      trace[Prover.saturate] "Final Active Set: {state.activeSet.toArray}"
-      throwError "Failed, can't rule out other cases"
-    | Duper.ProverM.Result.unknown => throwError "Failed, case checking timed out"
+  Mathlib.Tactic.Tauto.tautology <|>
+  evalTactic (← `(tactic| first | contradiction | sorry))

@@ -13,7 +13,7 @@ open Set
 
 example (t : ℝ) : t ∈ {x : ℝ | -1 < x} ∪ {x : ℝ | x < 1} := by
   dsimp
-  obtain h | h := le_or_lt t 0
+  obtain h | h := le_or_gt t 0
   · right
     addarith [h]
   · left
@@ -69,7 +69,7 @@ example : {n : ℤ | Even n}ᶜ = {n : ℤ | Odd n} := by
 end Int
 
 
-example (x : ℤ) : x ∉ ∅ := by
+example (x : ℤ) : x ∉ (∅ : Set ℤ) := by
   dsimp
   exhaust
 
@@ -117,7 +117,7 @@ example : {x : ℝ | -1 < x} ∪ {x : ℝ | x < 1} = univ := by
   ext t
   dsimp
   suffices -1 < t ∨ t < 1 by exhaust
-  obtain h | h := le_or_lt t 0
+  obtain h | h := le_or_gt t 0
   · right
     addarith [h]
   · left

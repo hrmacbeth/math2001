@@ -16,7 +16,7 @@ def trySetOptions (settings : Array (Name × DataValue)) : CommandElabM PUnit :=
 def tryEraseAttrs (attrs :  Array (Name × Array Name)) : CommandElabM PUnit := do
   liftCoreM <| attrs.forM fun ⟨attrName, declNames⟩ => do
     let attrState := attributeExtension.getState (← getEnv)
-    if let some attr := attrState.map.find? attrName then
+    if let some attr := attrState.map.get? attrName then
       declNames.forM fun declName =>
         try
           attr.erase declName

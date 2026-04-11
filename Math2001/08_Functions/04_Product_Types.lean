@@ -142,7 +142,7 @@ theorem A_mono {n m : ℕ} (h : n ≤ m) : A n ≤ A m := by
 
 theorem of_A_add_mono {a1 a2 b1 b2 : ℕ} (h : A (a1 + b1) + b1 ≤ A (a2 + b2) + b2) :
     a1 + b1 ≤ a2 + b2 := by
-  obtain h' | h' : _ ∨ a2 + b2 + 1 ≤ a1 + b1 := le_or_lt (a1 + b1) (a2 + b2)
+  obtain h' | h' : _ ∨ a2 + b2 + 1 ≤ a1 + b1 := le_or_gt (a1 + b1) (a2 + b2)
   · apply h'
   rw [← not_lt] at h
   have :=
@@ -174,7 +174,7 @@ theorem p_comp_i (x : ℕ × ℕ) : p (i x) = p x + 1 := by
       _ = (A (0 + b) + b) + 1 := by ring
       _ = p (0, b) + 1 := by dsimp [p]
   | (a + 1, b) =>
-    calc p (i (a + 1, b)) = p (a, b + 1) := by rw [i] ; rfl -- FIXME
+    calc p (i (a + 1, b)) = p (a, b + 1) := by rw [i]
       _ = A (a + (b + 1)) + (b + 1) := by dsimp [p]
       _ = (A ((a + 1) + b) + b) + 1 := by ring
       _ = p (a + 1, b) + 1 := by rw [p]

@@ -6,7 +6,7 @@ open Lean
 
 
 theorem Prod.inj {a1 a2 : A} {b1 b2 : B} (h : (a1, b1) = (a2, b2)) : a1 = a2 ∧ b1 = b2 :=
-  Iff.mp Prod.mk.inj_iff h
+  Prod.mk_inj.mp h
 
 theorem Prod.inj2 {a1 a2 : A} {b1 b2 : B} {c1 c2 : C} (h : (a1, b1, c1) = (a2, b2, c2)) :
     a1 = a2 ∧ b1 = b2 ∧ c1 = c2 :=

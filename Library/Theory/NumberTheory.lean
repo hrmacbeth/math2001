@@ -1,5 +1,6 @@
 /- Copyright (c) Heather Macbeth, 2023.  All rights reserved. -/
 import Library.Theory.Parity
+import Mathlib.Algebra.Order.Ring.Abs
 
 /-! # Assorted number theory lemmas from earlier needed in section 7.3 (square root of 2) -/
 

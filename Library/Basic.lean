@@ -21,10 +21,10 @@ import Library.Tactic.TruthTable
 
 notation3 (prettyPrint := false) "forall_sufficiently_large "(...)", "r:(scoped P => ∃ C, ∀ x ≥ C, P x) => r
 
-macro "linarith" linarithArgsRest : tactic => `(tactic | fail "linarith tactic disabled")
-macro "nlinarith" linarithArgsRest : tactic => `(tactic | fail "nlinarith tactic disabled")
-macro "linarith!" linarithArgsRest : tactic => `(tactic | fail "linarith! tactic disabled")
-macro "nlinarith!" linarithArgsRest : tactic => `(tactic | fail "nlinarith! tactic disabled")
+macro "linarith" Mathlib.Tactic.linarithArgsRest : tactic => `(tactic | fail "linarith tactic disabled")
+macro "nlinarith" Mathlib.Tactic.linarithArgsRest : tactic => `(tactic | fail "nlinarith tactic disabled")
+macro "linarith!" Mathlib.Tactic.linarithArgsRest : tactic => `(tactic | fail "linarith! tactic disabled")
+macro "nlinarith!" Mathlib.Tactic.linarithArgsRest : tactic => `(tactic | fail "nlinarith! tactic disabled")
 macro "polyrith" : tactic => `(tactic | fail "polyrith tactic disabled")
 macro "decide" : tactic => `(tactic | fail "decide tactic disabled")
 macro "aesop" : tactic => `(tactic | fail "aesop tactic disabled")

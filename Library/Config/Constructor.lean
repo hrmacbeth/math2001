@@ -13,7 +13,7 @@ equality in a product type is by definition a conjunction of co-ordinate-wise eq
 allow `constructor` to make progress on such goals.)  -/
 
 theorem Prod.congr {a1 a2 : A} {b1 b2 : B} (h : a1 = a2 ∧ b1 = b2) : (a1, b1) = (a2, b2) :=
-  Iff.mpr Prod.mk.inj_iff h
+  Prod.mk_inj.mpr h
 
 /-- The `constructor` tactic operates on goals of the form `P ∧ Q` or `P ↔ Q`, reducing to the two
 constituent subgoals: `P` and `Q` for `∧`, `P → Q` and `Q → P` for `↔`. -/

@@ -11,7 +11,7 @@ open Int
 
 example : ¬ (∀ x : ℝ, x ^ 2 ≥ x) := by
   intro h
-  have : 0.5 ^ 2 ≥ 0.5 := h 0.5
+  have : (0.5 : ℝ) ^ 2 ≥ 0.5 := h 0.5
   numbers at this
 
 
@@ -47,7 +47,7 @@ example (n : ℤ) : Int.Even n ↔ ¬ Int.Odd n := by
       _ ≡ 1 [ZMOD 2] := by rel [h2]
     numbers at h -- contradiction!
   · intro h
-    obtain h1 | h2 := Int.even_or_odd n
+    obtain h1 | h2 := Int.even_or_odd_lib n
     · apply h1
     · contradiction
 
@@ -98,7 +98,7 @@ example {p : ℕ} (hp : 2 ≤ p)  (T : ℕ) (hTp : p < T ^ 2)
     Prime p := by
   apply prime_test hp
   intro m hm1 hmp
-  obtain hmT | hmT := lt_or_le m T
+  obtain hmT | hmT := lt_or_ge m T
   · apply H m hm1 hmT
   intro h_div
   obtain ⟨l, hl⟩ := h_div

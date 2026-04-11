@@ -51,8 +51,6 @@ example (n : ℕ) : 4 ^ n ≡ 1 [ZMOD 15] ∨ 4 ^ n ≡ 4 [ZMOD 15] := by
 
 example {n : ℕ} (hn : 2 ≤ n) : (3:ℤ) ^ n ≥ 2 ^ n + 5 := by
   induction_from_starting_point n, hn with k hk IH
-  · -- base case
-    numbers
   · -- inductive step
     calc (3:ℤ) ^ (k + 1) = 2 * 3 ^ k + 3 ^ k := by ring
       _ ≥ 2 * (2 ^ k + 5) + 3 ^ k := by rel [IH]
@@ -105,5 +103,5 @@ example : forall_sufficiently_large n : ℕ, 2 ^ n ≥ n ^ 3 := by
 theorem Odd.pow {a : ℕ} (ha : Odd a) (n : ℕ) : Odd (a ^ n) := by
   sorry
 
-theorem Nat.even_of_pow_even {a n : ℕ} (ha : Even (a ^ n)) : Even a := by
+theorem even_of_pow_even {a n : ℕ} (ha : Even (a ^ n)) : Even a := by
   sorry

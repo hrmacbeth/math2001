@@ -37,7 +37,7 @@ theorem irrat_aux (a b : ℕ) (hb : b ≠ 0) : a ^ 2 ≠ 2 * b ^ 2 := by
   have IH := irrat_aux b k -- inductive hypothesis
   have : b ^ 2 ≠ 2 * k ^ 2 := IH hk''
   contradiction
-termination_by _ => b
+termination_by b
 
 
 example : ¬ ∃ a b : ℕ, b ≠ 0 ∧ a ^ 2 = 2 * b ^ 2 := by

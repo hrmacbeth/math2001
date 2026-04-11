@@ -7,7 +7,7 @@ math2001_init
 
 
 example {y : ℝ} (x : ℝ) (h : 0 < x * y) (hx : 0 ≤ x) : 0 < y := by
-  obtain hneg | hpos : y ≤ 0 ∨ 0 < y := le_or_lt y 0
+  obtain hneg | hpos : y ≤ 0 ∨ 0 < y := le_or_gt y 0
   · -- the case `y ≤ 0`
     have : ¬0 < x * y
     · apply not_lt_of_ge

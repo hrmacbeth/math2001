@@ -2,7 +2,7 @@
 import Library.Theory.ModEq.Defs
 import Mathlib.Tactic.Linarith
 
-open Lean hiding Rat mkRat
+open Lean
 open Meta Qq Mathlib.Meta.NormNum
 
 namespace Mathlib.Meta.NormNum
@@ -37,16 +37,15 @@ end Mathlib.Meta.NormNum
 
 /-- The `norm_num` extension which identifies expressions of the form `a ≡ b [ZMOD n]`,
 such that `norm_num` successfully recognises both `a` and `b` and they are small compared to `n`. -/
-@[norm_num Int.ModEq _ _ _] def evalModEq : NormNumExt where eval (e : Q(Prop)) := do
+@[norm_num Int.ModEq _ _ _] def evalModEq : NormNumExt where eval {_ _} e := do
   let .app (.app (.app f (n : Q(ℤ))) (a : Q(ℤ))) (b : Q(ℤ)) ← whnfR e | failure
   guard <|← withNewMCtxDepth <| isDefEq f q(Int.ModEq)
   let ra : Result a ← derive a
   let rb : Result b ← derive b
   let rn : Result n ← derive n
-  let i : Q(Ring ℤ) := q(Int.instRingInt)
-  let ⟨za, _, _⟩ ← ra.toInt
-  let ⟨zb, _, _⟩ ← rb.toInt
-  let ⟨zn, _, _⟩ ← rn.toInt i
+  let some ⟨za, _, _⟩ := ra.toInt (q(Int.instRing) : Q(Ring ℤ)) | failure
+  let some ⟨zb, _, _⟩ := rb.toInt (q(Int.instRing) : Q(Ring ℤ)) | failure
+  let some ⟨zn, _, _⟩ := rn.toInt (q(Int.instRing) : Q(Ring ℤ)) | failure
   if za = zb then
     -- reduce `a ≡ b [ZMOD n]` to `true` if `a` and `b` reduce to the same integer
     haveI' pab : decide ($a = $b) =Q true := ⟨⟩

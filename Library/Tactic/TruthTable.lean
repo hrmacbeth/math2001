@@ -1,6 +1,6 @@
 /- Copyright (c) Joseph Rotella, 2023.  All rights reserved.
 Authors: Joseph Rotella, Ryan Edmonds -/
-import Std.Data.List.Basic
+import Batteries.Data.List.Basic
 import Lean
 
 open Lean Widget
@@ -180,14 +180,16 @@ partial def bExprOfPropTerm :
 
 
     elabDeclaration (←
-      `(@[widget] def $ident :=
+      `(@[widget_module] def $ident :=
         mkTableWidget (truthTable $(← bExprOfPropTerm prop)))
-      -- `(@[widget] def $ident := mkTableWidget (truthTable $tbStx)))
+      -- `(@[widget_module] def $ident := mkTableWidget (truthTable $tbStx)))
     )
 
-    let null_stx ← `(Json.null)
-    let props : Json ← runTermElabM fun _ =>
-      Term.evalTerm Json (mkConst ``Json) null_stx
-    saveWidgetInfo decl props stx
+    liftCoreM do
+      let uwd ← Lean.Widget.evalUserWidgetDefinition decl
+      Lean.Widget.savePanelWidgetInfo
+        (Lean.Widget.ToModule.toModule uwd).javascriptHash.1
+        (return Lean.Json.null)
+        stx
   | _ => throwUnsupportedSyntax
 

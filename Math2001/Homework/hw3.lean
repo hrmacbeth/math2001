@@ -29,9 +29,9 @@ theorem problem4 (x : ℚ) : ∃ y : ℚ, y ^ 2 > x := by
   sorry
 
 @[autograded 5]
-theorem problem5 {x : ℕ} (hx : Odd x) : Odd (x ^ 3) := by
+theorem problem5 {x : ℕ} (hx : Int.Odd x) : Int.Odd (x ^ 3) := by
   sorry
 
 @[autograded 5]
-theorem problem6 (n : ℕ) : ∃ m ≥ n, Odd m := by
+theorem problem6 (n : ℕ) : ∃ m ≥ n, Int.Odd m := by
   sorry

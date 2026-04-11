@@ -8,15 +8,15 @@ open Int
 
 
 @[decreasing] theorem lower_bound_fmod1 (a b : ℤ) (h1 : 0 < b) : -b < fmod a b := by
-  have H : 0 ≤ fmod a b
-  · apply fmod_nonneg_of_pos
+  have H : 0 ≤ fmod a b := by
+    apply fmod_nonneg_of_pos
     apply h1
   calc -b < 0 := by addarith [h1]
     _ ≤ _ := H
 
 @[decreasing] theorem lower_bound_fmod2 (a b : ℤ) (h1 : b < 0) : b < fmod a (-b) := by
-  have H : 0 ≤ fmod a (-b)
-  · apply fmod_nonneg_of_pos
+  have H : 0 ≤ fmod a (-b) := by
+    apply fmod_nonneg_of_pos
     addarith [h1]
   have h2 : 0 < -b := by addarith [h1]
   calc b < 0 := h1
@@ -39,7 +39,7 @@ def gcd (a b : ℤ) : ℤ :=
     a
   else
     -a
-termination_by _ a b => b
+termination_by b
 
 
 #eval gcd (-21) 15 -- infoview displays `3`
@@ -58,7 +58,7 @@ theorem gcd_nonneg (a b : ℤ) : 0 ≤ gcd a b := by
     apply ha
   · -- case `b = 0`, `a < 0`
     addarith [ha]
-termination_by _ a b => b
+termination_by b
 
 
 theorem gcd_dvd (a b : ℤ) : gcd a b ∣ b ∧ gcd a b ∣ a := by
@@ -92,7 +92,7 @@ theorem gcd_dvd (a b : ℤ) : gcd a b ∣ b ∧ gcd a b ∣ a := by
       sorry
     · -- prove that `gcd a b ∣ a`
       sorry
-termination_by gcd_dvd a b => b
+termination_by b
 
 
 mutual
@@ -113,6 +113,7 @@ theorem gcd_dvd_right (a b : ℤ) : gcd a b ∣ b := by
     use 0
     calc b = 0 := hb
       _ = -a * 0 := by ring
+termination_by b
 
 theorem gcd_dvd_left (a b : ℤ) : gcd a b ∣ a := by
   rw [gcd]
@@ -147,9 +148,9 @@ theorem gcd_dvd_left (a b : ℤ) : gcd a b ∣ a := by
   · -- case `b = 0`, `a < 0`
     use -1
     ring
+termination_by b
 
 end
-termination_by gcd_dvd_right a b => b ; gcd_dvd_left a b => b
 
 
 mutual
@@ -163,6 +164,7 @@ def L (a b : ℤ) : ℤ :=
     1
   else
     -1
+termination_by b
 
 def R (a b : ℤ) : ℤ :=
   if 0 < b then
@@ -171,9 +173,9 @@ def R (a b : ℤ) : ℤ :=
     L b (fmod a (-b)) + (fdiv a (-b)) * R b (fmod a (-b))
   else
     0
+termination_by b
 
 end
-termination_by L a b => b ; R a b => b
 
 
 #eval L (-21) 15 -- infoview displays `2`
@@ -205,7 +207,7 @@ theorem L_mul_add_R_mul (a b : ℤ) : L a b * a + R a b * b = gcd a b := by
     ring
   · -- case `b = 0`, `a < 0`
     ring
-termination_by L_mul_add_R_mul a b => b
+termination_by b
 
 
 #eval L 7 5 -- infoview displays `-2`

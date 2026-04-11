@@ -4,7 +4,6 @@ import Mathlib.Data.Set.Basic
 open Set
 
 attribute [default_instance] Set.instSingletonSet
-attribute [default_instance] Set.instEmptyCollectionSet
 
 notation:50 a:50 " ⊈ " b:50 => ¬ (a ⊆ b)
 
@@ -19,7 +18,7 @@ Restate some standard set `simp`-lemmas with `=` rather than `↔`, so that they
 @[simp] theorem Set.mem_inter_eq (x : α) (a b : Set α) : (x ∈ a ∩ b) = (x ∈ a ∧ x ∈ b) := rfl
 @[simp] theorem Set.mem_compl_eq (s : Set α) (x : α) : (x ∈ sᶜ) = ¬x ∈ s := rfl
 
-@[simp] theorem Set.mem_empty_eq_false (x : α) : (x ∈ ∅) = False := rfl
+@[simp] theorem Set.mem_empty_eq_false (x : α) : (x ∈ (∅ : Set α)) = False := rfl
 @[simp] theorem Set.mem_univ_eq (x : α) : (x ∈ univ) = True := rfl
 
 /-! ### Extend `ext` tactic to deal with set disequality -/

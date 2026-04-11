@@ -38,7 +38,7 @@ example (N : ℕ) : ∃ p ≥ N, Prime p := by
     -- so `p` is a prime number greater than or equal to `N`, as we sought
     use p
     constructor
-    · obtain h_le | h_gt : p ≤ N ∨ N < p := le_or_lt p N
+    · obtain h_le | h_gt : p ≤ N ∨ N < p := le_or_gt p N
       · have : p ∣ (N !)
         · apply dvd_factorial
           · extra

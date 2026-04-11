@@ -14,7 +14,7 @@ https://github.com/hrmacbeth/math2001/wiki/Homework-4,
 for clearer statements and any special instructions. -/
 
 @[autograded 5]
-theorem problem1 (n : ℤ) : Odd (3 * n ^ 2 + 3 * n - 1) := by
+theorem problem1 (n : ℤ) : Int.Odd (3 * n ^ 2 + 3 * n - 1) := by
   sorry
 
 @[autograded 1]
