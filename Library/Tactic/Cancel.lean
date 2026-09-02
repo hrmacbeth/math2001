@@ -25,6 +25,10 @@ macro_rules
 | `(tactic| cancel_aux $a at $h) =>
   let h := h.raw.getId
   `(tactic | replace $(mkIdent h):ident := pow_eq_zero (n := $a) $(mkIdent h))
+macro_rules
+| `(tactic| cancel_aux $a at $h) =>
+  let h := h.raw.getId
+  `(tactic | rw[pow_left_inj (n := $a) (by cancel_discharger) (by cancel_discharger) (by cancel_discharger)] at $(mkIdent h):ident)
 
 
 /-! ### multiplication, LHS and RHS -/
